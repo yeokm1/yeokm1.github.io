@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>庆铭网角</title>
+    <link>http://yeokhengmeng.com/zh/</link>
+    <description>Recent content on 庆铭网角</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-sg</language>
+    
+	<atom:link href="http://yeokhengmeng.com/zh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>关于我</title>
+      <link>http://yeokhengmeng.com/zh/about-me/</link>
+      <pubDate>Thu, 25 Dec 2014 14:55:48 +0000</pubDate>
+      
+      <guid>http://yeokhengmeng.com/zh/about-me/</guid>
+      <description>我在新加坡国立大学计算机学院2015年毕业。现在在远智能工作。
+ 我有软件和硬件之类的爱好。后悔没学习电气工程学位。 不像普通读计算机科学的人，我无法做网页开发。 私人飞行员 喜欢电脑历史 对时事尤其是政治有兴趣 我用Programmer Dvorak 键盘布局 有时观看cyberpunk动漫 喜欢科幻电影/电视剧/书  浏览我的Github 网站来看我的外部项目. 个人LinkedIn页面在这里。
+如需要跟我联络，可发我一个电子邮件 yeokm1[在]gmail[点]com 。</description>
+    </item>
+    
+    <item>
+      <title>Favourite Quotes</title>
+      <link>http://yeokhengmeng.com/zh/favourite-quotes/</link>
+      <pubDate>Thu, 25 Dec 2014 13:47:18 +0000</pubDate>
+      
+      <guid>http://yeokhengmeng.com/zh/favourite-quotes/</guid>
+      <description>(an evergreen page, last updated 25 June 2017)
+From speeches\authors: Don&amp;rsquo;t do shit, unless it&amp;rsquo;s epic shit!
+-Prof Colin Tan, NUS CS3216 Last Lecture (AY2013-2014 Sem 1)
+adding manpower to a late software project makes it later
+-Fred Brooks, The Mythical Man-Month. (aka Brook&amp;rsquo;s Law )
+“Any fool can write code that a computer can understand. Good programmers write code that humans can understand.”
+-Martin Fowler et al, Refactoring: Improving the Design of Existing Code, 1999.</description>
+    </item>
+    
+  </channel>
+</rss>
