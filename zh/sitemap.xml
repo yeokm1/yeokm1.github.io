@@ -3,6 +3,71 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://yeokhengmeng.com/zh/categories/</loc>
+    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://yeokhengmeng.com/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://yeokhengmeng.com/zh/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/zh/post/</loc>
+    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://yeokhengmeng.com/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://yeokhengmeng.com/zh/post/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/zh/</loc>
+    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://yeokhengmeng.com/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://yeokhengmeng.com/zh/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/zh/2020/08/%E6%B7%BB%E5%8A%A0%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</loc>
+    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://yeokhengmeng.com/2020/08/adding-chinese-support-to-my-blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://yeokhengmeng.com/zh/2020/08/%E6%B7%BB%E5%8A%A0%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/zh/categories/%E7%AE%A1%E7%90%86/</loc>
+    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://yeokhengmeng.com/zh/about-me/</loc>
     <lastmod>2014-12-25T14:55:48+00:00</lastmod>
     <xhtml:link
@@ -33,20 +98,6 @@
   </url>
   
   <url>
-    <loc>http://yeokhengmeng.com/zh/categories/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://yeokhengmeng.com/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://yeokhengmeng.com/zh/categories/"
-                />
-  </url>
-  
-  <url>
     <loc>http://yeokhengmeng.com/zh/tags/</loc>
     <xhtml:link
                 rel="alternate"
@@ -57,20 +108,6 @@
                 rel="alternate"
                 hreflang="zh"
                 href="http://yeokhengmeng.com/zh/tags/"
-                />
-  </url>
-  
-  <url>
-    <loc>http://yeokhengmeng.com/zh/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://yeokhengmeng.com/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://yeokhengmeng.com/zh/"
                 />
   </url>
   

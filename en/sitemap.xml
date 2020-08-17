@@ -3,8 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://yeokhengmeng.com/2020/08/adding-chinese-support-to-my-blog/</loc>
+    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://yeokhengmeng.com/zh/2020/08/%E6%B7%BB%E5%8A%A0%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://yeokhengmeng.com/2020/08/adding-chinese-support-to-my-blog/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/categories/admin/</loc>
+    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://yeokhengmeng.com/categories/</loc>
-    <lastmod>2020-08-04T00:00:00+00:00</lastmod>
+    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -14,6 +34,36 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://yeokhengmeng.com/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/post/</loc>
+    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://yeokhengmeng.com/zh/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://yeokhengmeng.com/post/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/</loc>
+    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://yeokhengmeng.com/zh/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://yeokhengmeng.com/"
                 />
   </url>
   
@@ -28,28 +78,8 @@
   </url>
   
   <url>
-    <loc>http://yeokhengmeng.com/post/</loc>
-    <lastmod>2020-08-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://yeokhengmeng.com/categories/singapore/</loc>
     <lastmod>2020-08-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://yeokhengmeng.com/</loc>
-    <lastmod>2020-08-04T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://yeokhengmeng.com/zh/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://yeokhengmeng.com/"
-                />
   </url>
   
   <url>
@@ -115,11 +145,6 @@
   <url>
     <loc>http://yeokhengmeng.com/2020/05/review-of-a-new-old-motherboard-nuxt-v2.0/</loc>
     <lastmod>2020-05-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://yeokhengmeng.com/categories/admin/</loc>
-    <lastmod>2020-04-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
