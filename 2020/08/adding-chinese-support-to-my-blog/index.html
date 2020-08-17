@@ -12,7 +12,7 @@ The only way to improve is to use it more often but technical Chinese is rarely 
 Since I write on quite a lot of technical stuff, I thought one way to improve my usage of technical Chinese is by writing bilingual blog posts. To do that, I&rsquo;ll first have to adjust my blog to have multilingual support。">
 <meta itemprop="datePublished" content="2020-08-17T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-08-17T00:00:00+00:00" />
-<meta itemprop="wordCount" content="942">
+<meta itemprop="wordCount" content="933">
 <meta itemprop="image" content="http://yeokhengmeng.com/2020/08/adding-chinese-support-to-my-blog/images/title-post-capture.png">
 
 
@@ -251,9 +251,9 @@ Since I write on quite a lot of technical stuff, I thought one way to improve my
 ...
 
    [[Languages.zh.menu.main]]
-      name              = &quot;电脑历史&quot;
+      name              = &quot;复古电脑&quot;
       identifier        = &quot;retrocomputing&quot;
-      url               = &quot;/categories/电脑历史&quot;
+      url               = &quot;/categories/复古电脑&quot;
 ...
 
    [[Languages.zh.menu.main]]
@@ -274,7 +274,7 @@ Since I write on quite a lot of technical stuff, I thought one way to improve my
     url               = &quot;/about-me/&quot;
 ...
 </code></pre><p>I have to provide the Chinese translation for every menu option.</p>
-<p>I cannot find a good translation of the term &ldquo;retrocomputing&rdquo; so I chose the next best which is &ldquo;电脑历史&rdquo; which actually means Computing History when translated back to English.</p>
+<p>I cannot find a good translation of the term &ldquo;retrocomputing&rdquo; so a friend advised me that the closest term was 复古电脑.</p>
 <a href="images/language-selection-mode.png"><img src="images/language-selection-mode.png" width="350"></a>
 <p>Upon reloading the site, my theme gives me this selection option :)</p>
 <h2 id="2-writing-bilingual-posts">2. Writing bilingual posts</h2>
@@ -298,9 +298,8 @@ Since I write on quite a lot of technical stuff, I thought one way to improve my
 <p>This is the method I opted for as I want my English and Chinese content translation of the same post to be together in the same place for ease of maintenance. However I did not use the <code>index.en.md</code> naming for the English posts as that will cause the new permalinks to have the <code>/en/</code> subpath breaking any existing external links to my blog posts.</p>
 <h2 id="3-translate-existing-metadata-content">3. Translate existing metadata content</h2>
 <p>For a site freshly added with multilingual support, you&rsquo;ll see something like the following.</p>
-<p><a href="images/fresh-chinese-support-no-data.png"><img src="images/fresh-chinese-support-no-data.png" width="500"></a>
-site
-It&rsquo;s empty because all the existing posts are not multilingual. So we have to add add the content to the Chinese version of the site</p>
+<a href="images/fresh-chinese-support-no-data.png"><img src="images/fresh-chinese-support-no-data.png" width="500"></a>
+<p>It&rsquo;s empty because all the existing posts are not multilingual. So we have to add add the content to the Chinese version of the site</p>
 <h3 id="a-duplicating-content-filenames-to-chinese">a. Duplicating content filenames to Chinese</h3>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">find . -name index.md -exec dirname {} <span style="color:#0ff;font-weight:bold">\;</span> | xargs -I % sh -c <span style="color:#0ff;font-weight:bold">&#39;cp %/index.md %/index.zh.md;&#39;</span>
 </code></pre></div><p>To have the English posts appear under the Chinese language setting, we use the above command to duplicate into <code>zh</code> files.</p>
