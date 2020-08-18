@@ -13,7 +13,7 @@ Since I write on quite a lot of technical stuff, I thought one way to improve my
 (Check out the Chinese version of this post here.)">
 <meta itemprop="datePublished" content="2020-08-17T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-08-17T00:00:00+00:00" />
-<meta itemprop="wordCount" content="942">
+<meta itemprop="wordCount" content="959">
 <meta itemprop="image" content="http://yeokhengmeng.com/2020/08/adding-chinese-support-to-my-blog/images/title-post-capture.png">
 
 
@@ -225,12 +225,11 @@ Since I write on quite a lot of technical stuff, I thought one way to improve my
 <h2 id="1-adjust-site-configuration">1. Adjust site configuration</h2>
 <p>Hugo sites including mine have a <code>config.toml</code> that specifies key site information like URL, title, theme and other parameters.</p>
 <p>This <code>config.toml</code> also includes theme-specific configuration that may differ heavily among different themes. The theme I&rsquo;m using is <a href="https://themes.gohugo.io/hugo-future-imperfect-slim/">hugo-future-imperfect-slim</a>.</p>
-<p>It&rsquo;s theme-specific configuration documentation can be found <a href="https://github.com/pacollins/hugo-future-imperfect-slim/wiki/config.toml">here</a></p>
+<p>Its theme-specific configuration documentation can be found <a href="https://github.com/pacollins/hugo-future-imperfect-slim/wiki/config.toml">here</a>.</p>
 <p>Below is a reduced version of my <code>config.toml</code>.</p>
 <pre><code>DefaultContentLanguage  = &quot;en&quot;
 
 [Languages.zh.params.header]
-    # Sets the navbarTitle that appears in the top left of the navigation bar
     navbarTitle         = &quot;庆铭网角&quot;
 ...
     
@@ -277,6 +276,17 @@ Since I write on quite a lot of technical stuff, I thought one way to improve my
     identifier        = &quot;about&quot;
     url               = &quot;/about-me/&quot;
 ...
+[Languages]
+  # Each language has its own menu.
+  [Languages.en]
+    LanguageCode        = &quot;en&quot;
+    LanguageName        = &quot;English&quot;
+    weight              = 1
+  [Languages.zh]
+    LanguageCode        = &quot;zh-sg&quot;
+    LanguageName        = &quot;简体中文&quot;
+    title               = &quot;庆铭网角&quot;
+    weight              = 2
 </code></pre><p>I have to provide the Chinese translation for every menu option.</p>
 <p>I cannot find a good translation of the term &ldquo;retrocomputing&rdquo; so a friend advised me that the closest term was 复古电脑.</p>
 <a href="images/language-selection-mode.png"><img src="images/language-selection-mode.png" width="350"></a>
