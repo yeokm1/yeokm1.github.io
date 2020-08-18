@@ -13,7 +13,7 @@ Since I write on quite a lot of technical stuff, I thought one way to improve my
 (Check out the Chinese version of this post here.)">
 <meta itemprop="datePublished" content="2020-08-17T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-08-17T00:00:00+00:00" />
-<meta itemprop="wordCount" content="943">
+<meta itemprop="wordCount" content="941">
 <meta itemprop="image" content="http://yeokhengmeng.com/2020/08/adding-chinese-support-to-my-blog/images/title-post-capture.png">
 
 
@@ -303,13 +303,13 @@ Since I write on quite a lot of technical stuff, I thought one way to improve my
 <h2 id="3-translate-existing-metadata-content">3. Translate existing metadata content</h2>
 <p>For a site freshly added with multilingual support, you&rsquo;ll see something like the following.</p>
 <a href="images/fresh-chinese-support-no-data.png"><img src="images/fresh-chinese-support-no-data.png" width="500"></a>
-<p>It&rsquo;s empty because all the existing posts are not multilingual. So we have to add add the content to the Chinese version of the site</p>
+<p>It&rsquo;s empty because all the existing posts are not multilingual. So we have to add content to the Chinese version of the site.</p>
 <h3 id="a-duplicating-content-filenames-to-chinese">a. Duplicating content filenames to Chinese</h3>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">find . -name index.md -exec dirname {} <span style="color:#0ff;font-weight:bold">\;</span> | xargs -I % sh -c <span style="color:#0ff;font-weight:bold">&#39;cp %/index.md %/index.zh.md;&#39;</span>
 </code></pre></div><p>To have the English posts appear under the Chinese language setting, we use the above command to duplicate into <code>zh</code> files.</p>
 <h3 id="b-find-and-replace-english-categories">b. Find and replace English categories</h3>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">find . -name index.zh.md | xargs -I % sh -c <span style="color:#0ff;font-weight:bold">&#34;sed -i &#39;s/\&#34;Singapore\&#34;/\&#34;新加玻\&#34;/g&#39; %&#34;</span>
-</code></pre></div><p>After that, we have to change the Hugo Front Matter of each site <code>categories: [&quot;Singapore&quot;]</code> -&gt; <code>categories: [&quot;新加玻&quot;]</code>. I have to repeat this for every single category I use.</p>
+</code></pre></div><p>After that, we have to change the Hugo Front Matter of each page <code>categories: [&quot;Singapore&quot;]</code> -&gt; <code>categories: [&quot;新加玻&quot;]</code>. I have to repeat this for every single category I use.</p>
 <p>In the end, I reverted the changes as I realised Hugo actually creates another set of images for each translated post. This causes the size of my site to bloat so much it busted the <a href="https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota#file-and-repository-size-limitations">1GB Github pages limit</a>.</p>
 <p>So I&rsquo;m leaving the Unix commands above in case it can be useful to someone else.</p>
 <h2 id="commenting-problems">Commenting problems</h2>
