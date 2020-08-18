@@ -277,7 +277,7 @@
     url               = &quot;/about-me/&quot;
 ...
 </code></pre><p>每个选单必须提供中文翻译。</p>
-<p>我找不到&quot;retrocomputing&quot;的中文翻译. 我问一个朋友他建我用&quot;复古电脑&rdquo;。</p>
+<p>我找不到&quot;retrocomputing&quot;的中文翻译. 我问一个朋友他建议我用&quot;复古电脑&rdquo;。</p>
 <a href="images/language-selection-mode.png"><img src="images/language-selection-mode.png" width="350"></a>
 <p>重新下载网页后，主题提供了语言选择。</p>
 <h2 id="2-写双语文章">2. 写双语文章</h2>
@@ -311,7 +311,7 @@
 </code></pre></div><p>我们之后需要修改每个文章的Hugo前提。 <code>categories: [&quot;Singapore&quot;]</code> -&gt; <code>categories: [&quot;新加玻&quot;]</code>。每个类别都要运行。</p>
 <p>最后， 我返回了这些修改。因为我发现到Hugo在处理每个中英文章时后，创建了两组图片，导致我的网站超过了<a href="https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota#file-and-repository-size-limitations">Github Pages 1GB 的限制</a>。</p>
 <p>我选择保留了上面的UNIX命令，可能对他人有帮助。</p>
-<h2 id="平论问题">平论问题</h2>
+<h2 id="评论问题">评论问题</h2>
 <p>我使用了Disqus和Facebook的评论系统。它们需要你提供文章的URL然后它会下载文章具体的评论。我用了这个代码.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;fb-comments&#34;</span> <span style="color:#007f7f">data-href</span>=<span style="color:#0ff;font-weight:bold">&#34;{{ .Permalink }}&#34;</span> <span style="color:#007f7f">data-width</span>=<span style="color:#0ff;font-weight:bold">&#34;100%&#34;</span> <span style="color:#007f7f">data-numposts</span>=<span style="color:#0ff;font-weight:bold">&#34;5&#34;</span>&gt;&lt;/<span style="font-weight:bold">div</span>&gt;
 </code></pre></div><p><code>&quot;{{ .Permalink }}&quot;</code> 是让Hugo插件了页面的URL.</p>
