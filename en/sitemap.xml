@@ -3,6 +3,71 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://yeokhengmeng.com/categories/aviation/</loc>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/categories/</loc>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://yeokhengmeng.com/zh/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://yeokhengmeng.com/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/categories/flight-sim/</loc>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/2020/08/how-does-flight-simulator-2020-compare-to-real-flights-over-singapore/</loc>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/post/</loc>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://yeokhengmeng.com/zh/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://yeokhengmeng.com/post/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/categories/singapore/</loc>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/</loc>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://yeokhengmeng.com/zh/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://yeokhengmeng.com/"
+                />
+  </url>
+  
+  <url>
     <loc>http://yeokhengmeng.com/2020/08/adding-chinese-support-to-my-blog/</loc>
     <lastmod>2020-08-17T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -23,62 +88,12 @@
   </url>
   
   <url>
-    <loc>http://yeokhengmeng.com/categories/</loc>
-    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://yeokhengmeng.com/zh/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://yeokhengmeng.com/categories/"
-                />
-  </url>
-  
-  <url>
-    <loc>http://yeokhengmeng.com/post/</loc>
-    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://yeokhengmeng.com/zh/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://yeokhengmeng.com/post/"
-                />
-  </url>
-  
-  <url>
-    <loc>http://yeokhengmeng.com/</loc>
-    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://yeokhengmeng.com/zh/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://yeokhengmeng.com/"
-                />
-  </url>
-  
-  <url>
     <loc>http://yeokhengmeng.com/2020/08/do-grcs-increase-the-risk-of-a-freak-election/</loc>
     <lastmod>2020-08-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://yeokhengmeng.com/categories/politics/</loc>
-    <lastmod>2020-08-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://yeokhengmeng.com/categories/singapore/</loc>
     <lastmod>2020-08-04T00:00:00+00:00</lastmod>
   </url>
   
@@ -100,11 +115,6 @@
   <url>
     <loc>http://yeokhengmeng.com/2020/07/book-review-air-conditioned-nation-series-by-cherian-george-part-1-of-3/</loc>
     <lastmod>2020-07-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://yeokhengmeng.com/categories/aviation/</loc>
-    <lastmod>2020-07-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>

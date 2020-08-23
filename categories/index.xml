@@ -6,10 +6,37 @@
     <description>Recent content in Categories on YKM&#39;s Corner on the Web</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 17 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://yeokhengmeng.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>aviation</title>
+      <link>http://yeokhengmeng.com/categories/aviation/</link>
+      <pubDate>Sun, 23 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://yeokhengmeng.com/categories/aviation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>flight-sim</title>
+      <link>http://yeokhengmeng.com/categories/flight-sim/</link>
+      <pubDate>Sun, 23 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://yeokhengmeng.com/categories/flight-sim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>singapore</title>
+      <link>http://yeokhengmeng.com/categories/singapore/</link>
+      <pubDate>Sun, 23 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://yeokhengmeng.com/categories/singapore/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>admin</title>
@@ -30,29 +57,11 @@
     </item>
     
     <item>
-      <title>singapore</title>
-      <link>http://yeokhengmeng.com/categories/singapore/</link>
-      <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://yeokhengmeng.com/categories/singapore/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>book-reviews</title>
       <link>http://yeokhengmeng.com/categories/book-reviews/</link>
       <pubDate>Sat, 01 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>http://yeokhengmeng.com/categories/book-reviews/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>aviation</title>
-      <link>http://yeokhengmeng.com/categories/aviation/</link>
-      <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://yeokhengmeng.com/categories/aviation/</guid>
       <description></description>
     </item>
     
