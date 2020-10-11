@@ -4,7 +4,7 @@
   
   <url>
     <loc>http://yeokhengmeng.com/zh/categories/</loc>
-    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -18,8 +18,23 @@
   </url>
   
   <url>
+    <loc>http://yeokhengmeng.com/zh/2020/08/flight-simulator-2020%E8%B7%9F%E6%96%B0%E5%8A%A0%E5%9D%A1%E5%AE%9E%E9%99%85%E9%A3%9E%E8%A1%8C%E5%A6%82%E4%BD%95%E7%9B%B8%E6%AF%94/</loc>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://yeokhengmeng.com/2020/08/how-does-flight-simulator-2020-compare-to-real-flights-over-singapore/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://yeokhengmeng.com/zh/2020/08/flight-simulator-2020%E8%B7%9F%E6%96%B0%E5%8A%A0%E5%9D%A1%E5%AE%9E%E9%99%85%E9%A3%9E%E8%A1%8C%E5%A6%82%E4%BD%95%E7%9B%B8%E6%AF%94/"
+                />
+  </url>
+  
+  <url>
     <loc>http://yeokhengmeng.com/zh/post/</loc>
-    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -34,7 +49,7 @@
   
   <url>
     <loc>http://yeokhengmeng.com/zh/</loc>
-    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -45,6 +60,21 @@
                 hreflang="zh"
                 href="http://yeokhengmeng.com/zh/"
                 />
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/zh/categories/%E6%96%B0%E5%8A%A0%E7%8E%BB/</loc>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/zh/categories/%E9%A3%9E%E8%A1%8C/</loc>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/zh/categories/%E9%A3%9E%E8%A1%8C%E6%A8%A1%E6%8B%9F%E5%99%A8/</loc>
+    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
