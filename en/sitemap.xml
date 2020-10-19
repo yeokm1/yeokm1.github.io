@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://yeokhengmeng.com/categories/aviation/</loc>
+    <lastmod>2020-10-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://yeokhengmeng.com/categories/</loc>
     <lastmod>2020-10-18T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -15,6 +20,11 @@
                 hreflang="en"
                 href="http://yeokhengmeng.com/categories/"
                 />
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/2020/10/how-i-got-the-rarest-singapore-pilot-certificate/</loc>
+    <lastmod>2020-10-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -43,6 +53,11 @@
   </url>
   
   <url>
+    <loc>http://yeokhengmeng.com/categories/singapore/</loc>
+    <lastmod>2020-10-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://yeokhengmeng.com/</loc>
     <lastmod>2020-10-18T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -55,11 +70,6 @@
                 hreflang="en"
                 href="http://yeokhengmeng.com/"
                 />
-  </url>
-  
-  <url>
-    <loc>http://yeokhengmeng.com/categories/aviation/</loc>
-    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -80,11 +90,6 @@
                 hreflang="en"
                 href="http://yeokhengmeng.com/2020/08/how-does-flight-simulator-2020-compare-to-real-flights-over-singapore/"
                 />
-  </url>
-  
-  <url>
-    <loc>http://yeokhengmeng.com/categories/singapore/</loc>
-    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
