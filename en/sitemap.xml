@@ -4,12 +4,12 @@
   
   <url>
     <loc>http://yeokhengmeng.com/categories/aviation/</loc>
-    <lastmod>2020-10-20T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://yeokhengmeng.com/categories/</loc>
-    <lastmod>2020-10-20T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -19,6 +19,46 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://yeokhengmeng.com/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/post/</loc>
+    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://yeokhengmeng.com/zh/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://yeokhengmeng.com/post/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/2020/12/teardown-of-an-aviation-radio-bendix-king-kx-155/</loc>
+    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/categories/teardowns/</loc>
+    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yeokhengmeng.com/</loc>
+    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://yeokhengmeng.com/zh/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://yeokhengmeng.com/"
                 />
   </url>
   
@@ -33,38 +73,8 @@
   </url>
   
   <url>
-    <loc>http://yeokhengmeng.com/post/</loc>
-    <lastmod>2020-10-20T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://yeokhengmeng.com/zh/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://yeokhengmeng.com/post/"
-                />
-  </url>
-  
-  <url>
     <loc>http://yeokhengmeng.com/categories/singapore/</loc>
     <lastmod>2020-10-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://yeokhengmeng.com/</loc>
-    <lastmod>2020-10-20T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://yeokhengmeng.com/zh/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://yeokhengmeng.com/"
-                />
   </url>
   
   <url>
@@ -149,11 +159,6 @@
   
   <url>
     <loc>http://yeokhengmeng.com/2020/06/radar-theory-and-teardown-of-aircraft-transponder-rt-459a/</loc>
-    <lastmod>2020-06-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://yeokhengmeng.com/categories/teardowns/</loc>
     <lastmod>2020-06-20T00:00:00+00:00</lastmod>
   </url>
   
