@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>http://yeokhengmeng.com/zh/categories/</loc>
     <lastmod>2020-08-23T00:00:00+00:00</lastmod>
@@ -15,9 +14,7 @@
                 hreflang="zh"
                 href="http://yeokhengmeng.com/zh/categories/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://yeokhengmeng.com/zh/2020/08/flight-simulator-2020%E8%B7%9F%E6%96%B0%E5%8A%A0%E5%9D%A1%E5%AE%9E%E9%99%85%E9%A3%9E%E8%A1%8C%E5%A6%82%E4%BD%95%E7%9B%B8%E6%AF%94/</loc>
     <lastmod>2020-08-23T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -30,9 +27,7 @@
                 hreflang="zh"
                 href="http://yeokhengmeng.com/zh/2020/08/flight-simulator-2020%E8%B7%9F%E6%96%B0%E5%8A%A0%E5%9D%A1%E5%AE%9E%E9%99%85%E9%A3%9E%E8%A1%8C%E5%A6%82%E4%BD%95%E7%9B%B8%E6%AF%94/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://yeokhengmeng.com/zh/post/</loc>
     <lastmod>2020-08-23T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -45,9 +40,7 @@
                 hreflang="zh"
                 href="http://yeokhengmeng.com/zh/post/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://yeokhengmeng.com/zh/</loc>
     <lastmod>2020-08-23T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -60,24 +53,16 @@
                 hreflang="zh"
                 href="http://yeokhengmeng.com/zh/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://yeokhengmeng.com/zh/categories/%E6%96%B0%E5%8A%A0%E7%8E%BB/</loc>
     <lastmod>2020-08-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://yeokhengmeng.com/zh/categories/%E9%A3%9E%E8%A1%8C/</loc>
     <lastmod>2020-08-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://yeokhengmeng.com/zh/categories/%E9%A3%9E%E8%A1%8C%E6%A8%A1%E6%8B%9F%E5%99%A8/</loc>
     <lastmod>2020-08-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://yeokhengmeng.com/zh/2020/08/%E6%B7%BB%E5%8A%A0%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</loc>
     <lastmod>2020-08-17T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -90,14 +75,10 @@
                 hreflang="zh"
                 href="http://yeokhengmeng.com/zh/2020/08/%E6%B7%BB%E5%8A%A0%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://yeokhengmeng.com/zh/categories/%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2020-08-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://yeokhengmeng.com/zh/about-me/</loc>
     <lastmod>2014-12-25T14:55:48+00:00</lastmod>
     <xhtml:link
@@ -110,9 +91,7 @@
                 hreflang="zh"
                 href="http://yeokhengmeng.com/zh/about-me/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://yeokhengmeng.com/zh/favourite-quotes/</loc>
     <lastmod>2014-12-25T13:47:18+00:00</lastmod>
     <xhtml:link
@@ -125,9 +104,7 @@
                 hreflang="zh"
                 href="http://yeokhengmeng.com/zh/favourite-quotes/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://yeokhengmeng.com/zh/tags/</loc>
     <xhtml:link
                 rel="alternate"
@@ -140,5 +117,4 @@
                 href="http://yeokhengmeng.com/zh/tags/"
                 />
   </url>
-  
 </urlset>

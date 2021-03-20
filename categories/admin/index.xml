@@ -6,11 +6,7 @@
     <description>Recent content in admin on YKM&#39;s Corner on the Web</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 17 Aug 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://yeokhengmeng.com/categories/admin/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 17 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://yeokhengmeng.com/categories/admin/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Adding Chinese support to my blog</title>
       <link>http://yeokhengmeng.com/2020/08/adding-chinese-support-to-my-blog/</link>

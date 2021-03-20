@@ -6,10 +6,17 @@
     <description>Recent content in aviation on YKM&#39;s Corner on the Web</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 08 Dec 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://yeokhengmeng.com/categories/aviation/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sat, 20 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://yeokhengmeng.com/categories/aviation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Transitioning to Dynon Skyview HDX glass cockpit</title>
+      <link>http://yeokhengmeng.com/2021/03/transitioning-to-dynon-skyview-hdx-glass-cockpit/</link>
+      <pubDate>Sat, 20 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://yeokhengmeng.com/2021/03/transitioning-to-dynon-skyview-hdx-glass-cockpit/</guid>
+      <description>Seletar Flying Club (SFC) in collaboration with MAJ Aviation recently upgraded one of its aircraft, a Cessna 172N (N5748E) to use a glass cockpit.
+ As an SFC member, I had the privilege to learn about this new system and fly on this upgraded aircraft.
+In this blog post, I&amp;rsquo;ll like to share my learnings when transitioning to this system. Prior to this, the aircraft I have flown including those in training have used traditional steam-gauges.</description>
+    </item>
     
     <item>
       <title>Teardown of an Aviation Radio Bendix King KX-155</title>
