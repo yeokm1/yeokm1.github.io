@@ -2,11 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://yeokhengmeng.com/categories/aviation/</loc>
-    <lastmod>2021-03-20T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://yeokhengmeng.com/categories/</loc>
-    <lastmod>2021-03-20T00:00:00+00:00</lastmod>
+    <lastmod>2021-05-08T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -19,7 +16,7 @@
                 />
   </url><url>
     <loc>http://yeokhengmeng.com/post/</loc>
-    <lastmod>2021-03-20T00:00:00+00:00</lastmod>
+    <lastmod>2021-05-08T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -31,11 +28,14 @@
                 href="http://yeokhengmeng.com/post/"
                 />
   </url><url>
-    <loc>http://yeokhengmeng.com/2021/03/transitioning-to-dynon-skyview-hdx-glass-cockpit/</loc>
-    <lastmod>2021-03-20T00:00:00+00:00</lastmod>
+    <loc>http://yeokhengmeng.com/categories/retrocomputing/</loc>
+    <lastmod>2021-05-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://yeokhengmeng.com/2021/05/setting-up-a-486-retro-pc/</loc>
+    <lastmod>2021-05-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/</loc>
-    <lastmod>2021-03-20T00:00:00+00:00</lastmod>
+    <lastmod>2021-05-08T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -46,6 +46,12 @@
                 hreflang="en"
                 href="http://yeokhengmeng.com/"
                 />
+  </url><url>
+    <loc>http://yeokhengmeng.com/categories/aviation/</loc>
+    <lastmod>2021-03-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://yeokhengmeng.com/2021/03/transitioning-to-dynon-skyview-hdx-glass-cockpit/</loc>
+    <lastmod>2021-03-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/2020/12/teardown-of-an-aviation-radio-bendix-king-kx-155/</loc>
     <lastmod>2020-12-08T00:00:00+00:00</lastmod>
@@ -123,9 +129,6 @@
   </url><url>
     <loc>http://yeokhengmeng.com/2020/05/safety-and-environmental-concerns-of-general-aviation-within-singapore/</loc>
     <lastmod>2020-05-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://yeokhengmeng.com/categories/retrocomputing/</loc>
-    <lastmod>2020-05-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/2020/05/review-of-a-new-old-motherboard-nuxt-v2.0/</loc>
     <lastmod>2020-05-16T00:00:00+00:00</lastmod>
