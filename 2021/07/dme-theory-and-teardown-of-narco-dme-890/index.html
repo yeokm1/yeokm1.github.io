@@ -394,7 +394,7 @@ For Y mode, the pulse spacing will be 30us.</p>
 <p>With a screw driver, I proceeded to remove the top cover.</p>
 <a href="images/dme890-initial-opening.jpg"><img src="images/dme890-initial-opening.jpg" width="700"></a>
 <p>The RF portion is clearly in a separate shielded section away from the main PCB. The plenty of through-hole components is also another indication of the age of this design.</p>
-<h2 id="microcontroller">Microcontroller</h2>
+<h3 id="microcontroller">Microcontroller</h3>
 <a href="images/dme890-cpu.jpg"><img src="images/dme890-cpu.jpg" width="700"></a>
 <p>With the processor literally in front, I decided to google that part number MK3870/42.</p>
 <p>Going to <a href="https://www.cpu-world.com/">CPU-world&rsquo;s website</a> and eliminating the options, this is likely a <a href="https://www.cpu-world.com/CPUs/3870/Mostek-MK3870-42N-10.html">Mostek MK3870/42N-10</a> or <a href="https://www.cpu-world.com/CPUs/3870/Mostek-MK3870-42N-15.html">MK3870/42N-15</a> from the <a href="https://www.cpu-world.com/CPUs/3870/index.html">Mostek 3870 family</a>. The only difference between the two is that the MK3870/42N-15 5V supply voltage tolerance is 5% vs MK3870/42N-10 being 10%.</p>
@@ -416,7 +416,7 @@ For Y mode, the pulse spacing will be 30us.</p>
 <p>Today, the usage of programmable microcontrollers in electronics products is pretty much taken for granted.</p>
 <a href="images/dme890-mcu-description.jpg"><img src="images/dme890-mcu-description.jpg" width="500"></a>
 <p>However I guess at that time, usage of such chips is still a relatively new implementation that necessitates that Narco write in the maintenance manual not to quickly blame the MCU when things are not working.</p>
-<h2 id="display">Display</h2>
+<h3 id="display">Display</h3>
 <p>Just like my KX-155 teardown, the display portion intrigued me.</p>
 <a href="images/dme890-display.jpg"><img src="images/dme890-display.jpg" width="500"></a>
 <p>A look after removing the front bezel. The separation between each digit is clearly observed.</p>
@@ -470,12 +470,12 @@ For Y mode, the pulse spacing will be 30us.</p>
 </tbody>
 </table>
 <p>The method employed by DME-890 to programmatically select each digit directly is different from how the KX155 does it where the MCU advances the digit selection based on a transition of a clock signal to the multiplexer.</p>
-<h2 id="rf-section">RF Section</h2>
+<h3 id="rf-section">RF Section</h3>
 <p>Now comes the most complex section. The manual goes into tremendous and oftentimes cryptic details especially for someone like me who is not in the avionics and RF industry.</p>
 <p>Therefore I shall only mention the transmit and receive portions only. There is also a modulator and signal decoding section but I shall leave that out in the interest of brevity.</p>
 <a href="images/dme890-transmit-receive.jpg"><img src="images/dme890-transmit-receive.jpg" width="600"></a>
 <p>The top portion is the receiver portion while the bottom is the transmitter + diplexer portion. The diplexer allows the antenna to be selected between the transmitter or receiver depending on the current state of the device.</p>
-<h2 id="transmitter">Transmitter</h2>
+<h3 id="transmitter">Transmitter</h3>
 <p>I first started out by consulting the provided block diagram.</p>
 <a href="images/dme890-transmitter-block.jpg"><img src="images/dme890-transmitter-block.jpg" width="600"></a>
 <p>With the help of this diagram and the component placement diagram, I tried to identify the key components.</p>
@@ -490,7 +490,7 @@ For Y mode, the pulse spacing will be 30us.</p>
 <p>Transmitter: Frequency doubler doubles the 550 Mhz input to 1100 Mhz, amplified further than sent out through the diplexer which selects the antenna function at that time.</p>
 </li>
 </ul>
-<h2 id="receiver">Receiver</h2>
+<h3 id="receiver">Receiver</h3>
 <a href="images/dme890-receiver-block.jpg"><img src="images/dme890-receiver-block.jpg" width="600"></a>
 <p>With the help of this diagram and the component placement diagram, I tried to identify the key components.</p>
 <a href="images/dme890-receiver-components.jpg"><img src="images/dme890-receiver-components.jpg" width="700"></a>
@@ -526,7 +526,7 @@ For Y mode, the pulse spacing will be 30us.</p>
 <p>U313 (not in photo) is an AND gate to allow the decoder to give feedback to the AGC on whether to act on certain signal based on the received pulse spacing.</p>
 </li>
 </ul>
-<h1 id="final-words">Final Words</h1>
+<h2 id="final-words">Final Words</h2>
 <p>Quite a lot of thought went into a DME infrastructure as a whole. Something supposedly simple to use the DME actually has a lot going on behind the scenes to make it work.</p>
 <p>The frequencies that are chosen in the system are clearly not selected on a whim. The entire system design was designed with the avionics implementation on the aircraft in mind too.</p>
 <p>Now my next curiosity, how does a contemporary implementation of an avionics DME system work with the benefit of faster processors and more integrated surface mount technology?</p>
