@@ -10,7 +10,7 @@
 <meta itemprop="description" content="A faulty aircraft avionics Narco DME 890 came into my hands recently. As this instrument was destined for the trash bin, I was given free reign to do whatever I wanted with it. What better way to do it than to conduct a teardown!
 Before commencing a teardown, I have to go through some theoretical concepts of the basic operation of this device."><meta itemprop="datePublished" content="2021-07-03T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-07-03T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2691"><meta itemprop="image" content="http://yeokhengmeng.com/2021/07/dme-theory-and-teardown-of-narco-dme-890/images/dme890-front.jpg">
+<meta itemprop="wordCount" content="2727"><meta itemprop="image" content="http://yeokhengmeng.com/2021/07/dme-theory-and-teardown-of-narco-dme-890/images/dme890-front.jpg">
 <meta itemprop="keywords" content="" /><meta property="og:title" content="DME Theory and Teardown of Narco DME 890" />
 <meta property="og:description" content="A faulty aircraft avionics Narco DME 890 came into my hands recently. As this instrument was destined for the trash bin, I was given free reign to do whatever I wanted with it. What better way to do it than to conduct a teardown!
 Before commencing a teardown, I have to go through some theoretical concepts of the basic operation of this device." />
@@ -228,7 +228,7 @@ Before commencing a teardown, I have to go through some theoretical concepts of 
 <p>As planes operate in the 3D world, the distance is actually the slant range. Therefore the higher the altitude of the aircraft, the less accurate the slant range distance can be used to approximate the ground distance.</p>
 <p><a href="https://www.boldmethod.com/learn-to-fly/systems/understanding-dme-on-instrument-approaches-and-vfr/">Boldmethod</a> has this to say:</p>
 <blockquote>
-<p>So how much DME slant range error is there for most aircraft operations? The rule-of-them is that if you&rsquo;re at least 1NM away from the station for every 1,000' AGL, slant range error is negligible.</p>
+<p>So how much DME slant range error is there for most aircraft operations? The rule-of-thumb is that if you&rsquo;re at least 1NM away from the station for every 1,000' AGL, slant range error is negligible.</p>
 <p>&hellip;</p>
 <p>DME requires line-of-sight between the aircraft and the ground station, and terrain and distance beyond the horizon will prevent DME from working.</p>
 </blockquote>
@@ -370,7 +370,7 @@ For Y mode, the pulse spacing will be 30us.</p>
 </tr>
 </tbody>
 </table>
-<p>Therefore when the pilot wants to configure the onboard DME system, he does not actually use the Interrogation/Reply frequencies directly. He uses the VOR frequencies published on the chart to enter into the DME system which will then automatically derive the correct DME frequencies to use.</p>
+<p>Therefore when the pilot wants to configure the Narco DME-890, he does not actually use the Interrogation/Reply frequencies directly. He uses the VOR frequencies published on the chart to enter into the DME system which will then automatically derive the correct DME frequencies to use.</p>
 <p>For the TACAN stations, although the &ldquo;VOR frequencies&rdquo; are listed, a civilian VOR avionics equipment cannot get any bearing information from it. The dummy VOR frequency is for the DME system to determine the paired DME frequency to interact with the TACAN system.</p>
 <p>DME is like a reversing of roles compared to a transponder system where instead of the ground station interrogating the aircraft, it&rsquo;s the aircraft now interrogating the ground station.</p>
 <h2 id="operating-the-dme-890">Operating the DME-890</h2>
@@ -386,7 +386,7 @@ For Y mode, the pulse spacing will be 30us.</p>
 <a href="images/dme890-powering.jpg"><img src="images/dme890-powering.jpg" width="500"></a>
 <p>Translating to the actual physical pinout.</p>
 <h2 id="the-teardown">The Teardown</h2>
-<p>Let&rsquo;s come to the fun part, analysing the key components</p>
+<p>Let&rsquo;s come to the fun part, analysing the key components.</p>
 <h3 id="system-architecture">System Architecture</h3>
 <a href="images/dme890-architecture.jpg"><img src="images/dme890-architecture.jpg" width="500"></a>
 <p>Consulting the manual, the block diagram shows everything controlled by a central microprocessor.</p>
@@ -475,7 +475,7 @@ For Y mode, the pulse spacing will be 30us.</p>
 <p>Therefore I shall only mention the transmit and receive portions only. There is also a modulator and signal decoding section but I shall leave that out in the interest of brevity.</p>
 <a href="images/dme890-transmit-receive.jpg"><img src="images/dme890-transmit-receive.jpg" width="600"></a>
 <p>The top portion is the receiver portion while the bottom is the transmitter + diplexer portion. The diplexer allows the antenna to be selected between the transmitter or receiver depending on the current state of the device.</p>
-<h3 id="transmitter">Transmitter</h3>
+<h4 id="transmitter">Transmitter</h4>
 <p>I first started out by consulting the provided block diagram.</p>
 <a href="images/dme890-transmitter-block.jpg"><img src="images/dme890-transmitter-block.jpg" width="600"></a>
 <p>With the help of this diagram and the component placement diagram, I tried to identify the key components.</p>
@@ -490,7 +490,7 @@ For Y mode, the pulse spacing will be 30us.</p>
 <p>Transmitter: Frequency doubler doubles the 520.5 to 575 Mhz input to the interrogation frequency, amplified further than sent out through the diplexer which selects the antenna function at that time.</p>
 </li>
 </ul>
-<h3 id="receiver">Receiver</h3>
+<h4 id="receiver">Receiver</h4>
 <a href="images/dme890-receiver-block.jpg"><img src="images/dme890-receiver-block.jpg" width="600"></a>
 <p>With the help of this diagram and the component placement diagram, I tried to identify the key components.</p>
 <a href="images/dme890-receiver-components.jpg"><img src="images/dme890-receiver-components.jpg" width="700"></a>
@@ -529,7 +529,8 @@ For Y mode, the pulse spacing will be 30us.</p>
 <h2 id="final-words">Final Words</h2>
 <p>Quite a lot of thought went into a DME infrastructure as a whole. Something supposedly simple to use as the DME actually has a lot going on behind the scenes to make it work.</p>
 <p>The frequencies that are chosen in the system are clearly not selected on a whim. The entire system was designed with the avionics implementation on the aircraft in mind too.</p>
-<p>It&rsquo;s clear that RF and avionics design work is an extremely complex task. Such a product definitely took a non-trivial amount of time and skill-sets of a team of people to develop. Furthermore, this was developed in the late 1970s without the benefit of modern tools and easily accessible knowledge of today.</p>
+<p>It&rsquo;s clear that RF and avionics design work is an extremely complex task. The manufacturer has to design a product that fits the functional requirements, conform to rigorous aviation certification standards and also be robust enough to work in the rough environment of the plane under heavy vibrations and heat.</p>
+<p>Such a product definitely took a non-trivial amount of time and skill-sets of a team of people to develop. Furthermore, this was developed in the late 1970s without the benefit of modern tools and easily accessible knowledge of today.</p>
 <p>Now my next curiosity, how does a contemporary implementation of an avionics DME system work with the benefit of better tech like faster processors and more integrated surface mount technology?</p>
   </div>
   <footer>
