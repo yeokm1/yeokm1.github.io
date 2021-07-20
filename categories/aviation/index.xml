@@ -6,15 +6,23 @@
     <description>Recent content in aviation on YKM&#39;s Corner on the Web</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 03 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://yeokhengmeng.com/categories/aviation/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://yeokhengmeng.com/categories/aviation/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>DME Theory and Teardown of Narco DME 890</title>
-      <link>http://yeokhengmeng.com/2021/07/dme-theory-and-teardown-of-narco-dme-890/</link>
-      <pubDate>Sat, 03 Jul 2021 00:00:00 +0000</pubDate>
+      <title>My First Helicopter Ride</title>
+      <link>http://yeokhengmeng.com/2021/07/my-first-helicopter-ride/</link>
+      <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://yeokhengmeng.com/2021/07/dme-theory-and-teardown-of-narco-dme-890/</guid>
-      <description>&lt;p&gt;A faulty aircraft avionics Narco DME 890 came into my hands recently. As this instrument was destined for the trash bin, I was given free reign to do whatever I wanted with it. What better way to do it than to conduct a teardown!&lt;/p&gt;
-&lt;p&gt;Before commencing a teardown, I have to go through some theoretical concepts of the basic operation of this device.&lt;/p&gt;</description>
+      <guid>http://yeokhengmeng.com/2021/07/my-first-helicopter-ride/</guid>
+      <description>&lt;p&gt;Private leisure helicopter flights operating in Singapore are an rare occurrence compared to planes. So when a helicopter ride opportunity presented itself to me recently, I immediately said YES!&lt;/p&gt;
+&lt;a href=&#34;images/heliflight-at-hangar.jpg&#34;&gt;&lt;img src=&#34;images/heliflight-at-hangar.jpg&#34; width=&#34;600&#34;&gt;&lt;/a&gt;
+&lt;p&gt;The machine is a privately-owned Robinson R22 Beta II manufactured in 2004 registered as N783SH. It&amp;rsquo;s a 2-seat light helicopter that is commonly used for primary flight training.&lt;/p&gt;
+&lt;p&gt;While doing the preflight checks, the helicopter pilot of my ride said and I quote.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Most people only see the glamorous part of the pilot at the cockpit, not the pre and post flight safety checks and preparatory parts of the work.&lt;/p&gt;
+&lt;p&gt;(Joanne, helicopter pilot for my flight)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As a private pilot myself but with a plane license, I totally agree with this. The amount of preparation work before and after the flight is usually not captured by most photos and videos and thus unaware to most outside the aviation community.&lt;/p&gt;
+&lt;p&gt;Therefore when I decided to write this blog post to share this one-of-a-kind local flight experience, I felt it was just important to highlight the non-flying portions behind the scenes as well.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -27,17 +35,6 @@
 &lt;a href=&#34;images/dynon-n5748e.jpg&#34;&gt;&lt;img src=&#34;images/dynon-n5748e.jpg&#34; width=&#34;650&#34;&gt;&lt;/a&gt;
 &lt;p&gt;As an SFC member, I had the privilege to learn about this new system and fly on this upgraded aircraft.&lt;/p&gt;
 &lt;p&gt;In this blog post, I&amp;rsquo;ll like to share my learnings when transitioning to this system. Prior to this, the aircraft I have flown including those in training have all used traditional steam-gauges.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Teardown of an Aviation Radio Bendix King KX-155</title>
-      <link>http://yeokhengmeng.com/2020/12/teardown-of-an-aviation-radio-bendix-king-kx-155/</link>
-      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://yeokhengmeng.com/2020/12/teardown-of-an-aviation-radio-bendix-king-kx-155/</guid>
-      <description>&lt;p&gt;A faulty aircraft radio model Bendix King KX-155 recently came to my hands.&lt;/p&gt;
-&lt;p&gt;As a private pilot of light General Aviation aircraft for about 2 years, I have used this model of radio in almost all the planes I have flown but never really looked at what goes on behind the scenes.&lt;/p&gt;
-&lt;p&gt;I decided to take this opportunity to do a teardown of the radio to inspect what are its major components to learn how it works.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -61,18 +58,6 @@
       <description>&lt;p&gt;With the recent release of Microsoft Flight Simulator 2020 (FS2020), many videos have been shared online. However, few have been made on Singapore. Of those that do, most players fly from Changi Airport and to the city area which are off-limits in real life and they hardly use any real-world procedures.&lt;/p&gt;
 &lt;p&gt;In reality, General Aviation (GA) for visual flying within Singapore is limited to &lt;a href=&#34;http://yeokhengmeng.com/2019/06/notes-on-flying-in-wssl-and-sg-training-area/&#34;&gt;Seletar Airport (WSSL) and the local Light Aircraft Training Area (LATA)&lt;/a&gt;. I have personally made many flights from WSSL although mostly to the local training area in the Northern part of SG. So I thought why not I conduct flights in this game as close as I can to a real plane and see how this stacks up to the real thing?&lt;/p&gt;
 &lt;p&gt;(Check out the Chinese version of this post &lt;a href=&#34;http://yeokhengmeng.com/zh/2020/08/flight-simulator-2020%E8%B7%9F%E6%96%B0%E5%8A%A0%E5%9D%A1%E5%AE%9E%E9%99%85%E9%A3%9E%E8%A1%8C%E5%A6%82%E4%BD%95%E7%9B%B8%E6%AF%94/&#34;&gt;here&lt;/a&gt;.)&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Radar Theory and Teardown of Aircraft Transponder RT-459A</title>
-      <link>http://yeokhengmeng.com/2020/06/radar-theory-and-teardown-of-aircraft-transponder-rt-459a/</link>
-      <pubDate>Sat, 20 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://yeokhengmeng.com/2020/06/radar-theory-and-teardown-of-aircraft-transponder-rt-459a/</guid>
-      <description>&lt;p&gt;I recently got my hands on an old unserviceable aircraft transponder from my flying club. The tinkerer me was obviously very curious on what&amp;rsquo;s inside this piece of equipment. What better way to find out then to do a teardown!&lt;/p&gt;
-&lt;a href=&#34;images/xpdr-front-side.jpg&#34;&gt;&lt;img src=&#34;images/xpdr-front-side.jpg&#34; width=&#34;600&#34;&gt;&lt;/a&gt;
-&lt;p&gt;Aircraft Radio Corporation (ARC) RT-459A&lt;/p&gt;
-&lt;p&gt;Approximate size: 16.5cm x 29cm x 4.5cm&lt;/p&gt;</description>
     </item>
     
     <item>
