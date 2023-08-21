@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Migrating my blog from WordPress to Hugo - YKM&#39;s Corner on the Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.117.0"><meta itemprop="name" content="Migrating my blog from WordPress to Hugo">
+<meta itemprop="description" content="Migrating my blog to a static site has been on a backburner for several months for me. Given the recent circuit-breaker or &ldquo;soft-lockdown&rdquo; in Singapore, I found the time to finally take the plunge.
+
+I took the opportunity to change the theme during the migration.
+I initially started with WordPress* as it was a common Content Management System (CMS) then (and still today) and it was easy to use. I also wanted to self-host as I wanted full control of my content. So WordPress.org was my choice and it came with lots of setup documentation too.
+* I mean the self-hosted WordPress.org and not the hosting service WordPress.com. Read this link to know the difference.
+Markdown-driven static-site generators came to my attention some years back touting benefits like improved server performance and better site security. I could also choose to host my site on Github Pages (like now) which is FREE and low-maintenance thus saving me money which otherwise used to go to my cloud provider.
+However migrating a site has its challenges as the number of blog posts I have is numerous and I know from experience automated conversion tools are never 100% accurate. Significant time is needed to inspect and correct every post, setting up a new theme and other administrative tasks.
+There are many WordPress to Hugo guides online so instead of reinventing the wheel, let me share my experience and technical pain points that were not fully covered by other guides."><meta itemprop="datePublished" content="2020-04-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-04-11T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1689">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Migrating my blog from WordPress to Hugo" />
+<meta property="og:description" content="Migrating my blog to a static site has been on a backburner for several months for me. Given the recent circuit-breaker or &ldquo;soft-lockdown&rdquo; in Singapore, I found the time to finally take the plunge.
+
+I took the opportunity to change the theme during the migration.
+I initially started with WordPress* as it was a common Content Management System (CMS) then (and still today) and it was easy to use. I also wanted to self-host as I wanted full control of my content. So WordPress.org was my choice and it came with lots of setup documentation too.
+* I mean the self-hosted WordPress.org and not the hosting service WordPress.com. Read this link to know the difference.
+Markdown-driven static-site generators came to my attention some years back touting benefits like improved server performance and better site security. I could also choose to host my site on Github Pages (like now) which is FREE and low-maintenance thus saving me money which otherwise used to go to my cloud provider.
+However migrating a site has its challenges as the number of blog posts I have is numerous and I know from experience automated conversion tools are never 100% accurate. Significant time is needed to inspect and correct every post, setting up a new theme and other administrative tasks.
+There are many WordPress to Hugo guides online so instead of reinventing the wheel, let me share my experience and technical pain points that were not fully covered by other guides." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yeokhengmeng.com/2020/04/migrating-my-blog-from-wordpress-to-hugo/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-04-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-04-11T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Migrating my blog from WordPress to Hugo"/>
+<meta name="twitter:description" content="Migrating my blog to a static site has been on a backburner for several months for me. Given the recent circuit-breaker or &ldquo;soft-lockdown&rdquo; in Singapore, I found the time to finally take the plunge.
+
+I took the opportunity to change the theme during the migration.
+I initially started with WordPress* as it was a common Content Management System (CMS) then (and still today) and it was easy to use. I also wanted to self-host as I wanted full control of my content. So WordPress.org was my choice and it came with lots of setup documentation too.
+* I mean the self-hosted WordPress.org and not the hosting service WordPress.com. Read this link to know the difference.
+Markdown-driven static-site generators came to my attention some years back touting benefits like improved server performance and better site security. I could also choose to host my site on Github Pages (like now) which is FREE and low-maintenance thus saving me money which otherwise used to go to my cloud provider.
+However migrating a site has its challenges as the number of blog posts I have is numerous and I know from experience automated conversion tools are never 100% accurate. Significant time is needed to inspect and correct every post, setting up a new theme and other administrative tasks.
+There are many WordPress to Hugo guides online so instead of reinventing the wheel, let me share my experience and technical pain points that were not fully covered by other guides."/>
+<meta name="twitter:site" content="@yeokm1"/>
+<link rel="stylesheet" href="/css/bundle.min.a5db8e699d9ae70030c71551956f7b63ee5a1e88c7c2fa3f981a4cec53093283.css" integrity="sha256-pduOaZ2a5wAwxxVRlW97Y&#43;5aHojHwvo/mBpM7FMJMoM=">
+        <link rel="stylesheet" href="/css/add-on.css"></head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            post
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/aviation" class="link"><i class='fas fa-plane'></i> Aviation</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/retrocomputing" class="link"><i class='fas fa-save'></i> Retrocomputing</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/favourite-quotes/" class="link">Favourite Quotes</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about-me/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/zh" lang="zh" class="no-lang link">简体中文 (zh)</a>
+      
+    
+  
+</menu>
+
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="" alt="Kheng Meng profile pic" /></a>
+  <header>
+    <h1>Yeo Kheng Meng</h1>
+  </header>
+  <main>
+    <p>Maker, Coder, Private Pilot, Retrocomputing Enthusiast</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/yeokm1" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/yeokhengmeng" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/yeokhengmeng" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/yeokm1" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/yeokm1" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/yeokm1" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+<li><a href="//telegram.me/yeokm1" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/2020/04/migrating-my-blog-from-wordpress-to-hugo/">Migrating my blog from WordPress to Hugo</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2020-04-11 00:00:00 &#43;0000 UTC">
+      April 11, 2020
+    </time>
+    <span class="author"></span>
+    
+      <p>8 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
+  
+
+  <div class="content">
+    <p>Migrating my blog to a static site has been on a backburner for several months for me. Given the recent circuit-breaker or &ldquo;soft-lockdown&rdquo; in Singapore, I found the time to finally take the plunge.</p>
+<a href="images/wordpress-to-hugo-theme-comparison.png"><img src="images/wordpress-to-hugo-theme-comparison.png" width="800"></a>
+<p>I took the opportunity to change the theme during the migration.</p>
+<p>I initially started with WordPress* as it was a common Content Management System (CMS) then (and still today) and it was easy to use. I also wanted to self-host as I wanted full control of my content. So WordPress.org was my choice and it came with lots of setup documentation too.</p>
+<p>* I mean the self-hosted WordPress.org and not the hosting service WordPress.com. Read this <a href="https://www.wpbeginner.com/beginners-guide/self-hosted-wordpress-org-vs-free-wordpress-com-infograph/">link</a> to know the difference.</p>
+<p>Markdown-driven static-site generators came to my attention some years back touting <a href="https://en.wikipedia.org/wiki/Static_web_page">benefits like improved server performance and better site security</a>. I could also choose to host my site on Github Pages (like now) which is FREE and low-maintenance thus saving me money which otherwise used to go to my cloud provider.</p>
+<p>However migrating a site has its challenges as the number of blog posts I have is numerous and I know from experience automated conversion tools are never 100% accurate. Significant time is needed to inspect and correct every post, setting up a new theme and other administrative tasks.</p>
+<p>There are many WordPress to Hugo guides online so instead of reinventing the wheel, let me share my experience and technical pain points that were not fully covered by other guides.</p>
+<h1 id="high-level-goals-during-migration">High-level Goals during migration</h1>
+<ul>
+<li>All content must be preserved. Not just text and images but external stuff like visitor-generated comments and embedded links like YouTube and Facebook etc too.</li>
+<li>Analytics like Statcounter and Google Analytics</li>
+<li>Permalinks should remain the same as I cannot break other sites that already link to certain posts</li>
+<li>Site Generation should be fast. I chose <a href="https://gohugo.io/">Hugo</a> over other static site generators as it touts fast rendering speed to facilitate rapid iteration.</li>
+</ul>
+<h1 id="migration-steps">Migration steps</h1>
+<p>With the goals in mind, I broke down the procedures I took into the following steps which required some customised conversion steps on my part.</p>
+<ol>
+<li><a href="#step1">WordPress Preparation</a></li>
+<li><a href="#step2">Automated conversion of WordPress export file to markdown format</a></li>
+<li><a href="#step3">Correct conversion inconsistencies</a></li>
+<li><a href="#step4">Facebook comments</a></li>
+<li><a href="#step5">Set up Statcounter Analytics</a></li>
+<li><a href="#step6">Maintain Permalinks</a></li>
+<li><a href="#step7">Point the domain to Github</a></li>
+</ol>
+<h2 id="step1">Step 1: WordPress Preparation</h2>
+<p>Some work has to be done on the WordPress site to make it easier to transfer things across.</p>
+<h3 id="download-wordpress-extended-rss-xml">Download WordPress Extended RSS XML</h3>
+<blockquote>
+<p>This format, which we call WordPress eXtended RSS or WXR, will contain your posts, pages, comments, custom fields, categories, and tags.</p>
+</blockquote>
+<a href="images/wordpress-export.png"><img src="images/wordpress-export.png" width="600"></a>
+<p><code>Dashboard -&gt; Tools -&gt; Export</code></p>
+<p>This XML file contains information that most automated converters will use to do the conversion to markdown.</p>
+<h3 id="convert-wordpress-comments-to-disqus">Convert WordPress comments to Disqus</h3>
+<p>Initially, I used the default WordPress commenting system. This function is not available on a static site as it does not have a database which dynamic websites have. Many static sites therefore use an external commenting system like <a href="https://disqus.com/">Disqus</a>.</p>
+<p>To use Disqus, one method is to install a Disqus Wordpress plugin as suggested by this <a href="https://cpbotha.net/2019/03/31/wordpress-to-hugo/">guide</a>. Let the plugin extract the existing WordPress comments and sync it to Disqus&rsquo;s servers. After that, use the same Disqus profile for the static site.</p>
+<a href="images/wordpress-commenting.png"><img src="images/wordpress-commenting.png" width="500"></a>
+<p>I previously used Facebook and Disqus comments systems on my WordPress site to prepare for this eventual conversion.</p>
+<h2 id="step2">Step 2: Automated conversion of WordPress export file to markdown format</h2>
+<p>Converting post by post to markdown manually is too time consuming. Far better to let an automated tool do most of the work then manually convert parts which the converter fail to do properly.</p>
+<p>I tried several conversion tools but the one that worked best for me was <a href="https://github.com/lonekorean/wordpress-export-to-markdown">lonekorean&rsquo;s wordpress-export-to-markdown</a>.</p>
+<a href="images/converted-markdown.png"><img src="images/converted-markdown.png" width="600"></a>
+<p>It allows me to organise my posts into year folders and month subfolders. If there are images associated with each post, they are scraped from the live site and placed in the same folder as the post&rsquo;s markdown for easier association. If I need to delete or adjust the post for some reason, the images goes together with it.</p>
+<h2 id="step3">Step 3. Correct conversion inconsistencies </h2>
+<p>No automated conversion tool is perfect. In this case, I had to inspect and correct almost all the markdown files due to conversion that did not fit my requirements.</p>
+<h3 id="markdown-tables">Markdown Tables</h3>
+<p>I used tables like the following to display data in my Wordpress blog.</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Col 1</th>
+<th>Col 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Row 1</td>
+<td>data r1c1</td>
+<td>data r1c2</td>
+</tr>
+<tr>
+<td>Row 2</td>
+<td>data r2c1</td>
+<td>data r2c2</td>
+</tr>
+</tbody>
+</table>
+<p>The converter generates the following unusable output.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>Table
+</span></span><span style="display:flex;"><span>Col 1  
+</span></span><span style="display:flex;"><span>Col 2  
+</span></span><span style="display:flex;"><span>Row 1  
+</span></span><span style="display:flex;"><span>data r1c1  
+</span></span><span style="display:flex;"><span>data r1c2  
+</span></span><span style="display:flex;"><span>Row 2  
+</span></span><span style="display:flex;"><span>data r2c1  
+</span></span><span style="display:flex;"><span>data r2c2
+</span></span></code></pre></div><p>To resolve that, I just copy and pasted the data from my WordPress site into this <a href="https://www.tablesgenerator.com/markdown_tables">markdown table generator</a> and used its output.</p>
+<a href="images/md-table-gen.png"><img src="images/md-table-gen.png" width="500"></a>
+<h3 id="categories">Categories</h3>
+<p>Categories did not seem to be imported so I had to add them manually to every post in the <a href="https://gohugo.io/content-management/urls/#set-url-in-front-matter">front matter</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>title: Migrating my blog from Wordpress to Hugo
+</span></span><span style="display:flex;"><span>author: Yeo Kheng Meng
+</span></span><span style="display:flex;"><span>date: 2020-04-11
+</span></span><span style="display:flex;"><span>categories: [&#34;admin&#34;]
+</span></span><span style="display:flex;"><span>---
+</span></span></code></pre></div><h3 id="code-snippets">Code snippets</h3>
+<p>Occasionally I want to display code with syntax colouring like the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">long</span> getCurrentNanoseconds(){ 
+</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">struct</span> timespec spec;
+</span></span><span style="display:flex;"><span>    clock_gettime(CLOCK_MONOTONIC, &amp;spec);
+</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">long</span> specTime = (spec.tv_sec * <span style="color:#ff0;font-weight:bold">1E9</span>) + spec.tvnsec;
+</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">return</span> specTime;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="after-wordpress-conversion">After WordPress conversion</h4>
+<p>WordPress uses the [code] tag which the converter does not recognise hence the following is shown:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>\[code language=&#34;cpp&#34;\] long long getCurrentNanoseconds(){ struct timespec spec; clock\_gettime(CLOCK\_MONOTONIC, &amp;spec); long long specTime = (spec.tv\_sec \* 1E9) + spec.tv\_nsec; return specTime; } \[/code\]
+</span></span></code></pre></div><p>I had to manually change it to the hugo method such as:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>``` cpp
+</span></span><span style="display:flex;"><span>long long getCurrentNanoseconds(){  
+</span></span><span style="display:flex;"><span>    struct timespec spec;
+</span></span><span style="display:flex;"><span>    clock_gettime(CLOCK_MONOTONIC, &amp;spec);
+</span></span><span style="display:flex;"><span>    long long specTime = (spec.tv_sec * 1E9) + spec.tvnsec;
+</span></span><span style="display:flex;"><span>    return specTime;
+</span></span><span style="display:flex;"><span>}    
+</span></span><span style="display:flex;"><span>    ```
+</span></span></code></pre></div><h3 id="image-links">Image links</h3>
+<p>Every embedded image link generated had a problem with the link still pointing to the original WordPress path. This required manual correction as follows.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>[![](images/sfc-costs-n5748e-1024x360.jpg)](http://yeokhengmeng.com/wp-content/uploads/2020/02/sfc-costs-n5748e.jpg)
+</span></span><span style="display:flex;"><span>Convert to &gt;&gt;&gt;&gt;
+</span></span><span style="display:flex;"><span>[![](images/sfc-costs-n5748e-1024x360.jpg)](images/sfc-costs-n5748e.jpg)
+</span></span></code></pre></div><p>The original image path has a resolution suffix as WordPress displays a lower-resolution image for the photo in the main post and hyperlinked to the original high-res shot. I kept this arrangement for my historical posts.</p>
+<h4 id="shortcode-image">Shortcode image</h4>
+<p>Markdown tends to display an image to its maximum size up to the entire width of the display area which overblows up the image size. Therefore we need to reduce the displayed image size.</p>
+<p>Typically we can use this HTML tag <code>&lt;img src=&quot;&quot; width=&quot;xxx&quot; &gt;</code> to dynamically resize but Hugo does not allow embedding HTML in markdown. Instead, we can use this feature called shortcodes as a shortcut to call custom HTML code.</p>
+<p>Inside <code>layouts/shortcodes/imgdisplay.html</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>&lt;<span style="font-weight:bold">a</span> <span style="font-weight:bold">href</span>=<span style="color:#0ff;font-weight:bold">&#34;{{.Get &#34;</span><span style="font-weight:bold">src</span><span style="color:#0ff;font-weight:bold">&#34; }}&#34;</span>&gt;&lt;<span style="font-weight:bold">img</span> <span style="font-weight:bold">src</span>=<span style="color:#0ff;font-weight:bold">&#34;{{.Get &#34;</span><span style="font-weight:bold">src</span><span style="color:#0ff;font-weight:bold">&#34; }}&#34;</span> <span style="font-weight:bold">width</span>=<span style="color:#0ff;font-weight:bold">&#34;{{.Get &#34;</span><span style="font-weight:bold">width</span><span style="color:#0ff;font-weight:bold">&#34; }}&#34;</span>&gt;&lt;/<span style="font-weight:bold">a</span>&gt;
+</span></span></code></pre></div><p>When we want to display the image, we call our shortcode.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{&lt; <span style="font-weight:bold">imgdisplay</span> <span style="color:#007f7f">src</span>=<span style="color:#0ff;font-weight:bold">&#34;images/sfc-costs-n5748e.jpg&#34;</span> <span style="color:#007f7f">width</span>=<span style="color:#0ff;font-weight:bold">&#34;500&#34;</span> &gt;}}
+</span></span></code></pre></div><h3 id="other-shortcodes">Other Shortcodes</h3>
+<p>Other embedded links from Youtube, Facebook etc come in <code>Iframes</code> by default which Hugo does not process. Therefore some manual conversion to shortcode is required.</p>
+<p>YouTube shortcode is supported natively just by doing the following with the video ID but requires manual conversion from WordPress exported IFrame.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>{{&lt; youtube 3SLOgQXbR0o &gt;}}
+</span></span></code></pre></div><p>Facebook embed was slightly more troublesome as I have to create a custom shortcode like the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="font-weight:bold">iframe</span> <span style="color:#007f7f">src</span>=<span style="color:#0ff;font-weight:bold">&#34;{{ .Get &#34;</span><span style="color:#007f7f">src</span><span style="color:#f00">&#34;</span> <span style="color:#f00">}}&#34;</span> <span style="color:#007f7f">width</span>=<span style="color:#0ff;font-weight:bold">&#34;{{ .Get &#34;</span><span style="color:#007f7f">width</span><span style="color:#f00">&#34;</span> <span style="color:#f00">}}&#34;</span> <span style="color:#007f7f">height</span>=<span style="color:#0ff;font-weight:bold">&#34;{{ .Get &#34;</span><span style="color:#007f7f">height</span><span style="color:#f00">&#34;</span> <span style="color:#f00">}}&#34;</span> <span style="color:#007f7f">style</span>=<span style="color:#0ff;font-weight:bold">&#34;border:none;overflow:hidden&#34;</span> <span style="color:#007f7f">scrolling</span>=<span style="color:#0ff;font-weight:bold">&#34;no&#34;</span> <span style="color:#007f7f">frameborder</span>=<span style="color:#0ff;font-weight:bold">&#34;0&#34;</span> <span style="color:#007f7f">allowTransparency</span>=<span style="color:#0ff;font-weight:bold">&#34;true&#34;</span> <span style="color:#007f7f">allow</span>=<span style="color:#0ff;font-weight:bold">&#34;encrypted-media&#34;</span>&gt;&lt;/<span style="font-weight:bold">iframe</span>&gt;
+</span></span></code></pre></div><p>To display my Facebook embed, I just call my shortcode with the source and dimensions.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>{{&lt; facebook src=&#34;https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fworkersparty%2Fposts%2F3352194541463772&amp;amp;width=600&#34; width=600 height=650 &gt;}}
+</span></span></code></pre></div><h2 id="step4">Step 4: Facebook comments</h2>
+<p>Disqus comments are supported by default in Hugo. However I still wish to support the Facebook commenting system as some people prefer that.</p>
+<p>To add custom HTML code, Hugo allows one to override the HTML file of an existing theme. For example, my theme stores the comments HTML within this path <code>layouts/_default/comments.html</code> in its folder. So I&rsquo;ll create another file in the same path with the following. I add the <code>.Permalink</code> key to autofill in the site URL for Facebook to associate the correct comments.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#007f7f">&lt;!-- Copy paste existing Disqus code above so FB comments will appear below Disqus--&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">id</span>=<span style="color:#0ff;font-weight:bold">&#34;fb-root&#34;</span>&gt;&lt;/<span style="font-weight:bold">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="font-weight:bold">script</span> <span style="color:#007f7f">async</span> <span style="color:#007f7f">defer</span> <span style="color:#007f7f">crossorigin</span>=<span style="color:#0ff;font-weight:bold">&#34;anonymous&#34;</span> <span style="color:#007f7f">src</span>=<span style="color:#0ff;font-weight:bold">&#34;https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v6.0&#34;</span>&gt;&lt;/<span style="font-weight:bold">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;fb-comments&#34;</span> <span style="color:#007f7f">data-href</span>=<span style="color:#0ff;font-weight:bold">&#34;{{ .Permalink }}&#34;</span> <span style="color:#007f7f">data-width</span>=<span style="color:#0ff;font-weight:bold">&#34;100%&#34;</span> <span style="color:#007f7f">data-numposts</span>=<span style="color:#0ff;font-weight:bold">&#34;5&#34;</span>&gt;&lt;/<span style="font-weight:bold">div</span>&gt;
+</span></span></code></pre></div><h2 id="step5">Step 5: Set up Statcounter Analytics</h2>
+<p>Google Analytics is supported by default but I personally prefer Statcounter as it has better presentation tools of live activity in my opinion.</p>
+<p>To support this, we use the same trick as the Facebook comments and override the relevant HTML file which for my theme is located in <code>layouts/partials/scripts.html</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#007f7f">&lt;!-- Default Statcounter code for Personal Site
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f">http://yeokhengmeng.com --&gt;</span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>  &lt;<span style="font-weight:bold">script</span> <span style="color:#007f7f">type</span>=<span style="color:#0ff;font-weight:bold">&#34;text/javascript&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007f7f">src</span>=<span style="color:#0ff;font-weight:bold">&#34;https://www.statcounter.com/counter/counter.js&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#007f7f">async</span>&gt;&lt;/<span style="font-weight:bold">script</span>&gt;
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>  <span style="color:#007f7f">&lt;!-- End of Statcounter Code --&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">&lt;!-- Copy paste existing scripts code below --&gt;</span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><h2 id="step6">Step 6: Maintain Permalinks</h2>
+<p>Maintaining the Permalinks ensure that external links to my site does not break. Both Facebook and Disqus also associate the comments based on the site URLs.</p>
+<p>My previous WordPress site used this format <code>http://yeokhengmeng.com/YYYY/MM/post-title/</code> to structure the permalinks.</p>
+<p>To retain this format, it was actually quite simple to add the following into <code>config.toml</code> which is Hugo&rsquo;s site configuration file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>[permalinks]
+</span></span><span style="display:flex;"><span>    post = &#34;/:year/:month/:title/&#34;
+</span></span></code></pre></div><p>If the title is not the URL, we can add the following in the front matter to override the title as the URL.</p>
+<pre tabindex="0"><code>url: &#34;2018/01/make-the-486-great-again&#34;
+</code></pre><h2 id="step7">Step 7. Point the domain to Github</h2>
+<p>Once everything is complete, it&rsquo;s time to make the leap! Add the domain name to the *.github.io repo settings page like as follows.</p>
+<a href="images/github-domain-setting.png"><img src="images/github-domain-setting.png" width="500"></a>
+<p>My domain name provider is Namecheap and they provided a <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/9645/2208/how-do-i-link-my-domain-to-github-pages">nice guide</a> on how to configure a domain to use Github&rsquo;s DNS.</p>
+<p>It could take about half hour for the DNS to take effect so sit tight and wait!</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>Migrating this blog was an experience but it was worth it after months of procrastination. My resource-hungry and maintenance-heavy WordPress blog is now decommissioned after many years of service. I also have HTTPS now as Github Pages supports it easily. Before that, adding HTTPS support to a self-hosted WordPress is troublesome.</p>
+<p>I&rsquo;m not a web developer but going through all this has let me gained that slightly bit more knowledge over my non-existent web knowledge.</p>
+<p>If you run into similar pain points as I did, hopefully this blog post works for you!</p>
+<p>To take a look at the source files, you can head to the following repos:</p>
+<p>Hugo Source files: <a href="https://github.com/yeokm1/yeokm1.github.io-hugo">https://github.com/yeokm1/yeokm1.github.io-hugo</a><br>
+Generated frontend: <a href="https://github.com/yeokm1/yeokm1.github.io">https://github.com/yeokm1/yeokm1.github.io</a></p>
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/admin">admin</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yeokm1/yeokm1.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNTQ3ODI3NTI="
+        data-category="Comments"
+        data-category-id="DIC_kwDODy-tIM4CXEA6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div class="pagination">
+  
+    <a href="/2020/02/how-much-it-costs-to-fly-general-aviation-ga-in-singapore/" class="button"><div class="previous"><div>How much it costs to fly General Aviation (GA) in Singapore?</div></div></a>
+  
+  
+    <a href="/2020/05/review-of-a-new-old-motherboard-nuxt-v2.0/" class="button"><div class="next"><div>Review of a new-old motherboard NuXT v2.0</div></div></a>
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/06/teardown-and-review-of-hand386/" class="image featured">
+    
+      <img src="/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/06/teardown-and-review-of-hand386/">Teardown &amp; review of a new 386 system: Hand386</a></h1>
+          <time class="published" datetime="">June 5, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/" class="image featured">
+    
+      <img src="/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/03/building-a-dos-chatgpt-client-in-2023/">Building a DOS ChatGPT client in 2023</a></h1>
+          <time class="published" datetime="">March 26, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/" class="image featured">
+    
+      <img src="/2022/08/teardown-of-habotest-ht107e-socket-tester/images/ht107e_open_top.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/">Teardown of Habotest HT107E Socket Tester</a></h1>
+          <time class="published" datetime="">August 6, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2021/11/how-do-i-produce-my-flight-videos/" class="image featured">
+    
+      <img src="/2021/11/how-do-i-produce-my-flight-videos/images/fv-photo-caption.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2021/11/how-do-i-produce-my-flight-videos/">How do I produce my flight videos?</a></h1>
+          <time class="published" datetime="">November 6, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/" class="image featured">
+    
+      <img src="/2021/09/review-usage-and-repair-of-the-framework-laptop/images/fw-caption-image.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/">Review, usage and repair of the Framework laptop</a></h1>
+          <time class="published" datetime="">September 21, 2021</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/hacks/">hacks<span class="count">20</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/personal/">personal<span class="count">17</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/singapore/">singapore<span class="count">16</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/teardowns/">teardowns<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/school/">school<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/book-reviews/">book-reviews<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/politics/">politics<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hackathon/">hackathon<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/product-reviews/">product-reviews<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/admin/">admin<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/repair-kopitiam/">repair-kopitiam<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/keyboards/">keyboards<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/quiz/">quiz<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/dvorak/">dvorak<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/flight-sim/">flight-sim<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2023
+      
+        YKM&#39;s Corner on the Web
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.117.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+<script type="text/javascript">
+  var sc_project = 8700008;
+  var sc_invisible = 1;
+  var sc_security = "b569f6b4";
+  var sc_https = 1; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript>
+  <div class="statcounter"><a title="free hit
+  counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+        src="https://c.statcounter.com/8700008/0/b569f6b4/1/" alt="free hit counter"></a></div>
+</noscript>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function (x) {
+      x.parentElement.classList += 'has-jax'
+    })
+  });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.4b08dba1bed68bfe65db2515ff7d6b0258656cf4079ed4e03263be238684e63e.js" integrity="sha256-Swjbob7Wi/5l2yUV/31rAlhlbPQHntTgMmO&#43;I4aE5j4="></script>
+<script src="/js/add-on.js"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50169449-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>

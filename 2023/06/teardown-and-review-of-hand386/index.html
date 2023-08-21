@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Teardown &amp; review of a new 386 system: Hand386 - YKM&#39;s Corner on the Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.117.0"><meta itemprop="name" content="Teardown &amp; review of a new 386 system: Hand386">
+<meta itemprop="description" content="A new 386-based palmtop recently appeared on Aliexpress and was covered by sites like Tom&rsquo;s Hardware. My curiosity was stoked and I quickly snapped one up."><meta itemprop="datePublished" content="2023-06-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-06-05T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2762"><meta itemprop="image" content="http://yeokhengmeng.com/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Teardown &amp; review of a new 386 system: Hand386" />
+<meta property="og:description" content="A new 386-based palmtop recently appeared on Aliexpress and was covered by sites like Tom&rsquo;s Hardware. My curiosity was stoked and I quickly snapped one up." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yeokhengmeng.com/2023/06/teardown-and-review-of-hand386/" /><meta property="og:image" content="http://yeokhengmeng.com/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-06-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-06-05T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://yeokhengmeng.com/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg"/>
+
+<meta name="twitter:title" content="Teardown &amp; review of a new 386 system: Hand386"/>
+<meta name="twitter:description" content="A new 386-based palmtop recently appeared on Aliexpress and was covered by sites like Tom&rsquo;s Hardware. My curiosity was stoked and I quickly snapped one up."/>
+<meta name="twitter:site" content="@yeokm1"/>
+<link rel="stylesheet" href="/css/bundle.min.a5db8e699d9ae70030c71551956f7b63ee5a1e88c7c2fa3f981a4cec53093283.css" integrity="sha256-pduOaZ2a5wAwxxVRlW97Y&#43;5aHojHwvo/mBpM7FMJMoM=">
+        <link rel="stylesheet" href="/css/add-on.css"></head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            post
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/aviation" class="link"><i class='fas fa-plane'></i> Aviation</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/retrocomputing" class="link"><i class='fas fa-save'></i> Retrocomputing</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/favourite-quotes/" class="link">Favourite Quotes</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about-me/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/zh" lang="zh" class="no-lang link">简体中文 (zh)</a>
+      
+    
+  
+</menu>
+
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="" alt="Kheng Meng profile pic" /></a>
+  <header>
+    <h1>Yeo Kheng Meng</h1>
+  </header>
+  <main>
+    <p>Maker, Coder, Private Pilot, Retrocomputing Enthusiast</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/yeokm1" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/yeokhengmeng" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/yeokhengmeng" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/yeokm1" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/yeokm1" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/yeokm1" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+<li><a href="//telegram.me/yeokm1" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/2023/06/teardown-and-review-of-hand386/">Teardown &amp; review of a new 386 system: Hand386</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2023-06-05 00:00:00 &#43;0000 UTC">
+      June 5, 2023
+    </time>
+    <span class="author"></span>
+    
+      <p>13 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
+  
+  <a href="/2023/06/teardown-and-review-of-hand386/" class="image featured">
+    
+      <img src="/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" alt="">
+    
+  </a>
+
+
+  <div class="content">
+    <p>A new 386-based palmtop recently appeared on <a href="https://vi.aliexpress.com/item/1005005542582463.html">Aliexpress</a> and was covered by sites like <a href="https://www.tomshardware.com/news/hand-386-handheld">Tom&rsquo;s Hardware</a>. My curiosity was stoked and I quickly snapped one up.</p>
+<h1 id="what-was-received">What was received?</h1>
+<a href="images/hand386-delivered.jpg"><img src="images/hand386-delivered.jpg" width="600"></a>
+<p>Other than the svelte Hand386, it comes with a whole host of useful accessories to make it useful as an expandable desktop device:</p>
+<ul>
+<li>2GB Compactflash (CF) card preinstalled with Windows 95</li>
+<li>VGA, PS/2 mouse and keyboard breakout board</li>
+<li>2x6 pin 2.00mm pitch IDC ribbon cable</li>
+<li>2A USB charger</li>
+<li>USB to barrel plug charge cable</li>
+<li>Requires add-on purchase:
+<ul>
+<li>3-slot 8-bit ISA backplane (requires separate 12V power supply)</li>
+<li>2x30 pin 2.00mm pitch IDC ribbon cable</li>
+</ul>
+</li>
+</ul>
+<h1 id="demo-videos">Demo videos</h1>
+<p>Let&rsquo;s jump right in with a 12 mins video I made of the device to demo its capabilities.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/lzJxZhzbwS4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<ul>
+<li>00:00 - Booting DOS 6.22</li>
+<li>00:14 - Descent at lowest quality</li>
+<li>03:01 - Doom at low quality</li>
+<li>05:12 - Planet X3</li>
+<li>06:16 - <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/">DOS ChatGPT client</a></li>
+<li>07:33 - CheckIt 3 system benchmarks</li>
+<li>08:54 - Boot Windows for Workgroups 3.11</li>
+<li>09:31 - Startup chime using Adlib wave driver</li>
+<li>09:36 - Start Media Player to play Canyon.mid</li>
+<li>09:57 - Program Manager Properties</li>
+<li>10:09 - Open Driver Pane to show Adlib and Adlib wave driver</li>
+<li>10:31 - Open USB flash drive and hotswap</li>
+<li>11:19 - Closing applications and exit windows</li>
+<li>11:30 - Exit Windows chime using Adlib wave driver</li>
+</ul>
+<p>Using the 8-bit ISA backplane, a <a href="https://en.wikipedia.org/wiki/3Com_3c509">3Com 3C509 NIC</a> and a <a href="https://www.tindie.com/products/jrlab/blasterboard-a-complete-8-bit-isa-sound-card-2/">Blasterboard</a> (Sound Blaster 2.0 clone) was added on. For the DOS applications, OPL FM and PCM sounds are directly recorded from the Line out of the Blasterboard. For WFW 3.11, they are recorded from the Hand386&rsquo;s headphone jack.</p>
+<p>It is immediately clear that the 386SX-class CPU struggles in running later DOS games which is entirely expected.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/tTdrXb7W5So" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>I made a 7 mins video of it running the <a href="https://www.pouet.net/prod.php?which=63591">8088 Domination</a> too.</p>
+<h1 id="hardware">Hardware</h1>
+<h2 id="what-exactly-is-a-386">What exactly is a 386?</h2>
+<p>The 386 CPU was first launched by Intel in 1985. Known as 80386 or i386, it is the first 32-bit CPU of the x86 architecture.</p>
+<p>Key additional features include a better implementation of protected mode which allowed access up to 4GiB of memory. Programs can now use a flat memory model instead of handling messy segmented memory of the past.</p>
+<p>A virtual 8086 mode allows one or more 16-bit real mode programs to run in this protected mode environment. Windows uses such a mode to run applications like DOS programs.</p>
+<p>Source: <a href="https://en.wikipedia.org/wiki/I386">https://en.wikipedia.org/wiki/I386</a></p>
+<p>The initial launch model was called the i386DX model with 32-bit data bus. The CPU core used in the Hand386 is based on the lower-cost 386SX variant which uses only a 16-bit data bus and only supports up to 16MiB of RAM.</p>
+<p>This smaller bus also hurts the performance of the CPU relative to the original DX variant.</p>
+<h2 id="specifications">Specifications</h2>
+<ul>
+<li>DM&amp;P Ali M6117 with chipset (386SX-40)</li>
+<li>Chips and Tech F65535</li>
+<li>YMF262-M OPL3 with YAC512 DAC</li>
+<li>OPL3-driven speakers</li>
+<li>PC-speaker</li>
+<li>8MiB RAM</li>
+<li>2500 mAh battery</li>
+<li>128 x 150 x 16mm (measured dimensions)</li>
+<li>Ports
+<ul>
+<li>CF card slot</li>
+<li>USB port for flash drives</li>
+<li>Connector for VGA output, PS/2 mouse and keyboard</li>
+<li>Connector for 8-bit ISA backplane</li>
+<li>Headphone jack</li>
+</ul>
+</li>
+</ul>
+<h2 id="external-aspects">External aspects</h2>
+<a href="images/hand386-front.jpg"><img src="images/hand386-front.jpg" width="600"></a>
+<p>The front of the device contains the following:</p>
+<ul>
+<li>LCD panel</li>
+<li>Fairly mushy keypad</li>
+<li>Power switch</li>
+<li>Disk activity LED</li>
+<li>Battery level LED</li>
+<li>Charge status LED</li>
+</ul>
+<p>At my measured dimensions of 128 x 150 x 16mm, this device is very compact for what used to require desktop-sized components nearly 40 years ago.</p>
+<p>The photo also shows the external VGA, PS/2 mouse and keyboard breakout board connected.</p>
+<a href="images/hand386-left.jpg"><img src="images/hand386-left.jpg" width="600"></a>
+<p>On the left side of the Hand386, we see the CF card slot and a USB-port.</p>
+<p>The USB port does not have generic USB functions that we associate with our modern machines. It is connected to a CH375 chip that only supports USB mass-storage devices like flash drives. Its DOS driver presents the USB device to the operating system as a removable storage media.</p>
+<p>A CF card once fully inserted into the CF slot, it is flush with exterior of the case. This will present some challenge when removing it.</p>
+<a href="images/hand386-cf-slip.jpg"><img src="images/hand386-cf-slip.jpg" width="600"></a>
+<p>To ease removal, I attached a plastic tape pull strip onto the CF card itself so it can be easily pulled out of the slot.</p>
+<a href="images/hand386-right.jpg"><img src="images/hand386-right.jpg" width="600"></a>
+<p>On the right of the device, we have 2 ports for these purposes:</p>
+<ul>
+<li>2x6 2mm pitch for VGA, PS/2 mouse and keyboard breakout board</li>
+<li>2x30 2mm pitch for 8-bit ISA backplane</li>
+</ul>
+<p>Very creative way to allow expansion options without compromising the device&rsquo;s slim form factor.</p>
+<a href="images/hand386-rear.jpg"><img src="images/hand386-rear.jpg" width="400"></a>
+<p>The transclucent backcover shows the interesting components within. The cover can be easily removed after taking out 8x cross head screws.</p>
+<h2 id="teardown">Teardown</h2>
+<p>Now let&rsquo;s come to the internal components that makes this tiny beauty tick.</p>
+<h3 id="back-of-main-pcb">Back of main PCB</h3>
+<a href="images/hand386-internal-back.jpg"><img src="images/hand386-internal-back.jpg" width="700"></a>
+<p>Left is the photo I took and the right is the labeled version in the sales page.</p>
+<p>The largest component here the battery is glued/taped down with a rather strong adhesive so removing it may be challenging in future.</p>
+<p>The system does not use an actual 386SX chip but rather a highly-integrated Ali M6117D System-on-chip (SoC). According to the <a href="https://www.dmp.com.tw/app/webcamera/pdf/m6117d.pdf">Ali M6117D&rsquo;s datasheet</a>, it has many features such as but definitely not limited to:</p>
+<ul>
+<li>Intel 386SX compatible core</li>
+<li>Memory Controller</li>
+<li>Interrupt and DMA controllers</li>
+<li>RTC</li>
+<li>PS/2 Mouse and Keyboard Controllers</li>
+<li>IDE Controller</li>
+</ul>
+<p>The seller has also provided the pinout diagram for the breakout boards.</p>
+<a href="images/hand386-idc-connector-pinout.png"><img src="images/hand386-idc-connector-pinout.png" width="700"></a>
+<p>Left for the seller&rsquo;s diagram, right is the 8/16-bit ISA pinout obtained from <a href="https://en.wikipedia.org/wiki/Industry_Standard_Architecture">Wikipedia</a>.</p>
+<p>From the diagram, the ISA pins broken out only provide the typical 8-bit ISA pins.</p>
+<p>The SoC also supports a 16-bit ISA bus but I believe due to form factor limitations, the 16-bit pins are not brought out externally. Nevertheless, if those are brought out, it would no doubt have provided better expansion options.</p>
+<a href="images/hand386-ymf262-video.jpg"><img src="images/hand386-ymf262-video.jpg" width="600"></a>
+<p>The video card chip is a Chips and Tech 65535 that dates back to at least Mar 1994 based on the <a href="http://old.vgamuseum.info/images/stories/doc/chips/f65535.pdf">datasheet</a>. It is paired with the video RAM chip of Sharp LH6A4260K-60. No datasheet can be found for this VRAM chip although Checkit says the VRAM amount is 256K.</p>
+<p>An actual Yamaha YMF262-M OPL3 chip is spotted here so great for DOS games and Midi playback. In the DOS era, such chips are usually included on Sound Blaster Pro 2.0, 16 and AWE family of cards to provide FM synthesis capabilities. However, there are no Sound Blaster compatible chips present to handle PCM audio playback.</p>
+<a href="images/hand386-ram.jpg"><img src="images/hand386-ram.jpg" width="600"></a>
+<p>4x 2MiB AMIC A420616AS-50F 50ns chips provide the 8MiB of RAM for the system.</p>
+<a href="images/hand386-bios-chips.jpg"><img src="images/hand386-bios-chips.jpg" width="600"></a>
+<p>2x SST 39SF512 64KiB CMOS flash chips hold the system BIOS and video BIOS for the system.</p>
+<h3 id="front-of-main-pcb">Front of main PCB</h3>
+<a href="images/hand386-internal-front.jpg"><img src="images/hand386-internal-front.jpg" width="600"></a>
+<p>The entire PCB can be lifted up after carefully disconnecting it from the socket of another PCB that holds the LCD controller and keyboard circuitry.</p>
+<p>2 speakers are connected from the top cover to the main PCB.</p>
+<a href="images/hand386-ch375b.jpg"><img src="images/hand386-ch375b.jpg" width="500"></a>
+<p>Here we spot a <a href="http://www.wch-ic.com/products/CH375.html">WCH CH375B</a>. This chip has been known for some time in the retro community through products like the <a href="https://www.lo-tech.co.uk/wiki/Lo-tech_ISA_USB_Adapter">lo-tech ISA-USB adapter</a>.</p>
+<p>This chip acting in USB host mode has built-in firmware to deal with USB mass-storage devices thus alleviating the need for complex USB stack programming on the host system thus very useful for simpler DOS systems. A DOS device driver is available to bring out this functionality which allows ease of file transfer to DOS systems via USB flash drives.</p>
+<a href="images/hand386-analog-audio.jpg"><img src="images/hand386-analog-audio.jpg" width="500"></a>
+<p>The output of the Yamaha YMF262-M OPL3 chip is sent to a Yamaha YAC512-M Digital-to-Analog Converter (DAC). These 2 Yamaha chips are usually found as a pair even on the vintage sound cards. The analog output is amplified by a 3W Class D Amplifier PAM8403 before being sent to the speakers.</p>
+<h3 id="display-and-keypad">Display and keypad</h3>
+<p>The display and keypad section is handled by a single PCB.</p>
+<a href="images/hand386-display-kb.jpg"><img src="images/hand386-display-kb.jpg" width="600"></a>
+<p>The LCD display driver is provided by a Realtek RTD2660 chip.</p>
+<a href="images/hand386-prob-kbs-con.jpg"><img src="images/hand386-prob-kbs-con.jpg" width="400"></a>
+<p>A chip with probable silkscreen &ldquo;HM82C42&rdquo; was found. Googling does not turn up anything but given the amount of traces going to this chip, I&rsquo;m going to suspect this is the keyboard controller to the PS/2 interface.</p>
+<p>Added: From the comments at <a href="https://news.ycombinator.com/item?id=36212571">Hacker News</a>, 82C42 is indeed a keyboard controller. There is a datasheet of another model <a href="http://www.bitsavers.org/components/viaTechnologies/VT82C42_Keyboard_Controller_199511.pdf">VT82C42</a> made by Via.</p>
+<a href="images/hand386-keypad.jpg"><img src="images/hand386-keypad.jpg" width="500"></a>
+<p>The keypad is made up of an entire silicon rubber piece and PCB conductive pads. This explains the very mushy keypress feeling.</p>
+<p>I would actually prefer more tactile individual keyswitches but this will significantly raise the component and assembly costs to unacceptable levels for some.</p>
+<a href="images/hand386-kb-flex-cable.jpg"><img src="images/hand386-kb-flex-cable.jpg" width="600"></a>
+<p>The flex cable between the LCD panel and display controller board honestly worries me. It&rsquo;s not so obvious in the photo after the top cover is removed but when everything is closed down, the cable will be pressed bent.</p>
+<p>The bend was done as the distance between the panel and PCB port is slightly shorter than the length of the cable. I do not know how it will hold up over the long term.</p>
+<h1 id="my-usage-experience">My usage experience</h1>
+<h2 id="with-default-windows-95-setup">With default Windows 95 setup</h2>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/6QouBSDQdc8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>This is a 3 mins bootup and basic usage video based on the provided Windows 95 image.</p>
+<p>The device struggles with Windows 95. I recommend not using Win 95 and instead changing it to the older DOS 6.22/Win 3.1 for a better user experience. A 386SX with its 16-bit data bus is technically even below the <a href="https://en.wikipedia.org/wiki/Windows_95#System_requirements">minimum requirements for Windows 95</a> which requires a 386DX with 32-bit data bus.</p>
+<p>The viewing angle of the LCD panel is sufficient for use as a palmtop if you view it head-on but not much more.</p>
+<p>You can notice from the video that the internal display is almost off. It is noted by the seller that when an external monitor is connected to the VGA port of the breakout, the internal LCD will dim (to unusable levels). The external display will also be dim but you should be able to modify the brightness/contrast of your external monitor.</p>
+<p>The device gets very uncomfortably hot after some time which indicates the CPU load and stress Windows 95 usage places on the system.</p>
+<h2 id="lcd-resolution">LCD resolution</h2>
+<p>By default, the video BIOS locks the screen resolution to 640x480 60Hz with the right portion being cutoff. The typical DOS resolution is 720x400 70Hz (80x25 text mode).</p>
+<a href="images/hand386-crt-mode.jpg"><img src="images/hand386-crt-mode.jpg" width="700"></a>
+<p>Left shows the default mode, right shows the typical mode.</p>
+<p>We can use CT.COM obtained from the <a href="https://oemdrivers.com/graphics-chips-f65545">driver pack</a> (meant for 65545) to switch it to the typical mode.</p>
+<h2 id="with-my-docking-station">With my &ldquo;docking station&rdquo;</h2>
+<a href="images/hand386-isa-cards.jpg"><img src="images/hand386-isa-cards.jpg" width="600"></a>
+<p>To fully flesh out the capabilities of this system, I used the ISA backplane to add these cards:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/3Com_3c509">3Com 3C509</a> 10Mbps NIC for networking</li>
+<li><a href="https://www.tindie.com/products/jrlab/blasterboard-a-complete-8-bit-isa-sound-card-2/">Blasterboard</a> (Sound Blaster 2.0 clone) for PCM sound.</li>
+<li><a href="https://www.tindie.com/products/spark2k06/rtc-isa-8-bits-very-low-profile-2/">RTC ISA 8 bits (Very Low Profile)</a> to augment the relatively poor internal RTC.</li>
+</ul>
+<p>The cards and ISA backplane are placed on a vertical bracket riser that was initially meant for external PCIe GPUs. Thanks to awesome PC backward compatibility, even ISA cards can fit there as well.</p>
+<p>With a DOS 6.22/Win 3.1 setup, the system feels more responsive and definitely a better user experience. The device still gets warm but not as hot as with Windows 95.</p>
+<p>The <code>config.sys</code> and <code>autoexec.bat</code> configuration and drivers used for this setup can be found here. <a href="https://github.com/yeokm1/retro-configs/tree/master/laptops/hand386">https://github.com/yeokm1/retro-configs/tree/master/laptops/hand386</a>.</p>
+<p>A small issue I ran into is when I have an external sound card that has its own OPL chip like a Sound Blaster (clone). As I believe OPL register commands are mostly only written to the parallel ISA bus, there should not be any conflicts as both chips will only just receive commands. However, both chips will now playback the FM audio.</p>
+<p>The internal OPL3 chip will thus play the music through the internal speakers which may not be desired. One can (un)mute the speakers by pressing Fn+F1/F2 but I&rsquo;m not sure if there are other problems I may not know about.</p>
+<h2 id="other-observations">Other observations</h2>
+<ul>
+<li>To use the ISA backplane, the Hand386 may have to be turned on first before powering the backplane. If the backplane is powered on first, the Hand386 may sometimes not boot. I can&rsquo;t be sure if this is related to the behaviour of certain ISA cards like my 3Com 3c509 or Blasterboard.</li>
+<li>The onboard RTC does not seem to keep time well. It loses about a minute every 1-2 hours so regular NTP sync or manual time setting is required if time is important for you.</li>
+<li>From a full-charge, I get about 1.5h of usage on Win 3.1 before the low battery warning comes on and the device will shut off totally shortly after. Nevertheless, the battery life of this device should not be compared to modern laptops and I&rsquo;m ok with it as-is.</li>
+<li>The battery can drain faster than the charging circuitry can handle under heavy load.</li>
+<li>Mouse support is disabled by default when the BIOS is (deliberately/randomly) reset. This is mentioned in the user manual.</li>
+<li>With exception to the glued down battery, the device seems very repairable. No weird screws and everything is accessible. Surface mounted ICs are placed far enough from each other that reworking them should have minimal issue.</li>
+<li>Headphone jack volume can be soft.</li>
+<li>My device&rsquo;s display controller/driver/panel actually failed after some days of use. Upon verifying the fault through a video I sent them, they agreed to send me a replacement for my defective unit. I have to mention their <strong>exemplary customer service</strong>.</li>
+</ul>
+<h2 id="ips-lcd-replacement">IPS LCD replacement</h2>
+<p>Based on online chatter, I found out a possible IPS replacement LCD which is brighter and offers better viewing angles.</p>
+<a href="images/hand386-ips-screen.jpg"><img src="images/hand386-ips-screen.jpg" width="600"></a>
+<p>I purchased this IPS 500 <a href="https://vi.aliexpress.com/item/1005005048132640.html">screen from Aliexpress</a>.</p>
+<a href="images/hand386-ips-replaced.jpg"><img src="images/hand386-ips-replaced.jpg" width="600"></a>
+<p>Here is the result after the replacement. Even at a more extreme angle, the display still looks bright and sharp. Definitely a worthy upgrade!</p>
+<h2 id="suggested-improvements">Suggested improvements</h2>
+<p>I sent this list to the Hand386 seller. It&rsquo;s just some ideas I can consider for addition if I was the designer of this device. Not everything is possible as until one gets to the engineering aspect, it&rsquo;s hard to tell if these features are feasible to be added.</p>
+<ul>
+<li>Audio
+<ul>
+<li>BIOS disable option for onboard OPL3 to avoid potential conflicts as some users like me have an external Sound Blaster/Adlib or OPL-capable card.</li>
+<li>Volume control for onboard speakers and headphone jack.</li>
+<li>Add Sound Blaster compatible PCM audio support using chips from ESS or Crystal.</li>
+</ul>
+</li>
+<li>Power
+<ul>
+<li>Use USB-C port for power supply instead of barrel jack</li>
+</ul>
+</li>
+<li>User interface
+<ul>
+<li>Add a trackpad/ball or some kind of interface to control the mouse</li>
+<li>Mouse support enabled by default in the BIOS</li>
+</ul>
+</li>
+<li>Display
+<ul>
+<li>Ability to disable onboard C&amp;T 65535 ISA graphics chip if a user has an external ISA graphics card</li>
+<li>Eliminate the VGA dimness when attaching an external monitor.</li>
+<li>If it does not cost too much, replace the display with one with better viewing angles such as IPS.</li>
+</ul>
+</li>
+<li>Heat/Casing/Ports
+<ul>
+<li>Add some vents in the casing or heatsink/fan. Device can get uncomfortably warm after prolonged use especially if using Windows 95 or gaming.</li>
+<li>386 in the laptop form factor like Book8088 would be easier to use and have better thermal cooling and port options</li>
+<li>Add PCMCIA support. Existing bus extension with ribbon cable is good but can be difficult to remove sometimes without bending the pins.</li>
+<li>Some means to easily remove the CF card.</li>
+</ul>
+</li>
+<li>Software
+<ul>
+<li>Windows 95 is not optimal for 386SX. Should preinstall with DOS 6.22 and Windows for Workgroups 3.11.</li>
+<li>Replace CH375DOS.sys with CH375286.SYS for more stable flash drive support and performance. See this <a href="https://www.youtube.com/watch?v=4WvHR_Cy2ME">driver comparison video</a> from the Youtuber <a href="https://www.youtube.com/@THEPHINTAGECOLLECTOR">THE PHINTAGE COLLECTOR</a>.</li>
+</ul>
+</li>
+</ul>
+<h1 id="concluding-remarks">Concluding remarks</h1>
+<p>Despite the issues I pointed out, I have to say this product is very well made and has gotten many things right. It&rsquo;s a very good job for a first iteration of such a product.</p>
+<p>As an embedded engineer myself who has worked on product design projects, I can appreciate the difficulty in designing for manufacturing such a product from scratch into such a compact package. 386 machines used to be full-sized desktops or very thick laptops.</p>
+<p>There are several complaints on the price of the system at about US$200. Given the relatively small production of run of this product for a niche market, this price is actually very good given the low production quantities of hundreds? (definitely not more than low thousands) and with an injection moulded case to boot.</p>
+<p>The amount of electrical, mechanical and software engineering effort that went into this product is not small for such a niche product. From looking at the mechanical/board design and component datasheets, I have indeed learned quite a bit on how such a product can be designed and certainly have gained useful knowledge.</p>
+<p>I have to commend their excellent customer service. They are very responsive and helpful in my queries of technical details of this device. Not to mention a replacement when I faced the display defect. Definitely not a vapourware product.</p>
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/retrocomputing">retrocomputing</a></li>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/product-reviews">product-reviews</a></li>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/teardowns">teardowns</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yeokm1/yeokm1.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNTQ3ODI3NTI="
+        data-category="Comments"
+        data-category-id="DIC_kwDODy-tIM4CXEA6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div class="pagination">
+  
+    <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/" class="button"><div class="previous"><div>Building a DOS ChatGPT client in 2023</div></div></a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/06/teardown-and-review-of-hand386/" class="image featured">
+    
+      <img src="/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/06/teardown-and-review-of-hand386/">Teardown &amp; review of a new 386 system: Hand386</a></h1>
+          <time class="published" datetime="">June 5, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/" class="image featured">
+    
+      <img src="/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/03/building-a-dos-chatgpt-client-in-2023/">Building a DOS ChatGPT client in 2023</a></h1>
+          <time class="published" datetime="">March 26, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/" class="image featured">
+    
+      <img src="/2022/08/teardown-of-habotest-ht107e-socket-tester/images/ht107e_open_top.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/">Teardown of Habotest HT107E Socket Tester</a></h1>
+          <time class="published" datetime="">August 6, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2021/11/how-do-i-produce-my-flight-videos/" class="image featured">
+    
+      <img src="/2021/11/how-do-i-produce-my-flight-videos/images/fv-photo-caption.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2021/11/how-do-i-produce-my-flight-videos/">How do I produce my flight videos?</a></h1>
+          <time class="published" datetime="">November 6, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/" class="image featured">
+    
+      <img src="/2021/09/review-usage-and-repair-of-the-framework-laptop/images/fw-caption-image.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/">Review, usage and repair of the Framework laptop</a></h1>
+          <time class="published" datetime="">September 21, 2021</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/hacks/">hacks<span class="count">20</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/personal/">personal<span class="count">17</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/singapore/">singapore<span class="count">16</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/teardowns/">teardowns<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/school/">school<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/book-reviews/">book-reviews<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/politics/">politics<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hackathon/">hackathon<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/product-reviews/">product-reviews<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/admin/">admin<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/repair-kopitiam/">repair-kopitiam<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/keyboards/">keyboards<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/quiz/">quiz<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/dvorak/">dvorak<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/flight-sim/">flight-sim<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2023
+      
+        YKM&#39;s Corner on the Web
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.117.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+<script type="text/javascript">
+  var sc_project = 8700008;
+  var sc_invisible = 1;
+  var sc_security = "b569f6b4";
+  var sc_https = 1; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript>
+  <div class="statcounter"><a title="free hit
+  counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+        src="https://c.statcounter.com/8700008/0/b569f6b4/1/" alt="free hit counter"></a></div>
+</noscript>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function (x) {
+      x.parentElement.classList += 'has-jax'
+    })
+  });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.4b08dba1bed68bfe65db2515ff7d6b0258656cf4079ed4e03263be238684e63e.js" integrity="sha256-Swjbob7Wi/5l2yUV/31rAlhlbPQHntTgMmO&#43;I4aE5j4="></script>
+<script src="/js/add-on.js"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50169449-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>

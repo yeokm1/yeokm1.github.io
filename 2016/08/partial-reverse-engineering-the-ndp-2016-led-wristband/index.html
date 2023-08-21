@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>(Partial) Reverse Engineering the NDP 2016 LED Wristband - YKM&#39;s Corner on the Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.117.0"><meta itemprop="name" content="(Partial) Reverse Engineering the NDP 2016 LED Wristband">
+<meta itemprop="description" content="(Checkout the 2019 version here!)
+The Singapore National Day Parade (NDP 2016) happened on 9 August 2016 to celebrate its 51st birthday. For those who had the opportunity to attend the actual parade or its previews/rehearsals, they will also get to receive a funpack where one of the items will be a wearable LED band made by a company called Pixmob.
+
+This band receives infrared(IR) signals from the organisers and then displays the LED colour of their choosing. There is also an onboard accelerometer. After the event when the IR signals disappear, the (single-axis I believe) accelerometer will cause the Red LED to light up when a shock is detected.
+Here is the talk video on this subject I gave at Hackware v2.1.
+
+
+  
+"><meta itemprop="datePublished" content="2016-08-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2016-08-11T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1071">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="(Partial) Reverse Engineering the NDP 2016 LED Wristband" />
+<meta property="og:description" content="(Checkout the 2019 version here!)
+The Singapore National Day Parade (NDP 2016) happened on 9 August 2016 to celebrate its 51st birthday. For those who had the opportunity to attend the actual parade or its previews/rehearsals, they will also get to receive a funpack where one of the items will be a wearable LED band made by a company called Pixmob.
+
+This band receives infrared(IR) signals from the organisers and then displays the LED colour of their choosing. There is also an onboard accelerometer. After the event when the IR signals disappear, the (single-axis I believe) accelerometer will cause the Red LED to light up when a shock is detected.
+Here is the talk video on this subject I gave at Hackware v2.1.
+
+
+  
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yeokhengmeng.com/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2016-08-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2016-08-11T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="(Partial) Reverse Engineering the NDP 2016 LED Wristband"/>
+<meta name="twitter:description" content="(Checkout the 2019 version here!)
+The Singapore National Day Parade (NDP 2016) happened on 9 August 2016 to celebrate its 51st birthday. For those who had the opportunity to attend the actual parade or its previews/rehearsals, they will also get to receive a funpack where one of the items will be a wearable LED band made by a company called Pixmob.
+
+This band receives infrared(IR) signals from the organisers and then displays the LED colour of their choosing. There is also an onboard accelerometer. After the event when the IR signals disappear, the (single-axis I believe) accelerometer will cause the Red LED to light up when a shock is detected.
+Here is the talk video on this subject I gave at Hackware v2.1.
+
+
+  
+"/>
+<meta name="twitter:site" content="@yeokm1"/>
+<link rel="stylesheet" href="/css/bundle.min.a5db8e699d9ae70030c71551956f7b63ee5a1e88c7c2fa3f981a4cec53093283.css" integrity="sha256-pduOaZ2a5wAwxxVRlW97Y&#43;5aHojHwvo/mBpM7FMJMoM=">
+        <link rel="stylesheet" href="/css/add-on.css"></head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            post
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/aviation" class="link"><i class='fas fa-plane'></i> Aviation</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/retrocomputing" class="link"><i class='fas fa-save'></i> Retrocomputing</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/favourite-quotes/" class="link">Favourite Quotes</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about-me/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/zh" lang="zh" class="no-lang link">简体中文 (zh)</a>
+      
+    
+  
+</menu>
+
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="" alt="Kheng Meng profile pic" /></a>
+  <header>
+    <h1>Yeo Kheng Meng</h1>
+  </header>
+  <main>
+    <p>Maker, Coder, Private Pilot, Retrocomputing Enthusiast</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/yeokm1" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/yeokhengmeng" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/yeokhengmeng" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/yeokm1" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/yeokm1" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/yeokm1" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+<li><a href="//telegram.me/yeokm1" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/">(Partial) Reverse Engineering the NDP 2016 LED Wristband</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2016-08-11 00:00:00 &#43;0000 UTC">
+      August 11, 2016
+    </time>
+    <span class="author"></span>
+    
+      <p>6 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
+  
+
+  <div class="content">
+    <p>(Checkout the 2019 version <a href="/2019/08/teardown-of-ndp2019-led-wristband/">here</a>!)</p>
+<p>The Singapore National Day Parade (NDP 2016) happened on 9 August 2016 to celebrate its 51st birthday. For those who had the opportunity to attend the actual parade or its previews/rehearsals, they will also get to receive a funpack where one of the items will be a wearable LED band made by a company called <a href="http://pixmob.com/">Pixmob</a>.</p>
+<p><a href="images/ndp2016-re-wristband.jpg"><img src="images/ndp2016-re-wristband-828x1024.jpg" alt="ndp2016-re-wristband"></a></p>
+<p>This band receives infrared(IR) signals from the organisers and then displays the LED colour of their choosing. There is also an onboard accelerometer. After the event when the IR signals disappear, the (single-axis I believe) accelerometer will cause the Red LED to light up when a shock is detected.</p>
+<p>Here is the talk video on this subject I gave at <a href="https://www.facebook.com/events/245575175803923/">Hackware v2.1</a>.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/9Km77gBqyCY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>I had the opportunity to attend the Preview 2 (or rehearsal) of this event on 30 July 2016. Here are 2 videos of the wristband in action during the NDP Preview 2.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/EPwxPJhlR4M" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>Each segment is given a particular colour theme and the band blinks in tandem with what the organisers want.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/XepiuPZ2TzA" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>You can see how the colour changes during the show.</p>
+<p>So obviously I was curious about how this wristband works. A look at Pixmob website shows they have 2 products to cater to different audience capacities</p>
+<ol>
+<li><a href="http://pixmob.com/solutions/ignite/">Professional</a> (1500 to 150000 attendees) that runs on infrared</li>
+<li><a href="http://pixmob.com/solutions/spark/">Spark</a> (Up to 1500 attendees) that runs on Bluetooth Low Energy</li>
+</ol>
+<p>Since the National Stadium where NDP2016 was held has a capacity of 55000, it has to the former. I believe how the system is set up is that there are numerous Infrared emitters placed around possibly on the ceiling of the stadium to reach all the audience.</p>
+<p>That is however not enough, I want to know MORE! So I proceeded to the teardown.</p>
+<h1 id="teardown">Teardown</h1>
+<p>I cracked open the case to reveal the following:</p>
+<p><a href="images/ndp2016-re-front.jpg"><img src="images/ndp2016-re-front.jpg" alt="ndp2016-re-front"></a></p>
+<p>Front view of the board. I have identified the major components in the list below</p>
+<ul>
+<li>IR1: Infrared Receiver</li>
+<li>LED1: RGB LED</li>
+<li>IC1: <a href="http://www.atmel.com/images/doc0180.pdf">Atmel AT24C02S</a> 2KB, 2-Wire Serial EEPROM (SOT23-5 package)</li>
+<li>IC2: <a href="http://www.abov.co.kr/en/index.php?Depth1=3&amp;Depth2=1&amp;Depth3=1&amp;Depth4=2&amp;Item=MC81F4204">Abov 81F4204R</a> 8-bit microcontroller (MCU) with 4KB ROM and 192B RAM (TSSOP16 package)</li>
+</ul>
+<p>I have no idea why there needs to be Atmel EEPROM chip, what does Pixmob need to store inside there?</p>
+<p><a href="images/ndp2016-re-back.jpg"><img src="images/ndp2016-re-back-1024x442.jpg" alt="ndp2016-re-back"></a></p>
+<p>Back view of the board. The device is powered by a 3V CR2032 battery. The tube on the left is what I believe to be a single-axis accelerometer.</p>
+<h1 id="hardware-reverse-engineering">Hardware Reverse Engineering</h1>
+<p>If you are interested in the raw schematics/code used in this post, you can see my <a href="https://github.com/yeokm1/reverse-engineering-ndp2016-wristband">Github link</a>.</p>
+<p>I was not satisfied with knowing what components goes inside the band, I&rsquo;ll like to know how are they connected together. So using a multimeter, I set down to work.</p>
+<p><a href="images/ndp2016-re-blue-led.jpg"><img src="images/ndp2016-re-blue-led-262x300.jpg" alt="ndp2016-re-blue-led"></a> <a href="images/ndp2016-re-red-led.jpg"><img src="images/ndp2016-re-red-led-272x300.jpg" alt="ndp2016-re-red-led"></a> <a href="images/ndp2016-re-green-led.jpg"><img src="images/ndp2016-re-green-led-262x300.jpg" alt="ndp2016-re-green-led"></a></p>
+<p>Using the Diode mode of the multimeter, we can see the different colours on the LED exhibit different voltage drops.</p>
+<p><a href="images/ndp2016-re-schematic.png"><img src="images/ndp2016-re-schematic-1024x742.png" alt="ndp2016-re-schematic"></a></p>
+<p>After some painstaking work mapping out all the connections, I drew out both the necessary Kicad libraries and schematic as you can see above. I even included the test points. Note that I cannot guarantee the schematic is correct.</p>
+<h2 id="programming-pads">Programming pads</h2>
+<p>The test points TP_SCK and TP_SO are no doubt used to program the board for the first time after the PCB is fabricated and assembled. I anticipate that ROM dumping could be possible but I don&rsquo;t have the time and tools to make it happen.</p>
+<h2 id="connection-between-host-chip-andeeprom">Connection between host chip and EEPROM</h2>
+<p>What surprised me was the connection between the Abov MCU and the EEPROM chip. The AT24C02S uses the I²C bus to connect with a host MCU. However, the Abov MCU does not have hardware I²C support according to its datasheet. If I&rsquo;m right, this means the Pixmob engineers had to bit-bang the GPIO pins to simulate a I²C bus to communicate with EEPROM, not trivial to do!</p>
+<h2 id="eeprom-write-protection-is-not-enabled">EEPROM write-protection is not enabled</h2>
+<p>According to AT24C02S&rsquo;s datasheet, shorting the WP pin to ground disables the write-protection. This implies the MCU host can write new data to the EEPROM chip. Hmmm&hellip; Wonder what is this for?</p>
+<h2 id="r2-and-r6">R2 and R6?</h2>
+<p>I have no idea what is the purpose of R2 and R6? Measure battery voltage?</p>
+<h1 id="unsuccessful-attempt-to-brute-force-the-ir-combinations">Unsuccessful attempt to brute-force the IR combinations</h1>
+<p>As many would have thought, it would be great if we can reuse this band by mimicking the IR signals sent by the NDP organisers. Googling shows that <a href="https://www.youtube.com/watch?v=N1cR-x_0YAw">someone has made his previous Pixmob model light up</a> using just a typical TV remote. I tried all the remotes I have in my possession, none worked. This means there are only 2 ways left to derive the IR code combinations</p>
+<ol>
+<li>Dump the code of the MCU and decipher the machine code</li>
+<li>Brute-force the IR combinations and hope for a response.</li>
+</ol>
+<p>Since I lack the time and equipment to do option 1, I wanted to try out option 2. This could possibly work assuming that Pixmob has not programmed in a Kill code that will disable further IR functionality should the organisers send out this code at the end of the event.</p>
+<h2 id="my-ir-brute-forcer">My IR brute-forcer</h2>
+<p>This is a Fritzing schematic showing my design of a IR brute-forcer:</p>
+<p><a href="images/ndp2016-re-brute-force-microview-connections.png"><img src="images/ndp2016-re-brute-force-microview-connections.png" alt="ndp2016-re-brute-force-microview-connections"></a></p>
+<p>The brains of this project is a <a href="http://microview.io/">Microview</a>, an Arduino-compatible component that has a standard ATmega328p chip and an OLED screen. The Microview drives an IR LED with the numerous IR combinations. Should a particular combination work, the wristband will light up and the differing light intensity can be captured by the photocell.</p>
+<p><img src="images/ndp2016-re-brute-force-finding-872x1024.jpg" alt="ndp2016-re-brute-force-finding"></p>
+<p>This is the setup, the IR LED and the photocell are both aimed at the wristband.</p>
+<p><a href="images/ndp2016-re-brute-force-fake-find.jpg"><img src="images/ndp2016-re-brute-force-fake-find-954x1024.jpg" alt="ndp2016-re-brute-force-fake-find"></a></p>
+<p>This photo shows a false positive. Should the wristband light up, the OLED screen will display &ldquo;Found&rdquo;. The corresponding IR combination will be then sent via the Serial port to the computer.</p>
+<h2 id="brute-force-conclusion">Brute-force conclusion</h2>
+<p>This didn&rsquo;t work out in the end as I realised there are literally trillions of IR combinations made up of IR-ON, IR-OFF, multiple delay timings and the Arduino can only output about a few hundred or thousand combinations a second. Even worse, even if one can find a faster way to brute force quickly, if a Kill code has been sent, then there is no way this could work.</p>
+<h1 id="concluding-remarks">Concluding remarks</h1>
+<p>Coming back to the title, this is not a complete reverse-engineering project as I did not dump the code and analyse it which is above my current skill level anyway. Nevertheless, I have learned lots in the process and I hope this will prove informative to those interested in the inner workings of this wristband.</p>
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/hacks">hacks</a></li>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/teardowns">teardowns</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yeokm1/yeokm1.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNTQ3ODI3NTI="
+        data-category="Comments"
+        data-category-id="DIC_kwDODy-tIM4CXEA6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div class="pagination">
+  
+    <a href="/2016/05/repair-kopitiam-speciality-electrical-tools/" class="button"><div class="previous"><div>Repair Kopitiam specialty electrical tools</div></div></a>
+  
+  
+    <a href="/2016/09/windows-for-workgroups-3-11-on-vintage-and-modern-hardware-in-2016/" class="button"><div class="next"><div>A Science Project: Windows for Workgroups 3.11 on vintage and modern hardware in 2016</div></div></a>
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/06/teardown-and-review-of-hand386/" class="image featured">
+    
+      <img src="/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/06/teardown-and-review-of-hand386/">Teardown &amp; review of a new 386 system: Hand386</a></h1>
+          <time class="published" datetime="">June 5, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/" class="image featured">
+    
+      <img src="/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/03/building-a-dos-chatgpt-client-in-2023/">Building a DOS ChatGPT client in 2023</a></h1>
+          <time class="published" datetime="">March 26, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/" class="image featured">
+    
+      <img src="/2022/08/teardown-of-habotest-ht107e-socket-tester/images/ht107e_open_top.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/">Teardown of Habotest HT107E Socket Tester</a></h1>
+          <time class="published" datetime="">August 6, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2021/11/how-do-i-produce-my-flight-videos/" class="image featured">
+    
+      <img src="/2021/11/how-do-i-produce-my-flight-videos/images/fv-photo-caption.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2021/11/how-do-i-produce-my-flight-videos/">How do I produce my flight videos?</a></h1>
+          <time class="published" datetime="">November 6, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/" class="image featured">
+    
+      <img src="/2021/09/review-usage-and-repair-of-the-framework-laptop/images/fw-caption-image.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/">Review, usage and repair of the Framework laptop</a></h1>
+          <time class="published" datetime="">September 21, 2021</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/hacks/">hacks<span class="count">20</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/personal/">personal<span class="count">17</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/singapore/">singapore<span class="count">16</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/teardowns/">teardowns<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/school/">school<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/book-reviews/">book-reviews<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/politics/">politics<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hackathon/">hackathon<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/product-reviews/">product-reviews<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/admin/">admin<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/repair-kopitiam/">repair-kopitiam<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/keyboards/">keyboards<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/quiz/">quiz<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/dvorak/">dvorak<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/flight-sim/">flight-sim<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2023
+      
+        YKM&#39;s Corner on the Web
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.117.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+<script type="text/javascript">
+  var sc_project = 8700008;
+  var sc_invisible = 1;
+  var sc_security = "b569f6b4";
+  var sc_https = 1; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript>
+  <div class="statcounter"><a title="free hit
+  counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+        src="https://c.statcounter.com/8700008/0/b569f6b4/1/" alt="free hit counter"></a></div>
+</noscript>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function (x) {
+      x.parentElement.classList += 'has-jax'
+    })
+  });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.4b08dba1bed68bfe65db2515ff7d6b0258656cf4079ed4e03263be238684e63e.js" integrity="sha256-Swjbob7Wi/5l2yUV/31rAlhlbPQHntTgMmO&#43;I4aE5j4="></script>
+<script src="/js/add-on.js"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50169449-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>

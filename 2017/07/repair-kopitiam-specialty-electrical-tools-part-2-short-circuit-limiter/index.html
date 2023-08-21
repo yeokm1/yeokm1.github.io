@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Repair Kopitiam specialty electrical tools (Part 2): Short Circuit Limiter - YKM&#39;s Corner on the Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.117.0"><meta itemprop="name" content="Repair Kopitiam specialty electrical tools (Part 2): Short Circuit Limiter">
+<meta itemprop="description" content="If you have not read the previous post (Part 1) on this subject, I encourage you but it is not mandatory to do so before reading this post. I&rsquo;ll still go through the fundamentals in this post. If you just want to see the raw technical details, the schematic and code of this project have been open-sourced here.
+Post Objective
+To show why did I build this and how it works plus the issues faced.
+
+The clean case hides the complexity within."><meta itemprop="datePublished" content="2017-07-23T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2017-07-23T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2998">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Repair Kopitiam specialty electrical tools (Part 2): Short Circuit Limiter" />
+<meta property="og:description" content="If you have not read the previous post (Part 1) on this subject, I encourage you but it is not mandatory to do so before reading this post. I&rsquo;ll still go through the fundamentals in this post. If you just want to see the raw technical details, the schematic and code of this project have been open-sourced here.
+Post Objective
+To show why did I build this and how it works plus the issues faced.
+
+The clean case hides the complexity within." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yeokhengmeng.com/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2017-07-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-07-23T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Repair Kopitiam specialty electrical tools (Part 2): Short Circuit Limiter"/>
+<meta name="twitter:description" content="If you have not read the previous post (Part 1) on this subject, I encourage you but it is not mandatory to do so before reading this post. I&rsquo;ll still go through the fundamentals in this post. If you just want to see the raw technical details, the schematic and code of this project have been open-sourced here.
+Post Objective
+To show why did I build this and how it works plus the issues faced.
+
+The clean case hides the complexity within."/>
+<meta name="twitter:site" content="@yeokm1"/>
+<link rel="stylesheet" href="/css/bundle.min.a5db8e699d9ae70030c71551956f7b63ee5a1e88c7c2fa3f981a4cec53093283.css" integrity="sha256-pduOaZ2a5wAwxxVRlW97Y&#43;5aHojHwvo/mBpM7FMJMoM=">
+        <link rel="stylesheet" href="/css/add-on.css"></head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            post
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/aviation" class="link"><i class='fas fa-plane'></i> Aviation</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/retrocomputing" class="link"><i class='fas fa-save'></i> Retrocomputing</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/favourite-quotes/" class="link">Favourite Quotes</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about-me/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/zh" lang="zh" class="no-lang link">简体中文 (zh)</a>
+      
+    
+  
+</menu>
+
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="" alt="Kheng Meng profile pic" /></a>
+  <header>
+    <h1>Yeo Kheng Meng</h1>
+  </header>
+  <main>
+    <p>Maker, Coder, Private Pilot, Retrocomputing Enthusiast</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/yeokm1" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/yeokhengmeng" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/yeokhengmeng" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/yeokm1" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/yeokm1" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/yeokm1" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+<li><a href="//telegram.me/yeokm1" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/">Repair Kopitiam specialty electrical tools (Part 2): Short Circuit Limiter</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2017-07-23 00:00:00 &#43;0000 UTC">
+      July 23, 2017
+    </time>
+    <span class="author"></span>
+    
+      <p>15 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
+  
+
+  <div class="content">
+    <p>If you have not read the <a href="/2016/05/repair-kopitiam-speciality-electrical-tools/">previous post (Part 1)</a> on this subject, I encourage you but it is not mandatory to do so before reading this post. I&rsquo;ll still go through the fundamentals in this post. If you just want to see the raw technical details, the schematic and code of this project have been <a href="https://github.com/yeokm1/repair-kopitiam-training-and-equipment/tree/master/short-circuit-limiter">open-sourced here</a>.</p>
+<h1 id="post-objective">Post Objective</h1>
+<p>To show why did I build this and how it works plus the issues faced.</p>
+<p><a href="images/rk-equip2-scl-prod-front.jpg"><img src="images/rk-equip2-scl-prod-front-1024x701.jpg" alt=""></a></p>
+<p>The clean case hides the complexity within.</p>
+<h1 id="background">Background</h1>
+<p>I&rsquo;m a regular volunteer in the social initiative called Repair Kopitiam (RK) started by Sustainable Living Lab (SL2). On a monthly basis, we teach Singapore residents how to repair their household electrical appliances, fabrics and furniture. Our volunteers are also called repair coaches.</p>
+<h1 id="my-talk">My talk</h1>
+<p>I gave at <a href="https://www.facebook.com/events/261629434317053/">Hackware v3.4</a> on Sept 6 about this subject. Video and slides below. The audio is quite bad due to the location.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/BM9I_tabfC8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h1 id="what-is-the-problem">What is the problem?</h1>
+<p>I’m sure everyone of us have heard about <a href="https://en.wikipedia.org/wiki/Circuit_breaker">circuit breakers</a> (CBs). They are basically automated switches that cut the circuit if they if they detect something dangerous like current overload or if earth leakage has been found. Breakers are installed everywhere in buildings, homes and even at void decks of HDB flats where RK operates.</p>
+<h2 id="2-types-of-circuit-breakers">2 types of Circuit Breakers</h2>
+<ol>
+<li>Residual Current Circuit Breaker<a href="https://en.wikipedia.org/wiki/Residual-current_device"> (RCCB)</a> trips when there is an imbalance between the live and neutral lines. Also called earth leakage.</li>
+<li>Miniature Circuit Breaker (MCB) trips when there is an current overload such as during a short circuit</li>
+</ol>
+<p>Whenever an appliance trips your household circuit breaker, all you have to do is unplug the faulty device and reset the breaker.</p>
+<p><a href="images/rk-equip-onsite-mcbs.jpg"><img src="images/rk-equip-onsite-mcbs-1024x638.jpg" alt=""></a></p>
+<p>Onsite circuit breaker at the void deck.</p>
+<h2 id="locked-electrical-room">Locked electrical room</h2>
+<p>Not so simple for RK, the electrical services in the void deck of HDBs are usually under the purview of an external company contracted by the town council. For the case of our Tampines location, it is by the Essential Maintenance Service Unit (EMSU). The EMSU does not allow us to have unaccompanied access to the electrical room holding the circuit breaker for security reasons.</p>
+<p><a href="images/rk-equip2-switch-room.jpg"><img src="images/rk-equip2-switch-room.jpg" alt=""></a></p>
+<p>The circuit breakers for the void deck are hiding behind this locked room. Whenever any breaker trips, we have to call EMSU and they have to send their personnel over to unlock the room to reset the breaker. This usually takes 30mins to an hour. In the meantime, there is no power.</p>
+<h1 id="solutions">Solutions</h1>
+<h2 id="solution-to-prevent-rccb-trips">Solution to prevent RCCB trips</h2>
+<p>To prevent the onsite RCCB from tripping and yet still cut the power for safety reasons, I made this device.</p>
+<p><a href="images/rk-equip-10ma-rcbo-and-anti-external-cb-trip-front-open.jpg"><img src="images/rk-equip-10ma-rcbo-and-anti-external-cb-trip-front-open-1024x700.jpg" alt=""></a></p>
+<p>Details are in my <a href="/2016/05/repair-kopitiam-speciality-electrical-tools/">previous post</a> but basically how it works is that there is a 20K ohm resistor placed on the Earth line. The resistor holds down the earth-fault current to the level below the 30mA threshold of typical RCCBs. The RCCB (or RCBO) in my device is rated for 10mA which is more sensitive. Therefore, only my RCBO will trip and not the one in the room.</p>
+<h2 id="solution-to-prevent-mcb-trips">Solution to prevent MCB trips</h2>
+<p>The previous solution I did more than a year back worked well but preventing MCB trips proved a harder nut to crack. After more than a year of design and iteration, I finally managed to partially solve the problem. Explanation will come in later. Enjoy the video.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/VpU6cOnxy0s" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h3 id="things-to-look-out-for-in-the-video">Things to look out for in the video:</h3>
+<ol>
+<li>20 seconds startup time to let current measurement settle. Notice the left relay is kept off till startup is done.</li>
+<li>Turn on a lamp: There is a 1 second delay between turning on the lamp and the second relay being turned on. Also notice the display backlight turns on and the buzzer buzzes once.</li>
+<li>Turn off the lamp: The display backlight turns off immediately and the buzzer buzzes twice.</li>
+<li>Repeat steps 2 and 3 for the hair dryer. Notice the motor sound is lower during the 1 second period.</li>
+<li>Short circuit with a cable with its live and neutral pins shorted. The moment the switch is turned on, the device cuts off power to the outgoing socket. The buzzer also buzzes for a long 2 seconds. Notice the onsite MCB in the room did not trip as the device is still on.</li>
+<li>Reset the device with just a simple button press.</li>
+</ol>
+<h1 id="design">Design</h1>
+<h2 id="design-goals">Design Goals</h2>
+<ol>
+<li>(Primary goal) Prevent onsite MCB trip yet cut power to maintain safety</li>
+<li>Should not cause prolonged voltage drop to downstream appliances.</li>
+<li>Portable. It is about 2.5kg which is light enough to be transported easily.</li>
+<li>Idiot proof to use.</li>
+<li>Safety protection on overheat (to be explained)</li>
+</ol>
+<h2 id="basic-design">Basic Design</h2>
+<p>To get started I googled for existing solutions, I found this concept of <a href="https://en.wikipedia.org/wiki/Inrush_current_limiter">Inrush current limiter</a> which is pretty similar to what I&rsquo;m trying to do. 2 solutions are recommended from online sources</p>
+<h3 id="high-level-design-options">High-level design options</h3>
+<p>I shall quote Wikipedia on this:</p>
+<ol>
+<li>
+<p>Using a negative temperature coefficient (NTC) thermistor.</p>
+<blockquote>
+<p>When the circuit is closed, the thermistor&rsquo;s resistance limits the initial current. After some time current flow heats the thermistor, and its resistance changes to a lower value, allowing current to flow uninterrupted.</p>
+</blockquote>
+</li>
+<li>
+<p>Using a fixed resistor:</p>
+<blockquote>
+<p>Fixed resistors are also widely used to limit inrush current. These are inherently less efficient, since the resistance never falls from the value required to limit the inrush current&hellip; They can be switched out of the circuit using a relay or MOSFET though, after inrush current is complete.</p>
+</blockquote>
+</li>
+</ol>
+<p>I decided to go with the fixed resistor route as it is more deterministic than the thermistor. In my case if I adopt Solution 1, I will use a Positive Temperature Coefficient (PTC) themistor instead which resistance will increase as it heats up due to overcurrent.</p>
+<p>A PTC can take time to cool down after a short circuit for its resistance to go back down to the level suitable for typical operation. Furthermore, an actual short circuit will have a high probability of damaging the thermistor.</p>
+<h3 id="proposed-high-level-design">Proposed high-level design</h3>
+<p>A microcontroller-controlled relay is connected in parallel to a high power resistor. A 10 ohm resistor is chosen to limit the fault current to at most 23 Amps if there is a short circuit.</p>
+<p><a href="images/rk-equip2-high-level-schematic.png"><img src="images/rk-equip2-high-level-schematic.png" alt=""></a></p>
+<ol>
+<li>At the start,  the MCB Relay is on and Bypass relay is off and all current must flow through the 10 ohm resistor</li>
+<li>Once an appliance is turned on, the microcontroller will wait for a delay of 1 second. If there is no short circuit or excessive current flow during this period, the bypass relay will be turned on allowing full current flow to the device.</li>
+<li>If there is an excessive current flow, the MCB relay will be turned off. It will remain off until the user has cleared the fault and tell the microcontroller to reset the MCB relay.</li>
+</ol>
+<p>I&rsquo;ll also include a buzzer so that mode changes can be heard from afar without the repair coaches having to constantly look at the LCD screen.</p>
+<h1 id="implementation">Implementation</h1>
+<h2 id="innards">Innards</h2>
+<p><a href="images/rk-equip2-scl-prod-internal-standby.jpg"><img src="images/rk-equip2-scl-prod-internal-standby.jpg-1024x678.jpg" alt=""></a></p>
+<p>Scared by the eventual complexity? Upon project completion, I was surprised it came to this.</p>
+<p><a href="images/rk-equip2-schematic.png"><img src="images/rk-equip2-schematic-1024x425.png" alt=""></a> The full schematic for reference purpose.</p>
+<h2 id="the-brain-industruino-1286">The brain: Industruino-1286</h2>
+<p>I needed a microcontroller (MCU) to manage the relays as well as other features. As the circuit breakers use a <a href="https://en.wikipedia.org/wiki/DIN_rail">DIN rail</a> for mounting, it would be great if the MCU can be mounted on this same rail as well. I searched and I found the <a href="https://industruino.com/shop/product/industruino-proto-kit-8">Industruino Proto Kit</a>.</p>
+<p><a href="images/scl-industruino-internal.jpg"><img src="images/scl-industruino-internal-1024x613.jpg" alt=""></a></p>
+<p>It has these features which met my needs perfectly!</p>
+<ol>
+<li>Arduino-compatible microcontroller</li>
+<li>LCD screen to display status</li>
+<li>Buttons for the user to reset the MCB</li>
+<li>Internal prototyping area which I&rsquo;ll use for the current measurement circuit.</li>
+</ol>
+<p>I chose the MCU based on the AT90USB1286 because of stock issues but the cheaper 32u4 option should also work.</p>
+<h2 id="high-power-resistor">High-Power Resistor</h2>
+<p><a href="images/rk-equip2-10ohm-resistor.jpg"><img src="images/rk-equip2-10ohm-resistor-1024x246.jpg" alt=""></a></p>
+<p>This 5ohm resistor is the exact same size as the 10ohm one I used.</p>
+<p>It is HUGE at about 27cm long and 2.5cm in diameter. The biggest I have handled in my life so far but necessary. It is rated at 10-ohm, 225 Watt so as to hold down the current to 23 Amps (below the onsite MCB threshold) if there is a short circuit.</p>
+<p>The data sheet says it can withstand &ldquo;10 times rated power for 5 seconds&rdquo; which is about 2250W. In theory, by P=I2R, one would need 23 * 23 * 10 = 5290 Watt resistor to be able to dissipate the heat generated. However, this is mitigated by the fact that the MCU will react almost immediately to this extremely high current and cut the power before the heat becomes a serious problem.</p>
+<h2 id="current-measurement">Current Measurement</h2>
+<p>In order to know whether an external appliance has been powered on or off, some form of current measurement is necessary. The current data is also required to know when an overcurrent/short-circuit condition has happened.</p>
+<p><a href="images/Arduino_AC_current_input_A.png"><img src="images/Arduino_AC_current_input_A.png" alt=""></a></p>
+<p>This image is obtained from the <a href="https://learn.openenergymonitor.org/electricity-monitoring/ct-sensors/interface-with-arduino">Open Energy Monitor site</a> which has an open-source schematic to show how current can be measured with an Arduino. How it works is that the +ve and -ve AC output of the CT clamp is converted into positive values and scaled into a voltage range so the ADC of the MCU can read it. Read more in the provided link.</p>
+<p>The parts used in this schematic are placed inside prototyping area of the Industruino itself except for the audio jack. That is drawn out externally for the CT clamp to connect to.</p>
+<h3 id="current-measurement-settle-time">Current measurement settle time</h3>
+<p>In my tests with the above circuit, I found out that the measurements obtained initially are pretty unreliable. If I understand correctly, it is due to the example code I adapted from <a href="https://github.com/openenergymonitor/EmonLib">Emonlib</a> where some of the existing measurement readings relies on data of the previous measurement due to the low-pass filter. This makes the initial measurements inaccurate.</p>
+<p><a href="images/rk-equip2-scl-startup.jpg"><img src="images/rk-equip2-scl-startup.jpg" alt=""></a></p>
+<p>To mitigate this issue, I force a 20-second startup time at the beginning till the measurements stabilise. In the meantime, I thought it would be a good opportunity to show a &ldquo;bootup screen&rdquo; displaying the thresholds of the different operations.</p>
+<h2 id="a-tale-of-many-relays">A tale of many relays</h2>
+<p>When I first started, I thought any el-cheapo <a href="https://en.wikipedia.org/wiki/Solid-state_relay">solid-state relay</a> (SSR) will do. Turns out, this part cause me problems that took a significant amount of time to solve.</p>
+<h3 id="how-does-an-ssr-work">How does an SSR work?</h3>
+<p><a href="images/rk-equip2-ac-relay.png"><img src="images/rk-equip2-ac-relay-1024x303.png" alt=""></a></p>
+<p>Picture from <a href="http://www.crydom.com/en/products/catalog/3rd-generation/c_w24.pdf">Crydom&rsquo;s CW24 datasheet</a></p>
+<p>When one applies power to the primary coil, the LED within the opto-isolator lights up and is captured by a photodiode on the other side. The signal is then used to control a <a href="https://en.wikipedia.org/wiki/Silicon_controlled_rectifier">Silicon controlled rectifier (SCR</a>) which is a semiconductor switching element. To add on the CWD2450 model I used is classfied as a zero-crossing model which means it only turns on or off when the voltage/current falls to zero to prevent surges.</p>
+<h3 id="problem-ssr-does-not-turn-off">Problem: SSR does not turn off</h3>
+<p>Let&rsquo;s bring back our high-level design.</p>
+<p><a href="images/rk-equip2-high-level-schematic.pn"><img src="images/rk-equip2-high-level-schematic.png" alt=""></a></p>
+<p>It turns out in the above configuration, both the relays do not seem to turn off even if the primary coil is de-energised.</p>
+<p>After much Googling I actually found a possible explanation to this problem <a href="http://www.omron-ap.com/service_support/FAQ/FAQ02155/index.asp">here</a>. What it says:</p>
+<blockquote>
+<p>Reset Failure due to Solid-state Relay Leakage Current Even when there is no input signal to the Solid-state Relay there is a small Leakage Current (IL) from the Solid-state Relay output (LOAD). If this Leakage Current is larger than the load release current, the Solid-state Relay may fail to reset.</p>
+</blockquote>
+<p>So it turns out there are actually several certain conditions when an SSR cannot turn off.</p>
+<p>The 10-ohm resistor I used is connected in parallel to the Bypass SSR. When I disconnected the resistor, the problem went away! Suspecting it to be an issue, I googled further and it turns out it might be the cause. I found the following quote <a href="http://www.resistorguide.com/inductance/">here</a>.</p>
+<blockquote>
+<p>Helical wire wound resistors are especially prone to having significant parasitic inductances, because of their coil shape.</p>
+</blockquote>
+<p>Although it is not obvious from the picture, this is 10-ohm resistor is indeed helical wire wound.</p>
+<p>When the appliance is turned off, the connection to the Neutral line is cut off. Because this helical resistor is connected in parallel to the Bypass SSR, there is now a loop formed between the resistor and the Bypass relay. Although I have no proof, I speculate the inductance of this resistor now provides that small amount of current that keeps the SSR closed.</p>
+<p>As for the MCB relay, I suspect it remains on as well since it is now part of the loop.</p>
+<h3 id="online-solution">Online Solution:</h3>
+<p>The <a href="http://www.omron-ap.com/service_support/FAQ/FAQ02155/index.asp">same site</a> that explained the problem proposed the following solution:</p>
+<p><a href="images/rk-equip2-ssr-bleeder.jpg"><img src="images/rk-equip2-ssr-bleeder.jpg" alt=""></a></p>
+<p>Connect a resistor and capacitor of a specially chosen value that matches the load using the above configuration. Another name of such a setup is a &ldquo;snubber&rdquo; circuit. It suppresses any change in voltage caused by the load. In this case, the load is the resistor.</p>
+<h3 id="implemented-solution-use-a-mechanical-relay">Implemented Solution: Use a mechanical relay</h3>
+<p>I did consider the online solution but after some thought, I decided to use a mechanical relay (MR) which avoids the problem altogether. The reason being those online solutions assume that the output load is fixed. For RK&rsquo;s case, I never know what faulty device is connected on the output end to predict the bleeder resistor required on top of the inductance caused by the 10-ohm resistor.</p>
+<p><a href="images/rk-equip2-mech-relay.jpg"><img src="images/rk-equip2-mech-relay-786x1024.jpg" alt=""></a></p>
+<p>I covered the bottom pin headers with Polymorph to prevent accidental shorts. See the video of it in action below!</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/QWAE_0n4-p0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>A MR works by using power from the primary coil to energise an electromagnet which is used to physically shift armature holding the contacts.</p>
+<p>This MR from Schneider Electric requires 240VAC on the primary coil to energise. Therefore, I used the previous SSR to control it. A relay to control another relay LOL! There is another version of this MR that uses 24VDC instead but I guess it&rsquo;s more trouble to convert the 5V MCU logic level to 24V.</p>
+<p>One key disadvantage of mechanical relays is their lifespan. The datasheet rates it at 5 million cycles so I should not have to worry about it. After all, I won&rsquo;t be using this device 24/7 every few seconds.</p>
+<p>After the project in hindsight, I should have considered a SSR that has the random-turn-on characteristic. But if there is a short circuit at the moment of turn on, we could get a nasty surge instead of a smooth increase in current.</p>
+<h3 id="cheap-ssrs-vs-branded-ssrs">Cheap SSRs vs branded SSRs</h3>
+<p>My initial plan was to use the typical relays one can get from the usual Chinese sites.</p>
+<p>However, I soon realised a serious problem with those. Even when the primary coil is off and power is applied at the secondary circuit, those cheap SSRs will allow current through for a fraction of a second before turning off. This is just plain unacceptable in my application! I cannot risk having an uncontrolled closed circuit on the secondary side which might cause a short circuit which I want to avoid!</p>
+<p><a href="images/rk-equip2-other-relays.jp">   </a><a href="images/rk-equip2-other-relays.jp"><img src="images/rk-equip2-other-relays.jpg" alt="">      </a><a href="images/rk-equip2-cwd2450.jpg"><img src="images/rk-equip2-cwd2450.jpg" alt=""></a></p>
+<p>Chinese relays I tried before settling on the Crydom CWD2450 (picture from <a href="http://www.crydom.com/en/products/catalog/3rd-generation/c_w24.pdf">Crydom&rsquo;s CW24 datasheet</a> )</p>
+<p>I opted for the more expensive American branded Crydom relays which do not have this problem. They however cost SG$58 which is many times more than the cheaper Chinese ones but they work.</p>
+<h1 id="problems-encountered-during-development">Problems encountered during development</h1>
+<h2 id="overheating-of-power-resistor">Overheating of power resistor</h2>
+<p>I did not anticipate this issue during early development. However, as I simulated short circuits again and again during testing, I realised that the power resistor can heat up quite a bit. I could forsee the possibility the temperature might go up to dangerous levels.</p>
+<p>I therefore decided to add a Maxim DS18B20+ 1-Wire digital temperature sensor to monitor how hot the resistor is. See the video below for the demonstration:</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/O4qB3WehqlA" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h3 id="things-to-look-out-for-in-the-video-1">Things to look out for in the video:</h3>
+<ol>
+<li>Notice the temperature sensor placed behind the black tape on the resistor</li>
+<li>I connect the hair dryer and aim the output towards the sensor to heat it up.</li>
+<li>Once the temperature reaches 70°C, the buzzer will sound a warning of 5 buzzes and the display temperature reading will blink. The system will still work.</li>
+<li>If the temperature hits 85°C, MCU will turn off the MCB relay ceasing operations.</li>
+<li>Only when the temperature drops back below 70°C will the device will be able to resume operation.</li>
+</ol>
+<h2 id="short-circuit-after-resistor-has-been-bypassed">Short Circuit after Resistor has been bypassed</h2>
+<p>This is the greatest weakness of this system which I mentioned at the start that I can only &ldquo;partially&rdquo; solve this problem.</p>
+<p>I can&rsquo;t get around this weakness and hope it rarely happens. Since this device might be in use by many downstream appliances at the same time, it requires the coaches to be alert to whether the device is in bypass mode or not before testing their appliances.</p>
+<h2 id="long-developmentiteration-times">Long development/iteration times</h2>
+<p>This device took more than a year from conception to the point where it can be used. It is very long by my personal standards. Chief among the issue is that RK happens only once a month which means my iteration speed is pretty much that.</p>
+<p>Initial testing of this at my home caused problems for my family members as I caused plenty of blackouts to the point I was banned by my parents from further testing at home. I had to make regular trips to SL2&rsquo;s premises at United World College East in Tampines to do my tests.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>This is my most expensive and longest-running project so far. Each unit&rsquo;s bill-of-materials (BOM) is about SG$500 not factoring my personal time spent on this and other costs on trial-and-erroring components.</p>
+<p>Never before have a single project of mine involved so many different types of components, microcontroller, power-resistor, buzzer, solid-state and mechanical relays, temperature sensor, CT clamp, DC, AC power concepts and literally hundreds of hours coding up all the logic.</p>
+<p>I&rsquo;m proud to say I&rsquo;m nearing the closing of the chapter of this project after a span of 1.5 years on trying to solve this problem. In hindsight, the effort required to solve these issues might be too overkill and borders the line of a <a href="https://blogs.msdn.microsoft.com/oldnewthing/20130319-00/?p=4913">Science Project</a>. Nevertheless, the knowledge I have gained from this experience is priceless.</p>
+<p>I still have a talk to give about this and training materials but those shouldn&rsquo;t be too difficult.</p>
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/hacks">hacks</a></li>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/repair-kopitiam">repair-kopitiam</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yeokm1/yeokm1.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNTQ3ODI3NTI="
+        data-category="Comments"
+        data-category-id="DIC_kwDODy-tIM4CXEA6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div class="pagination">
+  
+    <a href="/2017/06/book-review-neither-civil-nor-servant-the-philip-yeo-story/" class="button"><div class="previous"><div>Book Review: Neither Civil Nor Servant (The Philip Yeo Story)</div></div></a>
+  
+  
+    <a href="/2017/09/first-flight-experience-in-a-light-plane-socata-tb10/" class="button"><div class="next"><div>First Flight Experience in a light plane (Socata TB10)</div></div></a>
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/06/teardown-and-review-of-hand386/" class="image featured">
+    
+      <img src="/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/06/teardown-and-review-of-hand386/">Teardown &amp; review of a new 386 system: Hand386</a></h1>
+          <time class="published" datetime="">June 5, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/" class="image featured">
+    
+      <img src="/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/03/building-a-dos-chatgpt-client-in-2023/">Building a DOS ChatGPT client in 2023</a></h1>
+          <time class="published" datetime="">March 26, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/" class="image featured">
+    
+      <img src="/2022/08/teardown-of-habotest-ht107e-socket-tester/images/ht107e_open_top.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/">Teardown of Habotest HT107E Socket Tester</a></h1>
+          <time class="published" datetime="">August 6, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2021/11/how-do-i-produce-my-flight-videos/" class="image featured">
+    
+      <img src="/2021/11/how-do-i-produce-my-flight-videos/images/fv-photo-caption.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2021/11/how-do-i-produce-my-flight-videos/">How do I produce my flight videos?</a></h1>
+          <time class="published" datetime="">November 6, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/" class="image featured">
+    
+      <img src="/2021/09/review-usage-and-repair-of-the-framework-laptop/images/fw-caption-image.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/">Review, usage and repair of the Framework laptop</a></h1>
+          <time class="published" datetime="">September 21, 2021</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/hacks/">hacks<span class="count">20</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/personal/">personal<span class="count">17</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/singapore/">singapore<span class="count">16</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/teardowns/">teardowns<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/school/">school<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/book-reviews/">book-reviews<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/politics/">politics<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hackathon/">hackathon<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/product-reviews/">product-reviews<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/admin/">admin<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/repair-kopitiam/">repair-kopitiam<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/keyboards/">keyboards<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/quiz/">quiz<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/dvorak/">dvorak<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/flight-sim/">flight-sim<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2023
+      
+        YKM&#39;s Corner on the Web
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.117.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+<script type="text/javascript">
+  var sc_project = 8700008;
+  var sc_invisible = 1;
+  var sc_security = "b569f6b4";
+  var sc_https = 1; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript>
+  <div class="statcounter"><a title="free hit
+  counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+        src="https://c.statcounter.com/8700008/0/b569f6b4/1/" alt="free hit counter"></a></div>
+</noscript>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function (x) {
+      x.parentElement.classList += 'has-jax'
+    })
+  });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.4b08dba1bed68bfe65db2515ff7d6b0258656cf4079ed4e03263be238684e63e.js" integrity="sha256-Swjbob7Wi/5l2yUV/31rAlhlbPQHntTgMmO&#43;I4aE5j4="></script>
+<script src="/js/add-on.js"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50169449-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>

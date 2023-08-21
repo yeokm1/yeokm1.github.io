@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Teardown of Habotest HT107E Socket Tester - YKM&#39;s Corner on the Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.117.0"><meta itemprop="name" content="Teardown of Habotest HT107E Socket Tester">
+<meta itemprop="description" content="During my volunteering with Repair Kopitiam, I noticed that an experienced coach had a tool that could plug into a socket to determine if the socket was wired up correctly. Fascinated by this, I wondered what such a tool was and how does it work?"><meta itemprop="datePublished" content="2022-08-06T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-08-06T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1755"><meta itemprop="image" content="http://yeokhengmeng.com/2022/08/teardown-of-habotest-ht107e-socket-tester/images/ht107e_open_top.jpg">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Teardown of Habotest HT107E Socket Tester" />
+<meta property="og:description" content="During my volunteering with Repair Kopitiam, I noticed that an experienced coach had a tool that could plug into a socket to determine if the socket was wired up correctly. Fascinated by this, I wondered what such a tool was and how does it work?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yeokhengmeng.com/2022/08/teardown-of-habotest-ht107e-socket-tester/" /><meta property="og:image" content="http://yeokhengmeng.com/2022/08/teardown-of-habotest-ht107e-socket-tester/images/ht107e_open_top.jpg" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-08-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-08-06T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://yeokhengmeng.com/2022/08/teardown-of-habotest-ht107e-socket-tester/images/ht107e_open_top.jpg"/>
+
+<meta name="twitter:title" content="Teardown of Habotest HT107E Socket Tester"/>
+<meta name="twitter:description" content="During my volunteering with Repair Kopitiam, I noticed that an experienced coach had a tool that could plug into a socket to determine if the socket was wired up correctly. Fascinated by this, I wondered what such a tool was and how does it work?"/>
+<meta name="twitter:site" content="@yeokm1"/>
+<link rel="stylesheet" href="/css/bundle.min.a5db8e699d9ae70030c71551956f7b63ee5a1e88c7c2fa3f981a4cec53093283.css" integrity="sha256-pduOaZ2a5wAwxxVRlW97Y&#43;5aHojHwvo/mBpM7FMJMoM=">
+        <link rel="stylesheet" href="/css/add-on.css"></head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            post
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/aviation" class="link"><i class='fas fa-plane'></i> Aviation</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/retrocomputing" class="link"><i class='fas fa-save'></i> Retrocomputing</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/favourite-quotes/" class="link">Favourite Quotes</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about-me/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/zh" lang="zh" class="no-lang link">简体中文 (zh)</a>
+      
+    
+  
+</menu>
+
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="" alt="Kheng Meng profile pic" /></a>
+  <header>
+    <h1>Yeo Kheng Meng</h1>
+  </header>
+  <main>
+    <p>Maker, Coder, Private Pilot, Retrocomputing Enthusiast</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/yeokm1" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/yeokhengmeng" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/yeokhengmeng" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/yeokm1" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/yeokm1" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/yeokm1" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+<li><a href="//telegram.me/yeokm1" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/">Teardown of Habotest HT107E Socket Tester</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2022-08-06 00:00:00 &#43;0000 UTC">
+      August 6, 2022
+    </time>
+    <span class="author"></span>
+    
+      <p>9 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
+  
+  <a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/" class="image featured">
+    
+      <img src="/2022/08/teardown-of-habotest-ht107e-socket-tester/images/ht107e_open_top.jpg" alt="">
+    
+  </a>
+
+
+  <div class="content">
+    <p>During my volunteering with Repair Kopitiam, I noticed that an experienced coach had a tool that could plug into a socket to determine if the socket was wired up correctly. Fascinated by this, I wondered what such a tool was and how does it work?</p>
+<h2 id="what-are-socket-testers">What are socket testers?</h2>
+<p>According to Wikipedia:</p>
+<blockquote>
+<p>An electrical outlet tester, receptacle tester, or socket tester is a small device containing a 3-prong power plug and three indicator lights, used for quickly detecting some types of incorrectly-wired electrical wall outlets.</p>
+<p>Source: <a href="https://en.wikipedia.org/wiki/Electrical_outlet_tester">https://en.wikipedia.org/wiki/Electrical_outlet_tester</a></p>
+</blockquote>
+<p>Googling around, I found several brands of socket testers. One of these brands is Habotest which makes a socket tester with an integrated LCD screen which attracted my attention compared to most socket testers which only have 3 indicator LEDs.</p>
+<h2 id="habotest-ht107e">Habotest HT107E</h2>
+<p>The model that I selected was the Habotest HT107E which has a UK plug.</p>
+<a href="images/ht107e-normal.jpg"><img src="images/ht107e-normal.jpg" width="500"></a>
+<p>Here is the HT107E connected to the AC power supply under normal operation.</p>
+<p>Most socket testers come with 3 LEDs to indicate the correctness of the wiring of the 3 socket points. If wirings on the socket is incorrect, different combinations of the LEDs will turn on depending on the fault. In addition, HT107E has a LCD panel that displays the residual current it will use in the RCD test, live to neutral voltage and neutral to earth voltage.</p>
+<h3 id="ht107e-usage-characterisation">HT107E Usage characterisation</h3>
+<p>There are a total of 7 supported fault states represented by different LED combinations as shown in the table below. The 8th state of Earth/Neutral Reverse is undetectable by the HT107E and is not mentioned in the user manual.</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Description</th>
+<th>Left</th>
+<th>Mid</th>
+<th>Right</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Correct</td>
+<td>ON</td>
+<td>ON</td>
+<td>OFF</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Open Neutral</td>
+<td>OFF</td>
+<td>ON</td>
+<td>OFF</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Live/Ground Reverse</td>
+<td>OFF</td>
+<td>ON</td>
+<td>ON</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Live/Neutral Reverse</td>
+<td>ON</td>
+<td>OFF</td>
+<td>ON</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Live/Ground Reverse Missing Ground</td>
+<td>ON</td>
+<td>ON</td>
+<td>ON</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Open Ground</td>
+<td>ON</td>
+<td>OFF</td>
+<td>OFF</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Missing Live</td>
+<td>OFF</td>
+<td>OFF</td>
+<td>OFF</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Earth/Neutral Reverse (*Undetectable Error)</td>
+<td>ON</td>
+<td>ON</td>
+<td>ON</td>
+</tr>
+</tbody>
+</table>
+<p>To characterise the behaviour of this HT107E, I set up an experiment to simulate the wiring faults in order to trigger the above states.</p>
+<p>The 3 (Live, Neutral and Earth) wires from the AC source were exposed and connected to the HT107E inputs via crocodile clips. The positions of the crocodile clips can be switched around to simulate the wiring faults.</p>
+<h4 id="1-correct-on-on-off">1. Correct (ON-ON-OFF)</h4>
+<a href="images/ht107e_correct.jpg"><img src="images/ht107e_correct.jpg" width="600"></a>
+<p>The HT107E&rsquo;s Live, Neutral and Earth input is represented by the Red, Black and Green crocodile clips respectively.</p>
+<p>For the <code>Correct</code> state, the Red crocodile clip is connected to the brown live wire, the Black crocodile clip is connected to the blue neutral wire, while the Green crocodile clip is connected to the green-yellow earth wire.</p>
+<p>In this state, the left and middle LEDs are on and right LED is off. The LCD backlight is green.</p>
+<h4 id="2-open-neutral-off-on-off">2. Open Neutral (OFF-ON-OFF)</h4>
+<a href="images/ht107e_open_neutral.jpg"><img src="images/ht107e_open_neutral.jpg" width="600"></a>
+<p>To simulate the <code>Open Neutral</code> state, the Red crocodile clip is connected to the brown live wire, the Black crocodile clip is disconnected from the blue neutral wire, while the Green crocodile clip is still connected to the green-yellow earth wire.</p>
+<p>In this state, only the middle LED is on. The LCD backlight is red.</p>
+<h4 id="3-liveground-reverse-off-on-on">3. Live/Ground Reverse (OFF-ON-ON)</h4>
+<a href="images/ht107e_live_ground_reverse.jpg"><img src="images/ht107e_live_ground_reverse.jpg" width="600"></a>
+<p>To simulate the <code>Live/Ground Reverse</code> state, the Red crocodile clip is connected to the green-yellow earth wire, the Black crocodile clip connected to the blue neutral wire, while the Green crocodile clip is connected to the brown live wire.</p>
+<p>In this state, the middle and right LEDs are on . The LCD backlight is red.</p>
+<h4 id="4-liveneutral-reverse-on-off-on">4. Live/Neutral Reverse (ON-OFF-ON)</h4>
+<a href="images/ht107e_live_neutral_reverse.jpg"><img src="images/ht107e_live_neutral_reverse.jpg" width="600"></a>
+<p>To simulate the <code>Live/Neutral Reverse</code> state, the Red crocodile clip is connected to the blue neutral wire, the Black crocodile clip connected to the brown live wire, while the Green crocodile clip is connected to the green-yellow earth wire.</p>
+<p>In this state, the left and right LEDs are on. The LCD backlight is red.</p>
+<h4 id="5-liveground-reverse-missing-ground-on-on-on">5. Live/Ground Reverse Missing Ground (ON-ON-ON)</h4>
+<a href="images/ht107e_live_ground_reverse_missing_ground.jpg"><img src="images/ht107e_live_ground_reverse_missing_ground.jpg" width="600"></a>
+<p>To simulate the <code>Live/Ground Reverse Missing Ground</code> state, the Red crocodile clip is not connected, the Black crocodile clip connected to the blue neutral wire, while the Green crocodile clip is connected to the brown live wire.</p>
+<p>In this state, all LEDS are on. It was observed that the left and middle LEDs are significantly dimmer than the right LED. The LCD backlight is red.</p>
+<h4 id="6-open-ground-on-off-off">6. Open Ground (ON-OFF-OFF)</h4>
+<a href="images/ht107e_open_ground.jpg"><img src="images/ht107e_open_ground.jpg" width="600"></a>
+<p>To simulate the <code>Open Ground</code> state, the Red crocodile clip is connected to the brown live wire, the Black crocodile clip connected to the blue neutral wire, while the Green crocodile clip is not connected.</p>
+<p>In this state, only the left LED is on. The LCD backlight is red.</p>
+<h4 id="7-missing-live-off-off-off">7. Missing Live (OFF-OFF-OFF)</h4>
+<a href="images/ht107e_no_live.jpg"><img src="images/ht107e_no_live.jpg" width="600"></a>
+<p>To simulate the <code>Missing Live</code> state, the Red crocodile clip is not connected, the Black crocodile clip connected to the blue neutral wire, while the Green crocodile clip is connected to the green-yellow earth wire.</p>
+<p>In this state, none of the LEDs are on. The LCD backlight is off.</p>
+<h4 id="8-earthneutral-reverse-on-on-off">8. Earth/Neutral Reverse (ON-ON-OFF)</h4>
+<a href="images/ht107e_earth_neutral_reverse.jpg"><img src="images/ht107e_earth_neutral_reverse.jpg" width="600"></a>
+<p>To simulate the <code>Earth/Neutral Reverse</code> state, the Red crocodile clip is connected to the brown live wire, the Black crocodile clip is connected to the green neutral wire, the Green crocodile clip is connected to the blue neutral wire.</p>
+<p>In this state, the left and middle LEDs are on and right LED is off. The LCD backlight is green. The LED state matches identically with the <code>Correct</code> state.</p>
+<p>This means that the tester cannot be used to detect the Earth/Neutral Reverse fault. If an appliance is connected to a socket with this fault, the onsite RCCB will trip due to earth leakage.</p>
+<h2 id="ht107e-disassembly">HT107E Disassembly</h2>
+<p>After characterising the behaviour of the HT107E, I collaborated with a friend in the disassembly process.</p>
+<p>There was no easy way identified to open up the enclosure. No visible screws were found after thorough observation of the device. Hence, we deduced that the casing may have been sealed with an ultrasonic weld and we therefore decided to use a Dremel to cut and split open the casing.</p>
+<a href="images/ht107e-dremel.jpg"><img src="images/ht107e-dremel.jpg" width="300"></a>
+<p>After some time of cutting along the edges of the enclosure, we realised the corners of the top cover were harder to open up compared to other edges. Hence, we suspected that there might be screws on the top cover that were covered by the sticker label.
+We then decided to remove the sticker label on the cover and found that there were 4 screws. It was really overkill to use the Dremel!</p>
+<a href="images/ht107e-no-label.jpg"><img src="images/ht107e-no-label.jpg" width="600"></a>
+<p>The screws were removed using a screwdriver and the cover of the enclosure easily came off.</p>
+<a href="images/ht107e_ac_terminals_to_board.jpg"><img src="images/ht107e_ac_terminals_to_board.jpg" width="600"></a>
+<p>After opening the enlosure, we found that the 3 socket pins are connected via 3 wires to the back of the PCB board.</p>
+<a href="images/ht107e_lcd.jpg"><img src="images/ht107e_lcd.jpg" width="600"></a>
+<p>The LCD screen is attached to the front of the PCB. The individual segments are driven by the evenly spaced electrical contacts.</p>
+<h3 id="key-components-observed">Key Components Observed</h3>
+<a href="images/ht107e_board_rear.jpg"><img src="images/ht107e_board_rear.jpg" width="600"></a>
+<p>This photo is a close-up shot of the rear of the PCB. The microcontroller is hidden behind an epoxy blob so the exact chip cannot be identified.</p>
+<h4 id="on-bright-ob2222">On-Bright OB2222</h4>
+<p>We were curious about the power supply for the microcontroller as it cannot be directly run from the AC input.</p>
+<p>Hence, we tried to identify all the ICs on the board.</p>
+<a href="images/ht107e-ob2222.jpg"><img src="images/ht107e-ob2222.jpg" width="600"></a>
+<p>This OB2222 chip caught our attention.</p>
+<a href="images/ht107e-ob2222-datasheet.jpg"><img src="images/ht107e-ob2222-datasheet.jpg" width="600"></a>
+<p>Googling this part number gave us this datasheet which indicates that it is a non-isolated AC-DC 5.0V switching regulator.</p>
+<p>This low-cost non-isolated method to generate the DC output is optimal for this application. However, we have to be mindful of the safety considerations that we cannot probe (even the DC section of) the board while the AC power is attached.</p>
+<h4 id="fang-jing-fl817">Fang Jing FL817</h4>
+<p>In the previous photo, we also identified a few FL817 optoisolators on the board connected to each of the AC pins. This is probably used by the microcontroller to determine which of the AC pins have current flowing through it.</p>
+<h4 id="torex-xc6206">Torex XC6206</h4>
+<a href="images/ht107e-6206a.jpg"><img src="images/ht107e-6206a.jpg" width="600"></a>
+<p>Another power related IC XC6206 was found. Searching the datasheet online reveals that this is a DC-DC 3.0V linear regulator.</p>
+<h2 id="schematics">Schematics</h2>
+<p>Given the complexity of the board, it was infeasible to map out every PCB trace. So, we decided to just go for the most relevant traces associated with the 3 indicator LEDs.</p>
+<a href="images/ht107e_sch.png"><img src="images/ht107e_sch.png" width="600"></a>
+<p>We drew this Kicad schematic that contains the components in the circuit between the AC input and the LEDs.</p>
+<p>Based on this schematic the current paths were deduced to determine why certain LEDs light up under certain conditions.</p>
+<h3 id="1-correct-on-on-off-1">1. Correct (ON-ON-OFF)</h3>
+<a href="images/ht107e-teardown-flows/correct.jpg"><img src="images/ht107e-teardown-flows/correct.jpg" width="600"></a>
+<ul>
+<li>Left LED: Current flows from Live to Neutral when Live is in positive half cycle</li>
+<li>Middle LED: Current flows from Earth to Live when Live is in negative half cycle</li>
+</ul>
+<h3 id="2-open-neutral-off-on-off-1">2. Open Neutral (OFF-ON-OFF)</h3>
+<a href="images/ht107e-teardown-flows/open-neutral.jpg"><img src="images/ht107e-teardown-flows/open-neutral.jpg" width="600"></a>
+<ul>
+<li>Middle LED: Current flows from Earth to Live when Live is in negative half cycle</li>
+</ul>
+<h3 id="3-liveground-reverse-off-on-on-1">3. Live/Ground Reverse (OFF-ON-ON)</h3>
+<a href="images/ht107e-teardown-flows/live-ground-reverse.jpg"><img src="images/ht107e-teardown-flows/live-ground-reverse.jpg" width="600"></a>
+<ul>
+<li>Middle LED: Current flows from Live to Earth when Live is in positive half cycle</li>
+<li>Right LED: Current flows from Live to Neutral when Live is in positive half cycle</li>
+</ul>
+<h3 id="4-liveneutral-reverse-on-off-on-1">4. Live/Neutral Reverse (ON-OFF-ON)</h3>
+<a href="images/ht107e-teardown-flows/live-neutral-reverse.jpg"><img src="images/ht107e-teardown-flows/live-neutral-reverse.jpg" width="600"></a>
+<ul>
+<li>Left LED: Current flows from Neutral to Live when Live is in negative half cycle</li>
+<li>Right LED: Current flows from Earth to Live when Live is in negative half cycle</li>
+</ul>
+<h3 id="5-liveground-reverse-missing-ground-on-on-on-1">5. Live/Ground Reverse Missing Ground (ON-ON-ON)</h3>
+<a href="images/ht107e-teardown-flows/live-ground-reverse-missing-ground.jpg"><img src="images/ht107e-teardown-flows/live-ground-reverse-missing-ground.jpg" width="600"></a>
+<ul>
+<li>
+<p>Left and Middle LED: When Live is in the positive half cycle, current flows from Live though the middle LED, then goes to the left LED before returning through the Neutral. With the higher resistance across 2 LED circuits, the Left and Middle LED will be noticeably dimmer.</p>
+</li>
+<li>
+<p>Right LED: Current flows from Live to Neutral when Live is in positive half cycle</p>
+</li>
+</ul>
+<h3 id="6-open-ground-on-off-off-1">6. Open Ground (ON-OFF-OFF)</h3>
+<a href="images/ht107e-teardown-flows/open-ground.jpg"><img src="images/ht107e-teardown-flows/open-ground.jpg" width="600"></a>
+<ul>
+<li>Left LED: Current flows from Live to Neutral when Live is in positive half cycle</li>
+</ul>
+<h3 id="7-missing-live-off-off-off-1">7. Missing Live (OFF-OFF-OFF)</h3>
+<a href="images/ht107e-teardown-flows/missing-live.jpg"><img src="images/ht107e-teardown-flows/missing-live.jpg" width="600"></a>
+<p>No current flow as Earth and Neutral are at the same potential.</p>
+<h3 id="8-earthneutral-reverse-on-on-off-1">8. Earth/Neutral Reverse (ON-ON-OFF)</h3>
+<a href="images/ht107e-teardown-flows/earth-neutral-reverse.jpg"><img src="images/ht107e-teardown-flows/earth-neutral-reverse.jpg" width="600"></a>
+<ul>
+<li>Left LED: Current flows from Live to Earth when Live is in positive half cycle</li>
+<li>Middle LED: Current flows from Neutral to Live when Live is in negative half cycle</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>After this teardown process, the mystery of how those 3 LEDs work based on the differing electrical faults is finally solved. The circuits for those 3 LEDs are straightforward to grasp but they certainly took some design thought as it&rsquo;s quite an elegant solution for the problem.</p>
+<p>For the rest of the circuitry associated with the display and meter readings, it&rsquo;s infeasible to reverse engineer the traces in a reasonable amount of time but I can imagine those will be interesting as well.</p>
+<p>Many thanks to Jing Ru for assisting me with this teardown effort. :)</p>
+<p>The Kicad schematic can be found here: <a href="https://github.com/yeokm1/ht107e-socket-tester-teardown">https://github.com/yeokm1/ht107e-socket-tester-teardown</a></p>
+<p>My presentation on this topic:</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/13FN2agjS0M" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/teardowns">teardowns</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yeokm1/yeokm1.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNTQ3ODI3NTI="
+        data-category="Comments"
+        data-category-id="DIC_kwDODy-tIM4CXEA6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div class="pagination">
+  
+    <a href="/2021/11/how-do-i-produce-my-flight-videos/" class="button"><div class="previous"><div>How do I produce my flight videos?</div></div></a>
+  
+  
+    <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/" class="button"><div class="next"><div>Building a DOS ChatGPT client in 2023</div></div></a>
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/06/teardown-and-review-of-hand386/" class="image featured">
+    
+      <img src="/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/06/teardown-and-review-of-hand386/">Teardown &amp; review of a new 386 system: Hand386</a></h1>
+          <time class="published" datetime="">June 5, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/" class="image featured">
+    
+      <img src="/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/03/building-a-dos-chatgpt-client-in-2023/">Building a DOS ChatGPT client in 2023</a></h1>
+          <time class="published" datetime="">March 26, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/" class="image featured">
+    
+      <img src="/2022/08/teardown-of-habotest-ht107e-socket-tester/images/ht107e_open_top.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/">Teardown of Habotest HT107E Socket Tester</a></h1>
+          <time class="published" datetime="">August 6, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2021/11/how-do-i-produce-my-flight-videos/" class="image featured">
+    
+      <img src="/2021/11/how-do-i-produce-my-flight-videos/images/fv-photo-caption.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2021/11/how-do-i-produce-my-flight-videos/">How do I produce my flight videos?</a></h1>
+          <time class="published" datetime="">November 6, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/" class="image featured">
+    
+      <img src="/2021/09/review-usage-and-repair-of-the-framework-laptop/images/fw-caption-image.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/">Review, usage and repair of the Framework laptop</a></h1>
+          <time class="published" datetime="">September 21, 2021</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/hacks/">hacks<span class="count">20</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/personal/">personal<span class="count">17</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/singapore/">singapore<span class="count">16</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/teardowns/">teardowns<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/school/">school<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/book-reviews/">book-reviews<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/politics/">politics<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hackathon/">hackathon<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/product-reviews/">product-reviews<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/admin/">admin<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/repair-kopitiam/">repair-kopitiam<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/keyboards/">keyboards<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/quiz/">quiz<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/dvorak/">dvorak<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/flight-sim/">flight-sim<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2023
+      
+        YKM&#39;s Corner on the Web
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.117.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+<script type="text/javascript">
+  var sc_project = 8700008;
+  var sc_invisible = 1;
+  var sc_security = "b569f6b4";
+  var sc_https = 1; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript>
+  <div class="statcounter"><a title="free hit
+  counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+        src="https://c.statcounter.com/8700008/0/b569f6b4/1/" alt="free hit counter"></a></div>
+</noscript>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function (x) {
+      x.parentElement.classList += 'has-jax'
+    })
+  });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.4b08dba1bed68bfe65db2515ff7d6b0258656cf4079ed4e03263be238684e63e.js" integrity="sha256-Swjbob7Wi/5l2yUV/31rAlhlbPQHntTgMmO&#43;I4aE5j4="></script>
+<script src="/js/add-on.js"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50169449-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Building a DOS ChatGPT client in 2023 - YKM&#39;s Corner on the Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.117.0"><meta itemprop="name" content="Building a DOS ChatGPT client in 2023">
+<meta itemprop="description" content="With the recent attention on ChatGPT and OpenAI&rsquo;s release of their APIs, many developers have developed clients for modern platforms to talk to this super smart AI chatbot. However I&rsquo;m pretty sure almost nobody has written one for a vintage platform like MS-DOS.
+This client now supports Hugging Face API and text to speech (TTS) capability. More info on TTS is found at the later part of this post."><meta itemprop="datePublished" content="2023-03-26T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-03-26T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3160"><meta itemprop="image" content="http://yeokhengmeng.com/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Building a DOS ChatGPT client in 2023" />
+<meta property="og:description" content="With the recent attention on ChatGPT and OpenAI&rsquo;s release of their APIs, many developers have developed clients for modern platforms to talk to this super smart AI chatbot. However I&rsquo;m pretty sure almost nobody has written one for a vintage platform like MS-DOS.
+This client now supports Hugging Face API and text to speech (TTS) capability. More info on TTS is found at the later part of this post." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yeokhengmeng.com/2023/03/building-a-dos-chatgpt-client-in-2023/" /><meta property="og:image" content="http://yeokhengmeng.com/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-03-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-03-26T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://yeokhengmeng.com/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg"/>
+
+<meta name="twitter:title" content="Building a DOS ChatGPT client in 2023"/>
+<meta name="twitter:description" content="With the recent attention on ChatGPT and OpenAI&rsquo;s release of their APIs, many developers have developed clients for modern platforms to talk to this super smart AI chatbot. However I&rsquo;m pretty sure almost nobody has written one for a vintage platform like MS-DOS.
+This client now supports Hugging Face API and text to speech (TTS) capability. More info on TTS is found at the later part of this post."/>
+<meta name="twitter:site" content="@yeokm1"/>
+<link rel="stylesheet" href="/css/bundle.min.a5db8e699d9ae70030c71551956f7b63ee5a1e88c7c2fa3f981a4cec53093283.css" integrity="sha256-pduOaZ2a5wAwxxVRlW97Y&#43;5aHojHwvo/mBpM7FMJMoM=">
+        <link rel="stylesheet" href="/css/add-on.css"></head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            post
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/aviation" class="link"><i class='fas fa-plane'></i> Aviation</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/retrocomputing" class="link"><i class='fas fa-save'></i> Retrocomputing</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/favourite-quotes/" class="link">Favourite Quotes</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about-me/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/zh" lang="zh" class="no-lang link">简体中文 (zh)</a>
+      
+    
+  
+</menu>
+
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="" alt="Kheng Meng profile pic" /></a>
+  <header>
+    <h1>Yeo Kheng Meng</h1>
+  </header>
+  <main>
+    <p>Maker, Coder, Private Pilot, Retrocomputing Enthusiast</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/yeokm1" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/yeokhengmeng" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/yeokhengmeng" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/yeokm1" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/yeokm1" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/yeokm1" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+<li><a href="//telegram.me/yeokm1" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/2023/03/building-a-dos-chatgpt-client-in-2023/">Building a DOS ChatGPT client in 2023</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2023-03-26 00:00:00 &#43;0000 UTC">
+      March 26, 2023
+    </time>
+    <span class="author"></span>
+    
+      <p>15 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
+  
+  <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/" class="image featured">
+    
+      <img src="/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg" alt="">
+    
+  </a>
+
+
+  <div class="content">
+    <p>With the recent attention on ChatGPT and <a href="https://openai.com/blog/introducing-chatgpt-and-whisper-apis">OpenAI&rsquo;s release of their APIs</a>, many developers have developed clients for modern platforms to talk to this super smart AI chatbot. However I&rsquo;m pretty sure almost nobody has written one for a vintage platform like MS-DOS.</p>
+<p>This client now supports Hugging Face API and text to speech (TTS) capability. More info on TTS is found at the later part of this post.</p>
+<h1 id="the-app">The App</h1>
+<p>Let&rsquo;s jump right in and look at the app.</p>
+<a href="images/doschgpt-5155-front-using.jpg"><img src="images/doschgpt-5155-front-using.jpg" width="500"></a>
+<p>Screenshot of the app</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/Ksysa9aSTJQ" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>Video of the client in action accessing ChatGPT. I first launch MTCP DHCP to get an IP address from my router, then launch my app to start chatting.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/H7jDqLdEu8M" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>Video of the same client accessing Hugging Face.</p>
+<p>If you are too excited to continue reading and want to dive into code and use the app, here is the <a href="https://github.com/yeokm1/doschgpt">repository on Github https://github.com/yeokm1/doschgpt</a>.</p>
+<h1 id="why-dos">Why DOS?</h1>
+<p>3.5 years ago, I wrote a <a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/">Slack client to run on Windows 3.1</a>. I thought to try something different this time and develop for an even older platform as a challenge.</p>
+<p>DOS does not have native networking abilities and the systems are weaker in processing power thus it should present additional difficulties when coding for this platform.</p>
+<h1 id="target-hardware">Target Hardware</h1>
+<p>The oldest MS-DOS PC I have is my 1984 IBM 5155 Portable PC so it shall be the target platform. If my app can run on this IBM machine, it should run on pretty much any other DOS machine.</p>
+<a href="images/doschgpt-5155-front-top.jpg"><img src="images/doschgpt-5155-front-top.jpg" width="500"></a>
+<p>It has the following high-level specifications:</p>
+<ul>
+<li>Intel 8088 4.77Mhz CPU</li>
+<li>640KB conventional memory (using upgrade kit)</li>
+<li>CGA ISA graphics</li>
+<li>NE2000-compatible ISA Ethernet adapter</li>
+<li>XT-IDE ISA drive controller</li>
+<li>MS-DOS 6.22</li>
+</ul>
+<p><a href="https://en.wikipedia.org/wiki/IBM_Portable_Personal_Computer">According to Wikipedia</a>, this is an XT-class system that uses the same Intel 8088 CPU as the first IBM PC 5150 released in 1981. I have documented more details of this PC <a href="https://github.com/yeokm1/retro-configs/tree/master/desktops/ibm-5155">here</a>.</p>
+<h1 id="development-setup">Development setup</h1>
+<h2 id="compiler">Compiler</h2>
+<p>Just like developing the <a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/">Windows 3.1 Slack client</a>, I had to locate a compiler that can target for old platforms like 16-bit DOS.</p>
+<p>A quick Google search says that &ldquo;best&rdquo; compiler for such a job is the <a href="https://en.wikipedia.org/wiki/Watcom_C/C%2B%2B">Open Watcom</a> C/C++ compiler. It is a 32-bit program which means it can run on modern platforms like the 64-bit Windows 11!</p>
+<h2 id="test-environment-and-iteration-process">Test environment and iteration process</h2>
+<p>The problem with 16-bit DOS programs is that modern 64-bit versions of Windows cannot execute them by default*. I still need a way to test the compiled binary during the development process. Transporting the binary over to my actual IBM DOS PC is possible but will greatly increase the hassle during development.</p>
+<p>*Technically there are third-party solutions like <a href="https://github.com/otya128/winevdm">winevdm</a> but it will not work in this use case as will be explained later.</p>
+<p>Therefore I setup a Virtualbox virtual machine running DOS 6.22:</p>
+<a href="images/doschgpt-vbox.png"><img src="images/doschgpt-vbox.png" width="700"></a>
+<p>Full configuration info of this VM can be found <a href="https://github.com/yeokm1/retro-configs/tree/master/vms/vbox-dos622">here</a>.</p>
+<p>I set it up to be on a Bridged network with the host PC so communication can be easily done between the two and the VM can access my internet connection.</p>
+<p>On the host machine with the compiled binary, I start a simple webserver using Python to serve the binary <code>python3 -m http.server 8000</code>.</p>
+<p>On the VM, I used a program from MTCP to download the binary for testing <code>htget -o doschgpt.exe http://X.X.X.X:8000/doschgpt.exe</code>.</p>
+<p>Another test environment I used is <a href="https://86box.net/">86Box</a>.</p>
+<a href="images/doschgpt-86box-compaq-portable.png"><img src="images/doschgpt-86box-compaq-portable.png" width="700"></a>
+<p>Using provided ROMS, one can get a close emulation to the vintage target environment if the actual machine is not available.</p>
+<h1 id="coding">Coding</h1>
+<p>Coding for the MS-DOS platform presents some additional challenges over modern Windows/Mac/Linux. The greatest issue is networking APIs as DOS does not natively come with those.</p>
+<p>Yet DOS programs with TCP/IP network abilities have been written before so this was definitely possible.</p>
+<h2 id="app-architecture">App architecture</h2>
+<p>After doing some research, I found out that there is a networking standard called the <a href="https://en.wikipedia.org/wiki/PC/TCP_Packet_Driver">Packet Driver API</a> that was invented in 1983.</p>
+<p>To use the low-level Packet Driver API, a network card manufacturer will release a driver that implements this API. The app developer then uses this API to talk to the network card.</p>
+<p>Initially I thought it would be a huge challenge to pick up this low-level API but thankfully there is an existing open-source network library that can help with this task. This library is <a href="http://brutman.com/mTCP/">MTCP</a> written by Michael B. Brutman and operates till as low as the link-layer.</p>
+<a href="images/doschgpt-architecture.png"><img src="images/doschgpt-architecture.png" width="700"></a>
+<p>This is a high-level overview of the communication path.</p>
+<p>The MTCP library has to be integrated into the application. It will then communicate with the manufacturer-provided Packet Driver which is running as a Terminate-and-stay-resident(TSR) program. TSRs stay dormant in the background until called by an application. The Packet Driver then communicates directly with the network card.</p>
+<p>There is no packet driver I can find that can be installed on a modern 64-bit Windows OS. Hence even if the 16-bit DOS binary can be executed using tools like <a href="https://github.com/otya128/winevdm">winevdm</a>, it won&rsquo;t connect to the network.</p>
+<p>On the other hand, Packet Drivers are relatively common for older network cards like the NE2000-compatible card I use in my IBM5155.</p>
+<h2 id="networking">Networking</h2>
+<p>Thanks to the well-documented <a href="http://brutman.com/mTCP/">MTCP</a> library. Coding through this section was relatively easy however there are some considerations that have to be kept in mind.</p>
+<p>There is no concept of multi-threading in DOS so nothing is running in the background to service the network stack that we take for granted as a part of modern operating systems. The network stack is mostly controlled by the application hence this servicing has to be done internally as well.</p>
+<p>This set of functions have to be called regularly in order to drive the lower network layers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>PACKET_PROCESS_SINGLE;
+</span></span><span style="display:flex;"><span>Arp::driveArp();
+</span></span><span style="display:flex;"><span>Tcp::drivePackets();
+</span></span></code></pre></div><p>MTCP provides raw socket APIs with basic <code>send()</code> and <code>recv()</code> functions that are sufficient for one to use.</p>
+<h2 id="chatgpt-api">ChatGPT API</h2>
+<p>OpenAI has released many APIs but I only use one of them which is the Chat Completion. Their Chat Completion API is neatly documented <a href="https://platform.openai.com/docs/api-reference/making-requests">here</a>.</p>
+<p>They even provide a nice curl example for one to reference:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl https://api.openai.com/v1/chat/completions -H <span style="color:#0ff;font-weight:bold">&#34;Content-Type: application/json&#34;</span> -H <span style="color:#0ff;font-weight:bold">&#34;Authorization: Bearer sk-XXX&#34;</span> -d <span style="color:#0ff;font-weight:bold">&#39;{ &#34;model&#34;: &#34;gpt-3.5-turbo&#34;, &#34;messages&#34;: [{&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: &#34;What is MS-DOS?&#34;}], &#34;temperature&#34;: 0.7 }&#39;</span>
+</span></span></code></pre></div><p>With this API I will need to construct the entire POST request. Unlike in modern development platforms, there are no helper functions I can use so I have to construct the entire POST request by hand in C such as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold">#define API_CHAT_COMPLETION &#34;POST /v1/chat/completions HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Bearer %s\r\nHost: api.openai.com\r\nContent-Length: %d\r\nConnection: close\r\n\r\n%s&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold">#define API_BODY &#34;{ \&#34;model\&#34;: \&#34;%s\&#34;, \&#34;messages\&#34;: [{\&#34;role\&#34;: \&#34;user\&#34;, \&#34;content\&#34;: \&#34;%s\&#34;}], \&#34;temperature\&#34;: %.1f }&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold">#define API_BODY_SUBSEQUENT &#34;{ \&#34;model\&#34;: \&#34;%s\&#34;, \&#34;messages\&#34;: [{\&#34;role\&#34;: \&#34;user\&#34;, \&#34;content\&#34;: \&#34;%s\&#34;}, {\&#34;role\&#34;: \&#34;assistant\&#34;, \&#34;content\&#34;: \&#34;%s\&#34;}, {\&#34;role\&#34;: \&#34;user\&#34;, \&#34;content\&#34;: \&#34;%s\&#34;}], \&#34;temperature\&#34;: %.1f }&#34;
+</span></span></span></code></pre></div><p>There are 2 types content that will be sent to the server. If this is the start of the conversation, <code>API_BODY</code> is filled up with the current user request and sent. For subsequent messages, the current user request is sent plus the previous request and ChatGPT reply.</p>
+<p>Sending the previous request and reply allows the model to have some context of the immediate conversation that took place before such as this:</p>
+<a href="images/doschgpt-context.png"><img src="images/doschgpt-context.png" width="500"></a>
+<p>Notice the second question does not mention Singapore? The model is able to infer the latest question is about Singapore because I sent the previous request and reply.</p>
+<p>Technically, one can send more previous requests/reply for even better context but this would mean even more buffers and programming logic has to be coded for. In my testing, just sending the previous request/reply should give sufficient context for the next question.</p>
+<h2 id="json-parsing">JSON Parsing</h2>
+<p>ChatGPT API will return the following JSON output.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="font-weight:bold">&#34;id&#34;</span>:<span style="color:#0ff;font-weight:bold">&#34;chatcmpl-XXXXX&#34;</span>,<span style="font-weight:bold">&#34;object&#34;</span>:<span style="color:#0ff;font-weight:bold">&#34;chat.completion&#34;</span>,<span style="font-weight:bold">&#34;created&#34;</span>:<span style="color:#ff0;font-weight:bold">1679326062</span>,<span style="font-weight:bold">&#34;model&#34;</span>:<span style="color:#0ff;font-weight:bold">&#34;gpt-3.5-turbo-0301&#34;</span>,<span style="font-weight:bold">&#34;usage&#34;</span>:{<span style="font-weight:bold">&#34;prompt_tokens&#34;</span>:<span style="color:#ff0;font-weight:bold">13</span>,<span style="font-weight:bold">&#34;completion_tokens&#34;</span>:<span style="color:#ff0;font-weight:bold">114</span>,<span style="font-weight:bold">&#34;total_tokens&#34;</span>:<span style="color:#ff0;font-weight:bold">127</span>},<span style="font-weight:bold">&#34;choices&#34;</span>:[{<span style="font-weight:bold">&#34;message&#34;</span>:{<span style="font-weight:bold">&#34;role&#34;</span>:<span style="color:#0ff;font-weight:bold">&#34;assistant&#34;</span>,<span style="font-weight:bold">&#34;content&#34;</span>:<span style="color:#0ff;font-weight:bold">&#34;\n\nMS-DOS (Microsoft Disk Operating System) is a command-line operating system.....&#34;</span>},<span style="font-weight:bold">&#34;finish_reason&#34;</span>:<span style="color:#0ff;font-weight:bold">&#34;stop&#34;</span>,<span style="font-weight:bold">&#34;index&#34;</span>:<span style="color:#ff0;font-weight:bold">0</span>}]}
+</span></span></code></pre></div><p>We want the value of the <code>content</code> key. I tried a few JSON C89 libraries but OpenWatcom had difficulties compiling them.</p>
+<p>After fighting with the compiler for some time, I realised I actually didn&rsquo;t need a JSON library as I only need to parse the one JSON format for a fixed key-value pair.</p>
+<a href="images/doschgpt-parse-json.png"><img src="images/doschgpt-parse-json.png" width="600"></a>
+<p>So I simply use the C function <code>strstr</code> to look for the key. Then search for the start and end index of the value. I do the same for the <code>prompt_tokens</code> and <code>completion_tokens</code> key-value pairs as well.</p>
+<h2 id="https">HTTPS</h2>
+<p>Just like my <a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/">Windows 3.1 Slack app</a>, I face a similar issue where the ChatGPT APIs are encrypted over HTTPS.</p>
+<p>If there aren&rsquo;t any modern TLS libraries compatible with Windows 3.1, it is even more unlikely one will be available for the DOS platform.  (Correction: As of June 2023, an anonymous developer called <a href="http://www.dialup.net/">dialup.net</a> has ported a TLS 1.3 library to Windows 3.1. More details <a href="http://www.dialup.net/wingpt/tls.html">here</a>)</p>
+<p>Even if such modern TLS encryption algorithms are ported (with significant effort no doubt) to run on the Intel 8088, it is likely to be too heavy to execute in a reasonable amount of time for such an old CPU.</p>
+<p>A TLS library meant for older UNIX systems <a href="https://github.com/classilla/cryanc">Crypto Ancienne</a> had this documented:</p>
+<blockquote>
+<p>Some systems may be too slow for present-day server expectations and thus will appear not to function even if the library otherwise works correctly. In our testing this <strong>starts to become a problem for CPUs slower than 40MHz</strong> or so, regardless of architecture.</p>
+<p>&hellip; <strong>Macintosh IIci with a 25MHz 68030 and no L2 card took 22 seconds</strong> &hellip; for a single short TLS 1.2 transaction to a local test server; <strong>a number of Internet hosts we tested it with simply cut the connection</strong> instead of waiting.
+<a href="https://github.com/classilla/cryanc/blob/main/README.md">https://github.com/classilla/cryanc/blob/main/README.md</a></p>
+</blockquote>
+<p>Therefore modern hardware has to be used to conduct the TLS transaction. I decided to cheat in the same way by using my own <a href="https://github.com/yeokm1/http-to-https-proxy">http-to-https-proxy</a> in Golang.</p>
+<a href="images/doschgpt-https.png"><img src="images/doschgpt-https.png" width="600"></a>
+<p>Running on a modern PC and acting as a transparent middleman, it inspects the host field of the HTTP requests and forwards the raw socket bytes as HTTPS to OpenAI&rsquo;s servers as-is. The payload is then relayed back byte-for-byte back to the client with <strong>no modification</strong>.</p>
+<p>As I would say again:</p>
+<blockquote>
+<p>Purists may not like this solution but this is the best I can do with my abilities in a reasonable amount of time.</p>
+</blockquote>
+<h2 id="readingwriting-input-to-the-console">Reading/writing input to the console</h2>
+<p>Writing text output to the screen is relatively simple by using the standard C <code>printf()</code> function.</p>
+<p>For reading input, there is where things get interesting. The standard way for modern C programs is to use console functions like <code>fgets()</code> or <code>scanf()</code> or a variant of one of those functions combined with multi-threading.</p>
+<p>The issue is that those console functions will pause the program while waiting for user input. Since the network stack is managed by the single-threaded DOS application instead of the operating system on modern systems, it means the network stack will be halted as well while waiting for user input.</p>
+<p>The user input therefore has to checked without pausing the execution of the program.</p>
+<p>I consulted the <a href="http://brutman.com/Adventures_In_Code/Adventures_In_Code.html">MTCP page</a> and <a href="https://jmagic.tistory.com/982">online samples</a> on how this can be done. This is the sample code for this purpose:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">int</span> currentMessagePos = <span style="color:#ff0;font-weight:bold">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">char</span> * messageToSend = (<span style="color:#fff;font-weight:bold">char</span> *) calloc (SIZE_MESSAGE_TO_SEND, <span style="color:#fff;font-weight:bold">sizeof</span>(<span style="color:#fff;font-weight:bold">char</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">while</span>(<span style="color:#fff;font-weight:bold">true</span>){
+</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">if</span> ( _bios_keybrd(_KEYBRD_READY) ) {
+</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">char</span> character = _bios_keybrd(_KEYBRD_READ);
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>        messageToSend[currentMessagePos] = character;
+</span></span><span style="display:flex;"><span>        currentMessagePos++;
+</span></span><span style="display:flex;"><span>        printf(<span style="color:#0ff;font-weight:bold">&#34;%c&#34;</span>, character);
+</span></span><span style="display:flex;"><span>        fflush(stdout);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>_bios_keybrd</code> is a passthrough to the <a href="https://en.wikipedia.org/wiki/INT_16H">INT 16h</a> BIOS keyboard interrupt.</p>
+<p>If a keypress is detected, the key is stored to a local buffer and printed to the console. I can now check and receive keypresses without pausing the program.</p>
+<p>However directly receiving the keypresses to store to my own local buffer and directly printing the key pressed introduces another issue. How to handle backspaces where we need to remove the previous character?</p>
+<p>This is actually a generic C problem and I found the answer <a href="https://stackoverflow.com/a/6793113">here</a> by using <code>\b \b</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#007f7f">//Backspace character
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">if</span>(character == <span style="color:#ff0;font-weight:bold">8</span>){
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>    <span style="color:#007f7f">// Remove previous character
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    printf(<span style="color:#0ff;font-weight:bold">&#34;%s&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">\b</span><span style="color:#0ff;font-weight:bold"> </span><span style="color:#0ff;font-weight:bold">\b</span><span style="color:#0ff;font-weight:bold">&#34;</span>);
+</span></span><span style="display:flex;"><span>    currentMessagePos--;
+</span></span><span style="display:flex;"><span>    messageInBuffer[currentMessagePos] = <span style="color:#0ff;font-weight:bold">&#39;\0&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    fflush(stdout);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The backspace character alone only moves the cursor back but does not remove the character on screen. So by using <code>\b \b</code>, we move the cursor back once, write a space, then move the cursor back again. After that, remove the character from the local buffer.</p>
+<p>This issue is typically not encountered on programs that use the standard <code>scanf()</code> or <code>fgets()</code> functions.</p>
+<h2 id="utf-8-and-code-pages">UTF-8 and Code Pages</h2>
+<p>The conventional range of <a href="https://en.wikipedia.org/wiki/ASCII">ASCII</a> contains 128 code points of which 95 are printable characters. The initial version of this app will print out whatever character that was sent from the API&rsquo;s JSON output. JSON uses the modern standard UTF-8 to represent characters.</p>
+<p>For the first 128 code points, all is good. However problems arise when we are dealing with variable-sized UTF-8 characters outside the first 128 points that uses more than one byte. <a href="https://github.com/yeokm1/doschgpt/issues/8">This issue</a> was brought up to me that my app does not properly display accented characters which are outside of these 128 points.</p>
+<a href="images/doschgpt-accent-not-print.png"><img src="images/doschgpt-accent-not-print.png" width="600"></a>
+<p>Left was the original version. Right is my fixed version. The é acute U+00E9 is represented by 2 bytes 0xC3 and 0xA9 in UTF-8.</p>
+<p>In my original version, the raw bytes are printed directly as ASCII. This means UTF-8 bytes are not handled leading to display issues as the original IBM PC predates Unicode and does not natively support displaying UTF-8 characters.</p>
+<p>However IBM/DOS systems support something called <a href="https://en.wikipedia.org/wiki/Code_page">Code Pages</a>(CP) which utilises <a href="https://en.wikipedia.org/wiki/Extended_ASCII">Extended ASCII</a> to allow code points from 128 to 255 to be used to display additional characters.</p>
+<p>One of the default character sets available and loaded by default in IBM DOS systems is called the <a href="https://en.wikipedia.org/wiki/Code_page_437">Code Page 437</a> character set.</p>
+<a href="images/doschgpt-cp437.png"><img src="images/doschgpt-cp437.png" width="500"></a>
+<p>Source: <a href="https://en.wikipedia.org/wiki/Code_page_437">https://en.wikipedia.org/wiki/Code_page_437</a></p>
+<p>This character set is small and obviously does not support all UTF-8 characters but it does support more characters over the conventional ASCII.</p>
+<p>As I could not locate UTF-8 to CP437 translation code online that fit what I wanted, I wrote translator functions <a href="https://github.com/yeokm1/doschgpt/blob/master/doschgpt-code/utfcp437.cpp">here</a>. It will check the 1-3 byte values of a potential UTF-8 character that has a CP437 equivalent, then make the conversion to the appropriate CP437 value. Otherwise, an empty square ■ is displayed.</p>
+<a href="images/doschgpt-5155-accent.jpg"><img src="images/doschgpt-5155-accent.jpg" width="500"></a>
+<p>An example test of the accented characters on the actual IBM PC.</p>
+<p>Soon after, a user from Greece <a href="https://www.facebook.com/profile.php?id=100008477834865">Nikos Pinnikas</a> suggested I should add Greek support as well. Greek is supported through the <a href="https://en.wikipedia.org/wiki/Code_page_737">CP737</a>.</p>
+<a href="images/doschgpt-cp737.png"><img src="images/doschgpt-cp737.png" width="500"></a>
+<p>Source: <a href="https://en.wikipedia.org/wiki/Code_page_737">https://en.wikipedia.org/wiki/Code_page_737</a></p>
+<p>This code page has to be loaded before starting the app. After that, the app has to be set to look for Greek-specific UTF-8 characters using the <code>-cp737</code> command line argument. This is because all code pages map to the same code point space and the app will assume CP437 by default.</p>
+<a href="images/doschgpt-display-greek.jpg"><img src="images/doschgpt-display-greek.jpg" width="600"></a>
+<p>This screenshot from Nikos shows the successful result.</p>
+<p>The translator functions for Greek CP737 can be found <a href="https://github.com/yeokm1/doschgpt/blob/master/doschgpt-code/utfcp737.cpp">here</a>.</p>
+<h2 id="text-to-speech">Text to Speech</h2>
+<p>This feature was added later based on the suggestion of Nikos that enables the app to speak in the voice of <a href="https://en.wikipedia.org/wiki/Dr._Sbaitso">Dr. Sbaitso</a>. Dr Sbaitso was an AI speech synthesis program released by Creative in 1991.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/wBDlXHkDqws" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>A 6.5 min demo video using my <a href="/2021/05/setting-up-a-486-retro-pc/">vintage i486 desktop</a> and a Sound Blaster 16 CT2950.</p>
+<p>Doing this requires these utilities from Dr Sbaitso install media downloadable from <a href="https://winworldpc.com/product/dr-sbaitso/2x">Winworld</a>:</p>
+<ul>
+<li>SBTalker.exe: Smoothtalker by First Byte text-to-speech engine that loads as a TSR</li>
+<li>Blaster.drv: Used by Smoothtalker to talk to a Sound Blaster compatible card</li>
+<li>Read.exe: Reads its command line arguments to the Smoothtalker TSR</li>
+<li>Remove.exe: To unload the memory-hungry TSR after use</li>
+</ul>
+<p>With this &ldquo;API&rdquo; I do not have to manually find a DOS-compatible Text to Speech (TTS) C algorithm and look up how to address the Sound Blaster hardware directly.</p>
+<a href="images/doschgpt-sb-tts.png"><img src="images/doschgpt-sb-tts.png" width="600"></a>
+<p>The startup banners of those utilities which I made sure are displayed on app start.</p>
+<a href="images/doschgpt-sb-talker-mem.png"><img src="images/doschgpt-sb-talker-mem.png" width="600"></a>
+<p>The SBTalker TSR consumes a lot of memory when loaded so my client app will unload this TSR after it completes.</p>
+<p><code>Read.exe</code> is the primary tool used by my client app to send the text strings to be read. However in DOS there is a limit of <a href="https://stackoverflow.com/a/41449103">up to 127 bytes for command line arguments</a>. This means that long replies from ChatGPT will have to be broken up and passed to <code>Read.exe</code> through repeated calls. To do this, I split strings by punctuation and have <code>Read.exe</code> read phrase by phrase hence why there are some noticeably longer pauses in some parts.</p>
+<p>On every call to <code>Read.exe</code>, the Creative banner will display thus affecting the user experience. To mitigate this, I redirect the <code>stdout</code> before the call to <code>Read.exe</code> and restore the <code>stdout</code> after the call completes. Here is some sample code to show how it was done:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#007f7f">// Send stdout to nul
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>freopen(<span style="color:#0ff;font-weight:bold">&#34;nul&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;r&#34;</span>, stdout);
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">// Tell read program to read the words &#34;hello world&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>system(<span style="color:#0ff;font-weight:bold">&#34;read hello world&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">// Flush away existing stdout content
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>fflush(stdout);
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">//Restore the stdout
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>freopen(<span style="color:#0ff;font-weight:bold">&#34;con&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;a&#34;</span>, stdout);
+</span></span></code></pre></div><p>You may wonder I did not use my IBM5155 for this demo? It&rsquo;s because I found that while the 4.77Mhz Intel 8088 can run the speech synthesis and playback utilities, it was too slow and choppy to be bearable. Emulation testing under 86Box shows that the minimum CPU speed for reasonable performance is 8Mhz. My 486 desktop is the next step up the vintage system ladder I have so I have to use this in my demo.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>This project would not have been possible without the help of Brutman&rsquo;s excellent well-documented MTCP library. Without his library and sample code, figuring out how to talk to the Packet Driver and implementing the entire TCP/IP stack down to the link-layer will be an extremely tall order.</p>
+<p>Writing this chat client was a fun experience. Having the compiler being able to be run on modern Windows OS certainly make things easier. In fact it was easier than for Windows 3.1 Slack app I did before. I initially thought that using x86 Assembly was mandatory but thankfully I did not have to do so.</p>
+<p>Considering this is my first time coding for the DOS platform and on this old IBM PC at that, I was actually impressed by the performance of old machines like this. And before you ask, I did not use ChatGPT for help to code this app in any way. But anyway I decided to ask it.</p>
+<a href="images/doschgpt-reply.png"><img src="images/doschgpt-reply.png" width="500"></a>
+<blockquote>
+<p>&ldquo;Keep in mind that creating a DOS ChatGPT client may be challenging, as DOS is an outdated operating system and may not have the necessary tools and resources to develop modern applications.&rdquo;
+ChatGPT (Mar 2023)</p>
+</blockquote>
+<p>Challenge already accepted and won. :P. And what is the AI smoking with using the official Python API library on a DOS platform&hellip;*</p>
+<p>After experiencing this, I will definitely be writing more retro-software in future. Till then, I hope you learned something and enjoyed reading this as much as me developing this app.</p>
+<p>*As someone pointed out, <a href="http://www.caddit.net/pythond/">Python for MS-DOS</a> is available. It&rsquo;s true and it came up in my research but it&rsquo;s an older version of Python 2.4.2 and requires a 32-bit CPU (such as 80386 or higher) since it is compiled using <a href="https://www.delorie.com/djgpp/">DJGPP</a>. This would mean it will not work for my target platform IBM5155 which uses a 16-bit Intel 8088. The <a href="https://github.com/openai/openai-python">Python library from OpenAI</a> clearly mentions its requirements as Python 3.7.1+ so it is highly unlikely to work on such an old version of Python too.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/_MLQQ6utwe4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>This is a 0.5h video of a talk I gave at <a href="https://www.meetup.com/junior-developers-singapore/events/292743691/">JuniorDevSG meetup on Apr 2023</a></p>
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/retrocomputing">retrocomputing</a></li>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/hacks">hacks</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yeokm1/yeokm1.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNTQ3ODI3NTI="
+        data-category="Comments"
+        data-category-id="DIC_kwDODy-tIM4CXEA6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div class="pagination">
+  
+    <a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/" class="button"><div class="previous"><div>Teardown of Habotest HT107E Socket Tester</div></div></a>
+  
+  
+    <a href="/2023/06/teardown-and-review-of-hand386/" class="button"><div class="next"><div>Teardown &amp; review of a new 386 system: Hand386</div></div></a>
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/06/teardown-and-review-of-hand386/" class="image featured">
+    
+      <img src="/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/06/teardown-and-review-of-hand386/">Teardown &amp; review of a new 386 system: Hand386</a></h1>
+          <time class="published" datetime="">June 5, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/" class="image featured">
+    
+      <img src="/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/03/building-a-dos-chatgpt-client-in-2023/">Building a DOS ChatGPT client in 2023</a></h1>
+          <time class="published" datetime="">March 26, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/" class="image featured">
+    
+      <img src="/2022/08/teardown-of-habotest-ht107e-socket-tester/images/ht107e_open_top.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/">Teardown of Habotest HT107E Socket Tester</a></h1>
+          <time class="published" datetime="">August 6, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2021/11/how-do-i-produce-my-flight-videos/" class="image featured">
+    
+      <img src="/2021/11/how-do-i-produce-my-flight-videos/images/fv-photo-caption.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2021/11/how-do-i-produce-my-flight-videos/">How do I produce my flight videos?</a></h1>
+          <time class="published" datetime="">November 6, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/" class="image featured">
+    
+      <img src="/2021/09/review-usage-and-repair-of-the-framework-laptop/images/fw-caption-image.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/">Review, usage and repair of the Framework laptop</a></h1>
+          <time class="published" datetime="">September 21, 2021</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/hacks/">hacks<span class="count">20</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/personal/">personal<span class="count">17</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/singapore/">singapore<span class="count">16</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/teardowns/">teardowns<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/school/">school<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/book-reviews/">book-reviews<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/politics/">politics<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hackathon/">hackathon<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/product-reviews/">product-reviews<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/admin/">admin<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/repair-kopitiam/">repair-kopitiam<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/keyboards/">keyboards<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/quiz/">quiz<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/dvorak/">dvorak<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/flight-sim/">flight-sim<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2023
+      
+        YKM&#39;s Corner on the Web
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.117.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+<script type="text/javascript">
+  var sc_project = 8700008;
+  var sc_invisible = 1;
+  var sc_security = "b569f6b4";
+  var sc_https = 1; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript>
+  <div class="statcounter"><a title="free hit
+  counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+        src="https://c.statcounter.com/8700008/0/b569f6b4/1/" alt="free hit counter"></a></div>
+</noscript>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function (x) {
+      x.parentElement.classList += 'has-jax'
+    })
+  });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.4b08dba1bed68bfe65db2515ff7d6b0258656cf4079ed4e03263be238684e63e.js" integrity="sha256-Swjbob7Wi/5l2yUV/31rAlhlbPQHntTgMmO&#43;I4aE5j4="></script>
+<script src="/js/add-on.js"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50169449-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>

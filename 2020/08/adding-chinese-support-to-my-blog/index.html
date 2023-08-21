@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Adding Chinese support to my blog - YKM&#39;s Corner on the Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.117.0"><meta itemprop="name" content="Adding Chinese support to my blog">
+<meta itemprop="description" content="I&rsquo;ve been working in a Chinese tech company for some months now. I realised I needed to improve my command of technical Chinese rather than taking the easy way out of using the English terms when communicating with my Chinese colleagues.
+The only way to improve is to use it more often but technical Chinese is rarely utilised and understood outside the working environment of a Chinese tech company in Singapore. Therefore there are limited opportunities to improve in this area.
+Since I write on quite a lot of technical stuff, I thought one way to improve my usage of technical Chinese is by writing bilingual blog posts. To do that, I&rsquo;ll first have to adjust my blog to have multilingual support.
+(Check out the Chinese version of this post here.)"><meta itemprop="datePublished" content="2020-08-17T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-08-17T00:00:00+00:00" />
+<meta itemprop="wordCount" content="959"><meta itemprop="image" content="http://yeokhengmeng.com/2020/08/adding-chinese-support-to-my-blog/images/title-post-capture.png">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Adding Chinese support to my blog" />
+<meta property="og:description" content="I&rsquo;ve been working in a Chinese tech company for some months now. I realised I needed to improve my command of technical Chinese rather than taking the easy way out of using the English terms when communicating with my Chinese colleagues.
+The only way to improve is to use it more often but technical Chinese is rarely utilised and understood outside the working environment of a Chinese tech company in Singapore. Therefore there are limited opportunities to improve in this area.
+Since I write on quite a lot of technical stuff, I thought one way to improve my usage of technical Chinese is by writing bilingual blog posts. To do that, I&rsquo;ll first have to adjust my blog to have multilingual support.
+(Check out the Chinese version of this post here.)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yeokhengmeng.com/2020/08/adding-chinese-support-to-my-blog/" /><meta property="og:image" content="http://yeokhengmeng.com/2020/08/adding-chinese-support-to-my-blog/images/title-post-capture.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-08-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-08-17T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://yeokhengmeng.com/2020/08/adding-chinese-support-to-my-blog/images/title-post-capture.png"/>
+
+<meta name="twitter:title" content="Adding Chinese support to my blog"/>
+<meta name="twitter:description" content="I&rsquo;ve been working in a Chinese tech company for some months now. I realised I needed to improve my command of technical Chinese rather than taking the easy way out of using the English terms when communicating with my Chinese colleagues.
+The only way to improve is to use it more often but technical Chinese is rarely utilised and understood outside the working environment of a Chinese tech company in Singapore. Therefore there are limited opportunities to improve in this area.
+Since I write on quite a lot of technical stuff, I thought one way to improve my usage of technical Chinese is by writing bilingual blog posts. To do that, I&rsquo;ll first have to adjust my blog to have multilingual support.
+(Check out the Chinese version of this post here.)"/>
+<meta name="twitter:site" content="@yeokm1"/>
+<link rel="stylesheet" href="/css/bundle.min.a5db8e699d9ae70030c71551956f7b63ee5a1e88c7c2fa3f981a4cec53093283.css" integrity="sha256-pduOaZ2a5wAwxxVRlW97Y&#43;5aHojHwvo/mBpM7FMJMoM=">
+        <link rel="stylesheet" href="/css/add-on.css"></head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            post
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/aviation" class="link"><i class='fas fa-plane'></i> Aviation</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/retrocomputing" class="link"><i class='fas fa-save'></i> Retrocomputing</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/favourite-quotes/" class="link">Favourite Quotes</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about-me/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+      <a href="http://yeokhengmeng.com/zh/2020/08/%E6%B7%BB%E5%8A%A0%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/" lang="zh" class="link">简体中文 (zh)</a>
+    
+  
+</menu>
+
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="" alt="Kheng Meng profile pic" /></a>
+  <header>
+    <h1>Yeo Kheng Meng</h1>
+  </header>
+  <main>
+    <p>Maker, Coder, Private Pilot, Retrocomputing Enthusiast</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/yeokm1" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/yeokhengmeng" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/yeokhengmeng" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/yeokm1" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/yeokm1" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/yeokm1" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+<li><a href="//telegram.me/yeokm1" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/2020/08/adding-chinese-support-to-my-blog/">Adding Chinese support to my blog</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2020-08-17 00:00:00 &#43;0000 UTC">
+      August 17, 2020
+    </time>
+    <span class="author"></span>
+    
+      <p>5 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
+  
+  <a href="/2020/08/adding-chinese-support-to-my-blog/" class="image featured">
+    
+      <img src="/2020/08/adding-chinese-support-to-my-blog/images/title-post-capture.png" alt="">
+    
+  </a>
+
+
+  <div class="content">
+    <p>I&rsquo;ve been working in a Chinese tech company for some months now. I realised I needed to improve my command of technical Chinese rather than taking the easy way out of using the English terms when communicating with my Chinese colleagues.</p>
+<p>The only way to improve is to use it more often but technical Chinese is rarely utilised and understood outside the working environment of a Chinese tech company in Singapore. Therefore there are limited opportunities to improve in this area.</p>
+<p>Since I write on quite a lot of technical stuff, I thought one way to improve my usage of technical Chinese is by writing bilingual blog posts. To do that, I&rsquo;ll first have to adjust my blog to have multilingual support.</p>
+<p>(Check out the Chinese version of this post <a href="/zh/2020/08/%E6%B7%BB%E5%8A%A0%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/">here</a>.)</p>
+<p>My blog uses the Hugo static site generator so the first step is to head to <a href="https://gohugo.io/content-management/multilingual/">Hugo&rsquo;s web site</a> to read up on how I should proceed.</p>
+<h2 id="1-adjust-site-configuration">1. Adjust site configuration</h2>
+<p>Hugo sites including mine have a <code>config.toml</code> that specifies key site information like URL, title, theme and other parameters.</p>
+<p>This <code>config.toml</code> also includes theme-specific configuration that may differ heavily among different themes. The theme I&rsquo;m using is <a href="https://themes.gohugo.io/hugo-future-imperfect-slim/">hugo-future-imperfect-slim</a>.</p>
+<p>Its theme-specific configuration documentation can be found <a href="https://github.com/pacollins/hugo-future-imperfect-slim/wiki/config.toml">here</a>.</p>
+<p>Below is a reduced version of my <code>config.toml</code>.</p>
+<pre tabindex="0"><code>DefaultContentLanguage  = &#34;en&#34;
+
+[Languages.zh.params.header]
+    navbarTitle         = &#34;庆铭网角&#34;
+...
+    
+  [Languages.zh.params.intro]
+    header                = &#34;杨庆铭&#34;
+    paragraph             = &#34;制作者，程序员，私人飞行员, 复古电脑爱好者&#34;
+...
+
+    [Languages.zh.params.intro.pic]
+      src                 = &#34;/img/main/logo.jpg&#34;
+      alt                 = &#34;庆铭头像照片&#34;
+
+   [[Languages.zh.menu.main]]
+      name              = &#34;主页&#34;
+      identifier        = &#34;home&#34;
+...
+
+   [[Languages.zh.menu.main]]
+      name              = &#34;飞行&#34;
+      identifier        = &#34;aviation&#34;
+      url               = &#34;/categories/飞行&#34;
+...
+
+   [[Languages.zh.menu.main]]
+      name              = &#34;复古电脑&#34;
+      identifier        = &#34;retrocomputing&#34;
+      url               = &#34;/categories/复古电脑&#34;
+...
+
+   [[Languages.zh.menu.main]]
+      name              = &#34;类别&#34;
+      identifier        = &#34;categories&#34;
+      url               = &#34;/categories/&#34;
+...
+
+   [[Languages.zh.menu.main]]
+      name              = &#34;格言&#34;
+      identifier        = &#34;quotes&#34;
+      url               = &#34;/favourite-quotes/&#34;
+...
+
+  [[Languages.zh.menu.main]]
+    name              = &#34;关于我&#34;
+    identifier        = &#34;about&#34;
+    url               = &#34;/about-me/&#34;
+...
+[Languages]
+  # Each language has its own menu.
+  [Languages.en]
+    LanguageCode        = &#34;en&#34;
+    LanguageName        = &#34;English&#34;
+    weight              = 1
+  [Languages.zh]
+    LanguageCode        = &#34;zh-sg&#34;
+    LanguageName        = &#34;简体中文&#34;
+    title               = &#34;庆铭网角&#34;
+    weight              = 2
+</code></pre><p>I have to provide the Chinese translation for every menu option.</p>
+<p>I cannot find a good translation of the term &ldquo;retrocomputing&rdquo; so a friend advised me that the closest term was 复古电脑.</p>
+<a href="images/language-selection-mode.png"><img src="images/language-selection-mode.png" width="350"></a>
+<p>Upon reloading the site, my theme gives me this selection option :)</p>
+<h2 id="2-writing-bilingual-posts">2. Writing bilingual posts</h2>
+<p>Hugo suggests 2 methods for segregating multilingual content.</p>
+<h3 id="a-directory">a. Directory</h3>
+<p>The first method requires that the content be separated into different directories.</p>
+<pre tabindex="0"><code>  [languages.en]
+    contentDir = &#34;content/english&#34;
+    languageName = &#34;English&#34;
+    weight = 10
+  [languages.zh]
+    contentDir = &#34;content/chinese&#34;
+    languageName = &#34;简体中文&#34;
+    weight = 20
+</code></pre><h3 id="b-filename">b. Filename</h3>
+<p>The second way is on the individual markdown file level.</p>
+<pre tabindex="0"><code>/content/post/2020/08/adding-chinese-support-to-my-blog/index.md
+/content/post/2020/08/adding-chinese-support-to-my-blog/index.en.md
+/content/post/2020/08/adding-chinese-support-to-my-blog/index.zh.md
+</code></pre><p>If the language code like <code>en</code> and <code>zh</code> is not specified, it will be assumed to be the default language.</p>
+<p>This is the method I opted for as I want my English and Chinese content translation of the same post to be together in the same place for ease of maintenance. However I did not use the <code>index.en.md</code> naming for the English posts as that will cause the new permalinks to have the <code>/en/</code> subpath breaking any existing external links to my blog posts.</p>
+<h2 id="3-translate-existing-metadata-content">3. Translate existing metadata content</h2>
+<p>For a site freshly added with multilingual support, you&rsquo;ll see something like the following.</p>
+<a href="images/fresh-chinese-support-no-data.png"><img src="images/fresh-chinese-support-no-data.png" width="500"></a>
+<p>It&rsquo;s empty because all the existing posts are not multilingual. So we have to add content to the Chinese version of the site.</p>
+<h3 id="a-duplicating-content-filenames-to-chinese">a. Duplicating content filenames to Chinese</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find . -name index.md -exec dirname {} <span style="color:#0ff;font-weight:bold">\;</span> | xargs -I % sh -c <span style="color:#0ff;font-weight:bold">&#39;cp %/index.md %/index.zh.md;&#39;</span>
+</span></span></code></pre></div><p>To have the English posts appear under the Chinese language setting, we use the above command to duplicate into <code>zh</code> files.</p>
+<h3 id="b-find-and-replace-english-categories">b. Find and replace English categories</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find . -name index.zh.md | xargs -I % sh -c <span style="color:#0ff;font-weight:bold">&#34;sed -i &#39;s/\&#34;Singapore\&#34;/\&#34;新加玻\&#34;/g&#39; %&#34;</span>
+</span></span></code></pre></div><p>After that, we have to change the Hugo Front Matter of each page <code>categories: [&quot;Singapore&quot;]</code> -&gt; <code>categories: [&quot;新加玻&quot;]</code>. I have to repeat this for every single category I use.</p>
+<p>In the end, I reverted the changes as I realised Hugo actually creates another set of images for each translated post. This causes the size of my site to bloat so much it busted the <a href="https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota#file-and-repository-size-limitations">1GB Github pages limit</a>.</p>
+<p>So I&rsquo;m leaving the Unix commands above in case it can be useful to someone else.</p>
+<h2 id="commenting-problems">Commenting problems</h2>
+<p>I used the Disqus and Facebook commenting systems. How they work is that you have to pass in your post-specific URL then their Javascript plugin will load the comments specific to that page. This is the current code I used.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;fb-comments&#34;</span> <span style="color:#007f7f">data-href</span>=<span style="color:#0ff;font-weight:bold">&#34;{{ .Permalink }}&#34;</span> <span style="color:#007f7f">data-width</span>=<span style="color:#0ff;font-weight:bold">&#34;100%&#34;</span> <span style="color:#007f7f">data-numposts</span>=<span style="color:#0ff;font-weight:bold">&#34;5&#34;</span>&gt;&lt;/<span style="font-weight:bold">div</span>&gt;
+</span></span></code></pre></div><p><code>&quot;{{ .Permalink }}&quot;</code> is to let Hugo fill in the current URL of the site when calling the Facebook plugin.</p>
+<p>The issue now with multilingual posts is that the URL for the translated version will differ as follows.</p>
+<pre tabindex="0"><code>https://yeokhengmeng.com/2020/08/adding-chinese-support-to-my-blog/
+https://yeokhengmeng.com/zh/2020/08/adding-chinese-support-to-my-blog/
+</code></pre><p>With a different URL, the English and Chinese comments that will be loaded are segregated to the language-specific posts. Basically, the English and Chinese comments will not mix. I can&rsquo;t think of a way to solve this problem as of now.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>With the basic architecture set up for bilingual support, my upcoming blog posts will be bilingual whenever feasible.</p>
+<p>As for how I wrote the Chinese version of this post given my relatively poorer command of Chinese, I used both Google and Baidu translation websites to assist me to translate words that I did not know how to express. Then verify that the translation actually makes sense and can carry the context and point in my personal style.</p>
+<p>Therefore the Chinese version is not a direct automated translation. You can use Google translate on my text if you don&rsquo;t believe me.</p>
+<p>I hope you find this interesting!</p>
+<p>Check out the Chinese version of this post <a href="/zh/2020/08/%E6%B7%BB%E5%8A%A0%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/">here</a>.</p>
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/admin">admin</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yeokm1/yeokm1.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNTQ3ODI3NTI="
+        data-category="Comments"
+        data-category-id="DIC_kwDODy-tIM4CXEA6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div class="pagination">
+  
+    <a href="/2020/08/do-grcs-increase-the-risk-of-a-freak-election/" class="button"><div class="previous"><div>Do GRCs increase the risk of a freak election?</div></div></a>
+  
+  
+    <a href="/2020/08/how-does-flight-simulator-2020-compare-to-real-flights-over-singapore/" class="button"><div class="next"><div>How does Flight Simulator 2020 compare to real flights over Singapore?</div></div></a>
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/06/teardown-and-review-of-hand386/" class="image featured">
+    
+      <img src="/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/06/teardown-and-review-of-hand386/">Teardown &amp; review of a new 386 system: Hand386</a></h1>
+          <time class="published" datetime="">June 5, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/" class="image featured">
+    
+      <img src="/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/03/building-a-dos-chatgpt-client-in-2023/">Building a DOS ChatGPT client in 2023</a></h1>
+          <time class="published" datetime="">March 26, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/" class="image featured">
+    
+      <img src="/2022/08/teardown-of-habotest-ht107e-socket-tester/images/ht107e_open_top.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/">Teardown of Habotest HT107E Socket Tester</a></h1>
+          <time class="published" datetime="">August 6, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2021/11/how-do-i-produce-my-flight-videos/" class="image featured">
+    
+      <img src="/2021/11/how-do-i-produce-my-flight-videos/images/fv-photo-caption.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2021/11/how-do-i-produce-my-flight-videos/">How do I produce my flight videos?</a></h1>
+          <time class="published" datetime="">November 6, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/" class="image featured">
+    
+      <img src="/2021/09/review-usage-and-repair-of-the-framework-laptop/images/fw-caption-image.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/">Review, usage and repair of the Framework laptop</a></h1>
+          <time class="published" datetime="">September 21, 2021</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/hacks/">hacks<span class="count">20</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/personal/">personal<span class="count">17</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/singapore/">singapore<span class="count">16</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/teardowns/">teardowns<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/school/">school<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/book-reviews/">book-reviews<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/politics/">politics<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hackathon/">hackathon<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/product-reviews/">product-reviews<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/admin/">admin<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/repair-kopitiam/">repair-kopitiam<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/keyboards/">keyboards<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/quiz/">quiz<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/dvorak/">dvorak<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/flight-sim/">flight-sim<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2023
+      
+        YKM&#39;s Corner on the Web
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.117.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+<script type="text/javascript">
+  var sc_project = 8700008;
+  var sc_invisible = 1;
+  var sc_security = "b569f6b4";
+  var sc_https = 1; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript>
+  <div class="statcounter"><a title="free hit
+  counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+        src="https://c.statcounter.com/8700008/0/b569f6b4/1/" alt="free hit counter"></a></div>
+</noscript>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function (x) {
+      x.parentElement.classList += 'has-jax'
+    })
+  });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.4b08dba1bed68bfe65db2515ff7d6b0258656cf4079ed4e03263be238684e63e.js" integrity="sha256-Swjbob7Wi/5l2yUV/31rAlhlbPQHntTgMmO&#43;I4aE5j4="></script>
+<script src="/js/add-on.js"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50169449-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>

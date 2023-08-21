@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>A Science Project: &#34;Make the 486 Great Again!&#34; - Modern Linux in an ancient PC - YKM&#39;s Corner on the Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.117.0"><meta itemprop="name" content="A Science Project: &#34;Make the 486 Great Again!&#34; - Modern Linux in an ancient PC">
+<meta itemprop="description" content="
+What is the oldest x86 processor that is still supported by a modern Linux kernel in present time?
+
+I asked the above quiz question during the Geekcamp tech conference in Nov 2017 during my emcee role. The theoretical answer as you can glean from the title of this post is the 486 which was first released in 1989. I determined that fact from this article where support for the 386 was dropped in Dec 2012.
+To get you interested, here is the result of my effort.
+"><meta itemprop="datePublished" content="2018-01-06T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-01-06T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3511">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="A Science Project: &#34;Make the 486 Great Again!&#34; - Modern Linux in an ancient PC" />
+<meta property="og:description" content="
+What is the oldest x86 processor that is still supported by a modern Linux kernel in present time?
+
+I asked the above quiz question during the Geekcamp tech conference in Nov 2017 during my emcee role. The theoretical answer as you can glean from the title of this post is the 486 which was first released in 1989. I determined that fact from this article where support for the 386 was dropped in Dec 2012.
+To get you interested, here is the result of my effort.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yeokhengmeng.com/2018/01/make-the-486-great-again/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2018-01-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-01-06T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="A Science Project: &#34;Make the 486 Great Again!&#34; - Modern Linux in an ancient PC"/>
+<meta name="twitter:description" content="
+What is the oldest x86 processor that is still supported by a modern Linux kernel in present time?
+
+I asked the above quiz question during the Geekcamp tech conference in Nov 2017 during my emcee role. The theoretical answer as you can glean from the title of this post is the 486 which was first released in 1989. I determined that fact from this article where support for the 386 was dropped in Dec 2012.
+To get you interested, here is the result of my effort.
+"/>
+<meta name="twitter:site" content="@yeokm1"/>
+<link rel="stylesheet" href="/css/bundle.min.a5db8e699d9ae70030c71551956f7b63ee5a1e88c7c2fa3f981a4cec53093283.css" integrity="sha256-pduOaZ2a5wAwxxVRlW97Y&#43;5aHojHwvo/mBpM7FMJMoM=">
+        <link rel="stylesheet" href="/css/add-on.css"></head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            post
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/aviation" class="link"><i class='fas fa-plane'></i> Aviation</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/retrocomputing" class="link"><i class='fas fa-save'></i> Retrocomputing</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/favourite-quotes/" class="link">Favourite Quotes</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about-me/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/zh" lang="zh" class="no-lang link">简体中文 (zh)</a>
+      
+    
+  
+</menu>
+
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="" alt="Kheng Meng profile pic" /></a>
+  <header>
+    <h1>Yeo Kheng Meng</h1>
+  </header>
+  <main>
+    <p>Maker, Coder, Private Pilot, Retrocomputing Enthusiast</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/yeokm1" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/yeokhengmeng" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/yeokhengmeng" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/yeokm1" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/yeokm1" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/yeokm1" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+<li><a href="//telegram.me/yeokm1" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/2018/01/make-the-486-great-again/">A Science Project: &#34;Make the 486 Great Again!&#34; - Modern Linux in an ancient PC</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2018-01-06 00:00:00 &#43;0000 UTC">
+      January 6, 2018
+    </time>
+    <span class="author"></span>
+    
+      <p>17 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
+  
+
+  <div class="content">
+    <blockquote>
+<p>What is the oldest x86 processor that is still supported by a modern Linux kernel in present time?</p>
+</blockquote>
+<p>I asked the above quiz question during the <a href="https://geekcamp.sg/">Geekcamp</a> tech conference in Nov 2017 during <a href="/2017/11/my-first-conference-emcee-experience/">my emcee role</a>. The theoretical answer as you can glean from the title of this post is the <a href="https://en.wikipedia.org/wiki/Intel_80486">486</a> which was first released in 1989. I determined that fact from this article where <a href="https://www.pcworld.com/article/2020196/linux-3-8-will-drop-support-for-intel-386-chips.html">support for the 386 was dropped in Dec 2012</a>.</p>
+<p>To get you interested, here is the result of my effort.</p>
+<p><a href="images/gentoo-486-capabilities.jpg"><img src="images/gentoo-486-capabilities-939x1024.jpg" alt=""></a></p>
+<p>The white smudge on the screen is not the camera&rsquo;s fault, there is really a backlight problem with my old 19&quot; monitor.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/4qSziR6sD8Q" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>You can skip to 11:39 when the boot completes.</p>
+<p>00:00 to 00:46 - BIOS</p>
+<p>00:46 to 11:39 - Bootup. It takes almost 11mins to bootup!</p>
+<p>11:39 to 13:14 - System specs, IP info and ALSA mixer</p>
+<p>13:14 to 15:00 - Playing music via Sound Blaster 16</p>
+<p>15:00 to 17:25 - SSH while playing (stuttering) music in the background. With AlsaMixer adjusting volume.</p>
+<p>17:25 to 17:48 - Opening a webpage hosted by nginx.</p>
+<p>18:10 to 20:13 - Git clone a repo.</p>
+<p>20:13 to 21:13 - Using Python 3.6.3</p>
+<p>21:13 to 21:43 - Cleanup and issue shutdown command</p>
+<p>21:43 to End - Shutdown. It takes 5.5 mins to shutdown!</p>
+<p>Interested in how I got a modern Linux kernel 4.14.8 (released in December 2017) to run on this ancient PC? Read on!</p>
+<h1 id="prior-work-and-research">Prior work and research</h1>
+<p>Last month, I took part in a <a href="https://supersillyhackathon.sg/">Super Silly Hackathon</a> with my teammate <a href="https://www.chenhuijing.com/">Hui Jing</a> where we installed Damn Small Linux (DSL) on that same 486 PC.</p>
+<p><a href="images/super-silly-hackathon-team486.jpg"><img src="images/super-silly-hackathon-team486.jpg" alt=""></a></p>
+<p>I bought this machine with the original intent to play old DOS games in their original glory. Anyway, we managed to play music and even host a webpage! See her fantastically detailed write-up <a href="https://www.chenhuijing.com/blog/hardware-hacks-super-silly-hackathon/">here</a>.</p>
+<p>The version 4.4.10 of DSL we used was released in Nov 2008. It used the kernel version <a href="https://www.kernel.org/pub/linux/kernel/v2.4/">2.4.31 that was released in June 2005</a> which is a dinosaur by today&rsquo;s standards.</p>
+<p>Throughout the entire time, the question of whether the theoretical answer of 486 is actually true lingered in my head. I did some research and found out <a href="https://retrocomputing.stackexchange.com/a/4364">someone actually installed Gentoo Linux with a modern kernel on a 486 PC</a>. At least someone said it was possible although he did not give any hard evidence :( He advised that one should use a modern PC to do the source code compilation which I&rsquo;ll show later.</p>
+<h1 id="what-is-gentoo-linux-and-why">What is Gentoo Linux and why?</h1>
+<p><a href="images/gentoo-486-logo.png"><img src="images/gentoo-486-logo.png" alt=""></a></p>
+<blockquote>
+<p>Gentoo Linux is a Linux distribution built using the Portage package management system. Unlike a binary software distribution, the source code is compiled locally according to the user&rsquo;s preferences and is often optimized for the specific type of computer.</p>
+<p>From <a href="https://en.wikipedia.org/wiki/Gentoo_Linux">Gentoo&rsquo;s Wikipedia page</a></p>
+</blockquote>
+<p>The issue with modern Linux distributions like Debian/Ubuntu/Arch is that they distribute compiled binary packages. Typically this is good enough as compiling every single package you want from scratch is time consuming and most people ain&rsquo;t got the time for that.</p>
+<p>Although the 486 is theoretically supported by the modern Linux kernel, this is not true on the distribution and package level.  For example, Debian has <a href="https://distrowatch.com/dwres.php?resource=showheadline&amp;story=406">dropped support for older 586 32-bit CPUs as of 2016</a>. Thus, the oldest supported x86 CPU by Debian is the 686. The 6th-generation x86 started with the Pentium Pro released in 1995 or its more commonly known variant Pentium 2 was released in 1997.</p>
+<p>Therefore, it is no longer possible to directly use a typical modern distribution on a 486 PC. But on an atypical distribution like Gentoo which requires you to compile every package, this might still be possible.</p>
+<h1 id="the-hardware">The hardware</h1>
+<h2 id="the-ancient-486-pcibm-ps1-consultant-2133-19chttpsenwikipediaorgwikiibm_ps1released-in-1993">The ancient 486 PC: <a href="https://en.wikipedia.org/wiki/IBM_PS/1">IBM PS/1 Consultant 2133 19C</a> (released in 1993)</h2>
+<p><a href="images/gentoo-486-original-spec.jpg"><img src="images/gentoo-486-original-spec-1024x285.jpg" alt=""></a></p>
+<p>Marvel at the original specs of this machine. The CPU and RAM were fully upgraded by the seller before I bought it.</p>
+<h3 id="specifications">Specifications:</h3>
+<ul>
+<li><a href="https://en.wikichip.org/wiki/amd/am5x86">AMD 5X86 486-clone</a> running at 133mhz
+<ul>
+<li>Similar performance to Pentium 75Mhz</li>
+<li>The AMD 5X86 series were the fastest 486 clones ever made</li>
+</ul>
+</li>
+<li>Cirrus Logic VLB CL-GD5424 Graphics 512KiB VRAM</li>
+<li>64MB <a href="https://en.wikipedia.org/wiki/SIMM#72-pin_SIMMs">SIMM-72</a> RAM</li>
+<li>48x IDE CD ROM Drive</li>
+<li><a href="https://www.philscomputerlab.com/gotek-floppy-emulator.html">Gotek 1.44MB floppy emulator</a></li>
+<li>CompactFlash-IDE adapter + 32GB Sandisk Extreme CF card</li>
+<li>10Mbps 3Com Etherlink III <a href="https://en.wikipedia.org/wiki/3Com_3c509">3c509B</a> (ISA)</li>
+<li><a href="https://en.wikipedia.org/wiki/Sound_Blaster_16">Sound Blaster 16</a> CT2950 PnP (ISA)</li>
+</ul>
+<h3 id="front-panel">Front panel</h3>
+<p><a href="gentoo-486-innards-front.jpg"><img src="images/gentoo-486-innards-front-1024x717.jpg" alt=""></a></p>
+<p>The 48x PATA CD-ROM drive came with the PC. I replaced the original 3.5&quot; floppy drive with the <a href="https://www.philscomputerlab.com/gotek-floppy-emulator.html">Gotek 1.44MB floppy emulator</a>. This cool device enables one to emulate up to 100 floppy disks based on images stored in the connected USB Flash drive! I no longer need to write to mechanically-failure-prone floppy disks whenever I want to transfer data.</p>
+<h3 id="expansion-slots">Expansion slots</h3>
+<p><a href="images/gentoo-486-isa-slots.jpg"><img src="images/gentoo-486-isa-slots-1024x768.jpg" alt=""></a></p>
+<p>There are only 3 16-bit <a href="https://en.wikipedia.org/wiki/Industry_Standard_Architecture">ISA slots</a> placed on the riser card in this PC. It does not even have the newer but also legacy <a href="https://en.wikipedia.org/wiki/Conventional_PCI">PCI slots</a>. This PC is filled with 2x 32MB SIMM-72 RAM sticks. I have to admit 64MB RAM is unheard of for a 486-era PC. Some people <a href="http://www.vogons.org/viewtopic.php?t=28748">online managed to go up to 128MB RAM</a>.</p>
+<h3 id="expansion-cards">Expansion cards</h3>
+<p>The 3 ISA slots are fully filled with the following</p>
+<p><a href="images/gentoo-486-isa-cards.jpg"><img src="images/gentoo-486-isa-cards-1024x866.jpg" alt=""></a></p>
+<p>A <a href="https://en.wikipedia.org/wiki/Sound_Blaster_16">Sound Blaster 16</a> CT2950 PnP, 10Mbps 3Com Etherlink III <a href="https://en.wikipedia.org/wiki/3Com_3c509">3c509B</a>,and a CompactFlash-IDE (CF-IDE) adapter. Technically the CF-IDE adapter is not an ISA card. It is mounted in the expansion slot to enable me to easily swap out the CF card without the hassle of opening up the case. To the motherboard, the CF card is just like any other hard disk.</p>
+<h3 id="expansion-cards-mounted-in-slots">Expansion cards mounted in slots</h3>
+<p><a href="images/gentoo-486-innards.jpg"><img src="images/gentoo-486-innards-1024x581.jpg" alt=""></a></p>
+<p><a href="images/gentoo-486-back.jpg"><img src="images/gentoo-486-back-1024x335.jpg" alt=""></a></p>
+<p>Legacy ports galore! Note the power supply which only accepts ~115VAC. I had to buy a transformer to step down the 230VAC mains in Singapore to suit this PC. The CF card is conveniently replaceable at the back.</p>
+<h2 id="compilation-machinethinkpad-t430httpwwwthinkwikiorgwikicategoryt430released-in-2012">Compilation machine: <a href="http://www.thinkwiki.org/wiki/Category:T430">Thinkpad T430</a> (released in 2012)</h2>
+<p>Compilation is a CPU-heavy process and the 486 will definitely take ages to do so. To avoid this issue, we shall do the compilation on a modern PC using a USB card reader then move the CF card over to the ancient PC.</p>
+<p><a href="images/gentoo-486-t430.jpg"><img src="images/gentoo-486-t430-1024x840.jpg" alt=""></a>)</p>
+<h3 id="specifications-1">Specifications:</h3>
+<ul>
+<li>Intel Core i7-3520M (3.50 GHz, 4MB L3, 1333MHz FSB)</li>
+<li>Intel HD Graphics 4000</li>
+<li>16GB DDR3 - 1600MHz</li>
+<li>Gigabit Ethernet</li>
+<li>Ultrabay DVD-RW</li>
+<li>2x USB 3.0, 2x USB 2.0</li>
+<li>USB-CF adapter to compile on CF card</li>
+<li>SSD removed to avoid corrupting it by accident during install</li>
+</ul>
+<p>This Thinkpad T430 is a 6-year-old model by today&rsquo;s standards but is still fast enough to do the compilation of everything in a reasonable amount of time (like a few hours).</p>
+<h1 id="linux-installation">Linux Installation</h1>
+<p>I&rsquo;ve documented a <a href="https://github.com/yeokm1/gentoo-on-486">detailed list of instructions here</a> on what commands to use to install Gentoo on this ancient PC. This post will just focus on the key steps and issues I faced.</p>
+<h2 id="step1">Step 1: Getting the install media and initial attempt</h2>
+<p>The Gentoo x86 minimal installation CD can be <a href="https://www.gentoo.org/downloads/">downloaded here</a> still supports the 486 architecture. Out of curiosity, I booted my ancient PC with it to see if it is possible.</p>
+<p><a href="images/gentoo-486-livecd-boot.jpg"><img src="images/gentoo-486-livecd-boot-1024x815.jpg" alt=""></a></p>
+<p>Turns out I&rsquo;ll get a kernel panic. It is very likely this LiveCD kernel does not have the drivers needed to properly access the CD drive. Anyway, I got the CD started with my modern T430.</p>
+<h2 id="step2">Step 2: Disk partitioning</h2>
+<p>These steps below are all done on the modern compilation PC except the last step.</p>
+<h3 id="gentoos-proposed-partitioning-scheme">Gentoo&rsquo;s proposed partitioning scheme</h3>
+<p><a href="images/gentoo-486-gentoo-default-partitioning.png"><img src="images/gentoo-486-gentoo-default-partitioning-1024x247.png" alt=""></a></p>
+<p>This is what Gentoo recommends. Since this is an ancient PC, it does not use UEFI therefore there is no need for the bootloader partition. Ancient PCs also have a BIOS 504MiB barrier which means they can only access the first 504MiB in the disk. This can be seen in the BIOS setup below:</p>
+<p><a href="images/gentoo-486-bios.jpg"><img src="images/gentoo-486-bios-1024x844.jpg" alt=""></a></p>
+<p>Linux can recognise the full 32GB capacity of my CF card only after the kernel and necessary drivers are loaded.</p>
+<h3 id="actual-partitioning-scheme">Actual partitioning scheme</h3>
+<p><a href="images/gentoo-486-disk-layout.png"><img src="images/gentoo-486-disk-layout.png" alt=""></a></p>
+<p>Modern Linux distributions don&rsquo;t always have a boot partition by default as its contents are now placed in the root partition. Since we have a 504MiB limit, we will need a small 128MB boot partition as the first primary partition to store the Linux kernel and other boot files.</p>
+<h2 id="step3">Step 3: Install Gentoo Stage 3</h2>
+<p>Stage3 is a step unique only to the Gentoo distribution. Basically you have to download a tarball containing a bare minimal binaries and system directories.</p>
+<p><a href="images/gentoo-486-stage3.png"><img src="images/gentoo-486-stage3-1024x546.png" alt=""></a></p>
+<p>You have to make sure to download the one that is named &ldquo;i486&rdquo;. Then uncompress it to form the base system.</p>
+<p>For more information about the Gentoo Stages, you can take a look <a href="https://wiki.gentoo.org/wiki/Stage_tarball">here</a>.</p>
+<h2 id="step4">Step 4: Verify compilation parameters</h2>
+<p>Portage is the package manager used in Gentoo and we have to make sure that its configuration will invoke the GCC compiler to emit packages that are 486 compatible. Ensure <code>/etc/portage/make.conf</code> has the following 486-specific options:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>CFLAGS=&#34;-O2 -march=i486 -pipe&#34; 
+</span></span><span style="display:flex;"><span>CHOST=&#34;i486-pc-linux-gnu&#34; 
+</span></span><span style="display:flex;"><span>MAKEOPTS=&#34;-j5&#34; # A good choice is the number of CPU cores in the system plus 1 
+</span></span><span style="display:flex;"><span>USE=&#34;-kde -qt4 -qt5 ffmpeg mp3 alsa&#34;
+</span></span></code></pre></div><p>The USE flags are for any new packages not to include GUI support and add sound support (for my demo).</p>
+<h2 id="step5">Step 5: Configure Linux kernel</h2>
+<p>This was a tough nut to crack and I needed countless tries to get it to a workable state.  To minimise kernel size, the default menu options may not enable support for ancient hardware components. However, support for them are still there.</p>
+<p>The actual list of options I chose were very long so I&rsquo;ll only show the key ones I selected.</p>
+<p><a href="images/gentoo-486-kernel-64bit.png"><img src="images/gentoo-486-kernel-64bit.png" alt=""></a></p>
+<p>Must disable 64-bit kernel for obvious reasons!</p>
+<p><a href="images/gentoo-486-kernel-486.png"><img src="images/gentoo-486-kernel-486.png" alt=""></a></p>
+<p>486 is the oldest option in this list!</p>
+<p><a href="images/gentoo-486-kernel-isa.png"><img src="images/gentoo-486-kernel-isa-1024x603.png" alt=""></a></p>
+<p>ISA support has to be enabled to use the expansion cards.</p>
+<p><a href="images/gentoo-486-isa-pnp.png"><img src="images/gentoo-486-isa-pnp.png" alt=""></a></p>
+<p>ISA Plug and Play is required for autodetecting my SB16 and 3Com NIC as they are late generation ISA PnP cards.</p>
+<p><a href="images/gentoo-486-kernel-isa-ata.png"><img src="images/gentoo-486-kernel-isa-ata.png" alt=""></a></p>
+<p>Enable both Generic ATA support and Legacy ISA PATA support</p>
+<p><a href="images/gentoo-486-kernel-3com-support.png"><img src="images/gentoo-486-kernel-3com-support.png" alt=""></a></p>
+<p>My 3Com 3C509 NIC card is still supported!</p>
+<p><a href="images/gentoo-486-kernel-sb16.png"><img src="images/gentoo-486-kernel-sb16.png" alt=""></a></p>
+<p>Once done we just compile the Linux kernel!</p>
+<h2 id="step6">Step 6: Install Bootloader</h2>
+<p>The usual bootloader used by Linux today is <a href="https://wiki.gentoo.org/wiki/GRUB2">Grub2</a>. I tried that but it did a reboot loop whenever I tried to start the system. Online research say I should use the older <a href="https://en.wikipedia.org/wiki/LILO_(boot_loader)">LILO bootloader</a> instead. LILO is unsupported as of December 2015 but it is still able to load modern Linux kernels.</p>
+<p>This a snippet of the_ /etc/lilo.conf_ Lilo configuration file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>image=/boot/vmlinuz-4.14.8-gentoo-r1 
+</span></span><span style="display:flex;"><span>    label=gentoo 
+</span></span><span style="display:flex;"><span>    read-only 
+</span></span><span style="display:flex;"><span>    root=/dev/sda3 
+</span></span><span style="display:flex;"><span>    vga=4 # This will set the VGA mode to 80x30
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>image=/boot/vmlinuz-4.14.8-gentoo-r1 
+</span></span><span style="display:flex;"><span>    label=gentoo-ask-vga 
+</span></span><span style="display:flex;"><span>    read-only 
+</span></span><span style="display:flex;"><span>    root=/dev/sda3 
+</span></span><span style="display:flex;"><span>    vga=ask # Linux will ask you to pick the VGA mode on startup
+</span></span></code></pre></div><p>I didn&rsquo;t install a GUI for obvious performance reasons so I have to rely solely on text mode. I set the mode vga=4 to increase &ldquo;text resolution&rdquo; to 80 columns x 30 rows of text. I also include a vga=ask in case the first option fails.</p>
+<h2 id="step7">Step 7: Install additional software</h2>
+<p>Though not strictly necessary to do it right now, I felt it was better to leverage on the performance of the compilation machine before moving the CF card over.</p>
+<p>If you have seen the video, I installed the latest versions (available in the Portage repository) of Git, Python, nginx, ALSA and MOC (console music player).</p>
+<h2 id="step8">Step 8: Initial bootup!</h2>
+<p>Now we power down the compilation PC and move the CF card to the ancient PC for booting. Just pray and hope it works! :)</p>
+<h1 id="problems-faced">Problems Faced</h1>
+<p>There were several expected and unexpected problems I faced that made this project more time-consuming that it already was.</p>
+<h2 id="cannot-boot-from-cd">Cannot boot from CD</h2>
+<p>Due to the age of the PC, the BIOS only supports booting from the floppy drive or internal HDD. To boot from the CD, I used the <a href="https://www.plop.at/en/bootmanager/intro.html">Plop Boot Manager</a> that booted off a floppy disk. This added extra inconveniences when it came to using CD-ROM based utilities.</p>
+<p>To prevent wear on the already ancient mechanical floppy drive, I used the floppy disk emulator.</p>
+<h2 id="cannot-use-80-pin-pata-cable">Cannot use 80-pin PATA cable</h2>
+<p>This problem caused me a huge amount of unexpected pain!!!</p>
+<p><a href="images/gentoo-486-ide.jpg"><img src="images/gentoo-486-ide.jpg" alt=""></a>
+Left: 80-conductor PATA cable, Right: 40-conductor PATA cable</p>
+<p>The 80-pin cable on the left is a more modern PATA cable with extra ground lines compared to the 40-pin ones. It supposedly allows the bus to transmit at higher speed by eliminating crosstalk while remaining backward compatible. Read <a href="http://www.pcguide.com/ref/hdd/if/ide/confCable80-c.html">this</a> for more info.</p>
+<p>When I assembled the PC, I initially started with the 80-conductor cable for the drives. I faced occasional intermittent problems. From the BIOS not being able to detect the drive, to Linux halfway getting disk access errors to outright disk corruption. It was hard to tell then was it a software fault or hardware fault?</p>
+<p>Here are the list of steps I did to troubleshoot:</p>
+<ol>
+<li>Disconnect CD-ROM drive as primary slave</li>
+<li>Replace the CF card as I thought it was faulty</li>
+<li>Trying different 80-pin conductor cables</li>
+<li>Recompiling the Linux kernel many times with different SATA/PATA options in case I chose the incorrect one. This took hell a lot of time.</li>
+</ol>
+<p>Finally, I swapped back to the original 40-pin PATA cable that came with the PC and the problems never came up. To double check my assumption, I tried the other 40-pin PATA cables I have in my personal stash and had no issue too.</p>
+<p>Like WHAT THE HELL? I don&rsquo;t think it is a fault of the cables themselves. I have dealt with many older PCs and none of them ever had problems when I switched to 80-pin cables so I assumed it should not be an issue at first. Probably the motherboard of this PC just does not like the 80-pin cable.</p>
+<h2 id="tough-gentoo-installation-procedure">Tough Gentoo installation procedure</h2>
+<p>Installing Gentoo is tough and time-consuming under the best of times even for modern PCs. Doing it for an ancient PC like this further adds to the complexity.</p>
+<p>To put things into perspective, this is how I would rate the relative difficulty in installing the different Linux distributions</p>
+<p><a href="http://www.linuxfromscratch.org/">Linux From Scratch</a> &gt; Gentoo &gt; <a href="https://www.archlinux.org/">Arch Linux</a> &gt; Fedora/Debian/Ubuntu</p>
+<ul>
+<li>Linux From Scratch: Compile every single thing from scratch. I have not tried this before.</li>
+<li>Gentoo: Base system is ready. Just compile kernel, bootloader and extra packages. Then configure everything manually.</li>
+<li>Arch Linux: Same as Gentoo just that everything already exists in precompiled binaries.</li>
+<li>Fedora/Debian/Ubuntu: Distributions are based on point releases. Configuration is largely taken care off, just configure personal preferences.</li>
+</ul>
+<p>This is compounded by the fact that this was the first time I installed Gentoo Linux and was unfamiliar with the install steps.</p>
+<h2 id="long-iteration-cycle">Long iteration cycle</h2>
+<p>Saying the ancient PC is slow is a huge understatement. It takes 11 minutes to boot up to the login prompt and 5.5 mins to shutdown. During the lengthy startup especially, I had to dutifully observe the status messages to ensure there are no issues.</p>
+<p>If there were any issues, I have to move the CF card back to the compilation PC to modify the installation or worse start the installation from scratch. I did this countless times and spent many hours.</p>
+<h2 id="faulty-power-supply-unit-psu">Faulty Power Supply Unit (PSU)</h2>
+<p>The PSU failed about 2 weeks after I wrote this post. Not unexpected for an old piece of hardware. For a typical modern PC, we just get a replacement! However, this PC uses the legacy <a href="http://www.pcguide.com/ref/power/sup/formLPX-c.html">LPX form factor</a> for its PSU. Not only that, it does not use the modern ATX power connector. It uses the <a href="https://www.computerhope.com/jargon/p/p8.htm">AT style P8/P9 connector</a>.</p>
+<p>LPX power supplies are not easily available this days and the ones that are being sold are decades old as well.</p>
+<p><a href="images/gentoo-486-pico-psu-at-converter.jpg"><img src="images/gentoo-486-pico-psu-at-converter-946x1024.jpg" alt=""></a></p>
+<p>picoPSU with ATX-AT Converter</p>
+<p>I used 2 products to replace the LPX PSU</p>
+<ol>
+<li><a href="http://www.ebay.com.sg/itm/ATX-20-PIN-to-AT-P8-P9-CONVERTER-WITH-5V-ON-OFF-SWITCH-DUMMY-LOAD-USA-MADE/251025150787">ATX-AT P8/P9 converter with -5V output I bought on Ebay</a></li>
+<li><a href="http://www.mini-box.com/picoPSU-150-XT">picoPSU-150-XT with 12V AC-DC power adapter</a></li>
+</ol>
+<p><a href="images/gentoo-486-pico-psu-at-converter-assembled.jpg"><img src="images/gentoo-486-pico-psu-at-converter-assembled-1024x647.jpg" alt=""></a></p>
+<p>Everything is tied down to the case.</p>
+<p><a href="images/gentoo-486-pico-psu-brick.jpg"><img src="images/gentoo-486-pico-psu-brick-1024x895.jpg" alt=""></a></p>
+<p>Small and neat and this power brick is 230V compatible too![/caption]</p>
+<p>A cool LPX PSU replacement don&rsquo;t you think?</p>
+<h1 id="spectre-and-meltdown">Spectre and Meltdown</h1>
+<p>Given the age of the 486 (1989 technology), it does not support branch prediction.</p>
+<blockquote>
+<p>The 486 does not implement any form of branch prediction.</p>
+<p><a href="https://books.google.com.sg/books?id=MLJClvCYh34C&amp;pg=PA122&amp;lpg=PA122&amp;dq=486+branch+prediction&amp;source=bl&amp;ots=gcMvZFz2Pz&amp;sig=FJ9fEmH426N7eoHxLupu5x2ZrdQ&amp;hl=en&amp;sa=X&amp;ved=0ahUKEwi7k5aCucXYAhUHQY8KHcgACkUQ6AEILjAB#v=onepage&amp;q=486%20branch%20prediction&amp;f=false">Source 1: Pentium Pro and Pentium II System Architecture</a> from Google Books</p>
+<p>When the 486 microprocessor makes a decision that results in a jump to a different part of your program, there is often a delay as it gathers the instructions from the new area of memory. Pentium seeks to avoid this with a Branch Target Buffer (BTB). The BTB predicts the results of the decision-making instructions&hellip; <a href="https://books.google.com.sg/books?id=QzsEAAAAMBAJ&amp;pg=PA59&amp;lpg=PA59&amp;dq=486+branch+prediction&amp;source=bl&amp;ots=LCXnhUpS83&amp;sig=g59BBBuiCx-qM6bOjRW5mkq1Nug&amp;hl=en&amp;sa=X&amp;ved=0ahUKEwi7k5aCucXYAhUHQY8KHcgACkUQ6AEIPDAD#v=onepage&amp;q=486%20branch%20prediction&amp;f=false">Source 2: Info World July 1993</a></p>
+</blockquote>
+<p>Ironically this makes it safe from the <a href="https://meltdownattack.com/">Meltdown and Spectre</a> attacks. If you want to be safe from those attacks, you can run your modern software on the 486! Of course this is not looking at the big picture, many other security features have been implemented on modern processors since then.</p>
+<h1 id="concluding-remarks">Concluding Remarks</h1>
+<p>Despite the many roadblocks I faced, I was impressed by the level of support Linux has for ancient hardware like this. I&rsquo;ll not be surprised if somewhere out there, there is a tester making sure that stuff still works for old hardware.</p>
+<p>Even though this involves ancient hardware, I have to admit I learned quite a lot about the components used in Linux by virtue of setting up Gentoo so I have some useful takeaways from this project.</p>
+<p>You may wonder why did I title this post “A Science Project”. This was coined in a <a href="https://blogs.msdn.microsoft.com/oldnewthing/20130319-00/?p=4913">blog post</a> by a Microsoft software engineer Raymond Chen to describe projects that fall into any of the following categories:</p>
+<ol>
+<li>A feature that is really cool and challenging from a technological standpoint but is overkill for the user-scenario.</li>
+<li>Requires hardware few people have.</li>
+<li>Trying to solve a problem that nobody really considers to be a problem. You’re doing it just for the Gee Whiz factor.</li>
+</ol>
+<p>I believe my projects has all of these qualities.</p>
+<ol>
+<li>I went through a difficult process to give an ancient PC modern Linux and software features. It is overkill as no way one can do any useful work on this slow PC. It is much more appropriate to install a period-correct operating system like DOS and/or Win 3.x.</li>
+<li>How many people have a 486 PC today?</li>
+<li>Who has a problem of needing a modern OS on this ancient PC?</li>
+</ol>
+<p>As mentioned earlier, if you want to replicate this project, you can consult the <a href="https://github.com/yeokm1/gentoo-on-486/">low-level detailed instructions I have documented on Github</a>.</p>
+<p>I have related projects as well, <a href="/2016/09/windows-for-workgroups-3-11-on-vintage-and-modern-hardware-in-2016/">Windows 3.1 on a modern PC</a>, <a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/">Windows XP on a modern PC</a> and the <a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/">using the Covox Speech Thing with a modern pc</a>. Everything so far involves getting old stuff to to work on a modern PC, this is my first blog post that does the opposite. Look out for more projects from me!</p>
+<h1 id="clarification">Clarification:</h1>
+<p>In response to questions or comments made by readers, here are some additional points I want to make</p>
+<ol>
+<li> I did not show it in the video but the 486 is not powerful enough to play MP3 files in real time. It&rsquo;ll stutter like crazy hence I stayed with WAV files.</li>
+<li>This machine has no slot for me to add any L2 cache memory. :(</li>
+<li>I have rebooted this machine several times before taking this video. So the boot times have stabilised.</li>
+<li>I did try to boot the Tiny Core Linux CD but it never fully loaded before rebooting.</li>
+<li>Given more time,  I could have optimised the bootup time or installed a GUI. However, the objective of this project is to explore the possibility of modern Linux in a 486 PC. Those are nice to have but given the time (many sleepless nights and weekends worth) and effort I had already spent on this project, I felt it was time to stop and document my work.</li>
+<li>64MB RAM is not representative of 486-machines of that era. Sure I agree, but this machine came with this much and I don&rsquo;t see any benefit of reducing the RAM other than to make it &ldquo;more representative&rdquo;.</li>
+<li>I did not go with the systemd as Gentoo by default uses init. Since this is the first time I&rsquo;m actually installing Gentoo, I just went with the default instructions.</li>
+<li>Ext4 is used as the main filesystem to see if it is usable on this old system. I wanted as much modern features as I could. When I installed Damn Small Linux during the hackathon, the installer already warned us that the non-journaling Ext2 is more suitable for older CPUs.</li>
+<li>Why Linux and not BSD-based OSes? The point was to test if Linux and modern software still works on the 486 as claimed. Not really to make a usable PC out of it for day-to-day work. Besides, according to the <a href="https://www.freebsd.org/doc/handbook/bsdinstall-hardware.html">FreeBSD&rsquo;s website</a>, the minimum requirement is 96MB of RAM. So although FreeBSD may support 486 CPUs, I really wonder what 486-era motherboard can take that amount of RAM?</li>
+<li>Why was PCI/USB/X option enabled in the kernel configuration (thus slightly slowing down boot time) even though the ancient PC does not have any PCI/USB/X? This was because I had a plan of making the same disk bootable and usable on my modern T430 as well should I need to compile and install additional packages. Disabling PCI might cause problems on my modern PC. I might just need USB on my compilation PC, who knows?</li>
+</ol>
+<h1 id="presentation">Presentation</h1>
+<p>I gave a talk about my project at the <a href="https://www.facebook.com/events/200105140541056/">Hackware v3.8</a> meetup. Here is the video and the slides.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/1dgc1oq5br8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/retrocomputing">retrocomputing</a></li>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/hacks">hacks</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yeokm1/yeokm1.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNTQ3ODI3NTI="
+        data-category="Comments"
+        data-category-id="DIC_kwDODy-tIM4CXEA6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div class="pagination">
+  
+    <a href="/2017/11/my-first-conference-emcee-experience/" class="button"><div class="previous"><div>My First Conference Emcee Experience</div></div></a>
+  
+  
+    <a href="/2018/07/why-i-use-the-ibm-model-m-keyboard-that-is-older-than-me/" class="button"><div class="next"><div>Why I use the IBM Model M keyboard that is older than me?</div></div></a>
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/06/teardown-and-review-of-hand386/" class="image featured">
+    
+      <img src="/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/06/teardown-and-review-of-hand386/">Teardown &amp; review of a new 386 system: Hand386</a></h1>
+          <time class="published" datetime="">June 5, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/" class="image featured">
+    
+      <img src="/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/03/building-a-dos-chatgpt-client-in-2023/">Building a DOS ChatGPT client in 2023</a></h1>
+          <time class="published" datetime="">March 26, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/" class="image featured">
+    
+      <img src="/2022/08/teardown-of-habotest-ht107e-socket-tester/images/ht107e_open_top.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/">Teardown of Habotest HT107E Socket Tester</a></h1>
+          <time class="published" datetime="">August 6, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2021/11/how-do-i-produce-my-flight-videos/" class="image featured">
+    
+      <img src="/2021/11/how-do-i-produce-my-flight-videos/images/fv-photo-caption.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2021/11/how-do-i-produce-my-flight-videos/">How do I produce my flight videos?</a></h1>
+          <time class="published" datetime="">November 6, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/" class="image featured">
+    
+      <img src="/2021/09/review-usage-and-repair-of-the-framework-laptop/images/fw-caption-image.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/">Review, usage and repair of the Framework laptop</a></h1>
+          <time class="published" datetime="">September 21, 2021</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/hacks/">hacks<span class="count">20</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/personal/">personal<span class="count">17</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/singapore/">singapore<span class="count">16</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/teardowns/">teardowns<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/school/">school<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/book-reviews/">book-reviews<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/politics/">politics<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hackathon/">hackathon<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/product-reviews/">product-reviews<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/admin/">admin<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/repair-kopitiam/">repair-kopitiam<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/keyboards/">keyboards<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/quiz/">quiz<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/dvorak/">dvorak<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/flight-sim/">flight-sim<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2023
+      
+        YKM&#39;s Corner on the Web
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.117.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+<script type="text/javascript">
+  var sc_project = 8700008;
+  var sc_invisible = 1;
+  var sc_security = "b569f6b4";
+  var sc_https = 1; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript>
+  <div class="statcounter"><a title="free hit
+  counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+        src="https://c.statcounter.com/8700008/0/b569f6b4/1/" alt="free hit counter"></a></div>
+</noscript>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function (x) {
+      x.parentElement.classList += 'has-jax'
+    })
+  });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.4b08dba1bed68bfe65db2515ff7d6b0258656cf4079ed4e03263be238684e63e.js" integrity="sha256-Swjbob7Wi/5l2yUV/31rAlhlbPQHntTgMmO&#43;I4aE5j4="></script>
+<script src="/js/add-on.js"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50169449-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>

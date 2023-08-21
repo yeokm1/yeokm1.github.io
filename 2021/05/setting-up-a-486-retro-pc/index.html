@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Setting up a 486 retro PC - YKM&#39;s Corner on the Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.117.0"><meta itemprop="name" content="Setting up a 486 retro PC">
+<meta itemprop="description" content="The first computer I used as a kid was a 486 PC back in 1995. My family upgraded past it and it was disposed of. However very recently, someone in the local tech community donated a 486 motherboard to me. This gave me an opportunity to relive some of my childhood!
+In the spirit of giving back to the online community that I have learned a lot from, I decided to write this blog post to share my setup and learnings."><meta itemprop="datePublished" content="2021-05-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-05-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2492"><meta itemprop="image" content="http://yeokhengmeng.com/2021/05/setting-up-a-486-retro-pc/images/486-wfw311.jpg">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Setting up a 486 retro PC" />
+<meta property="og:description" content="The first computer I used as a kid was a 486 PC back in 1995. My family upgraded past it and it was disposed of. However very recently, someone in the local tech community donated a 486 motherboard to me. This gave me an opportunity to relive some of my childhood!
+In the spirit of giving back to the online community that I have learned a lot from, I decided to write this blog post to share my setup and learnings." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yeokhengmeng.com/2021/05/setting-up-a-486-retro-pc/" /><meta property="og:image" content="http://yeokhengmeng.com/2021/05/setting-up-a-486-retro-pc/images/486-wfw311.jpg" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-05-08T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://yeokhengmeng.com/2021/05/setting-up-a-486-retro-pc/images/486-wfw311.jpg"/>
+
+<meta name="twitter:title" content="Setting up a 486 retro PC"/>
+<meta name="twitter:description" content="The first computer I used as a kid was a 486 PC back in 1995. My family upgraded past it and it was disposed of. However very recently, someone in the local tech community donated a 486 motherboard to me. This gave me an opportunity to relive some of my childhood!
+In the spirit of giving back to the online community that I have learned a lot from, I decided to write this blog post to share my setup and learnings."/>
+<meta name="twitter:site" content="@yeokm1"/>
+<link rel="stylesheet" href="/css/bundle.min.a5db8e699d9ae70030c71551956f7b63ee5a1e88c7c2fa3f981a4cec53093283.css" integrity="sha256-pduOaZ2a5wAwxxVRlW97Y&#43;5aHojHwvo/mBpM7FMJMoM=">
+        <link rel="stylesheet" href="/css/add-on.css"></head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            post
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/aviation" class="link"><i class='fas fa-plane'></i> Aviation</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/retrocomputing" class="link"><i class='fas fa-save'></i> Retrocomputing</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/favourite-quotes/" class="link">Favourite Quotes</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about-me/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/zh" lang="zh" class="no-lang link">简体中文 (zh)</a>
+      
+    
+  
+</menu>
+
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="" alt="Kheng Meng profile pic" /></a>
+  <header>
+    <h1>Yeo Kheng Meng</h1>
+  </header>
+  <main>
+    <p>Maker, Coder, Private Pilot, Retrocomputing Enthusiast</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/yeokm1" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/yeokhengmeng" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/yeokhengmeng" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/yeokm1" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/yeokm1" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/yeokm1" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+<li><a href="//telegram.me/yeokm1" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/2021/05/setting-up-a-486-retro-pc/">Setting up a 486 retro PC</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2021-05-08 00:00:00 &#43;0000 UTC">
+      May 8, 2021
+    </time>
+    <span class="author"></span>
+    
+      <p>12 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+
+  </section>
+  
+  <a href="/2021/05/setting-up-a-486-retro-pc/" class="image featured">
+    
+      <img src="/2021/05/setting-up-a-486-retro-pc/images/486-wfw311.jpg" alt="">
+    
+  </a>
+
+
+  <div class="content">
+    <p>The first computer I used as a kid was a 486 PC back in 1995. My family upgraded past it and it was disposed of. However very recently, someone in the local tech community donated a 486 motherboard to me. This gave me an opportunity to relive some of my childhood!</p>
+<p>In the spirit of giving back to the online community that I have learned a lot from, I decided to write this blog post to share my setup and learnings.</p>
+<h2 id="system-overview">System Overview</h2>
+<p>The Intel 486 CPU was first released in 1989 but was updated for several years after that with faster variants. This system uses the DX2 variant released in 1992.</p>
+<a href="images/486-sys-specs.jpg"><img src="images/486-sys-specs.jpg" width="600"></a>
+<p>Here are the high-level specifications of the system as detected by the system diagnostic and benchmark tool <a href="https://winworldpc.com/product/checkit/30">CheckIt 3</a>.</p>
+<h3 id="bootup-process">Bootup process</h3>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/DZ8Zw6cnYD0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>00:00: Pressing reset button<br>
+00:05: BIOS memory check<br>
+00:17: Selecting my my boot choice with DOS 6.22 menu option<br>
+00:54: Desktop comes in<br>
+01:19: Program Manager starts to load<br>
+01:30: Shutting down Windows</p>
+<p>Have to admit system seems a little slow based on my memory of the 486&rsquo;s performance.</p>
+<h2 id="front-panel-impressions">Front Panel Impressions</h2>
+<a href="images/486-front-view.jpg"><img src="images/486-front-view.jpg" width="500"></a>
+<p>The front panel has a mix of old and new technologies. (Ignore the Core i5 sticker :P)</p>
+<h3 id="dvd-rw-ide">DVD-RW IDE</h3>
+<p>A DVD-RW is kind of overkill for a system of this class but I don&rsquo;t have a more period-correct pure CD-ROM drive. All IDE CD/DVD drives are backward compatible so no problems with using a &ldquo;new&rdquo; drive on an older system.</p>
+<h3 id="ide-hdd-caddy">IDE HDD caddy</h3>
+<p>I had this caddy lying around for years and this setup is perfect to be able to receive such an IDE caddy.</p>
+<h3 id="512mb-compactflash-cf">512MB Compactflash (CF)</h3>
+<p>This CF card acts as the main IDE hard disk for the system. Its removable nature means I can easily copy files to and fro to it from a modern PC with a USB card reader.</p>
+<p>A disk size of 512 MB was deliberately chosen as this BIOS cannot handle more than 528MB (504MiB) of hard disk capacity which was typical of that era. Period-correct IDE spinning magnetic hard disk drives of that size that are still working are getting rarer and more expensive by the years.</p>
+<h3 id="floppy-drives">Floppy drives</h3>
+<p>A period-correct 486 PC needs to have a 1.44MB 3.5&quot; Floppy.</p>
+<p>Additionally I also installed a Gotek Floppy Emulator with <a href="http://hxc2001.free.fr/floppy_drive_emulator/index.html#Download_HxCFirmwareForGotek">HxC firmware</a>. This Floppy Emulator can support up to 1000 floppy disk images being loaded into the USB drive. Selecting a particular image is as simple as pressing the external buttons to change the number selection.</p>
+<p>A HxC firmware is an improvement over the original Gotek firmware as it lets you put the floppy image files directly on the USB drive as a file instead of having to use a special Gotek software to manage the USB drive in its own proprietary format.</p>
+<p>No doubt, a Gotek drive is a modern replacement for old systems that still need native floppy drive access without the need to use rapidly ageing mechanical drives and floppy disks.</p>
+<p>In fact, I installed DOS 6.22 and WFW 3.11 through this floppy emulator by loading their install disk images through the USB drive. It saved me a lot of time and effort instead of writing out the images to actual floppy disks.</p>
+<h2 id="internal-hardware">Internal Hardware</h2>
+<p>Here is where the beef of this article starts to show. :)</p>
+<a href="images/486-inside-case.jpg"><img src="images/486-inside-case.jpg" width="500"></a>
+<p>The greatest difference between legacy and modern desktop PCs is the clutter. There is a lot more expansion cards and cabling required as the base motherboard is far less feature-integrated than modern models.</p>
+<h3 id="gigabyte-motherboard">Gigabyte Motherboard</h3>
+<a href="images/486-mobo.jpg"><img src="images/486-mobo.jpg" width="500"></a>
+<p>This <a href="https://stason.org/TULARC/pc/motherboards/G/GIGA-BYTE-TECHNOLOGY-CO-LTD-486-GA-486VT.html">Gigabyte GA-486VT</a> motherboard was graciously donated to me and thus serve as a foundation for the rest of the setup.</p>
+<p>It has 256K of onboard L2 cache and uses a UM82C482 chipset.</p>
+<p>It has 1x 8-bit <a href="https://en.wikipedia.org/wiki/Industry_Standard_Architecture">ISA</a> slot and 6x 16-bit ISA slots of which 3x can be used for <a href="https://en.wikipedia.org/wiki/VESA_Local_Bus">VESA Local Bus (VLB)</a> slots.</p>
+<p>VLB slots exist mostly on 486 motherboards and they offer faster performance to the aging ISA slots before the advent of the more industry-standard PCI.</p>
+<h3 id="intel-486-dx2-cpu">Intel 486-DX2 CPU</h3>
+<a href="images/486dx2.jpg"><img src="images/486dx2.jpg" width="500"></a>
+<p>This 486-DX2 66Mhz CPU serves as a brain for the entire system. It&rsquo;s the exact same one used by my family&rsquo;s initial 486 PC. I retained it when I was a kid before my family disposed of the rest of the PC. I&rsquo;m so excited to put it to use again!</p>
+<p>486 CPUs of that era generally operated on 33 Mhz bus speed to communicate with the rest of the system. This DX2 model was named as such as it has an internal clock multiplier to double its speed while maintaining compatibility with the bus speed of other peripherals.</p>
+<p>Note the jumper placed on the <code>TBSW</code> (Turbo Switch) pin header on the left of the CPU. It has to be placed in order to not enable Turbo Mode which will cut CPU performance.</p>
+<h3 id="4x8mb-ram">4x8MB RAM</h3>
+<a href="images/486-ram.jpg"><img src="images/486-ram.jpg" width="500"></a>
+<p>32MB of total RAM is supplied by 8 sticks of 4MB EDO SIMM-30 RAM which actually cost me a tidy sum to get as it&rsquo;s pretty uncommon today. Later 486 motherboards used SIMM-72 RAM sticks which are relatively more common and cheaper.</p>
+<h3 id="expansion-cards">Expansion Cards</h3>
+<p>Unlike modern highly-integrated motherboards, even basic IO and connectivity features require expansion cards.</p>
+<h4 id="graphics">Graphics</h4>
+<a href="images/486-vga-card.jpg"><img src="images/486-vga-card.jpg" width="600"></a>
+<p>Graphics is provided by a Cirrus Logic CL-GD5426 VLB which was donated to me together with the motherboard.</p>
+<p>This card is capable of up to 2MB of video RAM but only 1MB is populated. Cirrus Logic cards are known then for their low cost but still reasonable performance.</p>
+<p>1MB of video RAM is pretty good for that era and allows resolutions of 800x600 or 1024x768 depending on colour depth.</p>
+<h4 id="sound">Sound</h4>
+<p>When I first started this build, I initially used a Creative Sound Blaster 16 as the Sound Blaster is the standard used by many DOS games and applications before Windows 95 standardised sound programming APIs.</p>
+<a href="images/486-sb16-ct2950.jpg"><img src="images/486-sb16-ct2950.jpg" width="600"></a>
+<p>This SB16 model CT2950 uses CQM and does not have an original Yahama OPL3 chip. I still use this to check for compatibility tests.</p>
+<a href="images/486-orpheus.jpg"><img src="images/486-orpheus.jpg" width="600"></a>
+<p>However I recently ordered and received an <a href="http://orpheus-soundcard.eu/">Orpheus Sound Card</a> which is a modern ISA sound card made with the benefit of hindsight.</p>
+<p>It features a Sound Blaster compatible Crystal CS4237B chip, genuine OPL3 Yamaha YMF289B, PC-MIDI option and many other features. Basically, the best modern DOS-era ISA sound card!</p>
+<h4 id="network-card">Network card</h4>
+<a href="images/486-networkcard.jpg"><img src="images/486-networkcard.jpg" width="600"></a>
+<p>Network connectivity is provided by a <a href="https://en.wikipedia.org/wiki/3Com_3c509">3Com 3C509B</a> released in 1994 which is pretty common at that time.</p>
+<p>This model supports many interfaces AUI, 10-Base-2 and of course 10Base-T Ethernet which is still compatible with modern networking equipment.</p>
+<h4 id="eide-card">EIDE card</h4>
+<a href="images/486-eide-card.jpg"><img src="images/486-eide-card.jpg" width="600"></a>
+<p>I use 2 of these EIDE ISA cards to provide primary and secondary disk controller access to the IDE CF card as well as DVD-ROM drives.</p>
+<h4 id="floppy-and-serial-card">Floppy and Serial card</h4>
+<p>I assembled a <a href="http://www.malinov.com/Home/sergeys-projects/isa-fdc-and-uart">modern Floppy and Serial ISA card</a> based on the design.</p>
+<a href="images/486-floppy-serial-controller.jpg"><img src="images/486-floppy-serial-controller.jpg" width="600"></a>
+<p>I have set the configuration switch on SW1 (left) to enable an external serial port COM1 on IRQ3 and 0x3F8 address.</p>
+<p>I disabled the card&rsquo;s floppy ROM SW2.1 (right) to let the motherboard&rsquo;s BIOS handle the floppy configuration.</p>
+<h4 id="parallel-card">Parallel card</h4>
+<a href="images/486-parallel-card.jpg"><img src="images/486-parallel-card.jpg" width="500"></a>
+<p>Since I had a spare parallel card, I added this in as well.</p>
+<p>Just like the serial card, care has to be taken to set the jumpers to the appropriate LPT address and interrupt to not conflict with the parallel port on the Multi-io card.</p>
+<h3 id="real-time-clock-rtc-battery">Real Time Clock (RTC) battery</h3>
+<p>All motherboards need some form of battery in order to maintain system time and BIOS settings.</p>
+<p>Modern motherboards today use CR2032 batteries however legacy motherboards of the late 80s and early 90s like this use rechargeable NiCD or NiMH batteries which are prone to leaking after many years.</p>
+<a href="images/486-original-rtc-battery.jpg"><img src="images/486-original-rtc-battery.jpg" width="500"></a>
+<p>The original battery that was soldered to the motherboard has long stopped working and showed some signs of leaking.</p>
+<a href="images/486-aa-as-rtc-batt.jpg"><img src="images/486-aa-as-rtc-batt.jpg" width="500"></a>
+<p>To solve this, I cut away that battery and replaced it with 3x AA batteries. Thankfully this motherboard has a header for an external RTC battery source.</p>
+<h3 id="power-supply">Power Supply</h3>
+<p>486-era motherboards and before generally use AT power connectors. These are incompatible with modern ATX power supplies.</p>
+<a href="images/486-atx-to-at-connected.jpg"><img src="images/486-atx-to-at-connected.jpg" width="500"></a>
+<p>As working AT power supplies are getting scarce and more expensive, I opted to use a modern ATX power supply with the adapter above. This comes with a -5V regulator.</p>
+<p>I got this <a href="http://www.ebay.com.sg/itm/ATX-20-PIN-to-AT-P8-P9-CONVERTER-WITH-5V-ON-OFF-SWITCH-DUMMY-LOAD-USA-MADE/251025150787">from Ebay</a> a long time ago.</p>
+<h3 id="io-shield">IO Shield</h3>
+<p>When this motherboard was given to me, it did not come with an IO Shield.</p>
+<a href="images/486-io-shield.jpg"><img src="images/486-io-shield.jpg" width="500"></a>
+<p>To mitigate the risk of dust or other objects entering the back of the case, I got a 3D-printed IO shield. This special shield allows you to cut out the portions you need in this case, just the AT (not even PS/2!) keyboard connector.</p>
+<a href="images/486-rear-io.jpg"><img src="images/486-rear-io.jpg" width="500"></a>
+<p>It fits quite well at the back.</p>
+<h3 id="external-keyboardmouse-adapter">External keyboard/mouse adapter</h3>
+<p>486-era and prior motherboards usually do not have PS/2 mouse port. Most users use serial mice instead.</p>
+<a href="images/486-rear-io-connected.jpg"><img src="images/486-rear-io-connected.jpg" width="500"></a>
+<p>As serial mice are pretty scarce this days, I opted to use a <a href="https://www.serdashop.com/PS2TOSERIAL">PS2 mouse to serial converter</a> so I can use a &ldquo;newer&rdquo; PS/2 mouse with this system.</p>
+<p>The AT keyboard connector is passively converted to a PS/2 port.</p>
+<a href="images/486-serial-to-ps2.jpg"><img src="images/486-serial-to-ps2.jpg" width="500"></a>
+<p>This converter requires a 5V power source from a USB Host. As this system obviously predates USB, I got a Molex to USB adapter to pull 5V from the ATX power. I then thread the USB cable through the rear of the case.</p>
+<h2 id="bios">BIOS</h2>
+<p>The BIOS is from American Megatrends (AMI) which is common of that era. Even on many modern computers today, the UEFI (BIOS replacement) are also from AMI.</p>
+<a href="images/486-bios-system-summary.jpg"><img src="images/486-bios-system-summary.jpg" width="600"></a>
+<p>This BIOS seems to be Y2K compatible.</p>
+<a href="images/486-bios-fake-reads-2gb.jpg"><img src="images/486-bios-fake-reads-2gb.jpg" width="600"></a>
+<p>The BIOSes of that era are usually <a href="http://www.dewassoc.com/kbase/hard_drives/1024_cylinder_528_limit.htm">not capable of enumerating more than 504 MiB (528 MB)</a> of hard disk. Despite that, I tried a 2GB CF card. It strangely seems to enumerate correctly.</p>
+<a href="images/486-fdisk.jpg"><img src="images/486-fdisk.jpg" width="600"></a>
+<p>True colours are revealed when I used Fdisk to try partition the disk. Only 504 MiB (528 MB) is accessible. BIOS is lying HAHAHA.</p>
+<h2 id="os-setup">OS setup</h2>
+<p>After lots of trial-and-error with the hardware, the OS setup portion was relatively easier.</p>
+<a href="images/486-wfw311.jpg"><img src="images/486-wfw311.jpg" width="600"></a>
+<p>In this system I opted to install DOS 6.22 and Windows for Workgroups 3.11 which is optimal for such a system. A 486 system can technically run Windows 95 or 98 but it would be much slower.</p>
+<h3 id="dos-multi-configuration">DOS Multi-configuration</h3>
+<p>DOS 6 and up allows the user to select from a set of custom startup configuration settings.</p>
+<a href="images/486-dos-menu.jpg"><img src="images/486-dos-menu.jpg" width="500"></a>
+<p>Here, the system will start up differently depending on whether I want only DOS to be loaded or Windows 3.1.</p>
+<p>For DOS boot, extra drivers like Mouse and Network Packet drivers will be loaded.</p>
+<p>For more details about the <code>config.sys</code> and <code>autoexec.bat</code> files used, I have <a href="https://github.com/yeokm1/retro-configs/tree/master/desktops/generic-486-pc">uploaded them on Github</a>.</p>
+<h3 id="dos-drivers">DOS drivers</h3>
+<p>As DOS is extremely primitive, most hardware peripherals even the basic ones will need to be configured or some driver loaded in order to use them.</p>
+<h4 id="mouse">Mouse</h4>
+<p>Something as basic as a Mouse needs a driver??? This is DOS for you.</p>
+<a href="images/486-mouse-driver.jpg"><img src="images/486-mouse-driver.jpg" width="500"></a>
+<p><a href="http://cutemouse.sourceforge.net/">CuteMouse</a> is a relatively modern DOS mouse driver that was last updated in 2008. Its main benefit is its low memory footprint compared to other drivers.</p>
+<h4 id="cd-rom">CD-ROM</h4>
+<a href="images/486-cdrom-driver.jpg"><img src="images/486-cdrom-driver.jpg" width="500"></a>
+<p>I opted to use a <a href="https://www.legroom.net/howto/msdos">Toshiba CD-ROM driver</a> that seems stable and worked well for my system.</p>
+<p>An alternative is <a href="https://www.vogonswiki.com/index.php/VIDE-CDD.SYS">VIDE-CDD.SYS from Acer</a> that is claimed to have the lowest memory footprint but it did not work with my particular system.</p>
+<h4 id="sound-pnp">Sound PnP</h4>
+<p>Late-generation ISA cards support a feature (now retroactively) called <a href="https://en.wikipedia.org/wiki/Legacy_Plug_and_Play">Legacy Plug-and-Play (PnP)</a> to automatically assign system resources to it. Before Legacy PnP, resources like addresses and interrupts have to manually configured on each card via jumper settings.</p>
+<p>This Orpheus sound card is no exception as well.</p>
+<a href="images/486-unisound.jpg"><img src="images/486-unisound.jpg" width="500"></a>
+<p>I use a Universal Sound Card initialisation tool for DOS-era sound cards called <a href="https://www.vogons.org/viewtopic.php?t=72553">Unisound written by JazeFox</a>.</p>
+<p>It&rsquo;s works extremely well and fast with minimal installation and configuration required. In fact, it is still actively developed as shown by its 2021 copyright date!</p>
+<h4 id="network-packet-driver">Network Packet driver</h4>
+<p>DOS has no native network capabilities. To access the network, a 2-step process is required.</p>
+<ol>
+<li>Load a Packet driver</li>
+<li>Start networking software that use that Packet driver directly.</li>
+</ol>
+<p>A <a href="https://en.wikipedia.org/wiki/PC/TCP_Packet_Driver">Packet driver</a> is a standardised networking API for DOS.</p>
+<a href="images/486-packetdriver.jpg"><img src="images/486-packetdriver.jpg" width="500"></a>
+<p>I got the drivers from <a href="https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/distributions/1.2/repos/pkg-html/crynwr.html">FreeDOS</a></p>
+<a href="images/486-mtcp.jpg"><img src="images/486-mtcp.jpg" width="500"></a>
+<p>After loading the Packet driver, you need networking utilities. Here I use a tool called <a href="http://www.brutman.com/mTCP/">MTCP</a> which provides DHCP, PING, FTP and other utilities. This tool is still actively developed with the latest version released in 2020.</p>
+<h4 id="cpu-idle">CPU Idle</h4>
+<p>Most modern operating systems will try to put the CPU to sleep when there is nothing to do.</p>
+<p>DOS however does not do it hence leading to extra power consumption and heat generation.</p>
+<a href="images/486-dosidle.jpg"><img src="images/486-dosidle.jpg" width="500"></a>
+<p>DOSIdle is a <a href="https://en.wikipedia.org/wiki/Terminate_and_stay_resident_program">Terminate-and-Stay-Resident program (TSR)</a> that runs in the background to tell the CPU to halt when it is idling.</p>
+<p>You can download the latest version <a href="https://www.vogons.org/viewtopic.php?f=24&amp;t=43384#p438763">DOSidle 2.51</a></p>
+<h3 id="windows-drivers">Windows drivers</h3>
+<p>Windows 3.1 is relatively easier to setup once the DOS foundation is firmly established.</p>
+<p>Only a few more drivers have to be added.</p>
+<h4 id="networking">Networking</h4>
+<p>WFW 3.11 by default has Network Driver Interface Specification (NDIS) drivers for the 3COM 3C509 card. NDIS is basically another standard like Packet drivers except by Microsoft that is still used till today.</p>
+<p>To prevent conflicts, the DOS Packet driver is not loaded if I opt to start Windows 3.1 hence the DOS Multi-menu configuration.</p>
+<a href="images/486-wfw311-network.jpg"><img src="images/486-wfw311-network.jpg" width="500"></a>
+<p>One just has to install the <a href="https://winworldpc.com/product/microsoft-tcp-ip-32/tcpip-32-3-11b">TCP-IP package</a> for WFW311.</p>
+<a href="images/486-ie5-google.jpg"><img src="images/486-ie5-google.jpg" width="500"></a>
+<p>If everything goes well, we can surf the web with Internet Explorer 5. Google still works!</p>
+<h4 id="video">Video</h4>
+<a href="images/486-wfw311-graphics.jpg"><img src="images/486-wfw311-graphics.jpg" width="500"></a>
+<p>A driver from Cirrus Logic has to be installed in order to attain higher resolutions over the default VGA 640x480.</p>
+<p>I could not get the 1024x768 resolution to work as the LCD monitor I used seems to have problems with the refresh rate so I&rsquo;m stuck at 800x600.</p>
+<h4 id="sound-1">Sound</h4>
+<a href="images/486-wfw311-sound.jpg"><img src="images/486-wfw311-sound.jpg" width="500"></a>
+<p>I used the suggested Crystal Drivers provided by Orpheus. I used the non-PNP ones as the PNP ones seems to have issues as described on the <a href="http://orpheus-soundcard.eu/">website</a>.</p>
+<p>To use the non-PNP driver, Unisound DOS driver has to be launched beforehand.</p>
+<h2 id="benchmarks">Benchmarks</h2>
+<p>Using the Norton System Information 8.0 tool released in 1994, I decided to run some basic benchmarks.</p>
+<a href="images/486-cpu-benchmark.jpg"><img src="images/486-cpu-benchmark.jpg" width="500"></a>
+<p>Double the performance of a 486DX-33, sounds right.</p>
+<a href="images/486-cf-benchmark.jpg"><img src="images/486-cf-benchmark.jpg" width="500"></a>
+<p>The data transfer speed of 2074.5 KB/s is definitely acceptable for that time.</p>
+<p>The ultra-low seek time is where the solid-state nature of the CF card really shines!</p>
+<h2 id="final-words">Final Words</h2>
+<p>The approach to setting up a 486 or any other retro PC in modern times will be similar in some sense yet definitely differ significantly from its period-correct days.</p>
+<p>One has far greater access to online information plus the benefit of modern software and hardware tools.</p>
+<p>What has impressed me the most in this setting up journey is the continued community development of tools and drivers for an OS that is long considered obsolete. Without those tools, it would have been a greater challenge to do things the old-fashioned way.</p>
+<p>Even if tech-users of that era have lived through those times in person, I&rsquo;m sure there is definitely something new to learn here as well. I have definitely learned so much that we have taken for granted in the setup of modern PCs.</p>
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/retrocomputing">retrocomputing</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yeokm1/yeokm1.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNTQ3ODI3NTI="
+        data-category="Comments"
+        data-category-id="DIC_kwDODy-tIM4CXEA6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div class="pagination">
+  
+    <a href="/2021/03/transitioning-to-dynon-skyview-hdx-glass-cockpit/" class="button"><div class="previous"><div>Transitioning to Dynon Skyview HDX glass cockpit</div></div></a>
+  
+  
+    <a href="/2021/07/dme-theory-and-teardown-of-narco-dme-890/" class="button"><div class="next"><div>DME Theory and Teardown of Narco DME 890</div></div></a>
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/06/teardown-and-review-of-hand386/" class="image featured">
+    
+      <img src="/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/06/teardown-and-review-of-hand386/">Teardown &amp; review of a new 386 system: Hand386</a></h1>
+          <time class="published" datetime="">June 5, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/" class="image featured">
+    
+      <img src="/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/03/building-a-dos-chatgpt-client-in-2023/">Building a DOS ChatGPT client in 2023</a></h1>
+          <time class="published" datetime="">March 26, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/" class="image featured">
+    
+      <img src="/2022/08/teardown-of-habotest-ht107e-socket-tester/images/ht107e_open_top.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/">Teardown of Habotest HT107E Socket Tester</a></h1>
+          <time class="published" datetime="">August 6, 2022</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2021/11/how-do-i-produce-my-flight-videos/" class="image featured">
+    
+      <img src="/2021/11/how-do-i-produce-my-flight-videos/images/fv-photo-caption.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2021/11/how-do-i-produce-my-flight-videos/">How do I produce my flight videos?</a></h1>
+          <time class="published" datetime="">November 6, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/" class="image featured">
+    
+      <img src="/2021/09/review-usage-and-repair-of-the-framework-laptop/images/fw-caption-image.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/">Review, usage and repair of the Framework laptop</a></h1>
+          <time class="published" datetime="">September 21, 2021</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/hacks/">hacks<span class="count">20</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/personal/">personal<span class="count">17</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/singapore/">singapore<span class="count">16</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/teardowns/">teardowns<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/school/">school<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/book-reviews/">book-reviews<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/politics/">politics<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hackathon/">hackathon<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/product-reviews/">product-reviews<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/admin/">admin<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/repair-kopitiam/">repair-kopitiam<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/keyboards/">keyboards<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/quiz/">quiz<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/dvorak/">dvorak<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/flight-sim/">flight-sim<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2023
+      
+        YKM&#39;s Corner on the Web
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.117.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+<script type="text/javascript">
+  var sc_project = 8700008;
+  var sc_invisible = 1;
+  var sc_security = "b569f6b4";
+  var sc_https = 1; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript>
+  <div class="statcounter"><a title="free hit
+  counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+        src="https://c.statcounter.com/8700008/0/b569f6b4/1/" alt="free hit counter"></a></div>
+</noscript>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function (x) {
+      x.parentElement.classList += 'has-jax'
+    })
+  });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.4b08dba1bed68bfe65db2515ff7d6b0258656cf4079ed4e03263be238684e63e.js" integrity="sha256-Swjbob7Wi/5l2yUV/31rAlhlbPQHntTgMmO&#43;I4aE5j4="></script>
+<script src="/js/add-on.js"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-50169449-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>
