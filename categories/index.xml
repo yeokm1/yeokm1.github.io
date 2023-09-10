@@ -6,7 +6,25 @@
     <description>Recent content in Categories on YKM&#39;s Corner on the Web</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 05 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://yeokhengmeng.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://yeokhengmeng.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hacks</title>
+      <link>http://yeokhengmeng.com/categories/hacks/</link>
+      <pubDate>Sun, 10 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://yeokhengmeng.com/categories/hacks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>retrocomputing</title>
+      <link>http://yeokhengmeng.com/categories/retrocomputing/</link>
+      <pubDate>Sun, 10 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://yeokhengmeng.com/categories/retrocomputing/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>product-reviews</title>
       <link>http://yeokhengmeng.com/categories/product-reviews/</link>
@@ -17,29 +35,11 @@
     </item>
     
     <item>
-      <title>retrocomputing</title>
-      <link>http://yeokhengmeng.com/categories/retrocomputing/</link>
-      <pubDate>Mon, 05 Jun 2023 00:00:00 +0000</pubDate>
-      
-      <guid>http://yeokhengmeng.com/categories/retrocomputing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>teardowns</title>
       <link>http://yeokhengmeng.com/categories/teardowns/</link>
       <pubDate>Mon, 05 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>http://yeokhengmeng.com/categories/teardowns/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hacks</title>
-      <link>http://yeokhengmeng.com/categories/hacks/</link>
-      <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>http://yeokhengmeng.com/categories/hacks/</guid>
       <description></description>
     </item>
     
