@@ -9,7 +9,7 @@
 <meta name="generator" content="Hugo 0.118.2"><meta itemprop="name" content="HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin">
 <meta itemprop="description" content="HDMI is a relatively modern video connector we take for granted on modern PCs and monitors. Now vintage PCs can join in the fun too with a native connection to modern HDMI monitors without any additional adapter."><meta itemprop="datePublished" content="2023-09-10T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-09-10T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2191"><meta itemprop="image" content="http://yeokhengmeng.com/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg">
+<meta itemprop="wordCount" content="2190"><meta itemprop="image" content="http://yeokhengmeng.com/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg">
 <meta itemprop="keywords" content="" /><meta property="og:title" content="HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin" />
 <meta property="og:description" content="HDMI is a relatively modern video connector we take for granted on modern PCs and monitors. Now vintage PCs can join in the fun too with a native connection to modern HDMI monitors without any additional adapter." />
 <meta property="og:type" content="article" />
@@ -248,7 +248,7 @@
 </div>
 
 <p>This is the demo video using the updated GG card in my IBM5155 outputing HDMI to my 5:4 Dell P1917S monitor and Composite to my small LCD screen.</p>
-<p>This video shows the bootup process from a cold start to the DOS 6.22 command line. After that I run <a href="https://github.com/MobyGamer/CGACompatibilityTester">CGA Compatiblity tester</a> to check the output.</p>
+<p>This video shows the bootup process from a cold start to the DOS 6.22 command line. After that I run <a href="https://github.com/MobyGamer/CGACompatibilityTester">CGA Compatibility tester</a> to check the output.</p>
 <p>The entire updated PCB design and Verilog code has been open-sourced here: <a href="https://github.com/yeokm1/graphics-gremlin-hdmi">https://github.com/yeokm1/graphics-gremlin-hdmi</a></p>
 <p>Here is a summary of changes I made some which I will cover further down this post.</p>
 <ul>
@@ -308,7 +308,7 @@
 <a href="images/gg-hdmi-dvi-lowest.png"><img src="images/gg-hdmi-dvi-lowest.png" width="600"></a>
 <p>Even after scandoubling, the current resolution of 640x400 60Hz is technically below the minimum acceptable. I have tested with the monitors I have up to a modern Dell S2721QS 4K monitor and Sony TV and all can accept 640x400 60Hz with no problems.</p>
 <p>Nevertheless to adhere to the specification, I decided to provide another selectable CGA bitstream to drive the pixel clock higher so as to produce 640x400 at 70Hz in case some displays cannot accept a lower pixel clock.</p>
-<p>At this mode though, the IBM5155 internal display and external composite displays will now fail to work.</p>
+<p>At this mode though, the IBM5155 internal CRT and external composite display will no longer work.</p>
 <h1 id="development-tools">Development tools</h1>
 <p>During the design process, I used several tools to help me.</p>
 <p>As I would find out, if one sends an improper display signal to the monitor, most monitors will tell you the signal is out of specification and not elaborate more otherwise nothing is shown at all.</p>
