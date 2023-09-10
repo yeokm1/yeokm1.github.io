@@ -9,7 +9,7 @@
 <meta name="generator" content="Hugo 0.118.2"><meta itemprop="name" content="HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin">
 <meta itemprop="description" content="HDMI is a relatively modern video connector we take for granted on modern PCs and monitors. Now vintage PCs can join in the fun too with a native connection to modern HDMI monitors without any additional adapter."><meta itemprop="datePublished" content="2023-09-10T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-09-10T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2153"><meta itemprop="image" content="http://yeokhengmeng.com/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg">
+<meta itemprop="wordCount" content="2170"><meta itemprop="image" content="http://yeokhengmeng.com/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg">
 <meta itemprop="keywords" content="" /><meta property="og:title" content="HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin" />
 <meta property="og:description" content="HDMI is a relatively modern video connector we take for granted on modern PCs and monitors. Now vintage PCs can join in the fun too with a native connection to modern HDMI monitors without any additional adapter." />
 <meta property="og:type" content="article" />
@@ -207,7 +207,7 @@
   <div class="content">
     <p>HDMI is a relatively modern video connector we take for granted on modern PCs and monitors. Now vintage PCs can join in the fun too with a native connection to modern HDMI monitors without any additional adapter.</p>
 <h1 id="background">Background</h1>
-<p>2 years ago, I learned of an open-source project called Graphics Gremlin (GG) by <a href="https://www.linkedin.com/in/eric-schlaepfer-5ab72315/">Eric Schlaepfer</a> who has a website <a href="https://tubetime.us/">Tubetime.us</a>. It is an 8-bit ISA graphics card that supports display standards like <a href="https://en.wikipedia.org/wiki/Color_Graphics_Adapter">Color Graphics Adapter (CGA)</a> and <a href="https://en.wikipedia.org/wiki/IBM_Monochrome_Display_Adapter">Monochrome Display Adapter (MDA)</a>. CGA and MDA are display standards used by older IBM(-compatible) PCs in the 1980s.</p>
+<p>2 years ago, I learned of an open-source project called Graphics Gremlin (GG) by <a href="https://www.linkedin.com/in/eric-schlaepfer-5ab72315/">Eric Schlaepfer</a> who runs the website <a href="https://tubetime.us/">Tubetime.us</a>. It is an 8-bit ISA graphics card that supports display standards like <a href="https://en.wikipedia.org/wiki/Color_Graphics_Adapter">Color Graphics Adapter (CGA)</a> and <a href="https://en.wikipedia.org/wiki/IBM_Monochrome_Display_Adapter">Monochrome Display Adapter (MDA)</a>. CGA and MDA are display standards used by older IBM(-compatible) PCs in the 1980s.</p>
 <p>The frequencies and connectors used by CGA and MDA are no longer supported by modern monitors hence it is difficult for older PCs of the 1980s era to have modern displays connected to them without external adapters. GG addresses this problem by using techniques like scan doubling (for CGA) and increasing the vertical refresh rate (for MDA) then outputing to a relatively newer but still old VGA port.</p>
 <p>I fabricated and assembled the design then installed it into my <a href="https://github.com/yeokm1/retro-configs/tree/master/desktops/ibm-5155">IBM5155</a>.</p>
 <a href="images/gg-hdmi-original.jpg"><img src="images/gg-hdmi-original.jpg" width="600"></a>
@@ -215,13 +215,13 @@
 <p>However 2 issues bugged me about this card:</p>
 <ol>
 <li>
-<p>The Composite video and VGA port cannot be used together due to the way this card was designed. Switching between them is possible by flipping physical switches on the card. However on my IBM5155, the internal CRT monitor runs on Composite hence if I want to use an external VGA monitor, the internal CRT becomes unusable.</p>
+<p>The Composite video and VGA port cannot be used at the same time due to pin sharing between both ports. Switching between them is possible by flipping physical switches on the card. However on my IBM5155, the internal CRT monitor runs on Composite hence if I want to use an external monitor, the internal CRT becomes unusable.</p>
 </li>
 <li>
 <p>Modern monitors have long started to omit the analog VGA inputs in favour of modern digital ports like HDMI or Displayport. This requires a VGA-to-HDMI adapter. This analog-to-digital conversion will also lead to an inevitable loss in video quality. Such adapters also require an external power source such as USB. Vintage PCs usually don&rsquo;t have USB outputs so supplying power with an additional USB power adapter leads to more setup hassles.</p>
 </li>
 </ol>
-<p>I decided to modify the GG design to address these problems.</p>
+<p>I decided to modify the GG design so it can connect natively to an external HDMI monitor and service the internal Composite-based CRT at the same time.</p>
 <h1 id="how-does-the-graphics-gremlin-work">How does the Graphics Gremlin work?</h1>
 <p>The core of the GG is the Lattice iCE40HX4K FPGA. It is responsible for handling instructions from the ISA bus and generating the appropriate video signals.</p>
 <p>512KiB video RAM is provided by ISSI IS61WV5128BLL. 3 bitstreams are stored in a 8Mbit Microchip SST26VF080A SPI flash. These bitstreams are:</p>
