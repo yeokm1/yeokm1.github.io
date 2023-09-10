@@ -9,7 +9,7 @@
 <meta name="generator" content="Hugo 0.118.2"><meta itemprop="name" content="HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin">
 <meta itemprop="description" content="HDMI is a relatively modern video connector we take for granted on modern PCs and monitors. Now vintage PCs can join in the fun too with a native connection to modern HDMI monitors without any additional adapter."><meta itemprop="datePublished" content="2023-09-10T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-09-10T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2170"><meta itemprop="image" content="http://yeokhengmeng.com/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg">
+<meta itemprop="wordCount" content="2191"><meta itemprop="image" content="http://yeokhengmeng.com/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg">
 <meta itemprop="keywords" content="" /><meta property="og:title" content="HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin" />
 <meta property="og:description" content="HDMI is a relatively modern video connector we take for granted on modern PCs and monitors. Now vintage PCs can join in the fun too with a native connection to modern HDMI monitors without any additional adapter." />
 <meta property="og:type" content="article" />
@@ -316,7 +316,7 @@
 <h2 id="digilent-digital-discovery">Digilent Digital Discovery</h2>
 <p>The Digilent Digital Discovery (DDD) is a relatively low-cost USB logic analyzer for the specifications/features.</p>
 <a href="images/gg-hdmi-ddd.jpg"><img src="images/gg-hdmi-ddd.jpg" width="600"></a>
-<p>It can sample up to 800 MS/s depending on the number of channels active at one time. Compared to most osilloscopes, it has a relatively deep 2 GBit RAM which allows me to store plenty of samples. This is especially required given the data samples I was working with and I need to capture at least several frames.</p>
+<p>It can sample up to 800 MS/s depending on the number of channels active at one time. Compared to most osilloscopes, it has a 2 GBit RAM which allows me to store plenty of samples. This is especially required given the data samples I was working with and I need to capture at least several frames.</p>
 <a href="images/gg-hdmi-waveforms.png"><img src="images/gg-hdmi-waveforms.png" width="800"></a>
 <p>This is a sample capture of the Clock, Display Enable, Vertical Sync and Horizontal Sync signals on the Digilent Waveforms software.</p>
 <h2 id="testing-with-mimas-a7-xilinx-artix-7">Testing with Mimas A7 (Xilinx Artix 7)</h2>
@@ -327,7 +327,7 @@
 <h2 id="486-pc">486 PC</h2>
 <p>Instead of going to my precious IBM5155 directly, I used my <a href="/2021/05/setting-up-a-486-retro-pc/">486 PC</a> for intermediate testing.</p>
 <a href="images/gg-hdmi-486-cga.jpg"><img src="images/gg-hdmi-486-cga.jpg" width="400"></a>
-<p>The BIOS of my 486 motherboard has the ability to change to the different CGA and MDA modes on top of its more period correct VGA mode. This helped me in my testing as I can switch between the video modes relatively easily compared to my <a href="https://www.minuszerodegrees.net/5160/misc/5160_motherboard_switch_settings.htm">IBM5155 which uses physical switch settings</a>.</p>
+<p>The BIOS of my 486 motherboard has the ability to change to the different CGA and MDA modes on top of its more period correct VGA mode. This helped me in my testing as I can more easily switch between the video modes compared to my <a href="https://www.minuszerodegrees.net/5160/misc/5160_motherboard_switch_settings.htm">IBM5155 which uses physical switch settings</a>.</p>
 <h2 id="install-in-my-ibm5155">Install in my IBM5155</h2>
 <p>After I was more confident on the card&rsquo;s functionality, final tests was done in my IBM5155.</p>
 <a href="images/gg-hdmi-ibm5155-top.jpg"><img src="images/gg-hdmi-ibm5155-top.jpg" width="400"></a>
@@ -341,9 +341,10 @@
 <a href="images/gg-hdmi-cga-test.jpg"><img src="images/gg-hdmi-cga-test.jpg" width="600"></a>
 <p>My IBM 5155 running the <a href="https://github.com/MobyGamer/CGACompatibilityTester">CGA Compatibility Tester</a> displaying the colour palatte.</p>
 <p>The brown colour is displayed incorrectly as light yellow.</p>
+<p>The original GG does not suffer from this problem as the brown colour is specially taken off when generating the VGA analog signal.</p>
 <h1 id="conclusion">Conclusion</h1>
-<p>This project was a long journey for me. If you look at the silkscreen date on the PCB, it shows 9 August 2021. At that time, I designed the PCB without the skills to write in Verilog. Even thought the number of changes I made are relatively small, it took me quite a bit of time on the side to finally pick up the skills to work on my first FPGA project with all development and testing work this project entails.</p>
-<p>Not forgetting I&rsquo;m actually standing on the shoulders of giants like Eric Schlaepfer who designed the original Graphics Gremlin. I&rsquo;m just building an additional 5% on top of his work.</p>
+<p>This project was a long journey for me. If you look at the silkscreen date on the PCB, it shows 9 August 2021. At that time, I designed the PCB without the skills to code in Verilog. Even thought the number of changes I made are small, it took me quite a bit of time on the side to finally pick up the skills to work on my first FPGA project with all development and testing work this project entails.</p>
+<p>Not forgetting I&rsquo;m actually standing on the shoulders of giants like Eric Schlaepfer who designed the original Graphics Gremlin. I&rsquo;m just building on a small increment on top of his work.</p>
   </div>
   <footer>
     <ul class="stats">
