@@ -9,7 +9,7 @@
 <meta name="generator" content="Hugo 0.118.2"><meta itemprop="name" content="HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin">
 <meta itemprop="description" content="HDMI is a relatively modern video connector we take for granted on modern PCs and monitors. Now vintage PCs can join in the fun too with a native connection to modern HDMI monitors without any additional adapter."><meta itemprop="datePublished" content="2023-09-10T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-09-10T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2292"><meta itemprop="image" content="http://yeokhengmeng.com/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg">
+<meta itemprop="wordCount" content="2629"><meta itemprop="image" content="http://yeokhengmeng.com/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg">
 <meta itemprop="keywords" content="" /><meta property="og:title" content="HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin" />
 <meta property="og:description" content="HDMI is a relatively modern video connector we take for granted on modern PCs and monitors. Now vintage PCs can join in the fun too with a native connection to modern HDMI monitors without any additional adapter." />
 <meta property="og:type" content="article" />
@@ -183,7 +183,7 @@
     </time>
     <span class="author"></span>
     
-      <p>11 minutes read</p>
+      <p>13 minutes read</p>
     
   </div>
 </header>
@@ -237,7 +237,7 @@
 <p>The left is the test pattern for CGA and the right is MDA.</p>
 <p>This test pattern proved very useful for me as it means I don&rsquo;t need the card to be plugged into a PC while I&rsquo;m testing any code changes.</p>
 <h1 id="my-modifications">My Modifications</h1>
-<h2 id="summary-and-compatibility">Summary and compatibility</h2>
+<h2 id="summary">Summary</h2>
 <a href="images/gg-hdmi-top-both.jpg"><img src="images/gg-hdmi-top-both.jpg" width="800"></a>
 <p>Left is the original GG, right is my modified design.</p>
 <a href="images/gg-hdmi-board-ports.jpg"><img src="images/gg-hdmi-board-ports.jpg" width="800"></a>
@@ -249,12 +249,38 @@
 
 <p>This is the demo video using the updated GG card in my IBM5155 outputing HDMI to my 5:4 Dell P1917S monitor and Composite to my small LCD monitor.</p>
 <p>This video shows the bootup process from a cold start to the DOS 6.22 command line. After that I run <a href="https://github.com/MobyGamer/CGACompatibilityTester">CGA Compatibility tester</a> to check the output. Notice that the brown of the 16-colour palatte is shown incorrectly as dark yellow which will be explained later.</p>
+<p>The entire updated PCB design and Verilog code has been open-sourced here: <a href="https://github.com/yeokm1/graphics-gremlin-hdmi">https://github.com/yeokm1/graphics-gremlin-hdmi</a></p>
+<p>Here is a summary of changes I made some which I will cover further down this post.</p>
+<ul>
+<li>Hardware changes
+<ul>
+<li>Added HDMI port by removing the RGBI DB9 port. Port positions adjusted to ease trace routing.</li>
+<li>Added <a href="https://www.ti.com/product/TFP410">TI TFP410</a> DVI transmitter (HDMI is compatible with DVI). HDMI is independent of the VGA/Composite output.</li>
+<li>Test points for inputs to DVI transmitter.</li>
+<li>Replaced the 3.3VDC 1A linear regulator with 3A as TFP410 is power hungry at up to 1A.</li>
+<li>Added pin headers for power.</li>
+<li>Added LED power indicators for 5V and 3.3V.</li>
+<li>2-layer -&gt; 4-layer board to ease routing.</li>
+</ul>
+</li>
+<li>HDL code changes
+<ul>
+<li>Selectable MDA colours</li>
+<li>Removed normal MDA bitstream as there is no more RGBI port.</li>
+<li>Added CGA 70Hz mode.</li>
+<li>Added CGA 60Hz overscan mode for demo and debug purposes.</li>
+<li>Modified Scandoubler code to support Display Enable signal as required by DVI chip but not VGA.</li>
+</ul>
+</li>
+</ul>
+<h1 id="famous-demos">Famous Demos</h1>
+<p>I ran 2 famous demos 8088MPH and Area5155 that specifically targets the original IBM PC and CGA cards. Several problems were encountered that could be inherent to the original Graphics Gremlin or the configuration of my system.</p>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe src="https://www.youtube.com/embed/WLpNmEhdTe4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-<p>There are points which the graphics card seems to have issues. Some problems could be inherent to the original Graphics Gremlin or the configuration of my system.</p>
+<p>This <a href="https://trixter.oldskool.org/2015/04/07/8088-mph-we-break-all-your-emulators/">8088MPH demo</a> stresses out both actual systems and emulators alike. There are points which the graphics card seems to have issues.</p>
 <ul>
 <li>02:14 - Shimmering</li>
 <li>03:14 - Unsupported frequency on HDMI</li>
@@ -263,28 +289,14 @@
 <li>05:53 - Constant high-pitch sound that ends at 06:25</li>
 <li>06:41 - Unsupported frequency on HDMI</li>
 </ul>
-<p>The entire updated PCB design and Verilog code has been open-sourced here: <a href="https://github.com/yeokm1/graphics-gremlin-hdmi">https://github.com/yeokm1/graphics-gremlin-hdmi</a></p>
-<p>Here is a summary of changes I made some which I will cover further down this post.</p>
-<ul>
-<li>Hardware changes
-<ul>
-<li>Added HDMI port by removing the RGBI DB9 port. Port positions adjusted to ease trace routing.</li>
-<li>Added <a href="https://www.ti.com/product/TFP410">TI TFP410</a> DVI transmitter (HDMI is compatible with DVI). HDMI is independent of the VGA/Composite output.</li>
-<li>Test points for inputs to DVI transmitter</li>
-<li>Replaced the 3.3VDC 1A linear regulator with 3A as TFP410 is power hungry at up to 1A.</li>
-<li>Added pin headers for power.</li>
-<li>Added LED power indicators for 5V and 3.3V.</li>
-</ul>
-</li>
-<li>HDL code changes
-<ul>
-<li>Selectable MDA colours</li>
-<li>Removed normal MDA bitstream as there is no more RGBI port.</li>
-<li>Added CGA 70Hz mode.</li>
-<li>Modified Scandoubler code to support Display Enable signal as required by DVI chip but not VGA</li>
-</ul>
-</li>
-</ul>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/9wYU6qMWlpE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>For the <a href="https://www.pouet.net/prod.php?which=91938">Area 5150 demo</a>, the graphics card has been set into a mode to specifically display the overscan area since Area 5150 uses this.</p>
+<p>Showing the overscan section should not be normally done as it leads to non-standard resolutions and weird display signaling so many monitors run into problems receiving this input. My 4K monitor happens to be one of the few to at least make an attempt to display this.</p>
+<p>There are many display errors in this Area 5150 demo that could be aggravated by the force display of overscan.</p>
 <h1 id="hardware-changes">Hardware changes</h1>
 <h2 id="hdmi-support-through-dvi-transmitter-ic">HDMI support through DVI transmitter IC</h2>
 <p>HDMI (and DVI) use Transition-Minimized Differential Signaling (TMDS) lines. The ICE40 FPGA however does not have that. Online searches garnered that some people have <a href="https://hackaday.io/page/5702-dvi-hdmi-pmod-for-an-ice40-fpga">used workarounds</a> to generate the differential signals however I&rsquo;m not sure how compatible or spec-compliant those are.</p>
@@ -323,6 +335,14 @@
 <p>Even after scandoubling, the current resolution of 640x400 60Hz is technically below the minimum acceptable. I have tested with the monitors I have up to a modern Dell S2721QS 4K monitor and Sony TV and all can accept 640x400 60Hz with no problems.</p>
 <p>Nevertheless to adhere to the specification, I decided to provide another selectable CGA bitstream to drive the pixel clock higher so as to produce 640x400 at 70Hz in case some displays cannot accept a lower pixel clock.</p>
 <p>At this mode though, the IBM5155 internal CRT and external composite display will no longer work.</p>
+<h2 id="additional-cga-60hz-overscan-mode">Additional CGA 60Hz overscan mode</h2>
+<p>I was informed that certain demos like <a href="https://www.youtube.com/watch?v=fWDxdoRTZPc">Area 5150</a> use the <a href="https://en.wikipedia.org/wiki/Overscan">overscan area</a>. Overscan area is supposed to be a non-viewable region between the expected viewable area and horizontal/vertical sync. Usually it&rsquo;s black to act as a buffer to be discarded as CRT screens have some variability on how their display area is positioned.</p>
+<p>In the original implementation, the DE signal is generated from <a href="https://github.com/schlae/graphics-gremlin/blob/main/verilog/crtc6845.v">crtc6845.v</a> and is set low outside the display area. This is the same DE signal that is sent to the DVI transmitter.</p>
+<p>I investigated to see whether it was possible to allow the overscan region to be shown by <a href="https://github.com/yeokm1/graphics-gremlin-hdmi/blob/main/verilog/crtc6845.v">allowing a secondary DE output in crtc6845.v</a> to encroach into the overscan area.</p>
+<a href="images/gg-hdmi-area5150-overscan.jpg"><img src="images/gg-hdmi-area5150-overscan.jpg" width="800"></a>
+<p>In the above screenshot, the overscan portion are the green sections on the right and bottom.</p>
+<p>In my testing though, the display of image data this close to the Hsync and Vsync may not be tolerable to all monitors. I had to use my Dell S2721QS 4K monitor in this demo as the previous 5:4 Dell P1917S monitor does not seem to like this signal.</p>
+<p>This overscan display is now provided as a fourth bitstream.</p>
 <h1 id="development-tools">Development tools</h1>
 <p>During the design process, I used several tools to help me.</p>
 <p>As I would find out, if one sends an improper display signal to the monitor, most monitors will tell you the signal is out of specification and not elaborate more otherwise nothing is shown at all.</p>
