@@ -9,7 +9,7 @@
 <meta name="generator" content="Hugo 0.118.2"><meta itemprop="name" content="HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin">
 <meta itemprop="description" content="HDMI is a relatively modern video connector we take for granted on modern PCs and monitors. Now vintage PCs can join in the fun too with a native connection to modern HDMI monitors without any additional adapter."><meta itemprop="datePublished" content="2023-09-10T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-09-10T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2630"><meta itemprop="image" content="http://yeokhengmeng.com/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg">
+<meta itemprop="wordCount" content="2643"><meta itemprop="image" content="http://yeokhengmeng.com/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg">
 <meta itemprop="keywords" content="" /><meta property="og:title" content="HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin" />
 <meta property="og:description" content="HDMI is a relatively modern video connector we take for granted on modern PCs and monitors. Now vintage PCs can join in the fun too with a native connection to modern HDMI monitors without any additional adapter." />
 <meta property="og:type" content="article" />
@@ -211,7 +211,7 @@
 <p>The frequencies and connectors used by CGA and MDA are no longer supported by modern monitors hence it is difficult for older PCs of the 1980s era to have modern displays connected to them without external adapters. GG addresses this problem by using techniques like scan doubling (for CGA) and increasing the vertical refresh rate (for MDA) then outputing to a relatively newer but still old VGA port.</p>
 <p>I fabricated and assembled the design then installed it into my <a href="https://github.com/yeokm1/retro-configs/tree/master/desktops/ibm-5155">IBM5155</a>.</p>
 <a href="images/gg-hdmi-original.jpg"><img src="images/gg-hdmi-original.jpg" width="600"></a>
-<p>GG provides outputs in VGA, Composite and DB9 RGBI.</p>
+<p>GG provides outputs in VGA, Composite and DE9 RGBI.</p>
 <p>However 2 issues bugged me about this card:</p>
 <ol>
 <li>
@@ -254,7 +254,7 @@
 <ul>
 <li>Hardware changes
 <ul>
-<li>Added HDMI port by removing the RGBI DB9 port. Port positions adjusted to ease trace routing.</li>
+<li>Added HDMI port by removing the RGBI DE9 port. Port positions adjusted to ease trace routing.</li>
 <li>Added <a href="https://www.ti.com/product/TFP410">TI TFP410</a> DVI transmitter (HDMI is compatible with DVI). HDMI is independent of the VGA/Composite output.</li>
 <li>Test points for inputs to DVI transmitter.</li>
 <li>Replaced the 3.3VDC 1A linear regulator with 3A as TFP410 is power hungry at up to 1A.</li>
@@ -265,7 +265,7 @@
 </li>
 <li>HDL code changes
 <ul>
-<li>Selectable MDA colours</li>
+<li>Selectable MDA colours (HDMI only)</li>
 <li>Removed normal MDA bitstream as there is no more RGBI port.</li>
 <li>Added CGA 70Hz mode.</li>
 <li>Added CGA 60Hz overscan mode for demo and debug purposes.</li>
@@ -320,15 +320,16 @@
 <h1 id="hdl-code-changes">HDL code changes</h1>
 <h2 id="supporting-the-dvi-transmitter-chip">Supporting the DVI transmitter chip</h2>
 <p>The Verilog code has to be modified to send data in an appropriate format to the DVI chip.</p>
-<p>Most of the original RGBI lines meant for the DB9 monitor connector, RGBI, HS, VS lines are similar. However the CLK and DE lines are not used before and hence has to be provided. CLK was relatively easy to get and wire out to the DVI chip. However DE was slightly more problematic.</p>
+<p>Most of the original RGBI lines meant for the DE9 monitor connector, RGBI, HS, VS lines are similar. However the CLK and DE lines are not used before and hence has to be provided. CLK was relatively easy to get and wire out to the DVI chip. However DE was slightly more problematic.</p>
 <p>In the original IBM CGA/MDA graphics card, there exists a chip called a <a href="https://en.wikipedia.org/wiki/Motorola_6845">Motorola 6845</a> which generates the Cathode Ray Tube (CRT) control signals. It is also known as a CRTC6845 and the DE line is also generated here.</p>
 <p>In the code, the behaviour of this chip is emulated in <a href="https://github.com/schlae/graphics-gremlin/blob/main/verilog/crtc6845.v">crtc6845.v</a>. The DE line output of this module has to be pulled out and wired to the DVI chip.</p>
 <p>In CGA mode, the code contains a <a href="https://github.com/schlae/graphics-gremlin/blob/main/verilog/cga_scandoubler.v">cga_scandoubler.v</a> to double the number of horizontal lines and frequency to change the number of viewable vertical lines from 640x200 to 640x400 to make it more compatible for modern displays. It does this by doing double buffering with 2 arrays. One array is read out twice for each line using twice the usual pixel clock while the other array is being written to by the host PC then both arrays are swapped at the end of line.</p>
 <p>I modified this Scandoubler to cache the DE bit as well.</p>
-<h2 id="selectable-mda-colours">Selectable MDA colours</h2>
+<h2 id="selectable-mda-colours-for-hdmi">Selectable MDA colours for HDMI</h2>
 <p>In the original GG, the MDA output is a constant amber (see photo in an earlier section). I didn&rsquo;t particularly like amber. I wanted to have a customisable colour option depending on my needs. Since 2 of the physical switches are unused in MDA mode, I programmed the ability to change the colours depending on what switch is selected.</p>
 <a href="images/gg-hdmi-mda-display.jpg"><img src="images/gg-hdmi-mda-display.jpg" width="800"></a>
 <p>Depending on switch state, colours like green, yellow, white and red are selectable on-the-fly.</p>
+<p>These colours are applicable for the HDMI section only.</p>
 <h2 id="additional-cga-70hz-mode">Additional CGA 70Hz mode</h2>
 <p>According to page 18 of the <a href="https://www.cs.unc.edu/Research/stc/FAQs/Video/dvi_spec-V1_0.pdf">DVI 1.0 specification</a>, the minimum acceptable for DVI is a pixel clock of 25.175Mhz for 640x480 60Hz.</p>
 <a href="images/gg-hdmi-dvi-lowest.png"><img src="images/gg-hdmi-dvi-lowest.png" width="600"></a>
