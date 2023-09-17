@@ -9,7 +9,7 @@
 <meta name="generator" content="Hugo 0.118.2"><meta itemprop="name" content="HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin">
 <meta itemprop="description" content="HDMI is a relatively modern video connector we take for granted on modern PCs and monitors. Now vintage PCs can join in the fun too with a native connection to modern HDMI monitors without any additional adapter."><meta itemprop="datePublished" content="2023-09-10T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-09-10T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2643"><meta itemprop="image" content="http://yeokhengmeng.com/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg">
+<meta itemprop="wordCount" content="2658"><meta itemprop="image" content="http://yeokhengmeng.com/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg">
 <meta itemprop="keywords" content="" /><meta property="og:title" content="HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin" />
 <meta property="og:description" content="HDMI is a relatively modern video connector we take for granted on modern PCs and monitors. Now vintage PCs can join in the fun too with a native connection to modern HDMI monitors without any additional adapter." />
 <meta property="og:type" content="article" />
@@ -371,6 +371,7 @@
 <p>The rear of my IBM5155 shows the HDMI connector, probably the first to have one?</p>
 <p>I didn&rsquo;t design a new card bracket so I used a twist tie to secure the card to the enclosure.</p>
 <h1 id="known-issue-with-brown">Known issue with brown</h1>
+<p>(A fix with a PCB respin is on the way. You can track this <a href="https://github.com/yeokm1/graphics-gremlin-hdmi/issues/1">issue</a>.)</p>
 <p>This palette value &ldquo;I:0 R:1 G:1 B:0&rdquo; is not handled correctly by this card and is displayed as dark yellow instead of brown as per how the <a href="https://www.aceinnova.com/en/electronics/cga-and-the-brown-color-in-ibm-5153-color-display/">IBM5153 Colour Display Monitor does it</a>. When an IBM5153 monitor sees this signal &ldquo;I:0 R:1 G:1 B:0&rdquo;, the green component is halved producing a brown colour.</p>
 <p>In order to emulate this behaviour for modern displays, the FPGA itself will have to halve the green colour component which means I will need more signal lines to the DVI transmitter. However I lack the pins on the FPGA to provide more than a 4-bit RGBI output.</p>
 <a href="images/gg-hdmi-cga-test.jpg"><img src="images/gg-hdmi-cga-test.jpg" width="600"></a>
