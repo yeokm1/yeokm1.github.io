@@ -10,7 +10,7 @@
 <meta itemprop="description" content="With the recent attention on ChatGPT and OpenAI&rsquo;s release of their APIs, many developers have developed clients for modern platforms to talk to this super smart AI chatbot. However I&rsquo;m pretty sure almost nobody has written one for a vintage platform like MS-DOS.
 This client now supports Hugging Face API and text to speech (TTS) capability. More info on TTS is found at the later part of this post."><meta itemprop="datePublished" content="2023-03-26T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-03-26T00:00:00+00:00" />
-<meta itemprop="wordCount" content="3160"><meta itemprop="image" content="http://yeokhengmeng.com/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg">
+<meta itemprop="wordCount" content="3217"><meta itemprop="image" content="http://yeokhengmeng.com/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg">
 <meta itemprop="keywords" content="" /><meta property="og:title" content="Building a DOS ChatGPT client in 2023" />
 <meta property="og:description" content="With the recent attention on ChatGPT and OpenAI&rsquo;s release of their APIs, many developers have developed clients for modern platforms to talk to this super smart AI chatbot. However I&rsquo;m pretty sure almost nobody has written one for a vintage platform like MS-DOS.
 This client now supports Hugging Face API and text to speech (TTS) capability. More info on TTS is found at the later part of this post." />
@@ -186,7 +186,7 @@ This client now supports Hugging Face API and text to speech (TTS) capability. M
     </time>
     <span class="author"></span>
     
-      <p>15 minutes read</p>
+      <p>16 minutes read</p>
     
   </div>
 </header>
@@ -403,6 +403,15 @@ This client now supports Hugging Face API and text to speech (TTS) capability. M
 </span></span><span style="display:flex;"><span><span style="color:#007f7f">//Restore the stdout
 </span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>freopen(<span style="color:#0ff;font-weight:bold">&#34;con&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;a&#34;</span>, stdout);
 </span></span></code></pre></div><p>You may wonder I did not use my IBM5155 for this demo? It&rsquo;s because I found that while the 4.77Mhz Intel 8088 can run the speech synthesis and playback utilities, it was too slow and choppy to be bearable. Emulation testing under 86Box shows that the minimum CPU speed for reasonable performance is 8Mhz. My 486 desktop is the next step up the vintage system ladder I have so I have to use this in my demo.</p>
+<h3 id="tts-improvement-sept-2023">TTS improvement (Sept 2023)</h3>
+<p>A developer found an improvement where insted of repeatedly calling <code>read.exe</code>, a call can be made directly to the TTS engine. A library called <a href="https://github.com/systoolz/dosbtalk">dosbtalk</a> was created to do this.</p>
+<p>I integrated the library and things are very much improved!</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/3L2jj7tDIoU" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>Notice the increased speed with no more awkward pauses. Many thanks to <a href="https://github.com/systoolz">systoolz</a>.</p>
 <h1 id="conclusion">Conclusion</h1>
 <p>This project would not have been possible without the help of Brutman&rsquo;s excellent well-documented MTCP library. Without his library and sample code, figuring out how to talk to the Packet Driver and implementing the entire TCP/IP stack down to the link-layer will be an extremely tall order.</p>
 <p>Writing this chat client was a fun experience. Having the compiler being able to be run on modern Windows OS certainly make things easier. In fact it was easier than for Windows 3.1 Slack app I did before. I initially thought that using x86 Assembly was mandatory but thankfully I did not have to do so.</p>
