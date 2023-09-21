@@ -10,7 +10,7 @@
 <meta itemprop="description" content="With the recent attention on ChatGPT and OpenAI&rsquo;s release of their APIs, many developers have developed clients for modern platforms to talk to this super smart AI chatbot. However I&rsquo;m pretty sure almost nobody has written one for a vintage platform like MS-DOS.
 This client now supports Hugging Face API and text to speech (TTS) capability. More info on TTS is found at the later part of this post."><meta itemprop="datePublished" content="2023-03-26T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-03-26T00:00:00+00:00" />
-<meta itemprop="wordCount" content="3217"><meta itemprop="image" content="http://yeokhengmeng.com/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg">
+<meta itemprop="wordCount" content="3243"><meta itemprop="image" content="http://yeokhengmeng.com/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg">
 <meta itemprop="keywords" content="" /><meta property="og:title" content="Building a DOS ChatGPT client in 2023" />
 <meta property="og:description" content="With the recent attention on ChatGPT and OpenAI&rsquo;s release of their APIs, many developers have developed clients for modern platforms to talk to this super smart AI chatbot. However I&rsquo;m pretty sure almost nobody has written one for a vintage platform like MS-DOS.
 This client now supports Hugging Face API and text to speech (TTS) capability. More info on TTS is found at the later part of this post." />
@@ -404,7 +404,7 @@ This client now supports Hugging Face API and text to speech (TTS) capability. M
 </span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>freopen(<span style="color:#0ff;font-weight:bold">&#34;con&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;a&#34;</span>, stdout);
 </span></span></code></pre></div><p>You may wonder I did not use my IBM5155 for this demo? It&rsquo;s because I found that while the 4.77Mhz Intel 8088 can run the speech synthesis and playback utilities, it was too slow and choppy to be bearable. Emulation testing under 86Box shows that the minimum CPU speed for reasonable performance is 8Mhz. My 486 desktop is the next step up the vintage system ladder I have so I have to use this in my demo.</p>
 <h3 id="tts-improvement-sept-2023">TTS improvement (Sept 2023)</h3>
-<p>A developer found an improvement where insted of repeatedly calling <code>read.exe</code>, a call can be made directly to the TTS engine. A library called <a href="https://github.com/systoolz/dosbtalk">dosbtalk</a> was created to do this.</p>
+<p>A developer <a href="https://github.com/systoolz">systoolz</a> found an improvement where instead of repeatedly calling <code>read.exe</code>, a call can be made directly to the TTS engine. A library called <a href="https://github.com/systoolz/dosbtalk">dosbtalk</a> was created to do this. This library also increases the buffer size to at least 250 bytes per API &ldquo;call&rdquo; thus reducing the amount of overall calls and pauses required.</p>
 <p>I integrated the library and things are very much improved!</p>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
