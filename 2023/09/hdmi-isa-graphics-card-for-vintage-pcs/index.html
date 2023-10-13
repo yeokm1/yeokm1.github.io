@@ -6,10 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.118.2"><meta itemprop="name" content="HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin">
+<meta name="generator" content="Hugo 0.119.0"><meta itemprop="name" content="HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin">
 <meta itemprop="description" content="HDMI is a relatively modern video connector we take for granted on modern PCs and monitors. Now vintage PCs can join in the fun too with a native connection to modern HDMI monitors without any additional adapter."><meta itemprop="datePublished" content="2023-09-10T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-09-10T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2658"><meta itemprop="image" content="http://yeokhengmeng.com/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg">
+<meta itemprop="wordCount" content="2676"><meta itemprop="image" content="http://yeokhengmeng.com/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg">
 <meta itemprop="keywords" content="" /><meta property="og:title" content="HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin" />
 <meta property="og:description" content="HDMI is a relatively modern video connector we take for granted on modern PCs and monitors. Now vintage PCs can join in the fun too with a native connection to modern HDMI monitors without any additional adapter." />
 <meta property="og:type" content="article" />
@@ -244,11 +244,11 @@
 <p>View from the ports side.</p>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/xLy6on_o4YM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/Ap-goSkkSUI" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
 <p>This is the demo video using the updated GG card in my IBM5155 outputing HDMI to my 5:4 Dell P1917S monitor and Composite to my small LCD monitor.</p>
-<p>This video shows the bootup process from a cold start to the DOS 6.22 command line. After that I run <a href="https://github.com/MobyGamer/CGACompatibilityTester">CGA Compatibility tester</a> to check the output. Notice that the brown of the 16-colour palatte is shown incorrectly as dark yellow which will be explained later.</p>
+<p>This video shows the bootup process from a cold start to the DOS 6.22 command line. After that I run <a href="https://github.com/MobyGamer/CGACompatibilityTester">CGA Compatibility tester</a> to check the output.</p>
 <p>The entire updated PCB design and Verilog code has been open-sourced here: <a href="https://github.com/yeokm1/graphics-gremlin-hdmi">https://github.com/yeokm1/graphics-gremlin-hdmi</a></p>
 <p>Here is a summary of changes I made some which I will cover further down this post.</p>
 <ul>
@@ -303,19 +303,19 @@
 <p>I decided to go for more reliable option by using a dedicated DVI transmitter TI TFP410. I referred to an <a href="https://blackmesalabs.wordpress.com/2017/12/15/bml-hdmi-video-for-fpgas-over-pmod/">open-source PMOD schematic from Black Mesa Labs</a> to integrate this chip into the Graphics Gremlin.</p>
 <p>The TFP410 accepts a 24-bit RGB colour data input. Ideally, we should connect all 24 pins to the FPGA directly but there are not many spare pins left in the ICE40HX. The only FPGA pins available are those meant for the external RGBI port which I dropped. These pins include the 4 colour signals, red, green, blue and intensity are thus repurposed to talk to the TFP410.</p>
 <a href="images/gg-hdmi-tfp410-sch-snippet.png"><img src="images/gg-hdmi-tfp410-sch-snippet.png" width="250"></a>
-<p>To simulate an RGBI monitor, the 3 base colour signals are connected to the MSB of the colour input with the intensity bit shared among all as the second-most significant bit.</p>
+<p>To simulate an RGBI monitor, the 3 base colour signals are connected to the MSB and some pins of the colour input with the intensity bit shared among all as the second-most significant bit. Green gets a dedicated intensity control pin in order to produce a special brown colour required of the CGA standard. More details in the brown section below.</p>
 <p>The TFP410 will also handle the appropriate 8b/10b encoding to ensure a proper TMDS data signal for DVI. Since a HDMI connector is electrically similar to DVI, the DVI transmitter output can be directly wired to the HDMI port.</p>
 <h2 id="test-points">Test points</h2>
 <a href="images/gg-hdmi-board.jpg"><img src="images/gg-hdmi-board.jpg" width="800"></a>
 <p>Various test points were added to the board. The data inputs from the FPGA to the TFP410 are as follows:</p>
 <ul>
-<li>Red, Green, Blue, Intensity</li>
+<li>Red, Green, Blue, Intensity, Green Intensity</li>
 <li>Horizontal Sync (HS)</li>
 <li>Vertical Sync (VS)</li>
 <li>Display Enable (DE)</li>
 <li>Clock (CLK)</li>
 </ul>
-<p>These inputs with 3.3V and GND are broken out as standard 2.54mm pin headers in the style of a PMOD.</p>
+<p>These inputs with 3.3V and GND are broken out as standard 2.54mm pin headers in a similar style to a PMOD.</p>
 <p>I also added power LEDs and pin headers to the left of the board so I can monitor power state and power the board without having to connect to an actual vintage machine with ISA bus and displaying something.</p>
 <h1 id="hdl-code-changes">HDL code changes</h1>
 <h2 id="supporting-the-dvi-transmitter-chip">Supporting the DVI transmitter chip</h2>
@@ -325,6 +325,16 @@
 <p>In the code, the behaviour of this chip is emulated in <a href="https://github.com/schlae/graphics-gremlin/blob/main/verilog/crtc6845.v">crtc6845.v</a>. The DE line output of this module has to be pulled out and wired to the DVI chip.</p>
 <p>In CGA mode, the code contains a <a href="https://github.com/schlae/graphics-gremlin/blob/main/verilog/cga_scandoubler.v">cga_scandoubler.v</a> to double the number of horizontal lines and frequency to change the number of viewable vertical lines from 640x200 to 640x400 to make it more compatible for modern displays. It does this by doing double buffering with 2 arrays. One array is read out twice for each line using twice the usual pixel clock while the other array is being written to by the host PC then both arrays are swapped at the end of line.</p>
 <p>I modified this Scandoubler to cache the DE bit as well.</p>
+<h2 id="special-handling-for-brown-colour">Special handling for brown colour</h2>
+<p>The PCB and code treats the palette value &ldquo;I:0 R:1 G:1 B:0&rdquo; specially to produce a brown instead of dark yellow as per the CGA standard.</p>
+<p>When an <a href="https://www.aceinnova.com/en/electronics/cga-and-the-brown-color-in-ibm-5153-color-display/">IBM5153 Colour Display Monitor</a> sees this signal &ldquo;I:0 R:1 G:1 B:0&rdquo;, instead of displaying dark yellow, the green component is halved producing a brown colour.</p>
+<p>In order to emulate this behaviour for modern displays, the FPGA itself will have to halve the green colour component. This is done through the dedicated green intensity control pin to the DVI transmitter.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-verilog" data-lang="verilog"><span style="display:flex;"><span><span style="color:#007f7f">// video[1] is the original green value
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">assign</span> hdmi_grn = video[<span style="color:#ff0;font-weight:bold">1</span>] ^ (hdmi_red &amp; video[<span style="color:#ff0;font-weight:bold">1</span>] &amp; (hdmi_blu ^ <span style="color:#ff0;font-weight:bold">1</span>) &amp; (hdmi_int ^ <span style="color:#ff0;font-weight:bold">1</span>));
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">assign</span> hdmi_grn_int = hdmi_int ^ (hdmi_red &amp; video[<span style="color:#ff0;font-weight:bold">1</span>] &amp; (hdmi_blu ^ <span style="color:#ff0;font-weight:bold">1</span>) &amp; (hdmi_int ^ <span style="color:#ff0;font-weight:bold">1</span>));
+</span></span></code></pre></div><p>The above boolean logic can lower the green value for this specific palette value by using the driving the hdmi_green_int pin high and green pin low. This logic is <a href="https://github.com/yeokm1/yeokm1.github.io/discussions/115#discussioncomment-7022872">provided by @spbnick</a>.</p>
+<a href="images/gg-hdmi-cga-test.jpg"><img src="images/gg-hdmi-cga-test.jpg" width="600"></a>
+<p>My IBM 5155 running the <a href="https://github.com/MobyGamer/CGACompatibilityTester">CGA Compatibility Tester</a> displaying the colour palatte.</p>
 <h2 id="selectable-mda-colours-for-hdmi">Selectable MDA colours for HDMI</h2>
 <p>In the original GG, the MDA output is a constant amber (see photo in an earlier section). I didn&rsquo;t particularly like amber. I wanted to have a customisable colour option depending on my needs. Since 2 of the physical switches are unused in MDA mode, I programmed the ability to change the colours depending on what switch is selected.</p>
 <a href="images/gg-hdmi-mda-display.jpg"><img src="images/gg-hdmi-mda-display.jpg" width="800"></a>
@@ -370,13 +380,6 @@
 <a href="images/gg-hdmi-ibm5155-back.jpg"><img src="images/gg-hdmi-ibm5155-back.jpg" width="400"></a>
 <p>The rear of my IBM5155 shows the HDMI connector, probably the first to have one?</p>
 <p>I didn&rsquo;t design a new card bracket so I used a twist tie to secure the card to the enclosure.</p>
-<h1 id="known-issue-with-brown">Known issue with brown</h1>
-<p>(A fix with a PCB respin is on the way. You can track this <a href="https://github.com/yeokm1/graphics-gremlin-hdmi/issues/1">issue</a>.)</p>
-<p>This palette value &ldquo;I:0 R:1 G:1 B:0&rdquo; is not handled correctly by this card and is displayed as dark yellow instead of brown as per how the <a href="https://www.aceinnova.com/en/electronics/cga-and-the-brown-color-in-ibm-5153-color-display/">IBM5153 Colour Display Monitor does it</a>. When an IBM5153 monitor sees this signal &ldquo;I:0 R:1 G:1 B:0&rdquo;, the green component is halved producing a brown colour.</p>
-<p>In order to emulate this behaviour for modern displays, the FPGA itself will have to halve the green colour component which means I will need more signal lines to the DVI transmitter. However I lack the pins on the FPGA to provide more than a 4-bit RGBI output.</p>
-<a href="images/gg-hdmi-cga-test.jpg"><img src="images/gg-hdmi-cga-test.jpg" width="600"></a>
-<p>My IBM 5155 running the <a href="https://github.com/MobyGamer/CGACompatibilityTester">CGA Compatibility Tester</a> displaying the colour palatte. One can see the brown colour is displayed incorrectly as dark yellow.</p>
-<p>The original GG does not suffer from this problem as the brown colour can be easily generated with the existing FPGA pins to the VGA resistor DAC.</p>
 <h1 id="conclusion">Conclusion</h1>
 <p>This project was a long journey for me. If you look at the silkscreen date on the PCB, it shows 9 August 2021. At that time, I designed the PCB without the skills to code in Verilog. Even though the number of changes I made are small, it took me quite a bit of time on the side to finally pick up the skills to work on my first FPGA project with all development and testing work this project entails.</p>
 <p>Not forgetting I&rsquo;m actually standing on the shoulders of giants like Eric Schlaepfer who designed the original Graphics Gremlin. I&rsquo;m just building on a small increment on top of his work.</p>
@@ -665,7 +668,7 @@
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.118.2' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.119.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
