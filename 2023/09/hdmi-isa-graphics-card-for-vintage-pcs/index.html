@@ -9,7 +9,7 @@
 <meta name="generator" content="Hugo 0.119.0"><meta itemprop="name" content="HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin">
 <meta itemprop="description" content="HDMI is a relatively modern video connector we take for granted on modern PCs and monitors. Now vintage PCs can join in the fun too with a native connection to modern HDMI monitors without any additional adapter."><meta itemprop="datePublished" content="2023-09-10T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-09-10T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2676"><meta itemprop="image" content="http://yeokhengmeng.com/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg">
+<meta itemprop="wordCount" content="2669"><meta itemprop="image" content="http://yeokhengmeng.com/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg">
 <meta itemprop="keywords" content="" /><meta property="og:title" content="HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin" />
 <meta property="og:description" content="HDMI is a relatively modern video connector we take for granted on modern PCs and monitors. Now vintage PCs can join in the fun too with a native connection to modern HDMI monitors without any additional adapter." />
 <meta property="og:type" content="article" />
@@ -332,7 +332,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-verilog" data-lang="verilog"><span style="display:flex;"><span><span style="color:#007f7f">// video[1] is the original green value
 </span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">assign</span> hdmi_grn = video[<span style="color:#ff0;font-weight:bold">1</span>] ^ (hdmi_red &amp; video[<span style="color:#ff0;font-weight:bold">1</span>] &amp; (hdmi_blu ^ <span style="color:#ff0;font-weight:bold">1</span>) &amp; (hdmi_int ^ <span style="color:#ff0;font-weight:bold">1</span>));
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">assign</span> hdmi_grn_int = hdmi_int ^ (hdmi_red &amp; video[<span style="color:#ff0;font-weight:bold">1</span>] &amp; (hdmi_blu ^ <span style="color:#ff0;font-weight:bold">1</span>) &amp; (hdmi_int ^ <span style="color:#ff0;font-weight:bold">1</span>));
-</span></span></code></pre></div><p>The above boolean logic can lower the green value for this specific palette value by using the driving the hdmi_green_int pin high and green pin low. This logic is <a href="https://github.com/yeokm1/yeokm1.github.io/discussions/115#discussioncomment-7022872">provided by @spbnick</a>.</p>
+</span></span></code></pre></div><p>The above boolean logic can lower the green value for this specific palette value by driving the hdmi_green_int pin high and green pin low. This logic is <a href="https://github.com/yeokm1/yeokm1.github.io/discussions/115#discussioncomment-7022872">provided by @spbnick</a>.</p>
 <a href="images/gg-hdmi-cga-test.jpg"><img src="images/gg-hdmi-cga-test.jpg" width="600"></a>
 <p>My IBM 5155 running the <a href="https://github.com/MobyGamer/CGACompatibilityTester">CGA Compatibility Tester</a> displaying the colour palatte.</p>
 <h2 id="selectable-mda-colours-for-hdmi">Selectable MDA colours for HDMI</h2>
@@ -381,7 +381,7 @@
 <p>The rear of my IBM5155 shows the HDMI connector, probably the first to have one?</p>
 <p>I didn&rsquo;t design a new card bracket so I used a twist tie to secure the card to the enclosure.</p>
 <h1 id="conclusion">Conclusion</h1>
-<p>This project was a long journey for me. If you look at the silkscreen date on the PCB, it shows 9 August 2021. At that time, I designed the PCB without the skills to code in Verilog. Even though the number of changes I made are small, it took me quite a bit of time on the side to finally pick up the skills to work on my first FPGA project with all development and testing work this project entails.</p>
+<p>This project was a long journey for me since I started working on this project in Aug 2021. At that time, I designed the PCB without the skills to code in Verilog. Even though the number of changes I made are small, it took me quite a bit of time on the side to finally pick up the skills to work on my first FPGA project with all development and testing work this project entails.</p>
 <p>Not forgetting I&rsquo;m actually standing on the shoulders of giants like Eric Schlaepfer who designed the original Graphics Gremlin. I&rsquo;m just building on a small increment on top of his work.</p>
   </div>
   <footer>
