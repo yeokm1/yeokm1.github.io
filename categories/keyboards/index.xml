@@ -6,12 +6,12 @@
     <description>Recent content in keyboards on YKM&#39;s Corner on the Web</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 01 Jul 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://yeokhengmeng.com/categories/keyboards/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://yeokhengmeng.com/categories/keyboards/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why I use the IBM Model M keyboard that is older than me?</title>
       <link>http://yeokhengmeng.com/2018/07/why-i-use-the-ibm-model-m-keyboard-that-is-older-than-me/</link>
       <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
-      
       <guid>http://yeokhengmeng.com/2018/07/why-i-use-the-ibm-model-m-keyboard-that-is-older-than-me/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;The last primary keyboard I&amp;rsquo;ll use in my life might be the IBM Model M. It&amp;rsquo;ll probably last me the decades to the day that keyboards should become obsolete. - Kheng Meng, 2018&lt;/p&gt;
@@ -20,18 +20,15 @@
 &lt;p&gt;&lt;a href=&#34;images/keyb-all.jpg&#34;&gt;&lt;img src=&#34;images/keyb-all-1024x380.jpg&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;All the mechanical keyboards I have owned so far&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Programmer Dvorak layout</title>
       <link>http://yeokhengmeng.com/2013/02/programmer-dvorak-layout/</link>
       <pubDate>Sun, 10 Feb 2013 00:00:00 +0000</pubDate>
-      
       <guid>http://yeokhengmeng.com/2013/02/programmer-dvorak-layout/</guid>
       <description>&lt;p&gt;I have been using the &lt;a href=&#34;https://en.wikipedia.org/wiki/Dvorak_Simplified_Keyboard&#34;&gt;Dvorak keyboard layout&lt;/a&gt;  since out of army. It took me months for me to attain my previous typing speed of the Qwerty layout. From that point on, I never looked back as the Dvorak layout was simply very comfortable to type on. I can attest to the fact that my fingers leave the home row much lesser. I came across this &lt;a href=&#34;http://www.kaufmann.no/roland/dvorak/&#34;&gt;Programmer Dvorak&lt;/a&gt; layout created by an IT professional Roland Kaufmann.&lt;/p&gt;
 &lt;p&gt;The primary difference between this and the normal Dvorak layout is that the numbers at the top row are now secondary with the symbols taking precedence. Meaning: Symbols are by default, you have to press the Shift key to get at the numbers. This layout was arrived at after Kaufman realised that programmers tend to use more symbols and he scanned source code to obtain the most commonly used characters.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;images/dvp1.png&#34; alt=&#34;dvp1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;(From Roland Kaufmann&amp;rsquo;s &lt;a href=&#34;http://www.kaufmann.no/roland/dvorak/index.html&#34;&gt;site&lt;/a&gt;)&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
