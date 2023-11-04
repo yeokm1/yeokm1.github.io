@@ -5,7 +5,6 @@
     <link>http://yeokhengmeng.com/tags/</link>
     <description>Recent content in Tags on YKM&#39;s Corner on the Web</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <atom:link href="http://yeokhengmeng.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language><atom:link href="http://yeokhengmeng.com/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
