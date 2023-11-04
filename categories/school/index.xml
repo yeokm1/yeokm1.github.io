@@ -6,60 +6,52 @@
     <description>Recent content in school on YKM&#39;s Corner on the Web</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 26 Jul 2015 00:00:00 +0000</lastBuildDate><atom:link href="http://yeokhengmeng.com/categories/school/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Jul 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://yeokhengmeng.com/categories/school/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Graduation, Uni story arcs and thanks</title>
       <link>http://yeokhengmeng.com/2015/07/graduation-uni-story-arcs-and-thanks/</link>
       <pubDate>Sun, 26 Jul 2015 00:00:00 +0000</pubDate>
-      
       <guid>http://yeokhengmeng.com/2015/07/graduation-uni-story-arcs-and-thanks/</guid>
       <description>(Long post warning: 2.5k words)
 This post is 2 weeks late as I was rather busy during this period. Anyways, as this will be the last post I will have about Uni life, thought would like to thank a few key people and describe the 5 story arcs that has greatly defined my time in Uni.
 The mandatory first picture is of course this one lah.
 Just collect the dummy scroll simply with no fuss.</description>
     </item>
-    
     <item>
       <title>The only easy Sem was last Sem</title>
       <link>http://yeokhengmeng.com/2015/05/the-only-easy-sem-was-last-sem/</link>
       <pubDate>Sat, 02 May 2015 00:00:00 +0000</pubDate>
-      
       <guid>http://yeokhengmeng.com/2015/05/the-only-easy-sem-was-last-sem/</guid>
       <description>&lt;p&gt;I was not the first person that came up with the title above, but I thought it resonated perfectly with my undergraduate life especially my last few semesters. The last sem is indeed my hardest Sem.&lt;/p&gt;
 &lt;p&gt;Having just finished my final exam of this semester and of my NUS undergraduate career, I thought I wanna do a “stock-take” on what I did this semester.&lt;/p&gt;
 &lt;h3 id=&#34;tldr-version&#34;&gt;Tl;dr version:&lt;/h3&gt;
 &lt;p&gt;In summary for this semester, I took a level 5000 module, did my FYP + presentation and was a CS2103 tutor to 16 students. I gave 3 talks: &lt;a href=&#34;http://www.slideshare.net/yeokm1/kheng-meng-cs3217-guest-presentation&#34;&gt;guest lecture for CS3217 on iOS (Swift) Development&lt;/a&gt;, &lt;a href=&#34;http://www.slideshare.net/yeokm1/introduction-to-raspberry-pi-and-linux&#34;&gt;workshop on Raspberry Pi/Linux&lt;/a&gt; and a &lt;a href=&#34;http://www.slideshare.net/yeokm1/introduction-to-bluetooth-low-energy&#34;&gt;talk/live demo on Bluetooth Low Energy&lt;/a&gt;. I volunteered regularly at &lt;a href=&#34;http://repairkopitiam.sg/&#34;&gt;Repair Kopitiam&lt;/a&gt; and &lt;a href=&#34;http://www.nus-csc.org/main/yrs.html&#34;&gt;Yishun Reading Stars&lt;/a&gt;. As if those weren&amp;rsquo;t enough, I still held a part-time job too.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>NUS Hack&amp;Roll 2015 AAR</title>
       <link>http://yeokhengmeng.com/2015/01/nus-hackroll-2015-aar/</link>
       <pubDate>Mon, 26 Jan 2015 00:00:00 +0000</pubDate>
-      
       <guid>http://yeokhengmeng.com/2015/01/nus-hackroll-2015-aar/</guid>
       <description>&lt;p&gt;This is the third Hack&amp;amp;Roll hackathon I have joined and my very last one for this hackathon and as an NUS student.  Can check out my first two &lt;a href=&#34;http://yeokhengmeng.com/2014/01/what-i-did-nus-hackroll-2014/&#34;&gt;here&lt;/a&gt; and &lt;a href=&#34;http://yeokhengmeng.com/2013/02/my-experience-nus-hackroll-2013/&#34; title=&#34;here&#34;&gt;here&lt;/a&gt;.  Didn&amp;rsquo;t win anything but not that we were expecting any, it is the stuff we learned that were most important.&lt;/p&gt;
 &lt;p&gt;So presenting to you the Raspilizer! Done by myself and my friends Kai Yao (KY) and Yong Quan (YQ), two of my technical go-to buddies.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;images/rasplizer.jpg&#34; alt=&#34;rasplizer&#34;&gt;&lt;/p&gt;
 &lt;p&gt;An independent device that does dynamic audio compression in &amp;ldquo;almost&amp;rdquo; realtime. Just feed in audio via the 3.5mm input jack and connect your speakers/headphones to the output jack!&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>My NTU local exchange experience (Aug - Dec 2013)</title>
       <link>http://yeokhengmeng.com/2014/08/my-ntu-local-exchange-experience-aug-dec-2013/</link>
       <pubDate>Mon, 04 Aug 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://yeokhengmeng.com/2014/08/my-ntu-local-exchange-experience-aug-dec-2013/</guid>
       <description>&lt;p&gt;This post is more than one semester late but better late than never. So minor disclaimer, my experience is at least half year out of date by the time you read this post.&lt;/p&gt;
 &lt;p&gt;Every semester, 20 lucky students from NUS will get to go for a local exchange (both full and partial inclusive) to SMU and NTU respectively.  School of Computing is awarded a measly quota of only TWO but I guess that is proportionate to our student population.&lt;/p&gt;
 &lt;p&gt;I was one of the two in SoC to go for the NTU partial exchange from August to December 2013, AY 2013/2014 Sem 1. A partial exchange is a unique programme for only local exchange students obviously. Unlike a full exchange, I took modules concurrently at both NTU and NUS. I had to do this as I had an un-mappable core module CS3216 that had to be taken in that particular semester.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;images/matric+cards.jpg&#34;&gt;&lt;img src=&#34;images/matric+cards-768x1024.jpg&#34; alt=&#34;matric+cards&#34;&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>What I did in NUS Hack&amp;Roll 2014</title>
       <link>http://yeokhengmeng.com/2014/01/what-i-did-in-nus-hackroll-2014/</link>
       <pubDate>Tue, 28 Jan 2014 00:00:00 +0000</pubDate>
-      
       <guid>http://yeokhengmeng.com/2014/01/what-i-did-in-nus-hackroll-2014/</guid>
       <description>&lt;p&gt;NUS Hackers tried to encourage participants to write a blog post or on social media about their experiences in the HacknRoll 2014, so here it is.  Nah, I would have written this anyway without their encouragement. But after they read what I wrote, I wonder if they would still share it.&lt;/p&gt;
 &lt;p&gt;So this hackathon which was on 25-26 Jan was the second one I had attended. You can read up about my first one &lt;a href=&#34;http://yeokhengmeng.com/2013/02/my-experience-nus-hackroll-2013&#34;&gt;here&lt;/a&gt;.  Although this time, instead of being “drafted” into a team by an acquaintance, I was the one who asked a few people if they willing to join my team.&lt;/p&gt;
@@ -73,41 +65,33 @@ Just collect the dummy scroll simply with no fuss.</description>
 
 &lt;p&gt;Our project video. Narration was done by Yong Quan. (Try to view in HD if possible)&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Finally the end of CS3216</title>
       <link>http://yeokhengmeng.com/2013/11/finally-end-cs3216/</link>
       <pubDate>Wed, 20 Nov 2013 00:00:00 +0000</pubDate>
-      
       <guid>http://yeokhengmeng.com/2013/11/finally-end-cs3216/</guid>
       <description>&lt;p&gt;So yesterday was the Steps exhibition that marks the end of the module and the return to the reality of the final exams, other than the final report of course. It was really an interesting experience to pitch our class management app to both teachers and students alike.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;images/cs3216-group.jpg&#34; alt=&#34;CS3216 Group Photo&#34;&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Nearing the end of CS3216</title>
       <link>http://yeokhengmeng.com/2013/11/nearing-the-end-of-cs3216/</link>
       <pubDate>Sun, 17 Nov 2013 00:00:00 +0000</pubDate>
-      
       <guid>http://yeokhengmeng.com/2013/11/nearing-the-end-of-cs3216/</guid>
       <description>&lt;p&gt;At the beginning of this semester, I &lt;a href=&#34;http://yeokhengmeng.com/2013/08/why-semester-will-be-most-pivotal-me&#34;&gt;wrote&lt;/a&gt; about how this semester shall be the most pivotal for me. Now coming to the end of this semester, I do agree with most of the points I foresaw earlier with exception to the NTU part.  Anyway, this most are mostly for CS3216, the rest shall come after the exams.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Why this semester will be the most pivotal for me?</title>
       <link>http://yeokhengmeng.com/2013/08/why-semester-will-be-most-pivotal-me/</link>
       <pubDate>Sun, 25 Aug 2013 00:00:00 +0000</pubDate>
-      
       <guid>http://yeokhengmeng.com/2013/08/why-semester-will-be-most-pivotal-me/</guid>
       <description>&lt;p&gt;It is an obvious fact that the workload each semester is always greater than the one preceding it. This adage has never been more right up to this semester. In fact, greater is just an understatement. In just 2 weeks into this semester, I cannot even count the number of days I have slept for a reasonable number of hours.&lt;/p&gt;
 &lt;p&gt;This semester will be my most pivotal semester so far and I although I can’t predict the workload for subsequent semesters, the jump has been greatest in this one.  Notable reasons for this preliminary conclusion include the notoriously heavy CS3216, my partial exchange to NTU including a French module, continuing my part time work from my internship and my weekly community service.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>My experience in NUS Hack&amp;Roll 2013</title>
       <link>http://yeokhengmeng.com/2013/02/my-experience-in-nus-hackroll-2013/</link>
       <pubDate>Mon, 25 Feb 2013 00:00:00 +0000</pubDate>
-      
       <guid>http://yeokhengmeng.com/2013/02/my-experience-in-nus-hackroll-2013/</guid>
       <description>&lt;p&gt;I confess I signed up for this weekend event at the last minute. One of the team members who was an acquaintance of mine said they needed one more member so I joined. I can say, I left this 24hour hackathon today with no regrets other than the proverbial, I could have done that better in hindsight attitude. This was my first hackathon and most definitely won&amp;rsquo;t be my last.&lt;/p&gt;
 &lt;p&gt;Sitting down with your team coding through the day and night then day again for only a single goal while surviving on a steady supply of snacks, soft drinks and fast food is an unforgettable experience.&lt;/p&gt;
@@ -115,6 +99,5 @@ Just collect the dummy scroll simply with no fuss.</description>
 &lt;p&gt;My team, which I barely knew before the event but nonetheless worked reasonably well together in the end.
  &lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

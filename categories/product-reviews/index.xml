@@ -6,32 +6,28 @@
     <description>Recent content in product-reviews on YKM&#39;s Corner on the Web</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 05 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://yeokhengmeng.com/categories/product-reviews/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Jun 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://yeokhengmeng.com/categories/product-reviews/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Teardown &amp; review of a new 386 system: Hand386</title>
       <link>http://yeokhengmeng.com/2023/06/teardown-and-review-of-hand386/</link>
       <pubDate>Mon, 05 Jun 2023 00:00:00 +0000</pubDate>
-      
       <guid>http://yeokhengmeng.com/2023/06/teardown-and-review-of-hand386/</guid>
       <description>&lt;p&gt;A new 386-based palmtop recently appeared on &lt;a href=&#34;https://vi.aliexpress.com/item/1005005542582463.html&#34;&gt;Aliexpress&lt;/a&gt; and was covered by sites like &lt;a href=&#34;https://www.tomshardware.com/news/hand-386-handheld&#34;&gt;Tom&amp;rsquo;s Hardware&lt;/a&gt;. My curiosity was stoked and I quickly snapped one up.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Review, usage and repair of the Framework laptop</title>
       <link>http://yeokhengmeng.com/2021/09/review-usage-and-repair-of-the-framework-laptop/</link>
       <pubDate>Tue, 21 Sep 2021 00:00:00 +0000</pubDate>
-      
       <guid>http://yeokhengmeng.com/2021/09/review-usage-and-repair-of-the-framework-laptop/</guid>
       <description>&lt;p&gt;I finally received the &lt;a href=&#34;https://frame.work/&#34;&gt;Framework&lt;/a&gt; laptop, said by many to be one of the most repairable and modular laptops made so far.&lt;/p&gt;
 &lt;p&gt;Tons of professional reviewers and Youtubers have already given their opinions and made teardown videos. Instead of mimicking what has already been done, I decided to put myself in the shoes of an ordinary layman and share my thoughts from a personal usability perspective.&lt;/p&gt;
 &lt;p&gt;A major design flaw was found by some on this first-gen Framework product using the 11th-gen Intel CPUs, do read it before committing to purchase.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Review of a new-old motherboard NuXT v2.0</title>
       <link>http://yeokhengmeng.com/2020/05/review-of-a-new-old-motherboard-nuxt-v2.0/</link>
       <pubDate>Sat, 16 May 2020 00:00:00 +0000</pubDate>
-      
       <guid>http://yeokhengmeng.com/2020/05/review-of-a-new-old-motherboard-nuxt-v2.0/</guid>
       <description>&lt;p&gt;I recently purchased a new-old motherboard. It&amp;rsquo;s a motherboard released in 2020 but not the usual you would expect of the latest motherboard released this year that support the latest CPUs and connectivity options. This motherboard supports a CPU first released in 1979 (Intel 8088) and comes with historic connectivity options like serial and parallel.&lt;/p&gt;
 &lt;p&gt;When I first heard about the earlier iteration of this board the NuXT v1.2 version from &lt;a href=&#34;https://www.youtube.com/watch?v=pwzHurzTNTY&#34;&gt;retrocomputing Youtuber LGR&lt;/a&gt;, I was hooked.&lt;/p&gt;
@@ -48,17 +44,14 @@
 The bootup process. Notice the bootup sound which is the PC Speaker playing the Intel chime. What attention to detail!&lt;/p&gt;
 &lt;p&gt;The best part, the motherboard schematic is &lt;a href=&#34;https://github.com/monotech/NuXTv2&#34;&gt;open source&lt;/a&gt; since it is itself based on other open-source projects. How many motherboards released today can claim that???&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Review and partial teardown of Fairphone 3</title>
       <link>http://yeokhengmeng.com/2019/12/review-and-partial-teardown-of-fairphone-3/</link>
       <pubDate>Sat, 07 Dec 2019 00:00:00 +0000</pubDate>
-      
       <guid>http://yeokhengmeng.com/2019/12/review-and-partial-teardown-of-fairphone-3/</guid>
       <description>&lt;p&gt;I was in the market recently for a new phone as I had to give my previous Google Pixel 2 away to a family member in need of one. With the emphasis these days on sustainability and environmentally-conscious purchasing, the &lt;a href=&#34;https://en.wikipedia.org/wiki/Fairphone_3&#34;&gt;Fairphone 3&lt;/a&gt; came up at the very top of my research.&lt;/p&gt;
 &lt;p&gt;From the marketing words of this social enterprise, &lt;a href=&#34;https://shop.fairphone.com/&#34;&gt;&amp;ldquo;Recycled and fair materials&amp;rdquo;, &amp;ldquo;Modular and repairable design&amp;rdquo;, &amp;ldquo;A commitment to fairness&amp;rdquo;&lt;/a&gt; and &lt;a href=&#34;https://www.ifixit.com/Device/Fairphone_3&#34;&gt;10/10 score on iFixit&amp;rsquo;s Repairability Rating&lt;/a&gt;, I was sold!&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;images/fp3-unboxing-1024x538.jpg&#34;&gt;&lt;img src=&#34;images/fp3-unboxing-1024x538.jpg&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -6,24 +6,22 @@
     <description>Recent content in admin on YKM&#39;s Corner on the Web</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 17 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://yeokhengmeng.com/categories/admin/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://yeokhengmeng.com/categories/admin/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Adding Chinese support to my blog</title>
       <link>http://yeokhengmeng.com/2020/08/adding-chinese-support-to-my-blog/</link>
       <pubDate>Mon, 17 Aug 2020 00:00:00 +0000</pubDate>
-      
       <guid>http://yeokhengmeng.com/2020/08/adding-chinese-support-to-my-blog/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve been working in a Chinese tech company for some months now. I realised I needed to improve my command of technical Chinese rather than taking the easy way out of using the English terms when communicating with my Chinese colleagues.&lt;/p&gt;
 &lt;p&gt;The only way to improve is to use it more often but technical Chinese is rarely utilised and understood outside the working environment of a Chinese tech company in Singapore. Therefore there are limited opportunities to improve in this area.&lt;/p&gt;
 &lt;p&gt;Since I write on quite a lot of technical stuff, I thought one way to improve my usage of technical Chinese is by writing bilingual blog posts. To do that, I&amp;rsquo;ll first have to adjust my blog to have multilingual support.&lt;/p&gt;
 &lt;p&gt;(Check out the Chinese version of this post &lt;a href=&#34;http://yeokhengmeng.com/zh/2020/08/%E6%B7%BB%E5%8A%A0%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/&#34;&gt;here&lt;/a&gt;.)&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Migrating my blog from WordPress to Hugo</title>
       <link>http://yeokhengmeng.com/2020/04/migrating-my-blog-from-wordpress-to-hugo/</link>
       <pubDate>Sat, 11 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>http://yeokhengmeng.com/2020/04/migrating-my-blog-from-wordpress-to-hugo/</guid>
       <description>&lt;p&gt;Migrating my blog to a static site has been on a backburner for several months for me. Given the recent circuit-breaker or &amp;ldquo;soft-lockdown&amp;rdquo; in Singapore, I found the time to finally take the plunge.&lt;/p&gt;
 &lt;a href=&#34;images/wordpress-to-hugo-theme-comparison.png&#34;&gt;&lt;img src=&#34;images/wordpress-to-hugo-theme-comparison.png&#34; width=&#34;800&#34;&gt;&lt;/a&gt;
@@ -34,15 +32,12 @@
 &lt;p&gt;However migrating a site has its challenges as the number of blog posts I have is numerous and I know from experience automated conversion tools are never 100% accurate. Significant time is needed to inspect and correct every post, setting up a new theme and other administrative tasks.&lt;/p&gt;
 &lt;p&gt;There are many WordPress to Hugo guides online so instead of reinventing the wheel, let me share my experience and technical pain points that were not fully covered by other guides.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Furthest backdated post</title>
       <link>http://yeokhengmeng.com/2011/04/furthest-backdated-post/</link>
       <pubDate>Fri, 01 Apr 2011 00:00:00 +0000</pubDate>
-      
       <guid>http://yeokhengmeng.com/2011/04/furthest-backdated-post/</guid>
       <description>This is not my first post. This site was started on 8 February 2013. Any posts before this date has been copied and backdated from my previous blogs.</description>
     </item>
-    
   </channel>
 </rss>
