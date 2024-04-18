@@ -6,8 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.122.0"><meta itemprop="name" content="Installing Windows XP on a modern unsupported (Haswell) system in 2016">
-<meta itemprop="description" content="(This is a long ~2900 words post, I recommend reading this from a tablet or computer)
+<meta name="generator" content="Hugo 0.125.0">
+  <meta itemprop="name" content="Installing Windows XP on a modern unsupported (Haswell) system in 2016">
+  <meta itemprop="description" content="(This is a long ~2900 words post, I recommend reading this from a tablet or computer)
 Windows XP is the second-longest supported operating system (OS) in Microsoft&rsquo;s history. Support by Microsoft finally ended on 8 April 2014 after a record-setting 12.5 years.  The number one rank is technically* held by Windows 1.0 at 16 years from 1985 to 2001.
 *I say &ldquo;technically&rdquo; as that was when Microsoft finally declared Win 1.0 obsolete but I doubt Microsoft was updating Win 1.0 during its final years. This was unlike WinXP which was updated up to its final moments and even had an emergency patch after its support ended.
 This page here also puts XP&rsquo;s length of support in perspective with other Microsoft OSes.
@@ -17,27 +18,30 @@ The problem
 I work in a startup called Algoaccess where we deal with medical devices specifically optician-related ones. Without going into too much detail, let&rsquo;s just say we occasionally have to handle such older systems and test to make sure our product can work with them. This means we actually need a Windows XP installation for testing purposes. No, virtual machines like VirtualBox or VMWare will not cut it, we need a native installation for realistic testing.
 My company could easily procure a machine of an older era with full Windows XP drivers. There are guides like this where people have used an older system to install WinXP in 2016.
 But where is the fun in that? I saw this as an opportunity to determine if it is really possible to install WinXP on a much newer system.  It was also a good way to relive a bit of my childhood that way.
-First thoughts? It shouldn&rsquo;t be that hard right? I know drivers could be an issue but it shouldn&rsquo;t be a show-stopper? Turns out things are not so easy to put WinXP on modern hardware."><meta itemprop="datePublished" content="2016-04-09T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2016-04-09T00:00:00+00:00" />
-<meta itemprop="wordCount" content="3305">
-<meta itemprop="keywords" content="" /><meta property="og:title" content="Installing Windows XP on a modern unsupported (Haswell) system in 2016" />
-<meta property="og:description" content="(This is a long ~2900 words post, I recommend reading this from a tablet or computer)
-Windows XP is the second-longest supported operating system (OS) in Microsoft&rsquo;s history. Support by Microsoft finally ended on 8 April 2014 after a record-setting 12.5 years.  The number one rank is technically* held by Windows 1.0 at 16 years from 1985 to 2001.
-*I say &ldquo;technically&rdquo; as that was when Microsoft finally declared Win 1.0 obsolete but I doubt Microsoft was updating Win 1.0 during its final years. This was unlike WinXP which was updated up to its final moments and even had an emergency patch after its support ended.
-This page here also puts XP&rsquo;s length of support in perspective with other Microsoft OSes.
-Released in October 2001, it is almost 15 years old today.  I was only 11 years old when this OS was released so you can imagine I pretty much spent much of my teen years using XP machines other than Red Hat Linux of course.
+First thoughts? It shouldn&rsquo;t be that hard right? I know drivers could be an issue but it shouldn&rsquo;t be a show-stopper? Turns out things are not so easy to put WinXP on modern hardware.">
+  <meta itemprop="datePublished" content="2016-04-09T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2016-04-09T00:00:00+00:00">
+  <meta itemprop="wordCount" content="3305">
+  <meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/">
+  <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
+  <meta property="og:title" content="Installing Windows XP on a modern unsupported (Haswell) system in 2016">
+  <meta property="og:description" content="(This is a long ~2900 words post, I recommend reading this from a tablet or computer)
+Windows XP is the second-longest supported operating system (OS) in Microsoft&amp;rsquo;s history. Support by Microsoft finally ended on 8 April 2014 after a record-setting 12.5 years. The number one rank is technically* held by Windows 1.0 at 16 years from 1985 to 2001.
+*I say &amp;ldquo;technically&amp;rdquo; as that was when Microsoft finally declared Win 1.0 obsolete but I doubt Microsoft was updating Win 1.0 during its final years. This was unlike WinXP which was updated up to its final moments and even had an emergency patch after its support ended.
+This page here also puts XP&amp;rsquo;s length of support in perspective with other Microsoft OSes.
+Released in October 2001, it is almost 15 years old today. I was only 11 years old when this OS was released so you can imagine I pretty much spent much of my teen years using XP machines other than Red Hat Linux of course.
 Despite its age, XP continues to live on in embedded systems like ATMs, factory and medical machines where replacement costs and re-certification (timelines) makes them infeasible to be replaced in the near future. An extreme example is how the 23-year-old Windows 3.1 which crashed is still used in a French airport as of late last year.
-The problem
-I work in a startup called Algoaccess where we deal with medical devices specifically optician-related ones. Without going into too much detail, let&rsquo;s just say we occasionally have to handle such older systems and test to make sure our product can work with them. This means we actually need a Windows XP installation for testing purposes. No, virtual machines like VirtualBox or VMWare will not cut it, we need a native installation for realistic testing.
+The problem I work in a startup called Algoaccess where we deal with medical devices specifically optician-related ones. Without going into too much detail, let&amp;rsquo;s just say we occasionally have to handle such older systems and test to make sure our product can work with them. This means we actually need a Windows XP installation for testing purposes. No, virtual machines like VirtualBox or VMWare will not cut it, we need a native installation for realistic testing.
 My company could easily procure a machine of an older era with full Windows XP drivers. There are guides like this where people have used an older system to install WinXP in 2016.
-But where is the fun in that? I saw this as an opportunity to determine if it is really possible to install WinXP on a much newer system.  It was also a good way to relive a bit of my childhood that way.
-First thoughts? It shouldn&rsquo;t be that hard right? I know drivers could be an issue but it shouldn&rsquo;t be a show-stopper? Turns out things are not so easy to put WinXP on modern hardware." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://yeokhengmeng.com/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2016-04-09T00:00:00+00:00" />
-<meta property="article:modified_time" content="2016-04-09T00:00:00+00:00" />
-
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Installing Windows XP on a modern unsupported (Haswell) system in 2016"/>
+But where is the fun in that? I saw this as an opportunity to determine if it is really possible to install WinXP on a much newer system. It was also a good way to relive a bit of my childhood that way.
+First thoughts? It shouldn&amp;rsquo;t be that hard right? I know drivers could be an issue but it shouldn&amp;rsquo;t be a show-stopper? Turns out things are not so easy to put WinXP on modern hardware.
+">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2016-04-09T00:00:00+00:00">
+    <meta property="article:modified_time" content="2016-04-09T00:00:00+00:00">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Installing Windows XP on a modern unsupported (Haswell) system in 2016">
 <meta name="twitter:description" content="(This is a long ~2900 words post, I recommend reading this from a tablet or computer)
 Windows XP is the second-longest supported operating system (OS) in Microsoft&rsquo;s history. Support by Microsoft finally ended on 8 April 2014 after a record-setting 12.5 years.  The number one rank is technically* held by Windows 1.0 at 16 years from 1985 to 2001.
 *I say &ldquo;technically&rdquo; as that was when Microsoft finally declared Win 1.0 obsolete but I doubt Microsoft was updating Win 1.0 during its final years. This was unlike WinXP which was updated up to its final moments and even had an emergency patch after its support ended.
@@ -48,9 +52,9 @@ The problem
 I work in a startup called Algoaccess where we deal with medical devices specifically optician-related ones. Without going into too much detail, let&rsquo;s just say we occasionally have to handle such older systems and test to make sure our product can work with them. This means we actually need a Windows XP installation for testing purposes. No, virtual machines like VirtualBox or VMWare will not cut it, we need a native installation for realistic testing.
 My company could easily procure a machine of an older era with full Windows XP drivers. There are guides like this where people have used an older system to install WinXP in 2016.
 But where is the fun in that? I saw this as an opportunity to determine if it is really possible to install WinXP on a much newer system.  It was also a good way to relive a bit of my childhood that way.
-First thoughts? It shouldn&rsquo;t be that hard right? I know drivers could be an issue but it shouldn&rsquo;t be a show-stopper? Turns out things are not so easy to put WinXP on modern hardware."/>
-<meta name="twitter:site" content="@yeokm1"/>
-<link rel="stylesheet" href="/css/bundle.min.a5db8e699d9ae70030c71551956f7b63ee5a1e88c7c2fa3f981a4cec53093283.css" integrity="sha256-pduOaZ2a5wAwxxVRlW97Y&#43;5aHojHwvo/mBpM7FMJMoM=">
+First thoughts? It shouldn&rsquo;t be that hard right? I know drivers could be an issue but it shouldn&rsquo;t be a show-stopper? Turns out things are not so easy to put WinXP on modern hardware.">
+      <meta name="twitter:site" content="@yeokm1">
+<link rel="stylesheet" href="/css/bundle.min.c84189c728647280f0664faf7e16c21157e8c1f31974a65f41b3fa773d850052.css" integrity="sha256-yEGJxyhkcoDwZk&#43;vfhbCEVfowfMZdKZfQbP6dz2FAFI=">
         <link rel="stylesheet" href="/css/add-on.css"></head>
 
   <body>
@@ -305,12 +309,15 @@ First thoughts? It shouldn&rsquo;t be that hard right? I know drivers could be a
 <p>But where is the fun in that? I saw this as an opportunity to determine if it is really possible to install WinXP on a much newer system.  It was also a good way to relive a bit of my childhood that way.</p>
 <p>First thoughts? It shouldn&rsquo;t be that hard right? I know drivers could be an issue but it shouldn&rsquo;t be a show-stopper? Turns out things are not so easy to put WinXP on modern hardware.</p>
 <h2 id="the-machine">The machine</h2>
-<p><a href="images/modernxp-front.jpg"><img src="images/modernxp-front-1024x692.jpg" alt="modernxp-front"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-front.jpg"><img alt="modernxp-front" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-front-1024x692.jpg"></a></p>
 <p>A photo to show that I have successfully installed WinXP on this machine abet with lots of missing drivers.</p>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/jS-jTnKoFUc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/jS-jTnKoFUc?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="Windows XP on a Haswell system installed in 2016"
+      ></iframe>
+    </div>
 
 <p>A short video for &ldquo;extra proof&rdquo;</p>
 <p>The target machine is a Lenovo Ideapad U330p which was manufactured in 25 July 2014.</p>
@@ -331,27 +338,27 @@ First thoughts? It shouldn&rsquo;t be that hard right? I know drivers could be a
 <p>I took many steps and trial-and-errors to finally get WinXP on the system. So the methods I will detail here contains the finalised set of instructions for it to work.</p>
 <p>I have ordered my installation method into 9 steps:</p>
 <ol>
-<li><a href="#step1">Get a legitimate Windows XP license and ISO CD image</a></li>
-<li><a href="#step2">Configure your BIOS</a></li>
-<li><a href="#step3">Slipstream AHCI drivers into WinXP installation media to avoid F6 problem</a></li>
-<li><a href="#step4">Convert GPT partition table to MBR and create partitions</a></li>
-<li><a href="#step5">Actually installing Windows XP</a></li>
-<li><a href="#step6">Install Drivers</a></li>
-<li><a href="#step7">Windows Update</a></li>
-<li><a href="#step8">Install relevant software</a></li>
-<li><a href="#step9">Optimisations</a></li>
+<li><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/#step1">Get a legitimate Windows XP license and ISO CD image</a></li>
+<li><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/#step2">Configure your BIOS</a></li>
+<li><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/#step3">Slipstream AHCI drivers into WinXP installation media to avoid F6 problem</a></li>
+<li><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/#step4">Convert GPT partition table to MBR and create partitions</a></li>
+<li><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/#step5">Actually installing Windows XP</a></li>
+<li><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/#step6">Install Drivers</a></li>
+<li><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/#step7">Windows Update</a></li>
+<li><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/#step8">Install relevant software</a></li>
+<li><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/#step9">Optimisations</a></li>
 </ol>
 <h2 id="step1">Step 1: Get a legitimate Windows XP license and ISO CD image</h2>
 <p>No license, no installation as simple as that. Considering that I&rsquo;ll be using this machine for business purposes, all the more I cannot be using illegitimate copies.</p>
 <p>It is impossible to obtain WinXP via normal retail channels as Microsoft has stopped<a href="https://www.microsoft.com/windows/letter.html"> selling it</a> as of 30 June 2008. The deadline for OEM partners also ceased not long after. There is however a way, if your business has an Microsoft Developer Network (MSDN) subscription, you win! As Algoaccess is a startup of less than 5 years, we enrolled into <a href="https://www.microsoft.com/bizspark">Bizspark</a> which gives us 3 years of free access to Microsoft software.</p>
 <p>MSDN provides legitimate software licenses and disk images of almost every Microsoft product. This even includes old ones like MS-DOS 6 and Windows 3.1. Talk about going further down memory lane if you want to!</p>
 <h3 id="the-msdn-details-on-mydownload">The MSDN details on my download</h3>
-<p><a href="images/modernxp-msdn.png"><img src="images/modernxp-msdn.png" alt="modernxp-msdn"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-msdn.png"><img alt="modernxp-msdn" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-msdn.png"></a></p>
 <p>Anyway, the disk image I chose is Windows XP Professional with Service Pack 3. There exists a 64 bit version of XP Pro but I rather not go that way as drivers for that are hard to find even in its era.</p>
 <p>This disk image is only 589MB which fits nicely inside a CD, modern OS images are nowhere near that size now.</p>
 <h2 id="step2">Step 2: Configure your BIOS</h2>
 <p>XP was created in an era where there was no Serial-ATA (SATA) drives, no SSD drives, no UEFI, no GPT, USB was starting to get more popular and floppy disk drives were still commonplace. Your BIOS settings must take care of these limitations.</p>
-<p><a href="images/modernxp-bios.jpg"><img src="images/modernxp-bios.jpg" alt="modernxp-bios"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-bios.jpg"><img alt="modernxp-bios" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-bios.jpg"></a></p>
 <p>Make sure to disable UEFI booting.</p>
 <p>Not shown in the picture is the &ldquo;USB Legacy&rdquo; option. As this laptop does not have a CD drive, we have to start off from either a USB CD or flash drive. Both of these will require the USB Legacy option to be enabled if your BIOS has it.</p>
 <p>Another optional setting is SATA mode. If you have a choice for IDE or AHCI mode, you should always pick AHCI if you have the drivers or IDE for maximum compatibility. AHCI is required for the extra features like extra bandwidth, <a href="https://en.wikipedia.org/wiki/Native_Command_Queuing">Native Command Queuing</a> and hotplugging. AHCI will require extra drivers which have to be slipstreamed into the WinXP installation media which is in the next step.</p>
@@ -360,56 +367,56 @@ First thoughts? It shouldn&rsquo;t be that hard right? I know drivers could be a
 <h3 id="what-is-this-f6-problem">What is this F6 problem?</h3>
 <p>This was a common problem even during the heydays of Windows XP. A more detailed post about this issue has been written by another blogger <a href="http://www.tim.id.au/blog/tims-f6-driver-guide/">here</a>.</p>
 <p>Basically since WinXP was created in an era where there were no SATA drives, the installation CD can only recognise IDE/Parallel-ATA drives.  Windows XP also happens to be the last OS I believe to have its installation interface seem like a DOS-lookalike text-based installers of its predecessors.</p>
-<p><img src="images/modernxp-sata-f6-1024x672.jpg" alt="modernxp-sata-f6"></p>
+<p><img alt="modernxp-sata-f6" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-sata-f6-1024x672.jpg"></p>
 <p>When you boot an original installation CD, this message will flash for about 3 seconds at the start. You can press F6 to immediately proceed with loading your own SATA drivers. This is where the issue got its name from. If you ignore this, you will still get another chance later.</p>
-<p><a href="images/modernxp-no-sata.jpg"><img src="images/modernxp-no-sata-1024x642.jpg" alt="modernxp-no-sata"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-no-sata.jpg"><img alt="modernxp-no-sata" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-no-sata-1024x642.jpg"></a></p>
 <p>If you ignored the F6 keypress earlier, this installer can&rsquo;t see the SATA drives in your system and prompt you for the hard disk controller drivers, via no kidding, a FLOPPY DISK as you can see below.</p>
-<p><a href="images/modernxp-sata-floppy.jpg"><img src="images/modernxp-sata-floppy-1024x696.jpg" alt="modernxp-sata-floppy"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-sata-floppy.jpg"><img alt="modernxp-sata-floppy" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-sata-floppy-1024x696.jpg"></a></p>
 <p>Seen in the context of that era, the floppy disk thing is quite understandable. If your hard disk controller is not recognised, your CD drive is holding the Windows CD and USB flash drives are not yet commonplace then what is left?</p>
 <h3 id="how-do-we-solve-this">How do we solve this?</h3>
 <p>The proper way if one does not have an internal floppy drive is to get a USB floppy drive, load the AHCI drivers into the floppy disk and proceed as per normal. Believe me, I have tried this solution years before and it works provided if you have the right USB floppy chipset. More details on supported floppy chipsets in the same <a href="http://www.tim.id.au/blog/tims-f6-driver-guide/">F6 explanation link</a>.</p>
 <p>The more elegant solution however, is to inject the AHCI drivers directly into the installation media so WinXP can recognise your hard disk controller from the get go. If one is using an older machine, getting the AHCI drivers is no biggie, just a download away from the Intel website. However, we are now using a more modern 8-Series chipset.</p>
 <p>Thankfully, a Google search brought a lifesaver. Somebody has modded his own universal AHCI drivers with support for the newer chipsets. You can download the driver <a href="http://www.win-raid.com/t11f23-Modded-Intel-AHCI-and-RAID-Drivers-digitally-signed.html">here</a> or in the picture link below.</p>
-<p><a href="http://www.win-raid.com/t11f23-Modded-Intel-AHCI-and-RAID-Drivers-digitally-signed.html"><img src="images/modernxp-universal-ahci.png" alt="modernxp-universal-ahci"></a></p>
+<p><a href="http://www.win-raid.com/t11f23-Modded-Intel-AHCI-and-RAID-Drivers-digitally-signed.html"><img alt="modernxp-universal-ahci" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-universal-ahci.png"></a></p>
 <p>Download older version of <a href="http://www.nliteos.com/download.html">nLite 1.4.9.3</a> instead of the newer NTLite which does not work with Windows XP. (For the following nLite steps, I&rsquo;ll not screenshot every step, just the important ones)</p>
-<p>Extract the WinXP ISO, open nLite and point nLite to the extracted folder. <a href="images/modernxp-nlite-iso-load.png"><img src="images/modernxp-nlite-iso-load.png" alt="modernxp-nlite-iso-load"></a></p>
+<p>Extract the WinXP ISO, open nLite and point nLite to the extracted folder. <a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-nlite-iso-load.png"><img alt="modernxp-nlite-iso-load" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-nlite-iso-load.png"></a></p>
 <p>You should see the above if everything is done properly.</p>
-<p><a href="images/modernxp-nlite-tasks.png"><img src="images/modernxp-nlite-tasks.png" alt="modernxp-nlite-tasks"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-nlite-tasks.png"><img alt="modernxp-nlite-tasks" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-nlite-tasks.png"></a></p>
 <p>Select the Drivers and Bootable ISO options.</p>
-<p><a href="images/modernxp-nlite-driver-integration.png"><img src="images/modernxp-nlite-driver-integration.png" alt="modernxp-nlite-driver-integration"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-nlite-driver-integration.png"><img alt="modernxp-nlite-driver-integration" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-nlite-driver-integration.png"></a></p>
 <p>Just add everything in. Don&rsquo;t worry about conflicts, the XP installer is smart enough to select the correct driver for your system. If you really do get problems, you can consult the TXTSETUP.OEM in the driver zip to see which is the correct driver for your Southbridge model to specifically slipstream in.</p>
 <p>Once done, just burn this image to disc/file, copy to USB flash drive depending on how you are starting the system.</p>
 <h2 id="step4">Step 4: Convert GPT partition table to MBR and create partitions</h2>
 <p>Modern disks now come pre-formatted with the <a href="https://en.wikipedia.org/wiki/GUID_Partition_Table">GUID Partition Table (GPT)</a> instead of the legacy <a href="https://en.wikipedia.org/wiki/Master_boot_record">Master Boot Record (MBR)</a>. If you wish to know why GPT has superceded MBR, just consult the Wikipedia articles. The problem is that WinXP cannot be installed on hard disks that use GPT. We have to convert them to MBR. Note that MBR only supports hard disks up to 4 terabytes (TB).</p>
 <p>We shall use a partitioning tool called <a href="http://gparted.org/">GParted</a> to do the job. Just download the ISO image and boot from it.</p>
 <h3 id="converting-to-mbr">Converting to MBR</h3>
-<p><a href="images/modernxp_gparted.jpg"><img src="images/modernxp_gparted.jpg" alt="modernxp_gparted"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp_gparted.jpg"><img alt="modernxp_gparted" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp_gparted.jpg"></a></p>
 <p>The GParted program will start automatically on boot. Just click Device -&gt; Create Partition Table. Choose the new partition table type to be &ldquo;msdos&rdquo; which is actually MBR.</p>
 <h3 id="create-your-partitions">Create your partition(s)</h3>
 <p>You may be tempted to just restart and allow the XP installer create the partitions during the (next) install step. I do NOT recommend you let XP handle partitioning especially if you are using an SSD or modern magnetic drives. Modern <a href="https://en.wikipedia.org/wiki/Advanced_Format">Advanced Format</a> drives from 2009 now use a 4KiB sector size instead of 512bytes which was the era where XP was designed. If your created partition is not aligned to 4KiB, which a legacy OS like XP will get wrong, you will have performance issues. More details can be found <a href="http://www.seagate.com/sg/en/tech-insights/advanced-format-4k-sector-hard-drives-master-ti/">here</a> and <a href="http://superuser.com/questions/982680/whats-the-point-of-hard-drives-reporting-their-physical-sector-size">here</a>.</p>
 <p>So it is better to let GParted handle the partition creation.</p>
-<p><a href="images/modernxp-gparted-partition-creation.jpg"><img src="images/modernxp-gparted-partition-creation-1024x690.jpg" alt="modernxp-gparted-partition-creation"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-gparted-partition-creation.jpg"><img alt="modernxp-gparted-partition-creation" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-gparted-partition-creation-1024x690.jpg"></a></p>
 <p>Ensure that your first partition has a Free space preceding of 1 MiB to ensure the partition is aligned to the 4KiB boundary. Remember that in an MBR layout, you can have at most 4 primary partitions. If you need more partitions, then one of the partitions have to be created as &ldquo;Extended&rdquo; and then you place multiple &ldquo;Logical&rdquo; drives inside it.</p>
 <h2 id="step5">Step 5: Actually installing Windows XP</h2>
 <p>Boot from your favourite install media, whether it is CD, flash drive or CD-ISO emulators like the <a href="http://www.zalman.com/global/product/Product_Read.php?Idx=965">Zalman VE-350</a>. Modify your BIOS settings if necessary if you can&rsquo;t boot from your media.</p>
-<p><a href="images/modernxp-xp-install-start.jpg"><img src="images/modernxp-xp-install-start-1024x692.jpg" alt="modernxp-xp-install-start"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-xp-install-start.jpg"><img alt="modernxp-xp-install-start" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-xp-install-start-1024x692.jpg"></a></p>
 <p>This screen greets you at the start. Future Windows setups will no longer have this blue background with white text theme. This is a legacy from the Windows 3.0 installer which was released in 1990. You can see the similarity in this <a href="https://www.youtube.com/watch?v=E2WUIcfKwWQ">Windows 3.0 setup video</a>.</p>
-<p><a href="images/modernxp-copying.jpg"><img src="images/modernxp-copying.jpg" alt="modernxp-copying"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-copying.jpg"><img alt="modernxp-copying" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-copying.jpg"></a></p>
 <p>The XP installer should now treat your hard disk controller as if it has recognised it from the day the image was made.</p>
-<p><a href="images/modernxp-reach-gui.jpg"><img src="images/modernxp-reach-gui-1024x673.jpg" alt="modernxp-reach-gui"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-reach-gui.jpg"><img alt="modernxp-reach-gui" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-reach-gui-1024x673.jpg"></a></p>
 <p>It will reboot to the GUI installer after some time. Easiest Windows eh? Integrated CD recording was such a hit thing then, nobody ever does it today.</p>
-<p><a href="images/modernxp-date-range.jpg"><img src="images/modernxp-date-range.jpg" alt="modernxp-date-range"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-date-range.jpg"><img alt="modernxp-date-range" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-date-range.jpg"></a></p>
 <p>At one point you can customise the date range option. The default is 2029 which is awfully close already, you should change that to something further away.</p>
-<p><a href="images/modernxp-update-options.jpg"><img src="images/modernxp-update-options-1024x696.jpg" alt="modernxp-update-options"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-update-options.jpg"><img alt="modernxp-update-options" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-update-options-1024x696.jpg"></a></p>
 <p>This window indicates your Setup process is coming to an end. This section was actually introduced in Service Pack 2 in 2004 to encourage more people to update Windows in response to greater security threats. Both options don&rsquo;t matter today, Windows XP no longer has any new updates. In fact, turning off updates is better as the OS does not need to constantly poll Microsoft&rsquo;s servers for non-existent updates.</p>
-<p><a href="images/modernxp-post-install.jpg"><img src="images/modernxp-post-install-1024x719.jpg" alt="modernxp-post-install"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-post-install.jpg"><img alt="modernxp-post-install" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-post-install-1024x719.jpg"></a></p>
 <p>And we are almost done! Not totally, but successfully reaching the desktop is a major milestone in any OS installation. Look at the mass of missing drivers man. I&rsquo;ll try to rectify that.</p>
 <p>Notice the AHCI driver is a third party one I slipstreamed in earlier. As this is a 32-bit OS, we can&rsquo;t use the entire 8GB of RAM and some of it is taken up by the GPU.</p>
 <h2 id="step6">Step 6: Install Drivers</h2>
 <p>I&rsquo;m mentally prepared that we can&rsquo;t install all the drivers but the ones I&rsquo;m targeting are major ones like network, video and audio.</p>
 <h3 id="network">Network</h3>
 <p>The internal wifi card is an Intel Wireless-N 7260 which does not have Windows XP drivers. This laptop does not have a RJ45 ethernet adapter. To initially tide my way through, I tentatively used a USB-Ethernet adapter. I happened to purchase this <a href="http://www.amazon.com/Cable-Matters-SuperSpeed-Gigabit-Ethernet/dp/B00ESFQCGO">USB 3.0 hub/Ethernet</a> combo sometime back so I used it. It is based on the ASIX AX88179 which thankfully has a <a href="http://www.asix.com.tw/FrootAttach/driver/AX88179_178A_WinXP_Vista_32bit_Driver_v1.4.2.0_WHQL.zip">Windows XP driver</a>.</p>
-<p><a href="images/modern-xp-lan.jpg"><img src="images/modern-xp-lan-1024x576.jpg" alt="modern-xp-lan"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modern-xp-lan.jpg"><img alt="modern-xp-lan" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modern-xp-lan-1024x576.jpg"></a></p>
 <p>The USB 3.0 is obviously in name only in this context. USB 3.0 is not supported on Windows XP.</p>
 <p>I later used another USB Wifi adapter based on the Mediatek MT7601 which also had <a href="http://www.mediatek.com/en/downloads1/downloads/">Windows XP drivers</a>.</p>
 <h3 id="video">Video</h3>
@@ -418,19 +425,19 @@ First thoughts? It shouldn&rsquo;t be that hard right? I know drivers could be a
 <p>Now VESA is a name I have not heard in a long time. This aim of that driver is as follows:</p>
 <p><em>&ldquo;This driver is intended for using in case when your have some new or unknown video card(s) and you don&rsquo;t have drivers for it. It&rsquo;s better to contact manufacturer of your video card or search THE WEB for the drivers. ONLY if you finally cannot find driver for your video card I recommend you to use mine (vbemp.sys). My driver is very simple one &amp; does not provide any kind of 3D hardware acceleration (DirectX &amp; OpenGL).&rdquo;</em></p>
 <p>This is EXACTLY my use case here!</p>
-<p><a href="images/modernxp-display-properties.png"><img src="images/modernxp-display-properties.png" alt="modernxp-display-properties"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-display-properties.png"><img alt="modernxp-display-properties" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-display-properties.png"></a></p>
 <p>I happily used the VBE 3 version and am happy to report that things are much improved. Not as good as one by the manufacturer itself as there is no hardware acceleration but still much better performance than no driver at all. The brightness is also locked at maximum so be wary about straining your eyes if you are using a laptop. The HDMI output of the laptop is also unusable.</p>
 <h3 id="audio">Audio</h3>
 <p>This is an easy one, <a href="http://www.realtek.com.tw/downloads/">Realtek&rsquo;s website</a> still provides Windows XP drivers for its High Definition Audio Codecs so I just got the drivers from there.</p>
 <h3 id="the-result">The result</h3>
-<p><a href="images/modernxp-devmgmt.png"><img src="images/modernxp-devmgmt-1024x684.png" alt="modernxp-devmgmt"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-devmgmt.png"><img alt="modernxp-devmgmt" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-devmgmt-1024x684.png"></a></p>
 <p>I still don&rsquo;t have all the drivers but at least the major stuff is working. The missing USB controller driver is not mandatory for usage of the USB ports. However, USB 3.0 speeds may still be possible even though the proper drivers are not be loaded. Thanks to AJ&rsquo;s comment below.</p>
-<p><a href="images/modernxp-win7-devmgmt.png"><img src="images/modernxp-win7-devmgmt-1024x624.png" alt="modernxp-win7-devmgmt"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-win7-devmgmt.png"><img alt="modernxp-win7-devmgmt" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-win7-devmgmt-1024x624.png"></a></p>
 <p>Contrast this with the complete reference installation on Windows 7</p>
 <h2 id="step7">Step 7: Windows Update</h2>
-<p>Although WinXP no longer has new updates, it does not mean we do not install the existing ones. Microsoft fortunately did not pull the product activation and update servers. Hundreds of updates await. The .NET frameworks that come with Windows Updates will also be useful. <a href="images/modern-xp-win-update.jpg"><img src="images/modern-xp-win-update.jpg" alt="modern-xp-win-update"></a></p>
+<p>Although WinXP no longer has new updates, it does not mean we do not install the existing ones. Microsoft fortunately did not pull the product activation and update servers. Hundreds of updates await. The .NET frameworks that come with Windows Updates will also be useful. <a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modern-xp-win-update.jpg"><img alt="modern-xp-win-update" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modern-xp-win-update.jpg"></a></p>
 <p>You can turn off Automatic Updates. Remember to run Windows Update repeatedly until no more updates are displayed as the installation of some updates will &ldquo;spawn&rdquo; more updates.</p>
-<p><a href="images/modernxp-eol.png"><img src="images/modernxp-eol.png" alt="modernxp-eol"></a></p>
+<p><a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-eol.png"><img alt="modernxp-eol" src="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/images/modernxp-eol.png"></a></p>
 <p>This was one of the last updates by Microsoft, the End-of-life notification.</p>
 <p>(June 2017 update): I recently reinstalled a fresh Windows XP system and could not get Windows Update to work. Nevertheless, I found someone has made an unofficial Service Pack 4! Check it out <a href="https://ryanvm.net/forum/viewtopic.php?p=133918">here</a>.</p>
 <p>A separate update that you might want to install is the exFat update which will allow you to handle external drives formatted with the exFAT file system. The update was originally available <a href="https://support.microsoft.com/en-us/kb/955704">here</a> but Microsoft pulled the update file. Thankfully another blogger has downloaded a copy and is <a href="http://blog.tatedavies.com/2013/02/20/exfat-drive-not-working-in-windows-xp/">hosting it</a>.</p>
@@ -751,7 +758,7 @@ First thoughts? It shouldn&rsquo;t be that hard right? I know drivers could be a
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.122.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.125.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
@@ -793,7 +800,7 @@ First thoughts? It shouldn&rsquo;t be that hard right? I know drivers could be a
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.bf7f7687e38d8caba0913f2bff8e476c893e0a96bed699897fc22d57e1e53015.js" integrity="sha256-v392h&#43;ONjKugkT8r/45HbIk&#43;Cpa&#43;1pmJf8ItV&#43;HlMBU="></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.4b08dba1bed68bfe65db2515ff7d6b0258656cf4079ed4e03263be238684e63e.js" integrity="sha256-Swjbob7Wi/5l2yUV/31rAlhlbPQHntTgMmO&#43;I4aE5j4="></script>
 <script src="/js/add-on.js"></script>
     </div>
   </body>

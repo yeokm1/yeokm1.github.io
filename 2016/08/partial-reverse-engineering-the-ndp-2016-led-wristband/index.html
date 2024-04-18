@@ -6,34 +6,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.122.0"><meta itemprop="name" content="(Partial) Reverse Engineering the NDP 2016 LED Wristband">
-<meta itemprop="description" content="(Checkout the 2019 version here!)
+<meta name="generator" content="Hugo 0.125.0">
+  <meta itemprop="name" content="(Partial) Reverse Engineering the NDP 2016 LED Wristband">
+  <meta itemprop="description" content="(Checkout the 2019 version here!)
 The Singapore National Day Parade (NDP 2016) happened on 9 August 2016 to celebrate its 51st birthday. For those who had the opportunity to attend the actual parade or its previews/rehearsals, they will also get to receive a funpack where one of the items will be a wearable LED band made by a company called Pixmob.
 
 This band receives infrared(IR) signals from the organisers and then displays the LED colour of their choosing. There is also an onboard accelerometer. After the event when the IR signals disappear, the (single-axis I believe) accelerometer will cause the Red LED to light up when a shock is detected.
 Here is the talk video on this subject I gave at Hackware v2.1.
 
 
-  
-"><meta itemprop="datePublished" content="2016-08-11T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2016-08-11T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1071">
-<meta itemprop="keywords" content="" /><meta property="og:title" content="(Partial) Reverse Engineering the NDP 2016 LED Wristband" />
-<meta property="og:description" content="(Checkout the 2019 version here!)
+    
+    
+      
+    ">
+  <meta itemprop="datePublished" content="2016-08-11T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2016-08-11T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1071">
+  <meta itemprop="keywords" content="Hacks,Teardowns"><meta property="og:url" content="http://yeokhengmeng.com/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/">
+  <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
+  <meta property="og:title" content="(Partial) Reverse Engineering the NDP 2016 LED Wristband">
+  <meta property="og:description" content="(Checkout the 2019 version here!)
 The Singapore National Day Parade (NDP 2016) happened on 9 August 2016 to celebrate its 51st birthday. For those who had the opportunity to attend the actual parade or its previews/rehearsals, they will also get to receive a funpack where one of the items will be a wearable LED band made by a company called Pixmob.
-
 This band receives infrared(IR) signals from the organisers and then displays the LED colour of their choosing. There is also an onboard accelerometer. After the event when the IR signals disappear, the (single-axis I believe) accelerometer will cause the Red LED to light up when a shock is detected.
 Here is the talk video on this subject I gave at Hackware v2.1.
-
-
-  
-" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://yeokhengmeng.com/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2016-08-11T00:00:00+00:00" />
-<meta property="article:modified_time" content="2016-08-11T00:00:00+00:00" />
-
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="(Partial) Reverse Engineering the NDP 2016 LED Wristband"/>
+">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2016-08-11T00:00:00+00:00">
+    <meta property="article:modified_time" content="2016-08-11T00:00:00+00:00">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="(Partial) Reverse Engineering the NDP 2016 LED Wristband">
 <meta name="twitter:description" content="(Checkout the 2019 version here!)
 The Singapore National Day Parade (NDP 2016) happened on 9 August 2016 to celebrate its 51st birthday. For those who had the opportunity to attend the actual parade or its previews/rehearsals, they will also get to receive a funpack where one of the items will be a wearable LED band made by a company called Pixmob.
 
@@ -41,10 +43,12 @@ This band receives infrared(IR) signals from the organisers and then displays th
 Here is the talk video on this subject I gave at Hackware v2.1.
 
 
-  
-"/>
-<meta name="twitter:site" content="@yeokm1"/>
-<link rel="stylesheet" href="/css/bundle.min.a5db8e699d9ae70030c71551956f7b63ee5a1e88c7c2fa3f981a4cec53093283.css" integrity="sha256-pduOaZ2a5wAwxxVRlW97Y&#43;5aHojHwvo/mBpM7FMJMoM=">
+    
+    
+      
+    ">
+      <meta name="twitter:site" content="@yeokm1">
+<link rel="stylesheet" href="/css/bundle.min.c84189c728647280f0664faf7e16c21157e8c1f31974a65f41b3fa773d850052.css" integrity="sha256-yEGJxyhkcoDwZk&#43;vfhbCEVfowfMZdKZfQbP6dz2FAFI=">
         <link rel="stylesheet" href="/css/add-on.css"></head>
 
   <body>
@@ -289,25 +293,34 @@ Here is the talk video on this subject I gave at Hackware v2.1.
   <div class="content">
     <p>(Checkout the 2019 version <a href="/2019/08/teardown-of-ndp2019-led-wristband/">here</a>!)</p>
 <p>The Singapore National Day Parade (NDP 2016) happened on 9 August 2016 to celebrate its 51st birthday. For those who had the opportunity to attend the actual parade or its previews/rehearsals, they will also get to receive a funpack where one of the items will be a wearable LED band made by a company called <a href="http://pixmob.com/">Pixmob</a>.</p>
-<p><a href="images/ndp2016-re-wristband.jpg"><img src="images/ndp2016-re-wristband-828x1024.jpg" alt="ndp2016-re-wristband"></a></p>
+<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-wristband.jpg"><img alt="ndp2016-re-wristband" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-wristband-828x1024.jpg"></a></p>
 <p>This band receives infrared(IR) signals from the organisers and then displays the LED colour of their choosing. There is also an onboard accelerometer. After the event when the IR signals disappear, the (single-axis I believe) accelerometer will cause the Red LED to light up when a shock is detected.</p>
 <p>Here is the talk video on this subject I gave at <a href="https://www.facebook.com/events/245575175803923/">Hackware v2.1</a>.</p>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/9Km77gBqyCY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/9Km77gBqyCY?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="Partial reverse-engineering the NDP2016 wristband - Hackware v2.1"
+      ></iframe>
+    </div>
 
 <p>I had the opportunity to attend the Preview 2 (or rehearsal) of this event on 30 July 2016. Here are 2 videos of the wristband in action during the NDP Preview 2.</p>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/EPwxPJhlR4M" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/EPwxPJhlR4M?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="NDP2016 Preview 2 Wristband Blinking"
+      ></iframe>
+    </div>
 
 <p>Each segment is given a particular colour theme and the band blinks in tandem with what the organisers want.</p>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/XepiuPZ2TzA" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/XepiuPZ2TzA?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="NDP2016 Preview 2 Wristband Colour Change"
+      ></iframe>
+    </div>
 
 <p>You can see how the colour changes during the show.</p>
 <p>So obviously I was curious about how this wristband works. A look at Pixmob website shows they have 2 products to cater to different audience capacities</p>
@@ -319,23 +332,23 @@ Here is the talk video on this subject I gave at Hackware v2.1.
 <p>That is however not enough, I want to know MORE! So I proceeded to the teardown.</p>
 <h1 id="teardown">Teardown</h1>
 <p>I cracked open the case to reveal the following:</p>
-<p><a href="images/ndp2016-re-front.jpg"><img src="images/ndp2016-re-front.jpg" alt="ndp2016-re-front"></a></p>
+<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-front.jpg"><img alt="ndp2016-re-front" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-front.jpg"></a></p>
 <p>Front view of the board. I have identified the major components in the list below</p>
 <ul>
 <li>IR1: Infrared Receiver</li>
 <li>LED1: RGB LED</li>
 <li>IC1: <a href="http://www.atmel.com/images/doc0180.pdf">Atmel AT24C02S</a> 2KB, 2-Wire Serial EEPROM (SOT23-5 package)</li>
-<li>IC2: <a href="http://www.abov.co.kr/en/index.php?Depth1=3&amp;Depth2=1&amp;Depth3=1&amp;Depth4=2&amp;Item=MC81F4204">Abov 81F4204R</a> 8-bit microcontroller (MCU) with 4KB ROM and 192B RAM (TSSOP16 package)</li>
+<li>IC2: <a href="http://www.abov.co.kr/en/index.php?Depth1=3&Depth2=1&Depth3=1&Depth4=2&Item=MC81F4204">Abov 81F4204R</a> 8-bit microcontroller (MCU) with 4KB ROM and 192B RAM (TSSOP16 package)</li>
 </ul>
 <p>I have no idea why there needs to be Atmel EEPROM chip, what does Pixmob need to store inside there?</p>
-<p><a href="images/ndp2016-re-back.jpg"><img src="images/ndp2016-re-back-1024x442.jpg" alt="ndp2016-re-back"></a></p>
+<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-back.jpg"><img alt="ndp2016-re-back" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-back-1024x442.jpg"></a></p>
 <p>Back view of the board. The device is powered by a 3V CR2032 battery. The tube on the left is what I believe to be a single-axis accelerometer.</p>
 <h1 id="hardware-reverse-engineering">Hardware Reverse Engineering</h1>
 <p>If you are interested in the raw schematics/code used in this post, you can see my <a href="https://github.com/yeokm1/reverse-engineering-ndp2016-wristband">Github link</a>.</p>
 <p>I was not satisfied with knowing what components goes inside the band, I&rsquo;ll like to know how are they connected together. So using a multimeter, I set down to work.</p>
-<p><a href="images/ndp2016-re-blue-led.jpg"><img src="images/ndp2016-re-blue-led-262x300.jpg" alt="ndp2016-re-blue-led"></a> <a href="images/ndp2016-re-red-led.jpg"><img src="images/ndp2016-re-red-led-272x300.jpg" alt="ndp2016-re-red-led"></a> <a href="images/ndp2016-re-green-led.jpg"><img src="images/ndp2016-re-green-led-262x300.jpg" alt="ndp2016-re-green-led"></a></p>
+<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-blue-led.jpg"><img alt="ndp2016-re-blue-led" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-blue-led-262x300.jpg"></a> <a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-red-led.jpg"><img alt="ndp2016-re-red-led" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-red-led-272x300.jpg"></a> <a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-green-led.jpg"><img alt="ndp2016-re-green-led" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-green-led-262x300.jpg"></a></p>
 <p>Using the Diode mode of the multimeter, we can see the different colours on the LED exhibit different voltage drops.</p>
-<p><a href="images/ndp2016-re-schematic.png"><img src="images/ndp2016-re-schematic-1024x742.png" alt="ndp2016-re-schematic"></a></p>
+<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-schematic.png"><img alt="ndp2016-re-schematic" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-schematic-1024x742.png"></a></p>
 <p>After some painstaking work mapping out all the connections, I drew out both the necessary Kicad libraries and schematic as you can see above. I even included the test points. Note that I cannot guarantee the schematic is correct.</p>
 <h2 id="programming-pads">Programming pads</h2>
 <p>The test points TP_SCK and TP_SO are no doubt used to program the board for the first time after the PCB is fabricated and assembled. I anticipate that ROM dumping could be possible but I don&rsquo;t have the time and tools to make it happen.</p>
@@ -354,11 +367,11 @@ Here is the talk video on this subject I gave at Hackware v2.1.
 <p>Since I lack the time and equipment to do option 1, I wanted to try out option 2. This could possibly work assuming that Pixmob has not programmed in a Kill code that will disable further IR functionality should the organisers send out this code at the end of the event.</p>
 <h2 id="my-ir-brute-forcer">My IR brute-forcer</h2>
 <p>This is a Fritzing schematic showing my design of a IR brute-forcer:</p>
-<p><a href="images/ndp2016-re-brute-force-microview-connections.png"><img src="images/ndp2016-re-brute-force-microview-connections.png" alt="ndp2016-re-brute-force-microview-connections"></a></p>
+<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-brute-force-microview-connections.png"><img alt="ndp2016-re-brute-force-microview-connections" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-brute-force-microview-connections.png"></a></p>
 <p>The brains of this project is a <a href="http://microview.io/">Microview</a>, an Arduino-compatible component that has a standard ATmega328p chip and an OLED screen. The Microview drives an IR LED with the numerous IR combinations. Should a particular combination work, the wristband will light up and the differing light intensity can be captured by the photocell.</p>
-<p><img src="images/ndp2016-re-brute-force-finding-872x1024.jpg" alt="ndp2016-re-brute-force-finding"></p>
+<p><img alt="ndp2016-re-brute-force-finding" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-brute-force-finding-872x1024.jpg"></p>
 <p>This is the setup, the IR LED and the photocell are both aimed at the wristband.</p>
-<p><a href="images/ndp2016-re-brute-force-fake-find.jpg"><img src="images/ndp2016-re-brute-force-fake-find-954x1024.jpg" alt="ndp2016-re-brute-force-fake-find"></a></p>
+<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-brute-force-fake-find.jpg"><img alt="ndp2016-re-brute-force-fake-find" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-brute-force-fake-find-954x1024.jpg"></a></p>
 <p>This photo shows a false positive. Should the wristband light up, the OLED screen will display &ldquo;Found&rdquo;. The corresponding IR combination will be then sent via the Serial port to the computer.</p>
 <h2 id="brute-force-conclusion">Brute-force conclusion</h2>
 <p>This didn&rsquo;t work out in the end as I realised there are literally trillions of IR combinations made up of IR-ON, IR-OFF, multiple delay timings and the Arduino can only output about a few hundred or thousand combinations a second. Even worse, even if one can find a faster way to brute force quickly, if a Kill code has been sent, then there is no way this could work.</p>
@@ -651,7 +664,7 @@ Here is the talk video on this subject I gave at Hackware v2.1.
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.122.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.125.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
@@ -693,7 +706,7 @@ Here is the talk video on this subject I gave at Hackware v2.1.
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.bf7f7687e38d8caba0913f2bff8e476c893e0a96bed699897fc22d57e1e53015.js" integrity="sha256-v392h&#43;ONjKugkT8r/45HbIk&#43;Cpa&#43;1pmJf8ItV&#43;HlMBU="></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.4b08dba1bed68bfe65db2515ff7d6b0258656cf4079ed4e03263be238684e63e.js" integrity="sha256-Swjbob7Wi/5l2yUV/31rAlhlbPQHntTgMmO&#43;I4aE5j4="></script>
 <script src="/js/add-on.js"></script>
     </div>
   </body>

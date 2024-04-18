@@ -6,33 +6,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.122.0"><meta itemprop="name" content="Repair Kopitiam specialty electrical tools (Part 2): Short Circuit Limiter">
-<meta itemprop="description" content="If you have not read the previous post (Part 1) on this subject, I encourage you but it is not mandatory to do so before reading this post. I&rsquo;ll still go through the fundamentals in this post. If you just want to see the raw technical details, the schematic and code of this project have been open-sourced here.
+<meta name="generator" content="Hugo 0.125.0">
+  <meta itemprop="name" content="Repair Kopitiam specialty electrical tools (Part 2): Short Circuit Limiter">
+  <meta itemprop="description" content="If you have not read the previous post (Part 1) on this subject, I encourage you but it is not mandatory to do so before reading this post. I&rsquo;ll still go through the fundamentals in this post. If you just want to see the raw technical details, the schematic and code of this project have been open-sourced here.
 Post Objective
 To show why did I build this and how it works plus the issues faced.
 
-The clean case hides the complexity within."><meta itemprop="datePublished" content="2017-07-23T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2017-07-23T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2998">
-<meta itemprop="keywords" content="" /><meta property="og:title" content="Repair Kopitiam specialty electrical tools (Part 2): Short Circuit Limiter" />
-<meta property="og:description" content="If you have not read the previous post (Part 1) on this subject, I encourage you but it is not mandatory to do so before reading this post. I&rsquo;ll still go through the fundamentals in this post. If you just want to see the raw technical details, the schematic and code of this project have been open-sourced here.
-Post Objective
-To show why did I build this and how it works plus the issues faced.
-
-The clean case hides the complexity within." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://yeokhengmeng.com/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2017-07-23T00:00:00+00:00" />
-<meta property="article:modified_time" content="2017-07-23T00:00:00+00:00" />
-
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Repair Kopitiam specialty electrical tools (Part 2): Short Circuit Limiter"/>
+The clean case hides the complexity within.">
+  <meta itemprop="datePublished" content="2017-07-23T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2017-07-23T00:00:00+00:00">
+  <meta itemprop="wordCount" content="2998">
+  <meta itemprop="keywords" content="Hacks,Repair-Kopitiam"><meta property="og:url" content="http://yeokhengmeng.com/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/">
+  <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
+  <meta property="og:title" content="Repair Kopitiam specialty electrical tools (Part 2): Short Circuit Limiter">
+  <meta property="og:description" content="If you have not read the previous post (Part 1) on this subject, I encourage you but it is not mandatory to do so before reading this post. I&amp;rsquo;ll still go through the fundamentals in this post. If you just want to see the raw technical details, the schematic and code of this project have been open-sourced here.
+Post Objective To show why did I build this and how it works plus the issues faced.
+The clean case hides the complexity within.
+">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2017-07-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2017-07-23T00:00:00+00:00">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Repair Kopitiam specialty electrical tools (Part 2): Short Circuit Limiter">
 <meta name="twitter:description" content="If you have not read the previous post (Part 1) on this subject, I encourage you but it is not mandatory to do so before reading this post. I&rsquo;ll still go through the fundamentals in this post. If you just want to see the raw technical details, the schematic and code of this project have been open-sourced here.
 Post Objective
 To show why did I build this and how it works plus the issues faced.
 
-The clean case hides the complexity within."/>
-<meta name="twitter:site" content="@yeokm1"/>
-<link rel="stylesheet" href="/css/bundle.min.a5db8e699d9ae70030c71551956f7b63ee5a1e88c7c2fa3f981a4cec53093283.css" integrity="sha256-pduOaZ2a5wAwxxVRlW97Y&#43;5aHojHwvo/mBpM7FMJMoM=">
+The clean case hides the complexity within.">
+      <meta name="twitter:site" content="@yeokm1">
+<link rel="stylesheet" href="/css/bundle.min.c84189c728647280f0664faf7e16c21157e8c1f31974a65f41b3fa773d850052.css" integrity="sha256-yEGJxyhkcoDwZk&#43;vfhbCEVfowfMZdKZfQbP6dz2FAFI=">
         <link rel="stylesheet" href="/css/add-on.css"></head>
 
   <body>
@@ -278,16 +281,19 @@ The clean case hides the complexity within."/>
     <p>If you have not read the <a href="/2016/05/repair-kopitiam-speciality-electrical-tools/">previous post (Part 1)</a> on this subject, I encourage you but it is not mandatory to do so before reading this post. I&rsquo;ll still go through the fundamentals in this post. If you just want to see the raw technical details, the schematic and code of this project have been <a href="https://github.com/yeokm1/repair-kopitiam-training-and-equipment/tree/master/short-circuit-limiter">open-sourced here</a>.</p>
 <h1 id="post-objective">Post Objective</h1>
 <p>To show why did I build this and how it works plus the issues faced.</p>
-<p><a href="images/rk-equip2-scl-prod-front.jpg"><img src="images/rk-equip2-scl-prod-front-1024x701.jpg" alt=""></a></p>
+<p><a href="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-scl-prod-front.jpg"><img src="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-scl-prod-front-1024x701.jpg"></a></p>
 <p>The clean case hides the complexity within.</p>
 <h1 id="background">Background</h1>
 <p>I&rsquo;m a regular volunteer in the social initiative called Repair Kopitiam (RK) started by Sustainable Living Lab (SL2). On a monthly basis, we teach Singapore residents how to repair their household electrical appliances, fabrics and furniture. Our volunteers are also called repair coaches.</p>
 <h1 id="my-talk">My talk</h1>
 <p>I gave at <a href="https://www.facebook.com/events/261629434317053/">Hackware v3.4</a> on Sept 6 about this subject. Video and slides below. The audio is quite bad due to the location.</p>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/BM9I_tabfC8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/BM9I_tabfC8?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="Repair Kopitiam Specialty Tools (Part 2): Short Circuit Limiter - Hackware v3.4"
+      ></iframe>
+    </div>
 
 <h1 id="what-is-the-problem">What is the problem?</h1>
 <p>I’m sure everyone of us have heard about <a href="https://en.wikipedia.org/wiki/Circuit_breaker">circuit breakers</a> (CBs). They are basically automated switches that cut the circuit if they if they detect something dangerous like current overload or if earth leakage has been found. Breakers are installed everywhere in buildings, homes and even at void decks of HDB flats where RK operates.</p>
@@ -297,23 +303,26 @@ The clean case hides the complexity within."/>
 <li>Miniature Circuit Breaker (MCB) trips when there is an current overload such as during a short circuit</li>
 </ol>
 <p>Whenever an appliance trips your household circuit breaker, all you have to do is unplug the faulty device and reset the breaker.</p>
-<p><a href="images/rk-equip-onsite-mcbs.jpg"><img src="images/rk-equip-onsite-mcbs-1024x638.jpg" alt=""></a></p>
+<p><a href="images/rk-equip-onsite-mcbs.jpg"><img src="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip-onsite-mcbs-1024x638.jpg"></a></p>
 <p>Onsite circuit breaker at the void deck.</p>
 <h2 id="locked-electrical-room">Locked electrical room</h2>
 <p>Not so simple for RK, the electrical services in the void deck of HDBs are usually under the purview of an external company contracted by the town council. For the case of our Tampines location, it is by the Essential Maintenance Service Unit (EMSU). The EMSU does not allow us to have unaccompanied access to the electrical room holding the circuit breaker for security reasons.</p>
-<p><a href="images/rk-equip2-switch-room.jpg"><img src="images/rk-equip2-switch-room.jpg" alt=""></a></p>
+<p><a href="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-switch-room.jpg"><img src="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-switch-room.jpg"></a></p>
 <p>The circuit breakers for the void deck are hiding behind this locked room. Whenever any breaker trips, we have to call EMSU and they have to send their personnel over to unlock the room to reset the breaker. This usually takes 30mins to an hour. In the meantime, there is no power.</p>
 <h1 id="solutions">Solutions</h1>
 <h2 id="solution-to-prevent-rccb-trips">Solution to prevent RCCB trips</h2>
 <p>To prevent the onsite RCCB from tripping and yet still cut the power for safety reasons, I made this device.</p>
-<p><a href="images/rk-equip-10ma-rcbo-and-anti-external-cb-trip-front-open.jpg"><img src="images/rk-equip-10ma-rcbo-and-anti-external-cb-trip-front-open-1024x700.jpg" alt=""></a></p>
+<p><a href="images/rk-equip-10ma-rcbo-and-anti-external-cb-trip-front-open.jpg"><img src="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip-10ma-rcbo-and-anti-external-cb-trip-front-open-1024x700.jpg"></a></p>
 <p>Details are in my <a href="/2016/05/repair-kopitiam-speciality-electrical-tools/">previous post</a> but basically how it works is that there is a 20K ohm resistor placed on the Earth line. The resistor holds down the earth-fault current to the level below the 30mA threshold of typical RCCBs. The RCCB (or RCBO) in my device is rated for 10mA which is more sensitive. Therefore, only my RCBO will trip and not the one in the room.</p>
 <h2 id="solution-to-prevent-mcb-trips">Solution to prevent MCB trips</h2>
 <p>The previous solution I did more than a year back worked well but preventing MCB trips proved a harder nut to crack. After more than a year of design and iteration, I finally managed to partially solve the problem. Explanation will come in later. Enjoy the video.</p>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/VpU6cOnxy0s" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/VpU6cOnxy0s?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="Short Circuit Limiter"
+      ></iframe>
+    </div>
 
 <h3 id="things-to-look-out-for-in-the-video">Things to look out for in the video:</h3>
 <ol>
@@ -355,7 +364,7 @@ The clean case hides the complexity within."/>
 <p>A PTC can take time to cool down after a short circuit for its resistance to go back down to the level suitable for typical operation. Furthermore, an actual short circuit will have a high probability of damaging the thermistor.</p>
 <h3 id="proposed-high-level-design">Proposed high-level design</h3>
 <p>A microcontroller-controlled relay is connected in parallel to a high power resistor. A 10 ohm resistor is chosen to limit the fault current to at most 23 Amps if there is a short circuit.</p>
-<p><a href="images/rk-equip2-high-level-schematic.png"><img src="images/rk-equip2-high-level-schematic.png" alt=""></a></p>
+<p><a href="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-high-level-schematic.png"><img src="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-high-level-schematic.png"></a></p>
 <ol>
 <li>At the start,  the MCB Relay is on and Bypass relay is off and all current must flow through the 10 ohm resistor</li>
 <li>Once an appliance is turned on, the microcontroller will wait for a delay of 1 second. If there is no short circuit or excessive current flow during this period, the bypass relay will be turned on allowing full current flow to the device.</li>
@@ -364,12 +373,12 @@ The clean case hides the complexity within."/>
 <p>I&rsquo;ll also include a buzzer so that mode changes can be heard from afar without the repair coaches having to constantly look at the LCD screen.</p>
 <h1 id="implementation">Implementation</h1>
 <h2 id="innards">Innards</h2>
-<p><a href="images/rk-equip2-scl-prod-internal-standby.jpg"><img src="images/rk-equip2-scl-prod-internal-standby.jpg-1024x678.jpg" alt=""></a></p>
+<p><a href="images/rk-equip2-scl-prod-internal-standby.jpg"><img src="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-scl-prod-internal-standby.jpg-1024x678.jpg"></a></p>
 <p>Scared by the eventual complexity? Upon project completion, I was surprised it came to this.</p>
-<p><a href="images/rk-equip2-schematic.png"><img src="images/rk-equip2-schematic-1024x425.png" alt=""></a> The full schematic for reference purpose.</p>
+<p><a href="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-schematic.png"><img src="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-schematic-1024x425.png"></a> The full schematic for reference purpose.</p>
 <h2 id="the-brain-industruino-1286">The brain: Industruino-1286</h2>
 <p>I needed a microcontroller (MCU) to manage the relays as well as other features. As the circuit breakers use a <a href="https://en.wikipedia.org/wiki/DIN_rail">DIN rail</a> for mounting, it would be great if the MCU can be mounted on this same rail as well. I searched and I found the <a href="https://industruino.com/shop/product/industruino-proto-kit-8">Industruino Proto Kit</a>.</p>
-<p><a href="images/scl-industruino-internal.jpg"><img src="images/scl-industruino-internal-1024x613.jpg" alt=""></a></p>
+<p><a href="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/scl-industruino-internal.jpg"><img src="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/scl-industruino-internal-1024x613.jpg"></a></p>
 <p>It has these features which met my needs perfectly!</p>
 <ol>
 <li>Arduino-compatible microcontroller</li>
@@ -379,28 +388,28 @@ The clean case hides the complexity within."/>
 </ol>
 <p>I chose the MCU based on the AT90USB1286 because of stock issues but the cheaper 32u4 option should also work.</p>
 <h2 id="high-power-resistor">High-Power Resistor</h2>
-<p><a href="images/rk-equip2-10ohm-resistor.jpg"><img src="images/rk-equip2-10ohm-resistor-1024x246.jpg" alt=""></a></p>
+<p><a href="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-10ohm-resistor.jpg"><img src="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-10ohm-resistor-1024x246.jpg"></a></p>
 <p>This 5ohm resistor is the exact same size as the 10ohm one I used.</p>
 <p>It is HUGE at about 27cm long and 2.5cm in diameter. The biggest I have handled in my life so far but necessary. It is rated at 10-ohm, 225 Watt so as to hold down the current to 23 Amps (below the onsite MCB threshold) if there is a short circuit.</p>
 <p>The data sheet says it can withstand &ldquo;10 times rated power for 5 seconds&rdquo; which is about 2250W. In theory, by P=I2R, one would need 23 * 23 * 10 = 5290 Watt resistor to be able to dissipate the heat generated. However, this is mitigated by the fact that the MCU will react almost immediately to this extremely high current and cut the power before the heat becomes a serious problem.</p>
 <h2 id="current-measurement">Current Measurement</h2>
 <p>In order to know whether an external appliance has been powered on or off, some form of current measurement is necessary. The current data is also required to know when an overcurrent/short-circuit condition has happened.</p>
-<p><a href="images/Arduino_AC_current_input_A.png"><img src="images/Arduino_AC_current_input_A.png" alt=""></a></p>
+<p><a href="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/Arduino_AC_current_input_A.png"><img src="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/Arduino_AC_current_input_A.png"></a></p>
 <p>This image is obtained from the <a href="https://learn.openenergymonitor.org/electricity-monitoring/ct-sensors/interface-with-arduino">Open Energy Monitor site</a> which has an open-source schematic to show how current can be measured with an Arduino. How it works is that the +ve and -ve AC output of the CT clamp is converted into positive values and scaled into a voltage range so the ADC of the MCU can read it. Read more in the provided link.</p>
 <p>The parts used in this schematic are placed inside prototyping area of the Industruino itself except for the audio jack. That is drawn out externally for the CT clamp to connect to.</p>
 <h3 id="current-measurement-settle-time">Current measurement settle time</h3>
 <p>In my tests with the above circuit, I found out that the measurements obtained initially are pretty unreliable. If I understand correctly, it is due to the example code I adapted from <a href="https://github.com/openenergymonitor/EmonLib">Emonlib</a> where some of the existing measurement readings relies on data of the previous measurement due to the low-pass filter. This makes the initial measurements inaccurate.</p>
-<p><a href="images/rk-equip2-scl-startup.jpg"><img src="images/rk-equip2-scl-startup.jpg" alt=""></a></p>
+<p><a href="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-scl-startup.jpg"><img src="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-scl-startup.jpg"></a></p>
 <p>To mitigate this issue, I force a 20-second startup time at the beginning till the measurements stabilise. In the meantime, I thought it would be a good opportunity to show a &ldquo;bootup screen&rdquo; displaying the thresholds of the different operations.</p>
 <h2 id="a-tale-of-many-relays">A tale of many relays</h2>
 <p>When I first started, I thought any el-cheapo <a href="https://en.wikipedia.org/wiki/Solid-state_relay">solid-state relay</a> (SSR) will do. Turns out, this part cause me problems that took a significant amount of time to solve.</p>
 <h3 id="how-does-an-ssr-work">How does an SSR work?</h3>
-<p><a href="images/rk-equip2-ac-relay.png"><img src="images/rk-equip2-ac-relay-1024x303.png" alt=""></a></p>
+<p><a href="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-ac-relay.png"><img src="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-ac-relay-1024x303.png"></a></p>
 <p>Picture from <a href="http://www.crydom.com/en/products/catalog/3rd-generation/c_w24.pdf">Crydom&rsquo;s CW24 datasheet</a></p>
 <p>When one applies power to the primary coil, the LED within the opto-isolator lights up and is captured by a photodiode on the other side. The signal is then used to control a <a href="https://en.wikipedia.org/wiki/Silicon_controlled_rectifier">Silicon controlled rectifier (SCR</a>) which is a semiconductor switching element. To add on the CWD2450 model I used is classfied as a zero-crossing model which means it only turns on or off when the voltage/current falls to zero to prevent surges.</p>
 <h3 id="problem-ssr-does-not-turn-off">Problem: SSR does not turn off</h3>
 <p>Let&rsquo;s bring back our high-level design.</p>
-<p><a href="images/rk-equip2-high-level-schematic.pn"><img src="images/rk-equip2-high-level-schematic.png" alt=""></a></p>
+<p><a href="images/rk-equip2-high-level-schematic.pn"><img src="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-high-level-schematic.png"></a></p>
 <p>It turns out in the above configuration, both the relays do not seem to turn off even if the primary coil is de-energised.</p>
 <p>After much Googling I actually found a possible explanation to this problem <a href="http://www.omron-ap.com/service_support/FAQ/FAQ02155/index.asp">here</a>. What it says:</p>
 <blockquote>
@@ -416,16 +425,19 @@ The clean case hides the complexity within."/>
 <p>As for the MCB relay, I suspect it remains on as well since it is now part of the loop.</p>
 <h3 id="online-solution">Online Solution:</h3>
 <p>The <a href="http://www.omron-ap.com/service_support/FAQ/FAQ02155/index.asp">same site</a> that explained the problem proposed the following solution:</p>
-<p><a href="images/rk-equip2-ssr-bleeder.jpg"><img src="images/rk-equip2-ssr-bleeder.jpg" alt=""></a></p>
+<p><a href="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-ssr-bleeder.jpg"><img src="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-ssr-bleeder.jpg"></a></p>
 <p>Connect a resistor and capacitor of a specially chosen value that matches the load using the above configuration. Another name of such a setup is a &ldquo;snubber&rdquo; circuit. It suppresses any change in voltage caused by the load. In this case, the load is the resistor.</p>
 <h3 id="implemented-solution-use-a-mechanical-relay">Implemented Solution: Use a mechanical relay</h3>
 <p>I did consider the online solution but after some thought, I decided to use a mechanical relay (MR) which avoids the problem altogether. The reason being those online solutions assume that the output load is fixed. For RK&rsquo;s case, I never know what faulty device is connected on the output end to predict the bleeder resistor required on top of the inductance caused by the 10-ohm resistor.</p>
-<p><a href="images/rk-equip2-mech-relay.jpg"><img src="images/rk-equip2-mech-relay-786x1024.jpg" alt=""></a></p>
+<p><a href="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-mech-relay.jpg"><img src="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-mech-relay-786x1024.jpg"></a></p>
 <p>I covered the bottom pin headers with Polymorph to prevent accidental shorts. See the video of it in action below!</p>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/QWAE_0n4-p0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/QWAE_0n4-p0?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="Short Circuit Limiter - Mechanical Relay"
+      ></iframe>
+    </div>
 
 <p>A MR works by using power from the primary coil to energise an electromagnet which is used to physically shift armature holding the contacts.</p>
 <p>This MR from Schneider Electric requires 240VAC on the primary coil to energise. Therefore, I used the previous SSR to control it. A relay to control another relay LOL! There is another version of this MR that uses 24VDC instead but I guess it&rsquo;s more trouble to convert the 5V MCU logic level to 24V.</p>
@@ -434,7 +446,7 @@ The clean case hides the complexity within."/>
 <h3 id="cheap-ssrs-vs-branded-ssrs">Cheap SSRs vs branded SSRs</h3>
 <p>My initial plan was to use the typical relays one can get from the usual Chinese sites.</p>
 <p>However, I soon realised a serious problem with those. Even when the primary coil is off and power is applied at the secondary circuit, those cheap SSRs will allow current through for a fraction of a second before turning off. This is just plain unacceptable in my application! I cannot risk having an uncontrolled closed circuit on the secondary side which might cause a short circuit which I want to avoid!</p>
-<p><a href="images/rk-equip2-other-relays.jp">   </a><a href="images/rk-equip2-other-relays.jp"><img src="images/rk-equip2-other-relays.jpg" alt="">      </a><a href="images/rk-equip2-cwd2450.jpg"><img src="images/rk-equip2-cwd2450.jpg" alt=""></a></p>
+<p><a href="images/rk-equip2-other-relays.jp">   </a><a href="images/rk-equip2-other-relays.jp"><img src="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-other-relays.jpg">      </a><a href="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-cwd2450.jpg"><img src="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-cwd2450.jpg"></a></p>
 <p>Chinese relays I tried before settling on the Crydom CWD2450 (picture from <a href="http://www.crydom.com/en/products/catalog/3rd-generation/c_w24.pdf">Crydom&rsquo;s CW24 datasheet</a> )</p>
 <p>I opted for the more expensive American branded Crydom relays which do not have this problem. They however cost SG$58 which is many times more than the cheaper Chinese ones but they work.</p>
 <h1 id="problems-encountered-during-development">Problems encountered during development</h1>
@@ -442,9 +454,12 @@ The clean case hides the complexity within."/>
 <p>I did not anticipate this issue during early development. However, as I simulated short circuits again and again during testing, I realised that the power resistor can heat up quite a bit. I could forsee the possibility the temperature might go up to dangerous levels.</p>
 <p>I therefore decided to add a Maxim DS18B20+ 1-Wire digital temperature sensor to monitor how hot the resistor is. See the video below for the demonstration:</p>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/O4qB3WehqlA" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/O4qB3WehqlA?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="Short Circuit Limiter - Overheated simulation"
+      ></iframe>
+    </div>
 
 <h3 id="things-to-look-out-for-in-the-video-1">Things to look out for in the video:</h3>
 <ol>
@@ -752,7 +767,7 @@ The clean case hides the complexity within."/>
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.122.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.125.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
@@ -794,7 +809,7 @@ The clean case hides the complexity within."/>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.bf7f7687e38d8caba0913f2bff8e476c893e0a96bed699897fc22d57e1e53015.js" integrity="sha256-v392h&#43;ONjKugkT8r/45HbIk&#43;Cpa&#43;1pmJf8ItV&#43;HlMBU="></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.4b08dba1bed68bfe65db2515ff7d6b0258656cf4079ed4e03263be238684e63e.js" integrity="sha256-Swjbob7Wi/5l2yUV/31rAlhlbPQHntTgMmO&#43;I4aE5j4="></script>
 <script src="/js/add-on.js"></script>
     </div>
   </body>
