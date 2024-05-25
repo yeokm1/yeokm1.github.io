@@ -6,12 +6,12 @@
     <description>Recent content in Post on YKM&#39;s Corner on the Web</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 23 May 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 25 May 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://yeokhengmeng.com/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setting up open-frame Pentium 3 Testbench</title>
       <link>http://yeokhengmeng.com/2024/05/setting-up-pentium-3-testbench/</link>
-      <pubDate>Thu, 23 May 2024 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate>
       <guid>http://yeokhengmeng.com/2024/05/setting-up-pentium-3-testbench/</guid>
       <description>&lt;p&gt;I have amassed a &lt;a href=&#34;https://github.com/yeokm1/retro-configs&#34;&gt;respectable collection of retro-PCs&lt;/a&gt; in the several years I have been engaging in my retrocomputing hobby. As part of this hobby, I regularly acquire vintage expansion cards from others. Testing these newly-acquired cards will require me to frequently disassemble my properly set up retro-machines which is a hassle to do.&lt;/p&gt;&#xA;&lt;p&gt;To reduce the repeated handling of these old and relatively fragile setups, I decided to embark on a project to build a modular vintage PC in the form factor of an open-frame testbench. This testbench setup will facilitate testing of vintage expansion cards as well as easy evaluation of vintage operating systems.&lt;/p&gt;&#xA;&lt;p&gt;I decided to go with a Pentium 3 (P3)-based setup similar to my &lt;a href=&#34;https://github.com/yeokm1/retro-configs/tree/master/desktops/tweener-pc&#34;&gt;Tweener setup&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;In this blog post, I will go through how I set up this hardware for dual-boot between DOS 6.22/Windows for Workgroups 3.11 and Windows 98SE plus the challenges I encountered while doing so.&lt;/p&gt;</description>
     </item>
