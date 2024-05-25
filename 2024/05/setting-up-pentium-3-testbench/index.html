@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Setting up open-frame Pentium 3 Testbench - YKM&#39;s Corner on the Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.122.0"><meta itemprop="name" content="Setting up open-frame Pentium 3 Testbench">
+<meta itemprop="description" content="I have amassed a respectable collection of retro-PCs in the several years I have been engaging in my retrocomputing hobby. As part of this hobby, I regularly acquire vintage expansion cards from others. Testing these newly-acquired cards will require me to frequently disassemble my properly set up retro-machines which is a hassle to do.
+To reduce the repeated handling of these old and relatively fragile setups, I decided to embark on a project to build a modular vintage PC in the form factor of an open-frame testbench. This testbench setup will facilitate testing of vintage expansion cards as well as easy evaluation of vintage operating systems.
+I decided to go with a Pentium 3 (P3)-based setup similar to my Tweener setup.
+In this blog post, I will go through how I set up this hardware for dual-boot between DOS 6.22/Windows for Workgroups 3.11 and Windows 98SE plus the challenges I encountered while doing so."><meta itemprop="datePublished" content="2024-05-23T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-05-23T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2343"><meta itemprop="image" content="http://yeokhengmeng.com/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" />
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Setting up open-frame Pentium 3 Testbench" />
+<meta property="og:description" content="I have amassed a respectable collection of retro-PCs in the several years I have been engaging in my retrocomputing hobby. As part of this hobby, I regularly acquire vintage expansion cards from others. Testing these newly-acquired cards will require me to frequently disassemble my properly set up retro-machines which is a hassle to do.
+To reduce the repeated handling of these old and relatively fragile setups, I decided to embark on a project to build a modular vintage PC in the form factor of an open-frame testbench. This testbench setup will facilitate testing of vintage expansion cards as well as easy evaluation of vintage operating systems.
+I decided to go with a Pentium 3 (P3)-based setup similar to my Tweener setup.
+In this blog post, I will go through how I set up this hardware for dual-boot between DOS 6.22/Windows for Workgroups 3.11 and Windows 98SE plus the challenges I encountered while doing so." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yeokhengmeng.com/2024/05/setting-up-pentium-3-testbench/" /><meta property="og:image" content="http://yeokhengmeng.com/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-05-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-05-23T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://yeokhengmeng.com/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" /><meta name="twitter:title" content="Setting up open-frame Pentium 3 Testbench"/>
+<meta name="twitter:description" content="I have amassed a respectable collection of retro-PCs in the several years I have been engaging in my retrocomputing hobby. As part of this hobby, I regularly acquire vintage expansion cards from others. Testing these newly-acquired cards will require me to frequently disassemble my properly set up retro-machines which is a hassle to do.
+To reduce the repeated handling of these old and relatively fragile setups, I decided to embark on a project to build a modular vintage PC in the form factor of an open-frame testbench. This testbench setup will facilitate testing of vintage expansion cards as well as easy evaluation of vintage operating systems.
+I decided to go with a Pentium 3 (P3)-based setup similar to my Tweener setup.
+In this blog post, I will go through how I set up this hardware for dual-boot between DOS 6.22/Windows for Workgroups 3.11 and Windows 98SE plus the challenges I encountered while doing so."/>
+<meta name="twitter:site" content="@yeokm1"/>
+<link rel="stylesheet" href="/css/bundle.min.a5db8e699d9ae70030c71551956f7b63ee5a1e88c7c2fa3f981a4cec53093283.css" integrity="sha256-pduOaZ2a5wAwxxVRlW97Y&#43;5aHojHwvo/mBpM7FMJMoM=">
+        <link rel="stylesheet" href="/css/add-on.css"></head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            post
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/aviation" class="link"><i class='fas fa-plane'></i> Aviation</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/retrocomputing" class="link"><i class='fas fa-save'></i> Retrocomputing</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/favourite-quotes/" class="link">Favourite Quotes</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about-me/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/zh" lang="zh" class="no-lang link">简体中文 (zh)</a>
+      
+    
+  
+</menu>
+
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="" alt="Kheng Meng profile pic" /></a>
+  <header>
+    <h1>Yeo Kheng Meng</h1>
+  </header>
+  <main>
+    <p>Maker, Coder, Private Pilot, Retrocomputing Enthusiast</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/yeokm1" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/yeokhengmeng" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/yeokhengmeng" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/yeokm1" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/yeokm1" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/yeokm1" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+<li><a href="//telegram.me/yeokm1" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up open-frame Pentium 3 Testbench</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2024-05-23 00:00:00 &#43;0000 UTC">
+      May 23, 2024
+    </time>
+    <span class="author"></span>
+    
+      <p>11 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  </section>
+  
+  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
+    
+      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
+    
+  </a>
+
+
+  <div class="content">
+    <p>I have amassed a <a href="https://github.com/yeokm1/retro-configs">respectable collection of retro-PCs</a> in the several years I have been engaging in my retrocomputing hobby. As part of this hobby, I regularly acquire vintage expansion cards from others. Testing these newly-acquired cards will require me to frequently disassemble my properly set up retro-machines which is a hassle to do.</p>
+<p>To reduce the repeated handling of these old and relatively fragile setups, I decided to embark on a project to build a modular vintage PC in the form factor of an open-frame testbench. This testbench setup will facilitate testing of vintage expansion cards as well as easy evaluation of vintage operating systems.</p>
+<p>I decided to go with a Pentium 3 (P3)-based setup similar to my <a href="https://github.com/yeokm1/retro-configs/tree/master/desktops/tweener-pc">Tweener setup</a>.</p>
+<p>In this blog post, I will go through how I set up this hardware for dual-boot between DOS 6.22/Windows for Workgroups 3.11 and Windows 98SE plus the challenges I encountered while doing so.</p>
+<h2 id="what-is-a-pentium-3">What is a Pentium 3?</h2>
+<p>The P3 was first released by Intel in Feb 1999. It sports clock speeds from 400 Mhz to 1.4Ghz with a Front Side Bus (FSB) of 100 or 133 Mhz.</p>
+<a href="images/ofpc-cpu.jpg"><img src="images/ofpc-cpu.jpg" width="400"></a>
+<p>It generally comes in 2 different package types, the Socket 370 as used by my system above and Slot 1. The P3 introduced <a href="https://en.wikipedia.org/wiki/Streaming_SIMD_Extensions">Streaming SIMD Extensions (SSE)</a> which enables the CPU to work on both floating-point and SIMD data at the same time compared to the previous SIMD effort, MMX.</p>
+<h2 id="system-setup-overview">System setup overview</h2>
+<a href="images/ofpc-ports-side.jpg"><img src="images/ofpc-ports-side.jpg" width="600"></a>
+<p>The entire system is installed onto an <a href="https://www.aliexpress.com/item/1005001382949019.html">ATX open frame purchased from Aliexpress</a>.</p>
+<ul>
+<li>Intel Pentium III 700Mhz</li>
+<li>Transcend TS-AVE3/B motherboard
+<ul>
+<li>VIA VT82C694X (Apollo Pro 133A) chipset</li>
+<li>VIA VT82C686B Southbridge</li>
+<li>VIA AC97-compatible integrated audio</li>
+<li>1x AGP 4x, 5x PCI, 1x ISA</li>
+</ul>
+</li>
+<li>512MB PC133 SDRAM</li>
+<li>Storage
+<ul>
+<li>64GB SATA SSD</li>
+<li>Icydock 2.5&quot; Dock Trayless Hot-Swap SATA</li>
+<li>Startech IDE-SATA converter</li>
+</ul>
+</li>
+</ul>
+<p>I used this motherboard as it comes with AGP, PCI and ISA slots which will enable me to test a variety of vintage expansion cards.</p>
+<p>512MB RAM is installed as it&rsquo;s the maximum that Windows 98 will allow for initial boot. More RAM is supported by the motherboard and Windows 98 system files can be modified but that does not provide any additional benefit in my opinion.</p>
+<p>For storage, I opted to use a modern SATA SSD. The modern SATA SSD provides fast access performance without relability concerns of aging magnetic IDE hard drives. I installed the SSD into a SATA dock to allow easy swapping of storage hardware to easily test multiple operating systems.</p>
+<p>The SATA interface is converted to IDE using a <a href="https://www.startech.com/en-sg/hdd/ide2sat2">Startech IDE-SATA converter</a>, one of the more reliable converters in the market. I don&rsquo;t mind paying more for a quality adapter since this is just a single setup.</p>
+<h3 id="expansion-cards">Expansion cards</h3>
+<p>I used 3 expansion cards to provide graphics, sound and network.</p>
+<h4 id="matrox-g550-32mb-agp-graphics-card">Matrox G550 32MB AGP graphics card</h4>
+<a href="images/ofpc-matrox-front.jpg"><img src="images/ofpc-matrox-front.jpg" width="600"></a>
+<p>I used a Matrox graphics card in this system as Matrox is known for their excellent 2D image quality as well as driver stability compared to other vendors of that time. Since I do not intend to game extensively on this system and need a stable test setup, a Matrox card is suitable for this.</p>
+<p>It also comes with a DVI port which was still relatively new for that time. This DVI port can be trivially converted to HDMI with a passive adapter and is useful for connecting to modern monitors or video-capture devices with no loss of video quality.</p>
+<h4 id="creative-sound-blaster-live-51-pci-sound-card">Creative Sound Blaster Live 5.1 PCI sound card</h4>
+<a href="images/ofpc-sblive.jpg"><img src="images/ofpc-sblive.jpg" width="600"></a>
+<p>The motherboard comes with integrated AC97 audio but I wanted better sound quality and performance. I opted for Creative Sound Blaster Live. I used this card as it&rsquo;s among the more period-correct sound cards for a system of this vintage.</p>
+<p>It comes with Environmental Audio Extensions (EAX) 2.0 which provides 3D audio for many games that support this feature.</p>
+<p>If you are wondering why I did not install an ISA sound card for DOS gaming, it was because I already have dedicated retro-setups for that purpose. I wanted to keep the sole ISA slot on this motherboard free for testing. In a later section, I will go through the configuration I used to emulate an ISA Sound Blaster.</p>
+<h4 id="3com-3c905-pci-100-mbps-network-card">3Com 3C905 PCI 100 Mbps network card</h4>
+<a href="images/ofpc-lan.jpg"><img src="images/ofpc-lan.jpg" width="600"></a>
+<p>Most consumer motherboards of that era do not come with Ethernet ports by default and this is no exception. I used this 3Com card as it comes with driver support from Win 9x going all the way back to Win 3.x plus DOS packet drivers.</p>
+<p>This 3Com card comes with a Wake-on-LAN (WOL) cable which is supported by the motherboard as well.</p>
+<h3 id="operating-systems">Operating Systems</h3>
+<p>I dual-boot 2 operating systems in this setup.</p>
+<table>
+<thead>
+<tr>
+<th>DOS 6.22/Windows for Workgroups 3.11</th>
+<th>Windows 98SE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="images/ofpc-wfw.jpg"><img src="images/ofpc-wfw.jpg" width="500"></a></td>
+<td><a href="images/ofpc-win98.jpg"><img src="images/ofpc-win98.jpg" width="500"></a></td>
+</tr>
+</tbody>
+</table>
+<p>DOS 6.22 + Windows for Workgroups 3.11 is used for a &ldquo;purer&rdquo; DOS and 16-bit test environment.</p>
+<p>Windows 98 Second Edition to me is the best retro Windows OS for reliability while still maintaining good DOS support.</p>
+<p>Both OSes are installed on separate primary partitions which presents additional challenges as these OSes were not designed to multi-boot in this way.</p>
+<h3 id="why-i-chose-a-pentium-3-system">Why I chose a Pentium 3 system?</h3>
+<p>The choice of a P3 setup for this test bench was a deliberate one by me.</p>
+<p>Compared to a newer Pentium 4 system:</p>
+<ul>
+<li>P3 motherboards are among the last to commonly have ISA slots</li>
+<li>Lower CPU power usage -&gt; Smaller and less noisy CPU fan in an open setup</li>
+<li>100 Mhz FSB for better compatibility as some PCI cards don&rsquo;t support faster FSB like 3dfx Voodoo 1 graphics</li>
+<li>Better Windows 98 driver support</li>
+</ul>
+<p>Compared to Pentium 2:</p>
+<ul>
+<li>Faster performance and more period correct</li>
+</ul>
+<h2 id="hardware-challenges">Hardware challenges</h2>
+<p>Dealing with decades-old computer hardware presents many challenges not seen on more modern systems.</p>
+<h3 id="bulgingleaky-motherboard-capacitors">Bulging/leaky motherboard capacitors</h3>
+<p>When I first obtained this motherboard, many of the capacitors were bulging and some were leaking. Out-of-spec or leaky capacitors are bad for the system as they may corrode the motherboard PCB as well as cause system instability.</p>
+<a href="images/ofpc-bulging-caps.jpg"><img src="images/ofpc-bulging-caps.jpg" width="700"></a>
+<p>Spot the bulging and leaky caps. The meter measures a capacitor at just a tenth of its rated value.</p>
+<p>The root cause of this issue is explained in Wikipedia:</p>
+<blockquote>
+<p>The capacitor plague was a problem related to a higher-than-expected failure rate of non-solid aluminium electrolytic capacitors between 1999 and 2007, especially those from some Taiwanese manufacturers, due to faulty electrolyte composition that caused corrosion accompanied by gas generation; this often resulted in rupturing of the case of the capacitor from the build-up of pressure.</p>
+</blockquote>
+<blockquote>
+<p>Source: <a href="https://en.wikipedia.org/wiki/Capacitor_plague">https://en.wikipedia.org/wiki/Capacitor_plague</a></p>
+</blockquote>
+<p>Therefore, I opted to replace most of the aluminium electrolytic capacitors even if those that did not show an visible signs (yet) of being faulty.</p>
+<a href="images/opfc-mobo-desoldering.jpg"><img src="images/opfc-mobo-desoldering.jpg" width="600"></a>
+<p>I used a dedicated through-hole desoldering tool to help me with this. It comes with a heated tip with integrated air suction pump to remove the solder.</p>
+<a href="images/ofpc-mobo-before-after.jpg"><img src="images/ofpc-mobo-before-after.jpg" width="700"></a>
+<p>Most of the aluminium electrolytic capacitors are now replaced with newer components. Some of the capacitors I ordered were slightly too tall to be placed near the PCI slots so I folded them down.</p>
+<p>These replacements should give the motherboard more decades of service.</p>
+<h3 id="broken-12v-rail-on-motherboard">Broken 12V rail on motherboard</h3>
+<p>When I started using the motherboard, I was initially perplexed why the CPU fan did not work. There was also no sound from the Sound Blaster Live.</p>
+<p>After some troubleshooting, I would narrow the fault to a possible problem on the 12V rail on the motherboard. The power supply was still providing 12V just fine.</p>
+<a href="images/ofpc-inject-12v.jpg"><img src="images/ofpc-inject-12v.jpg" width="600"></a>
+<p>Since there is no easy way for me pinpoint the source of the failure, as a workaround, I injected 12V from an unused Molex connector into the CASE-FAN connector. In essence, powering the 12V rail from the unused fan connector.</p>
+<h3 id="sound-blaster-live-and-via-chipset-compatibility">Sound Blaster Live and VIA chipset compatibility</h3>
+<p>During the process of installing the SB Live drivers, Win 98 would hang or blue screen. I cannot boot to the desktop after a power cycle. Attempting to run DOS drivers to initialise the SB Live will also produce a similar result and the system could lockup.</p>
+<p>Searching online yielded this forum post on Vogons:</p>
+<blockquote>
+<p>Creative&rsquo;s engineers used a number of features in Intel&rsquo;s PCI implementation that were not strictly in the PCI spec. Via only implemented the spec. … Generally the advice was avoid the combination of Via 686A/B southbridges and Creative SBLive/Audigy cards…</p>
+</blockquote>
+<blockquote>
+<p>Bottom line was that interrupt line sharing failed to work. … there are 4 interrupts on a PCI bus like this. Each slot is connected to one of them, as are the integrated PCI devices (i.e. IDE, USB and audio) and the AGP slot. If you&rsquo;re lucky one PCI slot won&rsquo;t be shared with any of that.</p>
+</blockquote>
+<blockquote>
+<p>Source: <a href="https://www.vogons.org/viewtopic.php?p=1081307#p1081307">https://www.vogons.org/viewtopic.php?p=1081307#p1081307</a></p>
+</blockquote>
+<p>So the only solution is to trial and error different PCI slots for SB Live. This cost me so much time where I initially thought there was a hardware failure somewhere.</p>
+<h2 id="os-and-software-setup">OS and Software Setup</h2>
+<p>Now with the hardware problems solved, we can go to setting up the OS and software.</p>
+<h3 id="dual-boot-challenges">Dual boot challenges</h3>
+<p>Dual-booting between DOS 6.22/Windows for Workgroups 3.11 and Windows 98SE presents many challenges due to the following limitations:</p>
+<ul>
+<li>DOS and Win 98 Setup will only install to the first primary partition</li>
+<li>DOS and Win 98 must boot from a primary partition</li>
+<li>Microsoft Fdisk partitioning tool cannot create &gt;1 primary partition</li>
+</ul>
+<p>To setup a dual-boot system under the above limitations will require an interesting approach to.</p>
+<p>The drivers and configuration files I used for this system can be found here: <a href="https://github.com/yeokm1/retro-configs/tree/master/desktops/open-frame-pc/">https://github.com/yeokm1/retro-configs/tree/master/desktops/open-frame-pc/</a></p>
+<h4 id="dual-boot-install-approach">Dual-boot install approach</h4>
+<p>I used the following partition layout to keep both OSes plus my data isolated.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Size</th>
+<th>File System</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary</td>
+<td>2GB</td>
+<td>FAT16</td>
+<td>DOS 6.22</td>
+</tr>
+<tr>
+<td>Primary</td>
+<td>26GB</td>
+<td>FAT32</td>
+<td>Win 98</td>
+</tr>
+<tr>
+<td>Extended</td>
+<td>32GB</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>- Logical</td>
+<td>32GB</td>
+<td>FAT32</td>
+<td>Data</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Partition using <a href="https://github.com/FDOS/fdisk">FreeDOS Fdisk</a> which can create multiple primary partitions.
+<a href="images/ofpc-fdos-fdisk.jpg"><img src="images/ofpc-fdos-fdisk.jpg" width="400"></a></li>
+<li>Install DOS 6.22 into first primary partition</li>
+<li>Use Grub4DOS to hide the first primary partition and make second primary partition active
+<a href="images/ofpc-grub4dos-hiding.jpg"><img src="images/ofpc-grub4dos-hiding.jpg" width="400"></a></li>
+</ol>
+<ul>
+<li>hide (hd0,0)</li>
+<li>root (hd0,1)</li>
+<li>makeactive</li>
+</ul>
+<ol start="4">
+<li>Install Win 98 to second primary partition</li>
+<li>Use Grub4DOS to unhide first primary partition</li>
+</ol>
+<p>Reference: <a href="https://retropcbuilder.blogspot.com/2016/11/dual-booting-ms-dos-622windows-31-and.html">https://retropcbuilder.blogspot.com/2016/11/dual-booting-ms-dos-622windows-31-and.html</a></p>
+<h4 id="switching-between-dos-6-and-win-98">Switching between DOS 6 and Win 98</h4>
+<p>After installing both OSes, there is a need to easily switch between both. To accomplish this, I add an option to both the DOS 6.22 and Win 98 boot menu through their respective <code>config.sys</code> and <code>autoexec.bat</code> files.</p>
+<a href="images/ofpc-win98-bootmenu.jpg"><img src="images/ofpc-win98-bootmenu.jpg" width="600"></a>
+<p>The Win 98 boot menu containing an option to invoke Grub4DOS to switch to DOS 6.22.</p>
+<a href="images/ofpc-grub4dos-win98.jpg"><img src="images/ofpc-grub4dos-win98.jpg" width="600"></a>
+<p>I have a Grub4DOS configuration to confirm the reboot to DOS 6.22.</p>
+<ul>
+<li>root (hd0,0)</li>
+<li>makeactive</li>
+<li>reboot</li>
+</ul>
+<p>Reference: <a href="https://retropcbuilder.blogspot.com/2016/11/dual-booting-dos-and-windows-95-follow.html">https://retropcbuilder.blogspot.com/2016/11/dual-booting-dos-and-windows-95-follow.html</a></p>
+<h3 id="sound-blaster-compatibility-for-dos-games">Sound Blaster compatibility for DOS games</h3>
+<p>As I&rsquo;m using a PCI sound card, this would mean DOS games by default would not be able to output sound as they expect ISA sound cards.</p>
+<a href="images/ofpc-descent-setup.jpg"><img src="images/ofpc-descent-setup.jpg" width="500"></a>
+<p>Descent setup displaying the common ISA Sound Blaster parameters.</p>
+<p>In order to have sound work for DOS games, either I can install an ISA sound card or I use a DOS Terminate-and-stay-resident (TSR) program to hook onto these ISA addresses and redirect to PCI-sound-card’s actual address.</p>
+<p>Since I need the motherboard&rsquo;s sole ISA slot for test purposes, I opted for the TSR approach.</p>
+<h4 id="option-1-tsr-to-redirect-to-ac97-viados">Option 1: TSR to redirect to AC97 (VIADOS)</h4>
+<p>This first option uses the onboard integrated AC97 audio.</p>
+<a href="images/ofpc-viados-bios.jpg"><img src="images/ofpc-viados-bios.jpg" width="700"></a>
+<p>The TSR VIADOS provided by VIA allows Sound Blaster Pro emulation when paired together with the BIOS settings.</p>
+<p>I found the digital sound effect emulation to be pretty good although the OPL music emulation wasn&rsquo;t as good with regular crackles in the output.</p>
+<h4 id="option-2-tsr-to-redirect-to-sb-live-sbemu">Option 2: TSR to redirect to SB Live (SBEMU)</h4>
+<p>Another option is to use a modern tool called <a href="https://github.com/crazii/SBEMU">SBEMU</a> that was first released only in 2023!</p>
+<a href="images/ofpc-sbemu.jpg"><img src="images/ofpc-sbemu.jpg" width="600"></a>
+<p>It supports up to Sound Blaster 16 emulation over many newer sound chips SB Live/Audigy, Intel HDA, C-Media, Ensoniq etc. Kudos to the author for making such an impressive program!</p>
+<p>I found the OPL music emulation to be very good. The digital sound effect emulation had a slightly higher pitch but still entirely acceptable.</p>
+<h3 id="via-ac97-drivers-override-sblive-drivers-in-directx">VIA AC97 drivers override SBLive drivers in DirectX</h3>
+<p>As I had both sound devices AC97 and SBLive enabled, my initial plan was to install the drivers for both devices. After installing the VIA WDM Audio drivers, I discovered the SBLive VxD will not work in DirectX applications like games. The DirectX applications kept outputing to AC97 which I did not want.</p>
+<a href="images/ofpc-dx-ctaud.png"><img src="images/ofpc-dx-ctaud.png" width="600"></a>
+<p>SBLive VxD drivers used by DirectX</p>
+<h4 id="vxd-vs-wdm">VxD vs WDM</h4>
+<p>VIA only provides WDM drivers for their integrated AC97 sound system wheareas Creative provides both VxD and WDM drivers for their sound devices.</p>
+<p>I had to look into the differences between VxD and WDM and this is a brief summary:</p>
+<ul>
+<li>
+<p>VxD - Virtual xxx Driver</p>
+<ul>
+<li>Introduced in Windows 3.x, not used after Windows ME</li>
+<li>Raw access to memory and hardware -&gt; Faster performance</li>
+<li>Less stable</li>
+</ul>
+</li>
+<li>
+<p>WDM – Windows Driver Model</p>
+<ul>
+<li>Introduced in Windows 98, used till present</li>
+<li>Driver isolation for a certain hardware feature (modularity)</li>
+<li>Designed for better forward Windows compatibility</li>
+<li>More stable</li>
+</ul>
+</li>
+</ul>
+<p>According to <a href="https://www.philscomputerlab.com/">Phil&rsquo;s Computer Lab</a>:</p>
+<blockquote>
+<p>(On Windows 98) &hellip; don&rsquo;t use the WDM drivers, they are slower and have issues with games. VXD drivers are fast and bugfree with DirectSound3D and EAX technology.</p>
+</blockquote>
+<blockquote>
+<p>Source: <a href="https://www.philscomputerlab.com/sound-blaster-live.html">https://www.philscomputerlab.com/sound-blaster-live.html</a></p>
+</blockquote>
+<p>Based on my observations, these are my suspected causes:</p>
+<ul>
+<li>DirectX prefers WDM drivers if available</li>
+<li>Creative VxD installation after VIA WDM drivers cannot &ldquo;dislodge&rdquo; the VIA drivers</li>
+</ul>
+<h4 id="sound-solution">Sound Solution</h4>
+<p>To solve this issue and to make sure I have the latest drivers, I referenced a <a href="https://www.vogons.org/viewtopic.php?f=62&amp;t=74361">Vogons post</a> and used their provided <a href="http://vogonsdrivers.com/getfile.php?fileid=2168">SB Live Driver CD image</a>.</p>
+<p>I followed these steps in this specific order:</p>
+<ol>
+<li>Don&rsquo;t install VIA AC97 drivers</li>
+<li>Disable AC97 in Device Manager</li>
+<li>Install DirectX 9.0c</li>
+<li>Install provided SB Live drivers</li>
+<li>Install motherboard drivers</li>
+<li>Install graphics and other drivers</li>
+</ol>
+<a href="images/ofpc-devmgmt-disable-ac97.png"><img src="images/ofpc-devmgmt-disable-ac97.png" width="400"></a>
+<p>AC97 Audio device disabled with installed SBLive drivers</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Setting up a vintage computer is a challenging process and demands more technical knowledge than for a more modern system. Systems are a lot more mature today then decades ago.</p>
+<p>It&rsquo;s much harder to find troubleshooting information due to age as well as a smaller installed base of computers then.</p>
+<p>It was an interesting journey and I hope the information I have documented here can prove useful to anyone else who face similar issues.</p>
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/retrocomputing">retrocomputing</a></li>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/hacks">hacks</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yeokm1/yeokm1.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNTQ3ODI3NTI="
+        data-category="Comments"
+        data-category-id="DIC_kwDODy-tIM4CXEA6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div class="pagination">
+  
+    <a href="/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/" class="button"><div class="previous"><div>HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin</div></div></a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
+    
+      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up open-frame Pentium 3 Testbench</a></h1>
+          <time class="published" datetime="">May 23, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/" class="image featured">
+    
+      <img src="/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/">HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin</a></h1>
+          <time class="published" datetime="">September 10, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/06/teardown-and-review-of-hand386/" class="image featured">
+    
+      <img src="/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/06/teardown-and-review-of-hand386/">Teardown &amp; review of a new 386 system: Hand386</a></h1>
+          <time class="published" datetime="">June 5, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/" class="image featured">
+    
+      <img src="/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/03/building-a-dos-chatgpt-client-in-2023/">Building a DOS ChatGPT client in 2023</a></h1>
+          <time class="published" datetime="">March 26, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/" class="image featured">
+    
+      <img src="/2022/08/teardown-of-habotest-ht107e-socket-tester/images/ht107e_open_top.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/">Teardown of Habotest HT107E Socket Tester</a></h1>
+          <time class="published" datetime="">August 6, 2022</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/hacks/">hacks<span class="count">22</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/personal/">personal<span class="count">17</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/singapore/">singapore<span class="count">16</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">12</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/teardowns/">teardowns<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/school/">school<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/book-reviews/">book-reviews<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/politics/">politics<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hackathon/">hackathon<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/product-reviews/">product-reviews<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/admin/">admin<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/repair-kopitiam/">repair-kopitiam<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/keyboards/">keyboards<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/quiz/">quiz<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/dvorak/">dvorak<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/flight-sim/">flight-sim<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2024
+      
+        YKM&#39;s Corner on the Web
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.122.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+<script type="text/javascript">
+  var sc_project = 8700008;
+  var sc_invisible = 1;
+  var sc_security = "b569f6b4";
+  var sc_https = 1; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript>
+  <div class="statcounter"><a title="free hit
+  counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+        src="https://c.statcounter.com/8700008/0/b569f6b4/1/" alt="free hit counter"></a></div>
+</noscript>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function (x) {
+      x.parentElement.classList += 'has-jax'
+    })
+  });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.bf7f7687e38d8caba0913f2bff8e476c893e0a96bed699897fc22d57e1e53015.js" integrity="sha256-v392h&#43;ONjKugkT8r/45HbIk&#43;Cpa&#43;1pmJf8ItV&#43;HlMBU="></script>
+<script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>
