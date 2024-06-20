@@ -8,13 +8,13 @@
 
 <meta name="generator" content="Hugo 0.122.0"><meta itemprop="name" content=" My first chip with Tiny Tapeout 4 - Covox Speech Thing clone">
 <meta itemprop="description" content="When one thinks of designing an Application-specific Integrated Circuit (ASIC) chip, one would typically imagine a very high production cost, lack of access to tools and individuals can&rsquo;t really do this unless you work in a company or academia.
-Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple Verilog project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
+Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
 In this post, I will share my experience in development and demonstrating my design."><meta itemprop="datePublished" content="2024-06-20T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2024-06-20T00:00:00+00:00" />
 <meta itemprop="wordCount" content="2263"><meta itemprop="image" content="http://yeokhengmeng.com/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" />
 <meta itemprop="keywords" content="" /><meta property="og:title" content=" My first chip with Tiny Tapeout 4 - Covox Speech Thing clone" />
 <meta property="og:description" content="When one thinks of designing an Application-specific Integrated Circuit (ASIC) chip, one would typically imagine a very high production cost, lack of access to tools and individuals can&rsquo;t really do this unless you work in a company or academia.
-Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple Verilog project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
+Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
 In this post, I will share my experience in development and demonstrating my design." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://yeokhengmeng.com/2024/06/my-first-chip-with-tiny-tapeout-cvx/" /><meta property="og:image" content="http://yeokhengmeng.com/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" /><meta property="article:section" content="post" />
@@ -24,7 +24,7 @@ In this post, I will share my experience in development and demonstrating my des
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="http://yeokhengmeng.com/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" /><meta name="twitter:title" content=" My first chip with Tiny Tapeout 4 - Covox Speech Thing clone"/>
 <meta name="twitter:description" content="When one thinks of designing an Application-specific Integrated Circuit (ASIC) chip, one would typically imagine a very high production cost, lack of access to tools and individuals can&rsquo;t really do this unless you work in a company or academia.
-Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple Verilog project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
+Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
 In this post, I will share my experience in development and demonstrating my design."/>
 <meta name="twitter:site" content="@yeokm1"/>
 <link rel="stylesheet" href="/css/bundle.min.a5db8e699d9ae70030c71551956f7b63ee5a1e88c7c2fa3f981a4cec53093283.css" integrity="sha256-pduOaZ2a5wAwxxVRlW97Y&#43;5aHojHwvo/mBpM7FMJMoM=">
@@ -277,7 +277,7 @@ In this post, I will share my experience in development and demonstrating my des
 
   <div class="content">
     <p>When one thinks of designing an Application-specific Integrated Circuit (ASIC) chip, one would typically imagine a very high production cost, lack of access to tools and individuals can&rsquo;t really do this unless you work in a company or academia.</p>
-<p>Thanks to <a href="https://tinytapeout.com/">Tiny Tapeout</a>, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple Verilog project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.</p>
+<p>Thanks to <a href="https://tinytapeout.com/">Tiny Tapeout</a>, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.</p>
 <p>In this post, I will share my experience in development and demonstrating my design.</p>
 <h2 id="background-of-tiny-tapeout">Background of Tiny Tapeout</h2>
 <blockquote>
@@ -297,7 +297,7 @@ In this post, I will share my experience in development and demonstrating my des
 <a href="images/tt4-cvx-covox-pcb.jpg"><img src="images/tt4-cvx-covox-pcb.jpg" width="500"></a>
 <p>PCB of my CST clone in 2017.</p>
 <p>Tiny Tapeout 4 could not generate analog signals. (The later runs today support analog pins.)</p>
-<p>The alternative to mimic an analog output is to use Pulse Width Modulation (PWM). PWM varies the duty cycle, basically the proportion in time a pin is high or low so the overall value will be averaged out to a certain analog value.</p>
+<p>The alternative to mimic an analog output is to use Pulse Width Modulation (PWM). PWM varies the duty cycle, basically the proportion of time a pin is high or low so the overall value will be averaged out to a certain analog value.</p>
 <h2 id="demo-setup-of-fabricated-chip">Demo setup of fabricated chip</h2>
 <p>To demonstrate the PWM function implemented in this ASIC, I have 2 demo setups.</p>
 <p>Videos of both setups were captured using Gopros with the audio recorded directly from the environment using the Gopro&rsquo;s internal microphone.</p>
@@ -328,8 +328,8 @@ In this post, I will share my experience in development and demonstrating my des
 
 <p>The DOS player is <a href="http://rayer.g6.cz/programm/programe.htm">Covox MP3 player</a> written by Martin Rehak.</p>
 <h2 id="development-process-using-verilog">Development Process using Verilog</h2>
-<p>Verilog is Hardware Description Language (HDL) used in programming FPGAs as well as ASIC design. It is therefore used by Tiny Tapeout for project submissions too.</p>
-<p>Tiny Tapeout has provided generous and detailed documentation on their website on how to get started using their user-friendly tools. It was much simpler than the industry-standard tools I used in my university&rsquo;s Integrated Digital Design course.</p>
+<p>Verilog is a Hardware Description Language (HDL) used in programming FPGAs as well as ASIC design. It is therefore used by Tiny Tapeout for project submissions too.</p>
+<p>Tiny Tapeout has provided generous and detailed documentation on their website on how to get started using their user-friendly tools. It was much simpler than the industry-standard tools I used in my university&rsquo;s chip design course.</p>
 <p>The repository I used for the submission can be found <a href="https://github.com/yeokm1/tt4-pwm-audio">https://github.com/yeokm1/tt4-pwm-audio</a>.</p>
 <p>Below is the process I did using TT04. Note that specifics may/likely change for future shuttles but the general flow should still be similar.</p>
 <h3 id="1-ideation">1: Ideation</h3>
@@ -349,12 +349,12 @@ In this post, I will share my experience in development and demonstrating my des
 <li>3.3V logic level digital pins only (not 5V tolerant)</li>
 <li>Tile area is 160x100um. More tiles can be purchased at additional cost.</li>
 </ul>
-<p>I opted to go with a simple Covox Speech Thing clone using PWM as I was fairly close to the deadline. My main objective is to go through the design process to get a simple project working then not finishing.</p>
+<p>I opted to go with a simple Covox Speech Thing clone using PWM as I was fairly close to the deadline. My main objective is to go through the design process to get a simple project working rather than not finishing.</p>
 <h3 id="2-forking-the-template">2. Forking the template</h3>
 <p>Tiny Tapeout provides a submission template to ensure all submissions are in the correct format. At the time of TT04, this was the <a href="https://github.com/TinyTapeout/tt04-submission-template">template repository</a>.</p>
 <p>The repository also contains configuration for Github Actions to automate certain workflows that will be useful later.</p>
 <h3 id="3-writing-the-testbench">3. Writing the testbench</h3>
-<p>Test-driven development is a very common development approach used in the software world. For hardware, I believe this approach is all the more important as the cost of making a mistake is very high.</p>
+<p>Test-driven development is a very common development approach used in the software world. For this case, I believe this approach is all the more important as the cost of making a mistake is very high.</p>
 <p>Testing is done using the <a href="https://www.cocotb.org/">cocotb framework</a>, a Python-based cosimulation tool for HDL code.</p>
 <p>The following is a short snippet of the relevant sections of my testbench:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>PERIOD_CYCLES = <span style="color:#ff0;font-weight:bold">256</span>
@@ -377,8 +377,8 @@ In this post, I will share my experience in development and demonstrating my des
 </span></span></code></pre></div><p><code>dut</code> refers to the verilog module that we will write that will be tested.</p>
 <p>In the test, the outer for-loop iterates through all the possible 256 (8-bit) values supplied to the input. The inner for-loop checks the appropriate ratio between the ON time and OFF time at every clock cycle.</p>
 <h3 id="3-run-the-test-github-action">3. Run the test github action</h3>
-<p>The testbench can be executed in a provided Github Actions. The action sets up a Linux virtual machine in the background with all required dependencies with no need to setup the toolchain manually.</p>
-<p>The first 2 are test-related Github actions. The third docs Action is listed for completeness.</p>
+<p>The testbench can be executed in provided Github Actions. The action sets up a Linux virtual machine in the background with all required dependencies with no need to setup the toolchain manually.</p>
+<p>The first 2 are test-related Github actions. The third docs action is listed for completeness.</p>
 <table>
 <thead>
 <tr>
@@ -417,14 +417,14 @@ In this post, I will share my experience in development and demonstrating my des
 </table>
 <h4 id="test-action">Test Action</h4>
 <a href="images/tt4-cvx-test-action.png"><img src="images/tt4-cvx-test-action.png" width="600"></a>
-<p>If everything passes, the action will show green otherwise we will well get an error here.</p>
+<p>If everything passes, the action will show green otherwise we will get an error here.</p>
 <h4 id="gds-action">GDS Action</h4>
 <a href="images/tt4-cvx-gds-action.png"><img src="images/tt4-cvx-gds-action.png" width="600"></a>
 <p>The GDS action generates the layout in a Graphic Design System (GDS) format which can be sent for fabrication. Post-synthesis test is conducted here and Github will inform us if it succeeds.</p>
 <a href="images/tt4-cvx-3d.jpg"><img src="images/tt4-cvx-3d.jpg" width="600"></a>
 <p>A 3D-render will also be generated to show the gate and wiring layout in the context of a tile.</p>
 <h3 id="4-writing-the-code">4. Writing the code</h3>
-<p>Here is a snippet of the code that contains the relevant sections.</p>
+<p>Here is a snippet of the code that contains the relevant logic section.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">module</span> tt_um_yeokm1_pwm_audio #() (
 </span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] ui_in,    <span style="color:#007f7f">// Dedicated inputs
 </span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">output</span> <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] uo_out,   <span style="color:#007f7f">// Dedicated outputs
@@ -466,7 +466,7 @@ In this post, I will share my experience in development and demonstrating my des
 </span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">end</span>
 </span></span></code></pre></div><p>On reset, explicitly set the <code>pwm_cnt</code> register to 0.</p>
 <h3 id="5-test-on-fpga">5. Test on FPGA</h3>
-<p>Although not strictly required, it is recommended that the design be run on an FPGA as a sanity check.</p>
+<p>Although not strictly required, it is recommended that the design be tested on an FPGA as a sanity check.</p>
 <a href="images/tt4-cvx-mimas-a7-pwm.jpg"><img src="images/tt4-cvx-mimas-a7-pwm.jpg" width="600"></a>
 <p>I tested the HDL module on a Mimas A7 Artix 7 FPGA board with a Vivado project.</p>
 <h3 id="7-chip-documentation">7. Chip documentation</h3>
@@ -484,7 +484,7 @@ In this post, I will share my experience in development and demonstrating my des
 <h3 id="8-submission">8. Submission</h3>
 <p>To submit the design, the project should pass all 3 Github Actions. A pull request has to be made to merge the design to the shuttle&rsquo;s relevant repository which in the case of Tiny Tapeout 4 was <a href="https://github.com/TinyTapeout/tinytapeout-04">https://github.com/TinyTapeout/tinytapeout-04</a>.</p>
 <h2 id="final-remarks">Final remarks</h2>
-<p>It is extremely satisfying to have your design baked into physical hardware and working as expected. No flashing of microcontroller firmware, computer software or FPGA bitstream. Just fixed electronic circuits doing your bidding.</p>
+<p>It is extremely satisfying to have my design baked into physical hardware and working as expected. No flashing of microcontroller firmware, computer software or FPGA bitstream. Just fixed electronic circuits doing your bidding.</p>
 <p>Before Tiny Tapeout and its associated ecosystem, designing and fabricating a chip would not have been feasible as an individual unless you work for a chip-design company or university. Development tools are extremely expensive and taping out would cost 6 to 7 figures at the minimum.</p>
 <p>I took an Integrated Digital Design course in university in my currently-ongoing masters degree using more industry-standard tools. I had to sign an NDA in the course to use that. That tool while certainly powerful was nowhere near as user friendly as what Tiny Tapeout offers for the entry-level person. Due to NDAs and access to this software only through remote school servers, information on how to use these tools in the wider internet is relatively limited. And I certainly did not get my design on a chip in the end, everything was done purely through simulation.</p>
 <p>Tiny Tapeout is akin to an Arduino for chip design. It abstracts away the distracting messy configuration aspects while still providing sufficient learning opportunity into the chip design process. Everything at relatively affordable 3-figure rates that is still palatable at the individual level. I ran into issues and the people in the Discord community was quick to help. And you get the chip in the end!</p>
