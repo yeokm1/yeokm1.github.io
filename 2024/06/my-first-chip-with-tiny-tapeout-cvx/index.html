@@ -11,7 +11,7 @@
 Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
 In this post, I will share my experience in development and demonstrating my design."><meta itemprop="datePublished" content="2024-06-20T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2024-06-20T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2263"><meta itemprop="image" content="http://yeokhengmeng.com/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" />
+<meta itemprop="wordCount" content="2295"><meta itemprop="image" content="http://yeokhengmeng.com/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" />
 <meta itemprop="keywords" content="" /><meta property="og:title" content=" My first chip with Tiny Tapeout 4 - Covox Speech Thing clone" />
 <meta property="og:description" content="When one thinks of designing an Application-specific Integrated Circuit (ASIC) chip, one would typically imagine a very high production cost, lack of access to tools and individuals can&rsquo;t really do this unless you work in a company or academia.
 Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
@@ -333,7 +333,7 @@ In this post, I will share my experience in development and demonstrating my des
 <p>The repository I used for the submission can be found <a href="https://github.com/yeokm1/tt4-pwm-audio">https://github.com/yeokm1/tt4-pwm-audio</a>.</p>
 <p>Below is the process I did using TT04. Note that specifics may/likely change for future shuttles but the general flow should still be similar.</p>
 <h3 id="1-ideation">1: Ideation</h3>
-<p>The first step is deciding what to do based on the constraints. At the time of TT04, these were the IOs pins that are available for each design.</p>
+<p>The first step is deciding what to do based on the constraints. At the time of TT04, these were the IO pins that are available for each design.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>module tt_um_yeokm1_pwm_audio (
 </span></span><span style="display:flex;"><span>    input  wire [7:0] ui_in,    // Dedicated inputs
 </span></span><span style="display:flex;"><span>    output wire [7:0] uo_out,   // Dedicated outputs
@@ -349,12 +349,12 @@ In this post, I will share my experience in development and demonstrating my des
 <li>3.3V logic level digital pins only (not 5V tolerant)</li>
 <li>Tile area is 160x100um. More tiles can be purchased at additional cost.</li>
 </ul>
-<p>I opted to go with a simple Covox Speech Thing clone using PWM as I was fairly close to the deadline. My main objective is to go through the design process to get a simple project working rather than not finishing.</p>
+<p>I opted to go with a simple Covox Speech Thing clone using PWM as I was fairly close to the submission deadline when I first heard of Tiny Tapeout. My main objective then was to go through the design process to get a simple project working rather than trying a more complicated design and not finishing.</p>
 <h3 id="2-forking-the-template">2. Forking the template</h3>
 <p>Tiny Tapeout provides a submission template to ensure all submissions are in the correct format. At the time of TT04, this was the <a href="https://github.com/TinyTapeout/tt04-submission-template">template repository</a>.</p>
 <p>The repository also contains configuration for Github Actions to automate certain workflows that will be useful later.</p>
 <h3 id="3-writing-the-testbench">3. Writing the testbench</h3>
-<p>Test-driven development is a very common development approach used in the software world. For this case, I believe this approach is all the more important as the cost of making a mistake is very high.</p>
+<p>Test-driven development is a very common approach used in the software world. For this case, I believe this approach is all the more important as the cost of making a mistake is very high.</p>
 <p>Testing is done using the <a href="https://www.cocotb.org/">cocotb framework</a>, a Python-based cosimulation tool for HDL code.</p>
 <p>The following is a short snippet of the relevant sections of my testbench:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>PERIOD_CYCLES = <span style="color:#ff0;font-weight:bold">256</span>
@@ -454,12 +454,13 @@ In this post, I will share my experience in development and demonstrating my des
 <li>My design is enabled</li>
 <li>The current 8-bit audio value is above/below the current point of the PWM period.</li>
 </ul>
-<p>Even with this simple code, I was stuck for a very long time as it passed the Pre-synthesis but failed the Gate-level Post-synthesis test which stated the output was undefined with <code>x</code> output.</p>
+<p>Even with this simple code, I was stuck for a very long time as it passed the Pre-synthesis functional HDL check but failed the Gate-level Post-synthesis test which stated the output was undefined with <code>x</code> output.</p>
 <p>The answer was actually documented online all this while which I didn&rsquo;t read:</p>
 <blockquote>
 <p>Most FPGAs allow initial statements, and flops are often initialised to zero. This is not the case with ASICs, where <strong>flops will have a random initial value at power on</strong>. Initial statements are not allowed, so you <strong>must use an explicit reset</strong>.</p>
 <p>Source: <a href="https://tinytapeout.com/hdl/fpga_vs_asic/">https://tinytapeout.com/hdl/fpga_vs_asic/</a></p>
 </blockquote>
+<p>If one only uses FPGAs before this, it would be easy to make this mistake.</p>
 <p>The solution ended being as simple as this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">if</span>(rst_n == <span style="color:#ff0;font-weight:bold">0</span>) <span style="color:#fff;font-weight:bold">begin</span>
 </span></span><span style="display:flex;"><span>    pwm_cnt &lt;= <span style="color:#ff0;font-weight:bold">0</span>;
