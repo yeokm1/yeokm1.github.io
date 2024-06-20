@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title> My first chip with Tiny Tapeout 4 - Covox Speech Thing clone - YKM&#39;s Corner on the Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.122.0"><meta itemprop="name" content=" My first chip with Tiny Tapeout 4 - Covox Speech Thing clone">
+<meta itemprop="description" content="When one thinks of designing an Application-specific Integrated Circuit (ASIC) chip, one would typically imagine a very high production cost, lack of access to tools and individuals can&rsquo;t really do this unless you work in a company or academia.
+Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple Verilog project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
+In this post, I will share my experience in development and demonstrating my design."><meta itemprop="datePublished" content="2024-06-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-06-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2263"><meta itemprop="image" content="http://yeokhengmeng.com/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" />
+<meta itemprop="keywords" content="" /><meta property="og:title" content=" My first chip with Tiny Tapeout 4 - Covox Speech Thing clone" />
+<meta property="og:description" content="When one thinks of designing an Application-specific Integrated Circuit (ASIC) chip, one would typically imagine a very high production cost, lack of access to tools and individuals can&rsquo;t really do this unless you work in a company or academia.
+Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple Verilog project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
+In this post, I will share my experience in development and demonstrating my design." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yeokhengmeng.com/2024/06/my-first-chip-with-tiny-tapeout-cvx/" /><meta property="og:image" content="http://yeokhengmeng.com/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-06-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-06-20T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://yeokhengmeng.com/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" /><meta name="twitter:title" content=" My first chip with Tiny Tapeout 4 - Covox Speech Thing clone"/>
+<meta name="twitter:description" content="When one thinks of designing an Application-specific Integrated Circuit (ASIC) chip, one would typically imagine a very high production cost, lack of access to tools and individuals can&rsquo;t really do this unless you work in a company or academia.
+Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple Verilog project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
+In this post, I will share my experience in development and demonstrating my design."/>
+<meta name="twitter:site" content="@yeokm1"/>
+<link rel="stylesheet" href="/css/bundle.min.a5db8e699d9ae70030c71551956f7b63ee5a1e88c7c2fa3f981a4cec53093283.css" integrity="sha256-pduOaZ2a5wAwxxVRlW97Y&#43;5aHojHwvo/mBpM7FMJMoM=">
+        <link rel="stylesheet" href="/css/add-on.css"></head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            post
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/aviation" class="link"><i class='fas fa-plane'></i> Aviation</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/retrocomputing" class="link"><i class='fas fa-save'></i> Retrocomputing</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/favourite-quotes/" class="link">Favourite Quotes</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about-me/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/zh" lang="zh" class="no-lang link">简体中文 (zh)</a>
+      
+    
+  
+</menu>
+
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="" alt="Kheng Meng profile pic" /></a>
+  <header>
+    <h1>Yeo Kheng Meng</h1>
+  </header>
+  <main>
+    <p>Maker, Coder, Private Pilot, Retrocomputing Enthusiast</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/yeokm1" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/yeokhengmeng" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/yeokhengmeng" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/yeokm1" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/yeokm1" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/yeokm1" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+<li><a href="//telegram.me/yeokm1" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/2024/06/my-first-chip-with-tiny-tapeout-cvx/"> My first chip with Tiny Tapeout 4 - Covox Speech Thing clone</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2024-06-20 00:00:00 &#43;0000 UTC">
+      June 20, 2024
+    </time>
+    <span class="author"></span>
+    
+      <p>11 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  </section>
+  
+  <a href="/2024/06/my-first-chip-with-tiny-tapeout-cvx/" class="image featured">
+    
+      <img src="/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" alt="">
+    
+  </a>
+
+
+  <div class="content">
+    <p>When one thinks of designing an Application-specific Integrated Circuit (ASIC) chip, one would typically imagine a very high production cost, lack of access to tools and individuals can&rsquo;t really do this unless you work in a company or academia.</p>
+<p>Thanks to <a href="https://tinytapeout.com/">Tiny Tapeout</a>, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple Verilog project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.</p>
+<p>In this post, I will share my experience in development and demonstrating my design.</p>
+<h2 id="background-of-tiny-tapeout">Background of Tiny Tapeout</h2>
+<blockquote>
+<p>Tiny Tapeout is a service that makes manufacturing ASICs (chips) affordable and accessible to students and makers. We leverage an open source ASIC toolchain, and build a community of open silicon enthusiasts who collaborate and share their digital design projects.</p>
+<p>Source: <a href="https://www.linkedin.com/company/tinytapeout/about/">https://www.linkedin.com/company/tinytapeout/about/</a></p>
+</blockquote>
+<p>Tiny Tapeout was started by Matt Venn in 2022. Since that time, several batches (or shuttles as they call it) of chips have been executed. Tiny Tapeout collaborates with EFabless platform to aggregate multiple designs together into one shuttle in order to spread out and thus lower the cost per design.</p>
+<p>I took part in Tiny Tapeout 4 (TT04). It was submitted to Efabless 2309C chipIgnite shuttle using the open source Skywater 130nm Process Design Kit (PDK). The PDK contains the specification, design rules and standard libraries used by the foundry.</p>
+<p>Submission closed in Sept 2023 and I just received the chip and carrier board last week. So an approximately 9-month wait from submission to receiving the result.</p>
+<a href="images/tt4-cvx-carrier.jpg"><img src="images/tt4-cvx-carrier.jpg" width="500"></a>
+<p>TT04 had <a href="https://tinytapeout.com/runs/tt04/">143 projects</a> from people around the world. After fabrication, the desired design is then dynamically selected through a multiplexer.</p>
+<h2 id="background-of-covox-speech-thing-and-pwm">Background of Covox Speech Thing and PWM</h2>
+<p>The objective of my project is to mimic the capabilities of the 1987 Covox Speech Thing (CST), a simple Digital-to-analog converter (DAC) that gets digital signals from a Parallel port then outputs an analog audio signal. Parallel ports were a common expansion port available on vintage PCs before the days of USB.</p>
+<p>I was already familiar with the CST as I worked on <a href="https://yeokhengmeng.com/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/">making a PCB for it and creating a Linux software player for it in 2017</a>.</p>
+<a href="images/tt4-cvx-pure-schematic.png"><img src="images/tt4-cvx-pure-schematic.png" width="600"></a>
+<p>The basic schematic of the CST showing an R-2R resistor ladder that is used is the DAC process.</p>
+<a href="images/tt4-cvx-covox-pcb.jpg"><img src="images/tt4-cvx-covox-pcb.jpg" width="500"></a>
+<p>PCB of my CST clone in 2017.</p>
+<p>Tiny Tapeout 4 could not generate analog signals. (The later runs today support analog pins.)</p>
+<p>The alternative to mimic an analog output is to use Pulse Width Modulation (PWM). PWM varies the duty cycle, basically the proportion in time a pin is high or low so the overall value will be averaged out to a certain analog value.</p>
+<h2 id="demo-setup-of-fabricated-chip">Demo setup of fabricated chip</h2>
+<p>To demonstrate the PWM function implemented in this ASIC, I have 2 demo setups.</p>
+<p>Videos of both setups were captured using Gopros with the audio recorded directly from the environment using the Gopro&rsquo;s internal microphone.</p>
+<h3 id="linux-with-expresscard-parallel-port-adapter">Linux with Expresscard Parallel Port adapter</h3>
+<p>This setup is for a &ldquo;more modern&rdquo; machine that does not have a native parallel port.</p>
+<a href="images/tt4-cvx-t430.jpg"><img src="images/tt4-cvx-t430.jpg" width="600"></a>
+<p>The machine is a 2012 Thinkpad T430 running Kubuntu 22.04 LTS.</p>
+<a href="images/tt4-cvx-setup-expresscard.jpg"><img src="images/tt4-cvx-setup-expresscard.jpg" width="600"></a>
+<p>I used a <a href="https://www.startech.com/en-eu/cards-adapters/ec1pecps">Startech ExpressCard parallel port adapter</a>. The parallel port pins are connected to the ASIC inputs. The ASIC output is connected to a 3.5mm audio jack adapter which is then sent to the speakers.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/fYv4o8ltR5U" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>The first few seconds of the video is to configure the ASIC to use my design with a webapp called Tiny Tapeout Commander over Web Serial through the onboard RP2040 microcontroller. The RP2040 also sets the clock frequency supplied to the ASIC.</p>
+<a href="images/tt4-cvx-tt-commander.png"><img src="images/tt4-cvx-tt-commander.png" width="500"></a>
+<p>The clock (or PWM) frequency to use should be high enough to ensure sufficient audio fidelity. At up to 48kHz audio sample rate and 8-bit audio, 48000 * 2^8 roughly equals 12Mhz. I used 10Mhz in this video for default convenience as it sounded good enough to me.</p>
+<p>Once the ASIC is configured, I launch a software player to send audio data to the parallel port. This Linux-based player dubbed <a href="https://github.com/yeokm1/covox-music-player">Covox Music Player</a> was written by yours truly in 2017.</p>
+<h3 id="dos-with-native-parallel-port">DOS with native parallel port</h3>
+<p>To verify if the design actually works as expected in a vintage environment, I will need a DOS machine.</p>
+<a href="images/tt4-cvx-x61.jpg"><img src="images/tt4-cvx-x61.jpg" width="600"></a>
+<p>I used a 2007 Thinkpad X61 running DOS 6.22. It has a native LPT1 parallel port through the X6 Ultrabase Docking Station.</p>
+<p>More details of my Thinkpad X61&rsquo;s configuration is documented <a href="https://github.com/yeokm1/retro-configs/tree/master/laptops/thinkpad-x61">here</a>.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/B-Sx1dmTjro" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>The DOS player is <a href="http://rayer.g6.cz/programm/programe.htm">Covox MP3 player</a> written by Martin Rehak.</p>
+<h2 id="development-process-using-verilog">Development Process using Verilog</h2>
+<p>Verilog is Hardware Description Language (HDL) used in programming FPGAs as well as ASIC design. It is therefore used by Tiny Tapeout for project submissions too.</p>
+<p>Tiny Tapeout has provided generous and detailed documentation on their website on how to get started using their user-friendly tools. It was much simpler than the industry-standard tools I used in my university&rsquo;s Integrated Digital Design course.</p>
+<p>The repository I used for the submission can be found <a href="https://github.com/yeokm1/tt4-pwm-audio">https://github.com/yeokm1/tt4-pwm-audio</a>.</p>
+<p>Below is the process I did using TT04. Note that specifics may/likely change for future shuttles but the general flow should still be similar.</p>
+<h3 id="1-ideation">1: Ideation</h3>
+<p>The first step is deciding what to do based on the constraints. At the time of TT04, these were the IOs pins that are available for each design.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>module tt_um_yeokm1_pwm_audio (
+</span></span><span style="display:flex;"><span>    input  wire [7:0] ui_in,    // Dedicated inputs
+</span></span><span style="display:flex;"><span>    output wire [7:0] uo_out,   // Dedicated outputs
+</span></span><span style="display:flex;"><span>    input  wire [7:0] uio_in,   // IOs: Input path
+</span></span><span style="display:flex;"><span>    output wire [7:0] uio_out,  // IOs: Output path
+</span></span><span style="display:flex;"><span>    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
+</span></span><span style="display:flex;"><span>    input  wire       ena,      // will go high when the design is enabled
+</span></span><span style="display:flex;"><span>    input  wire       clk,      // clock
+</span></span><span style="display:flex;"><span>    input  wire       rst_n     // reset_n - low to reset
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><ul>
+<li>Clock is provided by RP2040 and can go up to 66.5Mhz</li>
+<li>3.3V logic level digital pins only (not 5V tolerant)</li>
+<li>Tile area is 160x100um. More tiles can be purchased at additional cost.</li>
+</ul>
+<p>I opted to go with a simple Covox Speech Thing clone using PWM as I was fairly close to the deadline. My main objective is to go through the design process to get a simple project working then not finishing.</p>
+<h3 id="2-forking-the-template">2. Forking the template</h3>
+<p>Tiny Tapeout provides a submission template to ensure all submissions are in the correct format. At the time of TT04, this was the <a href="https://github.com/TinyTapeout/tt04-submission-template">template repository</a>.</p>
+<p>The repository also contains configuration for Github Actions to automate certain workflows that will be useful later.</p>
+<h3 id="3-writing-the-testbench">3. Writing the testbench</h3>
+<p>Test-driven development is a very common development approach used in the software world. For hardware, I believe this approach is all the more important as the cost of making a mistake is very high.</p>
+<p>Testing is done using the <a href="https://www.cocotb.org/">cocotb framework</a>, a Python-based cosimulation tool for HDL code.</p>
+<p>The following is a short snippet of the relevant sections of my testbench:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>PERIOD_CYCLES = <span style="color:#ff0;font-weight:bold">256</span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>@cocotb.test()
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">async</span> <span style="color:#fff;font-weight:bold">def</span> test_tt_um_yeokm1_pwm_audio(dut):
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">for</span> i in <span style="color:#fff;font-weight:bold">range</span>(PERIOD_CYCLES):
+</span></span><span style="display:flex;"><span>        dut.ui_in.value = i
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">for</span> j in <span style="color:#fff;font-weight:bold">range</span>(PERIOD_CYCLES):
+</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">await</span> ClockCycles(dut.clk, <span style="color:#ff0;font-weight:bold">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#007f7f"># Verify correct ratio of Ton and Toff for PWM</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">if</span> j &lt; i:
+</span></span><span style="display:flex;"><span>                <span style="color:#fff;font-weight:bold">assert</span> <span style="color:#fff;font-weight:bold">str</span>(dut.uo_out.value[<span style="color:#ff0;font-weight:bold">7</span>]) == <span style="color:#0ff;font-weight:bold">&#34;1&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#fff;font-weight:bold">assert</span> <span style="color:#fff;font-weight:bold">str</span>(dut.uo_out.value[<span style="color:#ff0;font-weight:bold">7</span>]) == <span style="color:#0ff;font-weight:bold">&#34;0&#34;</span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p><code>dut</code> refers to the verilog module that we will write that will be tested.</p>
+<p>In the test, the outer for-loop iterates through all the possible 256 (8-bit) values supplied to the input. The inner for-loop checks the appropriate ratio between the ON time and OFF time at every clock cycle.</p>
+<h3 id="3-run-the-test-github-action">3. Run the test github action</h3>
+<p>The testbench can be executed in a provided Github Actions. The action sets up a Linux virtual machine in the background with all required dependencies with no need to setup the toolchain manually.</p>
+<p>The first 2 are test-related Github actions. The third docs Action is listed for completeness.</p>
+<table>
+<thead>
+<tr>
+<th>Github Action</th>
+<th>Jobs</th>
+<th>Objective</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>test</td>
+<td>test</td>
+<td>Pre-synthesis test. Run the testbench on the simulated HDL design.</td>
+</tr>
+<tr>
+<td>gds</td>
+<td>gds</td>
+<td>HDL module is converted to logic gates and laid out.</td>
+</tr>
+<tr>
+<td></td>
+<td>gl_test</td>
+<td>Post-synthesis test. Testbench is run on gate level.</td>
+</tr>
+<tr>
+<td></td>
+<td>viewer</td>
+<td>Design can be optionally viewed</td>
+</tr>
+<tr>
+<td>docs</td>
+<td>docs</td>
+<td>Generates the design datasheet from info.yaml</td>
+</tr>
+</tbody>
+</table>
+<h4 id="test-action">Test Action</h4>
+<a href="images/tt4-cvx-test-action.png"><img src="images/tt4-cvx-test-action.png" width="600"></a>
+<p>If everything passes, the action will show green otherwise we will well get an error here.</p>
+<h4 id="gds-action">GDS Action</h4>
+<a href="images/tt4-cvx-gds-action.png"><img src="images/tt4-cvx-gds-action.png" width="600"></a>
+<p>The GDS action generates the layout in a Graphic Design System (GDS) format which can be sent for fabrication. Post-synthesis test is conducted here and Github will inform us if it succeeds.</p>
+<a href="images/tt4-cvx-3d.png"><img src="images/tt4-cvx-3d.png" width="600"></a>
+<p>A 3D-render will also be generated to show the gate and wiring layout in the context of a tile.</p>
+<h3 id="4-writing-the-code">4. Writing the code</h3>
+<p>Here is a snippet of the code that contains the relevant sections.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">module</span> tt_um_yeokm1_pwm_audio #() (
+</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] ui_in,    <span style="color:#007f7f">// Dedicated inputs
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">output</span> <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] uo_out,   <span style="color:#007f7f">// Dedicated outputs
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] uio_in,   <span style="color:#007f7f">// IOs: Input path
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">output</span> <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] uio_out,  <span style="color:#007f7f">// IOs: Output path
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">output</span> <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] uio_oe,   <span style="color:#007f7f">// IOs: Enable path (active high: 0=input, 1=output)
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span>       ena,      <span style="color:#007f7f">// will go high when the design is enabled
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span>       clk,      <span style="color:#007f7f">// clock
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span>       rst_n     <span style="color:#007f7f">// reset_n - low to reset
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>);
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">reg</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] pwm_cnt;
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">always</span> @(<span style="color:#fff;font-weight:bold">posedge</span> clk) <span style="color:#fff;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">if</span>(rst_n == <span style="color:#ff0;font-weight:bold">0</span>) <span style="color:#fff;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span>        pwm_cnt &lt;= <span style="color:#ff0;font-weight:bold">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">end</span> <span style="color:#fff;font-weight:bold">else</span> <span style="color:#fff;font-weight:bold">if</span> (ena) <span style="color:#fff;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span>        pwm_cnt &lt;= pwm_cnt + <span style="color:#ff0;font-weight:bold">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#007f7f">// Check rst_n and ena are activated first
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">assign</span> uo_out[<span style="color:#ff0;font-weight:bold">0</span>] = rst_n &amp;&amp; ena &amp;&amp; (ui_in &gt; pwm_cnt);
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">endmodule</span>
+</span></span></code></pre></div><p>We have a register <code>pwm_cnt</code> that tracks which part of the PWM period we are in right now.</p>
+<p>On every positive clock edge, we first check if the active-low reset is low, if so we reset <code>pwm_cnt</code>. Otherwise, it is incremented. If it reaches the maximum value, it will go back to 0. <code>pwm_cnt</code> is an 8-bit register as the input audio and PWM-period are 8 bits wide.</p>
+<p>The active and inactive time is decided based on these conditions:</p>
+<ul>
+<li>State of reset</li>
+<li>My design is enabled</li>
+<li>The current 8-bit audio value is above/below the current point of the PWM period.</li>
+</ul>
+<p>Even with this simple code, I was stuck for a very long time as it passed the Pre-synthesis but failed the Gate-level Post-synthesis test which stated the output was undefined with <code>x</code> output.</p>
+<p>The answer was actually documented online all this while which I didn&rsquo;t read:</p>
+<blockquote>
+<p>Most FPGAs allow initial statements, and flops are often initialised to zero. This is not the case with ASICs, where <strong>flops will have a random initial value at power on</strong>. Initial statements are not allowed, so you <strong>must use an explicit reset</strong>.</p>
+<p>Source: <a href="https://tinytapeout.com/hdl/fpga_vs_asic/">https://tinytapeout.com/hdl/fpga_vs_asic/</a></p>
+</blockquote>
+<p>The solution ended being as simple as this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">if</span>(rst_n == <span style="color:#ff0;font-weight:bold">0</span>) <span style="color:#fff;font-weight:bold">begin</span>
+</span></span><span style="display:flex;"><span>    pwm_cnt &lt;= <span style="color:#ff0;font-weight:bold">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">end</span>
+</span></span></code></pre></div><p>On reset, explicitly set the <code>pwm_cnt</code> register to 0.</p>
+<h3 id="5-test-on-fpga">5. Test on FPGA</h3>
+<p>Although not strictly required, it is recommended that the design be run on an FPGA as a sanity check.</p>
+<a href="images/tt4-cvx-mimas-a7-pwm.jpg"><img src="images/tt4-cvx-mimas-a7-pwm.jpg" width="600"></a>
+<p>I tested the HDL module on a Mimas A7 Artix 7 FPGA board with a Vivado project.</p>
+<h3 id="7-chip-documentation">7. Chip documentation</h3>
+<p>Most chips sold commercially almost always come with a datasheet. Tiny Tapeout encourages this good habit as well so others can use the design. Information such as but not limited to the following are required to be documented in a <code>info.yaml</code> file:</p>
+<ul>
+<li>Author</li>
+<li>Project Title</li>
+<li>Description</li>
+<li>How it works?</li>
+<li>How to test this project?</li>
+<li>Description of inputs and outputs</li>
+<li>External Hardware required</li>
+</ul>
+<p>The <code>docs</code> Action has to be run to scrape the data from <code>info.yaml</code> to generate a chip datasheet.</p>
+<h3 id="8-submission">8. Submission</h3>
+<p>To submit the design, the project should pass all 3 Github Actions. A pull request has to be made to merge the design to the shuttle&rsquo;s relevant repository which in the case of Tiny Tapeout 4 was <a href="https://github.com/TinyTapeout/tinytapeout-04">https://github.com/TinyTapeout/tinytapeout-04</a>.</p>
+<h2 id="final-remarks">Final remarks</h2>
+<p>It is extremely satisfying to have your design baked into physical hardware and working as expected. No flashing of microcontroller firmware, computer software or FPGA bitstream. Just fixed electronic circuits doing your bidding.</p>
+<p>Before Tiny Tapeout and its associated ecosystem, designing and fabricating a chip would not have been feasible as an individual unless you work for a chip-design company or university. Development tools are extremely expensive and taping out would cost 6 to 7 figures at the minimum.</p>
+<p>I took an Integrated Digital Design course in university in my currently-ongoing masters degree using more industry-standard tools. I had to sign an NDA in the course to use that. That tool while certainly powerful was nowhere near as user friendly as what Tiny Tapeout offers for the entry-level person. Due to NDAs and access to this software only through remote school servers, information on how to use these tools in the wider internet is relatively limited. And I certainly did not get my design on a chip in the end, everything was done purely through simulation.</p>
+<p>Tiny Tapeout is akin to an Arduino for chip design. It abstracts away the distracting messy configuration aspects while still providing sufficient learning opportunity into the chip design process. Everything at relatively affordable 3-figure rates that is still palatable at the individual level. I ran into issues and the people in the Discord community was quick to help. And you get the chip in the end!</p>
+<p>I have certainly gained a better appreciation of the chip design process. It&rsquo;s unlikely I would switch into chip design at this point in my career but I can totally forsee that it might encourage a new generation of people interested in this career or at least pick this up as a hobby.</p>
+<blockquote>
+<p>Perhaps one day, submitting a GDS file to a fab will seem just as ordinary as sending Gerbers to a PCB shop is today.</p>
+<p>Source: <a href="https://hackaday.com/2023/02/14/supercon-2022-matt-venns-tiny-tapeout-brings-chip-design-to-the-masses/">https://hackaday.com/2023/02/14/supercon-2022-matt-venns-tiny-tapeout-brings-chip-design-to-the-masses/</a></p>
+</blockquote>
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/hacks">hacks</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yeokm1/yeokm1.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNTQ3ODI3NTI="
+        data-category="Comments"
+        data-category-id="DIC_kwDODy-tIM4CXEA6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div class="pagination">
+  
+    <a href="/2024/05/setting-up-pentium-3-testbench/" class="button"><div class="previous"><div>Setting up an open-frame Pentium 3 testbench</div></div></a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2024/06/my-first-chip-with-tiny-tapeout-cvx/" class="image featured">
+    
+      <img src="/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/06/my-first-chip-with-tiny-tapeout-cvx/"> My first chip with Tiny Tapeout 4 - Covox Speech Thing clone</a></h1>
+          <time class="published" datetime="">June 20, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
+    
+      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up an open-frame Pentium 3 testbench</a></h1>
+          <time class="published" datetime="">May 25, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/" class="image featured">
+    
+      <img src="/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/">HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin</a></h1>
+          <time class="published" datetime="">September 10, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/06/teardown-and-review-of-hand386/" class="image featured">
+    
+      <img src="/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/06/teardown-and-review-of-hand386/">Teardown &amp; review of a new 386 system: Hand386</a></h1>
+          <time class="published" datetime="">June 5, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/" class="image featured">
+    
+      <img src="/2023/03/building-a-dos-chatgpt-client-in-2023/images/doschgpt-front-combined.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/03/building-a-dos-chatgpt-client-in-2023/">Building a DOS ChatGPT client in 2023</a></h1>
+          <time class="published" datetime="">March 26, 2023</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/hacks/">hacks<span class="count">23</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/personal/">personal<span class="count">17</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/singapore/">singapore<span class="count">16</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">12</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/teardowns/">teardowns<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/school/">school<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/book-reviews/">book-reviews<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/politics/">politics<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hackathon/">hackathon<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/product-reviews/">product-reviews<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/admin/">admin<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/repair-kopitiam/">repair-kopitiam<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/keyboards/">keyboards<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/quiz/">quiz<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/dvorak/">dvorak<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/flight-sim/">flight-sim<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2024
+      
+        YKM&#39;s Corner on the Web
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.122.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+<script type="text/javascript">
+  var sc_project = 8700008;
+  var sc_invisible = 1;
+  var sc_security = "b569f6b4";
+  var sc_https = 1; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript>
+  <div class="statcounter"><a title="free hit
+  counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+        src="https://c.statcounter.com/8700008/0/b569f6b4/1/" alt="free hit counter"></a></div>
+</noscript>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function (x) {
+      x.parentElement.classList += 'has-jax'
+    })
+  });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.bf7f7687e38d8caba0913f2bff8e476c893e0a96bed699897fc22d57e1e53015.js" integrity="sha256-v392h&#43;ONjKugkT8r/45HbIk&#43;Cpa&#43;1pmJf8ItV&#43;HlMBU="></script>
+<script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>

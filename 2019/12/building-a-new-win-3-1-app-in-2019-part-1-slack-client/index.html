@@ -6,39 +6,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.127.0">
-  <meta itemprop="name" content="Building a new Win 3.1 app in 2019 Part 1: Slack client">
-  <meta itemprop="description" content="In October 2019, my company SP Digital held an internal hackathon. My colleague Subhransu and I worked on a whacky idea of writing a brand-new Windows 3.1 app which was an OS released almost 30 years ago. The idea we chose was a Slack client. After all, Slack clients exist for most platforms but I’m certain one does not exist for Windows 3.1.
+<meta name="generator" content="Hugo 0.122.0"><meta itemprop="name" content="Building a new Win 3.1 app in 2019 Part 1: Slack client">
+<meta itemprop="description" content="In October 2019, my company SP Digital held an internal hackathon. My colleague Subhransu and I worked on a whacky idea of writing a brand-new Windows 3.1 app which was an OS released almost 30 years ago. The idea we chose was a Slack client. After all, Slack clients exist for most platforms but I&rsquo;m certain one does not exist for Windows 3.1.
 A few months later in Dec 2019, I would join the Super Silly Hackathon for the second time with fellow retrocomputing enthusiast Hui Jing. We would develop a small game for Win 3.1 with great help from the knowledge gained from this first project.
 For Part 1, I shall detail the learnings and process for how a new old app can be created with the aid of modern tools and hindsight of old technologies. And perhaps what lessons can it offer us today. This blog post is a few months late as I needed time to clean up the code and write the documentation.
-Don’t forget to checkout out Part 2 of the game app with Hui Jing too!
-The App Of course let’s take a look at the app.">
-  <meta itemprop="datePublished" content="2019-12-19T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2019-12-19T00:00:00+00:00">
-  <meta itemprop="wordCount" content="3442">
-  <meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/">
-  <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
-  <meta property="og:title" content="Building a new Win 3.1 app in 2019 Part 1: Slack client">
-  <meta property="og:description" content="In October 2019, my company SP Digital held an internal hackathon. My colleague Subhransu and I worked on a whacky idea of writing a brand-new Windows 3.1 app which was an OS released almost 30 years ago. The idea we chose was a Slack client. After all, Slack clients exist for most platforms but I’m certain one does not exist for Windows 3.1.
-A few months later in Dec 2019, I would join the Super Silly Hackathon for the second time with fellow retrocomputing enthusiast Hui Jing. We would develop a small game for Win 3.1 with great help from the knowledge gained from this first project.
-For Part 1, I shall detail the learnings and process for how a new old app can be created with the aid of modern tools and hindsight of old technologies. And perhaps what lessons can it offer us today. This blog post is a few months late as I needed time to clean up the code and write the documentation.
-Don’t forget to checkout out Part 2 of the game app with Hui Jing too!
-The App Of course let’s take a look at the app.">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2019-12-19T00:00:00+00:00">
-    <meta property="article:modified_time" content="2019-12-19T00:00:00+00:00">
+Don&rsquo;t forget to checkout out Part 2 of the game app with Hui Jing too!
+The App
+Of course let&rsquo;s take a look at the app.
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Building a new Win 3.1 app in 2019 Part 1: Slack client">
-  <meta name="twitter:description" content="In October 2019, my company SP Digital held an internal hackathon. My colleague Subhransu and I worked on a whacky idea of writing a brand-new Windows 3.1 app which was an OS released almost 30 years ago. The idea we chose was a Slack client. After all, Slack clients exist for most platforms but I’m certain one does not exist for Windows 3.1.
+"><meta itemprop="datePublished" content="2019-12-19T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-12-19T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3442">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Building a new Win 3.1 app in 2019 Part 1: Slack client" />
+<meta property="og:description" content="In October 2019, my company SP Digital held an internal hackathon. My colleague Subhransu and I worked on a whacky idea of writing a brand-new Windows 3.1 app which was an OS released almost 30 years ago. The idea we chose was a Slack client. After all, Slack clients exist for most platforms but I&rsquo;m certain one does not exist for Windows 3.1.
 A few months later in Dec 2019, I would join the Super Silly Hackathon for the second time with fellow retrocomputing enthusiast Hui Jing. We would develop a small game for Win 3.1 with great help from the knowledge gained from this first project.
 For Part 1, I shall detail the learnings and process for how a new old app can be created with the aid of modern tools and hindsight of old technologies. And perhaps what lessons can it offer us today. This blog post is a few months late as I needed time to clean up the code and write the documentation.
-Don’t forget to checkout out Part 2 of the game app with Hui Jing too!
-The App Of course let’s take a look at the app.">
-      <meta name="twitter:site" content="@yeokm1">
-<link rel="stylesheet" href="/css/bundle.min.c84189c728647280f0664faf7e16c21157e8c1f31974a65f41b3fa773d850052.css" integrity="sha256-yEGJxyhkcoDwZk&#43;vfhbCEVfowfMZdKZfQbP6dz2FAFI=">
+Don&rsquo;t forget to checkout out Part 2 of the game app with Hui Jing too!
+The App
+Of course let&rsquo;s take a look at the app.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yeokhengmeng.com/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-12-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-12-19T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Building a new Win 3.1 app in 2019 Part 1: Slack client"/>
+<meta name="twitter:description" content="In October 2019, my company SP Digital held an internal hackathon. My colleague Subhransu and I worked on a whacky idea of writing a brand-new Windows 3.1 app which was an OS released almost 30 years ago. The idea we chose was a Slack client. After all, Slack clients exist for most platforms but I&rsquo;m certain one does not exist for Windows 3.1.
+A few months later in Dec 2019, I would join the Super Silly Hackathon for the second time with fellow retrocomputing enthusiast Hui Jing. We would develop a small game for Win 3.1 with great help from the knowledge gained from this first project.
+For Part 1, I shall detail the learnings and process for how a new old app can be created with the aid of modern tools and hindsight of old technologies. And perhaps what lessons can it offer us today. This blog post is a few months late as I needed time to clean up the code and write the documentation.
+Don&rsquo;t forget to checkout out Part 2 of the game app with Hui Jing too!
+The App
+Of course let&rsquo;s take a look at the app.
+
+"/>
+<meta name="twitter:site" content="@yeokm1"/>
+<link rel="stylesheet" href="/css/bundle.min.a5db8e699d9ae70030c71551956f7b63ee5a1e88c7c2fa3f981a4cec53093283.css" integrity="sha256-pduOaZ2a5wAwxxVRlW97Y&#43;5aHojHwvo/mBpM7FMJMoM=">
         <link rel="stylesheet" href="/css/add-on.css"></head>
 
   <body>
@@ -287,13 +290,11 @@ The App Of course let’s take a look at the app.">
 <p>Don&rsquo;t forget to checkout out Part 2 of the <a href="https://www.chenhuijing.com/blog/building-a-win31-app-in-2019/">game app with Hui Jing</a> too!</p>
 <h1 id="the-app">The App</h1>
 <p>Of course let&rsquo;s take a look at the app.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-shot.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-shot.png"></a></p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-both-1024x408.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-both-1024x408.jpg"></a></p>
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/vuofFUCo2Qc?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
-    </div>
+<p><a href="images/wfwslack-shot.png"><img src="images/wfwslack-shot.png" alt=""></a></p>
+<p><a href="images/wfwslack-both-1024x408.jpg"><img src="images/wfwslack-both-1024x408.jpg" alt=""></a></p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/vuofFUCo2Qc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
 
 <p>Picture and video of the app in action. Left is my <a href="/2016/09/windows-for-workgroups-3-11-on-vintage-and-modern-hardware-in-2016/">Thinkpad 390e running Windows 3.1</a>. On the right is my Mac with the Slack client for verification.</p>
 <p>If you are too lazy to continue reading and want to dive into code, here is the <a href="https://github.com/yeokm1/w31slack">repository on Github https://github.com/yeokm1/w31slack</a>.</p>
@@ -302,7 +303,7 @@ The App Of course let’s take a look at the app.">
 <p>Nevertheless, as you will see, the effort to put in to write such an app is still herculean in its own right. <strong>Windows 3.1 also largely consumes 16-bit apps</strong> which is the tail-end of that era before Windows 95 came in.</p>
 <h1 id="development-setup">Development setup</h1>
 <p>The most important aspect of developing an app is the compiler toolchain. Everything has to revolve around it and this project is no exception.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-compile.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-compile.png"></a></p>
+<p><a href="images/wfwslack-compile.png"><img src="images/wfwslack-compile.png" alt=""></a></p>
 <p>For this, we have the Visual C++ 1.52. This is the last VC++ compiler from Microsoft that can target for WFW 3.11. VC++ 1.52 is itself a 16-bit program so it can only be run on 32-bit Windows. Theoretically it should run even on Windows 10 32-bit but I did not have such a native setup lying around.</p>
 <p>So I had to take the Virtual Machine option using Windows 2000 with the following considerations in mind.</p>
 <ol>
@@ -315,11 +316,11 @@ The App Of course let’s take a look at the app.">
 <p>Also, we can&rsquo;t write our code directly on the Windows 2000 VM as it has limited software support for modern IDEs like Visual Studio Code not to mention security issues.</p>
 <p>Windows 10 and Mac cannot directly talk to the ancient SMB protocol used by WFW 3.11.</p>
 <h2 id="hardware-setup">Hardware setup</h2>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-setup.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-setup-1024x324.jpg"></a></p>
+<p><a href="images/wfwslack-setup.jpg"><img src="images/wfwslack-setup-1024x324.jpg" alt=""></a></p>
 <p>Primary development is done on the Mac with Visual Studio Code editor with the files residing on the Mac file system. VC++ 1.52 will access the source files using a mapped drive on SMB share and do the compilation.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-app2k.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-app2k.png"></a></p>
+<p><a href="images/wfwslack-app2k.png"><img src="images/wfwslack-app2k.png" alt=""></a></p>
 <p>I can do intermediate testing on Win 2K since it can run 16-bit apps.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-wfw-smb-share.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-wfw-smb-share.png"></a></p>
+<p><a href="images/wfwslack-wfw-smb-share.png"><img src="images/wfwslack-wfw-smb-share.png" alt=""></a></p>
 <p>With Win 2K VM configured to use a bridged network and thus the same subnet, my native WFW 3.11 system can access the SMB share folder of the Win 2K VM as seen above. That&rsquo;s actually the first time I saw the network drive icon in File Manager.</p>
 <p>Size of the binary is 23 KiB. That&rsquo;s many orders of magnitude smaller then the modern Slack app on the App store :P</p>
 <h1 id="lets-get-down-to-the-coding-business">Let&rsquo;s get down to the coding business</h1>
@@ -328,9 +329,9 @@ The App Of course let’s take a look at the app.">
 <p>API documentation and usage examples are very important when it comes to software development. Typically, programmers will rely quite heavily on Google and Stackoverflow.</p>
 <p>Alas, Win 3.1 only came during the dawn of the internet era and Google cannot help if relevant websites do not even exist. Basically Windows 3.1, its API documentation and problems can&rsquo;t be Googled easily, one has to rely on a more traditional method like books!</p>
 <h3 id="reference-book">Reference Book</h3>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-book.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-book-1024x746.jpg"></a></p>
+<p><a href="images/wfwslack-book.jpg"><img src="images/wfwslack-book-1024x746.jpg" alt=""></a></p>
 <p>I purchased this book <a href="https://www.amazon.com/Programming-Windows-3-1-Charles-Petzold/dp/1556153953/">Programming Windows 3.1 by Charles Petzold from Amazon</a>.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-book-back.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-book-back-916x1024.jpg"></a></p>
+<p><a href="images/wfwslack-book-back.jpg"><img src="images/wfwslack-book-back-916x1024.jpg" alt=""></a></p>
 <blockquote>
 <p>If you are going to program for Windows (3.1), buy this book. It will pay for itself in a matter of hours.&quot;
 I concur with this.</p>
@@ -339,7 +340,7 @@ I concur with this.</p>
 <p>In 2020, a commenter (below) pointed out a softcopy of this book is now available from this <a href="https://archive.org/details/programming-windows-31-3rd-ed/">archive.org page</a>.</p>
 <p>I have also uploaded the sample codes of the floppy disk onto <a href="https://github.com/yeokm1/programming-win31">this Github repo</a>.</p>
 <h3 id="header-file-inspection">Header file inspection</h3>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-headers.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-headers.png"></a></p>
+<p><a href="images/wfwslack-headers.png"><img src="images/wfwslack-headers.png" alt=""></a></p>
 <p>Sometimes I have to use certain APIs that may not be documented in the book, for example network APIs. In this case, I&rsquo;ll have to manually inspect the header files in the compiler&rsquo;s &ldquo;include&rdquo; directory to see what parameters are required for the functions.</p>
 <h3 id="inverse-deduction-from-modern-windows-api">Inverse deduction from modern Windows API</h3>
 <p>Looking up the function parameters may not be always sufficient as I need to know what the function actually does. Here is where Microsoft&rsquo;s legendary backward compatibility becomes useful. Many modern Windows APIs are very similar to the traditional ones. Microsoft even has this <a href="https://docs.microsoft.com/en-us/cpp/windows/walkthrough-creating-windows-desktop-applications-cpp?view=vs-2019">walkthrough</a> to create an app the traditional way.</p>
@@ -351,7 +352,7 @@ I concur with this.</p>
 <p>VC++ 1.52 was released in the early 1990s obviously only supported the C standard of that era which was C89. Even though I use C quite a lot in my work, C89 has several intricacies that made my life harder.</p>
 <h3 id="variable-declaration-at-beginning-of-function-scope">Variable declaration at beginning of function scope</h3>
 <p>Basically this means I cannot declare a variable in the middle of a function. To get an idea how troublesome this is, take a look at this code sample.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-c89-vars.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-c89-vars.png"></a></p>
+<p><a href="images/wfwslack-c89-vars.png"><img src="images/wfwslack-c89-vars.png" alt=""></a></p>
 <p>This sample code deals with the event loop in receiving callbacks from Windows. The variables ever used in this function has to be declared at the top not when I need to use them. So lots of work scrolling up and down.</p>
 <p><a href="https://news.ycombinator.com/item?id=21832815">userbinator on Hackernews had this to say</a>: &ldquo;Note that C89 only prevents declarations of variables in the middle of a <em>scope</em>; you can simply create an inner scope with new variable declarations at <em>its</em> start.&rdquo;</p>
 <h3 id="no-safe-functions">No safe functions</h3>
@@ -368,8 +369,8 @@ I concur with this.</p>
 </blockquote>
 <p>Wikipedia is so correct !^^^</p>
 <p>The following 2 pages literally saved me from hours of Googling assuming Google turns out any answer at all!</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-allocmem.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-allocmem-952x1024.jpg"></a></p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-memapi.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-memapi-818x1024.jpg"></a></p>
+<p><a href="images/wfwslack-allocmem.jpg"><img src="images/wfwslack-allocmem-952x1024.jpg" alt=""></a></p>
+<p><a href="images/wfwslack-memapi.jpg"><img src="images/wfwslack-memapi-818x1024.jpg" alt=""></a></p>
 <p>To allocate a &ldquo;large&rdquo; chunk of memory from the APIs described in the book, we need to allocate them from the Global heap. This is what I did below.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold">#include</span> <span style="color:#0f0;font-weight:bold">&lt;windowsx.h&gt;</span><span style="color:#0f0;font-weight:bold">
 </span></span></span><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold"></span>
@@ -390,7 +391,7 @@ I concur with this.</p>
 <h3 id="https-issues">HTTPS issues</h3>
 <p>Secure Rest API communication via HTTPS is the norm today when it comes to dealing with web services. However it was not really so in that era.</p>
 <p>WFW 3.11 uses the <a href="https://en.wikipedia.org/wiki/Winsock">Windows Sockets API (Winsock)</a> version 1.1. The <a href="https://docs.microsoft.com/en-us/windows/win32/winsock/using-secure-socket-extensions">Secure Socket Extensions to Winsock</a> only came out in version 2. The conventional way is to use OpenSSL but it&rsquo;s so complex that there&rsquo;s no reasonable chance of me porting that entire project to support C89 on WFW 3.11.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-https-proxy.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-https-proxy-1024x281.png"></a></p>
+<p><a href="images/wfwslack-https-proxy.png"><img src="images/wfwslack-https-proxy-1024x281.png" alt=""></a></p>
 <p>After much hesitation and reluctance, I decided to cheat and write my own <a href="https://github.com/yeokm1/http-to-https-proxy">http-to-https-proxy</a> in Golang. Acting as a transparent middleman, it inspects the host field of the HTTP requests and forwards the raw socket bytes as HTTPS to Slack&rsquo;s servers. The result is then relayed back byte-for-byte back to the app.</p>
 <p>Purists may not like this solution but this is the best I can do with my abilities in a reasonable amount of time.</p>
 <p>Readers have suggested to me that an existing project called <a href="https://www.stunnel.org/">stunnel</a> already exists so this self-written proxy is not necessary. I did give stunnel a try but it seems to only work if it is running on the same system as the app that needs the tunnel and it obviously won&rsquo;t work on a Windows 3.1 system.</p>
@@ -464,21 +465,21 @@ I concur with this.</p>
 <p><em>&quot;_fmemcpy&quot;</em> is the FAR pointer equivalent for &ldquo;memcpy&rdquo; specific only to the Windows platform. I slightly modified the source code of JSMN to enable it to take larger arrays based on the LPSTR data type.</p>
 <h3 id="json-parsing-optimisation">JSON parsing optimisation</h3>
 <p>Due to the very small stack size, the maximum number of tokens that can be parsed at one go is extremely limited. This causes problems as that means I can only parse very few keys and values from the string. To solve this, I did incremental parsing as shown below.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-json-parse-portions.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-json-parse-portions-1024x495.png"></a></p>
+<p><a href="images/wfwslack-json-parse-portions.png"><img src="images/wfwslack-json-parse-portions-1024x495.png" alt=""></a></p>
 <p>For this conversation history API, I parse the Json part by part till the end to avoid parsing the entire gigantic Json at one go.</p>
 <h2 id="testing">Testing</h2>
 <p>Test-driven development (TDD) is used quite often in modern software development but it wasn&rsquo;t so in that era. Testing I felt was extremely critical even for this Science Project as I wanted to make sure my code would work in their unit forms.</p>
 <p>VC++ 1.52 does not seem to have testing facilities built in. I could not find a C89-compatible C testing framework that could work with VC++ 1.52 so I rolled a basic one on my own.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-test-setup.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-test-setup-1024x634.png"></a></p>
+<p><a href="images/wfwslack-test-setup.png"><img src="images/wfwslack-test-setup-1024x634.png" alt=""></a></p>
 <p>I created a duplicate project called Test.mak which will compile &ldquo;TestMain.C&rdquo; which includes the individual testing &ldquo;test.h&rdquo; functions within each package. When running the tests,  &ldquo;test.h&rdquo; will execute the individual tests in its file which will in turn test the functions in the package.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-test.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-test.png"></a></p>
+<p><a href="images/wfwslack-test.png"><img src="images/wfwslack-test.png" alt=""></a></p>
 <p>Test results are then shown in the VC++ debugger output.</p>
 <h3 id="mock-servers">Mock Servers</h3>
 <p>Due to my unfamiliarity with the Winsock APIs, I actually wrote mock servers in Golang to replay or reply to HTTP sockets requests that will be made during the testing process. Consult the <a href="https://github.com/yeokm1/w31slack">repo</a> to find out more!</p>
 <h1 id="resource-usage">Resource Usage</h1>
 <p>By popular demand, there was question about the resource usage of the Windows 3.1 app + VM + proxy compared to the official Mac Slack app. So I did a run and here is the result!</p>
 <h2 id="mac-memory-usage">Mac Memory Usage</h2>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-mem-usage.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-mem-usage-1024x640.jpg"></a></p>
+<p><a href="images/wfwslack-mem-usage.jpg"><img src="images/wfwslack-mem-usage-1024x640.jpg" alt=""></a></p>
 <p>You can click the file for a closer look. The WFW 3.11 VM is configured to use 8MB RAM with 16MB video RAM. The Mac Slack app is only signed in to one workspace.</p>
 <p>Based on the top result</p>
 <ul>
@@ -491,7 +492,7 @@ I concur with this.</p>
 <p>So <strong>Slack in total uses 396.1MiB</strong> while the <strong>WFW3.11 VM + proxy uses 141MiB.</strong> On memory usage alone, actually my app can win!</p>
 <p>Obviously this is not an apples to apples comparison as the Mac Slack app is fully featured and the VM has a significant overhead.</p>
 <h2 id="mac-disk-usage">Mac Disk Usage</h2>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-disk-usage.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-disk-usage-1024x542.jpg"></a></p>
+<p><a href="images/wfwslack-disk-usage.jpg"><img src="images/wfwslack-disk-usage-1024x542.jpg" alt=""></a></p>
 <p>The VM is currently set to be dynamically-sized but one can see that it uses only 100 MiB versus 165.5 MiB of the official Mac Slack app.</p>
 <p>So win again!!!</p>
 <h1 id="conclusion">Conclusion</h1>
@@ -502,12 +503,9 @@ I concur with this.</p>
 <p>If you like this, don&rsquo;t forget to check out <a href="https://www.chenhuijing.com/blog/building-a-win31-app-in-2019/">Hui Jing&rsquo;s blog post</a> of us making a simple Win 3.1 game app. Her blog post has a greater focus on the UI aspect which is actually a great complement to this post as I did not discuss it here.</p>
 <p>If you would like to see the live demo of my app and my talk on this topic, watch it here!</p>
 
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/3SLOgQXbR0o?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
-    </div>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/3SLOgQXbR0o" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
 
 <h1 id="clarification-of-me-cheating-with-a-proxy">Clarification of me cheating with a proxy</h1>
 <p>I received many negative feedback regarding me cheating with a http-to-https proxy. So let me clear things out:</p>
@@ -597,6 +595,23 @@ Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums
       <article class="mini-post">
         <section>
           
+  <a href="/2024/06/my-first-chip-with-tiny-tapeout-cvx/" class="image featured">
+    
+      <img src="/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/06/my-first-chip-with-tiny-tapeout-cvx/"> My first chip with Tiny Tapeout 4 - Covox Speech Thing clone</a></h1>
+          <time class="published" datetime="">June 20, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
     
       <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
@@ -662,23 +677,6 @@ Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/" class="image featured">
-    
-      <img src="/2022/08/teardown-of-habotest-ht107e-socket-tester/images/ht107e_open_top.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2022/08/teardown-of-habotest-ht107e-socket-tester/">Teardown of Habotest HT107E Socket Tester</a></h1>
-          <time class="published" datetime="">August 6, 2022</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -700,7 +698,7 @@ Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums
           
           <li>
             
-              <a href="/categories/hacks/">hacks<span class="count">22</span></a>
+              <a href="/categories/hacks/">hacks<span class="count">23</span></a>
             
           
           <li>
@@ -812,7 +810,7 @@ Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.127.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.122.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
@@ -854,7 +852,7 @@ Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.014b3d21b0ae48bdc65c014a94dcb45a449433034fe0903520121d1572e91c23.js" integrity="sha256-AUs9IbCuSL3GXAFKlNy0WkSUMwNP4JA1IBIdFXLpHCM="></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.bf7f7687e38d8caba0913f2bff8e476c893e0a96bed699897fc22d57e1e53015.js" integrity="sha256-v392h&#43;ONjKugkT8r/45HbIk&#43;Cpa&#43;1pmJf8ItV&#43;HlMBU="></script>
 <script src="/js/add-on.js"></script>
     </div>
   </body>

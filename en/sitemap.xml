@@ -2,8 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://yeokhengmeng.com/2024/06/my-first-chip-with-tiny-tapeout-cvx/</loc>
+    <lastmod>2024-06-20T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://yeokhengmeng.com/categories/</loc>
-    <lastmod>2024-05-25T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-sg"
@@ -16,10 +19,10 @@
                 />
   </url><url>
     <loc>http://yeokhengmeng.com/categories/hacks/</loc>
-    <lastmod>2024-05-25T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/post/</loc>
-    <lastmod>2024-05-25T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-sg"
@@ -31,14 +34,8 @@
                 href="http://yeokhengmeng.com/post/"
                 />
   </url><url>
-    <loc>http://yeokhengmeng.com/categories/retrocomputing/</loc>
-    <lastmod>2024-05-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://yeokhengmeng.com/2024/05/setting-up-pentium-3-testbench/</loc>
-    <lastmod>2024-05-25T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://yeokhengmeng.com/</loc>
-    <lastmod>2024-05-25T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-sg"
@@ -49,6 +46,12 @@
                 hreflang="en"
                 href="http://yeokhengmeng.com/"
                 />
+  </url><url>
+    <loc>http://yeokhengmeng.com/categories/retrocomputing/</loc>
+    <lastmod>2024-05-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://yeokhengmeng.com/2024/05/setting-up-pentium-3-testbench/</loc>
+    <lastmod>2024-05-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/</loc>
     <lastmod>2023-09-10T00:00:00+00:00</lastmod>
