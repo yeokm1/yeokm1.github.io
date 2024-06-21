@@ -11,7 +11,7 @@
 Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
 In this post, I will share my experience in development and demonstrating my design."><meta itemprop="datePublished" content="2024-06-20T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2024-06-20T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2295"><meta itemprop="image" content="http://yeokhengmeng.com/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" />
+<meta itemprop="wordCount" content="2296"><meta itemprop="image" content="http://yeokhengmeng.com/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" />
 <meta itemprop="keywords" content="" /><meta property="og:title" content=" My first chip with Tiny Tapeout 4 - Covox Speech Thing clone" />
 <meta property="og:description" content="When one thinks of designing an Application-specific Integrated Circuit (ASIC) chip, one would typically imagine a very high production cost, lack of access to tools and individuals can&rsquo;t really do this unless you work in a company or academia.
 Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
@@ -293,7 +293,7 @@ In this post, I will share my experience in development and demonstrating my des
 <p>The objective of my project is to mimic the capabilities of the 1987 Covox Speech Thing (CST), a simple Digital-to-analog converter (DAC) that gets digital signals from a Parallel port then outputs an analog audio signal. Parallel ports were a common expansion port available on vintage PCs before the days of USB.</p>
 <p>I was already familiar with the CST as I worked on <a href="https://yeokhengmeng.com/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/">making a PCB for it and creating a Linux software player for it in 2017</a>.</p>
 <a href="images/tt4-cvx-pure-schematic.png"><img src="images/tt4-cvx-pure-schematic.png" width="600"></a>
-<p>The basic schematic of the CST showing an R-2R resistor ladder that is used is the DAC process.</p>
+<p>The basic schematic of the CST showing an R-2R resistor ladder that is used in the DAC process.</p>
 <a href="images/tt4-cvx-covox-pcb.jpg"><img src="images/tt4-cvx-covox-pcb.jpg" width="500"></a>
 <p>PCB of my CST clone in 2017.</p>
 <p>Tiny Tapeout 4 could not generate analog signals. (The later runs today support analog pins.)</p>
@@ -319,7 +319,7 @@ In this post, I will share my experience in development and demonstrating my des
 <h3 id="dos-with-native-parallel-port">DOS with native parallel port</h3>
 <p>To verify if the design actually works as expected in a vintage environment, I will need a DOS machine.</p>
 <a href="images/tt4-cvx-x61.jpg"><img src="images/tt4-cvx-x61.jpg" width="600"></a>
-<p>I used a 2007 Thinkpad X61 running DOS 6.22. It has a native LPT1 parallel port through the X6 Ultrabase Docking Station.</p>
+<p>I used a 2007 Thinkpad X61 running DOS 6.22. It has a native LPT1 (0x378) parallel port through the X6 Ultrabase Docking Station.</p>
 <p>More details of my Thinkpad X61&rsquo;s configuration is documented <a href="https://github.com/yeokm1/retro-configs/tree/master/laptops/thinkpad-x61">here</a>.</p>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
