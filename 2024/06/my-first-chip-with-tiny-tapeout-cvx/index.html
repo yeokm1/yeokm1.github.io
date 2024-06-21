@@ -11,7 +11,7 @@
 Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
 In this post, I will share my experience in development and demonstrating my design."><meta itemprop="datePublished" content="2024-06-20T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2024-06-20T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2296"><meta itemprop="image" content="http://yeokhengmeng.com/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" />
+<meta itemprop="wordCount" content="2309"><meta itemprop="image" content="http://yeokhengmeng.com/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" />
 <meta itemprop="keywords" content="" /><meta property="og:title" content=" My first chip with Tiny Tapeout 4 - Covox Speech Thing clone" />
 <meta property="og:description" content="When one thinks of designing an Application-specific Integrated Circuit (ASIC) chip, one would typically imagine a very high production cost, lack of access to tools and individuals can&rsquo;t really do this unless you work in a company or academia.
 Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
@@ -300,7 +300,6 @@ In this post, I will share my experience in development and demonstrating my des
 <p>The alternative to mimic an analog output is to use Pulse Width Modulation (PWM). PWM varies the duty cycle, basically the proportion of time a pin is high or low so the overall value will be averaged out to a certain analog value.</p>
 <h2 id="demo-setup-of-fabricated-chip">Demo setup of fabricated chip</h2>
 <p>To demonstrate the PWM function implemented in this ASIC, I have 2 demo setups.</p>
-<p>Videos of both setups were captured using Gopros with the audio recorded directly from the environment using the Gopro&rsquo;s internal microphone.</p>
 <h3 id="linux-with-expresscard-parallel-port-adapter">Linux with Expresscard Parallel Port adapter</h3>
 <p>This setup is for a &ldquo;more modern&rdquo; machine that does not have a native parallel port.</p>
 <a href="images/tt4-cvx-t430.jpg"><img src="images/tt4-cvx-t430.jpg" width="600"></a>
@@ -327,6 +326,12 @@ In this post, I will share my experience in development and demonstrating my des
 </div>
 
 <p>The DOS player is <a href="http://rayer.g6.cz/programm/programe.htm">Covox MP3 player</a> written by Martin Rehak.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/W3z2YQ-Arl4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>This demo <a href="https://www.pouet.net/prod.php?which=463">Crystal Dream</a> by Triton supports a parallel port DAC like the Covox Speech Thing. For this video specifically, audio output from the ASIC was recorded directly using the GoPro 3.5mm Mic adapter.</p>
 <h2 id="development-process-using-verilog">Development Process using Verilog</h2>
 <p>Verilog is a Hardware Description Language (HDL) used in programming FPGAs as well as ASIC design. It is therefore used by Tiny Tapeout for project submissions too.</p>
 <p>Tiny Tapeout has provided generous and detailed documentation on their website on how to get started using their user-friendly tools. It was much simpler than the industry-standard tools I used in my university&rsquo;s chip design course.</p>
