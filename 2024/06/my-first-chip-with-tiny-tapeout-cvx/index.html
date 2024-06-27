@@ -11,7 +11,7 @@
 Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
 In this post, I will share my experience in development and demonstrating my design."><meta itemprop="datePublished" content="2024-06-20T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2024-06-20T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2299"><meta itemprop="image" content="http://yeokhengmeng.com/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" />
+<meta itemprop="wordCount" content="2302"><meta itemprop="image" content="http://yeokhengmeng.com/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" />
 <meta itemprop="keywords" content="" /><meta property="og:title" content=" My first chip with Tiny Tapeout 4 - Covox Speech Thing clone" />
 <meta property="og:description" content="When one thinks of designing an Application-specific Integrated Circuit (ASIC) chip, one would typically imagine a very high production cost, lack of access to tools and individuals can&rsquo;t really do this unless you work in a company or academia.
 Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
@@ -296,8 +296,8 @@ In this post, I will share my experience in development and demonstrating my des
 <p>The basic schematic of the CST showing an R-2R resistor ladder that is used in the DAC process.</p>
 <a href="images/tt4-cvx-covox-pcb.jpg"><img src="images/tt4-cvx-covox-pcb.jpg" width="500"></a>
 <p>PCB of my CST clone in 2017.</p>
-<p>Tiny Tapeout 4 could not generate analog signals. (The later runs today support analog pins.)</p>
-<p>The alternative to mimic an analog output is to use Pulse Width Modulation (PWM). PWM varies the duty cycle, basically the proportion of time a pin is high or low so the overall value will be averaged out to a certain analog value.</p>
+<p>Tiny Tapeout 4 could not generate analog signals. (The later runs today support analog outputs.)</p>
+<p>The alternative to mimic an analog output through digital means is to use Pulse Width Modulation (PWM). PWM varies the duty cycle, basically the proportion of time a pin is high or low so the overall value will be averaged out to a certain analog value.</p>
 <h2 id="demo-setup-of-fabricated-chip">Demo setup of fabricated chip</h2>
 <p>To demonstrate the PWM function implemented in this ASIC, I have 2 demo setups. Audio is recorded using the GoPro&rsquo;s onboard microphone.</p>
 <h3 id="linux-with-expresscard-parallel-port-adapter">Linux with Expresscard Parallel Port adapter</h3>
@@ -339,16 +339,16 @@ In this post, I will share my experience in development and demonstrating my des
 <p>Below is the process I did using TT04. Note that specifics may/likely change for future shuttles but the general flow should still be similar.</p>
 <h3 id="1-ideation">1: Ideation</h3>
 <p>The first step is deciding what to do based on the constraints. At the time of TT04, these were the IO pins that are available for each design.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>module tt_um_yeokm1_pwm_audio (
-</span></span><span style="display:flex;"><span>    input  wire [7:0] ui_in,    // Dedicated inputs
-</span></span><span style="display:flex;"><span>    output wire [7:0] uo_out,   // Dedicated outputs
-</span></span><span style="display:flex;"><span>    input  wire [7:0] uio_in,   // IOs: Input path
-</span></span><span style="display:flex;"><span>    output wire [7:0] uio_out,  // IOs: Output path
-</span></span><span style="display:flex;"><span>    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
-</span></span><span style="display:flex;"><span>    input  wire       ena,      // will go high when the design is enabled
-</span></span><span style="display:flex;"><span>    input  wire       clk,      // clock
-</span></span><span style="display:flex;"><span>    input  wire       rst_n     // reset_n - low to reset
-</span></span><span style="display:flex;"><span>);
+<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">module</span> tt_um_yeokm1_pwm_audio (
+</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] ui_in,    <span style="color:#007f7f">// Dedicated inputs
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">output</span> <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] uo_out,   <span style="color:#007f7f">// Dedicated outputs
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] uio_in,   <span style="color:#007f7f">// IOs: Input path
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">output</span> <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] uio_out,  <span style="color:#007f7f">// IOs: Output path
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">output</span> <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] uio_oe,   <span style="color:#007f7f">// IOs: Enable path (active high: 0=input, 1=output)
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span>       ena,      <span style="color:#007f7f">// will go high when the design is enabled
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span>       clk,      <span style="color:#007f7f">// clock
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span>       rst_n     <span style="color:#007f7f">// reset_n - low to reset
+</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>);
 </span></span></code></pre></div><ul>
 <li>Clock is provided by RP2040 and can go up to 66.5Mhz</li>
 <li>3.3V logic level digital pins only (not 5V tolerant)</li>
