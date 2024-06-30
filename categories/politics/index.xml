@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>politics on YKM&#39;s Corner on the Web</title>
+    <title>Politics on YKM&#39;s Corner on the Web</title>
     <link>http://yeokhengmeng.com/categories/politics/</link>
-    <description>Recent content in politics on YKM&#39;s Corner on the Web</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Politics on YKM&#39;s Corner on the Web</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 04 Aug 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://yeokhengmeng.com/categories/politics/index.xml" rel="self" type="application/rss+xml" />
