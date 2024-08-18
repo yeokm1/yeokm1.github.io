@@ -13,7 +13,7 @@ It might seem impossible, however I did an experiment on a relatively modern 202
 I shall share the steps and challenges in locating a modern laptop capable of doing so and making the 30-year-old OS work on it with audio and networking functions. This is likely among the final generation of laptops able to run DOS natively.">
   <meta itemprop="datePublished" content="2024-08-18T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-08-18T00:00:00+00:00">
-  <meta itemprop="wordCount" content="2081">
+  <meta itemprop="wordCount" content="2086">
   <meta itemprop="image" content="http://yeokhengmeng.com/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg">
   <meta itemprop="keywords" content="Hacks,Retrocomputing"><meta property="og:url" content="http://yeokhengmeng.com/2024/08/dos-on-thinkpad-x13-gen1/">
   <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -288,7 +288,7 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <p>It might seem impossible, however I did an experiment on a relatively modern 2020 Thinkpad and found that it can still run MS-DOS 6.22. MS-DOS 6.22 is the last standalone version of DOS released by Microsoft in June 1994. This makes it 30 years old today.</p>
 <p>I shall share the steps and challenges in locating a modern laptop capable of doing so and making the 30-year-old OS work on it with audio and networking functions. This is likely among the final generation of laptops able to run DOS natively.</p>
 <h2 id="demo-videos">Demo videos</h2>
-<p>If you eager to jump right in, here are 2 demo videos showing MS-DOS 6.22 and some applications running on a modern 2020 Thinkpad X13 Gen 1 (Intel).</p>
+<p>If you are eager to jump right in, here are 2 demo videos showing MS-DOS 6.22 and some applications running on a modern 2020 Thinkpad X13 Gen 1 (Intel).</p>
 
 
     
@@ -321,7 +321,7 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <h2 id="background">Background</h2>
 <p>Back in 2017, I read <a href="https://www.anandtech.com/show/12068/intel-to-remove-bios-support-from-uefi-by-2020">an article from Anandtech</a> titled &ldquo;Intel to Remove Legacy BIOS Support from UEFI by 2020&rdquo;. It was a significant departure in terms of backward compatibility all the way back to the first IBM PC in 1981.</p>
 <h3 id="what-is-uefi-and-its-classes">What is UEFI and its classes?</h3>
-<p>To understand the implications of this, we have to first look at what is Unified Extensible Firmware Interface (UEFI) and it&rsquo;s type of classes.</p>
+<p>To understand the implications of this, we have to first look at what is Unified Extensible Firmware Interface (UEFI) and its type of classes.</p>
 <blockquote>
 <p>UEFI is a modern replacement for the traditional basic input/output system (BIOS) firmware found in computers. UEFI provides a standardized interface between the operating system and the platform firmware, enabling various features and functionalities during the boot process.</p>
 <p>Source: <a href="https://www.lenovo.com/sg/en/glossary/uefi/">https://www.lenovo.com/sg/en/glossary/uefi/</a></p>
@@ -356,7 +356,7 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <p>He ran DOS and Windows 3.1 on an Intel 13th gen CPU although he had to use a PCI video card for the VGA BIOS support.</p>
 <p>However, I wanted to constrain this experiment to a laptop for a more elegant portable system and avoid the space issues of keeping another desktop.</p>
 <h2 id="locating-a-suitable-laptop">Locating a suitable laptop</h2>
-<p>I decided on the following requirements since I wanted to get a laptop to complement my <a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/">Framework</a> that I will actually use and not soley for this project.</p>
+<p>I decided on the following requirements since I wanted to get a laptop to complement my <a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/">Framework</a> that I will actually use and not solely for this project.</p>
 <ul>
 <li>Official vendor support (with no third-party modification) for UEFI-CSM</li>
 <li>Thunderbolt capable for low-level hardware expansion (a feature that actually came useful in this experiment)</li>
@@ -386,7 +386,7 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <a href="images/x13g1-uefi-sim-s3.png"><img src="images/x13g1-uefi-sim-s3.png" width="800"></a>
 <p>I would find out that S3 Standby Sleep state (Linux option) is also supported on this machine which is a bonus. This is compared to the more relatively buggy and power hungry S0 Modern Standby now only supported by newer machines.</p>
 <a href="images/x13g1-s3.png"><img src="images/x13g1-s3.png" width="600"></a>
-<p>The <code>powercfg</code> tool confirms the S3 standby state is available.</p>
+<p>The <code>powercfg</code> tool confirms the S3 Standby state is available.</p>
 <p>Armed with this research, I went ahead to purchase a Thinkpad X13 Gen 1 (Intel) whose price in the second-hand market has declined sufficiently such that I can afford this without breaking the bank.</p>
 <h2 id="specification">Specification</h2>
 <p>These are the specifications specific to the Thinkpad I got. Most of the features which are obviously not relevant to DOS but more useful to my day-to-day use.</p>
@@ -418,9 +418,9 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <a href="images/x13g1-bios-uefi-csm.jpg"><img src="images/x13g1-bios-uefi-csm.jpg" width="800"></a>
 <p>UEFI-CSM legacy enabled. For this option to be set, Secure Boot and Kernel DMA has to be disabled.</p>
 <a href="images/x13g1-bios-secure-boot.jpg"><img src="images/x13g1-bios-secure-boot.jpg" width="800"></a>
-<p>Secure Boot disabled</p>
+<p>Secure Boot disabled.</p>
 <a href="images/x13g1-bios-kernel-dma.jpg"><img src="images/x13g1-bios-kernel-dma.jpg" width="800"></a>
-<p>Kernel DMA protection disabled</p>
+<p>Kernel DMA protection disabled.</p>
 <a href="images/x13g1-bios-tb-support.jpg"><img src="images/x13g1-bios-tb-support.jpg" width="800"></a>
 <p>Enable Thunderbolt BIOS assist mode and support in Pre Boot Environment to enable Thunderbolt devices to be used if the operating system cannot manage it like DOS.</p>
 <h3 id="dos-setup">DOS setup</h3>
@@ -428,7 +428,7 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <a href="images/x13g1-dos-setup.jpg"><img src="images/x13g1-dos-setup.jpg" width="800"></a>
 <p>A USB floppy drive/emulator can be used to do the installation as the BIOS recognises the drive and assigns it the <code>A:</code> drive letter.</p>
 <h3 id="dos-configuration">DOS configuration</h3>
-<p>In order to consider a machine as &ldquo;properly&rdquo; set up, my personal definition is that it should have working audio and networking. Due to limited memory, I set up a DOS menu configuration to load different sets of driver configuration depending on my requirements.</p>
+<p>In order to consider a machine as &ldquo;properly&rdquo; set up, my personal definition is that it should have working audio and networking. Due to limited memory, I set up a DOS menu configuration to load different sets of driver configuration depending on my needs at the moment.</p>
 <a href="images/x13g1-boot-menu.jpg"><img src="images/x13g1-boot-menu.jpg" width="600"></a>
 <p>The first option that is not legible is Basic DOS Mode to not load memory, sound and network drivers for a relatively clean start. The other options load a combination of different audio and network drivers.</p>
 <p>For the detailed <code>config.sys</code> and <code>autoexec.bat</code> files I used, you can go to this <a href="https://github.com/yeokm1/retro-configs/tree/master/laptops/thinkpad-x13-g1">Github repo link</a>.</p>
@@ -445,12 +445,12 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <a href="images/x13g1-network-hardware-connection.png"><img src="images/x13g1-network-hardware-connection.png" width="800"></a>
 <p>This is the connection diagram of all network adapters evaluated.</p>
 <a href="images/x13g1-network-software-chain.png"><img src="images/x13g1-network-software-chain.png" width="800"></a>
-<p>All the 3 network adapters I tried have Network Driver Interface Specification (NDIS) 2 drivers provided by the manufacturer to be use by MS Protocol and LAN Managers and a NDIS to Packet Driver Shim.</p>
+<p>All the 3 network adapters I tried have Network Driver Interface Specification (NDIS) 2 drivers provided by the manufacturer to be used by MS Protocol and LAN Managers and a NDIS to Packet Driver Shim.</p>
 <p>The shim is required as a common networking utility suite MTCP and programs based on it like my <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/">DOS ChatGPT client</a> rely on Packet Drivers.</p>
 <h4 id="realtek-8125-25gbe-via-thunderbolt-egpu-dock">Realtek 8125 2.5GbE via Thunderbolt eGPU dock</h4>
 <a href="images/x13g1-rtl8125.jpg"><img src="images/x13g1-rtl8125.jpg" width="800"></a>
-<p>I got a PCIe-based Realtek 8125 2.5GbE card and have it connected by a Thunderbolt dock what was actually meant for external GPUs.</p>
-<p>A 2.5GBE link can actually be negotiated as shown by the driver if the cable and the other end is capable of it. In practice though, the pratical speed is nowhere near.</p>
+<p>I got a PCIe-based Realtek 8125 2.5GbE card and have it connected by a Thunderbolt dock what is actually meant for external GPUs.</p>
+<p>A 2.5GBE link can actually be negotiated as shown by the driver if the cable and the other end is capable of it. In practice though, the practical speed is nowhere near.</p>
 <h4 id="apple-thunderbolt-2-1gbe-with-tb3-tb2-adapter-broadcom">Apple Thunderbolt 2 1GbE with TB3-TB2 adapter (Broadcom)</h4>
 <a href="images/x13g1-apple-tb2-ethernet.jpg"><img src="images/x13g1-apple-tb2-ethernet.jpg" width="800"></a>
 <p>The Apple Thunderbolt (2) to Gigabit Ethernet Adapter can be used in conjuction with an also Apple Thunderbolt 3 (USB-C) to Thunderbolt 2 Adapter.</p>
@@ -510,7 +510,7 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <p>That Thunderbolt worked as well as it was is unexpected but not suprising as it&rsquo;s the medium that carries the PCIe packets that is transparent to the operating system with appropriate BIOS support. Still I wonder if this level of compatibility is generic or specific to Lenovo&rsquo;s efforts.</p>
 <a href="images/x13g1-with-ibm5155.jpg"><img src="images/x13g1-with-ibm5155.jpg" width="800"></a>
 <p>My Thinkpad X13G1 together with its ancestor the IBM5155 Portable PC.</p>
-<p>The IBM5155 is the first x86-based portable PC first sold by IBM in 1984. Both machines have x86 Intel CPUs running the same MS-DOS 6.22 operating system. It shows volumes how similar both machines still are despite the 4-decade gap. However this is the end of the line, no more Thinkpads made after this model generation will carry a similar level of historical compatibility.</p>
+<p>The IBM5155 is the first x86-based portable PC first sold by IBM in 1984. Both machines have x86 Intel CPUs running the same MS-DOS 6.22 operating system. It speaks volumes how similar both machines still are despite the 36 years gap. However this is the end of the line, no more Thinkpads made after this model generation will carry a similar level of historical compatibility.</p>
   </div>
   <footer>
     <ul class="stats">
