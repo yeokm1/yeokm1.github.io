@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>DOS&#39;s Last Stand on a modern Thinkpad: X13 Gen 1 with Intel i5-10310U - YKM&#39;s Corner on the Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.128.2">
+  <meta itemprop="name" content="DOS&#39;s Last Stand on a modern Thinkpad: X13 Gen 1 with Intel i5-10310U">
+  <meta itemprop="description" content="When one thinks of modern technologies like Thunderbolt, 2.5 Gigabit Ethernet and modern CPUs, one would associate them with modern operating systems. How about DOS?
+It might seem imposssible, however I did an experiment on a relatively modern 2020 Thinkpad and found that those can be still be used by MS-DOS 6.22. MS-DOS 6.22 is the last standalone version of DOS released by Microsoft in June 1994. This makes it 30 years old today.
+I shall share the steps and challenges faced in making this 30-year-old OS work on a modern laptop with working audio and networking functions. This is likely the final generation of laptop capable of doing so.">
+  <meta itemprop="datePublished" content="2024-08-18T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-08-18T00:00:00+00:00">
+  <meta itemprop="wordCount" content="2076">
+  <meta itemprop="image" content="http://yeokhengmeng.com/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg">
+  <meta itemprop="keywords" content="Hacks,Retrocomputing"><meta property="og:url" content="http://yeokhengmeng.com/2024/08/dos-on-thinkpad-x13-gen1/">
+  <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
+  <meta property="og:title" content="DOS&#39;s Last Stand on a modern Thinkpad: X13 Gen 1 with Intel i5-10310U">
+  <meta property="og:description" content="When one thinks of modern technologies like Thunderbolt, 2.5 Gigabit Ethernet and modern CPUs, one would associate them with modern operating systems. How about DOS?
+It might seem imposssible, however I did an experiment on a relatively modern 2020 Thinkpad and found that those can be still be used by MS-DOS 6.22. MS-DOS 6.22 is the last standalone version of DOS released by Microsoft in June 1994. This makes it 30 years old today.
+I shall share the steps and challenges faced in making this 30-year-old OS work on a modern laptop with working audio and networking functions. This is likely the final generation of laptop capable of doing so.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-08-18T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-08-18T00:00:00+00:00">
+    <meta property="og:image" content="http://yeokhengmeng.com/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://yeokhengmeng.com/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg">
+  <meta name="twitter:title" content="DOS&#39;s Last Stand on a modern Thinkpad: X13 Gen 1 with Intel i5-10310U">
+  <meta name="twitter:description" content="When one thinks of modern technologies like Thunderbolt, 2.5 Gigabit Ethernet and modern CPUs, one would associate them with modern operating systems. How about DOS?
+It might seem imposssible, however I did an experiment on a relatively modern 2020 Thinkpad and found that those can be still be used by MS-DOS 6.22. MS-DOS 6.22 is the last standalone version of DOS released by Microsoft in June 1994. This makes it 30 years old today.
+I shall share the steps and challenges faced in making this 30-year-old OS work on a modern laptop with working audio and networking functions. This is likely the final generation of laptop capable of doing so.">
+      <meta name="twitter:site" content="@yeokm1">
+<link rel="stylesheet" href="/css/bundle.min.ddee09a014b0ec888f9e86a08a442e769e45794257080194efeb3e17d2f9fa80.css" integrity="sha256-3e4JoBSw7IiPnoagikQudp5FeUJXCAGU7&#43;s&#43;F9L5&#43;oA=">
+        <link rel="stylesheet" href="/css/add-on.css"></head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            post
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/aviation" class="link"><i class='fas fa-plane'></i> Aviation</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/retrocomputing" class="link"><i class='fas fa-save'></i> Retrocomputing</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/favourite-quotes/" class="link">Favourite Quotes</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about-me/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/zh" lang="zh" class="no-lang link">简体中文 (zh)</a>
+      
+    
+  
+</menu>
+
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="" alt="Kheng Meng profile pic" /></a>
+  <header>
+    <h1>Yeo Kheng Meng</h1>
+  </header>
+  <main>
+    <p>Maker, Coder, Private Pilot, Retrocomputing Enthusiast</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/yeokm1" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/yeokhengmeng" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/yeokhengmeng" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/yeokm1" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/yeokm1" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/yeokm1" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+<li><a href="//telegram.me/yeokm1" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/2024/08/dos-on-thinkpad-x13-gen1/">DOS&#39;s Last Stand on a modern Thinkpad: X13 Gen 1 with Intel i5-10310U</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2024-08-18 00:00:00 &#43;0000 UTC">
+      August 18, 2024
+    </time>
+    <span class="author"></span>
+    
+      <p>10 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  </section>
+  
+  <a href="/2024/08/dos-on-thinkpad-x13-gen1/" class="image featured">
+    
+      <img src="/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg" alt="">
+    
+  </a>
+
+
+  <div class="content">
+    <p>When one thinks of modern technologies like Thunderbolt, 2.5 Gigabit Ethernet and modern CPUs, one would associate them with modern operating systems. How about DOS?</p>
+<p>It might seem imposssible, however I did an experiment on a relatively modern 2020 Thinkpad and found that those can be still be used by MS-DOS 6.22. MS-DOS 6.22 is the last standalone version of DOS released by Microsoft in June 1994. This makes it 30 years old today.</p>
+<p>I shall share the steps and challenges faced in making this 30-year-old OS work on a modern laptop with working audio and networking functions. This is likely the final generation of laptop capable of doing so.</p>
+<h2 id="demo-videos">Demo videos</h2>
+<p>If you eager to jump right in, here are 2 demo videos showing MS-DOS 6.22 and some applications running on a modern 2020 Thinkpad X13 Gen 1 (Intel).</p>
+
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-mTmZqoNeFA?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
+
+<p>Demo video of CPUID, Descent, Doom, Planet X3, ChatGPT, Checkit</p>
+<p>Here are the key timestamps:</p>
+<ul>
+<li>00:20 - POST screen</li>
+<li>00:36 - DOS 6.22 startup menu. Select option to enable SBEMU and Realtek 8125 2.5GbE NDIS2 driver</li>
+<li>00:53 - CPU Identification Utility</li>
+<li>00:58 - Descent</li>
+<li>02:08 - Doom</li>
+<li>03:14 - Planet X3</li>
+<li>03:56 - DOS ChatGPT client</li>
+<li>06:58 - Checkit 3</li>
+</ul>
+
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/eUb_hN1R-no?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
+
+<p>Running the <a href="https://www.pouet.net/prod.php?which=63591">8088 Domination</a> technical demo.</p>
+<h2 id="background">Background</h2>
+<p>Back in 2017, I read <a href="https://www.anandtech.com/show/12068/intel-to-remove-bios-support-from-uefi-by-2020">an article from Anandtech</a> titled &ldquo;Intel to Remove Legacy BIOS Support from UEFI by 2020&rdquo;. It was a significant departure in terms of backward compatibility all the way back to the first IBM PC in 1981.</p>
+<h3 id="what-is-uefi-and-its-classes">What is UEFI and its classes?</h3>
+<p>To understand the implications of this, we have to first look at what is Unified Extensible Firmware Interface (UEFI) and it&rsquo;s type of classes.</p>
+<blockquote>
+<p>UEFI is a modern replacement for the traditional basic input/output system (BIOS) firmware found in computers. UEFI provides a standardized interface between the operating system and the platform firmware, enabling various features and functionalities during the boot process.</p>
+<p>Source: <a href="https://www.lenovo.com/sg/en/glossary/uefi/">https://www.lenovo.com/sg/en/glossary/uefi/</a></p>
+</blockquote>
+<p>BIOS was used by IBM since the very first IBM PC in 1981. When MS-DOS ran on the IBM PC, it depends on this BIOS. To maintain backward-compatibility, most IBM PC compatibles continued to implement this BIOS functions even up to relatively recent times.</p>
+<p>As time passed, the BIOS began to show limitations such as disk sizes, bootup security and memory. UEFI was created to address these limitations.</p>
+<p>UEFI is divided into 4 classes:</p>
+<a href="images/x13g1-uefi-classes.png"><img src="images/x13g1-uefi-classes.png" width="500"></a>
+<p>Source: <a href="https://uefi.org/sites/default/files/resources/Brian_Richardson_Intel_Final.pdf">https://uefi.org/sites/default/files/resources/Brian_Richardson_Intel_Final.pdf</a></p>
+<p>To maintain backward-compatibility, UEFI continued to provide for legacy BIOS interfaces. A UEFI Class 3 device totally does not support BIOS interfaces.</p>
+<p><a href="images/x13g1-intel-client-platform.png"><img src="images/x13g1-intel-client-platform.png" width="600"></a>
+<a href="images/x13g1-legacy-boot-support.png"><img src="images/x13g1-legacy-boot-support.png" width="600"></a></p>
+<p>Source: <a href="https://www.intel.com/content/www/us/en/content-details/630266/removal-of-legacy-boot-support-for-intel-platforms-technical-advisory.html">Removal of Legacy Boot Support for Intel Platforms Technical Advisory</a></p>
+<p>As shown in the above slides, beginning in 2020, Legacy Boot Mode through a Compatibility Support Module (CSM) will no longer be supported. Only UEFI Class 3 device which is &ldquo;pure UEFI&rdquo; will be validated.</p>
+<p>This implies that DOS and operating systems that rely on BIOS routines will not be able to boot up natively on a UEFI Class 3 system, breaking away with 39 years of compatibility.</p>
+<h3 id="what-have-manufacturers-done">What have manufacturers done?</h3>
+<p>According to the largest PC maker in the world Lenovo:</p>
+<blockquote>
+<p>Intel previously announced that in 2020 they are phasing out support for legacy Basic Input/Output System (BIOS) boot mode. This means that many of the Lenovo products launching in 2020 will no longer support the Legacy Boot option in BIOS. The only Boot option that will be supported on those products is Unified Extensible Firmware Interface (UEFI).</p>
+<p>&hellip; <strong>Some Lenovo products shipping in 2020 will support Legacy Boot</strong> (depending on the model), but most will not.</p>
+<p>Source: <a href="https://support.lenovo.com/us/en/solutions/ht510878-legacy-bios-boot-support-removed-in-lenovo-2020-products">https://support.lenovo.com/us/en/solutions/ht510878-legacy-bios-boot-support-removed-in-lenovo-2020-products</a></p>
+</blockquote>
+<p>Even so, unvalidated support continues in some desktop motherboards as shown by this Youtuber Omores.</p>
+
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/nqyF6ZlT-Pw?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
+
+<p>He ran DOS and Windows 3.1 on an Intel 13th gen CPU although he had to use a PCI video card for the VGA BIOS support.</p>
+<p>However, I wanted to constrain this experiment to a laptop for a more elegant portable system and avoid the space issues of keeping another desktop.</p>
+<h2 id="locating-a-suitable-laptop">Locating a suitable laptop</h2>
+<p>I decided on the following requirements since I wanted to get a laptop to complement my <a href="/2021/09/review-usage-and-repair-of-the-framework-laptop/">Framework</a> that I will actually use and not soley for this project.</p>
+<ul>
+<li>Official vendor support (with no third-party modification) for UEFI-CSM</li>
+<li>Thunderbolt capable for low-level hardware expansion (a feature that actually came useful in this experiment)</li>
+<li>Strong preference for a Thinkpad since I&rsquo;m a fan of this brand</li>
+<li>Ultraportable to reduce weight</li>
+<li>S3 standby sleep state preferred for more reliable sleep state</li>
+</ul>
+<p>The first requirement is obviously the most important. Although Intel officially stopped support in 2020, in reality many companies have ceased UEFI-CSM support before that. Determining whether a laptop&rsquo;s UEFI actually has this relatively obscure feature is tedious and sometimes impossible as that requires poring through user guides to see if that is available assuming if it is even documented.</p>
+<p>Thankfully I found that Lenovo has a very useful website called the <a href="https://download.lenovo.com/bsco/index.html">Lenovo BIOS Simulator</a> to inspect what options are available for their more recent products.</p>
+<p>Since 2020 is the cutoff date mentioned by Lenovo, I started my search with X-series (ultraportable-class) machines released in that year.</p>
+<a href="images/x13g1-uefi-sim-csm.png"><img src="images/x13g1-uefi-sim-csm.png" width="800"></a>
+<p>The Thinkpad X13 Gen 1 (Intel) shows the CSM option. The AMD variant of the same generation does not have it.</p>
+<p>Based on the simulator, I can additionally determine that the following 2020 models also support UEFI-CSM:</p>
+<ul>
+<li>T14 Gen 1 (Intel only)</li>
+<li>T14s Gen 1 (Intel only)</li>
+<li>L13 Yoga Gen 1 (Intel only)</li>
+<li>E14 Gen 2-ARE</li>
+<li>E15 Gen 1</li>
+<li>L13/L14/L15 Gen 1 (Intel/AMD)</li>
+<li>X1 Carbon 8th Gen</li>
+<li>X1 Yoga 5th Gen</li>
+</ul>
+<p>Model generations after the above no longer have the UEFI-CSM option.</p>
+<p>I did try looking up manuals of other manufacturers to see if this UEFI-CSM feature is documented but to no avail. To be fair, there could be other laptops that support this but short of purchasing tons of machines to trial-and-error, there is no feasible way for me to determine this.</p>
+<h3 id="s3-standby">S3 standby</h3>
+<a href="images/x13g1-uefi-sim-s3.png"><img src="images/x13g1-uefi-sim-s3.png" width="800"></a>
+<p>I would find out that S3 Standby Sleep state (Linux option) is also supported on this machine which is a bonus. This is compared to the more relatively buggy and power hungry S0 Modern Standby now only supported by newer machines.</p>
+<a href="images/x13g1-s3.png"><img src="images/x13g1-s3.png" width="600"></a>
+<p>The <code>powercfg</code> tool confirms the S3 standby state is available.</p>
+<p>Armed with this research, I went ahead to purchase a Thinkpad X13 Gen 1 (Intel) whose price in the second-hand market has declined sufficiently such that I can afford this without breaking the bank.</p>
+<h2 id="specification">Specification</h2>
+<p>These are the specifications specific to the Thinkpad I got. Most of the features which are obviously not relevant to DOS but more useful to my day-to-day use.</p>
+<ul>
+<li>Intel Core i5-10310U 1.7Ghz (6M Cache, up to 4.40 GHz)</li>
+<li>Intel UHD Graphics</li>
+<li>16GB RAM (soldered in)</li>
+<li>High Definition (HD) Audio with Realtek ALC3287 codec</li>
+<li>13.3&quot; IPS display with 1920x1080 resolution</li>
+<li>512GB SK hynix Gold P31 PCIe 3.0 NVME (for booting modern OS)</li>
+<li>4GB USB 2.0 Sandisk Cruzer Titanium (for DOS boot)</li>
+<li>Intel Gigabit PRO/1000</li>
+<li>Intel Wi-Fi 6 AX201, 802.11ax 2x2 Wi-Fi + Bluetooth 5.1 (soldered in)</li>
+<li>Ports
+<ul>
+<li>1x USB 3.2 Gen 1</li>
+<li>1x USB 3.2 Gen 1 (Always On)</li>
+<li>1x USB-C 3.2 Gen 1</li>
+<li>1x USB-C 3.2 Gen 2 / Thunderbolt 3</li>
+<li>1x HDMI 1.4b</li>
+<li>1x Ethernet extension connector</li>
+<li>1x Headphone / microphone combo jack (3.5mm)</li>
+</ul>
+</li>
+</ul>
+<h2 id="setup-process">Setup process</h2>
+<h3 id="bios-configuration">BIOS configuration</h3>
+<p>I paid special attention to the following BIOS settings.</p>
+<a href="images/x13g1-bios-uefi-csm.jpg"><img src="images/x13g1-bios-uefi-csm.jpg" width="800"></a>
+<p>UEFI-CSM legacy enabled. For this option to be set, Secure Boot and Kernel DMA has to be disabled.</p>
+<a href="images/x13g1-bios-secure-boot.jpg"><img src="images/x13g1-bios-secure-boot.jpg" width="800"></a>
+<p>Secure Boot disabled</p>
+<a href="images/x13g1-bios-kernel-dma.jpg"><img src="images/x13g1-bios-kernel-dma.jpg" width="800"></a>
+<p>Kernel DMA protection disabled</p>
+<a href="images/x13g1-bios-tb-support.jpg"><img src="images/x13g1-bios-tb-support.jpg" width="800"></a>
+<p>Enable Thunderbolt BIOS assist mode and support in Pre Boot Environment to enable Thunderbolt devices to be used if the operating system cannot manage it like DOS.</p>
+<h3 id="dos-setup">DOS setup</h3>
+<p>I opted to have DOS installed on an external USB flash drive as it requires a legacy MBR partition table. I do not want it to intefere with the internal NVME drive containing my modern operating systems with the GPT partition table.</p>
+<a href="images/x13g1-dos-setup.jpg"><img src="images/x13g1-dos-setup.jpg" width="800"></a>
+<p>A USB floppy drive/emulator can be used to do the installation as the BIOS recognises the drive and assigns it the <code>A:</code> drive letter.</p>
+<h3 id="dos-configuration">DOS configuration</h3>
+<p>In order to consider a machine as &ldquo;properly&rdquo; set up, my personal definition is that it should have working audio and networking. Due to limited memory, I set up a DOS menu configuration to load different sets of driver configuration depending on my requirements.</p>
+<a href="images/x13g1-boot-menu.jpg"><img src="images/x13g1-boot-menu.jpg" width="600"></a>
+<p>The first option that is not legible is Basic DOS Mode to not load memory, sound and network drivers for a relatively clean start. The other options load a combination of different audio and network drivers.</p>
+<p>For the detailed <code>config.sys</code> and <code>autoexec.bat</code> files I used, you can go to this <a href="https://github.com/yeokm1/retro-configs/tree/master/laptops/thinkpad-x13-g1">Github repo link</a>.</p>
+<h3 id="audio-configuration">Audio Configuration</h3>
+<a href="images/x13g1-with-sbemu.jpg"><img src="images/x13g1-with-sbemu.jpg" width="600"></a>
+<p>The audio driver is provided by <a href="https://github.com/crazii/SBEMU">SBEMU</a>. It&rsquo;s a relatively new project that provides Sound Blaster compatibility to modern sound hardware like Intel HD Audio and many other chips.</p>
+<h3 id="network-interface-card-nic-configuration">Network Interface Card (NIC) configuration</h3>
+<p>Since the X13G1 has an onboard Intel I-219 Gigabit Ethernet adapter, I initially attempted to try to use that in DOS.</p>
+<a href="images/x13g1-intel-lan-detection.jpg"><img src="images/x13g1-intel-lan-detection.jpg" width="600"></a>
+<p>Using Intel&rsquo;s NVMCheck tool, I used it to scan the machine for Intel NICs. My hopes initially went up when I saw the I-219 detected. (The I-210 detected in this screenshot is from my external Thunderbolt 3 adapter.)</p>
+<a href="images/x13g1-intel-driver-cannot.jpg"><img src="images/x13g1-intel-driver-cannot.jpg" width="600"></a>
+<p>However when I tried to use the final release of <a href="https://www.intel.com/content/www/us/en/download/2595/intel-ethernet-adapter-drivers-for-ms-dos-final-release.html">Intel NIC drivers for MS-DOS</a>, it would not work.</p>
+<p>With no obvious avenues forward, I experimented with 3 different network adapters connected over Thunderbolt.</p>
+<a href="images/x13g1-network-hardware-connection.png"><img src="images/x13g1-network-hardware-connection.png" width="800"></a>
+<p>This is the connection diagram of all network adapters evaluated.</p>
+<a href="images/x13g1-network-software-chain.png"><img src="images/x13g1-network-software-chain.png" width="800"></a>
+<p>All the 3 network adapters I tried have Network Driver Interface Specification (NDIS) 2 drivers provided by the manufacturer to be use by MS Protocol and LAN Managers and a NDIS to Packet Driver Shim.</p>
+<p>The shim is required as a common networking utility suite MTCP and programs based on it like my <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/">DOS ChatGPT client</a> rely on Packet Drivers.</p>
+<h4 id="realtek-8125-25gbe-via-thunderbolt-egpu-dock">Realtek 8125 2.5GbE via Thunderbolt eGPU dock</h4>
+<a href="images/x13g1-rtl8125.jpg"><img src="images/x13g1-rtl8125.jpg" width="800"></a>
+<p>I got a PCIe-based Realtek 8125 2.5GbE card and have it connected by a Thunderbolt dock what was actually meant for external GPUs.</p>
+<p>A 2.5GBE link can actually be negotiated as shown by the driver if the cable and the other end is capable of it. In practice though, the pratical speed is nowhere near.</p>
+<h4 id="apple-thunderbolt-2-1gbe-with-tb3-tb2-adapter-broadcom">Apple Thunderbolt 2 1GbE with TB3-TB2 adapter (Broadcom)</h4>
+<a href="images/x13g1-apple-tb2-ethernet.jpg"><img src="images/x13g1-apple-tb2-ethernet.jpg" width="800"></a>
+<p>The Apple Thunderbolt (2) to Gigabit Ethernet Adapter can be used in conjuction with an also Apple Thunderbolt 3 (USB-C) to Thunderbolt 2 Adapter.</p>
+<p>The Ethernet adapter is based on the Broadcom BCM57762 chip. Hence I used a B57 NDIS2 driver.</p>
+<p>I noticed the B57 driver introduces an unexplained slowdown in my system such that games are unplayable.</p>
+<h4 id="caldigit-ts3-plus-1gbe-via-thunderbolt-3-intel-i-210">Caldigit TS3 Plus 1GbE via Thunderbolt 3 (Intel I-210)</h4>
+<a href="images/x13g1-i210.jpg"><img src="images/x13g1-i210.jpg" width="800"></a>
+<p>I had a Thunderbolt docking station that contained an onboard Intel I-210 Gigabit Ethernet feature.</p>
+<p>This adapter generally works okay with the final release of Intel NIC drivers for MS-DOS.</p>
+<p>The I-210 hardware/driver has unexplained random JEMMEX exception crashes together if run together with SBEMU.</p>
+<h4 id="network-speed-test">Network speed test</h4>
+<p>I did a short study of the performance and memory usage of the 3 adapters. I used a similar <a href="https://www.brutman.com/mTCP/mTCP_Performance.html">test procedure detailed</a> by Michael Brutman (creator of DOS MTCP network tools).</p>
+<a href="images/x13g1-speedtest.jpg"><img src="images/x13g1-speedtest.jpg" width="800"></a>
+<p>I did a point-to-point connection between the DOS machine and my Framework running Kubuntu with a 2.5GbE Ethernet Expansion Card of RTL8156 chipset.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Send Rate (KB/s)</th>
+<th>Recv Rate (KB/s)</th>
+<th>protman</th>
+<th>driver</th>
+<th>disk_pkt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Realtek 8125</td>
+<td>16440.1</td>
+<td>29135.7</td>
+<td>128</td>
+<td>42288</td>
+<td>2736</td>
+</tr>
+<tr>
+<td>BCM57</td>
+<td>7960.4</td>
+<td>14791.4</td>
+<td>128</td>
+<td>53168</td>
+<td>2736</td>
+</tr>
+<tr>
+<td>Intel I210</td>
+<td>26698.5</td>
+<td>19793.4</td>
+<td>128</td>
+<td>56336</td>
+<td>2736</td>
+</tr>
+</tbody>
+</table>
+<p>The last 3 columns show the memory usage of the different driver components in bytes.</p>
+<p>We can observe the transfer speeds do not even come close to the 1 Gbit/s or 125000 KB/s.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I&rsquo;m truly impressed at the backward compatibility efforts made by Intel and Lenovo to the point that BIOS backward compatibility is finally removed.</p>
+<p>That Thunderbolt worked as well as it was is unexpected but not suprising as it&rsquo;s the medium that carries the PCIe packets that is transparent to the operating system with appropriate BIOS support. Still I wonder if this level of compatibility is generic or specific to Lenovo&rsquo;s efforts.</p>
+<a href="images/x13g1-with-ibm5155.jpg"><img src="images/x13g1-with-ibm5155.jpg" width="800"></a>
+<p>My Thinkpad X13G1 together with its ancestor the IBM5155 Portable PC.</p>
+<p>The IBM5155 is the first x86-based portable PC first sold by IBM in 1984. Both machines have x86 Intel CPUs running the same MS-DOS 6.22 operating system. It shows volumes how similar both machines still are despite the 4-decade gap. However this is the end of the line, no more Thinkpads made after this model generation will carry the similar level of compatibliity.</p>
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/hacks">hacks</a></li>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/retrocomputing">retrocomputing</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yeokm1/yeokm1.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNTQ3ODI3NTI="
+        data-category="Comments"
+        data-category-id="DIC_kwDODy-tIM4CXEA6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div class="pagination">
+  
+    <a href="/2024/06/my-first-chip-with-tiny-tapeout-cvx/" class="button"><div class="previous"><div>My first chip with Tiny Tapeout 4 - Covox Speech Thing clone</div></div></a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2024/08/dos-on-thinkpad-x13-gen1/" class="image featured">
+    
+      <img src="/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/08/dos-on-thinkpad-x13-gen1/">DOS&#39;s Last Stand on a modern Thinkpad: X13 Gen 1 with Intel i5-10310U</a></h1>
+          <time class="published" datetime="">August 18, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2024/06/my-first-chip-with-tiny-tapeout-cvx/" class="image featured">
+    
+      <img src="/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/06/my-first-chip-with-tiny-tapeout-cvx/">My first chip with Tiny Tapeout 4 - Covox Speech Thing clone</a></h1>
+          <time class="published" datetime="">June 20, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
+    
+      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up an open-frame Pentium 3 testbench</a></h1>
+          <time class="published" datetime="">May 25, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/" class="image featured">
+    
+      <img src="/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/images/gg-hdmi-banner.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/09/hdmi-isa-graphics-card-for-vintage-pcs/">HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin</a></h1>
+          <time class="published" datetime="">September 10, 2023</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2023/06/teardown-and-review-of-hand386/" class="image featured">
+    
+      <img src="/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2023/06/teardown-and-review-of-hand386/">Teardown &amp; review of a new 386 system: Hand386</a></h1>
+          <time class="published" datetime="">June 5, 2023</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/hacks/">hacks<span class="count">24</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/personal/">personal<span class="count">17</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/singapore/">singapore<span class="count">16</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">13</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/teardowns/">teardowns<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/school/">school<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/book-reviews/">book-reviews<span class="count">6</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/politics/">politics<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hackathon/">hackathon<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/product-reviews/">product-reviews<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/admin/">admin<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/repair-kopitiam/">repair-kopitiam<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/keyboards/">keyboards<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/quiz/">quiz<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/dvorak/">dvorak<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/flight-sim/">flight-sim<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2024
+      
+        YKM&#39;s Corner on the Web
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.128.2' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+<script type="text/javascript">
+  var sc_project = 8700008;
+  var sc_invisible = 1;
+  var sc_security = "b569f6b4";
+  var sc_https = 1; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript>
+  <div class="statcounter"><a title="free hit
+  counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+        src="https://c.statcounter.com/8700008/0/b569f6b4/1/" alt="free hit counter"></a></div>
+</noscript>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function (x) {
+      x.parentElement.classList += 'has-jax'
+    })
+  });
+
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.014b3d21b0ae48bdc65c014a94dcb45a449433034fe0903520121d1572e91c23.js" integrity="sha256-AUs9IbCuSL3GXAFKlNy0WkSUMwNP4JA1IBIdFXLpHCM="></script>
+<script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>

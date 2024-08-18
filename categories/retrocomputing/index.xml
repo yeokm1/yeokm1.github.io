@@ -6,8 +6,15 @@
     <description>Recent content in Retrocomputing on YKM&#39;s Corner on the Web</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 25 May 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 18 Aug 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://yeokhengmeng.com/categories/retrocomputing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DOS&#39;s Last Stand on a modern Thinkpad: X13 Gen 1 with Intel i5-10310U</title>
+      <link>http://yeokhengmeng.com/2024/08/dos-on-thinkpad-x13-gen1/</link>
+      <pubDate>Sun, 18 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>http://yeokhengmeng.com/2024/08/dos-on-thinkpad-x13-gen1/</guid>
+      <description>&lt;p&gt;When one thinks of modern technologies like Thunderbolt, 2.5 Gigabit Ethernet and modern CPUs, one would associate them with modern operating systems. How about DOS?&lt;/p&gt;&#xA;&lt;p&gt;It might seem imposssible, however I did an experiment on a relatively modern 2020 Thinkpad and found that those can be still be used by MS-DOS 6.22. MS-DOS 6.22 is the last standalone version of DOS released by Microsoft in June 1994. This makes it 30 years old today.&lt;/p&gt;&#xA;&lt;p&gt;I shall share the steps and challenges faced in making this 30-year-old OS work on a modern laptop with working audio and networking functions. This is likely the final generation of laptop capable of doing so.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Setting up an open-frame Pentium 3 testbench</title>
       <link>http://yeokhengmeng.com/2024/05/setting-up-pentium-3-testbench/</link>
