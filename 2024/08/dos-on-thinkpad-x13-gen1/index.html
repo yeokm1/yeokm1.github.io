@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.128.2">
+<meta name="generator" content="Hugo 0.133.0">
   <meta itemprop="name" content="DOS&#39;s Last Stand on a modern Thinkpad: X13 Gen 1 with Intel i5-10310U">
   <meta itemprop="description" content="When one thinks of modern technologies like Thunderbolt, 2.5 Gigabit Ethernet and modern CPUs, one would associate them with modern operating systems. How about DOS?
 It might seem impossible, however I did an experiment on a relatively modern 2020 Thinkpad and found that it can still run MS-DOS 6.22. MS-DOS 6.22 is the last standalone version of DOS released by Microsoft in June 1994. This makes it 30 years old today.
 I shall share the steps and challenges in locating a modern laptop capable of doing so and making the 30-year-old OS work on it with audio and networking functions. This is likely among the final generation of laptops able to run DOS natively.">
   <meta itemprop="datePublished" content="2024-08-18T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-08-18T00:00:00+00:00">
-  <meta itemprop="wordCount" content="2149">
+  <meta itemprop="wordCount" content="2151">
   <meta itemprop="image" content="http://yeokhengmeng.com/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg">
   <meta itemprop="keywords" content="Hacks,Retrocomputing"><meta property="og:url" content="http://yeokhengmeng.com/2024/08/dos-on-thinkpad-x13-gen1/">
   <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -337,7 +337,7 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <p>Source: <a href="https://www.intel.com/content/www/us/en/content-details/630266/removal-of-legacy-boot-support-for-intel-platforms-technical-advisory.html">Removal of Legacy Boot Support for Intel Platforms Technical Advisory</a></p>
 <p>As shown in the above slides, beginning in 2020, Legacy Boot Mode through a Compatibility Support Module (CSM) will no longer be supported. Only UEFI Class 3 device which is &ldquo;pure UEFI&rdquo; will be validated.</p>
 <p>This implies that DOS and operating systems that rely on BIOS routines will not be able to boot up natively on a UEFI Class 3 system, breaking away with 39 years of compatibility.</p>
-<p>Note that x86 CPUs still have the 16-bit real mode present to run the older code. It&rsquo;s just that there is no more legacy BIOS anymore.</p>
+<p>Note that x86 CPUs still have the 16-bit real mode present to run the older code. However there is no more legacy BIOS calls that DOS can utilise.</p>
 <h3 id="what-have-manufacturers-done">What have manufacturers done?</h3>
 <p>According to the largest PC maker in the world Lenovo:</p>
 <blockquote>
@@ -451,8 +451,8 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <p>The shim is required as a common networking utility suite MTCP and programs based on it like my <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/">DOS ChatGPT client</a> rely on Packet Drivers.</p>
 <h4 id="realtek-8125-25gbe-via-thunderbolt-egpu-dock">Realtek 8125 2.5GbE via Thunderbolt eGPU dock</h4>
 <a href="images/x13g1-rtl8125.jpg"><img src="images/x13g1-rtl8125.jpg" width="800"></a>
-<p>I got a PCIe-based Realtek 8125 2.5GbE card and have it connected by a Thunderbolt dock what is actually meant for external GPUs.</p>
-<p>A 2.5GBE link can actually be negotiated as shown by the driver if the cable and the other end is capable of it. In practice though, the practical speed is nowhere near.</p>
+<p>I got a PCIe-based Realtek 8125 2.5GbE card and have it connected by a Thunderbolt dock which is actually meant for external GPUs.</p>
+<p>A 2.5GBE link can actually be negotiated as shown by the driver if the cable and the other end is capable of it. In practice though, the actual speed is nowhere near.</p>
 <h4 id="apple-thunderbolt-2-1gbe-with-tb3-tb2-adapter-broadcom">Apple Thunderbolt 2 1GbE with TB3-TB2 adapter (Broadcom)</h4>
 <a href="images/x13g1-apple-tb2-ethernet.jpg"><img src="images/x13g1-apple-tb2-ethernet.jpg" width="800"></a>
 <p>The Apple Thunderbolt (2) to Gigabit Ethernet Adapter can be used in conjuction with an also Apple Thunderbolt 3 (USB-C) to Thunderbolt 2 Adapter.</p>
@@ -801,7 +801,7 @@ I shall share the steps and challenges in locating a modern laptop capable of do
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.128.2' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.133.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
@@ -842,7 +842,7 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 </script>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.014b3d21b0ae48bdc65c014a94dcb45a449433034fe0903520121d1572e91c23.js" integrity="sha256-AUs9IbCuSL3GXAFKlNy0WkSUMwNP4JA1IBIdFXLpHCM="></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.c773bce75f6ff1d086105b4e7f0c0e87ad25bf40fb24dd2da7586f9201d8f70d.js" integrity="sha256-x3O8519v8dCGEFtOfwwOh60lv0D7JN0tp1hvkgHY9w0="></script>
 <script src="/js/add-on.js"></script>
     </div>
   </body>
