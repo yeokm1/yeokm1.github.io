@@ -13,7 +13,7 @@ It might seem impossible, however I did an experiment on a relatively modern 202
 I shall share the steps and challenges in locating a modern laptop capable of doing so and making the 30-year-old OS work on it with audio and networking functions. This is likely among the final generation of laptops able to run DOS natively.">
   <meta itemprop="datePublished" content="2024-08-18T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-08-18T00:00:00+00:00">
-  <meta itemprop="wordCount" content="2112">
+  <meta itemprop="wordCount" content="2149">
   <meta itemprop="image" content="http://yeokhengmeng.com/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg">
   <meta itemprop="keywords" content="Hacks,Retrocomputing"><meta property="og:url" content="http://yeokhengmeng.com/2024/08/dos-on-thinkpad-x13-gen1/">
   <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -196,7 +196,7 @@ I shall share the steps and challenges in locating a modern laptop capable of do
     </time>
     <span class="author"></span>
     
-      <p>10 minutes read</p>
+      <p>11 minutes read</p>
     
   </div>
 </header>
@@ -337,6 +337,7 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <p>Source: <a href="https://www.intel.com/content/www/us/en/content-details/630266/removal-of-legacy-boot-support-for-intel-platforms-technical-advisory.html">Removal of Legacy Boot Support for Intel Platforms Technical Advisory</a></p>
 <p>As shown in the above slides, beginning in 2020, Legacy Boot Mode through a Compatibility Support Module (CSM) will no longer be supported. Only UEFI Class 3 device which is &ldquo;pure UEFI&rdquo; will be validated.</p>
 <p>This implies that DOS and operating systems that rely on BIOS routines will not be able to boot up natively on a UEFI Class 3 system, breaking away with 39 years of compatibility.</p>
+<p>Note that x86 CPUs still have the 16-bit real mode present to run the older code. It&rsquo;s just that there is no more legacy BIOS anymore.</p>
 <h3 id="what-have-manufacturers-done">What have manufacturers done?</h3>
 <p>According to the largest PC maker in the world Lenovo:</p>
 <blockquote>
@@ -426,7 +427,8 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <h3 id="dos-setup">DOS setup</h3>
 <p>I opted to have DOS installed on an external USB flash drive as it requires a legacy MBR partition table. I do not want it to intefere with the internal NVME drive containing my modern operating systems with the GPT partition table.</p>
 <a href="images/x13g1-dos-setup.jpg"><img src="images/x13g1-dos-setup.jpg" width="800"></a>
-<p>A USB floppy drive/emulator can be used to do the installation as the BIOS recognises the drive and assigns it the <code>A:</code> drive letter.</p>
+<p>A USB floppy drive/emulator can be used to do the installation as the BIOS recognises the drive and DOS assigns it the <code>A:</code> drive letter.</p>
+<p>This setup steps should work similarly for FreeDOS as well.</p>
 <h3 id="dos-configuration">DOS configuration</h3>
 <p>In order to consider a machine as &ldquo;properly&rdquo; set up, my personal definition is that it should have working audio and networking. Due to limited memory, I set up a DOS menu configuration to load different sets of driver configuration depending on my needs at the moment.</p>
 <a href="images/x13g1-boot-menu.jpg"><img src="images/x13g1-boot-menu.jpg" width="600"></a>
