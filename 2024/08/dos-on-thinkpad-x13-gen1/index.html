@@ -13,7 +13,7 @@ It might seem impossible, however I did an experiment on a relatively modern 202
 I shall share the steps and challenges in locating a modern laptop capable of doing so and making the 30-year-old OS work on it with audio and networking functions. This is likely among the final generation of laptops able to run DOS natively.">
   <meta itemprop="datePublished" content="2024-08-18T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-08-18T00:00:00+00:00">
-  <meta itemprop="wordCount" content="2151">
+  <meta itemprop="wordCount" content="2336">
   <meta itemprop="image" content="http://yeokhengmeng.com/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg">
   <meta itemprop="keywords" content="Hacks,Retrocomputing"><meta property="og:url" content="http://yeokhengmeng.com/2024/08/dos-on-thinkpad-x13-gen1/">
   <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -507,6 +507,128 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 </table>
 <p>The last 3 columns show the memory usage of the different driver components in bytes.</p>
 <p>We can observe the transfer speeds do not even come close to the 1 Gbit/s or 125000 KB/s.</p>
+<h2 id="performance-benchmarks">Performance benchmarks</h2>
+<p>I ran several benchmark applications from <a href="https://www.philscomputerlab.com/dos-benchmark-pack.html">Phil&rsquo;s Computer Lab DOS Benchmark Pack</a> in stock configuration.</p>
+
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/YMfRvdlx4pg?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
+
+<p>Majority of the tests are run in real mode with the JEMM memory manager unless the item</p>
+<p>These are the results:</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Idx</th>
+<th>Description</th>
+<th>Real mode</th>
+<th>Protected Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00:06</td>
+<td>1</td>
+<td>3DBench (Superscape) 1.0</td>
+<td>11.1 (incorrect)</td>
+<td></td>
+</tr>
+<tr>
+<td>00:23</td>
+<td>2</td>
+<td>3DBench (Superscape) 1.0c</td>
+<td>106.5</td>
+<td></td>
+</tr>
+<tr>
+<td>00:43</td>
+<td>3</td>
+<td>Chris&rsquo;s 3D Benchmark</td>
+<td>218.1 score, 130.8 FPS</td>
+<td></td>
+</tr>
+<tr>
+<td>01:10</td>
+<td>5</td>
+<td>PC Player benchmark 320x200 8bpp</td>
+<td>139.4</td>
+<td></td>
+</tr>
+<tr>
+<td>01:45</td>
+<td>6</td>
+<td>PC Player benchmark 640x480 8bpp</td>
+<td>22.2</td>
+<td></td>
+</tr>
+<tr>
+<td>02:19</td>
+<td>a</td>
+<td>Doom min. details</td>
+<td>2134 gametics, 294 realtics, 253.04 FPS</td>
+<td></td>
+</tr>
+<tr>
+<td>02:43</td>
+<td>b</td>
+<td>Doom max. details</td>
+<td>2134 gametics, 1799 realtics, 41.52 FPS</td>
+<td></td>
+</tr>
+<tr>
+<td>03:49</td>
+<td>c</td>
+<td>Quake timedemo</td>
+<td>969 Frames, 7.5s, 128.4 FPS</td>
+<td></td>
+</tr>
+<tr>
+<td>04:10</td>
+<td>d</td>
+<td>Quake timedemo 360x480</td>
+<td>969 Frames, 21.7s, 44.7FPS</td>
+<td></td>
+</tr>
+<tr>
+<td>04:48</td>
+<td>m</td>
+<td>TOPBENCH 3.8</td>
+<td>290</td>
+<td></td>
+</tr>
+<tr>
+<td>04:55</td>
+<td>n</td>
+<td>Speedsys 4.78</td>
+<td>2904.46 score</td>
+<td></td>
+</tr>
+<tr>
+<td>08:16</td>
+<td>e</td>
+<td>Quake timedemo 640x480</td>
+<td>Crash (likely insufficient memory)</td>
+<td>969 frames, 167.4s, 5.8 FPS</td>
+</tr>
+<tr>
+<td>11:23</td>
+<td>l</td>
+<td>Landmark System Speed Test 6.00</td>
+<td>Cannot start</td>
+<td>Unreliable results</td>
+</tr>
+</tbody>
+</table>
+<p>The following were skipped as they could not launch:</p>
+<ul>
+<li>4 - Chris&rsquo;s 3D Benchmark 640x480</li>
+<li>k - System Information 8.0</li>
+<li>t - CACHECHK (Cache ID tool)</li>
+</ul>
 <h2 id="conclusion">Conclusion</h2>
 <p>I&rsquo;m truly impressed at the backward compatibility efforts made by Intel and Lenovo to the point that BIOS backward compatibility is finally removed.</p>
 <p>That Thunderbolt worked as well as it was is unexpected but not suprising as it&rsquo;s the medium that carries the PCIe packets that is transparent to the operating system with appropriate BIOS support. Still I wonder if this level of compatibility is generic or specific to Lenovo&rsquo;s efforts.</p>
