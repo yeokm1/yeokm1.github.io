@@ -13,7 +13,7 @@ It might seem impossible, however I did an experiment on a relatively modern 202
 I shall share the steps and challenges in locating a modern laptop capable of doing so and making the 30-year-old OS work on it with audio and networking functions. This is likely among the final generation of laptops able to run DOS natively.">
   <meta itemprop="datePublished" content="2024-08-18T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-08-18T00:00:00+00:00">
-  <meta itemprop="wordCount" content="2359">
+  <meta itemprop="wordCount" content="2372">
   <meta itemprop="image" content="http://yeokhengmeng.com/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg">
   <meta itemprop="keywords" content="Hacks,Retrocomputing"><meta property="og:url" content="http://yeokhengmeng.com/2024/08/dos-on-thinkpad-x13-gen1/">
   <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -444,8 +444,8 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <a href="images/x13g1-intel-lan-detection.jpg"><img src="images/x13g1-intel-lan-detection.jpg" width="600"></a>
 <p>Using Intel&rsquo;s NVMCheck tool, I used it to scan the machine for Intel NICs. My hopes initially went up when I saw the I-219 detected. (The I-210 detected in this screenshot is from my external Thunderbolt 3 adapter.)</p>
 <a href="images/x13g1-intel-driver-cannot.jpg"><img src="images/x13g1-intel-driver-cannot.jpg" width="600"></a>
-<p>However when I tried to use the final release of <a href="https://www.intel.com/content/www/us/en/download/2595/intel-ethernet-adapter-drivers-for-ms-dos-final-release.html">Intel NIC drivers for MS-DOS</a>, it would not work.</p>
-<p>With no obvious avenues forward, I experimented with 3 different network adapters connected over Thunderbolt.</p>
+<p>However when I tried to use the final release of <a href="https://www.intel.com/content/www/us/en/download/2595/intel-ethernet-adapter-drivers-for-ms-dos-final-release.html">Intel NIC drivers for MS-DOS</a>, it would not work although the I-219 is supposedly supported by the driver.</p>
+<p>With no obvious avenues forward for the I-219, I experimented with another 3 network adapters connected over Thunderbolt.</p>
 <a href="images/x13g1-network-hardware-connection.png"><img src="images/x13g1-network-hardware-connection.png" width="800"></a>
 <p>This is the connection diagram of all network adapters evaluated.</p>
 <a href="images/x13g1-network-software-chain.png"><img src="images/x13g1-network-software-chain.png" width="800"></a>
@@ -455,10 +455,10 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <a href="images/x13g1-rtl8125.jpg"><img src="images/x13g1-rtl8125.jpg" width="800"></a>
 <p>I got a PCIe-based Realtek 8125 2.5GbE card and have it connected by a Thunderbolt dock which is actually meant for external GPUs.</p>
 <p>A 2.5GBE link can actually be negotiated as shown by the driver if the cable and the other end is capable of it. In practice though, the actual speed is nowhere near.</p>
-<h4 id="apple-thunderbolt-2-1gbe-with-tb3-tb2-adapter-broadcom">Apple Thunderbolt 2 1GbE with TB3-TB2 adapter (Broadcom)</h4>
+<h4 id="apple-thunderbolt-2-1gbe-with-tb3-tb2-adapter-broadcom-bcm57">Apple Thunderbolt 2 1GbE with TB3-TB2 adapter (Broadcom BCM57)</h4>
 <a href="images/x13g1-apple-tb2-ethernet.jpg"><img src="images/x13g1-apple-tb2-ethernet.jpg" width="800"></a>
-<p>The Apple Thunderbolt (2) to Gigabit Ethernet Adapter can be used in conjuction with an also Apple Thunderbolt 3 (USB-C) to Thunderbolt 2 Adapter.</p>
-<p>The Ethernet adapter is based on the Broadcom BCM57762 chip. Hence I used a B57 NDIS2 driver.</p>
+<p>The Apple Thunderbolt (2) to Gigabit Ethernet Adapter can be used in conjunction with an also Apple Thunderbolt 3 (USB-C) to Thunderbolt 2 Adapter.</p>
+<p>The Ethernet adapter is based on a Broadcom BCM57762 chip. Hence I used a B57 NDIS2 driver.</p>
 <p>I noticed the B57 driver introduces an unexplained slowdown in my system such that games are unplayable.</p>
 <h4 id="caldigit-ts3-plus-1gbe-via-thunderbolt-3-intel-i-210">Caldigit TS3 Plus 1GbE via Thunderbolt 3 (Intel I-210)</h4>
 <a href="images/x13g1-i210.jpg"><img src="images/x13g1-i210.jpg" width="800"></a>
