@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.133.0">
+<meta name="generator" content="Hugo 0.134.1">
   <meta itemprop="name" content="My first chip with Tiny Tapeout 4 - Covox Speech Thing clone">
   <meta itemprop="description" content="When one thinks of designing an Application-specific Integrated Circuit (ASIC) chip, one would typically imagine a very high production cost, lack of access to tools and individuals can’t really do this unless you work in a company or academia.
 Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
@@ -402,40 +402,40 @@ In this post, I will share my experience in development and demonstrating my des
 <p>The testbench can be executed in provided Github Actions. The action sets up a Linux virtual machine in the background with all required dependencies with no need to setup the toolchain manually.</p>
 <p>The first 2 are test-related Github actions. The third docs action is listed for completeness.</p>
 <table>
-<thead>
-<tr>
-<th>Github Action</th>
-<th>Jobs</th>
-<th>Objective</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>test</td>
-<td>test</td>
-<td>Pre-synthesis test. Run the testbench on the simulated HDL design.</td>
-</tr>
-<tr>
-<td>gds</td>
-<td>gds</td>
-<td>HDL module is converted to logic gates and laid out.</td>
-</tr>
-<tr>
-<td></td>
-<td>gl_test</td>
-<td>Post-synthesis test. Testbench is run on gate level.</td>
-</tr>
-<tr>
-<td></td>
-<td>viewer</td>
-<td>Design can be optionally viewed</td>
-</tr>
-<tr>
-<td>docs</td>
-<td>docs</td>
-<td>Generates the design datasheet from info.yaml</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Github Action</th>
+          <th style="text-align: left">Jobs</th>
+          <th style="text-align: left">Objective</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">test</td>
+          <td style="text-align: left">test</td>
+          <td style="text-align: left">Pre-synthesis test. Run the testbench on the simulated HDL design.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">gds</td>
+          <td style="text-align: left">gds</td>
+          <td style="text-align: left">HDL module is converted to logic gates and laid out.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">gl_test</td>
+          <td style="text-align: left">Post-synthesis test. Testbench is run on gate level.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">viewer</td>
+          <td style="text-align: left">Design can be optionally viewed</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">docs</td>
+          <td style="text-align: left">docs</td>
+          <td style="text-align: left">Generates the design datasheet from info.yaml</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="test-action">Test Action</h4>
 <a href="images/tt4-cvx-test-action.png"><img src="images/tt4-cvx-test-action.png" width="600"></a>
@@ -593,6 +593,23 @@ In this post, I will share my experience in development and demonstrating my des
       <article class="mini-post">
         <section>
           
+  <a href="/2024/09/book-review-the-race-for-perfect/" class="image featured">
+    
+      <img src="/2024/09/book-review-the-race-for-perfect/images/trfp-preview.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/09/book-review-the-race-for-perfect/">Book Review: The Race for Perfect: Inside the Quest to Design the Ultimate Portable Computer by Steve Hamm</a></h1>
+          <time class="published" datetime="">September 8, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/08/dos-on-thinkpad-x13-gen1/" class="image featured">
     
       <img src="/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg" alt="">
@@ -658,23 +675,6 @@ In this post, I will share my experience in development and demonstrating my des
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2023/06/teardown-and-review-of-hand386/" class="image featured">
-    
-      <img src="/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2023/06/teardown-and-review-of-hand386/">Teardown &amp; review of a new 386 system: Hand386</a></h1>
-          <time class="published" datetime="">June 5, 2023</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -731,7 +731,7 @@ In this post, I will share my experience in development and demonstrating my des
           
           <li>
             
-              <a href="/categories/book-reviews/">book-reviews<span class="count">6</span></a>
+              <a href="/categories/book-reviews/">book-reviews<span class="count">7</span></a>
             
           
           <li>
@@ -808,7 +808,7 @@ In this post, I will share my experience in development and demonstrating my des
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.133.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.134.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

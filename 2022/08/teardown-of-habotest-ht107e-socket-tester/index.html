@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.133.0">
+<meta name="generator" content="Hugo 0.134.1">
   <meta itemprop="name" content="Teardown of Habotest HT107E Socket Tester">
   <meta itemprop="description" content="During my volunteering with Repair Kopitiam, I noticed that an experienced coach had a tool that could plug into a socket to determine if the socket was wired up correctly. Fascinated by this, I wondered what such a tool was and how does it work?">
   <meta itemprop="datePublished" content="2022-08-06T00:00:00+00:00">
@@ -294,73 +294,73 @@
 <h3 id="ht107e-usage-characterisation">HT107E Usage characterisation</h3>
 <p>There are a total of 7 supported fault states represented by different LED combinations as shown in the table below. The 8th state of Earth/Neutral Reverse is undetectable by the HT107E and is not mentioned in the user manual.</p>
 <table>
-<thead>
-<tr>
-<th>No.</th>
-<th>Description</th>
-<th>Left</th>
-<th>Mid</th>
-<th>Right</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Correct</td>
-<td>ON</td>
-<td>ON</td>
-<td>OFF</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Open Neutral</td>
-<td>OFF</td>
-<td>ON</td>
-<td>OFF</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Live/Ground Reverse</td>
-<td>OFF</td>
-<td>ON</td>
-<td>ON</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Live/Neutral Reverse</td>
-<td>ON</td>
-<td>OFF</td>
-<td>ON</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Live/Ground Reverse Missing Ground</td>
-<td>ON</td>
-<td>ON</td>
-<td>ON</td>
-</tr>
-<tr>
-<td>6</td>
-<td>Open Ground</td>
-<td>ON</td>
-<td>OFF</td>
-<td>OFF</td>
-</tr>
-<tr>
-<td>7</td>
-<td>Missing Live</td>
-<td>OFF</td>
-<td>OFF</td>
-<td>OFF</td>
-</tr>
-<tr>
-<td>8</td>
-<td>Earth/Neutral Reverse (*Undetectable Error)</td>
-<td>ON</td>
-<td>ON</td>
-<td>ON</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">No.</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Left</th>
+          <th style="text-align: left">Mid</th>
+          <th style="text-align: left">Right</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">Correct</td>
+          <td style="text-align: left">ON</td>
+          <td style="text-align: left">ON</td>
+          <td style="text-align: left">OFF</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">2</td>
+          <td style="text-align: left">Open Neutral</td>
+          <td style="text-align: left">OFF</td>
+          <td style="text-align: left">ON</td>
+          <td style="text-align: left">OFF</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">3</td>
+          <td style="text-align: left">Live/Ground Reverse</td>
+          <td style="text-align: left">OFF</td>
+          <td style="text-align: left">ON</td>
+          <td style="text-align: left">ON</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">4</td>
+          <td style="text-align: left">Live/Neutral Reverse</td>
+          <td style="text-align: left">ON</td>
+          <td style="text-align: left">OFF</td>
+          <td style="text-align: left">ON</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">5</td>
+          <td style="text-align: left">Live/Ground Reverse Missing Ground</td>
+          <td style="text-align: left">ON</td>
+          <td style="text-align: left">ON</td>
+          <td style="text-align: left">ON</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">6</td>
+          <td style="text-align: left">Open Ground</td>
+          <td style="text-align: left">ON</td>
+          <td style="text-align: left">OFF</td>
+          <td style="text-align: left">OFF</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">7</td>
+          <td style="text-align: left">Missing Live</td>
+          <td style="text-align: left">OFF</td>
+          <td style="text-align: left">OFF</td>
+          <td style="text-align: left">OFF</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">Earth/Neutral Reverse (*Undetectable Error)</td>
+          <td style="text-align: left">ON</td>
+          <td style="text-align: left">ON</td>
+          <td style="text-align: left">ON</td>
+      </tr>
+  </tbody>
 </table>
 <p>To characterise the behaviour of this HT107E, I set up an experiment to simulate the wiring faults in order to trigger the above states.</p>
 <p>The 3 (Live, Neutral and Earth) wires from the AC source were exposed and connected to the HT107E inputs via crocodile clips. The positions of the crocodile clips can be switched around to simulate the wiring faults.</p>
@@ -560,6 +560,23 @@ We then decided to remove the sticker label on the cover and found that there we
       <article class="mini-post">
         <section>
           
+  <a href="/2024/09/book-review-the-race-for-perfect/" class="image featured">
+    
+      <img src="/2024/09/book-review-the-race-for-perfect/images/trfp-preview.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/09/book-review-the-race-for-perfect/">Book Review: The Race for Perfect: Inside the Quest to Design the Ultimate Portable Computer by Steve Hamm</a></h1>
+          <time class="published" datetime="">September 8, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/08/dos-on-thinkpad-x13-gen1/" class="image featured">
     
       <img src="/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg" alt="">
@@ -625,23 +642,6 @@ We then decided to remove the sticker label on the cover and found that there we
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2023/06/teardown-and-review-of-hand386/" class="image featured">
-    
-      <img src="/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2023/06/teardown-and-review-of-hand386/">Teardown &amp; review of a new 386 system: Hand386</a></h1>
-          <time class="published" datetime="">June 5, 2023</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -698,7 +698,7 @@ We then decided to remove the sticker label on the cover and found that there we
           
           <li>
             
-              <a href="/categories/book-reviews/">book-reviews<span class="count">6</span></a>
+              <a href="/categories/book-reviews/">book-reviews<span class="count">7</span></a>
             
           
           <li>
@@ -775,7 +775,7 @@ We then decided to remove the sticker label on the cover and found that there we
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.133.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.134.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

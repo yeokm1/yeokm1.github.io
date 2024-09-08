@@ -111,7 +111,7 @@
       <link>http://yeokhengmeng.com/2016/03/eagle-file-to-diy-pcb-etching/</link>
       <pubDate>Thu, 17 Mar 2016 00:00:00 +0000</pubDate>
       <guid>http://yeokhengmeng.com/2016/03/eagle-file-to-diy-pcb-etching/</guid>
-      <description>I design Printed Circuit Boards (PCBs) as my part of my job. I also have some PCB projects outside of work with my most famous project among my peers being my PCB name card.&#xA;A major problem PCB designers like myself face is time and cost. It takes about 2 weeks (1 week if you can afford to pay much more) between the time I send a PCB design (Gerber) file to a fabricator in China to the time I receive the boards.</description>
+      <description>&lt;p&gt;I design Printed Circuit Boards (PCBs) as my part of my job. I also have some PCB projects outside of work with my most famous project among my peers being my &lt;a href=&#34;http://yeokhengmeng.com/2015/09/pcb-businessname-card/&#34;&gt;PCB name card&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;A major problem PCB designers like myself face is time and cost. It takes about 2 weeks (1 week if you can afford to pay much more) between the time I send a PCB design (Gerber) file to a fabricator in China to the time I receive the boards. This wait time is frustrating as my work will stall till the boards come back and I can test them. There is also a minimum order quantity of 5-10 pieces which most of the time I rarely need during the prototyping process, 1 or 2 is usually more than enough. All these including the delivery costs add up to a hefty sum as one typically has to design a few iterations before getting it right.&lt;/p&gt;</description>
     </item>
     <item>
       <title>PCB Business/Name Card</title>
@@ -153,7 +153,7 @@
       <link>http://yeokhengmeng.com/2014/07/codextremeapps-2014-hackathon-aar/</link>
       <pubDate>Sun, 20 Jul 2014 00:00:00 +0000</pubDate>
       <guid>http://yeokhengmeng.com/2014/07/codextremeapps-2014-hackathon-aar/</guid>
-      <description>This is the third hackathon I have joined and the first that involves hardware. Although my team was not selected to go for the next round of judging, I&amp;rsquo;m glad to have learned alot during this IDA-organised XtremeApps hackathon held at SMU.&#xA;My team comprising Muneer, Sathish and myself brainstormed on the first day for ideas based on the themes given. We decided to build something to help the visually-impaired identify buses when they are at the bus stop.</description>
+      <description>&lt;p&gt;This is the third hackathon I have joined and the first that involves hardware. Although my team was not selected to go for the next round of judging, I&amp;rsquo;m glad to have learned alot during this IDA-organised XtremeApps hackathon held at SMU.&lt;/p&gt;&#xA;&lt;p&gt;My team comprising Muneer, Sathish and myself brainstormed on the first day for ideas based on the themes given. We decided to build something to help the visually-impaired identify buses when they are at the bus stop. We came up with this idea when we remembered that the visually-impaired had to stop every bus to ask the driver for the number if no one was around or constantly question the people around him. Wouldn&amp;rsquo;t it be a good thing if we could automate this tiresome process?&lt;/p&gt;</description>
     </item>
     <item>
       <title>What I did in NUS Hack&amp;Roll 2014</title>
@@ -174,7 +174,7 @@
       <link>http://yeokhengmeng.com/2013/01/number-pad-in-dvd-slot/</link>
       <pubDate>Wed, 30 Jan 2013 00:00:00 +0000</pubDate>
       <guid>http://yeokhengmeng.com/2013/01/number-pad-in-dvd-slot/</guid>
-      <description>Having switched to the Programmer Dvorak, its major shortcoming was the lower priority of the number keys. For my laptop, this was even more acute for number-intensive applications like spreadsheets. That was when I bought a number pad but I was afraid of losing it. So brainwave!&#xA;Put the number pad into the rarely-used DVD slot!&#xA;I cut the USB number pad down to size then placed it into an Ultrabay hard disk caddy.</description>
+      <description>&lt;p&gt;Having switched to the Programmer Dvorak, its major shortcoming was the lower priority of the number keys. For my laptop, this was even more acute for number-intensive applications like spreadsheets. That was when I bought a number pad but I was afraid of losing it. So brainwave!&lt;/p&gt;&#xA;&lt;p&gt;&lt;img alt=&#34;Numpad in UltraBay&#34; src=&#34;http://yeokhengmeng.com/2013/01/number-pad-in-dvd-slot/images/numpad-dvd.jpg&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Put the number pad into the rarely-used DVD slot!&lt;/p&gt;&#xA;&lt;p&gt;I cut the USB number pad down to size then placed it into an Ultrabay hard disk caddy. (IBM calls the DVD slot Ultrabay as it can be used by devices other than the DVD)&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

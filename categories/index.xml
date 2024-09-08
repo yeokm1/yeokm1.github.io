@@ -6,8 +6,15 @@
     <description>Recent content in Categories on YKM&#39;s Corner on the Web</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 18 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 08 Sep 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://yeokhengmeng.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Book-Reviews</title>
+      <link>http://yeokhengmeng.com/categories/book-reviews/</link>
+      <pubDate>Sun, 08 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>http://yeokhengmeng.com/categories/book-reviews/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Hacks</title>
       <link>http://yeokhengmeng.com/categories/hacks/</link>
@@ -83,13 +90,6 @@
       <link>http://yeokhengmeng.com/categories/politics/</link>
       <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
       <guid>http://yeokhengmeng.com/categories/politics/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Book-Reviews</title>
-      <link>http://yeokhengmeng.com/categories/book-reviews/</link>
-      <pubDate>Sat, 01 Aug 2020 00:00:00 +0000</pubDate>
-      <guid>http://yeokhengmeng.com/categories/book-reviews/</guid>
       <description></description>
     </item>
     <item>

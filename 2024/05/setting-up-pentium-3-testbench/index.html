@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.133.0">
+<meta name="generator" content="Hugo 0.134.1">
   <meta itemprop="name" content="Setting up an open-frame Pentium 3 testbench">
   <meta itemprop="description" content="I have amassed a respectable collection of retro-PCs in the several years I have been engaging in my retrocomputing hobby. As part of this hobby, I regularly acquire vintage expansion cards from others. Testing these newly-acquired cards will require me to frequently disassemble my properly set up retro-machines which is a hassle to do.
 To reduce the repeated handling of these old and relatively fragile setups, I decided to embark on a project to build a modular vintage PC in the form factor of an open-frame testbench. This testbench setup will facilitate testing of vintage expansion cards as well as easy evaluation of vintage operating systems.
@@ -339,18 +339,18 @@ In this blog post, I will go through how I set up this hardware for dual-boot be
 <h3 id="operating-systems">Operating Systems</h3>
 <p>I dual-boot 2 operating systems in this setup.</p>
 <table>
-<thead>
-<tr>
-<th>DOS 6.22/Windows for Workgroups 3.11</th>
-<th>Windows 98SE</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="images/ofpc-wfw.jpg"><img src="images/ofpc-wfw.jpg" width="500"></a></td>
-<td><a href="images/ofpc-win98.jpg"><img src="images/ofpc-win98.jpg" width="500"></a></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">DOS 6.22/Windows for Workgroups 3.11</th>
+          <th style="text-align: left">Windows 98SE</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><a href="images/ofpc-wfw.jpg"><img src="images/ofpc-wfw.jpg" width="500"></a></td>
+          <td style="text-align: left"><a href="images/ofpc-win98.jpg"><img src="images/ofpc-win98.jpg" width="500"></a></td>
+      </tr>
+  </tbody>
 </table>
 <p>DOS 6.22 + Windows for Workgroups 3.11 is used for a &ldquo;purer&rdquo; DOS and 16-bit test environment.</p>
 <p>Windows 98 Second Edition to me is the best retro Windows OS for reliability while still maintaining good DOS support.</p>
@@ -419,40 +419,40 @@ In this blog post, I will go through how I set up this hardware for dual-boot be
 <h4 id="dual-boot-install-approach">Dual-boot install approach</h4>
 <p>I used the following partition layout to keep both OSes plus my data isolated.</p>
 <table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Size</th>
-<th>File System</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Primary</td>
-<td>2GB</td>
-<td>FAT16</td>
-<td>DOS 6.22</td>
-</tr>
-<tr>
-<td>Primary</td>
-<td>26GB</td>
-<td>FAT32</td>
-<td>Win 98</td>
-</tr>
-<tr>
-<td>Extended</td>
-<td>32GB</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>- Logical</td>
-<td>32GB</td>
-<td>FAT32</td>
-<td>Data</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Size</th>
+          <th style="text-align: left">File System</th>
+          <th style="text-align: left">Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Primary</td>
+          <td style="text-align: left">2GB</td>
+          <td style="text-align: left">FAT16</td>
+          <td style="text-align: left">DOS 6.22</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Primary</td>
+          <td style="text-align: left">26GB</td>
+          <td style="text-align: left">FAT32</td>
+          <td style="text-align: left">Win 98</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Extended</td>
+          <td style="text-align: left">32GB</td>
+          <td style="text-align: left">-</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">- Logical</td>
+          <td style="text-align: left">32GB</td>
+          <td style="text-align: left">FAT32</td>
+          <td style="text-align: left">Data</td>
+      </tr>
+  </tbody>
 </table>
 <ol>
 <li>Partition using <a href="https://github.com/FDOS/fdisk">FreeDOS Fdisk</a> which can create multiple primary partitions.
@@ -634,6 +634,23 @@ In this blog post, I will go through how I set up this hardware for dual-boot be
       <article class="mini-post">
         <section>
           
+  <a href="/2024/09/book-review-the-race-for-perfect/" class="image featured">
+    
+      <img src="/2024/09/book-review-the-race-for-perfect/images/trfp-preview.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/09/book-review-the-race-for-perfect/">Book Review: The Race for Perfect: Inside the Quest to Design the Ultimate Portable Computer by Steve Hamm</a></h1>
+          <time class="published" datetime="">September 8, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/08/dos-on-thinkpad-x13-gen1/" class="image featured">
     
       <img src="/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg" alt="">
@@ -699,23 +716,6 @@ In this blog post, I will go through how I set up this hardware for dual-boot be
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2023/06/teardown-and-review-of-hand386/" class="image featured">
-    
-      <img src="/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2023/06/teardown-and-review-of-hand386/">Teardown &amp; review of a new 386 system: Hand386</a></h1>
-          <time class="published" datetime="">June 5, 2023</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -772,7 +772,7 @@ In this blog post, I will go through how I set up this hardware for dual-boot be
           
           <li>
             
-              <a href="/categories/book-reviews/">book-reviews<span class="count">6</span></a>
+              <a href="/categories/book-reviews/">book-reviews<span class="count">7</span></a>
             
           
           <li>
@@ -849,7 +849,7 @@ In this blog post, I will go through how I set up this hardware for dual-boot be
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.133.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.134.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

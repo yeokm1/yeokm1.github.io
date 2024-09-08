@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.133.0">
+<meta name="generator" content="Hugo 0.134.1">
   <meta itemprop="name" content="DME Theory and Teardown of Narco DME 890">
   <meta itemprop="description" content="A faulty aircraft avionics Narco DME 890 came into my hands recently. As this instrument was destined for the trash bin, I was given free reign to do whatever I wanted with it. What better way to do it than to conduct a teardown!
 Before commencing a teardown, I have to go through some theoretical concepts of the basic operation of this device.">
@@ -315,40 +315,40 @@ Before commencing a teardown, I have to go through some theoretical concepts of 
 <p>The difference between a certain Interrogation and Ground Reply frequency is an offset of 63 Mhz apart. However, notice that the Interrogation frequency range seems to be smaller than the Ground Reply frequency range.</p>
 <p>This is because DME operates in 2 modes X and Y. We can use this table to determine the correct Ground Reply frequency based on the Interrogation Frequency and Mode.</p>
 <table>
-<thead>
-<tr>
-<th>Mode\Frequency (Mhz)</th>
-<th>Interrogation Range</th>
-<th>Offset</th>
-<th>Reply Range</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Mode X</td>
-<td>1025 - 1087</td>
-<td>-63</td>
-<td>962 - 1024</td>
-</tr>
-<tr>
-<td>Mode X</td>
-<td>1088 - 1150</td>
-<td>+63</td>
-<td>1151 - 1213</td>
-</tr>
-<tr>
-<td>Mode Y</td>
-<td>1025 - 1087</td>
-<td>+63</td>
-<td>1088 - 1050</td>
-</tr>
-<tr>
-<td>Mode Y</td>
-<td>1088 - 1150</td>
-<td>-63</td>
-<td>1025 - 1087</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Mode\Frequency (Mhz)</th>
+          <th style="text-align: left">Interrogation Range</th>
+          <th style="text-align: left">Offset</th>
+          <th style="text-align: left">Reply Range</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Mode X</td>
+          <td style="text-align: left">1025 - 1087</td>
+          <td style="text-align: left">-63</td>
+          <td style="text-align: left">962 - 1024</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Mode X</td>
+          <td style="text-align: left">1088 - 1150</td>
+          <td style="text-align: left">+63</td>
+          <td style="text-align: left">1151 - 1213</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Mode Y</td>
+          <td style="text-align: left">1025 - 1087</td>
+          <td style="text-align: left">+63</td>
+          <td style="text-align: left">1088 - 1050</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Mode Y</td>
+          <td style="text-align: left">1088 - 1150</td>
+          <td style="text-align: left">-63</td>
+          <td style="text-align: left">1025 - 1087</td>
+      </tr>
+  </tbody>
 </table>
 <p>Visualising that table into graphical form:</p>
 <a href="images/dme890-frequency-x-y.png"><img src="images/dme890-frequency-x-y.png" width="500"></a>
@@ -388,58 +388,58 @@ For Y mode, the pulse spacing will be 30us.</p>
 <p>VOR frequencies are shown on the map. So what about their DME frequencies?</p>
 <p>Using the fixed VOR-DME frequency pairing in the previous section, we can derive the DME frequencies of those stations.</p>
 <table>
-<thead>
-<tr>
-<th>Station Code</th>
-<th>Station Name</th>
-<th>Station Type</th>
-<th>VOR Frequency</th>
-<th>DME Interrogation Freq</th>
-<th>DME Reply Freq</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PU</td>
-<td>Papa Uniform</td>
-<td>VOR-DME</td>
-<td>115.10</td>
-<td>1122</td>
-<td>1185</td>
-</tr>
-<tr>
-<td>VTK</td>
-<td>Tekong</td>
-<td>VOR-DME</td>
-<td>116.50</td>
-<td>1136</td>
-<td>1199</td>
-</tr>
-<tr>
-<td>SJ</td>
-<td>SINJON</td>
-<td>VOR-DME</td>
-<td>113.50</td>
-<td>1106</td>
-<td>1169</td>
-</tr>
-<tr>
-<td>TNG</td>
-<td>Tengah</td>
-<td>TACAN</td>
-<td>113.90</td>
-<td>1110</td>
-<td>1173</td>
-</tr>
-<tr>
-<td>PLA</td>
-<td>Paya Lebar</td>
-<td>TACAN</td>
-<td>116.30</td>
-<td>1134</td>
-<td>1197</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Station Code</th>
+          <th style="text-align: left">Station Name</th>
+          <th style="text-align: left">Station Type</th>
+          <th style="text-align: left">VOR Frequency</th>
+          <th style="text-align: left">DME Interrogation Freq</th>
+          <th style="text-align: left">DME Reply Freq</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">PU</td>
+          <td style="text-align: left">Papa Uniform</td>
+          <td style="text-align: left">VOR-DME</td>
+          <td style="text-align: left">115.10</td>
+          <td style="text-align: left">1122</td>
+          <td style="text-align: left">1185</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">VTK</td>
+          <td style="text-align: left">Tekong</td>
+          <td style="text-align: left">VOR-DME</td>
+          <td style="text-align: left">116.50</td>
+          <td style="text-align: left">1136</td>
+          <td style="text-align: left">1199</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">SJ</td>
+          <td style="text-align: left">SINJON</td>
+          <td style="text-align: left">VOR-DME</td>
+          <td style="text-align: left">113.50</td>
+          <td style="text-align: left">1106</td>
+          <td style="text-align: left">1169</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TNG</td>
+          <td style="text-align: left">Tengah</td>
+          <td style="text-align: left">TACAN</td>
+          <td style="text-align: left">113.90</td>
+          <td style="text-align: left">1110</td>
+          <td style="text-align: left">1173</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">PLA</td>
+          <td style="text-align: left">Paya Lebar</td>
+          <td style="text-align: left">TACAN</td>
+          <td style="text-align: left">116.30</td>
+          <td style="text-align: left">1134</td>
+          <td style="text-align: left">1197</td>
+      </tr>
+  </tbody>
 </table>
 <p>Therefore when the pilot wants to configure the Narco DME-890, he does not actually use the Interrogation/Reply frequencies directly. He uses the VOR frequencies published on the chart to enter into the DME system which will then automatically derive the correct DME frequencies to use.</p>
 <p>For the TACAN stations, although the &ldquo;VOR frequencies&rdquo; are listed, a civilian VOR avionics equipment cannot get any bearing information from it. The dummy VOR frequency is for the DME system to determine the paired DME frequency to interact with the TACAN system.</p>
@@ -510,38 +510,38 @@ For Y mode, the pulse spacing will be 30us.</p>
 <a href="images/dme890-display-ics.jpg"><img src="images/dme890-display-ics.jpg" width="500"></a>
 <p>The manual&rsquo;s BOM page on which components on the PCB corresponds to the schematic was in poor condition so I had to do some guesswork by googling the part numbers.</p>
 <table>
-<thead>
-<tr>
-<th>Manufacturer</th>
-<th>Part Number</th>
-<th>Designator</th>
-<th>Position and Orientation</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>RCA</td>
-<td>CD4051BE</td>
-<td>U317</td>
-<td>Right, Vertical</td>
-<td>3:8 Multiplexer Switch. Using 3 input lines connected to the controller, determine which of 8 digits is being controlled at any one time. <a href="https://www.ti.com/store/ti/en/p/product/?p=CD4051BE">TI still makes a version of this chip</a> with this part number!</td>
-</tr>
-<tr>
-<td>Allegro</td>
-<td>UDQ6118A-1</td>
-<td>U315</td>
-<td>Bottom, Horizontal</td>
-<td>+100VDC Display Driver. Provides a common Anode for all the Digits and Legends.</td>
-</tr>
-<tr>
-<td>Allegro</td>
-<td>UDN7180A</td>
-<td>U318, U319</td>
-<td>Top, Vertical</td>
-<td>-100VDC Display driver. One IC controls the 8-segment digit. Another IC controls the Legends: which are RNV, NM, Decimal, RMT, XT, MHZ, Decimal, MIN.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Manufacturer</th>
+          <th style="text-align: left">Part Number</th>
+          <th style="text-align: left">Designator</th>
+          <th style="text-align: left">Position and Orientation</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">RCA</td>
+          <td style="text-align: left">CD4051BE</td>
+          <td style="text-align: left">U317</td>
+          <td style="text-align: left">Right, Vertical</td>
+          <td style="text-align: left">3:8 Multiplexer Switch. Using 3 input lines connected to the controller, determine which of 8 digits is being controlled at any one time. <a href="https://www.ti.com/store/ti/en/p/product/?p=CD4051BE">TI still makes a version of this chip</a> with this part number!</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Allegro</td>
+          <td style="text-align: left">UDQ6118A-1</td>
+          <td style="text-align: left">U315</td>
+          <td style="text-align: left">Bottom, Horizontal</td>
+          <td style="text-align: left">+100VDC Display Driver. Provides a common Anode for all the Digits and Legends.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Allegro</td>
+          <td style="text-align: left">UDN7180A</td>
+          <td style="text-align: left">U318, U319</td>
+          <td style="text-align: left">Top, Vertical</td>
+          <td style="text-align: left">-100VDC Display driver. One IC controls the 8-segment digit. Another IC controls the Legends: which are RNV, NM, Decimal, RMT, XT, MHZ, Decimal, MIN.</td>
+      </tr>
+  </tbody>
 </table>
 <p>The method employed by DME-890 to programmatically select each digit directly is different from how the KX155 does it where the MCU advances the digit selection based on a transition of a clock signal to the multiplexer.</p>
 <h3 id="rf-section">RF Section</h3>
@@ -684,6 +684,23 @@ For Y mode, the pulse spacing will be 30us.</p>
       <article class="mini-post">
         <section>
           
+  <a href="/2024/09/book-review-the-race-for-perfect/" class="image featured">
+    
+      <img src="/2024/09/book-review-the-race-for-perfect/images/trfp-preview.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/09/book-review-the-race-for-perfect/">Book Review: The Race for Perfect: Inside the Quest to Design the Ultimate Portable Computer by Steve Hamm</a></h1>
+          <time class="published" datetime="">September 8, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/08/dos-on-thinkpad-x13-gen1/" class="image featured">
     
       <img src="/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg" alt="">
@@ -749,23 +766,6 @@ For Y mode, the pulse spacing will be 30us.</p>
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2023/06/teardown-and-review-of-hand386/" class="image featured">
-    
-      <img src="/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2023/06/teardown-and-review-of-hand386/">Teardown &amp; review of a new 386 system: Hand386</a></h1>
-          <time class="published" datetime="">June 5, 2023</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -822,7 +822,7 @@ For Y mode, the pulse spacing will be 30us.</p>
           
           <li>
             
-              <a href="/categories/book-reviews/">book-reviews<span class="count">6</span></a>
+              <a href="/categories/book-reviews/">book-reviews<span class="count">7</span></a>
             
           
           <li>
@@ -899,7 +899,7 @@ For Y mode, the pulse spacing will be 30us.</p>
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.133.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.134.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

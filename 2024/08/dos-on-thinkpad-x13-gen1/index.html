@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.133.0">
+<meta name="generator" content="Hugo 0.134.1">
   <meta itemprop="name" content="DOS&#39;s Last Stand on a modern Thinkpad: X13 Gen 1 with Intel i5-10310U">
   <meta itemprop="description" content="When one thinks of modern technologies like Thunderbolt, 2.5 Gigabit Ethernet and modern CPUs, one would associate them with modern operating systems. How about DOS?
 It might seem impossible, however I did an experiment on a relatively modern 2020 Thinkpad and found that it can still run MS-DOS 6.22. MS-DOS 6.22 is the last standalone version of DOS released by Microsoft in June 1994. This makes it 30 years old today.
@@ -470,42 +470,42 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <a href="images/x13g1-speedtest.jpg"><img src="images/x13g1-speedtest.jpg" width="800"></a>
 <p>I did a point-to-point connection between the DOS machine and my Framework running Kubuntu with a 2.5GbE Ethernet Expansion Card of RTL8156 chipset.</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th>Send Rate (KB/s)</th>
-<th>Recv Rate (KB/s)</th>
-<th>protman</th>
-<th>driver</th>
-<th>disk_pkt</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Realtek 8125</td>
-<td>16440.1</td>
-<td>29135.7</td>
-<td>128</td>
-<td>42288</td>
-<td>2736</td>
-</tr>
-<tr>
-<td>BCM57</td>
-<td>7960.4</td>
-<td>14791.4</td>
-<td>128</td>
-<td>53168</td>
-<td>2736</td>
-</tr>
-<tr>
-<td>Intel I210</td>
-<td>26698.5</td>
-<td>19793.4</td>
-<td>128</td>
-<td>56336</td>
-<td>2736</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left">Send Rate (KB/s)</th>
+          <th style="text-align: left">Recv Rate (KB/s)</th>
+          <th style="text-align: left">protman</th>
+          <th style="text-align: left">driver</th>
+          <th style="text-align: left">disk_pkt</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Realtek 8125</td>
+          <td style="text-align: left">16440.1</td>
+          <td style="text-align: left">29135.7</td>
+          <td style="text-align: left">128</td>
+          <td style="text-align: left">42288</td>
+          <td style="text-align: left">2736</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">BCM57</td>
+          <td style="text-align: left">7960.4</td>
+          <td style="text-align: left">14791.4</td>
+          <td style="text-align: left">128</td>
+          <td style="text-align: left">53168</td>
+          <td style="text-align: left">2736</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Intel I210</td>
+          <td style="text-align: left">26698.5</td>
+          <td style="text-align: left">19793.4</td>
+          <td style="text-align: left">128</td>
+          <td style="text-align: left">56336</td>
+          <td style="text-align: left">2736</td>
+      </tr>
+  </tbody>
 </table>
 <p>The last 3 columns show the memory usage of the different driver components in bytes.</p>
 <p>We can observe the transfer speeds do not even come close to 1 Gbit/s or 125000 KB/s.</p>
@@ -522,108 +522,108 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <p>Majority of the tests are run in real mode without the JEMM memory manager unless the program has issues that require it to run in protected mode.</p>
 <p>These are the results:</p>
 <table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Idx</th>
-<th>Description</th>
-<th>Real mode</th>
-<th>Protected Mode</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>00:06</td>
-<td>1</td>
-<td>3DBench (Superscape) 1.0</td>
-<td>11.1 (incorrect)</td>
-<td></td>
-</tr>
-<tr>
-<td>00:23</td>
-<td>2</td>
-<td>3DBench (Superscape) 1.0c</td>
-<td>106.5</td>
-<td></td>
-</tr>
-<tr>
-<td>00:43</td>
-<td>3</td>
-<td>Chris&rsquo;s 3D Benchmark</td>
-<td>218.1 score, 130.8 FPS</td>
-<td></td>
-</tr>
-<tr>
-<td>01:10</td>
-<td>5</td>
-<td>PC Player benchmark 320x200 8bpp</td>
-<td>139.4</td>
-<td></td>
-</tr>
-<tr>
-<td>01:45</td>
-<td>6</td>
-<td>PC Player benchmark 640x480 8bpp</td>
-<td>22.2</td>
-<td></td>
-</tr>
-<tr>
-<td>02:19</td>
-<td>a</td>
-<td>Doom min. details</td>
-<td>2134 gametics, 294 realtics, 253.04 FPS</td>
-<td></td>
-</tr>
-<tr>
-<td>02:43</td>
-<td>b</td>
-<td>Doom max. details</td>
-<td>2134 gametics, 1799 realtics, 41.52 FPS</td>
-<td></td>
-</tr>
-<tr>
-<td>03:49</td>
-<td>c</td>
-<td>Quake timedemo</td>
-<td>969 Frames, 7.5s, 128.4 FPS</td>
-<td></td>
-</tr>
-<tr>
-<td>04:10</td>
-<td>d</td>
-<td>Quake timedemo 360x480</td>
-<td>969 Frames, 21.7s, 44.7FPS</td>
-<td></td>
-</tr>
-<tr>
-<td>04:48</td>
-<td>m</td>
-<td>TOPBENCH 3.8</td>
-<td>290</td>
-<td></td>
-</tr>
-<tr>
-<td>04:55</td>
-<td>n</td>
-<td>Speedsys 4.78</td>
-<td>2904.46 score</td>
-<td></td>
-</tr>
-<tr>
-<td>08:16</td>
-<td>e</td>
-<td>Quake timedemo 640x480</td>
-<td>Crash (likely insufficient memory)</td>
-<td>969 frames, 167.4s, 5.8 FPS</td>
-</tr>
-<tr>
-<td>11:23</td>
-<td>l</td>
-<td>Landmark System Speed Test 6.00</td>
-<td>Cannot start</td>
-<td>Unreliable results</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Time</th>
+          <th style="text-align: left">Idx</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Real mode</th>
+          <th style="text-align: left">Protected Mode</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">00:06</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">3DBench (Superscape) 1.0</td>
+          <td style="text-align: left">11.1 (incorrect)</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">00:23</td>
+          <td style="text-align: left">2</td>
+          <td style="text-align: left">3DBench (Superscape) 1.0c</td>
+          <td style="text-align: left">106.5</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">00:43</td>
+          <td style="text-align: left">3</td>
+          <td style="text-align: left">Chris&rsquo;s 3D Benchmark</td>
+          <td style="text-align: left">218.1 score, 130.8 FPS</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">01:10</td>
+          <td style="text-align: left">5</td>
+          <td style="text-align: left">PC Player benchmark 320x200 8bpp</td>
+          <td style="text-align: left">139.4</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">01:45</td>
+          <td style="text-align: left">6</td>
+          <td style="text-align: left">PC Player benchmark 640x480 8bpp</td>
+          <td style="text-align: left">22.2</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">02:19</td>
+          <td style="text-align: left">a</td>
+          <td style="text-align: left">Doom min. details</td>
+          <td style="text-align: left">2134 gametics, 294 realtics, 253.04 FPS</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">02:43</td>
+          <td style="text-align: left">b</td>
+          <td style="text-align: left">Doom max. details</td>
+          <td style="text-align: left">2134 gametics, 1799 realtics, 41.52 FPS</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">03:49</td>
+          <td style="text-align: left">c</td>
+          <td style="text-align: left">Quake timedemo</td>
+          <td style="text-align: left">969 Frames, 7.5s, 128.4 FPS</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">04:10</td>
+          <td style="text-align: left">d</td>
+          <td style="text-align: left">Quake timedemo 360x480</td>
+          <td style="text-align: left">969 Frames, 21.7s, 44.7FPS</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">04:48</td>
+          <td style="text-align: left">m</td>
+          <td style="text-align: left">TOPBENCH 3.8</td>
+          <td style="text-align: left">290</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">04:55</td>
+          <td style="text-align: left">n</td>
+          <td style="text-align: left">Speedsys 4.78</td>
+          <td style="text-align: left">2904.46 score</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">08:16</td>
+          <td style="text-align: left">e</td>
+          <td style="text-align: left">Quake timedemo 640x480</td>
+          <td style="text-align: left">Crash (likely insufficient memory)</td>
+          <td style="text-align: left">969 frames, 167.4s, 5.8 FPS</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">11:23</td>
+          <td style="text-align: left">l</td>
+          <td style="text-align: left">Landmark System Speed Test 6.00</td>
+          <td style="text-align: left">Cannot start</td>
+          <td style="text-align: left">Unreliable results</td>
+      </tr>
+  </tbody>
 </table>
 <p>The following were skipped as they could not launch:</p>
 <ul>
@@ -696,6 +696,8 @@ I shall share the steps and challenges in locating a modern laptop capable of do
     <a href="/2024/06/my-first-chip-with-tiny-tapeout-cvx/" class="button"><div class="previous"><div>My first chip with Tiny Tapeout 4 - Covox Speech Thing clone</div></div></a>
   
   
+    <a href="/2024/09/book-review-the-race-for-perfect/" class="button"><div class="next"><div>Book Review: The Race for Perfect: Inside the Quest to Design the Ultimate Portable Computer by Steve Hamm</div></div></a>
+  
 </div>
 
 
@@ -706,6 +708,23 @@ I shall share the steps and challenges in locating a modern laptop capable of do
       <header>
         <h1>Recent posts</h1>
       </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2024/09/book-review-the-race-for-perfect/" class="image featured">
+    
+      <img src="/2024/09/book-review-the-race-for-perfect/images/trfp-preview.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/09/book-review-the-race-for-perfect/">Book Review: The Race for Perfect: Inside the Quest to Design the Ultimate Portable Computer by Steve Hamm</a></h1>
+          <time class="published" datetime="">September 8, 2024</time>
+        </header>
+      </article>
       
       <article class="mini-post">
         <section>
@@ -775,23 +794,6 @@ I shall share the steps and challenges in locating a modern laptop capable of do
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2023/06/teardown-and-review-of-hand386/" class="image featured">
-    
-      <img src="/2023/06/teardown-and-review-of-hand386/images/hand386-full-setup.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2023/06/teardown-and-review-of-hand386/">Teardown &amp; review of a new 386 system: Hand386</a></h1>
-          <time class="published" datetime="">June 5, 2023</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -848,7 +850,7 @@ I shall share the steps and challenges in locating a modern laptop capable of do
           
           <li>
             
-              <a href="/categories/book-reviews/">book-reviews<span class="count">6</span></a>
+              <a href="/categories/book-reviews/">book-reviews<span class="count">7</span></a>
             
           
           <li>
@@ -925,7 +927,7 @@ I shall share the steps and challenges in locating a modern laptop capable of do
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.133.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.134.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
