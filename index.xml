@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Post on YKM&#39;s Corner on the Web</title>
-    <link>http://yeokhengmeng.com/post/</link>
-    <description>Recent content in Post on YKM&#39;s Corner on the Web</description>
+    <title>YKM&#39;s Corner on the Web</title>
+    <link>http://yeokhengmeng.com/</link>
+    <description>Recent content on YKM&#39;s Corner on the Web</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 09 Sep 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://yeokhengmeng.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://yeokhengmeng.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Book Review: The Race for Perfect: Inside the Quest to Design the Ultimate Portable Computer by Steve Hamm</title>
       <link>http://yeokhengmeng.com/2024/09/book-review-the-race-for-perfect/</link>
@@ -483,6 +483,20 @@
       <pubDate>Fri, 26 Dec 2014 00:00:00 +0000</pubDate>
       <guid>http://yeokhengmeng.com/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/</guid>
       <description>&lt;p&gt;The apps in question are active and can be downloaded from their respective app stores.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.yeokm1.nussocprintandroid&#34;&gt;Android Play Store&lt;/a&gt; (&lt;a href=&#34;https://github.com/yeokm1/nus-soc-print&#34;&gt;source code&lt;/a&gt;) (&lt;a href=&#34;https://github.com/yeokm1/nus-soc-print/raw/master/user-dev-guide/NUS%20SOC%20Print%20Dev%20Guide%20-%20Android.pdf&#34;&gt;User and Developer Guide&lt;/a&gt;)&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://itunes.apple.com/sg/app/id916524327&#34;&gt;Apple App Store&lt;/a&gt; (&lt;a href=&#34;https://github.com/yeokm1/nus-soc-print-ios/&#34;&gt;source code&lt;/a&gt;) (&lt;a href=&#34;https://github.com/yeokm1/nus-soc-print-ios/raw/master/user-dev-guide/NUS%20SOC%20Print%20Dev%20Guide%20-%20iOS.pdf&#34;&gt;User and Developer Guide&lt;/a&gt;)&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;This post is about 3000 words long as I wanted to go as in depth as much as possible to describe my experience in developing for both Android and iOS. If this length scares you already well I do not blame you, I tend to get long-winded in my reflections but I usually hope my readers learn and understand my underlying thought process behind certain decisions I made.&lt;/p&gt;&#xA;&lt;p&gt;There should be something here for Android devs, iOS devs or people just interested to know the inner workings of my app or Sunfire.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>About Me</title>
+      <link>http://yeokhengmeng.com/about-me/</link>
+      <pubDate>Thu, 25 Dec 2014 14:55:48 +0000</pubDate>
+      <guid>http://yeokhengmeng.com/about-me/</guid>
+      <description>&lt;p&gt;Computer Science graduate from NUS School of Computing but now working on Embedded hardware and software. Now taking a NUS Master of Computer Engineering.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Enjoys both software and hardware hacks.&lt;/li&gt;&#xA;&lt;li&gt;FAA Private Pilot license holder&lt;/li&gt;&#xA;&lt;li&gt;Interested in retrocomputing. I feel a magnetic attraction to old computers.&lt;/li&gt;&#xA;&lt;li&gt;Interested in current affairs especially politics&lt;/li&gt;&#xA;&lt;li&gt;I use the &lt;a href=&#34;http://yeokhengmeng.com/2013/02/programmer-dvorak-layout/&#34;&gt;Programmer Dvorak keyboard layout&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;Occasional (cyberpunk) anime watcher&lt;/li&gt;&#xA;&lt;li&gt;Enjoys science fiction movies/TV series/books&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Checkout my &lt;a href=&#34;https://github.com/yeokm1&#34;&gt;Github account&lt;/a&gt; for the stuff I have hacked away. My LinkedIn page is &lt;a href=&#34;https://www.linkedin.com/in/yeokhengmeng&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Favourite Quotes</title>
+      <link>http://yeokhengmeng.com/favourite-quotes/</link>
+      <pubDate>Thu, 25 Dec 2014 13:47:18 +0000</pubDate>
+      <guid>http://yeokhengmeng.com/favourite-quotes/</guid>
+      <description>&lt;p&gt;(an evergreen page, last updated 25 June 2017)&lt;/p&gt;&#xA;&lt;h1 id=&#34;from-speechesauthors&#34;&gt;From speeches\authors:&lt;/h1&gt;&#xA;&lt;p&gt;&lt;em&gt;Don&amp;rsquo;t do shit, unless it&amp;rsquo;s epic shit!&lt;/em&gt;&lt;br&gt;&#xA;-Prof Colin Tan, NUS CS3216 Last Lecture (AY2013-2014 Sem 1)&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;adding manpower to a late software project makes it later&lt;/em&gt;&lt;br&gt;&#xA;-Fred Brooks, The Mythical Man-Month. (aka &lt;a href=&#34;http://en.wikipedia.org/wiki/Brooks%27slaw&#34;&gt;Brook&amp;rsquo;s Law )&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;“Any fool can write code that a computer can understand. Good programmers write code that humans can understand.”&lt;br&gt;&#xA;-Martin Fowler et al, Refactoring: Improving the Design of Existing Code, 1999. &lt;a href=&#34;http://weblogs.asp.net/fmarguerie/archive/2004/03/03/83216.aspx&#34;&gt;Src&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>My (brutally) honest 24th birthday reflections</title>
