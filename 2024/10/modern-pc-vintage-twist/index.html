@@ -13,7 +13,7 @@ I recently built myself a PC as my previous desktop PC was insufficient for my c
 In this post, I will go through my thought process I went through to decide on the specifications as well as the journey I made to run MS-DOS 6.22 on it.">
   <meta itemprop="datePublished" content="2024-10-06T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-10-06T00:00:00+00:00">
-  <meta itemprop="wordCount" content="2436">
+  <meta itemprop="wordCount" content="2437">
   <meta itemprop="image" content="http://yeokhengmeng.com/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg">
   <meta itemprop="keywords" content="Retrocomputing"><meta property="og:url" content="http://yeokhengmeng.com/2024/10/modern-pc-vintage-twist/">
   <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -354,7 +354,7 @@ In this post, I will go through my thought process I went through to decide on t
 <p>I wanted a modern yet lower cost motherboard using an AM5-based chipset with DDR5 RAM so it can have some future proofing. AMD has <a href="https://arstechnica.com/gadgets/2024/07/amd-makes-improved-efficiency-a-core-part-of-the-pitch-for-its-ryzen-9000-cpus/">commited to support AM5 to 2027</a>.</p>
 <p>But that alone does not explain why I chose this motherboard as there are plenty around that have AM5 support. The true reason is that it has a native parallel port!</p>
 <a href="images/ryzendos-legacy-ports.jpg"><img src="images/ryzendos-legacy-ports.jpg" width="500"></a>
-<p>It has COM and LPT headers on the bottom which can be brought out to actual ports with ribbon cables. LPT is a very rare feature on a such a modern motherboard. The other other one that I know that has an LPT port is the Asus Pro A620M-C-CSM of a similar product line but uses a less capable A620 chipset.</p>
+<p>It has COM and LPT headers on the bottom which can be brought out to actual ports with ribbon cables. LPT is a very rare feature on a such a modern motherboard. The only other modern board that I know that has an LPT port is the Asus Pro A620M-C-CSM of a similar product line but uses a less capable A620 chipset.</p>
 <p>I wanted a parallel port to experiment with vintage applications like Covox Speech Thing, sound and network adapters.</p>
 <p><a href="https://www.startech.com/en-eu/cards-adapters/pex1s1p952">PCI-E cards with parallel port</a> exist and I have used those before. The issue with those is that they are not mapped to the traditional parallel port address like 0x378. Vintage applications sometimes are hardcoded to use those addresses. Only a motherboard with native support can have access to this address directly.</p>
 <p>This motherboard also has a PS/2 port which is getting more uncommon with modern boards. I wanted this port as I still use PS/2 peripherals. A PS/2 port is also a strong indication that this board supports UEFI-CSM which is key requirement in running DOS.</p>
