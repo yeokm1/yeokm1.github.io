@@ -13,7 +13,7 @@ I recently built myself a PC as my previous desktop components was insufficient 
 In this post, I will go through my thought process I went through to decide on the specifications as well as the journey I made to run MS-DOS 6.22 on it.">
   <meta itemprop="datePublished" content="2024-10-06T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-10-06T00:00:00+00:00">
-  <meta itemprop="wordCount" content="2366">
+  <meta itemprop="wordCount" content="2427">
   <meta itemprop="image" content="http://yeokhengmeng.com/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg">
   <meta itemprop="keywords" content="Retrocomputing"><meta property="og:url" content="http://yeokhengmeng.com/2024/10/modern-pc-vintage-twist/">
   <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -350,11 +350,11 @@ In this post, I will go through my thought process I went through to decide on t
 <p>Rear of the system showing a combination of modern and vintage ports.</p>
 <h3 id="motherboard">Motherboard</h3>
 <a href="images/ryzendos-mobo.jpg"><img src="images/ryzendos-mobo.jpg" width="500"></a>
-<p>This motherboard is a business-oriented line ASUS Pro B650M-CT-CSM. Not a choice a typical consumer or PC gaming enthusiast would usually make.</p>
+<p>This ASUS Pro B650M-CT-CSM motherboard is from a business-oriented line. Not a choice a typical consumer or PC gaming enthusiast would usually make.</p>
 <p>I wanted a modern yet lower cost motherboard using an AM5-based chipset with DDR5 RAM so it can have some future proofing. AMD has <a href="https://arstechnica.com/gadgets/2024/07/amd-makes-improved-efficiency-a-core-part-of-the-pitch-for-its-ryzen-9000-cpus/">commited to support AM5 to 2027</a>.</p>
 <p>But that alone does not explain why I chose this motherboard as there are plenty around that have AM5 support. The true reason is that it has a native parallel port!</p>
 <a href="images/ryzendos-legacy-ports.jpg"><img src="images/ryzendos-legacy-ports.jpg" width="500"></a>
-<p>It has COM and LPT headers on the bottom which can be brought out to an actual port with ribbon cables. LPT is a very rare feature on a such a modern motherboard. The other other one that I know has an LPT port is the Asus Pro A620M-C-CSM of a similar product line but uses a less capable A620 chipset.</p>
+<p>It has COM and LPT headers on the bottom which can be brought out to actual ports with ribbon cables. LPT is a very rare feature on a such a modern motherboard. The other other one that I know that has an LPT port is the Asus Pro A620M-C-CSM of a similar product line but uses a less capable A620 chipset.</p>
 <p>I wanted a parallel port to experiment with vintage applications like Covox Speech Thing, sound and network adapters.</p>
 <p><a href="https://www.startech.com/en-eu/cards-adapters/pex1s1p952">PCI-E cards with parallel port</a> exist and I have used those before. The issue with those is that they are not mapped to the traditional parallel port address like 0x378. Vintage applications sometimes are hardcoded to use those addresses. Only a motherboard with native support can have access to this address directly.</p>
 <p>This motherboard also has a PS/2 port which is getting more uncommon with modern boards. I wanted this port as I still use PS/2 peripherals. A PS/2 port is also a strong indication that this board supports UEFI-CSM which is key requirement in running DOS.</p>
@@ -372,7 +372,7 @@ In this post, I will go through my thought process I went through to decide on t
 <p>Power consumption is similar to my previous Geforce 1070 so I don&rsquo;t have to spend more to upgrade my PSU.</p>
 <h3 id="ram---2x32gb-ddr5-5600-cl36-kingston-fury">RAM - 2x32GB DDR5-5600 CL36 Kingston Fury</h3>
 <a href="images/ryzendos-ram.jpg"><img src="images/ryzendos-ram.jpg" width="400"></a>
-<p>I got 64GB of total RAM primarily to run virtual machines and the light ML workloads. For most applications like gaming, 32GB is actually sufficient.</p>
+<p>I got 64GB of total RAM primarily to run virtual machines and light ML workloads. For most applications like gaming, 32GB is actually sufficient.</p>
 <p>At DDR5-5600 CL36 speed, I think this is more than sufficient for my needs as looking at online benchmarks, speeds and latencies don&rsquo;t seem to move the needle much on gaming performance for faster RAM.</p>
 <a href="images/ryzendos-ddr5-training.jpg"><img src="images/ryzendos-ddr5-training.jpg" width="700"></a>
 <p>With this RAM, the board seems to take a long time to POST on every boot. Something like at least a minute. Based on online research, it is because the motherboard needs to find an optimal set of timings to work with the RAM. This has always been done for previous RAM generations but is an issue now because it takes a significant amount of time for DDR5.</p>
@@ -385,8 +385,8 @@ In this post, I will go through my thought process I went through to decide on t
 <p>The PCIe 3.0 Samsung 970 Evo Plus was my previous boot drive is now my secondary drive.</p>
 <h3 id="sound-card---sound-blasterx-ae-5">Sound card - Sound BlasterX AE-5</h3>
 <a href="images/ryzendos-ae5.jpg"><img src="images/ryzendos-ae5.jpg" width="500"></a>
-<p>Dedicated sound cards are now rare sight in modern PC desktops as most onboard sound chips are good enough for most people. I however still opt to use one due to better sound quality and ports like TOSLINK optical which this motherboard does not have.</p>
-<p>This Creative Sound BlasterX AE-5 from my previous build has a software feature called <a href="https://support.creative.com/kb/ShowArticle.aspx?sid=28967&c">Creative ALchemy</a>. It enables one to run older EAX games on modern systems.</p>
+<p>Dedicated sound cards are now a rare sight in modern PC desktops as most onboard sound chips are good enough for most people. I however still opt to use one due to better sound quality and ports like TOSLINK optical which this motherboard does not have.</p>
+<p>This Creative Sound BlasterX AE-5 from my previous build has a software feature called <a href="https://support.creative.com/kb/ShowArticle.aspx?sid=28967&c">Creative ALchemy</a>. It enables one to run older EAX games on modern systems. It is however too modern to have vintage DOS support.</p>
 <p>Another less technical reason is to support a local Singaporean company.</p>
 <h3 id="floppy">Floppy</h3>
 <p>The floppy drive is an interesting one. This motherboard does not have a native floppy header which is unsuprising. I highly doubt there is a new modern motherboard that still has one.</p>
@@ -415,26 +415,27 @@ In this post, I will go through my thought process I went through to decide on t
 <p>For the detailed <code>config.sys</code> and <code>autoexec.bat</code> files I used, you can go to this <a href="https://github.com/yeokm1/retro-configs/tree/master/desktops/modern-ryzen-desktop">Github repo link</a>.</p>
 <h3 id="dos-drivers">DOS drivers</h3>
 <a href="images/ryzendos-drivers.jpg"><img src="images/ryzendos-drivers.jpg" width="700"></a>
-<p>The audio driver is provided by <a href="https://github.com/crazii/SBEMU">SBEMU</a>. It&rsquo;s a relatively new project that provides Sound Blaster compatibility to modern sound hardware like Intel HD Audio standard and many other chips.</p>
+<p>The audio driver is provided by <a href="https://github.com/crazii/SBEMU">SBEMU</a>. It&rsquo;s a relatively new project that provides Sound Blaster compatibility to modern sound hardware like Intel HD Audio standard and many other sound chips. It clearly works on this AMD system too.</p>
 <p>For the Xircom adapter, Packet Drivers can be easily found online so it is compatible with the useful <a href="http://brutmanlabs.org/mTCP/">MTCP DOS networking utilities</a>.</p>
 <h2 id="additional-issues-encountered">Additional Issues encountered</h2>
-<p>Not everything went beyond smoothly. I encountered several issues new and old that I don&rsquo;t have any answer to at the moment. As you can imagine, some are problems that will not have easy online solutions.</p>
-<p>So I decide to document this here in case another person encounter a similar issue.</p>
+<p>Not everything went smoothly. I encountered several issues new and old that I don&rsquo;t have any answer to at the moment. As you can imagine, some are problems that will not have easy online solutions.</p>
+<p>So I decide to document them here in case another person encounters a similar issue.</p>
 <h3 id="motherboard-may-not-post-with-unsupported-ram">Motherboard may not POST with unsupported RAM</h3>
 <p>When I first powered up the system with my new RAM, it initially did not even POST. It got indefinitely stuck in what I believe was RAM training.</p>
 <p>I believe a BIOS update is required for the motherboard to recognise the new RAM. But if you can&rsquo;t even start the board, you can&rsquo;t update the BIOS! It&rsquo;s a catch-22 situation. This motherboard does not have the <a href="https://www.asus.com/support/faq/1038568/">BIOS flashback</a> feature available on other Asus boards to update the BIOS without CPU and RAM.</p>
 <p>To get around this, I got another lower-speed DDR5 stick to at least get the board to POST then I updated the BIOS to the latest version.</p>
 <a href="images/ryzendos-bios-update.jpg"><img src="images/ryzendos-bios-update.jpg" width="500"></a>
-<p>I powered the motherboard with a PicoPSU separately and did the BIOS update which a very early 2023 version.</p>
+<p>I powered the motherboard with a PicoPSU separately and did the BIOS update which was originally from an early 2023 version.</p>
 <h3 id="some-dos-games-run-too-fast">Some DOS games run too fast</h3>
-<p>From the video at the top, the Descent game runs too fast to be playable. This is a common behaviour for some DOS games as they were written for the slower CPUs of decades ago.</p>
+<p>From the video at the top, the Descent game runs too fast to be playable. This is a common behaviour for some DOS games on newer systems as they were written for the slower CPUs of decades ago.</p>
 <p>To mitigate this, tools like <a href="https://www.vogons.org/viewtopic.php?t=38613">Setmul</a> and <a href="https://www.vogons.org/viewtopic.php?t=74359">CpuSpd</a> were created to allow people to slow down the CPUs.</p>
 <p>I tried both tools and they did not seem to work well on this CPU. The only available option was to disable L1 cache. When I did so, the system went to the other extreme and slowed to a crawl that games became too slow to be playable.</p>
 <p>I don&rsquo;t blame the tools as they are not meant to be used for such modern CPUs.</p>
 <h3 id="usb-drives-with-no-partitions-or-empty-floppy-drives-not-detected-in-real-mode">USB drives with no partitions or empty floppy drives not detected in real mode</h3>
 <p>I observed this strange case when I was installing DOS. I wiped all the partitions in my target USB flash drive to prepare for DOS to be installed onto it.</p>
 <p>When I booted from the DOS setup floppy disk, the USB flash drive was not presented as a fixed disk for DOS setup or fdisk to work on.</p>
-<p>I had to create a dummy FAT16 partition manually using other tools before booting the system. I suspect this is a motherboard BIOS issue as empty drives are not presented as a viable boot or disk option.</p>
+<p>I had to create a dummy FAT16 partition manually using other tools before booting the system. After getting the fixed disk drive (of the USB disk) to be visible in DOS, I then use DOS fdisk&rsquo;s tool to recreate the primary partition and format it so that DOS is able to use it.</p>
+<p>I suspect this is a motherboard BIOS issue as empty drives are not presented as a viable boot or disk option.</p>
 <h3 id="parallel-port-no-epp-or-irq-feature">Parallel port no EPP or IRQ feature</h3>
 <p>THe Xircom PE3 driver and Enhanced Parallel Port (EPP) utility currently detects my parallel port as a standard bidirectional printer port with no interrupt (IRQ). This is despite a higher performance setting of Enhanced Parallel Port (EPP) and Interrupt 5 has been enabled in the BIOS.</p>
 <a href="images/ryzendos-parallel.jpg"><img src="images/ryzendos-parallel.jpg" width="600"></a>
