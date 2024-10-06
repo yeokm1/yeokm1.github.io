@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Modern 2024 PC with a vintage twist (ft. Ryzen 5 7600 &amp; Geforce 4060 Ti) - YKM&#39;s Corner on the Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.135.0">
+  <meta itemprop="name" content="Modern 2024 PC with a vintage twist (ft. Ryzen 5 7600 & Geforce 4060 Ti)">
+  <meta itemprop="description" content="If I were to tell you a PC has a floppy drive, optical drive, Sound Blaster card, serial, parallel and PS/2 ports running DOS, you would think I’m referring to a machine from the 1990s. But my very modern PC built in 2024 possess these characteristics!
+I recently built myself a PC as my previous desktop components was insufficient for my current needs. I decided to build one with the ability to still reach back into the past to run DOS.
+In this post, I will go through my thought process I went through to decide on the specifications as well as the journey I made to run MS-DOS 6.22 on it.">
+  <meta itemprop="datePublished" content="2024-10-06T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-10-06T00:00:00+00:00">
+  <meta itemprop="wordCount" content="2340">
+  <meta itemprop="image" content="http://yeokhengmeng.com/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg">
+  <meta itemprop="keywords" content="Retrocomputing"><meta property="og:url" content="http://yeokhengmeng.com/2024/10/modern-pc-vintage-twist/">
+  <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
+  <meta property="og:title" content="Modern 2024 PC with a vintage twist (ft. Ryzen 5 7600 & Geforce 4060 Ti)">
+  <meta property="og:description" content="If I were to tell you a PC has a floppy drive, optical drive, Sound Blaster card, serial, parallel and PS/2 ports running DOS, you would think I’m referring to a machine from the 1990s. But my very modern PC built in 2024 possess these characteristics!
+I recently built myself a PC as my previous desktop components was insufficient for my current needs. I decided to build one with the ability to still reach back into the past to run DOS.
+In this post, I will go through my thought process I went through to decide on the specifications as well as the journey I made to run MS-DOS 6.22 on it.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-10-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-10-06T00:00:00+00:00">
+    <meta property="og:image" content="http://yeokhengmeng.com/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://yeokhengmeng.com/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg">
+  <meta name="twitter:title" content="Modern 2024 PC with a vintage twist (ft. Ryzen 5 7600 & Geforce 4060 Ti)">
+  <meta name="twitter:description" content="If I were to tell you a PC has a floppy drive, optical drive, Sound Blaster card, serial, parallel and PS/2 ports running DOS, you would think I’m referring to a machine from the 1990s. But my very modern PC built in 2024 possess these characteristics!
+I recently built myself a PC as my previous desktop components was insufficient for my current needs. I decided to build one with the ability to still reach back into the past to run DOS.
+In this post, I will go through my thought process I went through to decide on the specifications as well as the journey I made to run MS-DOS 6.22 on it.">
+      <meta name="twitter:site" content="@yeokm1">
+<link rel="stylesheet" href="/css/bundle.min.ddee09a014b0ec888f9e86a08a442e769e45794257080194efeb3e17d2f9fa80.css" integrity="sha256-3e4JoBSw7IiPnoagikQudp5FeUJXCAGU7&#43;s&#43;F9L5&#43;oA=">
+        <link rel="stylesheet" href="/css/add-on.css"></head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            post
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/aviation" class="link"><i class='fas fa-plane'></i> Aviation</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/retrocomputing" class="link"><i class='fas fa-save'></i> Retrocomputing</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/favourite-quotes/" class="link">Favourite Quotes</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about-me/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/zh" lang="zh" class="no-lang link">简体中文 (zh)</a>
+      
+    
+  
+</menu>
+
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="" alt="Kheng Meng profile pic" /></a>
+  <header>
+    <h1>Yeo Kheng Meng</h1>
+  </header>
+  <main>
+    <p>Maker, Coder, Private Pilot, Retrocomputing Enthusiast</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/yeokm1" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/yeokhengmeng" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/yeokhengmeng" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/yeokm1" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/yeokm1" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/yeokm1" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+<li><a href="//telegram.me/yeokm1" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/2024/10/modern-pc-vintage-twist/">Modern 2024 PC with a vintage twist (ft. Ryzen 5 7600 &amp; Geforce 4060 Ti)</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2024-10-06 00:00:00 &#43;0000 UTC">
+      October 6, 2024
+    </time>
+    <span class="author"></span>
+    
+      <p>11 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  </section>
+  
+  <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
+    
+      <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
+    
+  </a>
+
+
+  <div class="content">
+    <p>If I were to tell you a PC has a floppy drive, optical drive, Sound Blaster card, serial, parallel and PS/2 ports running DOS, you would think I&rsquo;m referring to a machine from the 1990s. But my very modern PC built in 2024 possess these characteristics!</p>
+<p>I recently built myself a PC as my previous desktop components was insufficient for my current needs. I decided to build one with the ability to still reach back into the past to run DOS.</p>
+<p>In this post, I will go through my thought process I went through to decide on the specifications as well as the journey I made to run MS-DOS 6.22 on it.</p>
+<h2 id="demo-video">Demo video</h2>
+<p>Here is a video showing my very modern system running MS-DOS 6.22 like in was in the 1990s and some demo applications.</p>
+
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/yVtC54Ax3AU?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
+
+<ul>
+<li>00:27 - POST screen</li>
+<li>00:32 - Boot menu. Select external USB reader.</li>
+<li>00:39 - DOS 6.22 startup menu. Select option to enable SBEMU and Packet driver</li>
+<li>00:48 - CPU Identification Utility</li>
+<li>00:50 - Doom</li>
+<li>01:41 - Planet X3</li>
+<li>02:27 - Descent demo (too fast to be played properly)</li>
+<li>03:42 - DOS ChatGPT client</li>
+<li>06:41 - HWiNFO</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<p>Before I first built this PC, I thought through some of the personal requirements for my new desktop.</p>
+<ul>
+<li>Experiment with light machine-learning (ML) workloads</li>
+<li>Run modern games like Cyberpunk 2077, Black Myth Wukong, Flight Simulator 2020 and upcoming FS 2024 at reasonably good settings and performance</li>
+<li>Basic video editing</li>
+<li>Running virtual machines</li>
+<li>Lower cost by retaining as much parts possible from my previous build</li>
+<li>Low power consumption</li>
+<li>Vintage experiments where feasible</li>
+</ul>
+<h3 id="specifications-at-a-glance">Specifications at a glance</h3>
+<a href="images/ryzendos-parts-boxes.jpg"><img src="images/ryzendos-parts-boxes.jpg" width="700"></a>
+<p>Photo shows what was purchased. Most of everything else was retained from my previous build</p>
+<ul>
+<li>AMD Ryzen 5 7600 3.8Ghz AM5 socket</li>
+<li>Asus Dual GeForce RTX 4060 Ti EVO OC 16GB</li>
+<li>ASUS Pro B650M-CT-CSM motherboard</li>
+<li>2x32GB DDR5-5600 CL36 Kingston Fury</li>
+<li>Coolermaster Hyper 212 Spectrum V3 CPU cooler</li>
+<li>1TB NVME Crucial T500</li>
+<li>From previous build
+<ul>
+<li>Seasonic S12II 520W PSU (non-modular)</li>
+<li>Coolermaster N400 midtower ATX case</li>
+<li>Sound BlasterX AE-5</li>
+<li>512GB NVME Samsung 870 Evo Plus</li>
+<li>1TB SATA Crucial MX300</li>
+<li>3.5&quot; floppy Drive with internal USB adapter</li>
+<li>LG Blu-ray Rewriter</li>
+<li>5.25&quot; USB 3.0 ports and card reader</li>
+</ul>
+</li>
+<li>Xircom Pocket Ethernet 3 (PE3) 10Mbps Parallel Port Network adapter</li>
+</ul>
+<h2 id="selection-decisions">Selection decisions</h2>
+<a href="images/ryzendos-parts-internal.jpg"><img src="images/ryzendos-parts-internal.jpg" width="700"></a>
+<p>The result of all my choices.</p>
+<a href="images/ryzendos-rear.jpg"><img src="images/ryzendos-rear.jpg" width="300"></a>
+<p>Rear of the system showing a combination of modern and vintage ports.</p>
+<h3 id="motherboard">Motherboard</h3>
+<a href="images/ryzendos-mobo.jpg"><img src="images/ryzendos-mobo.jpg" width="500"></a>
+<p>This motherboard is a business-oriented line ASUS Pro B650M-CT-CSM. Not a choice a typical consumer or PC gaming enthusiast would usually make.</p>
+<p>I wanted a modern yet lower cost motherboard using an AM5-based chipset with DDR5 RAM so it can have some future proofing. AMD has <a href="https://arstechnica.com/gadgets/2024/07/amd-makes-improved-efficiency-a-core-part-of-the-pitch-for-its-ryzen-9000-cpus/">commited to support AM5 to 2027</a>.</p>
+<p>But that alone does not explain why I chose this motherboard as there are plenty around that have AM5 support. The true reason is that it has a native parallel port!</p>
+<a href="images/ryzendos-legacy-ports.jpg"><img src="images/ryzendos-legacy-ports.jpg" width="500"></a>
+<p>It has COM and LPT headers on the bottom which can be brought out to an actual port with ribbon cables. LPT is a very rare feature on a such a modern motherboard. The other other one that I know has an LPT port is the Asus Pro A620M-C-CSM of a similar product line but uses a less capable A620 chipset.</p>
+<p>I wanted a parallel port to experiment with vintage applications like Covox Speech Thing, sound and network adapters.</p>
+<p><a href="https://www.startech.com/en-eu/cards-adapters/pex1s1p952">PCI-E cards with parallel port</a> exist and I have used those before. The issue with those is that they are not mapped to the traditional parallel port address like 0x378. Vintage applications sometimes are hardcoded to use those addresses. Only a motherboard with native support can have access to this address directly.</p>
+<p>This motherboard also has a PS/2 port which is getting more uncommon with modern boards. I wanted this port as I still use PS/2 peripherals. A PS/2 port is also a strong indication that this board supports UEFI-CSM which is key requirement in running DOS.</p>
+<a href="images/ryzendos-uefi-csm.jpg"><img src="images/ryzendos-uefi-csm.jpg" width="700"></a>
+<p>As expected, the motherboard supports UEFI-CSM. However the option will only be enabled if there is a discrete graphics card present. It seems the integrated AMD Radeon graphics in the CPU does not have a compatible legacy video BIOS.</p>
+<h3 id="cpu---amd-ryzen-5-7600">CPU - AMD Ryzen 5 7600</h3>
+<a href="images/ryzendos-7600.jpg"><img src="images/ryzendos-7600.jpg" width="600"></a>
+<p>I chose the 6-core AMD Ryzen 5 7600 as it&rsquo;s one of the lower cost AM5 CPUs out there. It is a 65W TDP CPU so it should alleviate the need to replace my 520W power supply unit (PSU).</p>
+<p>I did consider the slightly more expensive 7600X but it has 105W TDP. Even though you can enable ECO mode in software/BIOS to make it behave like a 65W part, I decided against this to avoid taking the risk of straining my PSU in case the ECO mode is accidentally disabled.</p>
+<p>If I have greater processing needs in future, I can upgrade to a future AM5 CPU and PSU down the road.</p>
+<h3 id="graphics-card---geforce-4060-ti-16gb">Graphics card - Geforce 4060 Ti 16GB</h3>
+<a href="images/ryzendos-gpu4060ti.jpg"><img src="images/ryzendos-gpu4060ti.jpg" width="700"></a>
+<p>Online reviews of the 4060 (Ti) are mostly negative for their poor price to performance ratio. I agree with them, if gaming is the only focus, these are poor value for money.</p>
+<p>I selected this because this is one of the cheapest modern 16GB Nvidia cards which is more useful for hobbyist experiments in light ML workloads over just gaming performance. So this unit excels at price to video RAM ratio which most reviewers neglect to consider.</p>
+<p>Power consumption is similar to my previous Geforce 1070 so I don&rsquo;t have to spend more to upgrade my PSU.</p>
+<h3 id="ram---2x32gb-ddr5-5600-cl36-kingston-fury">RAM - 2x32GB DDR5-5600 CL36 Kingston Fury</h3>
+<a href="images/ryendos-ram.jpg"><img src="images/ryendos-ram.jpg" width="400"></a>
+<p>I got 64GB of total RAM primarily to run virtual machines and the light ML workloads. For most applications like gaming, 32GB is actually sufficient.</p>
+<p>At DDR5-5600 CL36 speed, I think this is more than sufficient for my needs as looking at online benchmarks, speeds and latencies don&rsquo;t seem to move the needle much on gaming performance for faster RAM.</p>
+<a href="images/ryzendos-ddr5-training.jpg"><img src="images/ryzendos-ddr5-training.jpg" width="700"></a>
+<p>With this RAM, the board seems to take a long time to POST on every boot. Something like at least a minute. Based on online research, it is because the motherboard needs to find an optimal set of timings to work with the RAM. This has always been done for previous RAM generations but is an issue now because it takes a significant amount of time for DDR5.</p>
+<p>To mitigate this, enable both &ldquo;Power Down Enable&rdquo; and &ldquo;Memory Context Restore&rdquo; to avoid lengthy DDR5 training during POST.</p>
+<h3 id="storage">Storage</h3>
+<a href="images/ryzendos-nvme.jpg"><img src="images/ryzendos-nvme.jpg" width="500"></a>
+<p>I got a PCIe 4.0 1TB NVME Crucial T500 as my boot drive.</p>
+<p>The Crucial T500 comes in versions with or without a heatsink. I opted for the one without a heatsink and bought my own as my research says that the one with heatsink cannot be removed without voiding warranty. I want to have the flexibility to move this to another system like a laptop or motherboard with NVME heatsinks.</p>
+<p>Although this motherboard supports PCIe 5.0 NVME drives, those are very expensive and don&rsquo;t seem to provide much value for me. PCIE 5.0 NVME drives also generally produce more heat and require larger heatsinks.</p>
+<p>The PCIe 3.0 Samsung 970 Evo Plus was my previous boot drive is now my secondary drive.</p>
+<h3 id="sound-card---sound-blasterx-ae-5">Sound card - Sound BlasterX AE-5</h3>
+<a href="images/ryzendos-ae5.jpg"><img src="images/ryzendos-ae5.jpg" width="500"></a>
+<p>Dedicated sound cards are now rare sight in modern PC desktops as most onboard sound chips are good enough for most people. I however still opt to use one due to better sound quality and ports like TOSLINK optical which this motherboard does not have.</p>
+<p>This Creative Sound BlasterX AE-5 from my previous build has a software feature called <a href="https://support.creative.com/kb/ShowArticle.aspx?sid=28967&c">Creative ALchemy</a>. It enables one to run older EAX games on modern systems.</p>
+<p>Another less technical reason is to support a local Singaporean company.</p>
+<h3 id="floppy">Floppy</h3>
+<p>The floppy drive is an interesting one. This motherboard does not have a native floppy header which is unsuprising. I highly doubt there is a new modern motherboard that still has one.</p>
+<p>So how did I have a floppy drive on the front panel?</p>
+<a href="images/ryzendos-rear-floppy.jpg"><img src="images/ryzendos-rear-floppy.jpg" width="500"></a>
+<p>I used a USB adapter. It converts the 34-pin floppy interface to the USB interface. Then I connect it to the motherboard&rsquo;s internal USB 2.0 header. It is readily <a href="https://www.aliexpress.com/item/1005006038076419.html">available on Aliexpress</a>.</p>
+<a href="images/ryzendos-floppy.jpg"><img src="images/ryzendos-floppy.jpg" width="500"></a>
+<p>A coventional floppy drive converted to modern use!</p>
+<a href="images/ryzendos-bootmenu.jpg"><img src="images/ryzendos-bootmenu.jpg" width="700"></a>
+<p>The motherboard recognises this as a USB floppy drive and is selectable as one of the boot options.</p>
+<h3 id="networking---xircom-pocket-ethernet-3-pe3-10mbps">Networking - Xircom Pocket Ethernet 3 (PE3) 10Mbps</h3>
+<p>I initially tried to use the onboard Realtek RTL8168 Gigabit chip. However I could not get the NDIS2 drivers working with the DOS MTCP utility.</p>
+<p>As my backup plan, I resorted to using a parallel-port based Xircom PE3 10 Mbps adapter. Thankful for the motherboard&rsquo;s parallel port!</p>
+<a href="images/ryzendos-pe3.jpg"><img src="images/ryzendos-pe3.jpg" width="300"></a>
+<p>The adapter is powered from the PS/2 port with a passthrough so it still can be used with other PS/2 devices.</p>
+<h2 id="dos">DOS</h2>
+<h3 id="installing-dos">Installing DOS</h3>
+<p>To avoid clobbering my NVME drives I have DOS installed onto an external microSD card connected through a USB adapter. To avoid any issues, I temporarily removed all existing NVME and SATA SSDs to avoid accidentally overwriting them.</p>
+<a href="images/ryzendos-dos-setup.jpg"><img src="images/ryzendos-dos-setup.jpg" width="700"></a>
+<p>I ran the DOS setup from a good old floppy disk!</p>
+<p>A minor hiccup is making sure to run <code>fdisk /mbr</code> to recreate the drive&rsquo;s master boot record as I found that the drive is unbootable without that.</p>
+<h3 id="dos-configuration">DOS configuration</h3>
+<p>In order to consider a machine as &ldquo;properly&rdquo; set up, my personal definition is that it should have working audio and networking.</p>
+<a href="images/ryzendos-dos-bootmenu.jpg"><img src="images/ryzendos-dos-bootmenu.jpg" width="700"></a>
+<p>Due to limited conventional memory, I set up a DOS menu configuration to load different sets of driver configuration depending on my needs at the moment.</p>
+<p>For the detailed <code>config.sys</code> and <code>autoexec.bat</code> files I used, you can go to this <a href="https://github.com/yeokm1/retro-configs/tree/master/desktops/modern-ryzen-desktop">Github repo link</a>.</p>
+<h3 id="dos-drivers">DOS drivers</h3>
+<a href="images/ryzendos-drivers.jpg"><img src="images/ryzendos-drivers.jpg" width="700"></a>
+<p>The audio driver is provided by <a href="https://github.com/crazii/SBEMU">SBEMU</a>. It&rsquo;s a relatively new project that provides Sound Blaster compatibility to modern sound hardware like Intel HD Audio standard and many other chips.</p>
+<p>For the Xircom adapter, Packet Drivers can be easily found online so it is compatible with the useful <a href="http://brutmanlabs.org/mTCP/">MTCP DOS networking utilities</a>.</p>
+<h2 id="additional-issues-encountered">Additional Issues encountered</h2>
+<p>Not everything went beyond smoothly. I encountered several issues new and old that I don&rsquo;t have any answer to at the moment. As you can imagine, some are problems that will not have easy online solutions.</p>
+<p>So I decide to document this here in case another person encounter a similar issue.</p>
+<h3 id="motherboard-may-not-post-with-unsupported-ram">Motherboard may not POST with unsupported RAM</h3>
+<p>When I first powered up the system with my new RAM, it initially did not even POST. It got indefinitely stuck in what I believe was RAM training.</p>
+<p>I believe a BIOS update is required for the motherboard to recognise the new RAM. But if you can&rsquo;t even start the board, you can&rsquo;t update the BIOS! It&rsquo;s a catch-22 situation. This motherboard does not have the <a href="https://www.asus.com/support/faq/1038568/">BIOS flashback</a> feature available on other Asus boards to update the BIOS without CPU and RAM.</p>
+<p>To get around this, I got another lower-speed DDR5 stick to at least get the board to POST then I updated the BIOS to the latest version.</p>
+<a href="images/ryzendos-bios-update.jpg"><img src="images/ryzendos-bios-update.jpg" width="500"></a>
+<p>I powered the motherboard with a PicoPSU separately and did the BIOS update which a very early 2023 version.</p>
+<h3 id="some-dos-games-run-too-fast">Some DOS games run too fast</h3>
+<p>From the video at the top, the Descent game runs too fast to be playable. This is a common behaviour for some DOS games as they were written for the slower CPUs of decades ago.</p>
+<p>To mitigate this, tools like <a href="https://www.vogons.org/viewtopic.php?t=38613">Setmul</a> and <a href="https://www.vogons.org/viewtopic.php?t=74359">CpuSpd</a> were created to allow people to slow down the CPUs.</p>
+<p>I tried both tools and they did not seem to work well on this CPU. The only available option was to disable L1 cache. When I did so, the system went to the other extreme and slowed to a crawl that games became too slow to be playable.</p>
+<p>I don&rsquo;t blame the tools as they are not meant to be used for such modern CPUs.</p>
+<h3 id="usb-drives-with-no-partitions-or-empty-floppy-drives-not-detected-in-real-mode">USB drives with no partitions or empty floppy drives not detected in real mode</h3>
+<p>I observed this strange case when I was installing DOS. I wiped all the partitions in my target USB flash drive to prepare for DOS to be installed onto it.</p>
+<p>When I booted from the DOS setup floppy disk, the USB flash drive was not presented as a fixed disk for DOS setup or fdisk to work on.</p>
+<p>I had to create a dummy FAT16 partition manually using other tools before booting the system. I suspect this is a motherboard BIOS issue as empty drives are not presented as a viable boot or disk option.</p>
+<h3 id="parallel-port-no-epp-or-irq-feature">Parallel port no EPP or IRQ feature</h3>
+<p>THe Xircom PE3 driver and Enhanced Parallel Port (EPP) utility currently detects my parallel port as a standard bidirectional printer port with no interrupt (IRQ). This is despite a higher performance setting of Enhanced Parallel Port (EPP) and Interrupt 5 has been enabled in the BIOS.</p>
+<a href="images/ryzendos-parallel.jpg"><img src="images/ryzendos-parallel.jpg" width="600"></a>
+<p>The BIOS confirms the parallel port can be configured to a native address to match early IBM PCs with EPP feature.</p>
+<p>Without the ability to use the higher performance option, the PE3 works at a relatively slow speed of 100KB/s.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Although DOS is obviously not relevant for most day-to-day uses today, it was certainly an interesting learning experiment for me to explore ways of bridging modern hardware with its earliest roots.</p>
+<p>The fact that a 30-year-old MS-DOS 6.22 can still work well enough on such a modern hardware is testament to the efforts made by the industry to ensure good x86 PC backward compatibility. AMD, Nvidia and Asus deserve to be commended on their efforts here.</p>
+<p>I&rsquo;m also impressed that the modern Nvidia Geforce 4060 Ti still supports some legacy video BIOS modes to a usable level although this is not complete. I didn&rsquo;t document in this blog post but brief tests with other VESA modes and resolutions didn&rsquo;t work so well.</p>
+<p>I wonder how long more this amount of x86 PC backward-compatibility will continue to last though&hellip; It definitely feels like the end is near.</p>
+<p>If you like this article, you may consider reading my earlier post on getting <a href="/2024/08/dos-on-thinkpad-x13-gen1/">MS-DOS 6.22 working on a modern Thinkpad</a>.</p>
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/retrocomputing">retrocomputing</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yeokm1/yeokm1.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNTQ3ODI3NTI="
+        data-category="Comments"
+        data-category-id="DIC_kwDODy-tIM4CXEA6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div class="pagination">
+  
+    <a href="/2024/09/book-review-the-race-for-perfect/" class="button"><div class="previous"><div>Book Review: The Race for Perfect: Inside the Quest to Design the Ultimate Portable Computer by Steve Hamm</div></div></a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
+    
+      <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/10/modern-pc-vintage-twist/">Modern 2024 PC with a vintage twist (ft. Ryzen 5 7600 &amp; Geforce 4060 Ti)</a></h1>
+          <time class="published" datetime="">October 6, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2024/09/book-review-the-race-for-perfect/" class="image featured">
+    
+      <img src="/2024/09/book-review-the-race-for-perfect/images/trfp-preview.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/09/book-review-the-race-for-perfect/">Book Review: The Race for Perfect: Inside the Quest to Design the Ultimate Portable Computer by Steve Hamm</a></h1>
+          <time class="published" datetime="">September 9, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2024/08/dos-on-thinkpad-x13-gen1/" class="image featured">
+    
+      <img src="/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/08/dos-on-thinkpad-x13-gen1/">DOS&#39;s Last Stand on a modern Thinkpad: X13 Gen 1 with Intel i5-10310U</a></h1>
+          <time class="published" datetime="">August 18, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2024/06/my-first-chip-with-tiny-tapeout-cvx/" class="image featured">
+    
+      <img src="/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/06/my-first-chip-with-tiny-tapeout-cvx/">My first chip with Tiny Tapeout 4 - Covox Speech Thing clone</a></h1>
+          <time class="published" datetime="">June 20, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
+    
+      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up an open-frame Pentium 3 testbench</a></h1>
+          <time class="published" datetime="">May 25, 2024</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/hacks/">hacks<span class="count">24</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/personal/">personal<span class="count">17</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/singapore/">singapore<span class="count">16</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">14</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/teardowns/">teardowns<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/school/">school<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/book-reviews/">book-reviews<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/politics/">politics<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hackathon/">hackathon<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/product-reviews/">product-reviews<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/admin/">admin<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/repair-kopitiam/">repair-kopitiam<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/keyboards/">keyboards<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/quiz/">quiz<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/dvorak/">dvorak<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/flight-sim/">flight-sim<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2024
+      
+        YKM&#39;s Corner on the Web
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.135.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+<script type="text/javascript">
+  var sc_project = 8700008;
+  var sc_invisible = 1;
+  var sc_security = "b569f6b4";
+  var sc_https = 1; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript>
+  <div class="statcounter"><a title="free hit
+  counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+        src="https://c.statcounter.com/8700008/0/b569f6b4/1/" alt="free hit counter"></a></div>
+</noscript>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function (x) {
+      x.parentElement.classList += 'has-jax'
+    })
+  });
+
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.c773bce75f6ff1d086105b4e7f0c0e87ad25bf40fb24dd2da7586f9201d8f70d.js" integrity="sha256-x3O8519v8dCGEFtOfwwOh60lv0D7JN0tp1hvkgHY9w0="></script>
+<script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>
