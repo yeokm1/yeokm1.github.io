@@ -13,7 +13,7 @@ I recently built myself a PC as my previous desktop PC was insufficient for my c
 In this post, I will go through my thought process I went through to decide on the specifications as well as the journey I made to run MS-DOS 6.22 on it.">
   <meta itemprop="datePublished" content="2024-10-06T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-10-06T00:00:00+00:00">
-  <meta itemprop="wordCount" content="2463">
+  <meta itemprop="wordCount" content="2524">
   <meta itemprop="image" content="http://yeokhengmeng.com/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg">
   <meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2024/10/modern-pc-vintage-twist/">
   <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -337,7 +337,7 @@ In this post, I will go through my thought process I went through to decide on t
 <li>512GB NVME Samsung 970 Evo Plus</li>
 <li>1TB SATA Crucial MX300</li>
 <li>3.5&quot; floppy Drive with internal USB adapter</li>
-<li>LG Blu-ray Rewriter</li>
+<li>LG Blu-ray Rewriter SATA</li>
 <li>5.25&quot; USB 3.0 ports and card reader</li>
 </ul>
 </li>
@@ -368,8 +368,8 @@ In this post, I will go through my thought process I went through to decide on t
 <h3 id="graphics-card---geforce-4060-ti-16gb">Graphics card - Geforce 4060 Ti 16GB</h3>
 <a href="images/ryzendos-gpu4060ti.jpg"><img src="images/ryzendos-gpu4060ti.jpg" width="700"></a>
 <p>Online reviews of the 4060 (Ti) are mostly negative for their poor price to performance ratio. I agree with them, if gaming is the only focus, these are poor value for money.</p>
-<p>I selected this because this is one of the cheapest modern 16GB Nvidia cards which is more useful for hobbyist experiments in light ML workloads over just gaming performance. So this unit excels at price to video RAM ratio which most reviewers neglect to consider.</p>
-<p>Power consumption is similar to my previous Geforce 1070 so I don&rsquo;t have to spend more to upgrade my PSU.</p>
+<p>I selected this because this is one of the cheapest modern 16GB Nvidia cards which is more useful for hobbyist experiments in light ML workloads over just gaming performance. This unit excels at price to video RAM ratio which most reviewers neglect to consider.</p>
+<p>Power consumption is similar to my previous Geforce 1070 so I don&rsquo;t have to spend more to upgrade my PSU. This card also uses the traditional 8-pin PCIe power connector instead of the 16-pin 12VHPWR connector used on more power-hungry cards. 12VHPWR will cause extra clutter for another adapter cable to convert my existing power connectors to it.</p>
 <h3 id="ram---2x32gb-ddr5-5600-cl36-kingston-fury">RAM - 2x32GB DDR5-5600 CL36 Kingston Fury</h3>
 <a href="images/ryzendos-ram.jpg"><img src="images/ryzendos-ram.jpg" width="400"></a>
 <p>I got 64GB of total RAM primarily to run virtual machines and light ML workloads. For most applications like gaming, 32GB is actually sufficient.</p>
@@ -398,7 +398,7 @@ In this post, I will go through my thought process I went through to decide on t
 <a href="images/ryzendos-bootmenu.jpg"><img src="images/ryzendos-bootmenu.jpg" width="700"></a>
 <p>The motherboard recognises this as a USB floppy drive and is selectable as one of the boot options.</p>
 <h3 id="networking---xircom-pocket-ethernet-3-pe3-10mbps">Networking - Xircom Pocket Ethernet 3 (PE3) 10Mbps</h3>
-<p>I initially tried to use the onboard Realtek RTL8168 Gigabit chip. However I could not get the NDIS2 drivers working with the DOS MTCP utility.</p>
+<p>I initially tried to use the onboard Realtek RTL8168 Gigabit chip. Realtek provides a <a href="https://www.realtek.com/Download/List?cate_id=584">DOS-compatible NDIS2 driver</a> on their website. The NDIS2 driver could detect the network chip but I could not get them working with the DOS MTCP utility.</p>
 <p>As my backup plan, I resorted to using a parallel-port-based Xircom PE3 10 Mbps adapter. Thanks to the motherboard&rsquo;s parallel port!</p>
 <a href="images/ryzendos-pe3.jpg"><img src="images/ryzendos-pe3.jpg" width="300"></a>
 <p>The adapter is powered from the PS/2 port with a passthrough so it still can be used with other PS/2 devices.</p>
@@ -444,7 +444,7 @@ In this post, I will go through my thought process I went through to decide on t
 <h2 id="conclusion">Conclusion</h2>
 <p>Although DOS is obviously not relevant for most day-to-day uses today, it was certainly an interesting learning experiment for me to explore ways of bridging modern hardware with its earliest roots.</p>
 <p>The fact that a 30-year-old MS-DOS 6.22 can still work well enough on such modern hardware is testament to the efforts made by the industry to ensure good x86 PC backward compatibility. AMD, Nvidia and Asus deserve to be commended on their efforts here.</p>
-<p>I&rsquo;m also impressed that the modern Nvidia Geforce 4060 Ti still supports some legacy video BIOS modes to a usable level although this is not complete. I didn&rsquo;t document in this blog post but brief tests with other VESA modes and resolutions didn&rsquo;t work so well.</p>
+<p>I&rsquo;m also impressed that the modern Nvidia Geforce 4060 Ti still supports some legacy video BIOS modes to a usable level although this is not complete. I didn&rsquo;t document in this blog post but brief tests with other VESA modes especially CGA and EGA didn&rsquo;t work well. Best to stick with VGA and up.</p>
 <p>I wonder how long more this amount of x86 PC backward-compatibility will continue to last though&hellip; It definitely feels like the end is near.</p>
 <p>If you have not seen the demo video above, I asked ChatGPT if this machine can run DOS.</p>
 <a href="images/ryzendos-chatgpt.jpg"><img src="images/ryzendos-chatgpt.jpg" width="800"></a>
