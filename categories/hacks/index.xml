@@ -48,7 +48,7 @@
       <link>http://yeokhengmeng.com/2023/03/building-a-dos-chatgpt-client-in-2023/</link>
       <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
       <guid>http://yeokhengmeng.com/2023/03/building-a-dos-chatgpt-client-in-2023/</guid>
-      <description>&lt;p&gt;With the recent attention on ChatGPT and &lt;a href=&#34;https://openai.com/blog/introducing-chatgpt-and-whisper-apis&#34;&gt;OpenAI&amp;rsquo;s release of their APIs&lt;/a&gt;, many developers have developed clients for modern platforms to talk to this super smart AI chatbot. However I&amp;rsquo;m pretty sure almost nobody has written one for a vintage platform like MS-DOS.&lt;/p&gt;&#xA;&lt;p&gt;This client now supports Hugging Face API and text to speech (TTS) capability. More info on TTS is found at the later part of this post.&lt;/p&gt;</description>
+      <description>&lt;p&gt;With the recent attention on ChatGPT and &lt;a href=&#34;https://openai.com/blog/introducing-chatgpt-and-whisper-apis&#34;&gt;OpenAI&amp;rsquo;s release of their APIs&lt;/a&gt;, many developers have developed clients for modern platforms to talk to this super smart AI chatbot. However I&amp;rsquo;m pretty sure almost nobody has written one for a vintage platform like MS-DOS.&lt;/p&gt;&#xA;&lt;p&gt;This client now supports Hugging Face API, Ollama API and text to speech (TTS) capability. More info on TTS is found at the later part of this post.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Building a new Win 3.1 app in 2019 Part 1: Slack client</title>
