@@ -11,7 +11,7 @@
   <meta itemprop="description" content="Ever thought of running a local Large Language Model (LLM) on a vintage PC running DOS? Now you can!">
   <meta itemprop="datePublished" content="2025-04-15T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-04-15T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1227">
+  <meta itemprop="wordCount" content="1217">
   <meta itemprop="image" content="http://yeokhengmeng.com/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg">
   <meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2025/04/llama2-llm-on-dos/">
   <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -280,7 +280,7 @@
   <div class="content">
     <p>Ever thought of running a local Large Language Model (LLM) on a vintage PC running DOS? Now you can!</p>
 <h2 id="demos">Demos</h2>
-<p>This video shows DOS Llama 2 LLM client running on 2 vintage DOS machines Thinkpad T42 (2002) and Toshiba Satellite 315CDT (1996).</p>
+<p>This video shows DOS Llama 2 LLM client running on 2 vintage DOS machines.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/4241obgG_QI?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
@@ -293,7 +293,7 @@
 <p>2 years ago I wrote a <a href="2023/03/building-a-dos-chatgpt-client-in-2023/">DOS ChatGPT client</a> and many retrocomputing enthusiasts in the community wrote similar clients for other vintage platforms. They all had a similar issue, dependency on some remote service. What about running things locally?</p>
 <p>Conventional wisdom states that running LLMs locally will require computers with high performance specifications especially GPUs with lots of VRAM. But is this actually true?</p>
 <p>In 2023, Andreq Karpathy released his open-source <a href="https://github.com/karpathy/llama2.c">llama2.c</a> project which allows inferencing of Meta&rsquo;s Llama 2 models with just a single C file. Other developers then ported his project to run on many platforms including some vintage ones like <a href="https://blog.exolabs.net/day-4/">Windows 98</a> and
-<a href="https://www.macrumors.com/2025/03/24/powerbook-g4-generative-ai/">Powerbook G4</a>. Someone even <a href="https://github.com/maxbbraun/llama4micro">ported it to run a microcontroller</a>.</p>
+<a href="https://www.macrumors.com/2025/03/24/powerbook-g4-generative-ai/">Powerbook G4</a>. Someone even <a href="https://github.com/maxbbraun/llama4micro">ported it to run on a microcontroller</a>.</p>
 <p>This then inspired me to think, could the same thing be done for an even older platform like DOS?</p>
 <p>Based on the demo video and screenshots, it is obvious I managed to do this so this blog post will show how I did it.</p>
 <h2 id="technical-details">Technical details</h2>
@@ -327,12 +327,12 @@
 <li>32-bit DOS extender support for Intel 386 CPUs or newer</li>
 </ul>
 <p>Since the llama2.c codebase is written for modern systems of at least 32-bit, I must go for the latter option. The memory requirement even for the tiniest of LLMs demands at least a 32-bit system too.</p>
-<p>One common 32-bit DOS extender used in the DOS-era is <a href="https://en.wikipedia.org/wiki/DOS/4G">DOS/4G</a>. This extender allows programs to access to more memory above the 640KiB conventional memory limit by switching the CPU to 32-bit protected mode. One very common use case is that of games which required gobs of memory, famous examples are Doom and Descent.</p>
+<p>One common 32-bit DOS extender used in the DOS-era is <a href="https://en.wikipedia.org/wiki/DOS/4G">DOS/4G</a>. This extender allows programs to access to more memory above the 640KB conventional memory limit by switching the CPU to 32-bit protected mode. One very common use case is that of games which required gobs of memory, famous examples are Doom and Descent.</p>
 <p>OWC supports DOS/4G as a choice of extender as well as another newer and open-source <a href="https://en.wikipedia.org/wiki/DOS/32">DOS/32</a> by Narech Koumar released in 2006.</p>
 <a href="images/dosllam2-dos32a.jpg"><img src="images/dosllam2-dos32a.jpg" width="500"></a>
 <p>This extender can be embedded into your program as a runtime or run separately. Either way, most DOS-extenders will show a startup banner like the above.</p>
 <h3 id="porting-efforts">Porting efforts</h3>
-<p>The original llama2.c codebase assumes still a reasonable modern C compiler with modern features. Although the OWC project is still being maintained, there was a bit of porting effort required for me to get the code to compile.</p>
+<p>The original llama2.c codebase still assumes a reasonably modern-featured C compiler. Although the OWC project is still being maintained, there was a bit of porting effort required for me to get the code to compile.</p>
 <h4 id="floating-point-operations">Floating point operations</h4>
 <p>The inferencing requires heavy use of floating point operations which OWC does not support well.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define sqrtf(x) ((float)sqrt((double)(x)))
@@ -342,7 +342,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define expf(x)  ((float)exp((double)(x)))
 </span></span></span></code></pre></div><p>So I had to define some macros using existing <code>double</code> functions.</p>
 <h4 id="memory-map">Memory map</h4>
-<p>Modern compilers support the <code>mmap</code> or similar functions which allow files in storage to be mapped into memory. The contents of the file are not all read into memory at once but are lazy-loaded i.e only necessary portions are read when used helping to speed up the use of especially large files.</p>
+<p>Modern compilers support the <code>mmap</code> or similar functions which allow files in storage to be mapped into memory. The contents of the file are not all read into memory at once but are lazy-loaded i.e only necessary portions are read when required helping to speed up the use of especially large files.</p>
 <p>OWC does not support this thus I have to modify all memory-mapping calls to load the entire LLM file into memory. This has the effect of increasing initial load times.</p>
 <h4 id="timing">Timing</h4>
 <p>To measure inference speed, the program requires use of timing APIs:</p>
