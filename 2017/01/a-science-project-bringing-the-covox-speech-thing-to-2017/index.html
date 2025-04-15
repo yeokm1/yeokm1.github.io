@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.135.0">
+<meta name="generator" content="Hugo 0.146.3">
   <meta itemprop="name" content="A Science Project: Bringing the Covox Speech Thing to 2017">
   <meta itemprop="description" content="The Covox Speech Thing (CST) was a sound card released in 1986 by Covox, Inc to enable computers with parallel ports to have sound capability. Unlike modern machines, proper sound support was not a given on computers in that era and the Soundblaster by Creative has yet to be released.
 As you will see later, the design is rather simple so I decided to revisit this old piece of hardware and see if it is possible to get it working on modern systems.
@@ -280,14 +280,10 @@ Video of everything in action">
   <div class="content">
     <p>The <a href="https://en.wikipedia.org/wiki/Covox_Speech_Thing">Covox Speech Thing</a> (CST) was a sound card released in 1986 by Covox, Inc to enable computers with parallel ports to have sound capability. Unlike modern machines, proper sound support was not a given on computers in that era and the Soundblaster by Creative has yet to be released.</p>
 <p>As you will see later, the design is rather simple so I decided to revisit this old piece of hardware and see if it is possible to get it working on modern systems.</p>
-<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-music-player.jpg"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-music-player-1024x768.jpg"></a></p>
+<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-music-player.jpg"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-music-player-1024x768.jpg" alt=""></a></p>
 <p>My remake of the Covox Speech Thing with a self-wrote media player software.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/jAaXj0RK7V8?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/jAaXj0RK7V8?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>Video of everything in action</p>
@@ -296,14 +292,10 @@ Video of everything in action">
 <p>Untested work: <a href="https://github.com/yeokm1/pcb-usb-ft245r-parallel-adapter">USB to 8-bit adapter</a>, <a href="https://github.com/yeokm1/pcb-covox-amp-v2">Covox clone with amplifier and USB 8-bit adapter</a></p>
 <h1 id="background">Background</h1>
 <p>Some time back, I wrote a blog post on how I managed get <a href="/2016/09/windows-for-workgroups-3-11-on-vintage-and-modern-hardware-in-2016/">Windows 3.11 working on a relatively modern Thinkpad T400</a> with video, audio and network capability.</p>
-<p><a href="images/wfw-t400-front-and-docking.jpg"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/wfw-t400-front-and-docking-1024x768.jpg"></a></p>
+<p><a href="images/wfw-t400-front-and-docking.jpg"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/wfw-t400-front-and-docking-1024x768.jpg" alt=""></a></p>
 <p>Since support for modern audio hardware is obviously non-existent for such an old operating system, I decided to fabricate a clone of the CST as I managed to locate the <a href="http://files.mpoli.fi/unpacked/hardware/sound/other/covoxwin.zip/">Windows 3.11 drivers for it</a>.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/WdrfEXHc0PM?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/WdrfEXHc0PM?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>This is the result of my earlier efforts, playing reasonable-quality music though the system will be unresponsive in the process.</p>
@@ -312,34 +304,30 @@ Video of everything in action">
 <h2 id="what-is-a-parallel-port">What is a parallel port?</h2>
 <p>To put it simply, it is a 25-pin interface meant for connecting computer peripherals before the era of USB connectivity. It was first introduced in 1970 by Centronics before it was standardised as <a href="https://en.wikipedia.org/wiki/IEEE_1284">IEEE1284</a> in 1994.</p>
 <h3 id="parallel-port-connector">Parallel Port connector</h3>
-<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-parallel-port.jpg"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-parallel-port-1024x140.jpg"></a></p>
+<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-parallel-port.jpg"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-parallel-port-1024x140.jpg" alt=""></a></p>
 <p>Male and female DB-25 connectors used by the parallel port standard.</p>
 <h3 id="parallel-port-pins">Parallel Port pins</h3>
-<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-parallel-port-pins.png"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-parallel-port-pins-1024x731.png"></a></p>
+<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-parallel-port-pins.png"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-parallel-port-pins-1024x731.png" alt=""></a></p>
 <p>Image credit: <a href="https://en.wikipedia.org/wiki/Parallel_port">https://en.wikipedia.org/wiki/Parallel_port</a></p>
 <p>Above is the functionality pinout of the parallel port. For the purposes of the CST, only the 8 data pins (2-9) and 8 ground pins (18-25) are used. The data pins are used to transmit an 8-bit digital signal to the sound card to be converted to an analog sound wave.</p>
 <h3 id="parallel-ports-in-moderncomputers">Parallel ports in modern computers</h3>
 <p>Parallel ports have long been considered to be obsolete and hence no longer available on modern machines. To get a parallel port, I&rsquo;ll have to purchase an adapter.</p>
-<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-startech-express-adapter.jpg"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-startech-express-adapter-1024x507.jpg"></a></p>
+<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-startech-express-adapter.jpg"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-startech-express-adapter-1024x507.jpg" alt=""></a></p>
 <p>I used this <a href="https://www.startech.com/Cards-Adapters/Parallel/1-Port-PCI-Express-Base-Parallel-ExpressCard~EC1PECPS">Startech Expresscard to Parallel Port adapter</a> with my laptop. If you are on a desktop, you can use a PCI-E adapter card. I have tested this <a href="https://www.startech.com/Cards-Adapters/Serial-Cards-Adapters/1S1P-Native-PCI-Express-Parallel-Serial-Combo-Card-with-16950-UART~PEX1S1P952">serial-parallel combo</a> from Startech to work although other models might work as well too.</p>
 <p>USB-Parallel adapters are best avoided as they are not <em>true</em> parallel port hardware as they usually appear as USB printers and abstract the IO pins away. Thus you can&rsquo;t bitbang the pins as my program does. Besides, USB is not really suitable for realtime control due to latencies in its protocol.</p>
 <h2 id="how-does-the-covox-speech-thing-work">How does the Covox Speech Thing work?</h2>
 <h3 id="the-original-covox-speech-thing">The original Covox Speech Thing</h3>
-<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-original.jpg"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-original.jpg"></a></p>
+<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-original.jpg"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-original.jpg" alt=""></a></p>
 <p>Image obtained from the <a href="https://en.wikipedia.org/wiki/Covox_Speech_Thing">Wikipedia Page</a>.</p>
 <p>Notice that the audio connector only has the 2 conductive points: tip and sleeve indicating this is a mono connector. Since the parallel port has only 8 data lines, the CST only supports 8-bit mono audio.</p>
 <h3 id="cst-design">CST Design</h3>
 <p>At the heart of every sound card are components that covert digital signals to analog audio signals or a digital-to-analog-converter (DAC) for short.</p>
-<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-pure-schematic.png.png"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-pure-schematic.png-1024x688.png"></a></p>
+<p><a href="images/covox-pure-schematic.png.png"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-pure-schematic.png-1024x688.png" alt=""></a></p>
 <p>Above is the schematic of the CST-specific DAC portion on my sound card.  The 8 data pins are connected to a bunch of 10K and 20K ohm resistors. This is called a R-2R resistor ladder setup.</p>
 <h3 id="why-this-design">Why this design?</h3>
 <p>I referenced the design from this <a href="http://kb.gr8bit.ru/KB0010/GR8BIT-KB0010-Adding-multimedia-capability-covox-device.html">Russian site</a> which also includes detailed explanation of the component selection and rationale.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/b-vUg7h0lpE?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/b-vUg7h0lpE?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>To avoid reinventing the explanation wheel, take a look at the video above by Collin Cunningham on how the R-2R ladder is used to generate sound.</p>
@@ -347,9 +335,9 @@ Video of everything in action">
 <p>The Russian guide recommended 1% tolerance resistors but I chose the more precise 0.5% ones as the price is not extravagantly more considering I make only a few of these boards.</p>
 <h2 id="additional-onboard-amplifier">Additional onboard amplifier</h2>
 <p>Unless your speakers has an internal amplifier, the raw output of the CST is at a very low volume. For use with devices like headphones, the output has to be amplified.</p>
-<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-assembled.jpg"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-assembled-1024x850.jpg"></a></p>
+<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-assembled.jpg"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-assembled-1024x850.jpg" alt=""></a></p>
 <p>The R-2R setup is on the left. The R-2R output is piped to to a <a href="https://en.wikipedia.org/wiki/LM386">Texas Instruments LM386</a> power amplifier to boost the output.</p>
-<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-amp-circuitry.png"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-amp-circuitry-1024x386.png"></a></p>
+<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-amp-circuitry.png"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-amp-circuitry-1024x386.png" alt=""></a></p>
 <p>I referenced the LM386 usage from this <a href="http://www.circuitbasics.com/build-a-great-sounding-audio-amplifier-with-bass-boost-from-the-lm386/">Circuit Basics site</a>. The volume, gain and bass can be adjusted with 3 10K ohm linear potentiometers.</p>
 <h3 id="volume">Volume</h3>
 <p>Volume is adjusted via a potentiometer(RV1) which acts on the input audio itself. Varying the resistance on a potential divider shapes the amplitude of the audio signal.</p>
@@ -364,7 +352,7 @@ Video of everything in action">
 <p>Before we go to using the CST and its limitations, let&rsquo;s see how typical sound hardware on your machines work.</p>
 <h2 id="how-do-conventional-sound-cardschips-work">How do conventional sound cards/chips work?</h2>
 <p>Typical sound hardware on PCI or PCI-Express bus uses a technique called Direct Memory Access (DMA) to access sound data at the system RAM. Since the peripheral can access the RAM, the CPU can be freed up as it does not have to micromanage details of the data transfer. You can read a good write-up on this topic <a href="https://geidav.wordpress.com/2014/04/27/an-overview-of-direct-memory-access/">here</a>. Simply put, this is a series of steps that happen for sound data to reach the sound card or any peripheral device.</p>
-<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-pcie-bus.png"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-pcie-bus.png"></a></p>
+<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-pcie-bus.png"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-pcie-bus.png" alt=""></a></p>
 <p>PCI-E bus image source: <a href="https://en.wikipedia.org/wiki/Root_complex">https://en.wikipedia.org/wiki/Root_complex</a></p>
 <ol>
 <li>CPU loads sound data into memory</li>
@@ -374,12 +362,8 @@ Video of everything in action">
 </ol>
 <p>Since the CST is such a simple device, it obviously does not have a DMA engine to do the DMA. The CPU has to be involved in every stage of the data transfer to the CST.</p>
 <h2 id="a-sample-dos-program">A sample DOS program</h2>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/iOxOxpSg3WE?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/iOxOxpSg3WE?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>I found a DOS program <a href="http://rayer.g6.cz/programm/programe.htm">CovoxMP3</a> written by Martin Rehak that can operate the CST standalone without any drivers. The CST requires precise CPU timing in order to generate a proper audio frequency unlike typical sound hardware.</p>
@@ -387,7 +371,7 @@ Video of everything in action">
 <p>Is it possible to do the same on a modern system?</p>
 <h2 id="my-program">My Program</h2>
 <p>If you saw the video at the top of this post, obviously I succeeded in writing a program that plays sound to the CST. The source code can be obtained from <a href="https://github.com/yeokm1/covox-music-player">here</a>. I chose the C language as I needed to extract the best performance I can get from the system as you will see later. Besides, all the APIs I used are also in C.</p>
-<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-music-player-screenshot.png"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-music-player-screenshot-1024x641.png"></a></p>
+<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-music-player-screenshot.png"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-music-player-screenshot-1024x641.png" alt=""></a></p>
 <p>Screenshot of my command line application</p>
 <h3 id="high-level-workflow">High Level Workflow</h3>
 <ol>
@@ -405,23 +389,23 @@ Video of everything in action">
 <p>The hardest problem I had was ensuring the audio data was written to the CST at the right rate. To put things in perspective, the typical music file has a sample rate of 44100 Hz. The sound system has to play these samples at the correct time if not the audio will be distorted.</p>
 <p>Time to play each sample = 1s / 44100 = 22.68 microseconds</p>
 <p>Typically the dedicated sound chip will handle the playback at the microsecond precision. All the CPU has to do is to make available the sound data in RAM.</p>
-<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-dos-player.png"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-dos-player.png"></a></p>
+<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-dos-player.png"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-dos-player.png" alt=""></a></p>
 <p>Image source: <a href="http://rayer.g6.cz/elektro/covox.htm">http://rayer.g6.cz/elektro/covox.htm</a></p>
 <p>The CovoxMP3 DOS program prints out the fact that it installs a new timer interrupt service routine (ISR) as the <a href="http://webpages.charter.net/danrollins/techhelp/0105.HTM">typical DOS ISR only has 55ms precision</a>. I&rsquo;m unsure how did Rahak do it but I believe his solution provided a more precise timing to drive his program to output data at the correct speed.</p>
 <p>Since I&rsquo;m using a modern Linux operating system, such a precise ISR routine is unavailable. There is an API called <a href="http://man7.org/linux/man-pages/man3/usleep.3.html"><em>usleep</em></a> where the program will wait for at least the provided number of microseconds before resuming. In practice, this does not work well due to the multi-tasking nature of modern operating systems.</p>
 <p>The only recourse for me is to run everything in a tight while loop as fast as possible to wait for the right moment to write to the parallel port.</p>
 <p>Linux provides an API to get a system time from an arbitrary epoch with nanosecond precision.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">long</span> getCurrentNanoseconds(){ 
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">struct</span> timespec spec; 
-</span></span><span style="display:flex;"><span>    clock_gettime(CLOCK_MONOTONIC, &amp;spec); 
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">long</span> specTime = (spec.tv_sec * <span style="color:#ff0;font-weight:bold">1E9</span>) + spec.tv_nsec; 
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">return</span> specTime; 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> <span style="color:#a6e22e">getCurrentNanoseconds</span>(){ 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">timespec</span> spec; 
+</span></span><span style="display:flex;"><span>    clock_gettime(CLOCK_MONOTONIC, <span style="color:#f92672">&amp;</span>spec); 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> specTime <span style="color:#f92672">=</span> (spec.tv_sec <span style="color:#f92672">*</span> <span style="color:#ae81ff">1E9</span>) <span style="color:#f92672">+</span> spec.tv_nsec; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> specTime; 
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>This is the code I used. The <em>timespec</em> structure has both the seconds and nanoseconds field so both have to be added to obtain pure nanoseconds reading.</p>
 <p>The nanosecond-precision reading is more than enough to let my program decide when to write a particular sample to the port. The only drawback is that my program will take up 100% CPU utilisation on one CPU core due to the tight loop. Even with everything going for it, the program still skips samples at certain moments as it is interrupted by the OS scheduler.</p>
 <h1 id="conclusion-and-potential-work">Conclusion and potential work</h1>
 <p>I have learned lots of interesting stuff in the project and have gained a better appreciation of the sound hardware that goes into modern computers. I actually wondered if it were possible to ditch the parallel port and use a USB-Bridge chip instead to make the hardware truly modern.</p>
-<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-with-ft245.jpg"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-with-ft245-1024x485.jpg"></a></p>
+<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-with-ft245.jpg"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-with-ft245-1024x485.jpg" alt=""></a></p>
 <p>This is my newer design including an FTDI FT245R USB to 8-channel chip which will appear by default as a USB-Serial port to the machine. This design has not been tested at this time. If I have the time to do it, I might continue in this path.</p>
 <p>You may wonder why did I title this post &ldquo;A Science Project&rdquo;. This was <a href="https://blogs.msdn.microsoft.com/oldnewthing/20130319-00/?p=4913">coined in a blog post</a> by a Microsoft software engineer Raymond Chen to describe projects that fall into any of the following categories:</p>
 <ol>
@@ -431,12 +415,8 @@ Video of everything in action">
 </ol>
 <p>I would like to believe this project has elements of some of all of them, after all, how many people still use parallel ports this days and who needs a parallel port sound card in an era of integrated audio on motherboards.</p>
 <p>Finally, if you have any suggestions or loved what I have done, feel free to ping me in the comments below.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/DCOvU0N7Ugs?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/DCOvU0N7Ugs?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>Video of the talk I gave about this subject at <a href="https://www.facebook.com/events/693979027431863/">Hackware v2.6</a>.</p>
@@ -512,6 +492,23 @@ Video of everything in action">
       <article class="mini-post">
         <section>
           
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/04/llama2-llm-on-dos/">LLama 2 LLM on DOS</a></h1>
+          <time class="published" datetime="">April 15, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
     
       <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
@@ -577,23 +574,6 @@ Video of everything in action">
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
-    
-      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up an open-frame Pentium 3 testbench</a></h1>
-          <time class="published" datetime="">May 25, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -615,7 +595,7 @@ Video of everything in action">
           
           <li>
             
-              <a href="/categories/hacks/">hacks<span class="count">25</span></a>
+              <a href="/categories/hacks/">hacks<span class="count">26</span></a>
             
           
           <li>
@@ -630,12 +610,12 @@ Video of everything in action">
           
           <li>
             
-              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
             
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">14</span></a>
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
             
           
           <li>
@@ -722,12 +702,12 @@ Video of everything in action">
   
   <p class="copyright">
     
-      &copy; 2024
+      &copy; 2025
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.135.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

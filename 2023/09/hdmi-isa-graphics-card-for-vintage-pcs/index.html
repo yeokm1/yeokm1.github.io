@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.135.0">
+<meta name="generator" content="Hugo 0.146.3">
   <meta itemprop="name" content="HDMI ISA graphics card for vintage PCs by improving the Graphics Gremlin">
   <meta itemprop="description" content="HDMI is a relatively modern video connector we take for granted on modern PCs and monitors. Now vintage PCs can join in the fun too with a native connection to modern HDMI monitors without any additional adapter.
 (A production run has been made for this board. You can contact explit[at]mailbox[dot]org if you wish to purchase a unit.)">
@@ -319,12 +319,8 @@
 <p>Left is the original GG, right is my modified design.</p>
 <a href="images/gg-hdmi-board-ports.jpg"><img src="images/gg-hdmi-board-ports.jpg" width="800"></a>
 <p>View from the ports side.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Ap-goSkkSUI?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Ap-goSkkSUI?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>This is the demo video using the updated GG card in my IBM5155 outputing HDMI to my 5:4 Dell P1917S monitor and Composite to my small LCD monitor.</p>
@@ -355,12 +351,8 @@
 </ul>
 <h1 id="famous-demos">Famous Demos</h1>
 <p>I ran 2 famous demos 8088MPH and Area 5150 that specifically targets the original IBM PC and CGA cards. Several problems were encountered that could be inherent to the original Graphics Gremlin or the configuration of my system.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/WLpNmEhdTe4?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/WLpNmEhdTe4?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>This <a href="https://trixter.oldskool.org/2015/04/07/8088-mph-we-break-all-your-emulators/">8088MPH demo</a> stresses out both actual systems and emulators alike. There are points which the graphics card seems to have issues.</p>
@@ -372,12 +364,8 @@
 <li>05:53 - Constant high-pitch sound that ends at 06:25</li>
 <li>06:41 - Unsupported frequency on HDMI</li>
 </ul>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/9wYU6qMWlpE?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/9wYU6qMWlpE?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>For the <a href="https://www.pouet.net/prod.php?which=91938">Area 5150 demo</a>, the graphics card has been set into a mode to specifically display the overscan area since Area 5150 uses this.</p>
@@ -416,9 +404,9 @@
 <p>The PCB and code treats the palette value &ldquo;I:0 R:1 G:1 B:0&rdquo; specially to produce a brown instead of dark yellow as per the CGA standard.</p>
 <p>When an <a href="https://www.aceinnova.com/en/electronics/cga-and-the-brown-color-in-ibm-5153-color-display/">IBM5153 Colour Display Monitor</a> sees this signal &ldquo;I:0 R:1 G:1 B:0&rdquo;, instead of displaying dark yellow, the green component is halved producing a brown colour.</p>
 <p>In order to emulate this behaviour for modern displays, the FPGA itself will have to halve the green colour component. This is done through the dedicated green intensity control pin to the DVI transmitter.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-verilog" data-lang="verilog"><span style="display:flex;"><span><span style="color:#007f7f">// video[1] is the original green value
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">assign</span> hdmi_grn = video[<span style="color:#ff0;font-weight:bold">1</span>] ^ (hdmi_red &amp; video[<span style="color:#ff0;font-weight:bold">1</span>] &amp; (hdmi_blu ^ <span style="color:#ff0;font-weight:bold">1</span>) &amp; (hdmi_int ^ <span style="color:#ff0;font-weight:bold">1</span>));
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">assign</span> hdmi_grn_int = hdmi_int ^ (hdmi_red &amp; video[<span style="color:#ff0;font-weight:bold">1</span>] &amp; (hdmi_blu ^ <span style="color:#ff0;font-weight:bold">1</span>) &amp; (hdmi_int ^ <span style="color:#ff0;font-weight:bold">1</span>));
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-verilog" data-lang="verilog"><span style="display:flex;"><span><span style="color:#75715e">// video[1] is the original green value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">assign</span> hdmi_grn <span style="color:#f92672">=</span> video[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">^</span> (hdmi_red <span style="color:#f92672">&amp;</span> video[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&amp;</span> (hdmi_blu <span style="color:#f92672">^</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">&amp;</span> (hdmi_int <span style="color:#f92672">^</span> <span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">assign</span> hdmi_grn_int <span style="color:#f92672">=</span> hdmi_int <span style="color:#f92672">^</span> (hdmi_red <span style="color:#f92672">&amp;</span> video[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&amp;</span> (hdmi_blu <span style="color:#f92672">^</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">&amp;</span> (hdmi_int <span style="color:#f92672">^</span> <span style="color:#ae81ff">1</span>));
 </span></span></code></pre></div><p>The above boolean logic can lower the green value for this specific palette value by driving the hdmi_green_int pin high and green pin low. This logic is <a href="https://github.com/yeokm1/yeokm1.github.io/discussions/115#discussioncomment-7022872">provided by @spbnick</a>.</p>
 <a href="images/gg-hdmi-cga-test.jpg"><img src="images/gg-hdmi-cga-test.jpg" width="600"></a>
 <p>My IBM 5155 running the <a href="https://github.com/MobyGamer/CGACompatibilityTester">CGA Compatibility Tester</a> displaying the colour palatte.</p>
@@ -470,12 +458,8 @@
 <p>This project was a long journey for me since I started working on this project in Aug 2021. At that time, I designed the PCB without the skills to code in Verilog. Even though the number of changes I made are small, it took me quite a bit of time on the side to finally pick up the skills to work on my first FPGA project with all development and testing work this project entails.</p>
 <p>Not forgetting I&rsquo;m actually standing on the shoulders of giants like Eric Schlaepfer who designed the original Graphics Gremlin. I&rsquo;m just building on a small increment on top of his work.</p>
 <p>Embedded below is the presentation I gave at <a href="https://www.meetup.com/hackware/events/296712748/">Hackware v7.9 meetup</a>.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/r_GiEIe_oZk?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/r_GiEIe_oZk?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
   </div>
   <footer>
@@ -549,6 +533,23 @@
       <article class="mini-post">
         <section>
           
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/04/llama2-llm-on-dos/">LLama 2 LLM on DOS</a></h1>
+          <time class="published" datetime="">April 15, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
     
       <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
@@ -614,23 +615,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
-    
-      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up an open-frame Pentium 3 testbench</a></h1>
-          <time class="published" datetime="">May 25, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -652,7 +636,7 @@
           
           <li>
             
-              <a href="/categories/hacks/">hacks<span class="count">25</span></a>
+              <a href="/categories/hacks/">hacks<span class="count">26</span></a>
             
           
           <li>
@@ -667,12 +651,12 @@
           
           <li>
             
-              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
             
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">14</span></a>
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
             
           
           <li>
@@ -759,12 +743,12 @@
   
   <p class="copyright">
     
-      &copy; 2024
+      &copy; 2025
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.135.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.135.0">
+<meta name="generator" content="Hugo 0.146.3">
   <meta itemprop="name" content="Radar Theory and Teardown of Aircraft Transponder RT-459A">
   <meta itemprop="description" content="I recently got my hands on an old unserviceable aircraft transponder from my flying club. The tinkerer me was obviously very curious on what’s inside this piece of equipment. What better way to find out then to do a teardown!
 Aircraft Radio Corporation (ARC) RT-459A
@@ -362,12 +362,8 @@ Approximate size: 16.5cm x 29cm x 4.5cm">
 <p>Look up <a href="http://www.aeroelectric.com/articles/Altitude_Encoding/modecascii.txt">this table</a> to see the what altitude/squawk code corresponds to what values of A/B/C/D (1,2,4).</p>
 <p>Basically the 12 transmission slots between F1 and F2 is used to transmit the 12 data bits in <a href="https://en.wikipedia.org/wiki/Gillham_code">Gillham code</a> which is similar to <a href="https://en.wikipedia.org/wiki/Gray_code">Gray Code</a>.</p>
 <h3 id="transponder-failure">Transponder failure</h3>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/qaZw2G8dW8M?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/qaZw2G8dW8M?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>Here is a video snippet of my solo flight when my transponder failed. It seems my aircraft is now invisible to Paya Lebar Approach which is the ATC facility in charge of that area. Paya Lebar Approach is manned by military controllers so I&rsquo;m unsure why they did not have PSR to identify me.</p>
@@ -410,7 +406,7 @@ Approximate size: 16.5cm x 29cm x 4.5cm">
 <a href="images/crystal.jpg"><img src="images/crystal.jpg" width="600"></a>
 <p>There is a crystal of frequency 161.6670 Mhz. It seems like a very odd frequency so I did some multiplier calculations. Multiplying 161.667 by 6 gives an almost round number of 970.002‬ Mhz. Googling 970 Mhz gave me this diagram.</p>
 <a href="images/xpdr-architecture.png"><img src="images/xpdr-architecture.png" width="600"></a>
-<p><a href="https://books.google.com.sg/books?id=0BI6ioB8kM8C&lpg=PA217&pg=PA217#v=onepage&q&f=false">Source</a></p>
+<p><a href="https://books.google.com.sg/books?id=0BI6ioB8kM8C&amp;lpg=PA217&amp;pg=PA217#v=onepage&amp;q&amp;f=false">Source</a></p>
 <p>The frequency in this diagram is 107.77 Mhz with 2 x3 multipliers. I&rsquo;m guessing the multipliers in this RT-459A is a x2 and x3 multiplier.</p>
 <p>With the 970Mhz, the input 1030Mhz is shifted to 60 Mhz which is easier for the subsequent electronics to process. I&rsquo;m no RF person so this is as much as I understand it.</p>
 <h3 id="high-voltage-power-supply">High voltage power supply</h3>
@@ -439,12 +435,8 @@ Approximate size: 16.5cm x 29cm x 4.5cm">
 <p>It also shows the snail&rsquo;s pace in the improvement of aviation technology where equipment built so long ago still can function usefully today unlike our rapidly obsolete modern technology like computers and smartphones.</p>
 <p>Many thanks to Seletar Flying Club for giving me this old transponder to play with! Now if only I can do a teardown of the equipment behind those ultra-modern glass cockpits. It&rsquo;ll probably be more interesting but those are probably too expensive to just dissect and analyse.</p>
 <p>Edit (24 June 2020): I made some changes to this post due to new information suggested by others.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/zTT8z9a_488?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/zTT8z9a_488?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>Online presentation I gave of this topic at Hackware.</p>
@@ -517,6 +509,23 @@ Approximate size: 16.5cm x 29cm x 4.5cm">
       <article class="mini-post">
         <section>
           
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/04/llama2-llm-on-dos/">LLama 2 LLM on DOS</a></h1>
+          <time class="published" datetime="">April 15, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
     
       <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
@@ -582,23 +591,6 @@ Approximate size: 16.5cm x 29cm x 4.5cm">
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
-    
-      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up an open-frame Pentium 3 testbench</a></h1>
-          <time class="published" datetime="">May 25, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -620,7 +612,7 @@ Approximate size: 16.5cm x 29cm x 4.5cm">
           
           <li>
             
-              <a href="/categories/hacks/">hacks<span class="count">25</span></a>
+              <a href="/categories/hacks/">hacks<span class="count">26</span></a>
             
           
           <li>
@@ -635,12 +627,12 @@ Approximate size: 16.5cm x 29cm x 4.5cm">
           
           <li>
             
-              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
             
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">14</span></a>
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
             
           
           <li>
@@ -727,12 +719,12 @@ Approximate size: 16.5cm x 29cm x 4.5cm">
   
   <p class="copyright">
     
-      &copy; 2024
+      &copy; 2025
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.135.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

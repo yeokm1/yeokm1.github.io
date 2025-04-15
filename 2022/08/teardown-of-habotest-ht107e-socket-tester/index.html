@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.135.0">
+<meta name="generator" content="Hugo 0.146.3">
   <meta itemprop="name" content="Teardown of Habotest HT107E Socket Tester">
   <meta itemprop="description" content="During my volunteering with Repair Kopitiam, I noticed that an experienced coach had a tool that could plug into a socket to determine if the socket was wired up correctly. Fascinated by this, I wondered what such a tool was and how does it work?">
   <meta itemprop="datePublished" content="2022-08-06T00:00:00+00:00">
@@ -283,8 +283,7 @@
 <p>According to Wikipedia:</p>
 <blockquote>
 <p>An electrical outlet tester, receptacle tester, or socket tester is a small device containing a 3-prong power plug and three indicator lights, used for quickly detecting some types of incorrectly-wired electrical wall outlets.</p>
-<p>Source: <a href="https://en.wikipedia.org/wiki/Electrical_outlet_tester">https://en.wikipedia.org/wiki/Electrical_outlet_tester</a></p>
-</blockquote>
+<p>Source: <a href="https://en.wikipedia.org/wiki/Electrical_outlet_tester">https://en.wikipedia.org/wiki/Electrical_outlet_tester</a></p></blockquote>
 <p>Googling around, I found several brands of socket testers. One of these brands is Habotest which makes a socket tester with an integrated LCD screen which attracted my attention compared to most socket testers which only have 3 indicator LEDs.</p>
 <h2 id="habotest-ht107e">Habotest HT107E</h2>
 <p>The model that I selected was the Habotest HT107E which has a UK plug.</p>
@@ -296,69 +295,69 @@
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">No.</th>
-          <th style="text-align: left">Description</th>
-          <th style="text-align: left">Left</th>
-          <th style="text-align: left">Mid</th>
-          <th style="text-align: left">Right</th>
+          <th>No.</th>
+          <th>Description</th>
+          <th>Left</th>
+          <th>Mid</th>
+          <th>Right</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">1</td>
-          <td style="text-align: left">Correct</td>
-          <td style="text-align: left">ON</td>
-          <td style="text-align: left">ON</td>
-          <td style="text-align: left">OFF</td>
+          <td>1</td>
+          <td>Correct</td>
+          <td>ON</td>
+          <td>ON</td>
+          <td>OFF</td>
       </tr>
       <tr>
-          <td style="text-align: left">2</td>
-          <td style="text-align: left">Open Neutral</td>
-          <td style="text-align: left">OFF</td>
-          <td style="text-align: left">ON</td>
-          <td style="text-align: left">OFF</td>
+          <td>2</td>
+          <td>Open Neutral</td>
+          <td>OFF</td>
+          <td>ON</td>
+          <td>OFF</td>
       </tr>
       <tr>
-          <td style="text-align: left">3</td>
-          <td style="text-align: left">Live/Ground Reverse</td>
-          <td style="text-align: left">OFF</td>
-          <td style="text-align: left">ON</td>
-          <td style="text-align: left">ON</td>
+          <td>3</td>
+          <td>Live/Ground Reverse</td>
+          <td>OFF</td>
+          <td>ON</td>
+          <td>ON</td>
       </tr>
       <tr>
-          <td style="text-align: left">4</td>
-          <td style="text-align: left">Live/Neutral Reverse</td>
-          <td style="text-align: left">ON</td>
-          <td style="text-align: left">OFF</td>
-          <td style="text-align: left">ON</td>
+          <td>4</td>
+          <td>Live/Neutral Reverse</td>
+          <td>ON</td>
+          <td>OFF</td>
+          <td>ON</td>
       </tr>
       <tr>
-          <td style="text-align: left">5</td>
-          <td style="text-align: left">Live/Ground Reverse Missing Ground</td>
-          <td style="text-align: left">ON</td>
-          <td style="text-align: left">ON</td>
-          <td style="text-align: left">ON</td>
+          <td>5</td>
+          <td>Live/Ground Reverse Missing Ground</td>
+          <td>ON</td>
+          <td>ON</td>
+          <td>ON</td>
       </tr>
       <tr>
-          <td style="text-align: left">6</td>
-          <td style="text-align: left">Open Ground</td>
-          <td style="text-align: left">ON</td>
-          <td style="text-align: left">OFF</td>
-          <td style="text-align: left">OFF</td>
+          <td>6</td>
+          <td>Open Ground</td>
+          <td>ON</td>
+          <td>OFF</td>
+          <td>OFF</td>
       </tr>
       <tr>
-          <td style="text-align: left">7</td>
-          <td style="text-align: left">Missing Live</td>
-          <td style="text-align: left">OFF</td>
-          <td style="text-align: left">OFF</td>
-          <td style="text-align: left">OFF</td>
+          <td>7</td>
+          <td>Missing Live</td>
+          <td>OFF</td>
+          <td>OFF</td>
+          <td>OFF</td>
       </tr>
       <tr>
-          <td style="text-align: left">8</td>
-          <td style="text-align: left">Earth/Neutral Reverse (*Undetectable Error)</td>
-          <td style="text-align: left">ON</td>
-          <td style="text-align: left">ON</td>
-          <td style="text-align: left">ON</td>
+          <td>8</td>
+          <td>Earth/Neutral Reverse (*Undetectable Error)</td>
+          <td>ON</td>
+          <td>ON</td>
+          <td>ON</td>
       </tr>
   </tbody>
 </table>
@@ -484,12 +483,8 @@ We then decided to remove the sticker label on the cover and found that there we
 <p>Many thanks to Jing Ru for assisting me with this teardown effort. :)</p>
 <p>The Kicad schematic can be found here: <a href="https://github.com/yeokm1/ht107e-socket-tester-teardown">https://github.com/yeokm1/ht107e-socket-tester-teardown</a></p>
 <p>My presentation on this topic:</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/13FN2agjS0M?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/13FN2agjS0M?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
   </div>
   <footer>
@@ -560,6 +555,23 @@ We then decided to remove the sticker label on the cover and found that there we
       <article class="mini-post">
         <section>
           
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/04/llama2-llm-on-dos/">LLama 2 LLM on DOS</a></h1>
+          <time class="published" datetime="">April 15, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
     
       <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
@@ -625,23 +637,6 @@ We then decided to remove the sticker label on the cover and found that there we
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
-    
-      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up an open-frame Pentium 3 testbench</a></h1>
-          <time class="published" datetime="">May 25, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -663,7 +658,7 @@ We then decided to remove the sticker label on the cover and found that there we
           
           <li>
             
-              <a href="/categories/hacks/">hacks<span class="count">25</span></a>
+              <a href="/categories/hacks/">hacks<span class="count">26</span></a>
             
           
           <li>
@@ -678,12 +673,12 @@ We then decided to remove the sticker label on the cover and found that there we
           
           <li>
             
-              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
             
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">14</span></a>
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
             
           
           <li>
@@ -770,12 +765,12 @@ We then decided to remove the sticker label on the cover and found that there we
   
   <p class="copyright">
     
-      &copy; 2024
+      &copy; 2025
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.135.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

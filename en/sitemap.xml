@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://yeokhengmeng.com/categories/</loc>
-    <lastmod>2024-10-06T00:00:00+00:00</lastmod>
+    <lastmod>2025-04-15T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-sg"
@@ -16,13 +16,13 @@
                 />
   </url><url>
     <loc>http://yeokhengmeng.com/categories/hacks/</loc>
-    <lastmod>2024-10-06T00:00:00+00:00</lastmod>
+    <lastmod>2025-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://yeokhengmeng.com/2024/10/modern-pc-vintage-twist/</loc>
-    <lastmod>2024-10-06T00:00:00+00:00</lastmod>
+    <loc>http://yeokhengmeng.com/2025/04/llama2-llm-on-dos/</loc>
+    <lastmod>2025-04-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/post/</loc>
-    <lastmod>2024-10-06T00:00:00+00:00</lastmod>
+    <lastmod>2025-04-15T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-sg"
@@ -35,10 +35,10 @@
                 />
   </url><url>
     <loc>http://yeokhengmeng.com/categories/retrocomputing/</loc>
-    <lastmod>2024-10-06T00:00:00+00:00</lastmod>
+    <lastmod>2025-04-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/</loc>
-    <lastmod>2024-10-06T00:00:00+00:00</lastmod>
+    <lastmod>2025-04-15T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-sg"
@@ -49,6 +49,9 @@
                 hreflang="en"
                 href="http://yeokhengmeng.com/"
                 />
+  </url><url>
+    <loc>http://yeokhengmeng.com/2024/10/modern-pc-vintage-twist/</loc>
+    <lastmod>2024-10-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/2024/09/book-review-the-race-for-perfect/</loc>
     <lastmod>2024-09-09T00:00:00+00:00</lastmod>

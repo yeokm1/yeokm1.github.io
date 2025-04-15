@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.135.0">
+<meta name="generator" content="Hugo 0.146.3">
   <meta itemprop="name" content="My first chip with Tiny Tapeout 4 - Covox Speech Thing clone">
   <meta itemprop="description" content="When one thinks of designing an Application-specific Integrated Circuit (ASIC) chip, one would typically imagine a very high production cost, lack of access to tools and individuals can’t really do this unless you work in a company or academia.
 Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
@@ -290,8 +290,7 @@ In this post, I will share my experience in development and demonstrating my des
 <h2 id="background-of-tiny-tapeout">Background of Tiny Tapeout</h2>
 <blockquote>
 <p>Tiny Tapeout is a service that makes manufacturing ASICs (chips) affordable and accessible to students and makers. We leverage an open source ASIC toolchain, and build a community of open silicon enthusiasts who collaborate and share their digital design projects.</p>
-<p>Source: <a href="https://www.linkedin.com/company/tinytapeout/about/">https://www.linkedin.com/company/tinytapeout/about/</a></p>
-</blockquote>
+<p>Source: <a href="https://www.linkedin.com/company/tinytapeout/about/">https://www.linkedin.com/company/tinytapeout/about/</a></p></blockquote>
 <p>Tiny Tapeout was started by Matt Venn in 2022. Since that time, several batches (or shuttles as they call it) of chips have been executed. Tiny Tapeout collaborates with EFabless platform to aggregate multiple designs together into one shuttle in order to spread out and thus lower the cost per design.</p>
 <p>I took part in Tiny Tapeout 4 (TT04). It was submitted to Efabless 2309C chipIgnite shuttle using the open source Skywater 130nm Process Design Kit (PDK). The PDK contains the specification, design rules and standard libraries used by the foundry.</p>
 <p>Submission closed in Sept 2023 and I just received the chip and carrier board last week. So an approximately 9-month wait from submission to receiving the result.</p>
@@ -314,12 +313,8 @@ In this post, I will share my experience in development and demonstrating my des
 <p>The machine is a 2012 Thinkpad T430 running Kubuntu 22.04 LTS.</p>
 <a href="images/tt4-cvx-setup-expresscard.jpg"><img src="images/tt4-cvx-setup-expresscard.jpg" width="600"></a>
 <p>I used a <a href="https://www.startech.com/en-eu/cards-adapters/ec1pecps">Startech ExpressCard parallel port adapter</a>. The parallel port pins are connected to the ASIC inputs. The ASIC output is connected to a 3.5mm audio jack adapter which is then sent to the speakers.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/fYv4o8ltR5U?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/fYv4o8ltR5U?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>The first few seconds of the video is to configure the ASIC to use my design with a webapp called Tiny Tapeout Commander over Web Serial through the onboard RP2040 microcontroller. The RP2040 also sets the clock frequency supplied to the ASIC.</p>
@@ -331,21 +326,13 @@ In this post, I will share my experience in development and demonstrating my des
 <a href="images/tt4-cvx-x61.jpg"><img src="images/tt4-cvx-x61.jpg" width="600"></a>
 <p>I used a 2007 Thinkpad X61 running DOS 6.22. It has a native LPT1 (0x378) parallel port through the X6 Ultrabase Docking Station.</p>
 <p>More details of my Thinkpad X61&rsquo;s configuration is documented <a href="https://github.com/yeokm1/retro-configs/tree/master/laptops/thinkpad-x61">here</a>.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/B-Sx1dmTjro?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/B-Sx1dmTjro?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>The DOS player is <a href="http://rayer.g6.cz/programm/programe.htm">Covox MP3 player</a> written by Martin Rehak.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/2pRmEEQZoIg?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/2pRmEEQZoIg?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>This demo <a href="https://www.pouet.net/prod.php?which=463">Crystal Dream</a> by Triton supports a parallel port DAC like the Covox Speech Thing.</p>
@@ -356,16 +343,16 @@ In this post, I will share my experience in development and demonstrating my des
 <p>Below is the process I did using TT04. Note that specifics may/likely change for future shuttles but the general flow should still be similar.</p>
 <h3 id="1-ideation">1: Ideation</h3>
 <p>The first step is deciding what to do based on the constraints. At the time of TT04, these were the IO pins that are available for each design.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">module</span> tt_um_yeokm1_pwm_audio (
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] ui_in,    <span style="color:#007f7f">// Dedicated inputs
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">output</span> <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] uo_out,   <span style="color:#007f7f">// Dedicated outputs
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] uio_in,   <span style="color:#007f7f">// IOs: Input path
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">output</span> <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] uio_out,  <span style="color:#007f7f">// IOs: Output path
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">output</span> <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] uio_oe,   <span style="color:#007f7f">// IOs: Enable path (active high: 0=input, 1=output)
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span>       ena,      <span style="color:#007f7f">// will go high when the design is enabled
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span>       clk,      <span style="color:#007f7f">// clock
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span>       rst_n     <span style="color:#007f7f">// reset_n - low to reset
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#66d9ef">module</span> tt_um_yeokm1_pwm_audio (
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] ui_in,    <span style="color:#75715e">// Dedicated inputs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">output</span> <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uo_out,   <span style="color:#75715e">// Dedicated outputs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uio_in,   <span style="color:#75715e">// IOs: Input path
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">output</span> <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uio_out,  <span style="color:#75715e">// IOs: Output path
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">output</span> <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uio_oe,   <span style="color:#75715e">// IOs: Enable path (active high: 0=input, 1=output)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span>       ena,      <span style="color:#75715e">// will go high when the design is enabled
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span>       clk,      <span style="color:#75715e">// clock
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span>       rst_n     <span style="color:#75715e">// reset_n - low to reset
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>);
 </span></span></code></pre></div><ul>
 <li>Clock is provided by RP2040 and can go up to 50Mhz</li>
 <li>3.3V logic level digital pins only (not 5V tolerant)</li>
@@ -379,23 +366,23 @@ In this post, I will share my experience in development and demonstrating my des
 <p>Test-driven development is a very common approach used in the software world. For this case, I believe this approach is all the more important as the cost of making a mistake is very high.</p>
 <p>Testing is done using the <a href="https://www.cocotb.org/">cocotb framework</a>, a Python-based cosimulation tool for HDL code.</p>
 <p>The following is a short snippet of the relevant sections of my testbench:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>PERIOD_CYCLES = <span style="color:#ff0;font-weight:bold">256</span>
-</span></span><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>@cocotb.test()
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">async</span> <span style="color:#fff;font-weight:bold">def</span> test_tt_um_yeokm1_pwm_audio(dut):
-</span></span><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">for</span> i in <span style="color:#fff;font-weight:bold">range</span>(PERIOD_CYCLES):
-</span></span><span style="display:flex;"><span>        dut.ui_in.value = i
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>PERIOD_CYCLES <span style="color:#f92672">=</span> <span style="color:#ae81ff">256</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@cocotb.test</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_tt_um_yeokm1_pwm_audio</span>(dut):
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(PERIOD_CYCLES):
+</span></span><span style="display:flex;"><span>        dut<span style="color:#f92672">.</span>ui_in<span style="color:#f92672">.</span>value <span style="color:#f92672">=</span> i
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">for</span> j in <span style="color:#fff;font-weight:bold">range</span>(PERIOD_CYCLES):
-</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">await</span> ClockCycles(dut.clk, <span style="color:#ff0;font-weight:bold">1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(PERIOD_CYCLES):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> ClockCycles(dut<span style="color:#f92672">.</span>clk, <span style="color:#ae81ff">1</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#007f7f"># Verify correct ratio of Ton and Toff for PWM</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">if</span> j &lt; i:
-</span></span><span style="display:flex;"><span>                <span style="color:#fff;font-weight:bold">assert</span> <span style="color:#fff;font-weight:bold">str</span>(dut.uo_out.value[<span style="color:#ff0;font-weight:bold">7</span>]) == <span style="color:#0ff;font-weight:bold">&#34;1&#34;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#fff;font-weight:bold">else</span>:
-</span></span><span style="display:flex;"><span>                <span style="color:#fff;font-weight:bold">assert</span> <span style="color:#fff;font-weight:bold">str</span>(dut.uo_out.value[<span style="color:#ff0;font-weight:bold">7</span>]) == <span style="color:#0ff;font-weight:bold">&#34;0&#34;</span>
-</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Verify correct ratio of Ton and Toff for PWM</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> j <span style="color:#f92672">&lt;</span> i:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">assert</span> str(dut<span style="color:#f92672">.</span>uo_out<span style="color:#f92672">.</span>value[<span style="color:#ae81ff">7</span>]) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;1&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">assert</span> str(dut<span style="color:#f92672">.</span>uo_out<span style="color:#f92672">.</span>value[<span style="color:#ae81ff">7</span>]) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;0&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
 </span></span></code></pre></div><p><code>dut</code> refers to the verilog module that we will write that will be tested.</p>
 <p>In the test, the outer for-loop iterates through all the possible 256 (8-bit) values supplied to the input. The inner for-loop checks the appropriate ratio between the ON time and OFF time at every clock cycle.</p>
 <h3 id="4-run-the-test-github-action">4. Run the test github action</h3>
@@ -404,36 +391,36 @@ In this post, I will share my experience in development and demonstrating my des
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Github Action</th>
-          <th style="text-align: left">Jobs</th>
-          <th style="text-align: left">Objective</th>
+          <th>Github Action</th>
+          <th>Jobs</th>
+          <th>Objective</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">test</td>
-          <td style="text-align: left">test</td>
-          <td style="text-align: left">Pre-synthesis test. Run the testbench on the simulated HDL design.</td>
+          <td>test</td>
+          <td>test</td>
+          <td>Pre-synthesis test. Run the testbench on the simulated HDL design.</td>
       </tr>
       <tr>
-          <td style="text-align: left">gds</td>
-          <td style="text-align: left">gds</td>
-          <td style="text-align: left">HDL module is converted to logic gates and laid out.</td>
+          <td>gds</td>
+          <td>gds</td>
+          <td>HDL module is converted to logic gates and laid out.</td>
       </tr>
       <tr>
-          <td style="text-align: left"></td>
-          <td style="text-align: left">gl_test</td>
-          <td style="text-align: left">Post-synthesis test. Testbench is run on gate level.</td>
+          <td></td>
+          <td>gl_test</td>
+          <td>Post-synthesis test. Testbench is run on gate level.</td>
       </tr>
       <tr>
-          <td style="text-align: left"></td>
-          <td style="text-align: left">viewer</td>
-          <td style="text-align: left">Design can be optionally viewed</td>
+          <td></td>
+          <td>viewer</td>
+          <td>Design can be optionally viewed</td>
       </tr>
       <tr>
-          <td style="text-align: left">docs</td>
-          <td style="text-align: left">docs</td>
-          <td style="text-align: left">Generates the design datasheet from info.yaml</td>
+          <td>docs</td>
+          <td>docs</td>
+          <td>Generates the design datasheet from info.yaml</td>
       </tr>
   </tbody>
 </table>
@@ -447,27 +434,27 @@ In this post, I will share my experience in development and demonstrating my des
 <p>A 3D-render will also be generated to show the gate and wiring layout in the context of a tile.</p>
 <h3 id="5-writing-the-code">5. Writing the code</h3>
 <p>Here is a snippet of the code that contains the relevant logic section.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">module</span> tt_um_yeokm1_pwm_audio #() (
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] ui_in,    <span style="color:#007f7f">// Dedicated inputs
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">output</span> <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] uo_out,   <span style="color:#007f7f">// Dedicated outputs
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] uio_in,   <span style="color:#007f7f">// IOs: Input path
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">output</span> <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] uio_out,  <span style="color:#007f7f">// IOs: Output path
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">output</span> <span style="color:#fff;font-weight:bold">wire</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] uio_oe,   <span style="color:#007f7f">// IOs: Enable path (active high: 0=input, 1=output)
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span>       ena,      <span style="color:#007f7f">// will go high when the design is enabled
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span>       clk,      <span style="color:#007f7f">// clock
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    <span style="color:#fff;font-weight:bold">input</span>  <span style="color:#fff;font-weight:bold">wire</span>       rst_n     <span style="color:#007f7f">// reset_n - low to reset
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>);
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">reg</span> [<span style="color:#ff0;font-weight:bold">7</span>:<span style="color:#ff0;font-weight:bold">0</span>] pwm_cnt;
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">always</span> @(<span style="color:#fff;font-weight:bold">posedge</span> clk) <span style="color:#fff;font-weight:bold">begin</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">if</span>(rst_n == <span style="color:#ff0;font-weight:bold">0</span>) <span style="color:#fff;font-weight:bold">begin</span>
-</span></span><span style="display:flex;"><span>        pwm_cnt &lt;= <span style="color:#ff0;font-weight:bold">0</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">end</span> <span style="color:#fff;font-weight:bold">else</span> <span style="color:#fff;font-weight:bold">if</span> (ena) <span style="color:#fff;font-weight:bold">begin</span>
-</span></span><span style="display:flex;"><span>        pwm_cnt &lt;= pwm_cnt + <span style="color:#ff0;font-weight:bold">1</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">end</span>
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">end</span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">// Check rst_n and ena are activated first
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">assign</span> uo_out[<span style="color:#ff0;font-weight:bold">0</span>] = rst_n &amp;&amp; ena &amp;&amp; (ui_in &gt; pwm_cnt);
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">endmodule</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#66d9ef">module</span> tt_um_yeokm1_pwm_audio #() (
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] ui_in,    <span style="color:#75715e">// Dedicated inputs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">output</span> <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uo_out,   <span style="color:#75715e">// Dedicated outputs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uio_in,   <span style="color:#75715e">// IOs: Input path
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">output</span> <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uio_out,  <span style="color:#75715e">// IOs: Output path
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">output</span> <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uio_oe,   <span style="color:#75715e">// IOs: Enable path (active high: 0=input, 1=output)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span>       ena,      <span style="color:#75715e">// will go high when the design is enabled
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span>       clk,      <span style="color:#75715e">// clock
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span>       rst_n     <span style="color:#75715e">// reset_n - low to reset
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">reg</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] pwm_cnt;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">always</span> @(<span style="color:#66d9ef">posedge</span> clk) <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(rst_n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>        pwm_cnt <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (ena) <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>        pwm_cnt <span style="color:#f92672">&lt;=</span> pwm_cnt <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Check rst_n and ena are activated first
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">assign</span> uo_out[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> rst_n <span style="color:#f92672">&amp;&amp;</span> ena <span style="color:#f92672">&amp;&amp;</span> (ui_in <span style="color:#f92672">&gt;</span> pwm_cnt);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">endmodule</span>
 </span></span></code></pre></div><p>We have a register <code>pwm_cnt</code> that tracks which part of the PWM period we are in right now.</p>
 <p>On every positive clock edge, we first check if the active-low reset is low, if so we reset <code>pwm_cnt</code>. Otherwise, it is incremented. If it reaches the maximum value, it will go back to 0. <code>pwm_cnt</code> is an 8-bit register as the input audio and PWM-period are 8 bits wide.</p>
 <p>The active and inactive time is decided based on these conditions:</p>
@@ -480,13 +467,12 @@ In this post, I will share my experience in development and demonstrating my des
 <p>The answer was actually documented online all this while which I didn&rsquo;t read:</p>
 <blockquote>
 <p>Most FPGAs allow initial statements, and flops are often initialised to zero. This is not the case with ASICs, where <strong>flops will have a random initial value at power on</strong>. Initial statements are not allowed, so you <strong>must use an explicit reset</strong>.</p>
-<p>Source: <a href="https://tinytapeout.com/hdl/fpga_vs_asic/">https://tinytapeout.com/hdl/fpga_vs_asic/</a></p>
-</blockquote>
+<p>Source: <a href="https://tinytapeout.com/hdl/fpga_vs_asic/">https://tinytapeout.com/hdl/fpga_vs_asic/</a></p></blockquote>
 <p>If one only uses FPGAs before this, it would be easy to make this mistake.</p>
 <p>The solution ended being as simple as this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">if</span>(rst_n == <span style="color:#ff0;font-weight:bold">0</span>) <span style="color:#fff;font-weight:bold">begin</span>
-</span></span><span style="display:flex;"><span>    pwm_cnt &lt;= <span style="color:#ff0;font-weight:bold">0</span>;
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">end</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(rst_n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>    pwm_cnt <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
 </span></span></code></pre></div><p>On reset, explicitly set the <code>pwm_cnt</code> register to 0.</p>
 <h3 id="6-test-on-fpga">6. Test on FPGA</h3>
 <p>Although not strictly required, it is recommended that the design be tested on an FPGA as a sanity check.</p>
@@ -514,15 +500,10 @@ In this post, I will share my experience in development and demonstrating my des
 <p>I have certainly gained a better appreciation of the chip design process. It&rsquo;s unlikely I would switch into chip design at this point in my career but I can totally forsee that it might encourage a new generation of people interested in this career or at least pick this up as a hobby.</p>
 <blockquote>
 <p>Perhaps one day, submitting a GDS file to a fab will seem just as ordinary as sending Gerbers to a PCB shop is today.</p>
-<p>Source: <a href="https://hackaday.com/2023/02/14/supercon-2022-matt-venns-tiny-tapeout-brings-chip-design-to-the-masses/">https://hackaday.com/2023/02/14/supercon-2022-matt-venns-tiny-tapeout-brings-chip-design-to-the-masses/</a></p>
-</blockquote>
+<p>Source: <a href="https://hackaday.com/2023/02/14/supercon-2022-matt-venns-tiny-tapeout-brings-chip-design-to-the-masses/">https://hackaday.com/2023/02/14/supercon-2022-matt-venns-tiny-tapeout-brings-chip-design-to-the-masses/</a></p></blockquote>
 <p>Embedded below is the presentation I gave at <a href="https://www.meetup.com/hackware/events/301776049/">Hackware v8.3 meetup</a>.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/G2dRGjgYIZQ?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/G2dRGjgYIZQ?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
   </div>
   <footer>
@@ -593,6 +574,23 @@ In this post, I will share my experience in development and demonstrating my des
       <article class="mini-post">
         <section>
           
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/04/llama2-llm-on-dos/">LLama 2 LLM on DOS</a></h1>
+          <time class="published" datetime="">April 15, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
     
       <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
@@ -658,23 +656,6 @@ In this post, I will share my experience in development and demonstrating my des
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
-    
-      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up an open-frame Pentium 3 testbench</a></h1>
-          <time class="published" datetime="">May 25, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -696,7 +677,7 @@ In this post, I will share my experience in development and demonstrating my des
           
           <li>
             
-              <a href="/categories/hacks/">hacks<span class="count">25</span></a>
+              <a href="/categories/hacks/">hacks<span class="count">26</span></a>
             
           
           <li>
@@ -711,12 +692,12 @@ In this post, I will share my experience in development and demonstrating my des
           
           <li>
             
-              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
             
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">14</span></a>
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
             
           
           <li>
@@ -803,12 +784,12 @@ In this post, I will share my experience in development and demonstrating my des
   
   <p class="copyright">
     
-      &copy; 2024
+      &copy; 2025
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.135.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

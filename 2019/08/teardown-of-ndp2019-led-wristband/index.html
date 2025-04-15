@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.135.0">
+<meta name="generator" content="Hugo 0.146.3">
   <meta itemprop="name" content="Teardown of NDP2019 LED wristband">
   <meta itemprop="description" content="3 years ago, I tore down the NDP 2016 LED wristband as I got one during the Singapore National Day Parade (NDP) Preview. 3 years later, I got another one during the NDP preview held on 28 July 2019.
 Board internals
@@ -279,51 +279,43 @@ So time for another teardown!">
 
   <div class="content">
     <p>3 years ago, <a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/">I tore down the NDP 2016 LED wristband</a> as I got one during the Singapore National Day Parade (NDP) Preview. 3 years later, I got another one during the NDP preview held on 28 July 2019.</p>
-<p><a href="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-front.jpg"><img src="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-front-1024x303.jpg"></a></p>
+<p><a href="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-front.jpg"><img src="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-front-1024x303.jpg" alt=""></a></p>
 <p>Board internals</p>
-<p><a href="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-intact.jpg"><img src="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-intact-1024x862.jpg"></a></p>
+<p><a href="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-intact.jpg"><img src="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-intact-1024x862.jpg" alt=""></a></p>
 <p>Band in original condition</p>
 <p>So time for another teardown!</p>
 <h1 id="wristbands-in-action">Wristbands in action!</h1>
 <p>Let&rsquo;s see how the wristbands perform during the event!</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-5NGX2UqL8g?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-5NGX2UqL8g?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>Blue, white, yellow LED</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/QtbojghreqY?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/QtbojghreqY?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>Thousands of bands were synchronised to blink at the same time. Notice that the performers&rsquo; drums also blink at the same time.</p>
 <h1 id="opening-the-band">Opening the band</h1>
 <h2 id="front-of-board">Front of board</h2>
-<p><a href="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-front.jpg"><img src="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-front-1024x303.jpg"></a></p>
+<p><a href="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-front.jpg"><img src="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-front-1024x303.jpg" alt=""></a></p>
 <p>The manufacturer of the band <a href="https://www.pixmob.com/">Pixmob</a> is the same as the one that made the 2016 model.</p>
 <p>The band this time comes with 2 RGB LEDs but no accelerometer. A microcontroller and a suspected EEPROM form the 3 main IC chips .</p>
 <p>There are no IC markings on the microcontroller. Since I only have 2 bands this time (my family returned the rest), I can&rsquo;t tell if this is deliberate obfuscation or something happened between the production process and me receiving it.</p>
 <h2 id="back-of-board">Back of board</h2>
-<p><a href="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-back.jpg"><img src="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-back-1024x541.jpg"></a></p>
+<p><a href="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-back.jpg"><img src="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-back-1024x541.jpg" alt=""></a></p>
 <p>The board is powered by 2x 3V CR1632 connected in series.</p>
 <h2 id="leds">LEDs</h2>
 <p>Using the diode mode of the multimeter and tap input/output pins.</p>
-<p><a href="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-blue.jpg"><img src="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-blue.jpg"></a></p>
-<p><a href="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-red.jpg"><img src="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-red.jpg"></a></p>
-<p><a href="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-green.jpg"><img src="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-green.jpg"></a></p>
+<p><a href="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-blue.jpg"><img src="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-blue.jpg" alt=""></a></p>
+<p><a href="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-red.jpg"><img src="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-red.jpg" alt=""></a></p>
+<p><a href="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-green.jpg"><img src="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-opened-green.jpg" alt=""></a></p>
 <p>We can see the LEDs are just connected in parallel.</p>
 <h1 id="schematic">Schematic</h1>
 <p>Using a Multimeter and some trace inspection by eye, I mapped out the connections between the components as shown below.</p>
-<p><a href="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristband-schematic.png"><img src="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristband-schematic-1024x612.png"></a></p>
+<p><a href="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristband-schematic.png"><img src="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristband-schematic-1024x612.png" alt=""></a></p>
 <p>The microcontroller chip does not have an IC marking. According to my friend <a href="https://twitter.com/jg_lim">Jin Gen (@jg_lim)</a> who managed to <a href="http://jg.sn.sg/ndp-pixmob-1/">run custom code on the NDP2016 wristband</a>, whom I&rsquo;m paraphrasing:</p>
-<p><strong>&ldquo;It is suspected to be the <a href="http://www.abov.co.kr/en/index.php?Depth1=3&Depth2=1&Depth3=1&Depth4=2&Item=MC81F4104">Abov MC81F4104</a> as it is from the same family as the Abov 81F4204R used in the NDP 2016 wristband. The MC81F4104 suspicion is further cemented by the fact this chip is the only one with the 8-SO package in <a href="http://www.abov.co.kr/en/index.php?Depth1=3&Depth2=1&Depth3=1&Depth4=2">Abov&rsquo;s 8-bit Flash MCU lineup</a>.&rdquo;</strong></p>
+<p><strong>&ldquo;It is suspected to be the <a href="http://www.abov.co.kr/en/index.php?Depth1=3&amp;Depth2=1&amp;Depth3=1&amp;Depth4=2&amp;Item=MC81F4104">Abov MC81F4104</a> as it is from the same family as the Abov 81F4204R used in the NDP 2016 wristband. The MC81F4104 suspicion is further cemented by the fact this chip is the only one with the 8-SO package in <a href="http://www.abov.co.kr/en/index.php?Depth1=3&amp;Depth2=1&amp;Depth3=1&amp;Depth4=2">Abov&rsquo;s 8-bit Flash MCU lineup</a>.&rdquo;</strong></p>
 <p>But if this is the case, it seems strange that the Vss is connected to power and Vdd to GND when it is supposed to be vice-versa. Nevertheless I&rsquo;ll remain on this assumption.</p>
 <p>No programming points can be found on the PCB so the guess is the firmware is programmed before assembly?</p>
 <p>I made some assumptions about the U2 I2C component. I assume it is the same EEPROM used in NDP2016&rsquo;s wristband as has a marking AAKFM which Google does not give an answer to.</p>
@@ -331,14 +323,10 @@ So time for another teardown!">
 <p>The source files of the Kicad schematic can be found <a href="https://github.com/yeokm1/ndp2019-wristband-teardown">here</a>.</p>
 <h1 id="suspected-emitter">Suspected Emitter</h1>
 <p>From my 2016 experience, I now knew what to look for.</p>
-<p><a href="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-emitter.jpg"><img src="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-emitter-1024x806.jpg"></a></p>
+<p><a href="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-emitter.jpg"><img src="/2019/08/teardown-of-ndp2019-led-wristband/images/ndp2019-wristbands-emitter-1024x806.jpg" alt=""></a></p>
 <p>I can&rsquo;t confirm this but it seems like the infrared emitter is hung on the light tower. Waving my Pixel 2 around, I found the 3 purple infrared emission that is visible on my Pixel 2&rsquo;s camera but not to the naked eye.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/HoxTIAQq5L0?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/HoxTIAQq5L0?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>The emitter seems to be &ldquo;sending&rdquo; something</p>
@@ -418,6 +406,23 @@ So time for another teardown!">
       <article class="mini-post">
         <section>
           
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/04/llama2-llm-on-dos/">LLama 2 LLM on DOS</a></h1>
+          <time class="published" datetime="">April 15, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
     
       <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
@@ -483,23 +488,6 @@ So time for another teardown!">
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
-    
-      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up an open-frame Pentium 3 testbench</a></h1>
-          <time class="published" datetime="">May 25, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -521,7 +509,7 @@ So time for another teardown!">
           
           <li>
             
-              <a href="/categories/hacks/">hacks<span class="count">25</span></a>
+              <a href="/categories/hacks/">hacks<span class="count">26</span></a>
             
           
           <li>
@@ -536,12 +524,12 @@ So time for another teardown!">
           
           <li>
             
-              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
             
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">14</span></a>
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
             
           
           <li>
@@ -628,12 +616,12 @@ So time for another teardown!">
   
   <p class="copyright">
     
-      &copy; 2024
+      &copy; 2025
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.135.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

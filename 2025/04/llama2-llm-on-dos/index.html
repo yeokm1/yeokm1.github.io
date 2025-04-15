@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>LLama 2 LLM on DOS - YKM&#39;s Corner on the Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.146.3">
+  <meta itemprop="name" content="LLama 2 LLM on DOS">
+  <meta itemprop="description" content="Ever thought of running a local Large Language Model (LLM) on a vintage PC running DOS? Now you can!">
+  <meta itemprop="datePublished" content="2025-04-15T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-04-15T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1227">
+  <meta itemprop="image" content="http://yeokhengmeng.com/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg">
+  <meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2025/04/llama2-llm-on-dos/">
+  <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
+  <meta property="og:title" content="LLama 2 LLM on DOS">
+  <meta property="og:description" content="Ever thought of running a local Large Language Model (LLM) on a vintage PC running DOS? Now you can!">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-04-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-15T00:00:00+00:00">
+    <meta property="og:image" content="http://yeokhengmeng.com/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://yeokhengmeng.com/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg">
+  <meta name="twitter:title" content="LLama 2 LLM on DOS">
+  <meta name="twitter:description" content="Ever thought of running a local Large Language Model (LLM) on a vintage PC running DOS? Now you can!">
+      <meta name="twitter:site" content="@yeokm1">
+<link rel="stylesheet" href="/css/bundle.min.ddee09a014b0ec888f9e86a08a442e769e45794257080194efeb3e17d2f9fa80.css" integrity="sha256-3e4JoBSw7IiPnoagikQudp5FeUJXCAGU7&#43;s&#43;F9L5&#43;oA=">
+        <link rel="stylesheet" href="/css/add-on.css"></head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            post
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/aviation" class="link"><i class='fas fa-plane'></i> Aviation</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/retrocomputing" class="link"><i class='fas fa-save'></i> Retrocomputing</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/favourite-quotes/" class="link">Favourite Quotes</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about-me/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/zh" lang="zh" class="no-lang link">简体中文 (zh)</a>
+      
+    
+  
+</menu>
+
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="" alt="Kheng Meng profile pic" /></a>
+  <header>
+    <h1>Yeo Kheng Meng</h1>
+  </header>
+  <main>
+    <p>Maker, Coder, Private Pilot, Retrocomputing Enthusiast</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/yeokm1" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/yeokhengmeng" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/yeokhengmeng" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/yeokm1" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/yeokm1" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/yeokm1" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+<li><a href="//telegram.me/yeokm1" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/2025/04/llama2-llm-on-dos/">LLama 2 LLM on DOS</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2025-04-15 00:00:00 &#43;0000 UTC">
+      April 15, 2025
+    </time>
+    <span class="author"></span>
+    
+      <p>6 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  </section>
+  
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+  <div class="content">
+    <p>Ever thought of running a local Large Language Model (LLM) on a vintage PC running DOS? Now you can!</p>
+<h2 id="demos">Demos</h2>
+<p>This video shows DOS Llama 2 LLM client running on 2 vintage DOS machines Thinkpad T42 (2002) and Toshiba Satellite 315CDT (1996).</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/4241obgG_QI?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<p>Running on Thinkpad T42 (2004) and Toshiba Satellite 315CDT (1996). Their CPUs are Pentium M 735 1.7 Ghz and Pentium MMX 200Mhz respectively.</p>
+<a href="images/dosllam2-x13g1-fd14.jpg"><img src="images/dosllam2-x13g1-fd14.jpg" width="700"></a>
+<p>Running on FreeDOS 1.4 on Thinkpad X13 Gen 1 (2020) with Core i5-10310U 1.7Ghz.</p>
+<p>Everything is open sourced with executable available here: <a href="https://github.com/yeokm1/dosllam2">https://github.com/yeokm1/dosllam2</a></p>
+<h2 id="background">Background</h2>
+<p>2 years ago I wrote a <a href="2023/03/building-a-dos-chatgpt-client-in-2023/">DOS ChatGPT client</a> and many retrocomputing enthusiasts in the community wrote similar clients for other vintage platforms. They all had a similar issue, dependency on some remote service. What about running things locally?</p>
+<p>Conventional wisdom states that running LLMs locally will require computers with high performance specifications especially GPUs with lots of VRAM. But is this actually true?</p>
+<p>In 2023, Andreq Karpathy released his open-source <a href="https://github.com/karpathy/llama2.c">llama2.c</a> project which allows inferencing of Meta&rsquo;s Llama 2 models with just a single C file. Other developers then ported his project to run on many platforms including some vintage ones like <a href="https://blog.exolabs.net/day-4/">Windows 98</a> and
+<a href="https://www.macrumors.com/2025/03/24/powerbook-g4-generative-ai/">Powerbook G4</a>. Someone even <a href="https://github.com/maxbbraun/llama4micro">ported it to run a microcontroller</a>.</p>
+<p>This then inspired me to think, could the same thing be done for an even older platform like DOS?</p>
+<p>Based on the demo video and screenshots, it is obvious I managed to do this so this blog post will show how I did it.</p>
+<h2 id="technical-details">Technical details</h2>
+<h3 id="the-original-code">The original code</h3>
+<p>llama2.c is written in a single-C file designed to inference only fp32 models of the Llama-2 architecture.</p>
+<blockquote>
+<p>This repo still cares about efficiency, but not at the cost of simplicity, readability or portability.
+<a href="https://github.com/karpathy/llama2.c">https://github.com/karpathy/llama2.c</a></p></blockquote>
+<p>For ease of testing of smaller models, Karpathy trained several small models on the TinyStories dataset that only have sizes of 260K, 15M, 42M and 110M. This is to enable some basic level of LLM functionality on resource-constraints systems.</p>
+<p>llama2.c although written for portability in mind, still has some challenges when it comes to making the codebase work for vintage systems.</p>
+<h3 id="compilation-and-dos-extender">Compilation and DOS Extender</h3>
+<p>The compiler I selected is <a href="https://open-watcom.github.io/">Open Watcom v2 (OWC)</a>. I used this as I was familiar with it having used it for my DOS ChatGPT client as well.</p>
+<p>OWC provides a GUI IDE but I prefer to use a Makefile to keep the project relatively lightweight and easy to manage.</p>
+<p>This is the OWC Makefile I used to compile my project:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>TARGET <span style="color:#f92672">=</span> dosllam2
+</span></span><span style="display:flex;"><span>OBJS <span style="color:#f92672">=</span> dosllam2.obj
+</span></span><span style="display:flex;"><span>CFLAGS <span style="color:#f92672">=</span> -zdp -za99
+</span></span><span style="display:flex;"><span>LDFLAGS <span style="color:#f92672">=</span> SYSTEM dos32a NAME <span style="color:#66d9ef">$(</span>TARGET<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>all: clean <span style="color:#66d9ef">$(</span>TARGET<span style="color:#66d9ef">)</span>.exe
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">$(</span>TARGET<span style="color:#66d9ef">)</span>.obj: dosllam2.c
+</span></span><span style="display:flex;"><span>	wcc386 <span style="color:#66d9ef">$(</span>CFLAGS<span style="color:#66d9ef">)</span> dosllam2.c
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">$(</span>TARGET<span style="color:#66d9ef">)</span>.exe: <span style="color:#66d9ef">$(</span>OBJS<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>	wlink <span style="color:#66d9ef">$(</span>LDFLAGS<span style="color:#66d9ef">)</span> FILE <span style="color:#66d9ef">$(</span>OBJS<span style="color:#66d9ef">)</span>
+</span></span></code></pre></div><p>The compiler toolchain uses <code>wcc386</code> and <code>wlink</code>. I used <code>-za99</code> to enable C99 support otherwise it will revert to C90.</p>
+<p>Special attention is given to the <code>dos32a</code> flag. For most DOS programs, you generally can compile for 2 typical modes:</p>
+<ul>
+<li>Traditional 16-bit architecture compatible with the Intel 8088 used in the first IBM PC</li>
+<li>32-bit DOS extender support for Intel 386 CPUs or newer</li>
+</ul>
+<p>Since the llama2.c codebase is written for modern systems of at least 32-bit, I must go for the latter option. The memory requirement even for the tiniest of LLMs demands at least a 32-bit system too.</p>
+<p>One common 32-bit DOS extender used in the DOS-era is <a href="https://en.wikipedia.org/wiki/DOS/4G">DOS/4G</a>. This extender allows programs to access to more memory above the 640KiB conventional memory limit by switching the CPU to 32-bit protected mode. One very common use case is that of games which required gobs of memory, famous examples are Doom and Descent.</p>
+<p>OWC supports DOS/4G as a choice of extender as well as another newer and open-source <a href="https://en.wikipedia.org/wiki/DOS/32">DOS/32</a> by Narech Koumar released in 2006.</p>
+<a href="images/dosllam2-dos32a.jpg"><img src="images/dosllam2-dos32a.jpg" width="500"></a>
+<p>This extender can be embedded into your program as a runtime or run separately. Either way, most DOS-extenders will show a startup banner like the above.</p>
+<h3 id="porting-efforts">Porting efforts</h3>
+<p>The original llama2.c codebase assumes still a reasonable modern C compiler with modern features. Although the OWC project is still being maintained, there was a bit of porting effort required for me to get the code to compile.</p>
+<h4 id="floating-point-operations">Floating point operations</h4>
+<p>The inferencing requires heavy use of floating point operations which OWC does not support well.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define sqrtf(x) ((float)sqrt((double)(x)))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define powf(x, y) ((float)pow((double)(x), (double)(y)))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define cosf(x) ((float)cos((double)(x)))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define sinf(x) ((float)sin((double)(x)))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define expf(x)  ((float)exp((double)(x)))
+</span></span></span></code></pre></div><p>So I had to define some macros using existing <code>double</code> functions.</p>
+<h4 id="memory-map">Memory map</h4>
+<p>Modern compilers support the <code>mmap</code> or similar functions which allow files in storage to be mapped into memory. The contents of the file are not all read into memory at once but are lazy-loaded i.e only necessary portions are read when used helping to speed up the use of especially large files.</p>
+<p>OWC does not support this thus I have to modify all memory-mapping calls to load the entire LLM file into memory. This has the effect of increasing initial load times.</p>
+<h4 id="timing">Timing</h4>
+<p>To measure inference speed, the program requires use of timing APIs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">long</span> <span style="color:#a6e22e">time_in_ms</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">struct</span> timespec time;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">clock_gettime</span>(CLOCK_REALTIME, <span style="color:#f92672">&amp;</span>time);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> time.tv_sec <span style="color:#f92672">*</span> <span style="color:#ae81ff">1000</span> <span style="color:#f92672">+</span> time.tv_nsec <span style="color:#f92672">/</span> <span style="color:#ae81ff">1000000</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Those APIs are not available thus I have to change to something els.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">long</span> <span style="color:#a6e22e">time_in_ms</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> (<span style="color:#a6e22e">clock</span>() <span style="color:#f92672">*</span> <span style="color:#ae81ff">1000L</span>) <span style="color:#f92672">/</span> CLOCKS_PER_SEC;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>OWC provides the <code>clock()</code> which counts processor tick time which in seconds can be obtained by divided by the internal macro <code>CLOCKS_PER_SEC</code>.</p>
+<h3 id="filename-length-limits">Filename length limits</h3>
+<p>DOS has a <a href="https://en.wikipedia.org/wiki/8.3_filename">8.3 filename</a> limit. This also impacts the C code used to read the files.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// Previous
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>tokenizer_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;tokenizer.bin&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//New
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>tokenizer_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;tokenize.bin&#34;</span>;
+</span></span></code></pre></div><p>The original program loads a tokenizer file containing a hard-coded path which does not adhere to the 8.3 rule. Although the solution to shorten the filename by one character is simple, it caused me some troubleshooting time initially as I wondered why this loading did not work on my vintage system.</p>
+<h2 id="benchmarks">Benchmarks</h2>
+<p>I did some benchmarks using PCs of 3-decades ago all the way to modern systems.</p>
+<p>Data is in tokens per second. All the operating systems are in MS-DOS 6.22 with no memory manager loaded.</p>
+<table>
+  <thead>
+      <tr>
+          <th>System</th>
+          <th>CPU</th>
+          <th>RAM</th>
+          <th>260K</th>
+          <th>15M</th>
+          <th>42M</th>
+          <th>110M</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Generic 486 system (1990s)</td>
+          <td>486 DX-2 66Mhz</td>
+          <td>32MB EDO</td>
+          <td>2.08</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>Toshiba Satellite 315CDT (1996)</td>
+          <td>Pentium MMX 200Mhz</td>
+          <td>96MB EDO</td>
+          <td>15.32</td>
+          <td>0.43</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>Tweener PC (2001)</td>
+          <td>Pentium III 667Mhz</td>
+          <td>512MB SDRAM</td>
+          <td>80.04</td>
+          <td>2.35</td>
+          <td>0.89</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>ThinkPad T42 (2004)</td>
+          <td>Pentium M 735 1.7 Ghz</td>
+          <td>2GB DDR</td>
+          <td>331.6</td>
+          <td>11.55</td>
+          <td>4.42</td>
+          <td>1.71</td>
+      </tr>
+      <tr>
+          <td>ThinkPad X61 (2007)</td>
+          <td>Core 2 Duo T7300 2.00Ghz</td>
+          <td>4GB DDR2</td>
+          <td>171.89</td>
+          <td>5.26</td>
+          <td>2.00</td>
+          <td>1.00</td>
+      </tr>
+      <tr>
+          <td>ThinkPad X301 (2008)</td>
+          <td>Core 2 Duo SU9400 1.4 GHz</td>
+          <td>8GB DDR3</td>
+          <td>171.95</td>
+          <td>5.30</td>
+          <td>1.98</td>
+          <td>0.77</td>
+      </tr>
+      <tr>
+          <td>ThinkPad X13G1 (2020)</td>
+          <td>Core i5-10310U 1.7Ghz</td>
+          <td>16GB DDR4</td>
+          <td>386.36</td>
+          <td>10.51</td>
+          <td>3.89</td>
+          <td>1.53</td>
+      </tr>
+      <tr>
+          <td>Modern Desktop (2024)</td>
+          <td>AMD Ryzen 5 7600 3.8 Ghz</td>
+          <td>128GB DDR5</td>
+          <td>927.27</td>
+          <td>15.95</td>
+          <td>*</td>
+          <td>*</td>
+      </tr>
+  </tbody>
+</table>
+<p>As expected, the more modern the system, the faster the inference speed. An interesting observation is that my desktop with a modern Ryzen CPU and 128GB RAM cannot load the larger models due to memory allocation error. Perhaps some kind of overflow/bug in the DOS extender or protected mode implementation of the AMD CPU/motherboard.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The porting effort I took, testing and documenting this is a simple weekend job. Most of the efforts have to be attributed to the original developer of this project Andrej Karpathy without which this would not have been possible.</p>
+<p>Still, I&rsquo;m amazed what can still be accomplished with vintage systems.</p>
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/retrocomputing">retrocomputing</a></li>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/hacks">hacks</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yeokm1/yeokm1.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNTQ3ODI3NTI="
+        data-category="Comments"
+        data-category-id="DIC_kwDODy-tIM4CXEA6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div class="pagination">
+  
+    <a href="/2024/10/modern-pc-vintage-twist/" class="button"><div class="previous"><div>Modern 2024 PC with a vintage twist (ft. Ryzen 5 7600 &amp; GeForce 4060 Ti)</div></div></a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/04/llama2-llm-on-dos/">LLama 2 LLM on DOS</a></h1>
+          <time class="published" datetime="">April 15, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
+    
+      <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/10/modern-pc-vintage-twist/">Modern 2024 PC with a vintage twist (ft. Ryzen 5 7600 &amp; GeForce 4060 Ti)</a></h1>
+          <time class="published" datetime="">October 6, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2024/09/book-review-the-race-for-perfect/" class="image featured">
+    
+      <img src="/2024/09/book-review-the-race-for-perfect/images/trfp-preview.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/09/book-review-the-race-for-perfect/">Book Review: The Race for Perfect: Inside the Quest to Design the Ultimate Portable Computer by Steve Hamm</a></h1>
+          <time class="published" datetime="">September 9, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2024/08/dos-on-thinkpad-x13-gen1/" class="image featured">
+    
+      <img src="/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/08/dos-on-thinkpad-x13-gen1/">DOS&#39;s Last Stand on a modern Thinkpad: X13 Gen 1 with Intel i5-10310U</a></h1>
+          <time class="published" datetime="">August 18, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2024/06/my-first-chip-with-tiny-tapeout-cvx/" class="image featured">
+    
+      <img src="/2024/06/my-first-chip-with-tiny-tapeout-cvx/images/tt4-cvx-cover.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/06/my-first-chip-with-tiny-tapeout-cvx/">My first chip with Tiny Tapeout 4 - Covox Speech Thing clone</a></h1>
+          <time class="published" datetime="">June 20, 2024</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/hacks/">hacks<span class="count">26</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/personal/">personal<span class="count">17</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/singapore/">singapore<span class="count">16</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/teardowns/">teardowns<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/school/">school<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/book-reviews/">book-reviews<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/politics/">politics<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hackathon/">hackathon<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/product-reviews/">product-reviews<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/admin/">admin<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/repair-kopitiam/">repair-kopitiam<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/keyboards/">keyboards<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/quiz/">quiz<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/dvorak/">dvorak<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/flight-sim/">flight-sim<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2025
+      
+        YKM&#39;s Corner on the Web
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.3' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+<script type="text/javascript">
+  var sc_project = 8700008;
+  var sc_invisible = 1;
+  var sc_security = "b569f6b4";
+  var sc_https = 1; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript>
+  <div class="statcounter"><a title="free hit
+  counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+        src="https://c.statcounter.com/8700008/0/b569f6b4/1/" alt="free hit counter"></a></div>
+</noscript>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function (x) {
+      x.parentElement.classList += 'has-jax'
+    })
+  });
+
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.c773bce75f6ff1d086105b4e7f0c0e87ad25bf40fb24dd2da7586f9201d8f70d.js" integrity="sha256-x3O8519v8dCGEFtOfwwOh60lv0D7JN0tp1hvkgHY9w0="></script>
+<script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>

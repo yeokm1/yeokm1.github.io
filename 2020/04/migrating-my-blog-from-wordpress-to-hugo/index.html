@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.135.0">
+<meta name="generator" content="Hugo 0.146.3">
   <meta itemprop="name" content="Migrating my blog from WordPress to Hugo">
   <meta itemprop="description" content="Migrating my blog to a static site has been on a backburner for several months for me. Given the recent circuit-breaker or “soft-lockdown” in Singapore, I found the time to finally take the plunge.
 I took the opportunity to change the theme during the migration.
@@ -317,8 +317,7 @@ There are many WordPress to Hugo guides online so instead of reinventing the whe
 <p>Some work has to be done on the WordPress site to make it easier to transfer things across.</p>
 <h3 id="download-wordpress-extended-rss-xml">Download WordPress Extended RSS XML</h3>
 <blockquote>
-<p>This format, which we call WordPress eXtended RSS or WXR, will contain your posts, pages, comments, custom fields, categories, and tags.</p>
-</blockquote>
+<p>This format, which we call WordPress eXtended RSS or WXR, will contain your posts, pages, comments, custom fields, categories, and tags.</p></blockquote>
 <a href="images/wordpress-export.png"><img src="images/wordpress-export.png" width="600"></a>
 <p><code>Dashboard -&gt; Tools -&gt; Export</code></p>
 <p>This XML file contains information that most automated converters will use to do the conversion to markdown.</p>
@@ -339,26 +338,26 @@ There are many WordPress to Hugo guides online so instead of reinventing the whe
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Table</th>
-          <th style="text-align: left">Col 1</th>
-          <th style="text-align: left">Col 2</th>
+          <th>Table</th>
+          <th>Col 1</th>
+          <th>Col 2</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">Row 1</td>
-          <td style="text-align: left">data r1c1</td>
-          <td style="text-align: left">data r1c2</td>
+          <td>Row 1</td>
+          <td>data r1c1</td>
+          <td>data r1c2</td>
       </tr>
       <tr>
-          <td style="text-align: left">Row 2</td>
-          <td style="text-align: left">data r2c1</td>
-          <td style="text-align: left">data r2c2</td>
+          <td>Row 2</td>
+          <td>data r2c1</td>
+          <td>data r2c2</td>
       </tr>
   </tbody>
 </table>
 <p>The converter generates the following unusable output.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>Table
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>Table
 </span></span><span style="display:flex;"><span>Col 1  
 </span></span><span style="display:flex;"><span>Col 2  
 </span></span><span style="display:flex;"><span>Row 1  
@@ -371,7 +370,7 @@ There are many WordPress to Hugo guides online so instead of reinventing the whe
 <a href="images/md-table-gen.png"><img src="images/md-table-gen.png" width="500"></a>
 <h3 id="categories">Categories</h3>
 <p>Categories did not seem to be imported so I had to add them manually to every post in the <a href="https://gohugo.io/content-management/urls/#set-url-in-front-matter">front matter</a>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>---
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>---
 </span></span><span style="display:flex;"><span>title: Migrating my blog from Wordpress to Hugo
 </span></span><span style="display:flex;"><span>author: Yeo Kheng Meng
 </span></span><span style="display:flex;"><span>date: 2020-04-11
@@ -379,17 +378,17 @@ There are many WordPress to Hugo guides online so instead of reinventing the whe
 </span></span><span style="display:flex;"><span>---
 </span></span></code></pre></div><h3 id="code-snippets">Code snippets</h3>
 <p>Occasionally I want to display code with syntax colouring like the following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">long</span> getCurrentNanoseconds(){ 
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">struct</span> timespec spec;
-</span></span><span style="display:flex;"><span>    clock_gettime(CLOCK_MONOTONIC, &amp;spec);
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">long</span> <span style="color:#fff;font-weight:bold">long</span> specTime = (spec.tv_sec * <span style="color:#ff0;font-weight:bold">1E9</span>) + spec.tvnsec;
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">return</span> specTime;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> <span style="color:#a6e22e">getCurrentNanoseconds</span>(){ 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">timespec</span> spec;
+</span></span><span style="display:flex;"><span>    clock_gettime(CLOCK_MONOTONIC, <span style="color:#f92672">&amp;</span>spec);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> specTime <span style="color:#f92672">=</span> (spec.tv_sec <span style="color:#f92672">*</span> <span style="color:#ae81ff">1E9</span>) <span style="color:#f92672">+</span> spec.tvnsec;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> specTime;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="after-wordpress-conversion">After WordPress conversion</h4>
 <p>WordPress uses the [code] tag which the converter does not recognise hence the following is shown:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>\[code language=&#34;cpp&#34;\] long long getCurrentNanoseconds(){ struct timespec spec; clock\_gettime(CLOCK\_MONOTONIC, &amp;spec); long long specTime = (spec.tv\_sec \* 1E9) + spec.tv\_nsec; return specTime; } \[/code\]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>\[code language=&#34;cpp&#34;\] long long getCurrentNanoseconds(){ struct timespec spec; clock\_gettime(CLOCK\_MONOTONIC, &amp;spec); long long specTime = (spec.tv\_sec \* 1E9) + spec.tv\_nsec; return specTime; } \[/code\]
 </span></span></code></pre></div><p>I had to manually change it to the hugo method such as:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>``` cpp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>``` cpp
 </span></span><span style="display:flex;"><span>long long getCurrentNanoseconds(){  
 </span></span><span style="display:flex;"><span>    struct timespec spec;
 </span></span><span style="display:flex;"><span>    clock_gettime(CLOCK_MONOTONIC, &amp;spec);
@@ -399,7 +398,7 @@ There are many WordPress to Hugo guides online so instead of reinventing the whe
 </span></span><span style="display:flex;"><span>    ```
 </span></span></code></pre></div><h3 id="image-links">Image links</h3>
 <p>Every embedded image link generated had a problem with the link still pointing to the original WordPress path. This required manual correction as follows.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>[![](images/sfc-costs-n5748e-1024x360.jpg)](http://yeokhengmeng.com/wp-content/uploads/2020/02/sfc-costs-n5748e.jpg)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>[![](images/sfc-costs-n5748e-1024x360.jpg)](http://yeokhengmeng.com/wp-content/uploads/2020/02/sfc-costs-n5748e.jpg)
 </span></span><span style="display:flex;"><span>Convert to &gt;&gt;&gt;&gt;
 </span></span><span style="display:flex;"><span>[![](images/sfc-costs-n5748e-1024x360.jpg)](images/sfc-costs-n5748e.jpg)
 </span></span></code></pre></div><p>The original image path has a resolution suffix as WordPress displays a lower-resolution image for the photo in the main post and hyperlinked to the original high-res shot. I kept this arrangement for my historical posts.</p>
@@ -407,43 +406,43 @@ There are many WordPress to Hugo guides online so instead of reinventing the whe
 <p>Markdown tends to display an image to its maximum size up to the entire width of the display area which overblows up the image size. Therefore we need to reduce the displayed image size.</p>
 <p>Typically we can use this HTML tag <code>&lt;img src=&quot;&quot; width=&quot;xxx&quot; &gt;</code> to dynamically resize but Hugo does not allow embedding HTML in markdown. Instead, we can use this feature called shortcodes as a shortcut to call custom HTML code.</p>
 <p>Inside <code>layouts/shortcodes/imgdisplay.html</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>&lt;<span style="font-weight:bold">a</span> <span style="font-weight:bold">href</span>=<span style="color:#0ff;font-weight:bold">&#34;{{.Get &#34;</span><span style="font-weight:bold">src</span><span style="color:#0ff;font-weight:bold">&#34; }}&#34;</span>&gt;&lt;<span style="font-weight:bold">img</span> <span style="font-weight:bold">src</span>=<span style="color:#0ff;font-weight:bold">&#34;{{.Get &#34;</span><span style="font-weight:bold">src</span><span style="color:#0ff;font-weight:bold">&#34; }}&#34;</span> <span style="font-weight:bold">width</span>=<span style="color:#0ff;font-weight:bold">&#34;{{.Get &#34;</span><span style="font-weight:bold">width</span><span style="color:#0ff;font-weight:bold">&#34; }}&#34;</span>&gt;&lt;/<span style="font-weight:bold">a</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#f92672">a</span> <span style="color:#f92672">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{.Get &#34;</span><span style="color:#f92672">src</span><span style="color:#e6db74">&#34; }}&#34;</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#f92672">img</span> <span style="color:#f92672">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{.Get &#34;</span><span style="color:#f92672">src</span><span style="color:#e6db74">&#34; }}&#34;</span> <span style="color:#f92672">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{.Get &#34;</span><span style="color:#f92672">width</span><span style="color:#e6db74">&#34; }}&#34;</span><span style="color:#f92672">&gt;&lt;/</span><span style="color:#f92672">a</span><span style="color:#f92672">&gt;</span>
 </span></span></code></pre></div><p>When we want to display the image, we call our shortcode.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{&lt; <span style="font-weight:bold">imgdisplay</span> <span style="color:#007f7f">src</span>=<span style="color:#0ff;font-weight:bold">&#34;images/sfc-costs-n5748e.jpg&#34;</span> <span style="color:#007f7f">width</span>=<span style="color:#0ff;font-weight:bold">&#34;500&#34;</span> &gt;}}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{&lt; <span style="color:#f92672">imgdisplay</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;images/sfc-costs-n5748e.jpg&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;500&#34;</span> &gt;}}
 </span></span></code></pre></div><h3 id="other-shortcodes">Other Shortcodes</h3>
 <p>Other embedded links from Youtube, Facebook etc come in <code>Iframes</code> by default which Hugo does not process. Therefore some manual conversion to shortcode is required.</p>
 <p>YouTube shortcode is supported natively just by doing the following with the video ID but requires manual conversion from WordPress exported IFrame.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>{{&lt; youtube 3SLOgQXbR0o &gt;}}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>{{&lt; youtube 3SLOgQXbR0o &gt;}}
 </span></span></code></pre></div><p>Facebook embed was slightly more troublesome as I have to create a custom shortcode like the following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="font-weight:bold">iframe</span> <span style="color:#007f7f">src</span>=<span style="color:#0ff;font-weight:bold">&#34;{{ .Get &#34;</span><span style="color:#007f7f">src</span><span style="color:#f00">&#34;</span> <span style="color:#f00">}}&#34;</span> <span style="color:#007f7f">width</span>=<span style="color:#0ff;font-weight:bold">&#34;{{ .Get &#34;</span><span style="color:#007f7f">width</span><span style="color:#f00">&#34;</span> <span style="color:#f00">}}&#34;</span> <span style="color:#007f7f">height</span>=<span style="color:#0ff;font-weight:bold">&#34;{{ .Get &#34;</span><span style="color:#007f7f">height</span><span style="color:#f00">&#34;</span> <span style="color:#f00">}}&#34;</span> <span style="color:#007f7f">style</span>=<span style="color:#0ff;font-weight:bold">&#34;border:none;overflow:hidden&#34;</span> <span style="color:#007f7f">scrolling</span>=<span style="color:#0ff;font-weight:bold">&#34;no&#34;</span> <span style="color:#007f7f">frameborder</span>=<span style="color:#0ff;font-weight:bold">&#34;0&#34;</span> <span style="color:#007f7f">allowTransparency</span>=<span style="color:#0ff;font-weight:bold">&#34;true&#34;</span> <span style="color:#007f7f">allow</span>=<span style="color:#0ff;font-weight:bold">&#34;encrypted-media&#34;</span>&gt;&lt;/<span style="font-weight:bold">iframe</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">iframe</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Get &#34;</span><span style="color:#a6e22e">src</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">}}&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Get &#34;</span><span style="color:#a6e22e">width</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">}}&#34;</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Get &#34;</span><span style="color:#a6e22e">height</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">}}&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;border:none;overflow:hidden&#34;</span> <span style="color:#a6e22e">scrolling</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;no&#34;</span> <span style="color:#a6e22e">frameborder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0&#34;</span> <span style="color:#a6e22e">allowTransparency</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#a6e22e">allow</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;encrypted-media&#34;</span>&gt;&lt;/<span style="color:#f92672">iframe</span>&gt;
 </span></span></code></pre></div><p>To display my Facebook embed, I just call my shortcode with the source and dimensions.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>{{&lt; facebook src=&#34;https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fworkersparty%2Fposts%2F3352194541463772&amp;amp;width=600&#34; width=600 height=650 &gt;}}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>{{&lt; facebook src=&#34;https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fworkersparty%2Fposts%2F3352194541463772&amp;amp;width=600&#34; width=600 height=650 &gt;}}
 </span></span></code></pre></div><h2 id="step4">Step 4: Facebook comments</h2>
 <p>Disqus comments are supported by default in Hugo. However I still wish to support the Facebook commenting system as some people prefer that.</p>
 <p>To add custom HTML code, Hugo allows one to override the HTML file of an existing theme. For example, my theme stores the comments HTML within this path <code>layouts/_default/comments.html</code> in its folder. So I&rsquo;ll create another file in the same path with the following. I add the <code>.Permalink</code> key to autofill in the site URL for Facebook to associate the correct comments.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#007f7f">&lt;!-- Copy paste existing Disqus code above so FB comments will appear below Disqus--&gt;</span>
-</span></span><span style="display:flex;"><span>&lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">id</span>=<span style="color:#0ff;font-weight:bold">&#34;fb-root&#34;</span>&gt;&lt;/<span style="font-weight:bold">div</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="font-weight:bold">script</span> <span style="color:#007f7f">async</span> <span style="color:#007f7f">defer</span> <span style="color:#007f7f">crossorigin</span>=<span style="color:#0ff;font-weight:bold">&#34;anonymous&#34;</span> <span style="color:#007f7f">src</span>=<span style="color:#0ff;font-weight:bold">&#34;https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v6.0&#34;</span>&gt;&lt;/<span style="font-weight:bold">script</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;fb-comments&#34;</span> <span style="color:#007f7f">data-href</span>=<span style="color:#0ff;font-weight:bold">&#34;{{ .Permalink }}&#34;</span> <span style="color:#007f7f">data-width</span>=<span style="color:#0ff;font-weight:bold">&#34;100%&#34;</span> <span style="color:#007f7f">data-numposts</span>=<span style="color:#0ff;font-weight:bold">&#34;5&#34;</span>&gt;&lt;/<span style="font-weight:bold">div</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- Copy paste existing Disqus code above so FB comments will appear below Disqus--&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fb-root&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">defer</span> <span style="color:#a6e22e">crossorigin</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;anonymous&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v6.0&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fb-comments&#34;</span> <span style="color:#a6e22e">data-href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Permalink }}&#34;</span> <span style="color:#a6e22e">data-width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;100%&#34;</span> <span style="color:#a6e22e">data-numposts</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
 </span></span></code></pre></div><h2 id="step5">Step 5: Set up Statcounter Analytics</h2>
 <p>Google Analytics is supported by default but I personally prefer Statcounter as it has better presentation tools of live activity in my opinion.</p>
 <p>To support this, we use the same trick as the Facebook comments and override the relevant HTML file which for my theme is located in <code>layouts/partials/scripts.html</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#007f7f">&lt;!-- Default Statcounter code for Personal Site
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f">http://yeokhengmeng.com --&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- Default Statcounter code for Personal Site
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">http://yeokhengmeng.com --&gt;</span>
 </span></span><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>  &lt;<span style="font-weight:bold">script</span> <span style="color:#007f7f">type</span>=<span style="color:#0ff;font-weight:bold">&#34;text/javascript&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#007f7f">src</span>=<span style="color:#0ff;font-weight:bold">&#34;https://www.statcounter.com/counter/counter.js&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#007f7f">async</span>&gt;&lt;/<span style="font-weight:bold">script</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://www.statcounter.com/counter/counter.js&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">async</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
 </span></span><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>  <span style="color:#007f7f">&lt;!-- End of Statcounter Code --&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">&lt;!-- End of Statcounter Code --&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">&lt;!-- Copy paste existing scripts code below --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- Copy paste existing scripts code below --&gt;</span>
 </span></span><span style="display:flex;"><span>...
 </span></span></code></pre></div><h2 id="step6">Step 6: Maintain Permalinks</h2>
 <p>Maintaining the Permalinks ensure that external links to my site does not break. Both Facebook and Disqus also associate the comments based on the site URLs.</p>
 <p>My previous WordPress site used this format <code>http://yeokhengmeng.com/YYYY/MM/post-title/</code> to structure the permalinks.</p>
 <p>To retain this format, it was actually quite simple to add the following into <code>config.toml</code> which is Hugo&rsquo;s site configuration file.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>[permalinks]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>[permalinks]
 </span></span><span style="display:flex;"><span>    post = &#34;/:year/:month/:title/&#34;
 </span></span></code></pre></div><p>If the title is not the URL, we can add the following in the front matter to override the title as the URL.</p>
 <pre tabindex="0"><code>url: &#34;2018/01/make-the-486-great-again&#34;
@@ -528,6 +527,23 @@ Generated frontend: <a href="https://github.com/yeokm1/yeokm1.github.io">https:/
       <article class="mini-post">
         <section>
           
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/04/llama2-llm-on-dos/">LLama 2 LLM on DOS</a></h1>
+          <time class="published" datetime="">April 15, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
     
       <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
@@ -593,23 +609,6 @@ Generated frontend: <a href="https://github.com/yeokm1/yeokm1.github.io">https:/
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
-    
-      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up an open-frame Pentium 3 testbench</a></h1>
-          <time class="published" datetime="">May 25, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -631,7 +630,7 @@ Generated frontend: <a href="https://github.com/yeokm1/yeokm1.github.io">https:/
           
           <li>
             
-              <a href="/categories/hacks/">hacks<span class="count">25</span></a>
+              <a href="/categories/hacks/">hacks<span class="count">26</span></a>
             
           
           <li>
@@ -646,12 +645,12 @@ Generated frontend: <a href="https://github.com/yeokm1/yeokm1.github.io">https:/
           
           <li>
             
-              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
             
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">14</span></a>
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
             
           
           <li>
@@ -738,12 +737,12 @@ Generated frontend: <a href="https://github.com/yeokm1/yeokm1.github.io">https:/
   
   <p class="copyright">
     
-      &copy; 2024
+      &copy; 2025
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.135.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

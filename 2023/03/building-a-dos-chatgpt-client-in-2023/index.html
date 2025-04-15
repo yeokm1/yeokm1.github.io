@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.135.0">
+<meta name="generator" content="Hugo 0.146.3">
   <meta itemprop="name" content="Building a DOS ChatGPT client in 2023">
   <meta itemprop="description" content="With the recent attention on ChatGPT and OpenAI’s release of their APIs, many developers have developed clients for modern platforms to talk to this super smart AI chatbot. However I’m pretty sure almost nobody has written one for a vintage platform like MS-DOS.
 This client now supports Hugging Face API, Ollama API and text to speech (TTS) capability. More info on TTS is found at the later part of this post.">
@@ -287,31 +287,19 @@ This client now supports Hugging Face API, Ollama API and text to speech (TTS) c
 <p>Let&rsquo;s jump right in and look at the app.</p>
 <a href="images/doschgpt-5155-front-using.jpg"><img src="images/doschgpt-5155-front-using.jpg" width="500"></a>
 <p>Screenshot of the app</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Ksysa9aSTJQ?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Ksysa9aSTJQ?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>Video of the client in action accessing ChatGPT. I first launch MTCP DHCP to get an IP address from my router, then launch my app to start chatting.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/H7jDqLdEu8M?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/H7jDqLdEu8M?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>Video of the same client accessing Hugging Face.</p>
 <p>If you are too excited to continue reading and want to dive into code and use the app, here is the <a href="https://github.com/yeokm1/doschgpt">repository on Github https://github.com/yeokm1/doschgpt</a>.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-hLCr38IYyM?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-hLCr38IYyM?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>A <a href="https://www.youtube.com/watch?v=-hLCr38IYyM">setup video &ldquo;How to install the MS-DOS ChatGPT Client&rdquo;</a> has been posted by <a href="https://www.youtube.com/@retrorygaming">retrorygaming</a>. You can use this as a reference setup tutorial.</p>
@@ -363,18 +351,18 @@ This client now supports Hugging Face API, Ollama API and text to speech (TTS) c
 <p>Thanks to the well-documented <a href="http://brutman.com/mTCP/">MTCP</a> library. Coding through this section was relatively easy however there are some considerations that have to be kept in mind.</p>
 <p>There is no concept of multi-threading in DOS so nothing is running in the background to service the network stack that we take for granted as a part of modern operating systems. The network stack is mostly controlled by the application hence this servicing has to be done internally as well.</p>
 <p>This set of functions have to be called regularly in order to drive the lower network layers.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>PACKET_PROCESS_SINGLE;
-</span></span><span style="display:flex;"><span>Arp::driveArp();
-</span></span><span style="display:flex;"><span>Tcp::drivePackets();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>PACKET_PROCESS_SINGLE;
+</span></span><span style="display:flex;"><span>Arp<span style="color:#f92672">::</span>driveArp();
+</span></span><span style="display:flex;"><span>Tcp<span style="color:#f92672">::</span>drivePackets();
 </span></span></code></pre></div><p>MTCP provides raw socket APIs with basic <code>send()</code> and <code>recv()</code> functions that are sufficient for one to use.</p>
 <h2 id="chatgpt-api">ChatGPT API</h2>
 <p>OpenAI has released many APIs but I only use one of them which is the Chat Completion. Their Chat Completion API is neatly documented <a href="https://platform.openai.com/docs/api-reference/making-requests">here</a>.</p>
 <p>They even provide a nice curl example for one to reference:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl https://api.openai.com/v1/chat/completions -H <span style="color:#0ff;font-weight:bold">&#34;Content-Type: application/json&#34;</span> -H <span style="color:#0ff;font-weight:bold">&#34;Authorization: Bearer sk-XXX&#34;</span> -d <span style="color:#0ff;font-weight:bold">&#39;{ &#34;model&#34;: &#34;gpt-3.5-turbo&#34;, &#34;messages&#34;: [{&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: &#34;What is MS-DOS?&#34;}], &#34;temperature&#34;: 0.7 }&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl https://api.openai.com/v1/chat/completions -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> -H <span style="color:#e6db74">&#34;Authorization: Bearer sk-XXX&#34;</span> -d <span style="color:#e6db74">&#39;{ &#34;model&#34;: &#34;gpt-3.5-turbo&#34;, &#34;messages&#34;: [{&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: &#34;What is MS-DOS?&#34;}], &#34;temperature&#34;: 0.7 }&#39;</span>
 </span></span></code></pre></div><p>With this API I will need to construct the entire POST request. Unlike in modern development platforms, there are no helper functions I can use so I have to construct the entire POST request by hand in C such as follows:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold">#define API_CHAT_COMPLETION &#34;POST /v1/chat/completions HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Bearer %s\r\nHost: api.openai.com\r\nContent-Length: %d\r\nConnection: close\r\n\r\n%s&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold">#define API_BODY &#34;{ \&#34;model\&#34;: \&#34;%s\&#34;, \&#34;messages\&#34;: [{\&#34;role\&#34;: \&#34;user\&#34;, \&#34;content\&#34;: \&#34;%s\&#34;}], \&#34;temperature\&#34;: %.1f }&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold">#define API_BODY_SUBSEQUENT &#34;{ \&#34;model\&#34;: \&#34;%s\&#34;, \&#34;messages\&#34;: [{\&#34;role\&#34;: \&#34;user\&#34;, \&#34;content\&#34;: \&#34;%s\&#34;}, {\&#34;role\&#34;: \&#34;assistant\&#34;, \&#34;content\&#34;: \&#34;%s\&#34;}, {\&#34;role\&#34;: \&#34;user\&#34;, \&#34;content\&#34;: \&#34;%s\&#34;}], \&#34;temperature\&#34;: %.1f }&#34;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#define API_CHAT_COMPLETION &#34;POST /v1/chat/completions HTTP/1.1\r\nContent-Type: application/json\r\nAuthorization: Bearer %s\r\nHost: api.openai.com\r\nContent-Length: %d\r\nConnection: close\r\n\r\n%s&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define API_BODY &#34;{ \&#34;model\&#34;: \&#34;%s\&#34;, \&#34;messages\&#34;: [{\&#34;role\&#34;: \&#34;user\&#34;, \&#34;content\&#34;: \&#34;%s\&#34;}], \&#34;temperature\&#34;: %.1f }&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define API_BODY_SUBSEQUENT &#34;{ \&#34;model\&#34;: \&#34;%s\&#34;, \&#34;messages\&#34;: [{\&#34;role\&#34;: \&#34;user\&#34;, \&#34;content\&#34;: \&#34;%s\&#34;}, {\&#34;role\&#34;: \&#34;assistant\&#34;, \&#34;content\&#34;: \&#34;%s\&#34;}, {\&#34;role\&#34;: \&#34;user\&#34;, \&#34;content\&#34;: \&#34;%s\&#34;}], \&#34;temperature\&#34;: %.1f }&#34;
 </span></span></span></code></pre></div><p>There are 2 types content that will be sent to the server. If this is the start of the conversation, <code>API_BODY</code> is filled up with the current user request and sent. For subsequent messages, the current user request is sent plus the previous request and ChatGPT reply.</p>
 <p>Sending the previous request and reply allows the model to have some context of the immediate conversation that took place before such as this:</p>
 <a href="images/doschgpt-context.png"><img src="images/doschgpt-context.png" width="500"></a>
@@ -382,7 +370,7 @@ This client now supports Hugging Face API, Ollama API and text to speech (TTS) c
 <p>Technically, one can send more previous requests/reply for even better context but this would mean even more buffers and programming logic has to be coded for. In my testing, just sending the previous request/reply should give sufficient context for the next question.</p>
 <h2 id="json-parsing">JSON Parsing</h2>
 <p>ChatGPT API will return the following JSON output.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="font-weight:bold">&#34;id&#34;</span>:<span style="color:#0ff;font-weight:bold">&#34;chatcmpl-XXXXX&#34;</span>,<span style="font-weight:bold">&#34;object&#34;</span>:<span style="color:#0ff;font-weight:bold">&#34;chat.completion&#34;</span>,<span style="font-weight:bold">&#34;created&#34;</span>:<span style="color:#ff0;font-weight:bold">1679326062</span>,<span style="font-weight:bold">&#34;model&#34;</span>:<span style="color:#0ff;font-weight:bold">&#34;gpt-3.5-turbo-0301&#34;</span>,<span style="font-weight:bold">&#34;usage&#34;</span>:{<span style="font-weight:bold">&#34;prompt_tokens&#34;</span>:<span style="color:#ff0;font-weight:bold">13</span>,<span style="font-weight:bold">&#34;completion_tokens&#34;</span>:<span style="color:#ff0;font-weight:bold">114</span>,<span style="font-weight:bold">&#34;total_tokens&#34;</span>:<span style="color:#ff0;font-weight:bold">127</span>},<span style="font-weight:bold">&#34;choices&#34;</span>:[{<span style="font-weight:bold">&#34;message&#34;</span>:{<span style="font-weight:bold">&#34;role&#34;</span>:<span style="color:#0ff;font-weight:bold">&#34;assistant&#34;</span>,<span style="font-weight:bold">&#34;content&#34;</span>:<span style="color:#0ff;font-weight:bold">&#34;\n\nMS-DOS (Microsoft Disk Operating System) is a command-line operating system.....&#34;</span>},<span style="font-weight:bold">&#34;finish_reason&#34;</span>:<span style="color:#0ff;font-weight:bold">&#34;stop&#34;</span>,<span style="font-weight:bold">&#34;index&#34;</span>:<span style="color:#ff0;font-weight:bold">0</span>}]}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="color:#f92672">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;chatcmpl-XXXXX&#34;</span>,<span style="color:#f92672">&#34;object&#34;</span>:<span style="color:#e6db74">&#34;chat.completion&#34;</span>,<span style="color:#f92672">&#34;created&#34;</span>:<span style="color:#ae81ff">1679326062</span>,<span style="color:#f92672">&#34;model&#34;</span>:<span style="color:#e6db74">&#34;gpt-3.5-turbo-0301&#34;</span>,<span style="color:#f92672">&#34;usage&#34;</span>:{<span style="color:#f92672">&#34;prompt_tokens&#34;</span>:<span style="color:#ae81ff">13</span>,<span style="color:#f92672">&#34;completion_tokens&#34;</span>:<span style="color:#ae81ff">114</span>,<span style="color:#f92672">&#34;total_tokens&#34;</span>:<span style="color:#ae81ff">127</span>},<span style="color:#f92672">&#34;choices&#34;</span>:[{<span style="color:#f92672">&#34;message&#34;</span>:{<span style="color:#f92672">&#34;role&#34;</span>:<span style="color:#e6db74">&#34;assistant&#34;</span>,<span style="color:#f92672">&#34;content&#34;</span>:<span style="color:#e6db74">&#34;\n\nMS-DOS (Microsoft Disk Operating System) is a command-line operating system.....&#34;</span>},<span style="color:#f92672">&#34;finish_reason&#34;</span>:<span style="color:#e6db74">&#34;stop&#34;</span>,<span style="color:#f92672">&#34;index&#34;</span>:<span style="color:#ae81ff">0</span>}]}
 </span></span></code></pre></div><p>We want the value of the <code>content</code> key. I tried a few JSON C89 libraries but OpenWatcom had difficulties compiling them.</p>
 <p>After fighting with the compiler for some time, I realised I actually didn&rsquo;t need a JSON library as I only need to parse the one JSON format for a fixed key-value pair.</p>
 <a href="images/doschgpt-parse-json.png"><img src="images/doschgpt-parse-json.png" width="600"></a>
@@ -395,45 +383,43 @@ This client now supports Hugging Face API, Ollama API and text to speech (TTS) c
 <blockquote>
 <p>Some systems may be too slow for present-day server expectations and thus will appear not to function even if the library otherwise works correctly. In our testing this <strong>starts to become a problem for CPUs slower than 40MHz</strong> or so, regardless of architecture.</p>
 <p>&hellip; <strong>Macintosh IIci with a 25MHz 68030 and no L2 card took 22 seconds</strong> &hellip; for a single short TLS 1.2 transaction to a local test server; <strong>a number of Internet hosts we tested it with simply cut the connection</strong> instead of waiting.
-<a href="https://github.com/classilla/cryanc/blob/main/README.md">https://github.com/classilla/cryanc/blob/main/README.md</a></p>
-</blockquote>
+<a href="https://github.com/classilla/cryanc/blob/main/README.md">https://github.com/classilla/cryanc/blob/main/README.md</a></p></blockquote>
 <p>Therefore modern hardware has to be used to conduct the TLS transaction. I decided to cheat in the same way by using my own <a href="https://github.com/yeokm1/http-to-https-proxy">http-to-https-proxy</a> in Golang.</p>
 <a href="images/doschgpt-https.png"><img src="images/doschgpt-https.png" width="600"></a>
 <p>Running on a modern PC and acting as a transparent middleman, it inspects the host field of the HTTP requests and forwards the raw socket bytes as HTTPS to OpenAI&rsquo;s servers as-is. The payload is then relayed back byte-for-byte back to the client with <strong>no modification</strong>.</p>
 <p>As I would say again:</p>
 <blockquote>
-<p>Purists may not like this solution but this is the best I can do with my abilities in a reasonable amount of time.</p>
-</blockquote>
+<p>Purists may not like this solution but this is the best I can do with my abilities in a reasonable amount of time.</p></blockquote>
 <h2 id="readingwriting-input-to-the-console">Reading/writing input to the console</h2>
 <p>Writing text output to the screen is relatively simple by using the standard C <code>printf()</code> function.</p>
 <p>For reading input, there is where things get interesting. The standard way for modern C programs is to use console functions like <code>fgets()</code> or <code>scanf()</code> or a variant of one of those functions combined with multi-threading.</p>
 <p>The issue is that those console functions will pause the program while waiting for user input. Since the network stack is managed by the single-threaded DOS application instead of the operating system on modern systems, it means the network stack will be halted as well while waiting for user input.</p>
 <p>The user input therefore has to checked without pausing the execution of the program.</p>
 <p>I consulted the <a href="http://brutman.com/Adventures_In_Code/Adventures_In_Code.html">MTCP page</a> and <a href="https://jmagic.tistory.com/982">online samples</a> on how this can be done. This is the sample code for this purpose:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">int</span> currentMessagePos = <span style="color:#ff0;font-weight:bold">0</span>;
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">char</span> * messageToSend = (<span style="color:#fff;font-weight:bold">char</span> *) calloc (SIZE_MESSAGE_TO_SEND, <span style="color:#fff;font-weight:bold">sizeof</span>(<span style="color:#fff;font-weight:bold">char</span>));
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> currentMessagePos <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> messageToSend <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>) <span style="color:#a6e22e">calloc</span> (SIZE_MESSAGE_TO_SEND, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">char</span>));
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">while</span>(<span style="color:#fff;font-weight:bold">true</span>){
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">if</span> ( _bios_keybrd(_KEYBRD_READY) ) {
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">char</span> character = _bios_keybrd(_KEYBRD_READ);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span>(true){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">_bios_keybrd</span>(_KEYBRD_READY) ) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">char</span> character <span style="color:#f92672">=</span> <span style="color:#a6e22e">_bios_keybrd</span>(_KEYBRD_READ);
 </span></span><span style="display:flex;"><span>    ...
-</span></span><span style="display:flex;"><span>        messageToSend[currentMessagePos] = character;
-</span></span><span style="display:flex;"><span>        currentMessagePos++;
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#0ff;font-weight:bold">&#34;%c&#34;</span>, character);
-</span></span><span style="display:flex;"><span>        fflush(stdout);
+</span></span><span style="display:flex;"><span>        messageToSend[currentMessagePos] <span style="color:#f92672">=</span> character;
+</span></span><span style="display:flex;"><span>        currentMessagePos<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%c&#34;</span>, character);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fflush</span>(stdout);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><code>_bios_keybrd</code> is a passthrough to the <a href="https://en.wikipedia.org/wiki/INT_16H">INT 16h</a> BIOS keyboard interrupt.</p>
 <p>If a keypress is detected, the key is stored to a local buffer and printed to the console. I can now check and receive keypresses without pausing the program.</p>
 <p>However directly receiving the keypresses to store to my own local buffer and directly printing the key pressed introduces another issue. How to handle backspaces where we need to remove the previous character?</p>
 <p>This is actually a generic C problem and I found the answer <a href="https://stackoverflow.com/a/6793113">here</a> by using <code>\b \b</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#007f7f">//Backspace character
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">if</span>(character == <span style="color:#ff0;font-weight:bold">8</span>){
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">//Backspace character
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span>(character <span style="color:#f92672">==</span> <span style="color:#ae81ff">8</span>){
 </span></span><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>    <span style="color:#007f7f">// Remove previous character
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>    printf(<span style="color:#0ff;font-weight:bold">&#34;%s&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;</span><span style="color:#0ff;font-weight:bold">\b</span><span style="color:#0ff;font-weight:bold"> </span><span style="color:#0ff;font-weight:bold">\b</span><span style="color:#0ff;font-weight:bold">&#34;</span>);
-</span></span><span style="display:flex;"><span>    currentMessagePos--;
-</span></span><span style="display:flex;"><span>    messageInBuffer[currentMessagePos] = <span style="color:#0ff;font-weight:bold">&#39;\0&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Remove previous character
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    printf(<span style="color:#e6db74">&#34;%s&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\b</span><span style="color:#e6db74"> </span><span style="color:#ae81ff">\b</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>    currentMessagePos<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>    messageInBuffer[currentMessagePos] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    fflush(stdout);
 </span></span><span style="display:flex;"><span>}
@@ -462,12 +448,8 @@ This client now supports Hugging Face API, Ollama API and text to speech (TTS) c
 <p>The translator functions for Greek CP737 can be found <a href="https://github.com/yeokm1/doschgpt/blob/master/doschgpt-code/utfcp737.cpp">here</a>.</p>
 <h2 id="text-to-speech">Text to Speech</h2>
 <p>This feature was added later based on the suggestion of Nikos that enables the app to speak in the voice of <a href="https://en.wikipedia.org/wiki/Dr._Sbaitso">Dr. Sbaitso</a>. Dr Sbaitso was an AI speech synthesis program released by Creative in 1991.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/wBDlXHkDqws?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/wBDlXHkDqws?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>A 6.5 min demo video using my <a href="/2021/05/setting-up-a-486-retro-pc/">vintage i486 desktop</a> and a Sound Blaster 16 CT2950.</p>
@@ -485,24 +467,20 @@ This client now supports Hugging Face API, Ollama API and text to speech (TTS) c
 <p>The SBTalker TSR consumes a lot of memory when loaded so my client app will unload this TSR after it completes.</p>
 <p><code>Read.exe</code> is the primary tool used by my client app to send the text strings to be read. However in DOS there is a limit of <a href="https://stackoverflow.com/a/41449103">up to 127 bytes for command line arguments</a>. This means that long replies from ChatGPT will have to be broken up and passed to <code>Read.exe</code> through repeated calls. To do this, I split strings by punctuation and have <code>Read.exe</code> read phrase by phrase hence why there are some noticeably longer pauses in some parts.</p>
 <p>On every call to <code>Read.exe</code>, the Creative banner will display thus affecting the user experience. To mitigate this, I redirect the <code>stdout</code> before the call to <code>Read.exe</code> and restore the <code>stdout</code> after the call completes. Here is some sample code to show how it was done:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#007f7f">// Send stdout to nul
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>freopen(<span style="color:#0ff;font-weight:bold">&#34;nul&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;r&#34;</span>, stdout);
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">// Tell read program to read the words &#34;hello world&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>system(<span style="color:#0ff;font-weight:bold">&#34;read hello world&#34;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">// Flush away existing stdout content
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>fflush(stdout);
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">//Restore the stdout
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span>freopen(<span style="color:#0ff;font-weight:bold">&#34;con&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;a&#34;</span>, stdout);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// Send stdout to nul
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>freopen(<span style="color:#e6db74">&#34;nul&#34;</span>, <span style="color:#e6db74">&#34;r&#34;</span>, stdout);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tell read program to read the words &#34;hello world&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>system(<span style="color:#e6db74">&#34;read hello world&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Flush away existing stdout content
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>fflush(stdout);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//Restore the stdout
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>freopen(<span style="color:#e6db74">&#34;con&#34;</span>, <span style="color:#e6db74">&#34;a&#34;</span>, stdout);
 </span></span></code></pre></div><p>You may wonder I did not use my IBM5155 for this demo? It&rsquo;s because I found that while the 4.77Mhz Intel 8088 can run the speech synthesis and playback utilities, it was too slow and choppy to be bearable. Emulation testing under 86Box shows that the minimum CPU speed for reasonable performance is 8Mhz. My 486 desktop is the next step up the vintage system ladder I have so I have to use this in my demo.</p>
 <h3 id="tts-improvement-sept-2023">TTS improvement (Sept 2023)</h3>
 <p>A developer <a href="https://github.com/systoolz">systoolz</a> found an improvement where instead of repeatedly calling <code>read.exe</code>, a call can be made directly to the TTS engine. A library called <a href="https://github.com/systoolz/dosbtalk">dosbtalk</a> was created to do this. This library also increases the buffer size to at least 250 bytes per API &ldquo;call&rdquo; thus reducing the amount of overall calls and pauses required.</p>
 <p>I integrated the library and things are very much improved!</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/3L2jj7tDIoU?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/3L2jj7tDIoU?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>Notice the increased speed with no more awkward pauses. Many thanks to <a href="https://github.com/systoolz">systoolz</a>.</p>
@@ -513,17 +491,12 @@ This client now supports Hugging Face API, Ollama API and text to speech (TTS) c
 <a href="images/doschgpt-reply.png"><img src="images/doschgpt-reply.png" width="500"></a>
 <blockquote>
 <p>&ldquo;Keep in mind that creating a DOS ChatGPT client may be challenging, as DOS is an outdated operating system and may not have the necessary tools and resources to develop modern applications.&rdquo;
-ChatGPT (Mar 2023)</p>
-</blockquote>
+ChatGPT (Mar 2023)</p></blockquote>
 <p>Challenge already accepted and won. :P. And what is the AI smoking with using the official Python API library on a DOS platform&hellip;*</p>
 <p>After experiencing this, I will definitely be writing more retro-software in future. Till then, I hope you learned something and enjoyed reading this as much as me developing this app.</p>
 <p>*As someone pointed out, <a href="http://www.caddit.net/pythond/">Python for MS-DOS</a> is available. It&rsquo;s true and it came up in my research but it&rsquo;s an older version of Python 2.4.2 and requires a 32-bit CPU (such as 80386 or higher) since it is compiled using <a href="https://www.delorie.com/djgpp/">DJGPP</a>. This would mean it will not work for my target platform IBM5155 which uses a 16-bit Intel 8088. The <a href="https://github.com/openai/openai-python">Python library from OpenAI</a> clearly mentions its requirements as Python 3.7.1+ so it is highly unlikely to work on such an old version of Python too.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/_MLQQ6utwe4?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/_MLQQ6utwe4?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>This is a 0.5h video of a talk I gave at <a href="https://www.meetup.com/junior-developers-singapore/events/292743691/">JuniorDevSG meetup on Apr 2023</a></p>
@@ -599,6 +572,23 @@ ChatGPT (Mar 2023)</p>
       <article class="mini-post">
         <section>
           
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/04/llama2-llm-on-dos/">LLama 2 LLM on DOS</a></h1>
+          <time class="published" datetime="">April 15, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
     
       <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
@@ -664,23 +654,6 @@ ChatGPT (Mar 2023)</p>
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
-    
-      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up an open-frame Pentium 3 testbench</a></h1>
-          <time class="published" datetime="">May 25, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -702,7 +675,7 @@ ChatGPT (Mar 2023)</p>
           
           <li>
             
-              <a href="/categories/hacks/">hacks<span class="count">25</span></a>
+              <a href="/categories/hacks/">hacks<span class="count">26</span></a>
             
           
           <li>
@@ -717,12 +690,12 @@ ChatGPT (Mar 2023)</p>
           
           <li>
             
-              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
             
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">14</span></a>
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
             
           
           <li>
@@ -809,12 +782,12 @@ ChatGPT (Mar 2023)</p>
   
   <p class="copyright">
     
-      &copy; 2024
+      &copy; 2025
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.135.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

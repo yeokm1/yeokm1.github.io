@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.135.0">
+<meta name="generator" content="Hugo 0.146.3">
   <meta itemprop="name" content="(Partial) Reverse Engineering the NDP 2016 LED Wristband">
   <meta itemprop="description" content="(Checkout the 2019 version here!)
 The Singapore National Day Parade (NDP 2016) happened on 9 August 2016 to celebrate its 51st birthday. For those who had the opportunity to attend the actual parade or its previews/rehearsals, they will also get to receive a funpack where one of the items will be a wearable LED band made by a company called Pixmob.
@@ -280,33 +280,21 @@ Here is the talk video on this subject I gave at Hackware v2.1.">
   <div class="content">
     <p>(Checkout the 2019 version <a href="/2019/08/teardown-of-ndp2019-led-wristband/">here</a>!)</p>
 <p>The Singapore National Day Parade (NDP 2016) happened on 9 August 2016 to celebrate its 51st birthday. For those who had the opportunity to attend the actual parade or its previews/rehearsals, they will also get to receive a funpack where one of the items will be a wearable LED band made by a company called <a href="http://pixmob.com/">Pixmob</a>.</p>
-<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-wristband.jpg"><img alt="ndp2016-re-wristband" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-wristband-828x1024.jpg"></a></p>
+<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-wristband.jpg"><img src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-wristband-828x1024.jpg" alt="ndp2016-re-wristband"></a></p>
 <p>This band receives infrared(IR) signals from the organisers and then displays the LED colour of their choosing. There is also an onboard accelerometer. After the event when the IR signals disappear, the (single-axis I believe) accelerometer will cause the Red LED to light up when a shock is detected.</p>
 <p>Here is the talk video on this subject I gave at <a href="https://www.facebook.com/events/245575175803923/">Hackware v2.1</a>.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/9Km77gBqyCY?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/9Km77gBqyCY?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>I had the opportunity to attend the Preview 2 (or rehearsal) of this event on 30 July 2016. Here are 2 videos of the wristband in action during the NDP Preview 2.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/EPwxPJhlR4M?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/EPwxPJhlR4M?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>Each segment is given a particular colour theme and the band blinks in tandem with what the organisers want.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/XepiuPZ2TzA?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/XepiuPZ2TzA?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>You can see how the colour changes during the show.</p>
@@ -319,23 +307,23 @@ Here is the talk video on this subject I gave at Hackware v2.1.">
 <p>That is however not enough, I want to know MORE! So I proceeded to the teardown.</p>
 <h1 id="teardown">Teardown</h1>
 <p>I cracked open the case to reveal the following:</p>
-<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-front.jpg"><img alt="ndp2016-re-front" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-front.jpg"></a></p>
+<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-front.jpg"><img src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-front.jpg" alt="ndp2016-re-front"></a></p>
 <p>Front view of the board. I have identified the major components in the list below</p>
 <ul>
 <li>IR1: Infrared Receiver</li>
 <li>LED1: RGB LED</li>
 <li>IC1: <a href="http://www.atmel.com/images/doc0180.pdf">Atmel AT24C02S</a> 2KB, 2-Wire Serial EEPROM (SOT23-5 package)</li>
-<li>IC2: <a href="http://www.abov.co.kr/en/index.php?Depth1=3&Depth2=1&Depth3=1&Depth4=2&Item=MC81F4204">Abov 81F4204R</a> 8-bit microcontroller (MCU) with 4KB ROM and 192B RAM (TSSOP16 package)</li>
+<li>IC2: <a href="http://www.abov.co.kr/en/index.php?Depth1=3&amp;Depth2=1&amp;Depth3=1&amp;Depth4=2&amp;Item=MC81F4204">Abov 81F4204R</a> 8-bit microcontroller (MCU) with 4KB ROM and 192B RAM (TSSOP16 package)</li>
 </ul>
 <p>I have no idea why there needs to be Atmel EEPROM chip, what does Pixmob need to store inside there?</p>
-<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-back.jpg"><img alt="ndp2016-re-back" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-back-1024x442.jpg"></a></p>
+<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-back.jpg"><img src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-back-1024x442.jpg" alt="ndp2016-re-back"></a></p>
 <p>Back view of the board. The device is powered by a 3V CR2032 battery. The tube on the left is what I believe to be a single-axis accelerometer.</p>
 <h1 id="hardware-reverse-engineering">Hardware Reverse Engineering</h1>
 <p>If you are interested in the raw schematics/code used in this post, you can see my <a href="https://github.com/yeokm1/reverse-engineering-ndp2016-wristband">Github link</a>.</p>
 <p>I was not satisfied with knowing what components goes inside the band, I&rsquo;ll like to know how are they connected together. So using a multimeter, I set down to work.</p>
-<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-blue-led.jpg"><img alt="ndp2016-re-blue-led" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-blue-led-262x300.jpg"></a> <a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-red-led.jpg"><img alt="ndp2016-re-red-led" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-red-led-272x300.jpg"></a> <a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-green-led.jpg"><img alt="ndp2016-re-green-led" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-green-led-262x300.jpg"></a></p>
+<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-blue-led.jpg"><img src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-blue-led-262x300.jpg" alt="ndp2016-re-blue-led"></a> <a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-red-led.jpg"><img src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-red-led-272x300.jpg" alt="ndp2016-re-red-led"></a> <a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-green-led.jpg"><img src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-green-led-262x300.jpg" alt="ndp2016-re-green-led"></a></p>
 <p>Using the Diode mode of the multimeter, we can see the different colours on the LED exhibit different voltage drops.</p>
-<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-schematic.png"><img alt="ndp2016-re-schematic" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-schematic-1024x742.png"></a></p>
+<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-schematic.png"><img src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-schematic-1024x742.png" alt="ndp2016-re-schematic"></a></p>
 <p>After some painstaking work mapping out all the connections, I drew out both the necessary Kicad libraries and schematic as you can see above. I even included the test points. Note that I cannot guarantee the schematic is correct.</p>
 <h2 id="programming-pads">Programming pads</h2>
 <p>The test points TP_SCK and TP_SO are no doubt used to program the board for the first time after the PCB is fabricated and assembled. I anticipate that ROM dumping could be possible but I don&rsquo;t have the time and tools to make it happen.</p>
@@ -354,11 +342,11 @@ Here is the talk video on this subject I gave at Hackware v2.1.">
 <p>Since I lack the time and equipment to do option 1, I wanted to try out option 2. This could possibly work assuming that Pixmob has not programmed in a Kill code that will disable further IR functionality should the organisers send out this code at the end of the event.</p>
 <h2 id="my-ir-brute-forcer">My IR brute-forcer</h2>
 <p>This is a Fritzing schematic showing my design of a IR brute-forcer:</p>
-<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-brute-force-microview-connections.png"><img alt="ndp2016-re-brute-force-microview-connections" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-brute-force-microview-connections.png"></a></p>
+<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-brute-force-microview-connections.png"><img src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-brute-force-microview-connections.png" alt="ndp2016-re-brute-force-microview-connections"></a></p>
 <p>The brains of this project is a <a href="http://microview.io/">Microview</a>, an Arduino-compatible component that has a standard ATmega328p chip and an OLED screen. The Microview drives an IR LED with the numerous IR combinations. Should a particular combination work, the wristband will light up and the differing light intensity can be captured by the photocell.</p>
-<p><img alt="ndp2016-re-brute-force-finding" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-brute-force-finding-872x1024.jpg"></p>
+<p><img src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-brute-force-finding-872x1024.jpg" alt="ndp2016-re-brute-force-finding"></p>
 <p>This is the setup, the IR LED and the photocell are both aimed at the wristband.</p>
-<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-brute-force-fake-find.jpg"><img alt="ndp2016-re-brute-force-fake-find" src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-brute-force-fake-find-954x1024.jpg"></a></p>
+<p><a href="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-brute-force-fake-find.jpg"><img src="/2016/08/partial-reverse-engineering-the-ndp-2016-led-wristband/images/ndp2016-re-brute-force-fake-find-954x1024.jpg" alt="ndp2016-re-brute-force-fake-find"></a></p>
 <p>This photo shows a false positive. Should the wristband light up, the OLED screen will display &ldquo;Found&rdquo;. The corresponding IR combination will be then sent via the Serial port to the computer.</p>
 <h2 id="brute-force-conclusion">Brute-force conclusion</h2>
 <p>This didn&rsquo;t work out in the end as I realised there are literally trillions of IR combinations made up of IR-ON, IR-OFF, multiple delay timings and the Arduino can only output about a few hundred or thousand combinations a second. Even worse, even if one can find a faster way to brute force quickly, if a Kill code has been sent, then there is no way this could work.</p>
@@ -436,6 +424,23 @@ Here is the talk video on this subject I gave at Hackware v2.1.">
       <article class="mini-post">
         <section>
           
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/04/llama2-llm-on-dos/">LLama 2 LLM on DOS</a></h1>
+          <time class="published" datetime="">April 15, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
     
       <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
@@ -501,23 +506,6 @@ Here is the talk video on this subject I gave at Hackware v2.1.">
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
-    
-      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up an open-frame Pentium 3 testbench</a></h1>
-          <time class="published" datetime="">May 25, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -539,7 +527,7 @@ Here is the talk video on this subject I gave at Hackware v2.1.">
           
           <li>
             
-              <a href="/categories/hacks/">hacks<span class="count">25</span></a>
+              <a href="/categories/hacks/">hacks<span class="count">26</span></a>
             
           
           <li>
@@ -554,12 +542,12 @@ Here is the talk video on this subject I gave at Hackware v2.1.">
           
           <li>
             
-              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
             
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">14</span></a>
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
             
           
           <li>
@@ -646,12 +634,12 @@ Here is the talk video on this subject I gave at Hackware v2.1.">
   
   <p class="copyright">
     
-      &copy; 2024
+      &copy; 2025
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.135.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

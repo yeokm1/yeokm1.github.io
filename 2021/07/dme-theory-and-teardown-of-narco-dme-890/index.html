@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.135.0">
+<meta name="generator" content="Hugo 0.146.3">
   <meta itemprop="name" content="DME Theory and Teardown of Narco DME 890">
   <meta itemprop="description" content="A faulty aircraft avionics Narco DME 890 came into my hands recently. As this instrument was destined for the trash bin, I was given free reign to do whatever I wanted with it. What better way to do it than to conduct a teardown!
 Before commencing a teardown, I have to go through some theoretical concepts of the basic operation of this device.">
@@ -301,8 +301,7 @@ Before commencing a teardown, I have to go through some theoretical concepts of 
 <blockquote>
 <p>So how much DME slant range error is there for most aircraft operations? The rule-of-thumb is that if you&rsquo;re at least 1NM away from the station for every 1,000&rsquo; AGL, slant range error is negligible.</p>
 <p>&hellip;</p>
-<p>DME requires line-of-sight between the aircraft and the ground station, and terrain and distance beyond the horizon will prevent DME from working.</p>
-</blockquote>
+<p>DME requires line-of-sight between the aircraft and the ground station, and terrain and distance beyond the horizon will prevent DME from working.</p></blockquote>
 <h2 id="dme-frequencies">DME Frequencies</h2>
 <p>I didn&rsquo;t realise before that the frequencies that DMEs operate at is a topic that is actually more complicated than it seems.</p>
 <p>DME operates at this frequency range:</p>
@@ -317,36 +316,36 @@ Before commencing a teardown, I have to go through some theoretical concepts of 
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Mode\Frequency (Mhz)</th>
-          <th style="text-align: left">Interrogation Range</th>
-          <th style="text-align: left">Offset</th>
-          <th style="text-align: left">Reply Range</th>
+          <th>Mode\Frequency (Mhz)</th>
+          <th>Interrogation Range</th>
+          <th>Offset</th>
+          <th>Reply Range</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">Mode X</td>
-          <td style="text-align: left">1025 - 1087</td>
-          <td style="text-align: left">-63</td>
-          <td style="text-align: left">962 - 1024</td>
+          <td>Mode X</td>
+          <td>1025 - 1087</td>
+          <td>-63</td>
+          <td>962 - 1024</td>
       </tr>
       <tr>
-          <td style="text-align: left">Mode X</td>
-          <td style="text-align: left">1088 - 1150</td>
-          <td style="text-align: left">+63</td>
-          <td style="text-align: left">1151 - 1213</td>
+          <td>Mode X</td>
+          <td>1088 - 1150</td>
+          <td>+63</td>
+          <td>1151 - 1213</td>
       </tr>
       <tr>
-          <td style="text-align: left">Mode Y</td>
-          <td style="text-align: left">1025 - 1087</td>
-          <td style="text-align: left">+63</td>
-          <td style="text-align: left">1088 - 1050</td>
+          <td>Mode Y</td>
+          <td>1025 - 1087</td>
+          <td>+63</td>
+          <td>1088 - 1050</td>
       </tr>
       <tr>
-          <td style="text-align: left">Mode Y</td>
-          <td style="text-align: left">1088 - 1150</td>
-          <td style="text-align: left">-63</td>
-          <td style="text-align: left">1025 - 1087</td>
+          <td>Mode Y</td>
+          <td>1088 - 1150</td>
+          <td>-63</td>
+          <td>1025 - 1087</td>
       </tr>
   </tbody>
 </table>
@@ -363,8 +362,7 @@ Before commencing a teardown, I have to go through some theoretical concepts of 
 </ul>
 <blockquote>
 <p>The introduction of two modes became necessary after a reduction of the VOR bandwidth by half in the 1970s. Although the VOR channel has been doubled, no additional frequency band for DME was approved. Thus, the number of DME channels was realized based on a double use of the existing frequencies by defining the X and Y grid.</p>
-<p>Source: <a href="https://www.skyradar.com/blog/navaids-a-technical-introduction-into-architecture-and-signals-of-ilsdme-and-vor">https://www.skyradar.com/blog/navaids-a-technical-introduction-into-architecture-and-signals-of-ilsdme-and-vor</a></p>
-</blockquote>
+<p>Source: <a href="https://www.skyradar.com/blog/navaids-a-technical-introduction-into-architecture-and-signals-of-ilsdme-and-vor">https://www.skyradar.com/blog/navaids-a-technical-introduction-into-architecture-and-signals-of-ilsdme-and-vor</a></p></blockquote>
 <p>Observe in the mapping table that Narco DME-890 does not support Interrogation frequencies lower than 1041 Mhz and Ground Reply frequencies lower than 978 Mhz. This is because below those DME frequencies, there are no VOR pairings for them. The Narco DME-890 only allows setting of the VOR frequency in its front panel.</p>
 <h3 id="dme-interrogation-process">DME Interrogation Process</h3>
 <p>The process goes like this:</p>
@@ -390,54 +388,54 @@ For Y mode, the pulse spacing will be 30us.</p>
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Station Code</th>
-          <th style="text-align: left">Station Name</th>
-          <th style="text-align: left">Station Type</th>
-          <th style="text-align: left">VOR Frequency</th>
-          <th style="text-align: left">DME Interrogation Freq</th>
-          <th style="text-align: left">DME Reply Freq</th>
+          <th>Station Code</th>
+          <th>Station Name</th>
+          <th>Station Type</th>
+          <th>VOR Frequency</th>
+          <th>DME Interrogation Freq</th>
+          <th>DME Reply Freq</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">PU</td>
-          <td style="text-align: left">Papa Uniform</td>
-          <td style="text-align: left">VOR-DME</td>
-          <td style="text-align: left">115.10</td>
-          <td style="text-align: left">1122</td>
-          <td style="text-align: left">1185</td>
+          <td>PU</td>
+          <td>Papa Uniform</td>
+          <td>VOR-DME</td>
+          <td>115.10</td>
+          <td>1122</td>
+          <td>1185</td>
       </tr>
       <tr>
-          <td style="text-align: left">VTK</td>
-          <td style="text-align: left">Tekong</td>
-          <td style="text-align: left">VOR-DME</td>
-          <td style="text-align: left">116.50</td>
-          <td style="text-align: left">1136</td>
-          <td style="text-align: left">1199</td>
+          <td>VTK</td>
+          <td>Tekong</td>
+          <td>VOR-DME</td>
+          <td>116.50</td>
+          <td>1136</td>
+          <td>1199</td>
       </tr>
       <tr>
-          <td style="text-align: left">SJ</td>
-          <td style="text-align: left">SINJON</td>
-          <td style="text-align: left">VOR-DME</td>
-          <td style="text-align: left">113.50</td>
-          <td style="text-align: left">1106</td>
-          <td style="text-align: left">1169</td>
+          <td>SJ</td>
+          <td>SINJON</td>
+          <td>VOR-DME</td>
+          <td>113.50</td>
+          <td>1106</td>
+          <td>1169</td>
       </tr>
       <tr>
-          <td style="text-align: left">TNG</td>
-          <td style="text-align: left">Tengah</td>
-          <td style="text-align: left">TACAN</td>
-          <td style="text-align: left">113.90</td>
-          <td style="text-align: left">1110</td>
-          <td style="text-align: left">1173</td>
+          <td>TNG</td>
+          <td>Tengah</td>
+          <td>TACAN</td>
+          <td>113.90</td>
+          <td>1110</td>
+          <td>1173</td>
       </tr>
       <tr>
-          <td style="text-align: left">PLA</td>
-          <td style="text-align: left">Paya Lebar</td>
-          <td style="text-align: left">TACAN</td>
-          <td style="text-align: left">116.30</td>
-          <td style="text-align: left">1134</td>
-          <td style="text-align: left">1197</td>
+          <td>PLA</td>
+          <td>Paya Lebar</td>
+          <td>TACAN</td>
+          <td>116.30</td>
+          <td>1134</td>
+          <td>1197</td>
       </tr>
   </tbody>
 </table>
@@ -481,8 +479,7 @@ For Y mode, the pulse spacing will be 30us.</p>
 <p>With its write-once ROM, it means the firmware on this chip cannot be replaced.</p>
 <blockquote>
 <p>Mostek also produced MK38P70 - development version of the 3870 MCU that supported external EPROM chip.</p>
-<p>Source: <a href="https://www.cpu-world.com/CPUs/3870/index.html">https://www.cpu-world.com/CPUs/3870/index.html</a></p>
-</blockquote>
+<p>Source: <a href="https://www.cpu-world.com/CPUs/3870/index.html">https://www.cpu-world.com/CPUs/3870/index.html</a></p></blockquote>
 <p>The ST logo on the chip hints at the industry consolidation of that era based on <a href="https://en.wikipedia.org/wiki/Mostek">Mostek Wikipedia article</a> where after a series of sell-offs and mergers, came to be owned by ST.</p>
 <p>Today, the usage of programmable microcontrollers in electronics products is pretty much taken for granted.</p>
 <a href="images/dme890-mcu-description.jpg"><img src="images/dme890-mcu-description.jpg" width="500"></a>
@@ -491,12 +488,8 @@ For Y mode, the pulse spacing will be 30us.</p>
 <p>Just like my KX-155 teardown, the display portion intrigued me.</p>
 <a href="images/dme890-display.jpg"><img src="images/dme890-display.jpg" width="500"></a>
 <p>A look after removing the front bezel. The separation between each digit is clearly observed.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/HZ8ETuYxpKA?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/HZ8ETuYxpKA?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>This short video of the display also hints that the digit segments are not updated all at once. To the naked eye, all the digits seem to appear normally but the camera&rsquo;s frame rate differs from digits&rsquo; refresh rate hence the alternate flickering.</p>
@@ -512,34 +505,34 @@ For Y mode, the pulse spacing will be 30us.</p>
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Manufacturer</th>
-          <th style="text-align: left">Part Number</th>
-          <th style="text-align: left">Designator</th>
-          <th style="text-align: left">Position and Orientation</th>
-          <th style="text-align: left">Description</th>
+          <th>Manufacturer</th>
+          <th>Part Number</th>
+          <th>Designator</th>
+          <th>Position and Orientation</th>
+          <th>Description</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">RCA</td>
-          <td style="text-align: left">CD4051BE</td>
-          <td style="text-align: left">U317</td>
-          <td style="text-align: left">Right, Vertical</td>
-          <td style="text-align: left">3:8 Multiplexer Switch. Using 3 input lines connected to the controller, determine which of 8 digits is being controlled at any one time. <a href="https://www.ti.com/store/ti/en/p/product/?p=CD4051BE">TI still makes a version of this chip</a> with this part number!</td>
+          <td>RCA</td>
+          <td>CD4051BE</td>
+          <td>U317</td>
+          <td>Right, Vertical</td>
+          <td>3:8 Multiplexer Switch. Using 3 input lines connected to the controller, determine which of 8 digits is being controlled at any one time. <a href="https://www.ti.com/store/ti/en/p/product/?p=CD4051BE">TI still makes a version of this chip</a> with this part number!</td>
       </tr>
       <tr>
-          <td style="text-align: left">Allegro</td>
-          <td style="text-align: left">UDQ6118A-1</td>
-          <td style="text-align: left">U315</td>
-          <td style="text-align: left">Bottom, Horizontal</td>
-          <td style="text-align: left">+100VDC Display Driver. Provides a common Anode for all the Digits and Legends.</td>
+          <td>Allegro</td>
+          <td>UDQ6118A-1</td>
+          <td>U315</td>
+          <td>Bottom, Horizontal</td>
+          <td>+100VDC Display Driver. Provides a common Anode for all the Digits and Legends.</td>
       </tr>
       <tr>
-          <td style="text-align: left">Allegro</td>
-          <td style="text-align: left">UDN7180A</td>
-          <td style="text-align: left">U318, U319</td>
-          <td style="text-align: left">Top, Vertical</td>
-          <td style="text-align: left">-100VDC Display driver. One IC controls the 8-segment digit. Another IC controls the Legends: which are RNV, NM, Decimal, RMT, XT, MHZ, Decimal, MIN.</td>
+          <td>Allegro</td>
+          <td>UDN7180A</td>
+          <td>U318, U319</td>
+          <td>Top, Vertical</td>
+          <td>-100VDC Display driver. One IC controls the 8-segment digit. Another IC controls the Legends: which are RNV, NM, Decimal, RMT, XT, MHZ, Decimal, MIN.</td>
       </tr>
   </tbody>
 </table>
@@ -573,8 +566,7 @@ For Y mode, the pulse spacing will be 30us.</p>
 <p>After Q104, the RF signal has to be converted to a lower frequency (63Mhz in this case) to ease the processing in the subsequent receiver section.</p>
 <p>This is done with CR104 and CR105 (in transmitter photo) where I shall quote the manual:</p>
 <blockquote>
-<p>Mixing occurs in diodes CR104 and CR105 where the LO (Local Oscillator) (which is 1/2 frequency of transmitter) and Receiver RF Signals are heterodyned, the 2nd Harmonic of the LO with the received frequency provides a difference frequency of 63Mhz. The inductor L106 is a low impedance to 63 Mhz and passes this signal to the IF Amplifier, however, its impedance to higher frequencies effectively isolates them from the IF Amplifier.</p>
-</blockquote>
+<p>Mixing occurs in diodes CR104 and CR105 where the LO (Local Oscillator) (which is 1/2 frequency of transmitter) and Receiver RF Signals are heterodyned, the 2nd Harmonic of the LO with the received frequency provides a difference frequency of 63Mhz. The inductor L106 is a low impedance to 63 Mhz and passes this signal to the IF Amplifier, however, its impedance to higher frequencies effectively isolates them from the IF Amplifier.</p></blockquote>
 <p>This is making use of the property that the received frequency is exactly 63 Mhz away from the transmit frequency.</p>
 <p>2nd Harmonic of half the transmitter frequency is back at the transmitter frequency. Mixing the transmit frequency and the received frequency will produce another frequency at 63Mhz where the L106 inductor will filter everything else away.</p>
 <ul>
@@ -606,12 +598,8 @@ For Y mode, the pulse spacing will be 30us.</p>
 <p>It&rsquo;s clear that RF and avionics design work is an extremely complex task. The manufacturer has to design a product that fits the functional requirements, conform to rigorous aviation certification standards and also be robust enough to work in the rough environment of the plane under heavy vibrations and heat.</p>
 <p>Such a product definitely took a non-trivial amount of time and skill-sets of a team of people to develop. Furthermore, this was developed in the late 1970s without the benefit of modern tools and easily accessible knowledge of today.</p>
 <p>Now my next curiosity, how does a contemporary implementation of an avionics DME system work with the benefit of better tech like faster processors and more integrated surface mount technology?</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/QVrrqs0ePqU?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/QVrrqs0ePqU?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>Online presentation I gave of this topic at Hackware.</p>
@@ -684,6 +672,23 @@ For Y mode, the pulse spacing will be 30us.</p>
       <article class="mini-post">
         <section>
           
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/04/llama2-llm-on-dos/">LLama 2 LLM on DOS</a></h1>
+          <time class="published" datetime="">April 15, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
     
       <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
@@ -749,23 +754,6 @@ For Y mode, the pulse spacing will be 30us.</p>
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
-    
-      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up an open-frame Pentium 3 testbench</a></h1>
-          <time class="published" datetime="">May 25, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -787,7 +775,7 @@ For Y mode, the pulse spacing will be 30us.</p>
           
           <li>
             
-              <a href="/categories/hacks/">hacks<span class="count">25</span></a>
+              <a href="/categories/hacks/">hacks<span class="count">26</span></a>
             
           
           <li>
@@ -802,12 +790,12 @@ For Y mode, the pulse spacing will be 30us.</p>
           
           <li>
             
-              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
             
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">14</span></a>
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
             
           
           <li>
@@ -894,12 +882,12 @@ For Y mode, the pulse spacing will be 30us.</p>
   
   <p class="copyright">
     
-      &copy; 2024
+      &copy; 2025
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.135.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

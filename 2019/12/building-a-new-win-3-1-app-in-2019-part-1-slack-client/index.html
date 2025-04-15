@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.135.0">
+<meta name="generator" content="Hugo 0.146.3">
   <meta itemprop="name" content="Building a new Win 3.1 app in 2019 Part 1: Slack client">
   <meta itemprop="description" content="In October 2019, my company SP Digital held an internal hackathon. My colleague Subhransu and I worked on a whacky idea of writing a brand-new Windows 3.1 app which was an OS released almost 30 years ago. The idea we chose was a Slack client. After all, Slack clients exist for most platforms but I’m certain one does not exist for Windows 3.1.
 A few months later in Dec 2019, I would join the Super Silly Hackathon for the second time with fellow retrocomputing enthusiast Hui Jing. We would develop a small game for Win 3.1 with great help from the knowledge gained from this first project.
@@ -287,14 +287,10 @@ The App Of course let’s take a look at the app.">
 <p>Don&rsquo;t forget to checkout out Part 2 of the <a href="https://www.chenhuijing.com/blog/building-a-win31-app-in-2019/">game app with Hui Jing</a> too!</p>
 <h1 id="the-app">The App</h1>
 <p>Of course let&rsquo;s take a look at the app.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-shot.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-shot.png"></a></p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-both-1024x408.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-both-1024x408.jpg"></a></p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/vuofFUCo2Qc?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-shot.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-shot.png" alt=""></a></p>
+<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-both-1024x408.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-both-1024x408.jpg" alt=""></a></p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/vuofFUCo2Qc?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>Picture and video of the app in action. Left is my <a href="/2016/09/windows-for-workgroups-3-11-on-vintage-and-modern-hardware-in-2016/">Thinkpad 390e running Windows 3.1</a>. On the right is my Mac with the Slack client for verification.</p>
@@ -304,7 +300,7 @@ The App Of course let’s take a look at the app.">
 <p>Nevertheless, as you will see, the effort to put in to write such an app is still herculean in its own right. <strong>Windows 3.1 also largely consumes 16-bit apps</strong> which is the tail-end of that era before Windows 95 came in.</p>
 <h1 id="development-setup">Development setup</h1>
 <p>The most important aspect of developing an app is the compiler toolchain. Everything has to revolve around it and this project is no exception.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-compile.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-compile.png"></a></p>
+<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-compile.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-compile.png" alt=""></a></p>
 <p>For this, we have the Visual C++ 1.52. This is the last VC++ compiler from Microsoft that can target for WFW 3.11. VC++ 1.52 is itself a 16-bit program so it can only be run on 32-bit Windows. Theoretically it should run even on Windows 10 32-bit but I did not have such a native setup lying around.</p>
 <p>So I had to take the Virtual Machine option using Windows 2000 with the following considerations in mind.</p>
 <ol>
@@ -317,11 +313,11 @@ The App Of course let’s take a look at the app.">
 <p>Also, we can&rsquo;t write our code directly on the Windows 2000 VM as it has limited software support for modern IDEs like Visual Studio Code not to mention security issues.</p>
 <p>Windows 10 and Mac cannot directly talk to the ancient SMB protocol used by WFW 3.11.</p>
 <h2 id="hardware-setup">Hardware setup</h2>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-setup.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-setup-1024x324.jpg"></a></p>
+<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-setup.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-setup-1024x324.jpg" alt=""></a></p>
 <p>Primary development is done on the Mac with Visual Studio Code editor with the files residing on the Mac file system. VC++ 1.52 will access the source files using a mapped drive on SMB share and do the compilation.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-app2k.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-app2k.png"></a></p>
+<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-app2k.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-app2k.png" alt=""></a></p>
 <p>I can do intermediate testing on Win 2K since it can run 16-bit apps.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-wfw-smb-share.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-wfw-smb-share.png"></a></p>
+<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-wfw-smb-share.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-wfw-smb-share.png" alt=""></a></p>
 <p>With Win 2K VM configured to use a bridged network and thus the same subnet, my native WFW 3.11 system can access the SMB share folder of the Win 2K VM as seen above. That&rsquo;s actually the first time I saw the network drive icon in File Manager.</p>
 <p>Size of the binary is 23 KiB. That&rsquo;s many orders of magnitude smaller then the modern Slack app on the App store :P</p>
 <h1 id="lets-get-down-to-the-coding-business">Let&rsquo;s get down to the coding business</h1>
@@ -330,30 +326,28 @@ The App Of course let’s take a look at the app.">
 <p>API documentation and usage examples are very important when it comes to software development. Typically, programmers will rely quite heavily on Google and Stackoverflow.</p>
 <p>Alas, Win 3.1 only came during the dawn of the internet era and Google cannot help if relevant websites do not even exist. Basically Windows 3.1, its API documentation and problems can&rsquo;t be Googled easily, one has to rely on a more traditional method like books!</p>
 <h3 id="reference-book">Reference Book</h3>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-book.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-book-1024x746.jpg"></a></p>
+<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-book.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-book-1024x746.jpg" alt=""></a></p>
 <p>I purchased this book <a href="https://www.amazon.com/Programming-Windows-3-1-Charles-Petzold/dp/1556153953/">Programming Windows 3.1 by Charles Petzold from Amazon</a>.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-book-back.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-book-back-916x1024.jpg"></a></p>
+<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-book-back.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-book-back-916x1024.jpg" alt=""></a></p>
 <blockquote>
 <p>If you are going to program for Windows (3.1), buy this book. It will pay for itself in a matter of hours.&quot;
-I concur with this.</p>
-</blockquote>
+I concur with this.</p></blockquote>
 <p>At the time of initial writing of this post, I could not find a softcopy of this book which means I had to do things the old-fashioned way when I comes to research. Purchasing the book then going through the contents page and index for starters.</p>
 <p>In 2020, a commenter (below) pointed out a softcopy of this book is now available from this <a href="https://archive.org/details/programming-windows-31-3rd-ed/">archive.org page</a>.</p>
 <p>I have also uploaded the sample codes of the floppy disk onto <a href="https://github.com/yeokm1/programming-win31">this Github repo</a>.</p>
 <h3 id="header-file-inspection">Header file inspection</h3>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-headers.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-headers.png"></a></p>
+<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-headers.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-headers.png" alt=""></a></p>
 <p>Sometimes I have to use certain APIs that may not be documented in the book, for example network APIs. In this case, I&rsquo;ll have to manually inspect the header files in the compiler&rsquo;s &ldquo;include&rdquo; directory to see what parameters are required for the functions.</p>
 <h3 id="inverse-deduction-from-modern-windows-api">Inverse deduction from modern Windows API</h3>
 <p>Looking up the function parameters may not be always sufficient as I need to know what the function actually does. Here is where Microsoft&rsquo;s legendary backward compatibility becomes useful. Many modern Windows APIs are very similar to the traditional ones. Microsoft even has this <a href="https://docs.microsoft.com/en-us/cpp/windows/walkthrough-creating-windows-desktop-applications-cpp?view=vs-2019">walkthrough</a> to create an app the traditional way.</p>
 <blockquote>
-<p>The Windows API (also known as the Win32 API, Windows Desktop API, and Windows Classic API) is a C-language-based framework for creating Windows applications. It has been in existence since the 1980s and has been used to create Windows applications for decades. More advanced and easier-to-program frameworks have been built on top of the Windows API. For example, MFC, ATL, the .NET frameworks. Even the most modern Windows Runtime code for UWP and Store apps written in C++/WinRT uses the Windows API underneath.</p>
-</blockquote>
+<p>The Windows API (also known as the Win32 API, Windows Desktop API, and Windows Classic API) is a C-language-based framework for creating Windows applications. It has been in existence since the 1980s and has been used to create Windows applications for decades. More advanced and easier-to-program frameworks have been built on top of the Windows API. For example, MFC, ATL, the .NET frameworks. Even the most modern Windows Runtime code for UWP and Store apps written in C++/WinRT uses the Windows API underneath.</p></blockquote>
 <p>Even if the modern APIs are different, the documentation may give me enough information to deduce what the older APIs do.</p>
 <h2 id="c89-language">C89 language</h2>
 <p>VC++ 1.52 was released in the early 1990s obviously only supported the C standard of that era which was C89. Even though I use C quite a lot in my work, C89 has several intricacies that made my life harder.</p>
 <h3 id="variable-declaration-at-beginning-of-function-scope">Variable declaration at beginning of function scope</h3>
 <p>Basically this means I cannot declare a variable in the middle of a function. To get an idea how troublesome this is, take a look at this code sample.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-c89-vars.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-c89-vars.png"></a></p>
+<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-c89-vars.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-c89-vars.png" alt=""></a></p>
 <p>This sample code deals with the event loop in receiving callbacks from Windows. The variables ever used in this function has to be declared at the top not when I need to use them. So lots of work scrolling up and down.</p>
 <p><a href="https://news.ycombinator.com/item?id=21832815">userbinator on Hackernews had this to say</a>: &ldquo;Note that C89 only prevents declarations of variables in the middle of a <em>scope</em>; you can simply create an inner scope with new variable declarations at <em>its</em> start.&rdquo;</p>
 <h3 id="no-safe-functions">No safe functions</h3>
@@ -366,25 +360,24 @@ I concur with this.</p>
 <blockquote>
 <p>In the context of IBM PC compatible and Wintel platforms, a 16-bit application is any software written for MS-DOS, OS/2 1.x or early versions of Microsoft Windows which originally ran on the 16-bit Intel 8088 and Intel 80286 microprocessors. Such applications used a 20-bit or 24-bit segment or selector-offset address representation to extend the range of addressable memory locations beyond what was possible using only 16-bit addresses.</p>
 <p><strong>Programs containing more than 2^16 bytes (65,536 bytes) of instructions and data therefore required special instructions to switch between their 64-kilobyte segments, increasing the complexity of programming 16-bit applications</strong>.</p>
-<p>Source: <a href="https://en.wikipedia.org/wiki/16-bit#16-bit_application">https://en.wikipedia.org/wiki/16-bit#16-bit_application</a></p>
-</blockquote>
+<p>Source: <a href="https://en.wikipedia.org/wiki/16-bit#16-bit_application">https://en.wikipedia.org/wiki/16-bit#16-bit_application</a></p></blockquote>
 <p>Wikipedia is so correct !^^^</p>
 <p>The following 2 pages literally saved me from hours of Googling assuming Google turns out any answer at all!</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-allocmem.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-allocmem-952x1024.jpg"></a></p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-memapi.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-memapi-818x1024.jpg"></a></p>
+<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-allocmem.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-allocmem-952x1024.jpg" alt=""></a></p>
+<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-memapi.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-memapi-818x1024.jpg" alt=""></a></p>
 <p>To allocate a &ldquo;large&rdquo; chunk of memory from the APIs described in the book, we need to allocate them from the Global heap. This is what I did below.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold">#include</span> <span style="color:#0f0;font-weight:bold">&lt;windowsx.h&gt;</span><span style="color:#0f0;font-weight:bold">
-</span></span></span><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold"></span>
-</span></span><span style="display:flex;"><span><span style="color:#007f7f">//Up to 64K is possible 
-</span></span></span><span style="display:flex;"><span><span style="color:#007f7f"></span><span style="color:#0f0;font-weight:bold">#define MAX_GLOBAL_MEM_ALLOCATION 32000
-</span></span></span><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold"></span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;windowsx.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//Up to 64K is possible 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define MAX_GLOBAL_MEM_ALLOCATION 32000
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span>LPSTR lpGlobalMemory;
 </span></span><span style="display:flex;"><span>DWORD allocatedMemorySize;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>lpGlobalMemory = GlobalAllocPtr(GMEM_MOVEABLE, MAX_GLOBAL_MEM_ALLOCATION); 
-</span></span><span style="display:flex;"><span>allocatedMemorySize = GlobalSize(GlobalPtrHandle(lpGlobalMemory));
+</span></span><span style="display:flex;"><span>lpGlobalMemory <span style="color:#f92672">=</span> GlobalAllocPtr(GMEM_MOVEABLE, MAX_GLOBAL_MEM_ALLOCATION); 
+</span></span><span style="display:flex;"><span>allocatedMemorySize <span style="color:#f92672">=</span> GlobalSize(GlobalPtrHandle(lpGlobalMemory));
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>printf(<span style="color:#0ff;font-weight:bold">&#34;We got allocated %u bytes of memory</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, allocatedMemorySize);,
+</span></span><span style="display:flex;"><span>printf(<span style="color:#e6db74">&#34;We got allocated %u bytes of memory</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, allocatedMemorySize);,
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>GlobalFreePtr(lpGlobalMemory);
 </span></span></code></pre></div><p>LPSTR is a &ldquo;FAR&rdquo; 32-bit pointer which enables greater range of memory. The conventional &ldquo;char&rdquo; pointer type is only 16-bit in this era. We tell WFW 3.11 how much we hope to allocate. After allocating the memory, remember to verify how much was actually allocated. After you finish using the memory remember to free it.</p>
@@ -392,35 +385,35 @@ I concur with this.</p>
 <h3 id="https-issues">HTTPS issues</h3>
 <p>Secure Rest API communication via HTTPS is the norm today when it comes to dealing with web services. However it was not really so in that era.</p>
 <p>WFW 3.11 uses the <a href="https://en.wikipedia.org/wiki/Winsock">Windows Sockets API (Winsock)</a> version 1.1. The <a href="https://docs.microsoft.com/en-us/windows/win32/winsock/using-secure-socket-extensions">Secure Socket Extensions to Winsock</a> only came out in version 2. The conventional way is to use OpenSSL but it&rsquo;s so complex that there&rsquo;s no reasonable chance of me porting that entire project to support C89 on WFW 3.11.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-https-proxy.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-https-proxy-1024x281.png"></a></p>
+<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-https-proxy.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-https-proxy-1024x281.png" alt=""></a></p>
 <p>After much hesitation and reluctance, I decided to cheat and write my own <a href="https://github.com/yeokm1/http-to-https-proxy">http-to-https-proxy</a> in Golang. Acting as a transparent middleman, it inspects the host field of the HTTP requests and forwards the raw socket bytes as HTTPS to Slack&rsquo;s servers. The result is then relayed back byte-for-byte back to the app.</p>
 <p>Purists may not like this solution but this is the best I can do with my abilities in a reasonable amount of time.</p>
 <p>Readers have suggested to me that an existing project called <a href="https://www.stunnel.org/">stunnel</a> already exists so this self-written proxy is not necessary. I did give stunnel a try but it seems to only work if it is running on the same system as the app that needs the tunnel and it obviously won&rsquo;t work on a Windows 3.1 system.</p>
 <p>There might be some SSL libraries for embedded systems that are worth a try like BearSSL, mbed TLS and WolfSSL. See the end of this blog post on my further thoughts of this subject.</p>
 <h3 id="socket-programming">Socket Programming</h3>
 <p>The last time I did low-level socket programming was in university. This days with modern programming languages and APIs, everything is done for you. But no such libraries exist for C89 last I checked. So I had construct the entire POST request by hand and call the socket APIs directly.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold">#include</span> <span style="color:#0f0;font-weight:bold">&lt;winsock.h&gt;</span><span style="color:#0f0;font-weight:bold">
-</span></span></span><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold"></span>
-</span></span><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold">#pragma comment(lib,&#34;winsock.lib&#34;) 
-</span></span></span><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold">#define POST_MESSAGE_FORMAT &#34;POST /api/chat.postMessage?channel=%s&amp;as_user=true&amp;text=%s HTTP/1.1\r\nHost: slack.com\r\nAuthorization: Bearer %s\r\nAccept: */*\r\nConnection: close\r\n\r\n&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold"></span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;winsock.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#pragma comment(lib,&#34;winsock.lib&#34;) 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define POST_MESSAGE_FORMAT &#34;POST /api/chat.postMessage?channel=%s&amp;as_user=true&amp;text=%s HTTP/1.1\r\nHost: slack.com\r\nAuthorization: Bearer %s\r\nAccept: */*\r\nConnection: close\r\n\r\n&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span>WSADATA wsaData;
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">struct</span> sockaddr_in serveraddr;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">sockaddr_in</span> serveraddr;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>WORD wVersionRequested = MAKEWORD(<span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">1</span>);
-</span></span><span style="display:flex;"><span>nErrorStatus = WSAStartup(wVersionRequested, &amp;wsaData);
+</span></span><span style="display:flex;"><span>WORD wVersionRequested <span style="color:#f92672">=</span> MAKEWORD(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>nErrorStatus <span style="color:#f92672">=</span> WSAStartup(wVersionRequested, <span style="color:#f92672">&amp;</span>wsaData);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>sock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
+</span></span><span style="display:flex;"><span>sock <span style="color:#f92672">=</span> socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>memset(&amp;serveraddr, <span style="color:#ff0;font-weight:bold">0</span>, <span style="color:#fff;font-weight:bold">sizeof</span>(serveraddr));
-</span></span><span style="display:flex;"><span>serveraddr.sin_family = AF_INET;
-</span></span><span style="display:flex;"><span>serveraddr.sin_addr.s_addr = inet_addr(ipaddress);
-</span></span><span style="display:flex;"><span>serveraddr.sin_port = htons((<span style="color:#fff;font-weight:bold">unsigned</span> <span style="color:#fff;font-weight:bold">short</span>) port);
-</span></span><span style="display:flex;"><span>error = connect(socketID, (<span style="color:#fff;font-weight:bold">struct</span> sockaddr *) &amp;serveraddr, <span style="color:#fff;font-weight:bold">sizeof</span>(serveraddr));
+</span></span><span style="display:flex;"><span>memset(<span style="color:#f92672">&amp;</span>serveraddr, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(serveraddr));
+</span></span><span style="display:flex;"><span>serveraddr.sin_family <span style="color:#f92672">=</span> AF_INET;
+</span></span><span style="display:flex;"><span>serveraddr.sin_addr.s_addr <span style="color:#f92672">=</span> inet_addr(ipaddress);
+</span></span><span style="display:flex;"><span>serveraddr.sin_port <span style="color:#f92672">=</span> htons((<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">short</span>) port);
+</span></span><span style="display:flex;"><span>error <span style="color:#f92672">=</span> connect(socketID, (<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">sockaddr</span> <span style="color:#f92672">*</span>) <span style="color:#f92672">&amp;</span>serveraddr, <span style="color:#66d9ef">sizeof</span>(serveraddr));
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>sprintf(buff, POST_MESSAGE_FORMAT, <span style="color:#0ff;font-weight:bold">&#34;win31&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;hello&#34;</span>, <span style="color:#0ff;font-weight:bold">&#34;token&#34;</span>);
-</span></span><span style="display:flex;"><span>bytesSent = send(socketID, request, requestLength, <span style="color:#ff0;font-weight:bold">0</span>);
-</span></span><span style="display:flex;"><span>bytesReceivedThisInstant = recv(socketID, (<span style="color:#fff;font-weight:bold">char</span> *) &amp;buff, <span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">0</span>);
+</span></span><span style="display:flex;"><span>sprintf(buff, POST_MESSAGE_FORMAT, <span style="color:#e6db74">&#34;win31&#34;</span>, <span style="color:#e6db74">&#34;hello&#34;</span>, <span style="color:#e6db74">&#34;token&#34;</span>);
+</span></span><span style="display:flex;"><span>bytesSent <span style="color:#f92672">=</span> send(socketID, request, requestLength, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>bytesReceivedThisInstant <span style="color:#f92672">=</span> recv(socketID, (<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>) <span style="color:#f92672">&amp;</span>buff, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>closesocket(socketID);
 </span></span><span style="display:flex;"><span>WSACleanup();
@@ -430,57 +423,57 @@ I concur with this.</p>
 <h3 id="json-parsing">JSON parsing</h3>
 <p>The output of most REST APIs are in JSON format. Again, no native JSON decoding APIs are available on VC++ 1.52. After much hunting, I found C89-compatible JSON parser called <a href="https://github.com/zserge/jsmn">JSMN,</a> however it has some quirks that make using it more challenging.</p>
 <p>Typical JSON parsers provide a dictionary output where you can access the stored values by providing a key.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>value = jsonDictionary[<span style="color:#f00">&#39;</span>key<span style="color:#f00">&#39;</span>]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>value <span style="color:#f92672">=</span> jsonDictionary[<span style="color:#960050;background-color:#1e0010">&#39;</span>key<span style="color:#960050;background-color:#1e0010">&#39;</span>]
 </span></span></code></pre></div><p>However for memory-saving reasons, JSMN does not output a dictionary. It gives out an array of tokens structs that points to the token boundaries in the original JSON string. Let&rsquo;s give an example from my code</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold">#include</span> <span style="color:#0f0;font-weight:bold">&#34;jsmn.h&#34;</span><span style="color:#0f0;font-weight:bold">
-</span></span></span><span style="display:flex;"><span><span style="color:#0f0;font-weight:bold"></span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;jsmn.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span>jsmn_parser parser;
 </span></span><span style="display:flex;"><span>jsmntok_t tokens[MAX_TOKENS];
 </span></span><span style="display:flex;"><span>jsmntok_t currentToken;
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">char</span> currentTokenString[MAX_TOKEN_KEYWORD_SIZE];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> currentTokenString[MAX_TOKEN_KEYWORD_SIZE];
 </span></span><span style="display:flex;"><span>LPSTR startOfJson;
 </span></span><span style="display:flex;"><span>DWORD lengthOfJson;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>jsmn_init(&amp;parser);
-</span></span><span style="display:flex;"><span>jsmn_parse(&amp;parser, jsonString, lengthOfJson, tokens, MAX_TOKENS);
+</span></span><span style="display:flex;"><span>jsmn_init(<span style="color:#f92672">&amp;</span>parser);
+</span></span><span style="display:flex;"><span>jsmn_parse(<span style="color:#f92672">&amp;</span>parser, jsonString, lengthOfJson, tokens, MAX_TOKENS);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#fff;font-weight:bold">for</span>(index = <span style="color:#ff0;font-weight:bold">0</span>; index &lt; MAX_TOKENS; index++){ 
-</span></span><span style="display:flex;"><span>    currentToken = tokens[index]; 
-</span></span><span style="display:flex;"><span>    tokenStartPosition = currentToken.start; 
-</span></span><span style="display:flex;"><span>    tokenSize = currentToken.end - tokenStartPosition;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span>(index <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; index <span style="color:#f92672">&lt;</span> MAX_TOKENS; index<span style="color:#f92672">++</span>){ 
+</span></span><span style="display:flex;"><span>    currentToken <span style="color:#f92672">=</span> tokens[index]; 
+</span></span><span style="display:flex;"><span>    tokenStartPosition <span style="color:#f92672">=</span> currentToken.start; 
+</span></span><span style="display:flex;"><span>    tokenSize <span style="color:#f92672">=</span> currentToken.end <span style="color:#f92672">-</span> tokenStartPosition;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">if</span>(tokenSize &lt;= <span style="color:#ff0;font-weight:bold">0</span>){ 
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">continue</span>; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(tokenSize <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>){ 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">continue</span>; 
 </span></span><span style="display:flex;"><span>    } 
-</span></span><span style="display:flex;"><span>    <span style="color:#fff;font-weight:bold">if</span>(tokenSize &gt; MAX_TOKEN_KEYWORD_SIZE){ 
-</span></span><span style="display:flex;"><span>        <span style="color:#fff;font-weight:bold">continue</span>; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(tokenSize <span style="color:#f92672">&gt;</span> MAX_TOKEN_KEYWORD_SIZE){ 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">continue</span>; 
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    memset(currentTokenString, <span style="color:#ff0;font-weight:bold">0</span>, MAX_TOKEN_KEYWORD_SIZE);
-</span></span><span style="display:flex;"><span>    fmemcpy(currentTokenString, startOfJson + tokenStartPosition, tokenSize);
+</span></span><span style="display:flex;"><span>    memset(currentTokenString, <span style="color:#ae81ff">0</span>, MAX_TOKEN_KEYWORD_SIZE);
+</span></span><span style="display:flex;"><span>    fmemcpy(currentTokenString, startOfJson <span style="color:#f92672">+</span> tokenStartPosition, tokenSize);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#0ff;font-weight:bold">&#34;Current token %s</span><span style="color:#0ff;font-weight:bold">\n</span><span style="color:#0ff;font-weight:bold">&#34;</span>, currentTokenString);
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;Current token %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, currentTokenString);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>What&rsquo;s happening above is that I&rsquo;m iterating through all tokens provided by JSMN and attempting to print them out. JSMN provides the start and end positions of the parent array hence I need to use those values to copy out from memory to a separate char array for printing purposes. Certainly not so trivial.</p>
 <p><em>&quot;_fmemcpy&quot;</em> is the FAR pointer equivalent for &ldquo;memcpy&rdquo; specific only to the Windows platform. I slightly modified the source code of JSMN to enable it to take larger arrays based on the LPSTR data type.</p>
 <h3 id="json-parsing-optimisation">JSON parsing optimisation</h3>
 <p>Due to the very small stack size, the maximum number of tokens that can be parsed at one go is extremely limited. This causes problems as that means I can only parse very few keys and values from the string. To solve this, I did incremental parsing as shown below.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-json-parse-portions.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-json-parse-portions-1024x495.png"></a></p>
+<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-json-parse-portions.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-json-parse-portions-1024x495.png" alt=""></a></p>
 <p>For this conversation history API, I parse the Json part by part till the end to avoid parsing the entire gigantic Json at one go.</p>
 <h2 id="testing">Testing</h2>
 <p>Test-driven development (TDD) is used quite often in modern software development but it wasn&rsquo;t so in that era. Testing I felt was extremely critical even for this Science Project as I wanted to make sure my code would work in their unit forms.</p>
 <p>VC++ 1.52 does not seem to have testing facilities built in. I could not find a C89-compatible C testing framework that could work with VC++ 1.52 so I rolled a basic one on my own.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-test-setup.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-test-setup-1024x634.png"></a></p>
+<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-test-setup.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-test-setup-1024x634.png" alt=""></a></p>
 <p>I created a duplicate project called Test.mak which will compile &ldquo;TestMain.C&rdquo; which includes the individual testing &ldquo;test.h&rdquo; functions within each package. When running the tests,  &ldquo;test.h&rdquo; will execute the individual tests in its file which will in turn test the functions in the package.</p>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-test.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-test.png"></a></p>
+<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-test.png"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-test.png" alt=""></a></p>
 <p>Test results are then shown in the VC++ debugger output.</p>
 <h3 id="mock-servers">Mock Servers</h3>
 <p>Due to my unfamiliarity with the Winsock APIs, I actually wrote mock servers in Golang to replay or reply to HTTP sockets requests that will be made during the testing process. Consult the <a href="https://github.com/yeokm1/w31slack">repo</a> to find out more!</p>
 <h1 id="resource-usage">Resource Usage</h1>
 <p>By popular demand, there was question about the resource usage of the Windows 3.1 app + VM + proxy compared to the official Mac Slack app. So I did a run and here is the result!</p>
 <h2 id="mac-memory-usage">Mac Memory Usage</h2>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-mem-usage.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-mem-usage-1024x640.jpg"></a></p>
+<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-mem-usage.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-mem-usage-1024x640.jpg" alt=""></a></p>
 <p>You can click the file for a closer look. The WFW 3.11 VM is configured to use 8MB RAM with 16MB video RAM. The Mac Slack app is only signed in to one workspace.</p>
 <p>Based on the top result</p>
 <ul>
@@ -493,7 +486,7 @@ I concur with this.</p>
 <p>So <strong>Slack in total uses 396.1MiB</strong> while the <strong>WFW3.11 VM + proxy uses 141MiB.</strong> On memory usage alone, actually my app can win!</p>
 <p>Obviously this is not an apples to apples comparison as the Mac Slack app is fully featured and the VM has a significant overhead.</p>
 <h2 id="mac-disk-usage">Mac Disk Usage</h2>
-<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-disk-usage.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-disk-usage-1024x542.jpg"></a></p>
+<p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-disk-usage.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-disk-usage-1024x542.jpg" alt=""></a></p>
 <p>The VM is currently set to be dynamically-sized but one can see that it uses only 100 MiB versus 165.5 MiB of the official Mac Slack app.</p>
 <p>So win again!!!</p>
 <h1 id="conclusion">Conclusion</h1>
@@ -503,12 +496,8 @@ I concur with this.</p>
 <p>If you read to this point, I&rsquo;m sure you are one of those interested to see how an ancient app can be created with the aid of modern tools and hindsight of old technologies. With this blog post, I hope you enjoyed learning about the extremely painful development process for the newest Windows 3.1 app that&rsquo;s released in the world today.</p>
 <p>If you like this, don&rsquo;t forget to check out <a href="https://www.chenhuijing.com/blog/building-a-win31-app-in-2019/">Hui Jing&rsquo;s blog post</a> of us making a simple Win 3.1 game app. Her blog post has a greater focus on the UI aspect which is actually a great complement to this post as I did not discuss it here.</p>
 <p>If you would like to see the live demo of my app and my talk on this topic, watch it here!</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/3SLOgQXbR0o?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/3SLOgQXbR0o?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <h1 id="clarification-of-me-cheating-with-a-proxy">Clarification of me cheating with a proxy</h1>
@@ -524,8 +513,7 @@ I concur with this.</p>
 <blockquote>
 <p>&ldquo;Mbed TLS, does not support 16 bit architecture&hellip; However, I would suspect you will encounter other issues related to 16 bit platforms, in other modules.&rdquo;<br>
 Source1: <a href="https://tls.mbed.org/discussions/crypto-and-ssl/help-with-ecc-and-bignum">https://tls.mbed.org/discussions/crypto-and-ssl/help-with-ecc-and-bignum</a><br>
-Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums.mbed.com/t/mbed-tls-size-t/3103</a></p>
-</blockquote>
+Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums.mbed.com/t/mbed-tls-size-t/3103</a></p></blockquote>
 <p>So I hope you understand the reasons behind me giving up and using a proxy. Let me repeat <strong>&ldquo;Purists may not like this solution but this is the best I can do with my abilities in a reasonable amount of time.&rdquo;</strong></p>
   </div>
   <footer>
@@ -599,6 +587,23 @@ Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums
       <article class="mini-post">
         <section>
           
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/04/llama2-llm-on-dos/">LLama 2 LLM on DOS</a></h1>
+          <time class="published" datetime="">April 15, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
     
       <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
@@ -664,23 +669,6 @@ Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
-    
-      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up an open-frame Pentium 3 testbench</a></h1>
-          <time class="published" datetime="">May 25, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -702,7 +690,7 @@ Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums
           
           <li>
             
-              <a href="/categories/hacks/">hacks<span class="count">25</span></a>
+              <a href="/categories/hacks/">hacks<span class="count">26</span></a>
             
           
           <li>
@@ -717,12 +705,12 @@ Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums
           
           <li>
             
-              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
             
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">14</span></a>
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
             
           
           <li>
@@ -809,12 +797,12 @@ Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums
   
   <p class="copyright">
     
-      &copy; 2024
+      &copy; 2025
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.135.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

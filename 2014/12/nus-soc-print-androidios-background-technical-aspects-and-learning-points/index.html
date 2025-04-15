@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.135.0">
+<meta name="generator" content="Hugo 0.146.3">
   <meta itemprop="name" content="NUS SOC Print (Android/iOS): Background, technical aspects and learning points">
   <meta itemprop="description" content="The apps in question are active and can be downloaded from their respective app stores.
 Android Play Store (source code) (User and Developer Guide) Apple App Store (source code) (User and Developer Guide) This post is about 3000 words long as I wanted to go as in depth as much as possible to describe my experience in developing for both Android and iOS. If this length scares you already well I do not blame you, I tend to get long-winded in my reflections but I usually hope my readers learn and understand my underlying thought process behind certain decisions I made.
@@ -297,11 +297,11 @@ There should be something here for Android devs, iOS devs or people just interes
 <h2 id="ui-overview">UI Overview</h2>
 <p>(You can click on the pictures to get a larger view)</p>
 <p>My app running on different operating systems</p>
-<p><a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/android-main.png"><img alt="android main" src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/android-main-169x300.png"></a><a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/ios-main.png"><img alt="ios main" src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/ios-main-169x300.png"></a></p>
+<p><a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/android-main.png"><img src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/android-main-169x300.png" alt="android main"></a><a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/ios-main.png"><img src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/ios-main-169x300.png" alt="ios main"></a></p>
 <p>From left: Android 5.0 and iOS8</p>
-<p><a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/main-android-2.2.png"><img alt="main-android-2.2" src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/main-android-2.2-211x300.png"></a><a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/main-android-2.3.jpg"><img alt="main android 2.3" src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/main-android-2.3-161x300.jpg"></a><a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/main-android4.4.png"><img alt="main-android4.4" src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/main-android4.4-169x300.png"></a></p>
+<p><a href="images/main-android-2.2.png"><img src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/main-android-2.2-211x300.png" alt="main-android-2.2"></a><a href="images/main-android-2.3.jpg"><img src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/main-android-2.3-161x300.jpg" alt="main android 2.3"></a><a href="images/main-android4.4.png"><img src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/main-android4.4-169x300.png" alt="main-android4.4"></a></p>
 <p>From left: Android 2.2 (emulator),  Android 2.3 (HTC Desire) and Android 4.4</p>
-<h2 id="android-old-frontimagesandroid-old-front-161x300jpgimagesandroid-old-frontjpg"><a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/android-old-front.jpg"><img alt="android old front" src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/android-old-front-161x300.jpg"></a></h2>
+<h2 id="android-old-front"><a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/android-old-front.jpg"><img src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/android-old-front-161x300.jpg" alt="android old front"></a></h2>
 <p>This is the older version of my app prior to the Android &ldquo;revamp&rdquo;</p>
 <p>The Android UI prior(third row) to this(top row) was extremely cluttered but no more. I have ensured UI consistency across both platforms as much as possible.</p>
 <p>The Android version supports Android 2.1 and up, a nearly 5-year old OS. Although this level of OS support is overkill considering that the majority of SoC students who use Android phones carry modern ones, I chose to do it as a personal challenge. This caused several fragmentation issues when it came to testing for me. You can see above how the same app appears slightly different across all the Android versions.</p>
@@ -309,15 +309,15 @@ There should be something here for Android devs, iOS devs or people just interes
 <p>Regarding the browsing of file systems, I use the <a href="https://github.com/iPaulPro/aFileChooser">aFileChooser</a> library as an integrated file explorer as I cannot be sure that all Android phones have their own file managers. Android 4.4 and above returns the activity result of a file selection in a slightly different format so one has to be careful. iOS apps are heavily sandboxed so my app has to rely on other apps to pass in the associated documents to use them.</p>
 <p>Regarding file previews, I only have this feature for iOS. This is so as Android&rsquo;s integrated webview cannot open many types of documents unlike iOS and its features are heavily fragmented depending on the Android version. It may also be rather memory-heavy on old phones.</p>
 <p>The iOS app is coded in Swift which was still in beta when I started coding on it. Code and API examples were scarce then and even till now. I supported the minimum OS which is iOS7 that caused some fragmentation issues too.</p>
-<p><a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/printing1.png"><img alt="printing1" src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/printing1-169x300.png"></a>[<img alt="printing android 2.3" src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/printing-android-2.3-161x300.jpg">]((images/printing-android-2.3jpg)<a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/ios-printing.png"><img alt="ios printing" src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/ios-printing-169x300.png"></a></p>
+<p><a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/printing1.png"><img src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/printing1-169x300.png" alt="printing1"></a>[<img src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/printing-android-2.3-161x300.jpg" alt="printing android 2.3">]((images/printing-android-2.3jpg)<a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/ios-printing.png"><img src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/ios-printing-169x300.png" alt="ios printing"></a></p>
 <p>The printing status is detailed and shows the progress as it goes. A detailed explanation for each step is at the later part of this post. Both apps open this window as a (pseudo) dialog/pop-up and both had issues. I have no idea why the progress bar is so fat on Android 2.x devices.</p>
 <p>For Android, the Material Design tint of the AppCompat library somehow does not support Theme.Dialog. Hence, this particular window (Holo theme) appears as if it is from the Ice Cream Sandwich (4.0) era even though the phone is a Nexus 5 running Android 5.0. Running my app on pre-Honeycomb devices (3.0) will degrade gracefully to the older Android theme. This is done by specifying styles.xml in &ldquo;values&rdquo; and &ldquo;value-v11&rdquo; directories.</p>
 <p>For the green tick and red X icon, I could have taken the easier way out by just dumping the pictures into the &ldquo;drawable&rdquo; folder and let Android scale it on runtime but this may be computationally expensive on older devices. I use <a href="http://romannurik.github.io/AndroidAssetStudio/">Android Asset Studio</a> to generate the pictures at multiple dpi settings before saving them into the xxhdpi, xhdpi, hdpi, mdpi etc directories. The equivalent in iOS is the 1x, 2x and 3x assets. This is usually done only on production apps and not in school or prototype projects.</p>
 <p>For iOS, checkout this Stackoverflow post on the <a href="http://stackoverflow.com/questions/16230700/display-uiviewcontroller-as-popup-in-iphone">background darkening issue</a> between iOS7 and iOS8. The AlertView class was deprecated for AlertController in iOS8 so I have to do an if-else (See the showAlert() function in <a href="https://github.com/yeokm1/nus-soc-print-ios/blob/master/NUS%20SOC%20Print/Constants.swift">code</a>). iOS is no different from Android if you want to support multiple OS versions.</p>
-<p><a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/android-status.png"><img alt="android status" src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/android-status-169x300.png"></a> <a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/ios-status.png"><img alt="ios status" src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/ios-status-169x300.png"></a></p>
+<p><a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/android-status.png"><img src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/android-status-169x300.png" alt="android status"></a> <a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/ios-status.png"><img src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/ios-status-169x300.png" alt="ios status"></a></p>
 <p>Status is accomplished by using the &ldquo;lpq -P&rdquo; and deletion with &ldquo;lprm -P&rdquo; commands. I just call these commands repeatedly with all the printers that I know. The output is the direct dump of the stdout result. I thought of parsing this result but since I do not know all the possible output formats, I might as well just show everything as-is.</p>
 <p>An interesting observation with regard to the delete command is that it cannot cancel print jobs sent via the Samba account. It appears that if you send a print job via the typical SMB or Windows network printer, it is done as a similar yet somewhat different account. I&rsquo;m not too sure the correct terms to phrase this so correct me if necessary. In essence, &ldquo;lprm&rdquo; will only work for print jobs sent via your own Sunfire account, not even for those sent via the usual NUSSTU domain.</p>
-<p><a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/android-quota.png"><img alt="android quota" src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/android-quota-169x300.png"></a><a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/ios-quota.png"><img alt="ios quota" src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/ios-quota-169x300.png"></a></p>
+<p><a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/android-quota.png"><img src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/android-quota-169x300.png" alt="android quota"></a><a href="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/ios-quota.png"><img src="/2014/12/nus-soc-print-androidios-background-technical-aspects-and-learning-points/images/ios-quota-169x300.png" alt="ios quota"></a></p>
 <p>Quota code for <a href="https://github.com/yeokm1/nus-soc-print/blob/master/app/src/main/java/com/yeokm1/nussocprintandroid/fragments/QuotaFragment.java">Android</a> and <a href="https://github.com/yeokm1/nus-soc-print-ios/blob/master/NUS%20SOC%20Print/QuotaViewController.swift">iOS</a></p>
 <p>Many people believe I use the &ldquo;pusage&rdquo; command to get the quota. That was initially what I tried but for some reason, I received no output from pusage when I ran it using the SSH libraries on both Android and iOS. You can read more about pusage on Yong Jie&rsquo;s <a href="http://blog.yjwong.name/pusage-hacking/">blog</a>.</p>
 <p>Initially, I just opened an integrated webview to <a href="https://mysoc.nus.edu.sg/~eprint/forms/quota.php">https://mysoc.nus.edu.sg/~eprint/forms/quota.php</a>. During <a href="/2014/01/what-i-did-nus-hackroll-2014/">HacknRoll 2014</a>, Kai Yao improved this to use a POST request to the above site then use a a regular expression to parse the HTML results for the quota. I later included this improvement on Android.</p>
@@ -473,6 +473,23 @@ There should be something here for Android devs, iOS devs or people just interes
       <article class="mini-post">
         <section>
           
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/04/llama2-llm-on-dos/">LLama 2 LLM on DOS</a></h1>
+          <time class="published" datetime="">April 15, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
     
       <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
@@ -538,23 +555,6 @@ There should be something here for Android devs, iOS devs or people just interes
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
-    
-      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up an open-frame Pentium 3 testbench</a></h1>
-          <time class="published" datetime="">May 25, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -576,7 +576,7 @@ There should be something here for Android devs, iOS devs or people just interes
           
           <li>
             
-              <a href="/categories/hacks/">hacks<span class="count">25</span></a>
+              <a href="/categories/hacks/">hacks<span class="count">26</span></a>
             
           
           <li>
@@ -591,12 +591,12 @@ There should be something here for Android devs, iOS devs or people just interes
           
           <li>
             
-              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
             
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">14</span></a>
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
             
           
           <li>
@@ -683,12 +683,12 @@ There should be something here for Android devs, iOS devs or people just interes
   
   <p class="copyright">
     
-      &copy; 2024
+      &copy; 2025
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.135.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

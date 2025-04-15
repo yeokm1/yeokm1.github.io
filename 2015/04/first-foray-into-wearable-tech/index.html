@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.135.0">
+<meta name="generator" content="Hugo 0.146.3">
   <meta itemprop="name" content="First foray into wearable tech">
   <meta itemprop="description" content="Since I started dabbling with hardware like the Arduino, I have always wondered what it would seem like to integrate it with clothing (materials) but did not find the urge to learn.
 After I joined Repair Kopitiam as a voluntary Repair Coach, I was given an apron that both distinguishes us from the participants that we are helping and protects our clothes as well. Every Repair Coach is given the liberty to personalise their apron to their liking. Some sew their names and some punch on a metal sheet etc.
@@ -287,25 +287,21 @@ Now you see “who” is running the show. I have sewn on a small piece of cloth
     <p>Since I started dabbling with hardware like the Arduino, I have always wondered what it would seem like to integrate it with clothing (materials) but did not find the urge to learn.</p>
 <p>After I joined <a href="http://repairkopitiam.sg/">Repair Kopitiam</a> as a voluntary Repair Coach, I was given an apron that both distinguishes us from the participants that we are helping and protects our clothes as well. Every Repair Coach is given the liberty to personalise their apron to their liking. Some sew their names and some punch on a metal sheet etc.</p>
 <p>So I thought why not take this opportunity to do some wearable tech and 3D print some stuff as well!</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/c9n8hL6Dv_A?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/c9n8hL6Dv_A?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>A quick video to highlight how it appears.</p>
 <h1 id="general-pictures">General Pictures</h1>
-<p><a href="/2015/04/first-foray-into-wearable-tech/images/wearable-rk-front.jpg"><img alt="wearable-rk-front" src="/2015/04/first-foray-into-wearable-tech/images/wearable-rk-front-1024x765.jpg"></a></p>
+<p><a href="/2015/04/first-foray-into-wearable-tech/images/wearable-rk-front.jpg"><img src="/2015/04/first-foray-into-wearable-tech/images/wearable-rk-front-1024x765.jpg" alt="wearable-rk-front"></a></p>
 <p>The result of more than 7 hours of labour from coding, 3D printing to sewing.</p>
-<p><a href="/2015/04/first-foray-into-wearable-tech/images/wearable-rk-back.jpg"><img alt="wearable-rk-back" src="/2015/04/first-foray-into-wearable-tech/images/wearable-rk-back-1024x765.jpg"></a></p>
+<p><a href="/2015/04/first-foray-into-wearable-tech/images/wearable-rk-back.jpg"><img src="/2015/04/first-foray-into-wearable-tech/images/wearable-rk-back-1024x765.jpg" alt="wearable-rk-back"></a></p>
 <p>Now you see &ldquo;who&rdquo; is running the show. I have sewn on a small piece of cloth to act as a mini pouch for the 1000 mAh battery.</p>
 <h1 id="close-up">Close-up</h1>
-<p><a href="/2015/04/first-foray-into-wearable-tech/images/rk-sequin.jpg"><img alt="rk-sequin" src="/2015/04/first-foray-into-wearable-tech/images/rk-sequin-1024x765.jpg"></a></p>
+<p><a href="/2015/04/first-foray-into-wearable-tech/images/rk-sequin.jpg"><img src="/2015/04/first-foray-into-wearable-tech/images/rk-sequin-1024x765.jpg" alt="rk-sequin"></a></p>
 <p>This is just one of the 9 LED sequins that are hiding under the letters. My name excluding my surname is 9 letters gosh. I have realised this is longer that most since I was young. Anyway, it means I have a lot more sewing to do.</p>
 <p>The letters are 3D-printed as it is near impossible to find products that fit my requirements of the exact size, strength and translucent material.</p>
-<p><a href="/2015/04/first-foray-into-wearable-tech/images/rk-lilipad.jpg"><img alt="rk-lilipad" src="/2015/04/first-foray-into-wearable-tech/images/rk-lilipad-1024x765.jpg"></a></p>
+<p><a href="/2015/04/first-foray-into-wearable-tech/images/rk-lilipad.jpg"><img src="/2015/04/first-foray-into-wearable-tech/images/rk-lilipad-1024x765.jpg" alt="rk-lilipad"></a></p>
 <p>The one pulling the strings (almost literally).</p>
 <p>It is the Arduino Lilypad USB. Think of it as your typical Arduino microcontroller specifically designed for such wearable uses-cases. It is engineered to be washable but I don&rsquo;t intend to test this anytime soon. This particular Arduino comes with an integrated battery charger which is more useful in the long run than other physically smaller alternatives.</p>
 <p>I had to max out all of the 9 output pins to control the 9 individual LEDs, &ldquo;curse&rdquo; my long name again.</p>
@@ -314,11 +310,11 @@ Now you see “who” is running the show. I have sewn on a small piece of cloth
 <li>Slightly dim the LEDs as the standard 3.3V supplied to the LEDs makes them too bright.</li>
 <li>Prevent the Arduino from &ldquo;bursting into flames&rdquo; if anything is shorted to the ground wire. This is a preventative measure as I anticipate this possibility due to the proximity of the ground wire to other wires.</li>
 </ol>
-<p><a href="/2015/04/first-foray-into-wearable-tech/images/rk-conductive-thread.jpg"><img alt="rk-conductive-thread" src="/2015/04/first-foray-into-wearable-tech/images/rk-conductive-thread-1024x765.jpg"></a></p>
+<p><a href="/2015/04/first-foray-into-wearable-tech/images/rk-conductive-thread.jpg"><img src="/2015/04/first-foray-into-wearable-tech/images/rk-conductive-thread-1024x765.jpg" alt="rk-conductive-thread"></a></p>
 <p>If you thought managing 9 different LEDs is hard, think about how am I going to connect them? Unlike conventional electronics planning where I can just use jumper wires, I have to SEW them! Imagine what happens if I make a mistake like wire wrongly or accidentally cut something which I actually made many times.</p>
 <p>The wire I&rsquo;m using is a a stainless steel conductive thread. 2-ply for LED wire and 3-ply for the shared ground wire. I would prefer the stronger 3-ply thread for everything but it is actually very difficult to thread this through the needle much less sew that in the first place. So I only used it for the more sensitive ground wire since it is shared.</p>
 <p>The stainless steel thread also has a habit of fraying much more than the conventional cotton threads we are used to so it made my life even harder.</p>
-<p><a href="/2015/04/first-foray-into-wearable-tech/images/rk-glow-in-dark.jpg"><img alt="rk-glow-in-dark" src="/2015/04/first-foray-into-wearable-tech/images/rk-glow-in-dark-1024x765.jpg"></a></p>
+<p><a href="/2015/04/first-foray-into-wearable-tech/images/rk-glow-in-dark.jpg"><img src="/2015/04/first-foray-into-wearable-tech/images/rk-glow-in-dark-1024x765.jpg" alt="rk-glow-in-dark"></a></p>
 <p>Did I mention the 3D printing material I used glows in the dark too? I printed at 40% infill instead of the standard 20% to increase the glowing effect but I should have gone even higher instead.</p>
 <h1 id="conclusion">Conclusion</h1>
 <p>If you wish to know more about the technical details behind this project, the code for the Arduino is pushed to a <a href="https://github.com/yeokm1/name-blinker">Github project</a>. As a potential expansion, I may consider adding a flexible solar panel so I will never again have to charge this project from the wall. Talk about truly sustainable living.</p>
@@ -392,6 +388,23 @@ Now you see “who” is running the show. I have sewn on a small piece of cloth
       <article class="mini-post">
         <section>
           
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/04/llama2-llm-on-dos/">LLama 2 LLM on DOS</a></h1>
+          <time class="published" datetime="">April 15, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
     
       <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
@@ -457,23 +470,6 @@ Now you see “who” is running the show. I have sewn on a small piece of cloth
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
-    
-      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up an open-frame Pentium 3 testbench</a></h1>
-          <time class="published" datetime="">May 25, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -495,7 +491,7 @@ Now you see “who” is running the show. I have sewn on a small piece of cloth
           
           <li>
             
-              <a href="/categories/hacks/">hacks<span class="count">25</span></a>
+              <a href="/categories/hacks/">hacks<span class="count">26</span></a>
             
           
           <li>
@@ -510,12 +506,12 @@ Now you see “who” is running the show. I have sewn on a small piece of cloth
           
           <li>
             
-              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
             
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">14</span></a>
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
             
           
           <li>
@@ -602,12 +598,12 @@ Now you see “who” is running the show. I have sewn on a small piece of cloth
   
   <p class="copyright">
     
-      &copy; 2024
+      &copy; 2025
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.135.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

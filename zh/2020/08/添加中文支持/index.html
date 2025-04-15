@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.135.0">
+<meta name="generator" content="Hugo 0.146.3">
   <meta itemprop="name" content="添加中文支持">
   <meta itemprop="description" content="我在一个中国科技公司已经工作几个月了。我发觉自己必须提高本身的中文水平, 尤其是在科技词汇方面，而不只是选择用英文的词汇的捷径。
 唯一的方法是尽量在工作环境外使用中文。但在新加玻，除了来自中国的科技公司之外，没人使用中文的科技词汇。因此，我预计自己很少有机会来练习。
@@ -379,16 +379,16 @@
 <a href="/2020/08/adding-chinese-support-to-my-blog/images/fresh-chinese-support-no-data.png"><img src="/2020/08/adding-chinese-support-to-my-blog/images/fresh-chinese-support-no-data.png" width="500"></a>
 <p>完全空白的因为现有的文章都是英文的。所以我们必须添加一些中文文章。</p>
 <h3 id="a-将文件英文名重复到中文名">a. 将文件英文名重复到中文名</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find . -name index.md -exec dirname {} <span style="color:#0ff;font-weight:bold">\;</span> | xargs -I % sh -c <span style="color:#0ff;font-weight:bold">&#39;cp %/index.md %/index.zh.md;&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find . -name index.md -exec dirname <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span> | xargs -I % sh -c <span style="color:#e6db74">&#39;cp %/index.md %/index.zh.md;&#39;</span>
 </span></span></code></pre></div><p>为了让英文文章出现在中文配置，我用上面的命令来加了有&quot;zh&quot;指标的文档。</p>
 <h3 id="b-换英语类别">b. 换英语类别</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find . -name index.zh.md | xargs -I % sh -c <span style="color:#0ff;font-weight:bold">&#34;sed -i &#39;s/\&#34;Singapore\&#34;/\&#34;新加玻\&#34;/g&#39; %&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find . -name index.zh.md | xargs -I % sh -c <span style="color:#e6db74">&#34;sed -i &#39;s/\&#34;Singapore\&#34;/\&#34;新加玻\&#34;/g&#39; %&#34;</span>
 </span></span></code></pre></div><p>我们之后需要修改每个文章的Hugo前提。 <code>categories: [&quot;Singapore&quot;]</code> -&gt; <code>categories: [&quot;新加玻&quot;]</code>。每个类别都要运行。</p>
 <p>最后， 我返回了这些修改。因为我发现到Hugo在处理每个中英文章时后，创建了两组图片，导致我的网站超过了<a href="https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota#file-and-repository-size-limitations">Github Pages 1GB 的限制</a>。</p>
 <p>我选择保留了上面的UNIX命令，可能对他人有帮助。</p>
 <h2 id="评论问题">评论问题</h2>
 <p>我使用了Disqus和Facebook的评论系统。它们需要你提供文章的URL然后它会下载文章具体的评论。我用了这个代码.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="font-weight:bold">div</span> <span style="color:#007f7f">class</span>=<span style="color:#0ff;font-weight:bold">&#34;fb-comments&#34;</span> <span style="color:#007f7f">data-href</span>=<span style="color:#0ff;font-weight:bold">&#34;{{ .Permalink }}&#34;</span> <span style="color:#007f7f">data-width</span>=<span style="color:#0ff;font-weight:bold">&#34;100%&#34;</span> <span style="color:#007f7f">data-numposts</span>=<span style="color:#0ff;font-weight:bold">&#34;5&#34;</span>&gt;&lt;/<span style="font-weight:bold">div</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fb-comments&#34;</span> <span style="color:#a6e22e">data-href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Permalink }}&#34;</span> <span style="color:#a6e22e">data-width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;100%&#34;</span> <span style="color:#a6e22e">data-numposts</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
 </span></span></code></pre></div><p><code>&quot;{{ .Permalink }}&quot;</code> 是让Hugo插件了页面的URL.</p>
 <p>问题是，不同语言页面会有不同的URL。</p>
 <pre tabindex="0"><code>https://yeokhengmeng.com/2020/08/adding-chinese-support-to-my-blog/
@@ -556,7 +556,7 @@ https://yeokhengmeng.com/zh/2020/08/adding-chinese-support-to-my-blog/
         庆铭网角
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.135.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

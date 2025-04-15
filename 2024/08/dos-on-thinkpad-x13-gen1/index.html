@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.135.0">
+<meta name="generator" content="Hugo 0.146.3">
   <meta itemprop="name" content="DOS&#39;s Last Stand on a modern Thinkpad: X13 Gen 1 with Intel i5-10310U">
   <meta itemprop="description" content="When one thinks of modern technologies like Thunderbolt, 2.5 Gigabit Ethernet and modern CPUs, one would associate them with modern operating systems. How about DOS?
 It might seem impossible, however I did an experiment on a relatively modern 2020 Thinkpad and found that it can still run MS-DOS 6.22. MS-DOS 6.22 is the last standalone version of DOS released by Microsoft in June 1994. This makes it 30 years old today.
@@ -289,12 +289,8 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <p>I shall share the steps and challenges in locating a modern laptop capable of doing so and making the 30-year-old OS work on it with audio and networking functions. This is likely among the final generation of laptops able to run DOS natively.</p>
 <h2 id="demo-videos">Demo videos</h2>
 <p>If you are eager to jump right in, here are 2 demo videos showing MS-DOS 6.22 and some applications running on a modern 2020 Thinkpad X13 Gen 1 (Intel).</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-mTmZqoNeFA?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-mTmZqoNeFA?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>Demo video of CPUID, Descent, Doom, Planet X3, ChatGPT, Checkit</p>
@@ -309,12 +305,8 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <li>03:56 - DOS ChatGPT client</li>
 <li>06:58 - Checkit 3</li>
 </ul>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/eUb_hN1R-no?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/eUb_hN1R-no?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>Running the <a href="https://www.pouet.net/prod.php?which=63591">8088 Domination</a> technical demo.</p>
@@ -324,8 +316,7 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <p>To understand the implications of this, we have to first look at what is Unified Extensible Firmware Interface (UEFI) and its type of classes.</p>
 <blockquote>
 <p>UEFI is a modern replacement for the traditional basic input/output system (BIOS) firmware found in computers. UEFI provides a standardized interface between the operating system and the platform firmware, enabling various features and functionalities during the boot process.</p>
-<p>Source: <a href="https://www.lenovo.com/sg/en/glossary/uefi/">https://www.lenovo.com/sg/en/glossary/uefi/</a></p>
-</blockquote>
+<p>Source: <a href="https://www.lenovo.com/sg/en/glossary/uefi/">https://www.lenovo.com/sg/en/glossary/uefi/</a></p></blockquote>
 <p>BIOS was used by IBM since the very first IBM PC in 1981. When MS-DOS ran on the IBM PC, it depends on this BIOS. To maintain backward-compatibility, most IBM PC compatibles continued to implement this BIOS functions even up to relatively recent times.</p>
 <p>As time passed, the BIOS began to show limitations such as disk sizes, bootup security and memory. UEFI was created to address these limitations.</p>
 <p>UEFI is divided into 4 classes:</p>
@@ -343,15 +334,10 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <blockquote>
 <p>Intel previously announced that in 2020 they are phasing out support for legacy Basic Input/Output System (BIOS) boot mode. This means that many of the Lenovo products launching in 2020 will no longer support the Legacy Boot option in BIOS. The only Boot option that will be supported on those products is Unified Extensible Firmware Interface (UEFI).</p>
 <p>&hellip; <strong>Some Lenovo products shipping in 2020 will support Legacy Boot</strong> (depending on the model), but most will not.</p>
-<p>Source: <a href="https://support.lenovo.com/us/en/solutions/ht510878-legacy-bios-boot-support-removed-in-lenovo-2020-products">https://support.lenovo.com/us/en/solutions/ht510878-legacy-bios-boot-support-removed-in-lenovo-2020-products</a></p>
-</blockquote>
+<p>Source: <a href="https://support.lenovo.com/us/en/solutions/ht510878-legacy-bios-boot-support-removed-in-lenovo-2020-products">https://support.lenovo.com/us/en/solutions/ht510878-legacy-bios-boot-support-removed-in-lenovo-2020-products</a></p></blockquote>
 <p>Even so, unvalidated support continues in some desktop motherboards as shown by this Youtuber Omores.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/nqyF6ZlT-Pw?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/nqyF6ZlT-Pw?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>He ran DOS and Windows 3.1 on an Intel 13th gen CPU although he had to use a PCI video card for the VGA BIOS support.</p>
@@ -472,38 +458,38 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <table>
   <thead>
       <tr>
-          <th style="text-align: left"></th>
-          <th style="text-align: left">Send Rate (KB/s)</th>
-          <th style="text-align: left">Recv Rate (KB/s)</th>
-          <th style="text-align: left">protman</th>
-          <th style="text-align: left">driver</th>
-          <th style="text-align: left">disk_pkt</th>
+          <th></th>
+          <th>Send Rate (KB/s)</th>
+          <th>Recv Rate (KB/s)</th>
+          <th>protman</th>
+          <th>driver</th>
+          <th>disk_pkt</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">Realtek 8125</td>
-          <td style="text-align: left">16440.1</td>
-          <td style="text-align: left">29135.7</td>
-          <td style="text-align: left">128</td>
-          <td style="text-align: left">42288</td>
-          <td style="text-align: left">2736</td>
+          <td>Realtek 8125</td>
+          <td>16440.1</td>
+          <td>29135.7</td>
+          <td>128</td>
+          <td>42288</td>
+          <td>2736</td>
       </tr>
       <tr>
-          <td style="text-align: left">BCM57</td>
-          <td style="text-align: left">7960.4</td>
-          <td style="text-align: left">14791.4</td>
-          <td style="text-align: left">128</td>
-          <td style="text-align: left">53168</td>
-          <td style="text-align: left">2736</td>
+          <td>BCM57</td>
+          <td>7960.4</td>
+          <td>14791.4</td>
+          <td>128</td>
+          <td>53168</td>
+          <td>2736</td>
       </tr>
       <tr>
-          <td style="text-align: left">Intel I210</td>
-          <td style="text-align: left">26698.5</td>
-          <td style="text-align: left">19793.4</td>
-          <td style="text-align: left">128</td>
-          <td style="text-align: left">56336</td>
-          <td style="text-align: left">2736</td>
+          <td>Intel I210</td>
+          <td>26698.5</td>
+          <td>19793.4</td>
+          <td>128</td>
+          <td>56336</td>
+          <td>2736</td>
       </tr>
   </tbody>
 </table>
@@ -511,12 +497,8 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <p>We can observe the transfer speeds do not even come close to 1 Gbit/s or 125000 KB/s.</p>
 <h2 id="performance-benchmarks">Performance benchmarks</h2>
 <p>I ran several benchmark applications from <a href="https://www.philscomputerlab.com/dos-benchmark-pack.html">Phil&rsquo;s Computer Lab DOS Benchmark Pack</a> in stock configuration.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/YMfRvdlx4pg?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/YMfRvdlx4pg?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>Majority of the tests are run in real mode without the JEMM memory manager unless the program has issues that require it to run in protected mode.</p>
@@ -524,104 +506,104 @@ I shall share the steps and challenges in locating a modern laptop capable of do
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Time</th>
-          <th style="text-align: left">Idx</th>
-          <th style="text-align: left">Description</th>
-          <th style="text-align: left">Real mode</th>
-          <th style="text-align: left">Protected Mode</th>
+          <th>Time</th>
+          <th>Idx</th>
+          <th>Description</th>
+          <th>Real mode</th>
+          <th>Protected Mode</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">00:06</td>
-          <td style="text-align: left">1</td>
-          <td style="text-align: left">3DBench (Superscape) 1.0</td>
-          <td style="text-align: left">11.1 (incorrect)</td>
-          <td style="text-align: left"></td>
+          <td>00:06</td>
+          <td>1</td>
+          <td>3DBench (Superscape) 1.0</td>
+          <td>11.1 (incorrect)</td>
+          <td></td>
       </tr>
       <tr>
-          <td style="text-align: left">00:23</td>
-          <td style="text-align: left">2</td>
-          <td style="text-align: left">3DBench (Superscape) 1.0c</td>
-          <td style="text-align: left">106.5</td>
-          <td style="text-align: left"></td>
+          <td>00:23</td>
+          <td>2</td>
+          <td>3DBench (Superscape) 1.0c</td>
+          <td>106.5</td>
+          <td></td>
       </tr>
       <tr>
-          <td style="text-align: left">00:43</td>
-          <td style="text-align: left">3</td>
-          <td style="text-align: left">Chris&rsquo;s 3D Benchmark</td>
-          <td style="text-align: left">218.1 score, 130.8 FPS</td>
-          <td style="text-align: left"></td>
+          <td>00:43</td>
+          <td>3</td>
+          <td>Chris&rsquo;s 3D Benchmark</td>
+          <td>218.1 score, 130.8 FPS</td>
+          <td></td>
       </tr>
       <tr>
-          <td style="text-align: left">01:10</td>
-          <td style="text-align: left">5</td>
-          <td style="text-align: left">PC Player benchmark 320x200 8bpp</td>
-          <td style="text-align: left">139.4</td>
-          <td style="text-align: left"></td>
+          <td>01:10</td>
+          <td>5</td>
+          <td>PC Player benchmark 320x200 8bpp</td>
+          <td>139.4</td>
+          <td></td>
       </tr>
       <tr>
-          <td style="text-align: left">01:45</td>
-          <td style="text-align: left">6</td>
-          <td style="text-align: left">PC Player benchmark 640x480 8bpp</td>
-          <td style="text-align: left">22.2</td>
-          <td style="text-align: left"></td>
+          <td>01:45</td>
+          <td>6</td>
+          <td>PC Player benchmark 640x480 8bpp</td>
+          <td>22.2</td>
+          <td></td>
       </tr>
       <tr>
-          <td style="text-align: left">02:19</td>
-          <td style="text-align: left">a</td>
-          <td style="text-align: left">Doom min. details</td>
-          <td style="text-align: left">2134 gametics, 294 realtics, 253.04 FPS</td>
-          <td style="text-align: left"></td>
+          <td>02:19</td>
+          <td>a</td>
+          <td>Doom min. details</td>
+          <td>2134 gametics, 294 realtics, 253.04 FPS</td>
+          <td></td>
       </tr>
       <tr>
-          <td style="text-align: left">02:43</td>
-          <td style="text-align: left">b</td>
-          <td style="text-align: left">Doom max. details</td>
-          <td style="text-align: left">2134 gametics, 1799 realtics, 41.52 FPS</td>
-          <td style="text-align: left"></td>
+          <td>02:43</td>
+          <td>b</td>
+          <td>Doom max. details</td>
+          <td>2134 gametics, 1799 realtics, 41.52 FPS</td>
+          <td></td>
       </tr>
       <tr>
-          <td style="text-align: left">03:49</td>
-          <td style="text-align: left">c</td>
-          <td style="text-align: left">Quake timedemo</td>
-          <td style="text-align: left">969 Frames, 7.5s, 128.4 FPS</td>
-          <td style="text-align: left"></td>
+          <td>03:49</td>
+          <td>c</td>
+          <td>Quake timedemo</td>
+          <td>969 Frames, 7.5s, 128.4 FPS</td>
+          <td></td>
       </tr>
       <tr>
-          <td style="text-align: left">04:10</td>
-          <td style="text-align: left">d</td>
-          <td style="text-align: left">Quake timedemo 360x480</td>
-          <td style="text-align: left">969 Frames, 21.7s, 44.7FPS</td>
-          <td style="text-align: left"></td>
+          <td>04:10</td>
+          <td>d</td>
+          <td>Quake timedemo 360x480</td>
+          <td>969 Frames, 21.7s, 44.7FPS</td>
+          <td></td>
       </tr>
       <tr>
-          <td style="text-align: left">04:48</td>
-          <td style="text-align: left">m</td>
-          <td style="text-align: left">TOPBENCH 3.8</td>
-          <td style="text-align: left">290</td>
-          <td style="text-align: left"></td>
+          <td>04:48</td>
+          <td>m</td>
+          <td>TOPBENCH 3.8</td>
+          <td>290</td>
+          <td></td>
       </tr>
       <tr>
-          <td style="text-align: left">04:55</td>
-          <td style="text-align: left">n</td>
-          <td style="text-align: left">Speedsys 4.78</td>
-          <td style="text-align: left">2904.46 score</td>
-          <td style="text-align: left"></td>
+          <td>04:55</td>
+          <td>n</td>
+          <td>Speedsys 4.78</td>
+          <td>2904.46 score</td>
+          <td></td>
       </tr>
       <tr>
-          <td style="text-align: left">08:16</td>
-          <td style="text-align: left">e</td>
-          <td style="text-align: left">Quake timedemo 640x480</td>
-          <td style="text-align: left">Crash (likely insufficient memory)</td>
-          <td style="text-align: left">969 frames, 167.4s, 5.8 FPS</td>
+          <td>08:16</td>
+          <td>e</td>
+          <td>Quake timedemo 640x480</td>
+          <td>Crash (likely insufficient memory)</td>
+          <td>969 frames, 167.4s, 5.8 FPS</td>
       </tr>
       <tr>
-          <td style="text-align: left">11:23</td>
-          <td style="text-align: left">l</td>
-          <td style="text-align: left">Landmark System Speed Test 6.00</td>
-          <td style="text-align: left">Cannot start</td>
-          <td style="text-align: left">Unreliable results</td>
+          <td>11:23</td>
+          <td>l</td>
+          <td>Landmark System Speed Test 6.00</td>
+          <td>Cannot start</td>
+          <td>Unreliable results</td>
       </tr>
   </tbody>
 </table>
@@ -712,6 +694,23 @@ I shall share the steps and challenges in locating a modern laptop capable of do
       <article class="mini-post">
         <section>
           
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/04/llama2-llm-on-dos/">LLama 2 LLM on DOS</a></h1>
+          <time class="published" datetime="">April 15, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
     
       <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
@@ -777,23 +776,6 @@ I shall share the steps and challenges in locating a modern laptop capable of do
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
-    
-      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up an open-frame Pentium 3 testbench</a></h1>
-          <time class="published" datetime="">May 25, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -815,7 +797,7 @@ I shall share the steps and challenges in locating a modern laptop capable of do
           
           <li>
             
-              <a href="/categories/hacks/">hacks<span class="count">25</span></a>
+              <a href="/categories/hacks/">hacks<span class="count">26</span></a>
             
           
           <li>
@@ -830,12 +812,12 @@ I shall share the steps and challenges in locating a modern laptop capable of do
           
           <li>
             
-              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
             
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">14</span></a>
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
             
           
           <li>
@@ -922,12 +904,12 @@ I shall share the steps and challenges in locating a modern laptop capable of do
   
   <p class="copyright">
     
-      &copy; 2024
+      &copy; 2025
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.135.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

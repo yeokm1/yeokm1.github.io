@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.135.0">
+<meta name="generator" content="Hugo 0.146.3">
   <meta itemprop="name" content="How do I produce my flight videos?">
   <meta itemprop="description" content="I have recorded and published dozens of in-cockpit flight videos ever since my PPL training videos to the present. For a long time now, I have received many questions on how are these videos produced.
 Therefore I decided to write this blog post to address these questions as the video production and editing process is not as straightforward as it may seem.">
@@ -292,21 +292,13 @@ Therefore I decided to write this blog post to address these questions as the vi
 <li>Flight telemetry gauges</li>
 </ul>
 <p>Below are some sample videos with these tracks:</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Tz96zsT_41M?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Tz96zsT_41M?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>This is a short clip of a takeoff and landing sequence.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/uxZ5ewvqF_w?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/uxZ5ewvqF_w?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>I may also mount the secondary camera on my neck instead if I want to capture something else like the instrument panel during the training process.</p>
@@ -376,12 +368,8 @@ Therefore I decided to write this blog post to address these questions as the vi
 <p>This camera captures the video of the passengers as well as cockpit ambient and environmental sounds.</p>
 <a href="images/fv-face-back-cam.jpg"><img src="images/fv-face-back-cam.jpg" width="600"></a>
 <p>From experience, the camera mounted in this position has a tendency to sometimes overheat due to direct exposure to the sun.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/M-RF8K_NZ1U?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/M-RF8K_NZ1U?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>In this video, this camera cut out at 14:34 due to this overheating issue. For the rest of this blog post, I&rsquo;ll use this video as an example of how it is produced.</p>
@@ -397,13 +385,13 @@ Therefore I decided to write this blog post to address these questions as the vi
 <p>The video files produced by the GoPro are split into 4GB chunks. I suspect this is because they want to be compatible with the FAT32 filesystem which only supports a maximum file size of 4GB.</p>
 <p>For ease of video editing in the subsequent steps, we should combine these video files into one file. To do so, I use the open source tool <a href="https://www.ffmpeg.org/">FFmpeg</a>.</p>
 <p>I first create a file such as the following named <code>mylist.txt</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>file &#39;GX010114.MP4&#39;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>file &#39;GX010114.MP4&#39;
 </span></span><span style="display:flex;"><span>file &#39;GX020114.MP4&#39;
 </span></span><span style="display:flex;"><span>file &#39;GX030114.MP4&#39;
 </span></span><span style="display:flex;"><span>file &#39;GX040114.MP4&#39;
 </span></span><span style="display:flex;"><span>file &#39;GX050114.MP4&#39;
 </span></span></code></pre></div><p>Then I run a command like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ffmpeg -f concat -safe <span style="color:#ff0;font-weight:bold">0</span> -i mylist.txt -c copy face-front.mp4
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ffmpeg -f concat -safe <span style="color:#ae81ff">0</span> -i mylist.txt -c copy face-front.mp4
 </span></span></code></pre></div><a href="images/fv-concat-videos.png"><img src="images/fv-concat-videos.png" width="700"></a>
 <p>This command merges all the files without the need of time-consuming re-encoding.</p>
 <h3 id="pip-audio-sync">Picture in Picture and audio sync</h3>
@@ -458,12 +446,8 @@ Therefore I decided to write this blog post to address these questions as the vi
 <p>To overlay the flight telemetry data, I use a tool called <a href="https://www.garmin.com/en-US/p/573412">Garmin Virb Edit</a>. Virb Edit uses the logged GPS coordinates to calculate the flight telemetry.</p>
 <p>Despite being from Garmin, the tool works on video and GPX files generated by non-Garmin equipment as well.</p>
 <p>(Edit June 2024): The configuration below is no longer working. I have now switched to using <a href="https://goprotelemetryextractor.com/telemetry-overlay-gps-video-sensors">Telemetry Overlay</a>. It&rsquo;s a paid app but works extremely well for my needs compared to several free alternatives I have tried.</p>
-
-
-    
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/HLHFW8vUh3M?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
-      ></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/HLHFW8vUh3M?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>This is an example of metrics from Telemetry Overlay.</p>
@@ -477,8 +461,7 @@ Therefore I decided to write this blog post to address these questions as the vi
 <li>Open command prompt or powershell in administrator mode</li>
 <li>Run the command to add the new entry: REG ADD &ldquo;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION&rdquo; /v VirbEdit.exe /t REG_DWORD /d 0x00002ee1</li>
 </ol>
-<p><a href="https://forums.garmin.com/apps-software/mac-windows-software/f/virb-edit-windows/294764/script-error-on-that-page---virb-edit---api-issues/1429507#1429507">https://forums.garmin.com/apps-software/mac-windows-software/f/virb-edit-windows/294764/script-error-on-that-page---virb-edit---api-issues/1429507#1429507</a></p>
-</blockquote>
+<p><a href="https://forums.garmin.com/apps-software/mac-windows-software/f/virb-edit-windows/294764/script-error-on-that-page---virb-edit---api-issues/1429507#1429507">https://forums.garmin.com/apps-software/mac-windows-software/f/virb-edit-windows/294764/script-error-on-that-page---virb-edit---api-issues/1429507#1429507</a></p></blockquote>
 <h4 id="video-import">Video import</h4>
 <p>I import the picture-in-picture video generated by Shotcut into Virb Edit.</p>
 <a href="images/fv-virb-import-video.jpg"><img src="images/fv-virb-import-video.jpg" width="700"></a>
@@ -519,41 +502,41 @@ Therefore I decided to write this blog post to address these questions as the vi
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Section</th>
-          <th style="text-align: left">Personal Time (hours)</th>
-          <th style="text-align: left">Processing (hours)</th>
+          <th>Section</th>
+          <th>Personal Time (hours)</th>
+          <th>Processing (hours)</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">Merging source files</td>
-          <td style="text-align: left">0.25</td>
-          <td style="text-align: left">Negligible</td>
+          <td>Merging source files</td>
+          <td>0.25</td>
+          <td>Negligible</td>
       </tr>
       <tr>
-          <td style="text-align: left">Picture in Picture</td>
-          <td style="text-align: left">0.75</td>
-          <td style="text-align: left">3.5</td>
+          <td>Picture in Picture</td>
+          <td>0.75</td>
+          <td>3.5</td>
       </tr>
       <tr>
-          <td style="text-align: left">Metrics Overlay</td>
-          <td style="text-align: left">0.25</td>
-          <td style="text-align: left">3</td>
+          <td>Metrics Overlay</td>
+          <td>0.25</td>
+          <td>3</td>
       </tr>
       <tr>
-          <td style="text-align: left">Youtube</td>
-          <td style="text-align: left">0.75</td>
-          <td style="text-align: left">8</td>
+          <td>Youtube</td>
+          <td>0.75</td>
+          <td>8</td>
       </tr>
       <tr>
-          <td style="text-align: left">Subtotal</td>
-          <td style="text-align: left">2</td>
-          <td style="text-align: left">14.5</td>
+          <td>Subtotal</td>
+          <td>2</td>
+          <td>14.5</td>
       </tr>
       <tr>
-          <td style="text-align: left">Total Time</td>
-          <td style="text-align: left"></td>
-          <td style="text-align: left">16.5</td>
+          <td>Total Time</td>
+          <td></td>
+          <td>16.5</td>
       </tr>
   </tbody>
 </table>
@@ -638,6 +621,23 @@ Therefore I decided to write this blog post to address these questions as the vi
       <article class="mini-post">
         <section>
           
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/04/llama2-llm-on-dos/">LLama 2 LLM on DOS</a></h1>
+          <time class="published" datetime="">April 15, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
     
       <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
@@ -703,23 +703,6 @@ Therefore I decided to write this blog post to address these questions as the vi
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/05/setting-up-pentium-3-testbench/" class="image featured">
-    
-      <img src="/2024/05/setting-up-pentium-3-testbench/images/ofpc-banner.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/05/setting-up-pentium-3-testbench/">Setting up an open-frame Pentium 3 testbench</a></h1>
-          <time class="published" datetime="">May 25, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -741,7 +724,7 @@ Therefore I decided to write this blog post to address these questions as the vi
           
           <li>
             
-              <a href="/categories/hacks/">hacks<span class="count">25</span></a>
+              <a href="/categories/hacks/">hacks<span class="count">26</span></a>
             
           
           <li>
@@ -756,12 +739,12 @@ Therefore I decided to write this blog post to address these questions as the vi
           
           <li>
             
-              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
             
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">14</span></a>
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
             
           
           <li>
@@ -848,12 +831,12 @@ Therefore I decided to write this blog post to address these questions as the vi
   
   <p class="copyright">
     
-      &copy; 2024
+      &copy; 2025
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.135.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
