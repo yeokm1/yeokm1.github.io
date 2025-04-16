@@ -327,7 +327,7 @@
 <li>32-bit DOS extender support for Intel 386 CPUs or newer</li>
 </ul>
 <p>Since the llama2.c codebase is written for modern systems of at least 32-bit, I must go for the latter option. The memory requirement even for the tiniest of LLMs demands at least a 32-bit system too.</p>
-<p>One common 32-bit DOS extender used in the DOS-era is <a href="https://en.wikipedia.org/wiki/DOS/4G">DOS/4G</a>. This extender allows programs to access extended memory above the 640KB conventional memory and High Memory Area by switching the CPU to 32-bit protected mode. One very common use case is that of games which required gobs of memory, famous examples are Doom and Descent.</p>
+<p>One common 32-bit DOS extender used in the DOS-era is <a href="https://en.wikipedia.org/wiki/DOS/4G">DOS/4G</a>. This extender allows programs to access extended memory above the 640KB conventional memory and Upper Memory Area by switching the CPU to 32-bit protected mode. One very common use case is that of games which required gobs of memory, famous examples are Doom and Descent.</p>
 <p>OWC supports DOS/4G as a choice of extender as well as another newer and open-source <a href="https://en.wikipedia.org/wiki/DOS/32">DOS/32</a> by Narech Koumar released in 2006.</p>
 <a href="images/dosllam2-dos32a.jpg"><img src="images/dosllam2-dos32a.jpg" width="500"></a>
 <p>This extender can be embedded into your program as a runtime or run separately. Either way, most DOS-extenders will show a startup banner like the above.</p>
