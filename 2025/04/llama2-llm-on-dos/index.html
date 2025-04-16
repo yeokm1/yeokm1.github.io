@@ -11,7 +11,7 @@
   <meta itemprop="description" content="Ever thought of running a local Large Language Model (LLM) on a vintage PC running DOS? Now you can!">
   <meta itemprop="datePublished" content="2025-04-15T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-04-15T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1230">
+  <meta itemprop="wordCount" content="1283">
   <meta itemprop="image" content="http://yeokhengmeng.com/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg">
   <meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2025/04/llama2-llm-on-dos/">
   <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -190,7 +190,7 @@
     </time>
     <span class="author"></span>
     
-      <p>6 minutes read</p>
+      <p>7 minutes read</p>
     
   </div>
 </header>
@@ -344,6 +344,7 @@
 <h4 id="memory-map">Memory map</h4>
 <p>Modern compilers support the <code>mmap</code> or similar functions which allow files in storage to be mapped into memory. The contents of the file are not all read into memory at once but are lazy-loaded i.e only necessary portions are read when required helping to speed up the use of especially large files.</p>
 <p>OWC does not support this thus I have to modify all memory-mapping calls to load the entire LLM file into memory. This has the effect of increasing initial load times.</p>
+<p>I did consider writing my own version of <code>mmap</code>. However given the LLM use case where pretty much most (if not all) the weights will be used eventually, it is just postponing loading the entire file. So far easier to just keep things simple and load the entire file all at once initially.</p>
 <h4 id="timing">Timing</h4>
 <p>To measure inference speed, the program requires use of timing APIs:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">long</span> <span style="color:#a6e22e">time_in_ms</span>() {
