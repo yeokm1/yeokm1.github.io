@@ -6,12 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.146.3">
+<meta name="generator" content="Hugo 0.146.5">
   <meta itemprop="name" content="Llama 2 LLM on DOS">
   <meta itemprop="description" content="Ever thought of running a local Large Language Model (LLM) on a vintage PC running DOS? Now you can!">
   <meta itemprop="datePublished" content="2025-04-15T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-04-15T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1283">
+  <meta itemprop="wordCount" content="1307">
   <meta itemprop="image" content="http://yeokhengmeng.com/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg">
   <meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2025/04/llama2-llm-on-dos/">
   <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -327,7 +327,7 @@
 <li>32-bit DOS extender support for Intel 386 CPUs or newer</li>
 </ul>
 <p>Since the llama2.c codebase is written for modern systems of at least 32-bit, I must go for the latter option. The memory requirement even for the tiniest of LLMs demands at least a 32-bit system too.</p>
-<p>One common 32-bit DOS extender used in the DOS-era is <a href="https://en.wikipedia.org/wiki/DOS/4G">DOS/4G</a>. This extender allows programs to access to more memory above the 640KB conventional memory limit by switching the CPU to 32-bit protected mode. One very common use case is that of games which required gobs of memory, famous examples are Doom and Descent.</p>
+<p>One common 32-bit DOS extender used in the DOS-era is <a href="https://en.wikipedia.org/wiki/DOS/4G">DOS/4G</a>. This extender allows programs to access extended memory above the 640KB conventional memory and High Memory Area by switching the CPU to 32-bit protected mode. One very common use case is that of games which required gobs of memory, famous examples are Doom and Descent.</p>
 <p>OWC supports DOS/4G as a choice of extender as well as another newer and open-source <a href="https://en.wikipedia.org/wiki/DOS/32">DOS/32</a> by Narech Koumar released in 2006.</p>
 <a href="images/dosllam2-dos32a.jpg"><img src="images/dosllam2-dos32a.jpg" width="500"></a>
 <p>This extender can be embedded into your program as a runtime or run separately. Either way, most DOS-extenders will show a startup banner like the above.</p>
@@ -343,7 +343,7 @@
 </span></span></span></code></pre></div><p>So I had to define some macros using existing <code>double</code> functions.</p>
 <h4 id="memory-map">Memory map</h4>
 <p>Modern compilers support the <code>mmap</code> or similar functions which allow files in storage to be mapped into memory. The contents of the file are not all read into memory at once but are lazy-loaded i.e only necessary portions are read when required helping to speed up the use of especially large files.</p>
-<p>OWC does not support this thus I have to modify all memory-mapping calls to load the entire LLM file into memory. This has the effect of increasing initial load times.</p>
+<p>OWC does not support this thus I have to replace all memory-mapping calls to load the entire LLM file into memory. This has the effect of increasing initial load times.</p>
 <p>I did consider writing my own version of <code>mmap</code>. However given the LLM use case where pretty much most (if not all) the weights will be used eventually, it is just postponing loading the entire file. So far easier to just keep things simple and load the entire file all at once initially.</p>
 <h4 id="timing">Timing</h4>
 <p>To measure inference speed, the program requires use of timing APIs:</p>
@@ -446,7 +446,7 @@
       </tr>
       <tr>
           <td>Modern Desktop (2024)</td>
-          <td>AMD Ryzen 5 7600 3.8 Ghz</td>
+          <td>Ryzen 5 7600 3.8 Ghz</td>
           <td>128GB DDR5</td>
           <td>927.27</td>
           <td>15.95</td>
@@ -457,9 +457,10 @@
 </table>
 <p>As expected, the more modern the system, the faster the inference speed.</p>
 <p>An interesting observation is that my desktop with a modern Ryzen CPU and 128GB RAM cannot load the larger models due to memory allocation error. Perhaps some kind of overflow/bug in the DOS extender or protected mode implementation of the AMD CPU/motherboard.</p>
+<p>The performance of the Thinkpad T42 beats out some newer laptops and is similar to my Thinkpad X13G1 which is 16 years newer.</p>
 <p>More details about my vintage PCs in that table can be found <a href="https://github.com/yeokm1/retro-configs">here</a>.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>The porting effort I took, testing and documenting this is a simple weekend job. Most of the efforts have to be attributed to the original developer of this project Andrej Karpathy without which this would not have been possible.</p>
+<p>The porting effort I made, testing and documenting this is a simple weekend job. Most of the efforts have to be attributed to the original developer of this project Andrej Karpathy without which this would not have been possible.</p>
 <p>Still, I&rsquo;m amazed what can still be accomplished with vintage systems.</p>
   </div>
   <footer>
@@ -746,7 +747,7 @@
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.3' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.5' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
