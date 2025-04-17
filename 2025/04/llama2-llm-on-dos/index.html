@@ -306,7 +306,7 @@
 <p>llama2.c although written for portability in mind, still has some challenges when it comes to making the codebase work for vintage systems.</p>
 <h3 id="compilation-and-dos-extender">Compilation and DOS Extender</h3>
 <p>The compiler I selected is <a href="https://open-watcom.github.io/">Open Watcom v2 (OWC)</a>. I used this as I was familiar with it having used it for my DOS ChatGPT client as well.</p>
-<p>OWC provides a GUI IDE but I prefer to use a Makefile to keep the project relatively lightweight and easy to manage.</p>
+<p>OWC provides a GUI IDE but I prefer to use a Makefile to keep the project relatively lightweight and easier to manage.</p>
 <p>This is the OWC Makefile I used to compile my project:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>TARGET <span style="color:#f92672">=</span> dosllam2
 </span></span><span style="display:flex;"><span>OBJS <span style="color:#f92672">=</span> dosllam2.obj
@@ -327,7 +327,7 @@
 <li>32-bit DOS extender support for Intel 386 CPUs or newer</li>
 </ul>
 <p>Since the llama2.c codebase is written for modern systems of at least 32-bit, I must go for the latter option. The memory requirement even for the tiniest of LLMs demands at least a 32-bit system too.</p>
-<p>One common 32-bit DOS extender used in the DOS-era is <a href="https://en.wikipedia.org/wiki/DOS/4G">DOS/4G</a>. This extender allows programs to access extended memory above the 640KB conventional memory and Upper Memory Area by switching the CPU to 32-bit protected mode. One very common use case is that of games which required gobs of memory, famous examples are Doom and Descent.</p>
+<p>One common 32-bit DOS extender used in the DOS-era is <a href="https://en.wikipedia.org/wiki/DOS/4G">DOS/4G</a>. This extender allows programs to access extended memory above the 640KB conventional memory and Upper Memory Area by switching the CPU to 32-bit protected mode. One very common use case is that of games which required gobs of memory. Famous examples using extenders are Doom and Descent.</p>
 <p>OWC supports DOS/4G as a choice of extender as well as another newer and open-source <a href="https://en.wikipedia.org/wiki/DOS/32">DOS/32</a> by Narech Koumar released in 2006.</p>
 <a href="images/dosllam2-dos32a.jpg"><img src="images/dosllam2-dos32a.jpg" width="500"></a>
 <p>This extender can be embedded into your program as a runtime or run separately. Either way, most DOS-extenders will show a startup banner like the above.</p>
@@ -356,7 +356,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">long</span> <span style="color:#a6e22e">time_in_ms</span>() {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> (<span style="color:#a6e22e">clock</span>() <span style="color:#f92672">*</span> <span style="color:#ae81ff">1000L</span>) <span style="color:#f92672">/</span> CLOCKS_PER_SEC;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>OWC provides the <code>clock()</code> which counts processor tick time which in seconds can be obtained by divided by the internal macro <code>CLOCKS_PER_SEC</code>.</p>
+</span></span></code></pre></div><p>OWC provides the <code>clock()</code> which counts processor tick time. Seconds can be obtained by dividing by the internal macro <code>CLOCKS_PER_SEC</code>.</p>
 <h3 id="filename-length-limits">Filename length limits</h3>
 <p>DOS has a <a href="https://en.wikipedia.org/wiki/8.3_filename">8.3 filename</a> limit. This also impacts the C code used to read the files.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// Previous
