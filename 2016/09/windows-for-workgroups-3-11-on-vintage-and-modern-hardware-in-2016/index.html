@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.146.6">
+<meta name="generator" content="Hugo 0.147.2">
   <meta itemprop="name" content="A Science Project: Windows for Workgroups 3.11 on vintage and modern hardware in 2016">
   <meta itemprop="description" content="(This is a long 5600&#43; words post, I recommend reading this from a tablet or computer)
 Windows for Workgroups 3.11 (WFW3.11) was an operating system (OS) released by Microsoft in August 1993 and ended support in December 2001. It is part of a series of OSes released by Microsoft at that time so it is common for people to refer to it as part of Windows 3.1x (Win3.1). The specific history behind its name and version number and be found on its Wikipedia article. Here is a brief list of first-impressions I have if I were to describe this OS.
@@ -287,7 +287,7 @@ First Windows OS to have practical (installable) networking capabilities Last on
 <p>Here is a teaser screenshot showing that I managed to get WFW3.11 installed on a &ldquo;modern&rdquo; 2009 Thinkpad T400 with networking capabilities. Recognise some familiar applications there?</p>
 <h1 id="demo-video">Demo video</h1>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/mVGtJWZZ-wU?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/mVGtJWZZ-wU?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>About 8 minutes of video for the vintage computing buffs. This shows the results of my work.</p>
@@ -520,7 +520,7 @@ First Windows OS to have practical (installable) networking capabilities Last on
 <h3 id="audio-part-1"><strong>Audio Part 1</strong></h3>
 <p>I mentioned earlier that I fabricated my own sound card based on the design of the <a href="https://en.wikipedia.org/wiki/Covox_Speech_Thing">Covox Speech Thing</a>. I located the <a href="http://files.mpoli.fi/unpacked/hardware/sound/other/covoxwin.zip/">drivers online</a> and installed them. This can be seen in the previous screenshot.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/WdrfEXHc0PM?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/WdrfEXHc0PM?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>The thing about this sound card design is that it is driven directly by the CPU via the parallel port. So when a sound is being played, the entire system will lock up till the playing stops. The entire user-interface is unresponsive. You can see also this effect when I shake the mouse at <a href="https://youtu.be/WdrfEXHc0PM?t=40s">0:40</a>. There is quite a significant static noise. This is not a fault of my card as I tested in on a different setup. Probably a grounding issue with the docking station&rsquo;s parallel port.</p>
@@ -528,7 +528,7 @@ First Windows OS to have practical (installable) networking capabilities Last on
 <p>I came across this software Dongle Cracker found at this <a href="https://www-user.tu-chemnitz.de/~heha/basteln/PC/USB2LPT/AddressTranslator.en.htm">site</a>. What it does is it allows a parallel port address to be redirected to another address. This lit a bulb in my head! Could I use this tool to redirect the LPT1 address 0x378 to an Expresscard parallel port adapter at 0x3008 thus dropping the docking station?</p>
 <p>See the results below:</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/EKA_RmgYWvo?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/EKA_RmgYWvo?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p><a href="/2016/09/windows-for-workgroups-3-11-on-vintage-and-modern-hardware-in-2016/images/wfw-1024x656.jpg"><img src="/2016/09/windows-for-workgroups-3-11-on-vintage-and-modern-hardware-in-2016/images/wfw-1024x656.jpg" alt=""></a></p>
@@ -617,7 +617,7 @@ First Windows OS to have practical (installable) networking capabilities Last on
 <p>I would like to believe this project hits the last point. Who still needs to use Windows 3.1 in such a modern manner?</p>
 <p>I gave a talk on this project at <a href="https://www.facebook.com/events/284795248528239/">Hackware v2.2</a> on 7 September. Here is the video.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/pqicQYPeS-Y?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/pqicQYPeS-Y?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>If you like this post, you can read about how I installed <a href="/2016/04/installing-windows-xp-on-a-modern-unsupported-haswell-system-in-2016/">Windows XP on a modern machine</a>.</p>
@@ -908,7 +908,7 @@ First Windows OS to have practical (installable) networking capabilities Last on
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.6' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.147.2' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

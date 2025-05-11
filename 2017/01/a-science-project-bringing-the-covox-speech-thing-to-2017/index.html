@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.146.6">
+<meta name="generator" content="Hugo 0.147.2">
   <meta itemprop="name" content="A Science Project: Bringing the Covox Speech Thing to 2017">
   <meta itemprop="description" content="The Covox Speech Thing (CST) was a sound card released in 1986 by Covox, Inc to enable computers with parallel ports to have sound capability. Unlike modern machines, proper sound support was not a given on computers in that era and the Soundblaster by Creative has yet to be released.
 As you will see later, the design is rather simple so I decided to revisit this old piece of hardware and see if it is possible to get it working on modern systems.
@@ -283,7 +283,7 @@ Video of everything in action">
 <p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-music-player.jpg"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-music-player-1024x768.jpg" alt=""></a></p>
 <p>My remake of the Covox Speech Thing with a self-wrote media player software.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/jAaXj0RK7V8?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/jAaXj0RK7V8?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>Video of everything in action</p>
@@ -295,7 +295,7 @@ Video of everything in action">
 <p><a href="images/wfw-t400-front-and-docking.jpg"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/wfw-t400-front-and-docking-1024x768.jpg" alt=""></a></p>
 <p>Since support for modern audio hardware is obviously non-existent for such an old operating system, I decided to fabricate a clone of the CST as I managed to locate the <a href="http://files.mpoli.fi/unpacked/hardware/sound/other/covoxwin.zip/">Windows 3.11 drivers for it</a>.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/WdrfEXHc0PM?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/WdrfEXHc0PM?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>This is the result of my earlier efforts, playing reasonable-quality music though the system will be unresponsive in the process.</p>
@@ -322,12 +322,12 @@ Video of everything in action">
 <p>Notice that the audio connector only has the 2 conductive points: tip and sleeve indicating this is a mono connector. Since the parallel port has only 8 data lines, the CST only supports 8-bit mono audio.</p>
 <h3 id="cst-design">CST Design</h3>
 <p>At the heart of every sound card are components that covert digital signals to analog audio signals or a digital-to-analog-converter (DAC) for short.</p>
-<p><a href="images/covox-pure-schematic.png.png"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-pure-schematic.png-1024x688.png" alt=""></a></p>
+<p><a href="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-pure-schematic.png.png"><img src="/2017/01/a-science-project-bringing-the-covox-speech-thing-to-2017/images/covox-pure-schematic.png-1024x688.png" alt=""></a></p>
 <p>Above is the schematic of the CST-specific DAC portion on my sound card.  The 8 data pins are connected to a bunch of 10K and 20K ohm resistors. This is called a R-2R resistor ladder setup.</p>
 <h3 id="why-this-design">Why this design?</h3>
 <p>I referenced the design from this <a href="http://kb.gr8bit.ru/KB0010/GR8BIT-KB0010-Adding-multimedia-capability-covox-device.html">Russian site</a> which also includes detailed explanation of the component selection and rationale.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/b-vUg7h0lpE?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/b-vUg7h0lpE?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>To avoid reinventing the explanation wheel, take a look at the video above by Collin Cunningham on how the R-2R ladder is used to generate sound.</p>
@@ -363,7 +363,7 @@ Video of everything in action">
 <p>Since the CST is such a simple device, it obviously does not have a DMA engine to do the DMA. The CPU has to be involved in every stage of the data transfer to the CST.</p>
 <h2 id="a-sample-dos-program">A sample DOS program</h2>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/iOxOxpSg3WE?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/iOxOxpSg3WE?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>I found a DOS program <a href="http://rayer.g6.cz/programm/programe.htm">CovoxMP3</a> written by Martin Rehak that can operate the CST standalone without any drivers. The CST requires precise CPU timing in order to generate a proper audio frequency unlike typical sound hardware.</p>
@@ -416,7 +416,7 @@ Video of everything in action">
 <p>I would like to believe this project has elements of some of all of them, after all, how many people still use parallel ports this days and who needs a parallel port sound card in an era of integrated audio on motherboards.</p>
 <p>Finally, if you have any suggestions or loved what I have done, feel free to ping me in the comments below.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/DCOvU0N7Ugs?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/DCOvU0N7Ugs?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
     </div>
 
 <p>Video of the talk I gave about this subject at <a href="https://www.facebook.com/events/693979027431863/">Hackware v2.6</a>.</p>
@@ -707,7 +707,7 @@ Video of everything in action">
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.146.6' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.147.2' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
