@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://yeokhengmeng.com/categories/</loc>
-    <lastmod>2025-04-15T00:00:00+00:00</lastmod>
+    <lastmod>2025-07-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-sg"
@@ -15,14 +15,11 @@
                 href="http://yeokhengmeng.com/categories/"
                 />
   </url><url>
-    <loc>http://yeokhengmeng.com/categories/hacks/</loc>
-    <lastmod>2025-04-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://yeokhengmeng.com/2025/04/llama2-llm-on-dos/</loc>
-    <lastmod>2025-04-15T00:00:00+00:00</lastmod>
+    <loc>http://yeokhengmeng.com/categories/personal/</loc>
+    <lastmod>2025-07-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/post/</loc>
-    <lastmod>2025-04-15T00:00:00+00:00</lastmod>
+    <lastmod>2025-07-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-sg"
@@ -34,11 +31,14 @@
                 href="http://yeokhengmeng.com/post/"
                 />
   </url><url>
-    <loc>http://yeokhengmeng.com/categories/retrocomputing/</loc>
-    <lastmod>2025-04-15T00:00:00+00:00</lastmod>
+    <loc>http://yeokhengmeng.com/2025/07/ceg-master-graduate-loh/</loc>
+    <lastmod>2025-07-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://yeokhengmeng.com/categories/school/</loc>
+    <lastmod>2025-07-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/</loc>
-    <lastmod>2025-04-15T00:00:00+00:00</lastmod>
+    <lastmod>2025-07-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-sg"
@@ -49,6 +49,15 @@
                 hreflang="en"
                 href="http://yeokhengmeng.com/"
                 />
+  </url><url>
+    <loc>http://yeokhengmeng.com/categories/hacks/</loc>
+    <lastmod>2025-04-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://yeokhengmeng.com/2025/04/llama2-llm-on-dos/</loc>
+    <lastmod>2025-04-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://yeokhengmeng.com/categories/retrocomputing/</loc>
+    <lastmod>2025-04-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/2024/10/modern-pc-vintage-twist/</loc>
     <lastmod>2024-10-06T00:00:00+00:00</lastmod>
@@ -96,9 +105,6 @@
     <lastmod>2021-09-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/2021/09/birthday-2021-year-in-review-and-going-forward/</loc>
-    <lastmod>2021-09-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://yeokhengmeng.com/categories/personal/</loc>
     <lastmod>2021-09-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/2021/08/my-dos-and-donts-when-trying-to-convince-the-unvaccinated/</loc>
@@ -290,9 +296,6 @@
     <lastmod>2015-09-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/2015/07/graduation-uni-story-arcs-and-thanks/</loc>
-    <lastmod>2015-07-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://yeokhengmeng.com/categories/school/</loc>
     <lastmod>2015-07-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/2015/05/test-driving-an-electric-car-imiev/</loc>
