@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.148.1">
+<meta name="generator" content="Hugo 0.148.2">
   <meta itemprop="name" content="Modern 2024 PC with a vintage twist (ft. Ryzen 5 7600 & GeForce 4060 Ti)">
   <meta itemprop="description" content="If I were to tell you a PC has a floppy drive, optical drive, Sound Blaster card, serial, parallel and PS/2 ports running DOS, you would think I’m referring to a machine from the 1990s. But my very modern PC built in 2024 possess these characteristics!
 I recently built myself a PC as my previous desktop PC was insufficient for my current needs. I decided to build one with the ability to still reach back into the past to run DOS.
 In this post, I will go through my thought process I went through to decide on the specifications as well as the journey I made to run MS-DOS 6.22 on it.">
   <meta itemprop="datePublished" content="2024-10-06T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-10-06T00:00:00+00:00">
-  <meta itemprop="wordCount" content="2524">
+  <meta itemprop="wordCount" content="2554">
   <meta itemprop="image" content="http://yeokhengmeng.com/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg">
   <meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2024/10/modern-pc-vintage-twist/">
   <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -325,6 +325,8 @@ In this post, I will go through my thought process I went through to decide on t
 <li>2x32GB DDR5-5600 CL36 Kingston Fury</li>
 <li>Coolermaster Hyper 212 Spectrum V3 CPU cooler</li>
 <li>1TB NVME Crucial T500</li>
+<li>2.5GbE RTL8125 PCIe x1</li>
+<li>Intel Wi-Fi 6E AX210 160Mhz</li>
 <li>From previous build
 <ul>
 <li>Seasonic S12II 520W PSU (non-modular)</li>
@@ -333,7 +335,7 @@ In this post, I will go through my thought process I went through to decide on t
 <li>512GB NVME Samsung 970 Evo Plus</li>
 <li>1TB SATA Crucial MX300</li>
 <li>3.5&quot; floppy Drive with internal USB adapter</li>
-<li>LG Blu-ray Rewriter SATA</li>
+<li>LG Blu-ray Rewriter</li>
 <li>5.25&quot; USB 3.0 ports and card reader</li>
 </ul>
 </li>
@@ -384,6 +386,8 @@ In this post, I will go through my thought process I went through to decide on t
 <p>Dedicated sound cards are now a rare sight in modern PC desktops as most onboard sound chips are good enough for most people. I however still opt to use one due to better sound quality and ports like TOSLINK optical which this motherboard does not have.</p>
 <p>This Creative Sound BlasterX AE-5 from my previous build has a software feature called <a href="https://support.creative.com/kb/ShowArticle.aspx?sid=28967&amp;c">Creative ALchemy</a>. It enables one to use Creative&rsquo;s <a href="https://en.wikipedia.org/wiki/Environmental_Audio_Extensions">Environmental Audio Extensions (EAX)</a> feature in older games on modern systems. Although it legitimately carries the Sound Blaster name as it is a Creative product, it is too modern to have vintage DOS Sound Blaster support.</p>
 <p>Another less technical reason is to support a local Singaporean company.</p>
+<a href="images/ryzendos-pcie-extender.jpg"><img src="images/ryzendos-pcie-extender.jpg" width="600"></a>
+<p>A PCIe extender is used to utilise a PCIe x1 slot blocked by the GPU so the sound card can be used.</p>
 <h3 id="floppy">Floppy</h3>
 <p>The floppy drive is an interesting one. This motherboard does not have a native floppy header which is unsurprising. I highly doubt there is a new modern motherboard that still has one.</p>
 <p>So how did I have a floppy drive on the front panel?</p>
@@ -733,7 +737,7 @@ In this post, I will go through my thought process I went through to decide on t
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.148.1' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.148.2' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
