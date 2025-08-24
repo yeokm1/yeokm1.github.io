@@ -13,7 +13,7 @@ I recently built myself a PC as my previous desktop PC was insufficient for my c
 In this post, I will go through my thought process I went through to decide on the specifications as well as the journey I made to run MS-DOS 6.22 on it.">
   <meta itemprop="datePublished" content="2024-10-06T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-10-06T00:00:00+00:00">
-  <meta itemprop="wordCount" content="2554">
+  <meta itemprop="wordCount" content="2591">
   <meta itemprop="image" content="http://yeokhengmeng.com/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg">
   <meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2024/10/modern-pc-vintage-twist/">
   <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -196,7 +196,7 @@ In this post, I will go through my thought process I went through to decide on t
     </time>
     <span class="author"></span>
     
-      <p>12 minutes read</p>
+      <p>13 minutes read</p>
     
   </div>
 </header>
@@ -322,7 +322,7 @@ In this post, I will go through my thought process I went through to decide on t
 <li>AMD Ryzen 5 7600 3.8Ghz AM5 socket</li>
 <li>Asus Dual GeForce RTX 4060 Ti EVO OC 16GB</li>
 <li>ASUS Pro B650M-CT-CSM motherboard</li>
-<li>2x32GB DDR5-5600 CL36 Kingston Fury</li>
+<li>128GB: 4x32GB DDR5-5600 CL36 Kingston Fury (DDR5-3600 actual)</li>
 <li>Coolermaster Hyper 212 Spectrum V3 CPU cooler</li>
 <li>1TB NVME Crucial T500</li>
 <li>2.5GbE RTL8125 PCIe x1</li>
@@ -368,13 +368,14 @@ In this post, I will go through my thought process I went through to decide on t
 <p>Online reviews of the 4060 (Ti) are mostly negative for their poor price to performance ratio. I agree with them, if gaming is the only focus, these are poor value for money.</p>
 <p>I selected this because this is one of the cheapest modern 16GB Nvidia cards which is more useful for hobbyist experiments in light ML workloads over just gaming performance. This unit excels at price to video RAM ratio which most reviewers neglect to consider.</p>
 <p>Power consumption is similar to my previous Geforce 1070 so I don&rsquo;t have to spend more to upgrade my PSU. This card also uses the traditional 8-pin PCIe power connector instead of the 16-pin 12VHPWR connector used on more power-hungry cards. 12VHPWR will cause extra clutter for another adapter cable to convert my existing power connectors to it.</p>
-<h3 id="ram---2x32gb-ddr5-5600-cl36-kingston-fury">RAM - 2x32GB DDR5-5600 CL36 Kingston Fury</h3>
+<h3 id="ram---128gb-4x32gb-ddr5-5600-cl36-kingston-fury-ddr5-3600-actual">RAM - 128GB: 4x32GB DDR5-5600 CL36 Kingston Fury (DDR5-3600 actual)</h3>
 <a href="images/ryzendos-ram.jpg"><img src="images/ryzendos-ram.jpg" width="400"></a>
-<p>I got 64GB of total RAM primarily to run virtual machines and light ML workloads. For most applications like gaming, 32GB is actually sufficient.</p>
+<p>I initially got 64GB of total RAM primarily to run virtual machines and light ML workloads. For most applications like gaming, 32GB is actually sufficient.</p>
 <p>At DDR5-5600 CL36 speed, I believe this is more than sufficient for my needs as looking at online benchmarks, faster speeds and latencies don&rsquo;t seem to move the needle much on gaming performance.</p>
 <a href="images/ryzendos-ddr5-training.jpg"><img src="images/ryzendos-ddr5-training.jpg" width="700"></a>
 <p>With this RAM, the board seems to take a long time to POST on every boot. Something like at least a minute. Based on online research, it is because the motherboard needs to find an optimal set of timings to work with the RAM. This has always been done for previous RAM generations but is an issue now because it takes a significant amount of time for DDR5.</p>
 <p>To mitigate this, enable both &ldquo;Power Down Enable&rdquo; and &ldquo;Memory Context Restore&rdquo; to avoid lengthy DDR5 training during POST.</p>
+<p>I added another 64GB RAM at a later date for larger workloads. Due to the nature of DDR5 signalling, having 4 RAM sticks would mean downgrading the speed to DDR5-3600.</p>
 <h3 id="storage">Storage</h3>
 <a href="images/ryzendos-nvme.jpg"><img src="images/ryzendos-nvme.jpg" width="500"></a>
 <p>I got a PCIe 4.0 1TB NVME Crucial T500 as my boot drive.</p>
