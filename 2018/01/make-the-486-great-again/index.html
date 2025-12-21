@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.149.1">
+<meta name="generator" content="Hugo 0.153.1">
   <meta itemprop="name" content="A Science Project: &#34;Make the 486 Great Again!&#34; - Modern Linux in an ancient PC">
   <meta itemprop="description" content="What is the oldest x86 processor that is still supported by a modern Linux kernel in present time?
 I asked the above quiz question during the Geekcamp tech conference in Nov 2017 during my emcee role. The theoretical answer as you can glean from the title of this post is the 486 which was first released in 1989. I determined that fact from this article where support for the 386 was dropped in Dec 2012.
@@ -32,7 +32,7 @@ To get you interested, here is the result of my effort.">
 I asked the above quiz question during the Geekcamp tech conference in Nov 2017 during my emcee role. The theoretical answer as you can glean from the title of this post is the 486 which was first released in 1989. I determined that fact from this article where support for the 386 was dropped in Dec 2012.
 To get you interested, here is the result of my effort.">
       <meta name="twitter:site" content="@yeokm1">
-<link rel="stylesheet" href="/css/bundle.min.ddee09a014b0ec888f9e86a08a442e769e45794257080194efeb3e17d2f9fa80.css" integrity="sha256-3e4JoBSw7IiPnoagikQudp5FeUJXCAGU7&#43;s&#43;F9L5&#43;oA=">
+<link rel="stylesheet" href="/css/bundle.min.418a60f85adce9ae6387a2f7c16d3f05b12ba08867482d06c5436e04c75e4366.css" integrity="sha256-QYpg&#43;Frc6a5jh6L3wW0/BbEroIhnSC0GxUNuBMdeQ2Y=">
         <link rel="stylesheet" href="/css/add-on.css"></head>
 
   <body>
@@ -276,7 +276,8 @@ To get you interested, here is the result of my effort.">
 
   <div class="content">
     <blockquote>
-<p>What is the oldest x86 processor that is still supported by a modern Linux kernel in present time?</p></blockquote>
+<p>What is the oldest x86 processor that is still supported by a modern Linux kernel in present time?</p>
+</blockquote>
 <p>I asked the above quiz question during the <a href="https://geekcamp.sg/">Geekcamp</a> tech conference in Nov 2017 during <a href="/2017/11/my-first-conference-emcee-experience/">my emcee role</a>. The theoretical answer as you can glean from the title of this post is the <a href="https://en.wikipedia.org/wiki/Intel_80486">486</a> which was first released in 1989. I determined that fact from this article where <a href="https://www.pcworld.com/article/2020196/linux-3-8-will-drop-support-for-intel-386-chips.html">support for the 386 was dropped in Dec 2012</a>.</p>
 <p>To get you interested, here is the result of my effort.</p>
 <p><a href="/2018/01/make-the-486-great-again/images/gentoo-486-capabilities.jpg"><img src="/2018/01/make-the-486-great-again/images/gentoo-486-capabilities-939x1024.jpg" alt=""></a></p>
@@ -307,7 +308,8 @@ To get you interested, here is the result of my effort.">
 <p><a href="/2018/01/make-the-486-great-again/images/gentoo-486-logo.png"><img src="/2018/01/make-the-486-great-again/images/gentoo-486-logo.png" alt=""></a></p>
 <blockquote>
 <p>Gentoo Linux is a Linux distribution built using the Portage package management system. Unlike a binary software distribution, the source code is compiled locally according to the user&rsquo;s preferences and is often optimized for the specific type of computer.</p>
-<p>From <a href="https://en.wikipedia.org/wiki/Gentoo_Linux">Gentoo&rsquo;s Wikipedia page</a></p></blockquote>
+<p>From <a href="https://en.wikipedia.org/wiki/Gentoo_Linux">Gentoo&rsquo;s Wikipedia page</a></p>
+</blockquote>
 <p>The issue with modern Linux distributions like Debian/Ubuntu/Arch is that they distribute compiled binary packages. Typically this is good enough as compiling every single package you want from scratch is time consuming and most people ain&rsquo;t got the time for that.</p>
 <p>Although the 486 is theoretically supported by the modern Linux kernel, this is not true on the distribution and package level.  For example, Debian has <a href="https://distrowatch.com/dwres.php?resource=showheadline&amp;story=406">dropped support for older 586 32-bit CPUs as of 2016</a>. Thus, the oldest supported x86 CPU by Debian is the 686. The 6th-generation x86 started with the Pentium Pro released in 1995 or its more commonly known variant Pentium 2 was released in 1997.</p>
 <p>Therefore, it is no longer possible to directly use a typical modern distribution on a 486 PC. But on an atypical distribution like Gentoo which requires you to compile every package, this might still be possible.</p>
@@ -479,7 +481,8 @@ Left: 80-conductor PATA cable, Right: 40-conductor PATA cable</p>
 <blockquote>
 <p>The 486 does not implement any form of branch prediction.</p>
 <p><a href="https://books.google.com.sg/books?id=MLJClvCYh34C&amp;pg=PA122&amp;lpg=PA122&amp;dq=486&#43;branch&#43;prediction&amp;source=bl&amp;ots=gcMvZFz2Pz&amp;sig=FJ9fEmH426N7eoHxLupu5x2ZrdQ&amp;hl=en&amp;sa=X&amp;ved=0ahUKEwi7k5aCucXYAhUHQY8KHcgACkUQ6AEILjAB#v=onepage&amp;q=486%20branch%20prediction&amp;f=false">Source 1: Pentium Pro and Pentium II System Architecture</a> from Google Books</p>
-<p>When the 486 microprocessor makes a decision that results in a jump to a different part of your program, there is often a delay as it gathers the instructions from the new area of memory. Pentium seeks to avoid this with a Branch Target Buffer (BTB). The BTB predicts the results of the decision-making instructions&hellip; <a href="https://books.google.com.sg/books?id=QzsEAAAAMBAJ&amp;pg=PA59&amp;lpg=PA59&amp;dq=486&#43;branch&#43;prediction&amp;source=bl&amp;ots=LCXnhUpS83&amp;sig=g59BBBuiCx-qM6bOjRW5mkq1Nug&amp;hl=en&amp;sa=X&amp;ved=0ahUKEwi7k5aCucXYAhUHQY8KHcgACkUQ6AEIPDAD#v=onepage&amp;q=486%20branch%20prediction&amp;f=false">Source 2: Info World July 1993</a></p></blockquote>
+<p>When the 486 microprocessor makes a decision that results in a jump to a different part of your program, there is often a delay as it gathers the instructions from the new area of memory. Pentium seeks to avoid this with a Branch Target Buffer (BTB). The BTB predicts the results of the decision-making instructions&hellip; <a href="https://books.google.com.sg/books?id=QzsEAAAAMBAJ&amp;pg=PA59&amp;lpg=PA59&amp;dq=486&#43;branch&#43;prediction&amp;source=bl&amp;ots=LCXnhUpS83&amp;sig=g59BBBuiCx-qM6bOjRW5mkq1Nug&amp;hl=en&amp;sa=X&amp;ved=0ahUKEwi7k5aCucXYAhUHQY8KHcgACkUQ6AEIPDAD#v=onepage&amp;q=486%20branch%20prediction&amp;f=false">Source 2: Info World July 1993</a></p>
+</blockquote>
 <p>Ironically this makes it safe from the <a href="https://meltdownattack.com/">Meltdown and Spectre</a> attacks. If you want to be safe from those attacks, you can run your modern software on the 486! Of course this is not looking at the big picture, many other security features have been implemented on modern processors since then.</p>
 <h1 id="concluding-remarks">Concluding Remarks</h1>
 <p>Despite the many roadblocks I faced, I was impressed by the level of support Linux has for ancient hardware like this. I&rsquo;ll not be surprised if somewhere out there, there is a tester making sure that stuff still works for old hardware.</p>
@@ -804,7 +807,7 @@ Left: 80-conductor PATA cable, Right: 40-conductor PATA cable</p>
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.149.1' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.153.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
@@ -845,7 +848,7 @@ Left: 80-conductor PATA cable, Right: 40-conductor PATA cable</p>
 </script>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.cedc5656f514e46331c8dcc207fd062e8c36b399bab6ea20d8a6eba1f419b344.js" integrity="sha256-ztxWVvUU5GMxyNzCB/0GLow2s5m6tuog2KbrofQZs0Q="></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.e35f1f8457feac0640f4577943efa2b484c97b0439bff413797745460cd03949.js" integrity="sha256-418fhFf&#43;rAZA9Fd5Q&#43;&#43;itITJewQ5v/QTeXdFRgzQOUk="></script>
 <script src="/js/add-on.js"></script>
     </div>
   </body>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.149.1">
+<meta name="generator" content="Hugo 0.153.1">
   <meta itemprop="name" content="Building a DOS ChatGPT client in 2023">
   <meta itemprop="description" content="With the recent attention on ChatGPT and OpenAI’s release of their APIs, many developers have developed clients for modern platforms to talk to this super smart AI chatbot. However I’m pretty sure almost nobody has written one for a vintage platform like MS-DOS.
 This client now supports Hugging Face API, Ollama API and text to speech (TTS) capability. More info on TTS is found at the later part of this post.">
@@ -32,7 +32,7 @@ This client now supports Hugging Face API, Ollama API and text to speech (TTS) c
   <meta name="twitter:description" content="With the recent attention on ChatGPT and OpenAI’s release of their APIs, many developers have developed clients for modern platforms to talk to this super smart AI chatbot. However I’m pretty sure almost nobody has written one for a vintage platform like MS-DOS.
 This client now supports Hugging Face API, Ollama API and text to speech (TTS) capability. More info on TTS is found at the later part of this post.">
       <meta name="twitter:site" content="@yeokm1">
-<link rel="stylesheet" href="/css/bundle.min.ddee09a014b0ec888f9e86a08a442e769e45794257080194efeb3e17d2f9fa80.css" integrity="sha256-3e4JoBSw7IiPnoagikQudp5FeUJXCAGU7&#43;s&#43;F9L5&#43;oA=">
+<link rel="stylesheet" href="/css/bundle.min.418a60f85adce9ae6387a2f7c16d3f05b12ba08867482d06c5436e04c75e4366.css" integrity="sha256-QYpg&#43;Frc6a5jh6L3wW0/BbEroIhnSC0GxUNuBMdeQ2Y=">
         <link rel="stylesheet" href="/css/add-on.css"></head>
 
   <body>
@@ -383,13 +383,15 @@ This client now supports Hugging Face API, Ollama API and text to speech (TTS) c
 <blockquote>
 <p>Some systems may be too slow for present-day server expectations and thus will appear not to function even if the library otherwise works correctly. In our testing this <strong>starts to become a problem for CPUs slower than 40MHz</strong> or so, regardless of architecture.</p>
 <p>&hellip; <strong>Macintosh IIci with a 25MHz 68030 and no L2 card took 22 seconds</strong> &hellip; for a single short TLS 1.2 transaction to a local test server; <strong>a number of Internet hosts we tested it with simply cut the connection</strong> instead of waiting.
-<a href="https://github.com/classilla/cryanc/blob/main/README.md">https://github.com/classilla/cryanc/blob/main/README.md</a></p></blockquote>
+<a href="https://github.com/classilla/cryanc/blob/main/README.md">https://github.com/classilla/cryanc/blob/main/README.md</a></p>
+</blockquote>
 <p>Therefore modern hardware has to be used to conduct the TLS transaction. I decided to cheat in the same way by using my own <a href="https://github.com/yeokm1/http-to-https-proxy">http-to-https-proxy</a> in Golang.</p>
 <a href="images/doschgpt-https.png"><img src="images/doschgpt-https.png" width="600"></a>
 <p>Running on a modern PC and acting as a transparent middleman, it inspects the host field of the HTTP requests and forwards the raw socket bytes as HTTPS to OpenAI&rsquo;s servers as-is. The payload is then relayed back byte-for-byte back to the client with <strong>no modification</strong>.</p>
 <p>As I would say again:</p>
 <blockquote>
-<p>Purists may not like this solution but this is the best I can do with my abilities in a reasonable amount of time.</p></blockquote>
+<p>Purists may not like this solution but this is the best I can do with my abilities in a reasonable amount of time.</p>
+</blockquote>
 <h2 id="readingwriting-input-to-the-console">Reading/writing input to the console</h2>
 <p>Writing text output to the screen is relatively simple by using the standard C <code>printf()</code> function.</p>
 <p>For reading input, there is where things get interesting. The standard way for modern C programs is to use console functions like <code>fgets()</code> or <code>scanf()</code> or a variant of one of those functions combined with multi-threading.</p>
@@ -414,10 +416,10 @@ This client now supports Hugging Face API, Ollama API and text to speech (TTS) c
 <p>However directly receiving the keypresses to store to my own local buffer and directly printing the key pressed introduces another issue. How to handle backspaces where we need to remove the previous character?</p>
 <p>This is actually a generic C problem and I found the answer <a href="https://stackoverflow.com/a/6793113">here</a> by using <code>\b \b</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">//Backspace character
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span>(character <span style="color:#f92672">==</span> <span style="color:#ae81ff">8</span>){
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(character <span style="color:#f92672">==</span> <span style="color:#ae81ff">8</span>){
 </span></span><span style="display:flex;"><span>...
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Remove previous character
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    printf(<span style="color:#e6db74">&#34;%s&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\b</span><span style="color:#e6db74"> </span><span style="color:#ae81ff">\b</span><span style="color:#e6db74">&#34;</span>);
+</span></span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;%s&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\b</span><span style="color:#e6db74"> </span><span style="color:#ae81ff">\b</span><span style="color:#e6db74">&#34;</span>);
 </span></span><span style="display:flex;"><span>    currentMessagePos<span style="color:#f92672">--</span>;
 </span></span><span style="display:flex;"><span>    messageInBuffer[currentMessagePos] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
 </span></span><span style="display:flex;"><span>
@@ -468,13 +470,13 @@ This client now supports Hugging Face API, Ollama API and text to speech (TTS) c
 <p><code>Read.exe</code> is the primary tool used by my client app to send the text strings to be read. However in DOS there is a limit of <a href="https://stackoverflow.com/a/41449103">up to 127 bytes for command line arguments</a>. This means that long replies from ChatGPT will have to be broken up and passed to <code>Read.exe</code> through repeated calls. To do this, I split strings by punctuation and have <code>Read.exe</code> read phrase by phrase hence why there are some noticeably longer pauses in some parts.</p>
 <p>On every call to <code>Read.exe</code>, the Creative banner will display thus affecting the user experience. To mitigate this, I redirect the <code>stdout</code> before the call to <code>Read.exe</code> and restore the <code>stdout</code> after the call completes. Here is some sample code to show how it was done:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// Send stdout to nul
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>freopen(<span style="color:#e6db74">&#34;nul&#34;</span>, <span style="color:#e6db74">&#34;r&#34;</span>, stdout);
+</span></span></span><span style="display:flex;"><span>freopen(<span style="color:#e6db74">&#34;nul&#34;</span>, <span style="color:#e6db74">&#34;r&#34;</span>, stdout);
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Tell read program to read the words &#34;hello world&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>system(<span style="color:#e6db74">&#34;read hello world&#34;</span>);
+</span></span></span><span style="display:flex;"><span>system(<span style="color:#e6db74">&#34;read hello world&#34;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Flush away existing stdout content
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>fflush(stdout);
+</span></span></span><span style="display:flex;"><span>fflush(stdout);
 </span></span><span style="display:flex;"><span><span style="color:#75715e">//Restore the stdout
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>freopen(<span style="color:#e6db74">&#34;con&#34;</span>, <span style="color:#e6db74">&#34;a&#34;</span>, stdout);
+</span></span></span><span style="display:flex;"><span>freopen(<span style="color:#e6db74">&#34;con&#34;</span>, <span style="color:#e6db74">&#34;a&#34;</span>, stdout);
 </span></span></code></pre></div><p>You may wonder I did not use my IBM5155 for this demo? It&rsquo;s because I found that while the 4.77Mhz Intel 8088 can run the speech synthesis and playback utilities, it was too slow and choppy to be bearable. Emulation testing under 86Box shows that the minimum CPU speed for reasonable performance is 8Mhz. My 486 desktop is the next step up the vintage system ladder I have so I have to use this in my demo.</p>
 <h3 id="tts-improvement-sept-2023">TTS improvement (Sept 2023)</h3>
 <p>A developer <a href="https://github.com/systoolz">systoolz</a> found an improvement where instead of repeatedly calling <code>read.exe</code>, a call can be made directly to the TTS engine. A library called <a href="https://github.com/systoolz/dosbtalk">dosbtalk</a> was created to do this. This library also increases the buffer size to at least 250 bytes per API &ldquo;call&rdquo; thus reducing the amount of overall calls and pauses required.</p>
@@ -491,7 +493,8 @@ This client now supports Hugging Face API, Ollama API and text to speech (TTS) c
 <a href="images/doschgpt-reply.png"><img src="images/doschgpt-reply.png" width="500"></a>
 <blockquote>
 <p>&ldquo;Keep in mind that creating a DOS ChatGPT client may be challenging, as DOS is an outdated operating system and may not have the necessary tools and resources to develop modern applications.&rdquo;
-ChatGPT (Mar 2023)</p></blockquote>
+ChatGPT (Mar 2023)</p>
+</blockquote>
 <p>Challenge already accepted and won. :P. And what is the AI smoking with using the official Python API library on a DOS platform&hellip;*</p>
 <p>After experiencing this, I will definitely be writing more retro-software in future. Till then, I hope you learned something and enjoyed reading this as much as me developing this app.</p>
 <p>*As someone pointed out, <a href="http://www.caddit.net/pythond/">Python for MS-DOS</a> is available. It&rsquo;s true and it came up in my research but it&rsquo;s an older version of Python 2.4.2 and requires a 32-bit CPU (such as 80386 or higher) since it is compiled using <a href="https://www.delorie.com/djgpp/">DJGPP</a>. This would mean it will not work for my target platform IBM5155 which uses a 16-bit Intel 8088. The <a href="https://github.com/openai/openai-python">Python library from OpenAI</a> clearly mentions its requirements as Python 3.7.1+ so it is highly unlikely to work on such an old version of Python too.</p>
@@ -787,7 +790,7 @@ ChatGPT (Mar 2023)</p></blockquote>
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.149.1' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.153.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
@@ -828,7 +831,7 @@ ChatGPT (Mar 2023)</p></blockquote>
 </script>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.cedc5656f514e46331c8dcc207fd062e8c36b399bab6ea20d8a6eba1f419b344.js" integrity="sha256-ztxWVvUU5GMxyNzCB/0GLow2s5m6tuog2KbrofQZs0Q="></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.e35f1f8457feac0640f4577943efa2b484c97b0439bff413797745460cd03949.js" integrity="sha256-418fhFf&#43;rAZA9Fd5Q&#43;&#43;itITJewQ5v/QTeXdFRgzQOUk="></script>
 <script src="/js/add-on.js"></script>
     </div>
   </body>

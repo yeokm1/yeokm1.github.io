@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.149.1">
+<meta name="generator" content="Hugo 0.153.1">
   <meta itemprop="name" content="My first chip with Tiny Tapeout 4 - Covox Speech Thing clone">
   <meta itemprop="description" content="When one thinks of designing an Application-specific Integrated Circuit (ASIC) chip, one would typically imagine a very high production cost, lack of access to tools and individuals can’t really do this unless you work in a company or academia.
 Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
@@ -35,7 +35,7 @@ In this post, I will share my experience in development and demonstrating my des
 Thanks to Tiny Tapeout, these barriers are broken down and I managed to have a chip that contains my own design. I sent in a very simple project but it is still my submission no less. I went through the entire submission procedure including writing a small testbench and preparing my project for submission through the very nicely documented process from Tiny Tapeout.
 In this post, I will share my experience in development and demonstrating my design.">
       <meta name="twitter:site" content="@yeokm1">
-<link rel="stylesheet" href="/css/bundle.min.ddee09a014b0ec888f9e86a08a442e769e45794257080194efeb3e17d2f9fa80.css" integrity="sha256-3e4JoBSw7IiPnoagikQudp5FeUJXCAGU7&#43;s&#43;F9L5&#43;oA=">
+<link rel="stylesheet" href="/css/bundle.min.418a60f85adce9ae6387a2f7c16d3f05b12ba08867482d06c5436e04c75e4366.css" integrity="sha256-QYpg&#43;Frc6a5jh6L3wW0/BbEroIhnSC0GxUNuBMdeQ2Y=">
         <link rel="stylesheet" href="/css/add-on.css"></head>
 
   <body>
@@ -290,7 +290,8 @@ In this post, I will share my experience in development and demonstrating my des
 <h2 id="background-of-tiny-tapeout">Background of Tiny Tapeout</h2>
 <blockquote>
 <p>Tiny Tapeout is a service that makes manufacturing ASICs (chips) affordable and accessible to students and makers. We leverage an open source ASIC toolchain, and build a community of open silicon enthusiasts who collaborate and share their digital design projects.</p>
-<p>Source: <a href="https://www.linkedin.com/company/tinytapeout/about/">https://www.linkedin.com/company/tinytapeout/about/</a></p></blockquote>
+<p>Source: <a href="https://www.linkedin.com/company/tinytapeout/about/">https://www.linkedin.com/company/tinytapeout/about/</a></p>
+</blockquote>
 <p>Tiny Tapeout was started by Matt Venn in 2022. Since that time, several batches (or shuttles as they call it) of chips have been executed. Tiny Tapeout collaborates with EFabless platform to aggregate multiple designs together into one shuttle in order to spread out and thus lower the cost per design.</p>
 <p>I took part in Tiny Tapeout 4 (TT04). It was submitted to Efabless 2309C chipIgnite shuttle using the open source Skywater 130nm Process Design Kit (PDK). The PDK contains the specification, design rules and standard libraries used by the foundry.</p>
 <p>Submission closed in Sept 2023 and I just received the chip and carrier board last week. So an approximately 9-month wait from submission to receiving the result.</p>
@@ -345,14 +346,14 @@ In this post, I will share my experience in development and demonstrating my des
 <p>The first step is deciding what to do based on the constraints. At the time of TT04, these were the IO pins that are available for each design.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#66d9ef">module</span> tt_um_yeokm1_pwm_audio (
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] ui_in,    <span style="color:#75715e">// Dedicated inputs
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">output</span> <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uo_out,   <span style="color:#75715e">// Dedicated outputs
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uio_in,   <span style="color:#75715e">// IOs: Input path
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">output</span> <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uio_out,  <span style="color:#75715e">// IOs: Output path
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">output</span> <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uio_oe,   <span style="color:#75715e">// IOs: Enable path (active high: 0=input, 1=output)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span>       ena,      <span style="color:#75715e">// will go high when the design is enabled
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span>       clk,      <span style="color:#75715e">// clock
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span>       rst_n     <span style="color:#75715e">// reset_n - low to reset
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>);
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">output</span> <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uo_out,   <span style="color:#75715e">// Dedicated outputs
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uio_in,   <span style="color:#75715e">// IOs: Input path
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">output</span> <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uio_out,  <span style="color:#75715e">// IOs: Output path
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">output</span> <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uio_oe,   <span style="color:#75715e">// IOs: Enable path (active high: 0=input, 1=output)
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span>       ena,      <span style="color:#75715e">// will go high when the design is enabled
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span>       clk,      <span style="color:#75715e">// clock
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span>       rst_n     <span style="color:#75715e">// reset_n - low to reset
+</span></span></span><span style="display:flex;"><span>);
 </span></span></code></pre></div><ul>
 <li>Clock is provided by RP2040 and can go up to 50Mhz</li>
 <li>3.3V logic level digital pins only (not 5V tolerant)</li>
@@ -436,14 +437,14 @@ In this post, I will share my experience in development and demonstrating my des
 <p>Here is a snippet of the code that contains the relevant logic section.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#66d9ef">module</span> tt_um_yeokm1_pwm_audio #() (
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] ui_in,    <span style="color:#75715e">// Dedicated inputs
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">output</span> <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uo_out,   <span style="color:#75715e">// Dedicated outputs
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uio_in,   <span style="color:#75715e">// IOs: Input path
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">output</span> <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uio_out,  <span style="color:#75715e">// IOs: Output path
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">output</span> <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uio_oe,   <span style="color:#75715e">// IOs: Enable path (active high: 0=input, 1=output)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span>       ena,      <span style="color:#75715e">// will go high when the design is enabled
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span>       clk,      <span style="color:#75715e">// clock
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span>       rst_n     <span style="color:#75715e">// reset_n - low to reset
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>);
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">output</span> <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uo_out,   <span style="color:#75715e">// Dedicated outputs
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uio_in,   <span style="color:#75715e">// IOs: Input path
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">output</span> <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uio_out,  <span style="color:#75715e">// IOs: Output path
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">output</span> <span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] uio_oe,   <span style="color:#75715e">// IOs: Enable path (active high: 0=input, 1=output)
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span>       ena,      <span style="color:#75715e">// will go high when the design is enabled
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span>       clk,      <span style="color:#75715e">// clock
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">input</span>  <span style="color:#66d9ef">wire</span>       rst_n     <span style="color:#75715e">// reset_n - low to reset
+</span></span></span><span style="display:flex;"><span>);
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">reg</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] pwm_cnt;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">always</span> @(<span style="color:#66d9ef">posedge</span> clk) <span style="color:#66d9ef">begin</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(rst_n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">begin</span>
@@ -453,7 +454,7 @@ In this post, I will share my experience in development and demonstrating my des
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Check rst_n and ena are activated first
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">assign</span> uo_out[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> rst_n <span style="color:#f92672">&amp;&amp;</span> ena <span style="color:#f92672">&amp;&amp;</span> (ui_in <span style="color:#f92672">&gt;</span> pwm_cnt);
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">assign</span> uo_out[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> rst_n <span style="color:#f92672">&amp;&amp;</span> ena <span style="color:#f92672">&amp;&amp;</span> (ui_in <span style="color:#f92672">&gt;</span> pwm_cnt);
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">endmodule</span>
 </span></span></code></pre></div><p>We have a register <code>pwm_cnt</code> that tracks which part of the PWM period we are in right now.</p>
 <p>On every positive clock edge, we first check if the active-low reset is low, if so we reset <code>pwm_cnt</code>. Otherwise, it is incremented. If it reaches the maximum value, it will go back to 0. <code>pwm_cnt</code> is an 8-bit register as the input audio and PWM-period are 8 bits wide.</p>
@@ -467,7 +468,8 @@ In this post, I will share my experience in development and demonstrating my des
 <p>The answer was actually documented online all this while which I didn&rsquo;t read:</p>
 <blockquote>
 <p>Most FPGAs allow initial statements, and flops are often initialised to zero. This is not the case with ASICs, where <strong>flops will have a random initial value at power on</strong>. Initial statements are not allowed, so you <strong>must use an explicit reset</strong>.</p>
-<p>Source: <a href="https://tinytapeout.com/hdl/fpga_vs_asic/">https://tinytapeout.com/hdl/fpga_vs_asic/</a></p></blockquote>
+<p>Source: <a href="https://tinytapeout.com/hdl/fpga_vs_asic/">https://tinytapeout.com/hdl/fpga_vs_asic/</a></p>
+</blockquote>
 <p>If one only uses FPGAs before this, it would be easy to make this mistake.</p>
 <p>The solution ended being as simple as this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-systemverilog" data-lang="systemverilog"><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(rst_n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">begin</span>
@@ -500,7 +502,8 @@ In this post, I will share my experience in development and demonstrating my des
 <p>I have certainly gained a better appreciation of the chip design process. It&rsquo;s unlikely I would switch into chip design at this point in my career but I can totally forsee that it might encourage a new generation of people interested in this career or at least pick this up as a hobby.</p>
 <blockquote>
 <p>Perhaps one day, submitting a GDS file to a fab will seem just as ordinary as sending Gerbers to a PCB shop is today.</p>
-<p>Source: <a href="https://hackaday.com/2023/02/14/supercon-2022-matt-venns-tiny-tapeout-brings-chip-design-to-the-masses/">https://hackaday.com/2023/02/14/supercon-2022-matt-venns-tiny-tapeout-brings-chip-design-to-the-masses/</a></p></blockquote>
+<p>Source: <a href="https://hackaday.com/2023/02/14/supercon-2022-matt-venns-tiny-tapeout-brings-chip-design-to-the-masses/">https://hackaday.com/2023/02/14/supercon-2022-matt-venns-tiny-tapeout-brings-chip-design-to-the-masses/</a></p>
+</blockquote>
 <p>Embedded below is the presentation I gave at <a href="https://www.meetup.com/hackware/events/301776049/">Hackware v8.3 meetup</a>.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/G2dRGjgYIZQ?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
@@ -789,7 +792,7 @@ In this post, I will share my experience in development and demonstrating my des
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.149.1' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.153.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
@@ -830,7 +833,7 @@ In this post, I will share my experience in development and demonstrating my des
 </script>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.cedc5656f514e46331c8dcc207fd062e8c36b399bab6ea20d8a6eba1f419b344.js" integrity="sha256-ztxWVvUU5GMxyNzCB/0GLow2s5m6tuog2KbrofQZs0Q="></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.e35f1f8457feac0640f4577943efa2b484c97b0439bff413797745460cd03949.js" integrity="sha256-418fhFf&#43;rAZA9Fd5Q&#43;&#43;itITJewQ5v/QTeXdFRgzQOUk="></script>
 <script src="/js/add-on.js"></script>
     </div>
   </body>

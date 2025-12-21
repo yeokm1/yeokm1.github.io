@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.149.1">
+<meta name="generator" content="Hugo 0.153.1">
   <meta itemprop="name" content="Building a new Win 3.1 app in 2019 Part 1: Slack client">
   <meta itemprop="description" content="In October 2019, my company SP Digital held an internal hackathon. My colleague Subhransu and I worked on a whacky idea of writing a brand-new Windows 3.1 app which was an OS released almost 30 years ago. The idea we chose was a Slack client. After all, Slack clients exist for most platforms but I’m certain one does not exist for Windows 3.1.
 A few months later in Dec 2019, I would join the Super Silly Hackathon for the second time with fellow retrocomputing enthusiast Hui Jing. We would develop a small game for Win 3.1 with great help from the knowledge gained from this first project.
@@ -38,7 +38,7 @@ For Part 1, I shall detail the learnings and process for how a new old app can b
 Don’t forget to checkout out Part 2 of the game app with Hui Jing too!
 The App Of course let’s take a look at the app.">
       <meta name="twitter:site" content="@yeokm1">
-<link rel="stylesheet" href="/css/bundle.min.ddee09a014b0ec888f9e86a08a442e769e45794257080194efeb3e17d2f9fa80.css" integrity="sha256-3e4JoBSw7IiPnoagikQudp5FeUJXCAGU7&#43;s&#43;F9L5&#43;oA=">
+<link rel="stylesheet" href="/css/bundle.min.418a60f85adce9ae6387a2f7c16d3f05b12ba08867482d06c5436e04c75e4366.css" integrity="sha256-QYpg&#43;Frc6a5jh6L3wW0/BbEroIhnSC0GxUNuBMdeQ2Y=">
         <link rel="stylesheet" href="/css/add-on.css"></head>
 
   <body>
@@ -331,7 +331,8 @@ The App Of course let’s take a look at the app.">
 <p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-book-back.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-book-back-916x1024.jpg" alt=""></a></p>
 <blockquote>
 <p>If you are going to program for Windows (3.1), buy this book. It will pay for itself in a matter of hours.&quot;
-I concur with this.</p></blockquote>
+I concur with this.</p>
+</blockquote>
 <p>At the time of initial writing of this post, I could not find a softcopy of this book which means I had to do things the old-fashioned way when I comes to research. Purchasing the book then going through the contents page and index for starters.</p>
 <p>In 2020, a commenter (below) pointed out a softcopy of this book is now available from this <a href="https://archive.org/details/programming-windows-31-3rd-ed/">archive.org page</a>.</p>
 <p>I have also uploaded the sample codes of the floppy disk onto <a href="https://github.com/yeokm1/programming-win31">this Github repo</a>.</p>
@@ -341,7 +342,8 @@ I concur with this.</p></blockquote>
 <h3 id="inverse-deduction-from-modern-windows-api">Inverse deduction from modern Windows API</h3>
 <p>Looking up the function parameters may not be always sufficient as I need to know what the function actually does. Here is where Microsoft&rsquo;s legendary backward compatibility becomes useful. Many modern Windows APIs are very similar to the traditional ones. Microsoft even has this <a href="https://docs.microsoft.com/en-us/cpp/windows/walkthrough-creating-windows-desktop-applications-cpp?view=vs-2019">walkthrough</a> to create an app the traditional way.</p>
 <blockquote>
-<p>The Windows API (also known as the Win32 API, Windows Desktop API, and Windows Classic API) is a C-language-based framework for creating Windows applications. It has been in existence since the 1980s and has been used to create Windows applications for decades. More advanced and easier-to-program frameworks have been built on top of the Windows API. For example, MFC, ATL, the .NET frameworks. Even the most modern Windows Runtime code for UWP and Store apps written in C++/WinRT uses the Windows API underneath.</p></blockquote>
+<p>The Windows API (also known as the Win32 API, Windows Desktop API, and Windows Classic API) is a C-language-based framework for creating Windows applications. It has been in existence since the 1980s and has been used to create Windows applications for decades. More advanced and easier-to-program frameworks have been built on top of the Windows API. For example, MFC, ATL, the .NET frameworks. Even the most modern Windows Runtime code for UWP and Store apps written in C++/WinRT uses the Windows API underneath.</p>
+</blockquote>
 <p>Even if the modern APIs are different, the documentation may give me enough information to deduce what the older APIs do.</p>
 <h2 id="c89-language">C89 language</h2>
 <p>VC++ 1.52 was released in the early 1990s obviously only supported the C standard of that era which was C89. Even though I use C quite a lot in my work, C89 has several intricacies that made my life harder.</p>
@@ -360,17 +362,18 @@ I concur with this.</p></blockquote>
 <blockquote>
 <p>In the context of IBM PC compatible and Wintel platforms, a 16-bit application is any software written for MS-DOS, OS/2 1.x or early versions of Microsoft Windows which originally ran on the 16-bit Intel 8088 and Intel 80286 microprocessors. Such applications used a 20-bit or 24-bit segment or selector-offset address representation to extend the range of addressable memory locations beyond what was possible using only 16-bit addresses.</p>
 <p><strong>Programs containing more than 2^16 bytes (65,536 bytes) of instructions and data therefore required special instructions to switch between their 64-kilobyte segments, increasing the complexity of programming 16-bit applications</strong>.</p>
-<p>Source: <a href="https://en.wikipedia.org/wiki/16-bit#16-bit_application">https://en.wikipedia.org/wiki/16-bit#16-bit_application</a></p></blockquote>
+<p>Source: <a href="https://en.wikipedia.org/wiki/16-bit#16-bit_application">https://en.wikipedia.org/wiki/16-bit#16-bit_application</a></p>
+</blockquote>
 <p>Wikipedia is so correct !^^^</p>
 <p>The following 2 pages literally saved me from hours of Googling assuming Google turns out any answer at all!</p>
 <p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-allocmem.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-allocmem-952x1024.jpg" alt=""></a></p>
 <p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-memapi.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-memapi-818x1024.jpg" alt=""></a></p>
 <p>To allocate a &ldquo;large&rdquo; chunk of memory from the APIs described in the book, we need to allocate them from the Global heap. This is what I did below.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;windowsx.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">//Up to 64K is possible 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define MAX_GLOBAL_MEM_ALLOCATION 32000
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define MAX_GLOBAL_MEM_ALLOCATION 32000
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>LPSTR lpGlobalMemory;
 </span></span><span style="display:flex;"><span>DWORD allocatedMemorySize;
 </span></span><span style="display:flex;"><span>
@@ -393,10 +396,10 @@ I concur with this.</p></blockquote>
 <h3 id="socket-programming">Socket Programming</h3>
 <p>The last time I did low-level socket programming was in university. This days with modern programming languages and APIs, everything is done for you. But no such libraries exist for C89 last I checked. So I had construct the entire POST request by hand and call the socket APIs directly.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;winsock.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#pragma comment(lib,&#34;winsock.lib&#34;) 
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define POST_MESSAGE_FORMAT &#34;POST /api/chat.postMessage?channel=%s&amp;as_user=true&amp;text=%s HTTP/1.1\r\nHost: slack.com\r\nAuthorization: Bearer %s\r\nAccept: */*\r\nConnection: close\r\n\r\n&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>WSADATA wsaData;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">sockaddr_in</span> serveraddr;
 </span></span><span style="display:flex;"><span>
@@ -426,7 +429,7 @@ I concur with this.</p></blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>value <span style="color:#f92672">=</span> jsonDictionary[<span style="color:#960050;background-color:#1e0010">&#39;</span>key<span style="color:#960050;background-color:#1e0010">&#39;</span>]
 </span></span></code></pre></div><p>However for memory-saving reasons, JSMN does not output a dictionary. It gives out an array of tokens structs that points to the token boundaries in the original JSON string. Let&rsquo;s give an example from my code</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;jsmn.h&#34;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>jsmn_parser parser;
 </span></span><span style="display:flex;"><span>jsmntok_t tokens[MAX_TOKENS];
 </span></span><span style="display:flex;"><span>jsmntok_t currentToken;
@@ -513,7 +516,8 @@ I concur with this.</p></blockquote>
 <blockquote>
 <p>&ldquo;Mbed TLS, does not support 16 bit architecture&hellip; However, I would suspect you will encounter other issues related to 16 bit platforms, in other modules.&rdquo;<br>
 Source1: <a href="https://tls.mbed.org/discussions/crypto-and-ssl/help-with-ecc-and-bignum">https://tls.mbed.org/discussions/crypto-and-ssl/help-with-ecc-and-bignum</a><br>
-Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums.mbed.com/t/mbed-tls-size-t/3103</a></p></blockquote>
+Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums.mbed.com/t/mbed-tls-size-t/3103</a></p>
+</blockquote>
 <p>So I hope you understand the reasons behind me giving up and using a proxy. Let me repeat <strong>&ldquo;Purists may not like this solution but this is the best I can do with my abilities in a reasonable amount of time.&rdquo;</strong></p>
   </div>
   <footer>
@@ -802,7 +806,7 @@ Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.149.1' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.153.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
@@ -843,7 +847,7 @@ Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums
 </script>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.cedc5656f514e46331c8dcc207fd062e8c36b399bab6ea20d8a6eba1f419b344.js" integrity="sha256-ztxWVvUU5GMxyNzCB/0GLow2s5m6tuog2KbrofQZs0Q="></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.e35f1f8457feac0640f4577943efa2b484c97b0439bff413797745460cd03949.js" integrity="sha256-418fhFf&#43;rAZA9Fd5Q&#43;&#43;itITJewQ5v/QTeXdFRgzQOUk="></script>
 <script src="/js/add-on.js"></script>
     </div>
   </body>
