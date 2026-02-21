@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.153.1">
+<meta name="generator" content="Hugo 0.156.0">
   <meta itemprop="name" content="A Science Project: Windows for Workgroups 3.11 on vintage and modern hardware in 2016">
   <meta itemprop="description" content="(This is a long 5600&#43; words post, I recommend reading this from a tablet or computer)
 Windows for Workgroups 3.11 (WFW3.11) was an operating system (OS) released by Microsoft in August 1993 and ended support in December 2001. It is part of a series of OSes released by Microsoft at that time so it is common for people to refer to it as part of Windows 3.1x (Win3.1). The specific history behind its name and version number and be found on its Wikipedia article. Here is a brief list of first-impressions I have if I were to describe this OS.
@@ -345,7 +345,7 @@ First Windows OS to have practical (installable) networking capabilities Last on
 <p><a href="/2016/09/windows-for-workgroups-3-11-on-vintage-and-modern-hardware-in-2016/images/wfw-390e-front-right.jpg"><img src="/2016/09/windows-for-workgroups-3-11-on-vintage-and-modern-hardware-in-2016/images/wfw-390e-front-right-1024x446.jpg" alt="wfw-390e-front-right"></a></p>
 <p>The machine is 4.5 cm thick and weighs a hefty 3.4kg! Nowadays virtually no laptops are that thick and only gaming laptops weigh this much but in those days such dimensions are normal. Notice the floppy and CD Drive.</p>
 <p>The reason I initially chose this is because being a business-oriented notebook, drivers should be more easily located compared to most consumer models. Lenovo is <a href="http://thinkpads.com/support/Thinkpad-Drivers/download.lenovo.com/lenovo/content/ddfm/390e.html">still hosting the original drivers</a> for the 390e nearly 2 decades after this machine is sold. Talk about lasting corporate support. This machine originally came with Windows 98 but Win3.1 was also supported by IBM then.</p>
-<p>This laptop costs US$2700 in 1999&rsquo;s dollars and was considered a mid-range model by IBM. After accounting for inflation, it would be US$3900 or about SG$5300 today.</p>
+<p>This laptop costs US\$2700 in 1999&rsquo;s dollars and was considered a mid-range model by IBM. After accounting for inflation, it would be US\$3900 or about SG\$5300 today.</p>
 <h2 id="hard-drive">Hard Drive:</h2>
 <p>The system originally came with a conventional PATA hard drive.</p>
 <p><a href="/2016/09/windows-for-workgroups-3-11-on-vintage-and-modern-hardware-in-2016/images/wfw-390e-ide-sd-drive.jpg"><img src="/2016/09/windows-for-workgroups-3-11-on-vintage-and-modern-hardware-in-2016/images/wfw-390e-ide-sd-drive.jpg" alt="wfw-390e-ide-sd-drive"></a></p>
@@ -462,7 +462,7 @@ First Windows OS to have practical (installable) networking capabilities Last on
 <h3 id="configsys">CONFIG.SYS</h3>
 <p>config.sys is loaded before autoexec.bat. <a href="https://en.wikipedia.org/wiki/CONFIG.SYS">Wikipedia defines it as</a> _&ldquo;It is a special ASCII text file that contains user-accessible setup or configuration directives evaluated by the operating system during boot.&rdquo; _</p>
 <p>Here is a snippet of what I used for my T400:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>rem DEVICE=C:\DOS\HIMEM.SYS
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>rem DEVICE=C:\DOS\HIMEM.SYS
 </span></span><span style="display:flex;"><span>DEVICE=C:\DRIVERS\HIMEMX.EXE /MAX=262144 /VERBOSE 
 </span></span><span style="display:flex;"><span>DOS=HIGH 
 </span></span><span style="display:flex;"><span>DEVICEHIGH=C:\DRIVERS\CDROMDRV\CDROMDRV.SYS /D:MYCD 
@@ -484,7 +484,7 @@ First Windows OS to have practical (installable) networking capabilities Last on
 <h3 id="autoexecbat">AUTOEXEC.BAT</h3>
 <p>This is a batch file that will be executed at the end of the DOS boot process. <a href="https://en.wikipedia.org/wiki/AUTOEXEC.BAT">Wikipedia defines it as</a> <em>&ldquo;It is a plain-text batch file in the root directory of the boot device. The name of the file is an abbreviation of &ldquo;automatic execution&rdquo;, which describes its function in automatically executing commands on system startup.&rdquo;</em></p>
 <p>Here is a snippet of what I used for my T400:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>@ECHO OFF 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>@ECHO OFF 
 </span></span><span style="display:flex;"><span>rem loadhigh c:\dos\mscdex.exe /D:MYCD 
 </span></span><span style="display:flex;"><span>loadhigh C:\drivers\SHCDX33F.COM /D:MYCD 
 </span></span><span style="display:flex;"><span>loadhigh C:\drivers\doskey25\doskey.com 
@@ -693,6 +693,23 @@ First Windows OS to have practical (installable) networking capabilities Last on
       <article class="mini-post">
         <section>
           
+  <a href="/2026/02/review-and-teardown-creative-mb-10/" class="image featured">
+    
+      <img src="/2026/02/review-and-teardown-creative-mb-10/images/mb10-banner.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2026/02/review-and-teardown-creative-mb-10/">Review and Teardown of Creative Midi Blaster MB-10 synthesizer</a></h1>
+          <time class="published" datetime="">February 21, 2026</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2025/07/ceg-master-graduate-loh/" class="image featured">
     
       <img src="/2025/07/ceg-master-graduate-loh/images/ceg-master-banner.jpg" alt="">
@@ -758,23 +775,6 @@ First Windows OS to have practical (installable) networking capabilities Last on
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/08/dos-on-thinkpad-x13-gen1/" class="image featured">
-    
-      <img src="/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/08/dos-on-thinkpad-x13-gen1/">DOS&#39;s Last Stand on a modern Thinkpad: X13 Gen 1 with Intel i5-10310U</a></h1>
-          <time class="published" datetime="">August 18, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -806,7 +806,7 @@ First Windows OS to have practical (installable) networking capabilities Last on
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">16</span></a>
             
           
           <li>
@@ -821,12 +821,12 @@ First Windows OS to have practical (installable) networking capabilities Last on
           
           <li>
             
-              <a href="/categories/school/">school<span class="count">10</span></a>
+              <a href="/categories/teardowns/">teardowns<span class="count">11</span></a>
             
           
           <li>
             
-              <a href="/categories/teardowns/">teardowns<span class="count">10</span></a>
+              <a href="/categories/school/">school<span class="count">10</span></a>
             
           
           <li>
@@ -881,6 +881,11 @@ First Windows OS to have practical (installable) networking capabilities Last on
           
           <li>
             
+              <a href="/categories/hardware/">hardware<span class="count">1</span></a>
+            
+          
+          <li>
+            
               <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
             
           
@@ -903,12 +908,12 @@ First Windows OS to have practical (installable) networking capabilities Last on
   
   <p class="copyright">
     
-      &copy; 2025
+      &copy; 2026
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.153.1' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.156.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

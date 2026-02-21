@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.153.1">
+<meta name="generator" content="Hugo 0.156.0">
   <meta itemprop="name" content="A Science Project: &#34;Make the 486 Great Again!&#34; - Modern Linux in an ancient PC">
   <meta itemprop="description" content="What is the oldest x86 processor that is still supported by a modern Linux kernel in present time?
 I asked the above quiz question during the Geekcamp tech conference in Nov 2017 during my emcee role. The theoretical answer as you can glean from the title of this post is the 486 which was first released in 1989. I determined that fact from this article where support for the 386 was dropped in Dec 2012.
@@ -385,7 +385,7 @@ To get you interested, here is the result of my effort.">
 <p>For more information about the Gentoo Stages, you can take a look <a href="https://wiki.gentoo.org/wiki/Stage_tarball">here</a>.</p>
 <h2 id="step4">Step 4: Verify compilation parameters</h2>
 <p>Portage is the package manager used in Gentoo and we have to make sure that its configuration will invoke the GCC compiler to emit packages that are 486 compatible. Ensure <code>/etc/portage/make.conf</code> has the following 486-specific options:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>CFLAGS=&#34;-O2 -march=i486 -pipe&#34; 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>CFLAGS=&#34;-O2 -march=i486 -pipe&#34; 
 </span></span><span style="display:flex;"><span>CHOST=&#34;i486-pc-linux-gnu&#34; 
 </span></span><span style="display:flex;"><span>MAKEOPTS=&#34;-j5&#34; # A good choice is the number of CPU cores in the system plus 1 
 </span></span><span style="display:flex;"><span>USE=&#34;-kde -qt4 -qt5 ffmpeg mp3 alsa&#34;
@@ -410,7 +410,7 @@ To get you interested, here is the result of my effort.">
 <h2 id="step6">Step 6: Install Bootloader</h2>
 <p>The usual bootloader used by Linux today is <a href="https://wiki.gentoo.org/wiki/GRUB2">Grub2</a>. I tried that but it did a reboot loop whenever I tried to start the system. Online research say I should use the older <a href="https://en.wikipedia.org/wiki/LILO_%28boot_loader%29">LILO bootloader</a> instead. LILO is unsupported as of December 2015 but it is still able to load modern Linux kernels.</p>
 <p>This a snippet of the_ /etc/lilo.conf_ Lilo configuration file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>image=/boot/vmlinuz-4.14.8-gentoo-r1 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>image=/boot/vmlinuz-4.14.8-gentoo-r1 
 </span></span><span style="display:flex;"><span>    label=gentoo 
 </span></span><span style="display:flex;"><span>    read-only 
 </span></span><span style="display:flex;"><span>    root=/dev/sda3 
@@ -592,6 +592,23 @@ Left: 80-conductor PATA cable, Right: 40-conductor PATA cable</p>
       <article class="mini-post">
         <section>
           
+  <a href="/2026/02/review-and-teardown-creative-mb-10/" class="image featured">
+    
+      <img src="/2026/02/review-and-teardown-creative-mb-10/images/mb10-banner.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2026/02/review-and-teardown-creative-mb-10/">Review and Teardown of Creative Midi Blaster MB-10 synthesizer</a></h1>
+          <time class="published" datetime="">February 21, 2026</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2025/07/ceg-master-graduate-loh/" class="image featured">
     
       <img src="/2025/07/ceg-master-graduate-loh/images/ceg-master-banner.jpg" alt="">
@@ -657,23 +674,6 @@ Left: 80-conductor PATA cable, Right: 40-conductor PATA cable</p>
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/08/dos-on-thinkpad-x13-gen1/" class="image featured">
-    
-      <img src="/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/08/dos-on-thinkpad-x13-gen1/">DOS&#39;s Last Stand on a modern Thinkpad: X13 Gen 1 with Intel i5-10310U</a></h1>
-          <time class="published" datetime="">August 18, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -705,7 +705,7 @@ Left: 80-conductor PATA cable, Right: 40-conductor PATA cable</p>
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">16</span></a>
             
           
           <li>
@@ -720,12 +720,12 @@ Left: 80-conductor PATA cable, Right: 40-conductor PATA cable</p>
           
           <li>
             
-              <a href="/categories/school/">school<span class="count">10</span></a>
+              <a href="/categories/teardowns/">teardowns<span class="count">11</span></a>
             
           
           <li>
             
-              <a href="/categories/teardowns/">teardowns<span class="count">10</span></a>
+              <a href="/categories/school/">school<span class="count">10</span></a>
             
           
           <li>
@@ -780,6 +780,11 @@ Left: 80-conductor PATA cable, Right: 40-conductor PATA cable</p>
           
           <li>
             
+              <a href="/categories/hardware/">hardware<span class="count">1</span></a>
+            
+          
+          <li>
+            
               <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
             
           
@@ -802,12 +807,12 @@ Left: 80-conductor PATA cable, Right: 40-conductor PATA cable</p>
   
   <p class="copyright">
     
-      &copy; 2025
+      &copy; 2026
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.153.1' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.156.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

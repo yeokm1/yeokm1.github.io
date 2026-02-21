@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.153.1">
+<meta name="generator" content="Hugo 0.156.0">
   <meta itemprop="name" content="Building a new Win 3.1 app in 2019 Part 1: Slack client">
   <meta itemprop="description" content="In October 2019, my company SP Digital held an internal hackathon. My colleague Subhransu and I worked on a whacky idea of writing a brand-new Windows 3.1 app which was an OS released almost 30 years ago. The idea we chose was a Slack client. After all, Slack clients exist for most platforms but I’m certain one does not exist for Windows 3.1.
 A few months later in Dec 2019, I would join the Super Silly Hackathon for the second time with fellow retrocomputing enthusiast Hui Jing. We would develop a small game for Win 3.1 with great help from the knowledge gained from this first project.
@@ -369,7 +369,7 @@ I concur with this.</p>
 <p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-allocmem.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-allocmem-952x1024.jpg" alt=""></a></p>
 <p><a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-memapi.jpg"><img src="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/images/wfwslack-memapi-818x1024.jpg" alt=""></a></p>
 <p>To allocate a &ldquo;large&rdquo; chunk of memory from the APIs described in the book, we need to allocate them from the Global heap. This is what I did below.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;windowsx.h&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;windowsx.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">//Up to 64K is possible 
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define MAX_GLOBAL_MEM_ALLOCATION 32000
@@ -395,7 +395,7 @@ I concur with this.</p>
 <p>There might be some SSL libraries for embedded systems that are worth a try like BearSSL, mbed TLS and WolfSSL. See the end of this blog post on my further thoughts of this subject.</p>
 <h3 id="socket-programming">Socket Programming</h3>
 <p>The last time I did low-level socket programming was in university. This days with modern programming languages and APIs, everything is done for you. But no such libraries exist for C89 last I checked. So I had construct the entire POST request by hand and call the socket APIs directly.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;winsock.h&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;winsock.h&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#pragma comment(lib,&#34;winsock.lib&#34;) 
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define POST_MESSAGE_FORMAT &#34;POST /api/chat.postMessage?channel=%s&amp;as_user=true&amp;text=%s HTTP/1.1\r\nHost: slack.com\r\nAuthorization: Bearer %s\r\nAccept: */*\r\nConnection: close\r\n\r\n&#34;
@@ -426,9 +426,9 @@ I concur with this.</p>
 <h3 id="json-parsing">JSON parsing</h3>
 <p>The output of most REST APIs are in JSON format. Again, no native JSON decoding APIs are available on VC++ 1.52. After much hunting, I found C89-compatible JSON parser called <a href="https://github.com/zserge/jsmn">JSMN,</a> however it has some quirks that make using it more challenging.</p>
 <p>Typical JSON parsers provide a dictionary output where you can access the stored values by providing a key.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>value <span style="color:#f92672">=</span> jsonDictionary[<span style="color:#960050;background-color:#1e0010">&#39;</span>key<span style="color:#960050;background-color:#1e0010">&#39;</span>]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>value <span style="color:#f92672">=</span> jsonDictionary[<span style="color:#960050;background-color:#1e0010">&#39;</span>key<span style="color:#960050;background-color:#1e0010">&#39;</span>]
 </span></span></code></pre></div><p>However for memory-saving reasons, JSMN does not output a dictionary. It gives out an array of tokens structs that points to the token boundaries in the original JSON string. Let&rsquo;s give an example from my code</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;jsmn.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;jsmn.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>jsmn_parser parser;
 </span></span><span style="display:flex;"><span>jsmntok_t tokens[MAX_TOKENS];
@@ -591,6 +591,23 @@ Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums
       <article class="mini-post">
         <section>
           
+  <a href="/2026/02/review-and-teardown-creative-mb-10/" class="image featured">
+    
+      <img src="/2026/02/review-and-teardown-creative-mb-10/images/mb10-banner.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2026/02/review-and-teardown-creative-mb-10/">Review and Teardown of Creative Midi Blaster MB-10 synthesizer</a></h1>
+          <time class="published" datetime="">February 21, 2026</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2025/07/ceg-master-graduate-loh/" class="image featured">
     
       <img src="/2025/07/ceg-master-graduate-loh/images/ceg-master-banner.jpg" alt="">
@@ -656,23 +673,6 @@ Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/08/dos-on-thinkpad-x13-gen1/" class="image featured">
-    
-      <img src="/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/08/dos-on-thinkpad-x13-gen1/">DOS&#39;s Last Stand on a modern Thinkpad: X13 Gen 1 with Intel i5-10310U</a></h1>
-          <time class="published" datetime="">August 18, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -704,7 +704,7 @@ Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">16</span></a>
             
           
           <li>
@@ -719,12 +719,12 @@ Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums
           
           <li>
             
-              <a href="/categories/school/">school<span class="count">10</span></a>
+              <a href="/categories/teardowns/">teardowns<span class="count">11</span></a>
             
           
           <li>
             
-              <a href="/categories/teardowns/">teardowns<span class="count">10</span></a>
+              <a href="/categories/school/">school<span class="count">10</span></a>
             
           
           <li>
@@ -779,6 +779,11 @@ Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums
           
           <li>
             
+              <a href="/categories/hardware/">hardware<span class="count">1</span></a>
+            
+          
+          <li>
+            
               <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
             
           
@@ -801,12 +806,12 @@ Source2: <a href="https://forums.mbed.com/t/mbed-tls-size-t/3103">https://forums
   
   <p class="copyright">
     
-      &copy; 2025
+      &copy; 2026
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.153.1' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.156.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

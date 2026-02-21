@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.153.1">
+<meta name="generator" content="Hugo 0.156.0">
   <meta itemprop="name" content="How do I produce my flight videos?">
   <meta itemprop="description" content="I have recorded and published dozens of in-cockpit flight videos ever since my PPL training videos to the present. For a long time now, I have received many questions on how are these videos produced.
 Therefore I decided to write this blog post to address these questions as the video production and editing process is not as straightforward as it may seem.">
@@ -385,13 +385,13 @@ Therefore I decided to write this blog post to address these questions as the vi
 <p>The video files produced by the GoPro are split into 4GB chunks. I suspect this is because they want to be compatible with the FAT32 filesystem which only supports a maximum file size of 4GB.</p>
 <p>For ease of video editing in the subsequent steps, we should combine these video files into one file. To do so, I use the open source tool <a href="https://www.ffmpeg.org/">FFmpeg</a>.</p>
 <p>I first create a file such as the following named <code>mylist.txt</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>file &#39;GX010114.MP4&#39;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>file &#39;GX010114.MP4&#39;
 </span></span><span style="display:flex;"><span>file &#39;GX020114.MP4&#39;
 </span></span><span style="display:flex;"><span>file &#39;GX030114.MP4&#39;
 </span></span><span style="display:flex;"><span>file &#39;GX040114.MP4&#39;
 </span></span><span style="display:flex;"><span>file &#39;GX050114.MP4&#39;
 </span></span></code></pre></div><p>Then I run a command like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ffmpeg -f concat -safe <span style="color:#ae81ff">0</span> -i mylist.txt -c copy face-front.mp4
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ffmpeg -f concat -safe <span style="color:#ae81ff">0</span> -i mylist.txt -c copy face-front.mp4
 </span></span></code></pre></div><a href="images/fv-concat-videos.png"><img src="images/fv-concat-videos.png" width="700"></a>
 <p>This command merges all the files without the need of time-consuming re-encoding.</p>
 <h3 id="pip-audio-sync">Picture in Picture and audio sync</h3>
@@ -622,6 +622,23 @@ Therefore I decided to write this blog post to address these questions as the vi
       <article class="mini-post">
         <section>
           
+  <a href="/2026/02/review-and-teardown-creative-mb-10/" class="image featured">
+    
+      <img src="/2026/02/review-and-teardown-creative-mb-10/images/mb10-banner.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2026/02/review-and-teardown-creative-mb-10/">Review and Teardown of Creative Midi Blaster MB-10 synthesizer</a></h1>
+          <time class="published" datetime="">February 21, 2026</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
   <a href="/2025/07/ceg-master-graduate-loh/" class="image featured">
     
       <img src="/2025/07/ceg-master-graduate-loh/images/ceg-master-banner.jpg" alt="">
@@ -687,23 +704,6 @@ Therefore I decided to write this blog post to address these questions as the vi
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-  <a href="/2024/08/dos-on-thinkpad-x13-gen1/" class="image featured">
-    
-      <img src="/2024/08/dos-on-thinkpad-x13-gen1/images/x13g1-front-egpu-dock-partial.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h1><a href="/2024/08/dos-on-thinkpad-x13-gen1/">DOS&#39;s Last Stand on a modern Thinkpad: X13 Gen 1 with Intel i5-10310U</a></h1>
-          <time class="published" datetime="">August 18, 2024</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -735,7 +735,7 @@ Therefore I decided to write this blog post to address these questions as the vi
           
           <li>
             
-              <a href="/categories/retrocomputing/">retrocomputing<span class="count">15</span></a>
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">16</span></a>
             
           
           <li>
@@ -750,12 +750,12 @@ Therefore I decided to write this blog post to address these questions as the vi
           
           <li>
             
-              <a href="/categories/school/">school<span class="count">10</span></a>
+              <a href="/categories/teardowns/">teardowns<span class="count">11</span></a>
             
           
           <li>
             
-              <a href="/categories/teardowns/">teardowns<span class="count">10</span></a>
+              <a href="/categories/school/">school<span class="count">10</span></a>
             
           
           <li>
@@ -810,6 +810,11 @@ Therefore I decided to write this blog post to address these questions as the vi
           
           <li>
             
+              <a href="/categories/hardware/">hardware<span class="count">1</span></a>
+            
+          
+          <li>
+            
               <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
             
           
@@ -832,12 +837,12 @@ Therefore I decided to write this blog post to address these questions as the vi
   
   <p class="copyright">
     
-      &copy; 2025
+      &copy; 2026
       
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.153.1' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.156.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

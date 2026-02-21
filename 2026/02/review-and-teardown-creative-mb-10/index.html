@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Review and Teardown of Creative Midi Blaster MB-10 synthesizer - YKM&#39;s Corner on the Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.156.0">
+  <meta itemprop="name" content="Review and Teardown of Creative Midi Blaster MB-10 synthesizer">
+  <meta itemprop="description" content="The Creative Midi Blaster MB-10 recently entered my retro-collection 33 years after its first release in 1993. Seeing that there isn’t much detailed information about this device on the internet, I decided to do a review followed by a teardown of this device. I will also take some sample audio recordings of it.">
+  <meta itemprop="datePublished" content="2026-02-21T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-02-21T00:00:00+00:00">
+  <meta itemprop="wordCount" content="2615">
+  <meta itemprop="image" content="http://yeokhengmeng.com/2026/02/review-and-teardown-creative-mb-10/images/mb10-banner.jpg">
+  <meta itemprop="keywords" content="Retrocomputing,Teardowns,Hardware"><meta property="og:url" content="http://yeokhengmeng.com/2026/02/review-and-teardown-creative-mb-10/">
+  <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
+  <meta property="og:title" content="Review and Teardown of Creative Midi Blaster MB-10 synthesizer">
+  <meta property="og:description" content="The Creative Midi Blaster MB-10 recently entered my retro-collection 33 years after its first release in 1993. Seeing that there isn’t much detailed information about this device on the internet, I decided to do a review followed by a teardown of this device. I will also take some sample audio recordings of it.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2026-02-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-02-21T00:00:00+00:00">
+    <meta property="og:image" content="http://yeokhengmeng.com/2026/02/review-and-teardown-creative-mb-10/images/mb10-banner.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://yeokhengmeng.com/2026/02/review-and-teardown-creative-mb-10/images/mb10-banner.jpg">
+  <meta name="twitter:title" content="Review and Teardown of Creative Midi Blaster MB-10 synthesizer">
+  <meta name="twitter:description" content="The Creative Midi Blaster MB-10 recently entered my retro-collection 33 years after its first release in 1993. Seeing that there isn’t much detailed information about this device on the internet, I decided to do a review followed by a teardown of this device. I will also take some sample audio recordings of it.">
+      <meta name="twitter:site" content="@yeokm1">
+<link rel="stylesheet" href="/css/bundle.min.418a60f85adce9ae6387a2f7c16d3f05b12ba08867482d06c5436e04c75e4366.css" integrity="sha256-QYpg&#43;Frc6a5jh6L3wW0/BbEroIhnSC0GxUNuBMdeQ2Y=">
+        <link rel="stylesheet" href="/css/add-on.css"></head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            post
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/aviation" class="link"><i class='fas fa-plane'></i> Aviation</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/retrocomputing" class="link"><i class='fas fa-save'></i> Retrocomputing</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/favourite-quotes/" class="link">Favourite Quotes</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about-me/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/zh" lang="zh" class="no-lang link">简体中文 (zh)</a>
+      
+    
+  
+</menu>
+
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="" alt="Kheng Meng profile pic" /></a>
+  <header>
+    <h1>Yeo Kheng Meng</h1>
+  </header>
+  <main>
+    <p>Maker, Coder, Private Pilot, Retrocomputing Enthusiast</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/yeokm1" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/yeokhengmeng" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/yeokhengmeng" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/yeokm1" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/yeokm1" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/yeokm1" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+<li><a href="//telegram.me/yeokm1" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/2026/02/review-and-teardown-creative-mb-10/">Review and Teardown of Creative Midi Blaster MB-10 synthesizer</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2026-02-21 00:00:00 &#43;0000 UTC">
+      February 21, 2026
+    </time>
+    <span class="author"></span>
+    
+      <p>13 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  </section>
+  
+  <a href="/2026/02/review-and-teardown-creative-mb-10/" class="image featured">
+    
+      <img src="/2026/02/review-and-teardown-creative-mb-10/images/mb10-banner.jpg" alt="">
+    
+  </a>
+
+
+  <div class="content">
+    <p>The Creative Midi Blaster MB-10 recently entered my retro-collection 33 years after its first release in 1993. Seeing that there isn&rsquo;t much detailed information about this device on the internet, I decided to do a review followed by a teardown of this device. I will also take some sample audio recordings of it.</p>
+<h2 id="background-of-midi-devices">Background of MIDI devices</h2>
+<p>In the 1980s and 1990s, during the relatively early days of personal computing, PCs were not very powerful as they did not have much CPU power and memory.</p>
+<p>To play sounds especially long musical soundtracks, many PC games opted to utilise FM synthesis such as the <a href="https://en.wikipedia.org/wiki/Yamaha_OPL">Yamaha OPL (Operator Type-L)</a> series of chips on early sound cards like Adlib and Sound Blaster. This FM synthesis generates sound waveforms based on the instructions sent to the sound card. Digital audio is supported by cards like Sound Blaster but usually only used for short effects due to higher memory requirements.</p>
+<p>The higher-end alternative to FM Synthesis was Wavetable Synthesis. By sending MIDI commands to a dedicated daughterboard or external sound module, games could play actual recordings/samples of real instruments. This offered vastly superior sound quality, but the higher cost of these arguably optional hardware like the Roland MT-32 or SC-55 meant the average PC gamer seldom purchased them much less heard what they sounded like.</p>
+<p>I personally recalled some games having some sound module hardware names in their setup and readme files but having no idea what those were. Now today decades later, I got to experience what I missed then and hear what those games were meant to sound like as their composers intended.</p>
+<h2 id="background-of-my-external-midi-devices">Background of my external MIDI devices</h2>
+<p>A decade ago, I purchased a second-hand Roland Sound Canvas SC-55mkII and remember being floored by the sound quality.</p>
+<a href="images/mb10-sc55.jpg"><img src="images/mb10-sc55.jpg" width="600"></a>
+<p>The SC-55mkII (bottom) is a slight upgrade from the original 1991 SC-55 which was the first sound module to incorporate the new General MIDI standard. The SC-55 is widely considered to be the de-facto reference sound module for General MIDI for DOS games of the time period as many game music composers composed their music for this device. Famous examples are Descent and Doom.</p>
+<p>When the Creative MB-10 was generously donated to me, I was initially surprised that Creative also made such an external module as well. Most people who lived through that time would instead associate Creative with their Sound Blaster line of sound cards which pretty much set the standard for PC audio at that time.</p>
+<p>With limited information available online on this module, it seems this is the only external MIDI device released by Creative.</p>
+<h2 id="mb-10-external-device-views">MB-10 External device views</h2>
+<a href="images/mb10-front.jpg"><img src="images/mb10-front.jpg" width="700"></a>
+<p>On the front of the module, it has a Power/Activity LED, headphone jack and volume dial. The Power/Activity LED will blink when there is MIDI activity.</p>
+<p>The module comes with a cable that interfaces with a sound card through the joystick port.</p>
+<a href="images/mb10-rear.jpg"><img src="images/mb10-rear.jpg" width="700"></a>
+<p>On the rear, we can see the RCA line in/out, MIDI In/Thru and the power connector. Note the 9V centre-negative polarity of the DC power connector which is relatively less common.</p>
+<p>MIDI In/Thru ports are relatively common for MIDI devices as it enabled daisy-chaining of multiple MIDI devices to share the same input source.</p>
+<a href="images/mb10-bottom.jpg"><img src="images/mb10-bottom.jpg" width="600"></a>
+<p>On the bottom, the label indicates that the device was Made in Singapore. Those was the days when Singapore was still relatively strong in the consumer device manufacturing space.</p>
+<h2 id="external-box-view">External box view</h2>
+<p>The original packing box was also passed to me together with the module. This would turn out to be highly useful as it gave me valuable information about the specifications of the device absent online sources.</p>
+<a href="images/mb10-box-front.jpg"><img src="images/mb10-box-front.jpg" width="600"></a>
+<p>Like with most products, the box was supposed to come with floppy disk software and the user manual, but those sadly weren&rsquo;t included. Those must have been misplaced during the passage of time of decades.</p>
+<a href="images/mb10-box-rear.jpg"><img src="images/mb10-box-rear.jpg" width="600"></a>
+<p>Based on the box, it supports the following specifications:</p>
+<ul>
+<li>General Midi Compatible</li>
+<li>16 Midi Channels</li>
+<li>20-note polyphony</li>
+<li>44.1 kHz Sampling Rate</li>
+<li>128 instruments</li>
+<li>61 variations</li>
+<li>92 drums</li>
+<li>46 special effects</li>
+<li>10 Hz to 20 kHz frequency range</li>
+<li>MT-32 emulation</li>
+</ul>
+<p>Some immediate thoughts came to mind when I read the specifications:</p>
+<ul>
+<li>It is unknown how to get the device into MT-32 emulation mode since the user manual and software is missing.</li>
+<li>20 notes is below the minimum of 24 required for <a href="https://midi.org/general-midi-level-1">General MIDI Level 1 standard</a> hence it technically does not comply.</li>
+<li>44.1 kHz is better than SC-55&rsquo;s 32 kHz sampling rate.</li>
+</ul>
+<h2 id="videos">Videos</h2>
+<p>Since there is limited information much less audio captures of this device, I decided to capture full-length audio samples from Descent and Doom gameplays, their MIDI tracks, as well as comparisons to my SC-55mkII.</p>
+<h3 id="short-comparison-with-roland-sc-55mkii">Short comparison with Roland SC-55mkII</h3>
+<p>Both devices are daisy-chained and their outputs recorded simultaneously. The audio source is from the actual game running on my <a href="/2021/05/setting-up-a-486-retro-pc/">486 PC</a>.</p>
+<p><div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Y8QVrFomBJk?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+Creative MB-10 vs Roland SC-55: Descent game MIDI (03:43)</p>
+<p><div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Ux4N0CxTSXs?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+Creative MB-10 vs Roland SC-55: Doom game MIDI (02:46)</p>
+<h3 id="full-length-game-midi-music">Full-length game MIDI music</h3>
+<p>MIDI tracks from Descent and Doom are played on my modern PC through a Roland UM-One USB Midi interface.</p>
+<a href="images/mb10-x4-umone.jpg"><img src="images/mb10-x4-umone.jpg" width="600"></a>
+<p>Sound is then recorded on my modern SoundBlaster X4 at 24-bit, 48kHz.</p>
+<p><div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/rLhH8isgWjA?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+Creative MB-10 playing Descent General MIDI (1:24:49)</p>
+<p><div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/COo2mdyXusU?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+Creative MB-10 playing Doom General MIDI (1:11:47)</p>
+<h2 id="review">Review</h2>
+<p>Now let&rsquo;s review this device as though we are in the early 1990s. I will start with a specification comparison with the Roland SC-55 series as the reference standard.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Feature</th>
+          <th>Creative MB-10 (Box Specs)</th>
+          <th>Roland SC-55 (Original)</th>
+          <th>Roland SC-55mkII</th>
+          <th>Roland SC-55ST</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Launch Year</td>
+          <td>1993</td>
+          <td>1991</td>
+          <td>1993</td>
+          <td>1993</td>
+      </tr>
+      <tr>
+          <td>~Launch Price</td>
+          <td>US\$300</td>
+          <td>US\$795</td>
+          <td>US\$795</td>
+          <td>US\$400</td>
+      </tr>
+      <tr>
+          <td>2026 Inflated adjusted</td>
+          <td>US\$675 / SG\$855</td>
+          <td>US\$1900 / SG\$2410</td>
+          <td>US\$1900 / SG\$2410</td>
+          <td>US\$900 / SG\$1140</td>
+      </tr>
+      <tr>
+          <td>Sampling Rate</td>
+          <td>44.1 kHz</td>
+          <td>32 kHz</td>
+          <td>32 kHz</td>
+          <td>32 kHz</td>
+      </tr>
+      <tr>
+          <td>Polyphony notes</td>
+          <td>20</td>
+          <td>24</td>
+          <td>28</td>
+          <td>28</td>
+      </tr>
+      <tr>
+          <td>Instruments</td>
+          <td>128 Tones + 61 Variations</td>
+          <td>317</td>
+          <td>354</td>
+          <td>354</td>
+      </tr>
+      <tr>
+          <td>Drums</td>
+          <td>92 drums</td>
+          <td>9 kits</td>
+          <td>9 kits</td>
+          <td>9 kits</td>
+      </tr>
+      <tr>
+          <td>Display</td>
+          <td>None. LED indicator.</td>
+          <td>LCD</td>
+          <td>LCD</td>
+          <td>None. LED Indicator.</td>
+      </tr>
+  </tbody>
+</table>
+<p>It&rsquo;s difficult to judge an audio device purely from paper specifications. Based on what I hear from the MB-10 and doing the side-by-side comparison, I can confidently say it is very competitive with the SC-55. It is close enough that if one&rsquo;s attention is focused on playing a game, you are unlikely to instantly pick out the differences between both.</p>
+<p>This goes with my anecdotal observation that products from Creative from decades ago to the present generally offer good value-for-money. Providing good features at budget-to-mid-range prices.</p>
+<p>If one listens intently, one can definitely pick out the differences.</p>
+<ol>
+<li>The reduced note polyphony compared to the SC-55&rsquo;s 24-note is clearly noticeable when playing tracks with multiple notes. Certain notes are simply not played at all on the MB-10 whereas the SC-55 sounds richer.</li>
+<li>The MB-10&rsquo;s higher 44.1kHz sampling rate vs SC-55&rsquo;s 32kHz sometimes shines through as certain higher pitches can be better heard.</li>
+</ol>
+<p>Howeve there are some downsides:</p>
+<ol>
+<li>During hour-long plays of musical tracks, I do notice the MB-10 will occasionally freeze requiring a power cycle to recover. Also during long plays, notes sometimes hang similar to the <a href="https://www.vogonswiki.com/index.php/Hanging_note_bug">hanging-notes bug</a> that plagued some models of the SB16 and AWE32 sound cards. These problems are rare and infrequent enough that I cannot reliably replicate them but they do happen from time to time.</li>
+<li>There is noticeable noise floor if one uses the headphone jack on the front. It&rsquo;s unclear to me if this is a design flaw or due to the age of this device. (I may need to replace the capacitors near the headphone jack.) The rear RCA line-out does not have this issue.</li>
+</ol>
+<h3 id="comparison-with-the-roland-sc-55-series-for-a-1990s-consumer">Comparison with the Roland SC-55 series for a 1990s consumer</h3>
+<p>By specification alone, the MB-10 technically does not provide the full authentic General Midi experience.</p>
+<p>If money is no object, just splurge on the Roland SC-55 series to hear the music as the composers intended. Unless one is more than an amateur composer, there is no need to consider the very expensive original SC-55 or SC-55mkII. So the real question is between the SC-55ST or MB-10?</p>
+<p>The MB-10&rsquo;s price is 25% cheaper compared to the SC-55ST for less notes and therefore technical loss of General MIDI compatibility. Is that a worthy trade-off?</p>
+<p>US\$100 is a more significant amount in early 1990s than it is today. An argument can be made that if one is gonna spend the extra money to buy an external MIDI sound module, might at well go with the SC-55 as that is the de-facto standard.</p>
+<p>In my opinion, it can be for someone where the extra US\$100 saved may be save or used to purchase something else. The provided free Cakewalk Apprentice MIDI sequencer software may also be a deciding factor.</p>
+<p>There is probably a market for this and the MB-10 is a worthy consideration.</p>
+<h2 id="teardown">Teardown</h2>
+<p>Now let me move on to tearing down the device to see what are the parts that make it tick. For brevity, I will only cover the major ICs.</p>
+<a href="images/mb10-internal-top.jpg"><img src="images/mb10-internal-top.jpg" width="700"></a>
+<p>All through-hole components which should make repair easier to do if necessary. The chips which are covered by the Creative stickers are definitely of interest.</p>
+<h3 id="u6-siemens-80c32-16-n">U6: Siemens 80C32-16-N</h3>
+<a href="images/mb10-siemens-mcu.jpg"><img src="images/mb10-siemens-mcu.jpg" width="600"></a>
+<p>This is an 8-bit 16Mhz microcontroller. 80C32 part number indicates it is using an external ROM. It is based on the venerable 8051 architecture.</p>
+<p>This part is responsible for receiving the MIDI instructions and commanding the Dream effects processor.</p>
+<h3 id="u17-dream-sam8905">U17: Dream SAM8905</h3>
+<a href="images/mb10-internal-dream.jpg"><img src="images/mb10-internal-dream.jpg" width="600"></a>
+<p>Peeling back the sticker of the largest chip reveals a Dream SAM8905 effects processor.</p>
+<a href="images/mb10-cs8905.jpg"><img src="images/mb10-cs8905.jpg" width="600"></a>
+<p>The datasheet screenshot is from Crystal as I could not locate one from Dream. According to <a href="https://www.dosdays.co.uk/topics/wavetable_audio.php">dosdays.co.uk</a> <em>&ldquo;Crystal Semiconductor were an authorised chip fabricator for Dream, and were permitted to have their chips branded &lsquo;Crystal&rsquo;&rdquo;</em>. So this datasheet should be an acceptable replacement.</p>
+<p>The Rakon 44.1Mhz crystal confirms the appropriate clock signal that drives the Dream chip for that sampling rate.</p>
+<p>Based on the datasheet it reveals that this chip can only handle up to 16 notes simultaneously. This is not consistent with the advertised 20-note specifications. Unless I&rsquo;m missing something, the advertised specification is simply not true or I&rsquo;m interpreting it differently.</p>
+<p>This is something that I will test for later!</p>
+<h3 id="u2-u8-u18-u19-rom-chips">U2, U8, U18, U19: ROM chips</h3>
+<p>The other 4 chips covered with the stickers are revealed to be ROM chips made by ST. They are all EPROM (Erasable Programmable Read-Only Memory) with a quartz window to allow erasure via UV light.</p>
+<p>For preservation purposes, I dumped them out. Other photos and dumped ROMs have been uploaded to this <a href="https://github.com/yeokm1/creative-mb-10-teardown">Github repository</a>.</p>
+<p>Here are the headers of the dumped ROMs:</p>
+<a href="images/mb10-u2.png"><img src="images/mb10-u2.png" width="600"></a>
+<p>The U2 is the 64KiB external ROM holding the firmware used by the Siemens microcontroller. Note the Dream S.A copyright. Creative probably kept a significant chunk of the OEM firmware provided by Dream.</p>
+<a href="images/mb10-u8.png"><img src="images/mb10-u8.png" width="600"></a>
+<p>The <code>Dream PCM CM</code> at the start of the U8 ROM indicates that it holds the General MIDI (GM) wavetable. <code>1Mx8</code> indicates the entire GM table has a size of 1MiB. Given that the chip M27C4001 has size of 512KiB, it means the ROM is split across 2 chips.</p>
+<p>The other chip is likely U18 since it has the same size and does not have any copyright data at the beginning indicating that is meant to continue after the U8 ROM.</p>
+<a href="images/mb10-u19.png"><img src="images/mb10-u19.png" width="600"></a>
+<p>U19 has a Creative copyright header. My guess is this contains Creative&rsquo;s specific enhancements such as but not limited to, extra instruments and MT-32 emulation. I would love to hear what the Creative&rsquo;s engineers who designed this device have to say.</p>
+<p>In summary:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Designator</th>
+          <th>Part Number</th>
+          <th>Capacity (KiB)</th>
+          <th>Function</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>U2</td>
+          <td>M27C512</td>
+          <td>64</td>
+          <td>Dream firmware for Siemens MCU</td>
+      </tr>
+      <tr>
+          <td>U8</td>
+          <td>M27C4001</td>
+          <td>512</td>
+          <td>Dream General Midi Bank 1</td>
+      </tr>
+      <tr>
+          <td>U18</td>
+          <td>M27C4001</td>
+          <td>512</td>
+          <td>Dream General Midi Bank 2</td>
+      </tr>
+      <tr>
+          <td>U19</td>
+          <td>M27C1001</td>
+          <td>128</td>
+          <td>Creative Custom Bank</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="analog-backend-stage">Analog backend stage</h3>
+<p>3 chips are relevant in this stage:</p>
+<ul>
+<li>U4: TL074CN Op Amp</li>
+<li>U7: TDA1545 Stereo DAC</li>
+<li>U14: TDA2822M Dual Power Amplifier</li>
+</ul>
+<a href="images/mb10-u4-u7-u14.jpg"><img src="images/mb10-u4-u7-u14.jpg" width="700"></a>
+<p>The output of the Dream effects chip is sent to the U7:TDA1545 Digital-to-Analog-Converter.
+U4:TDA1545 Op Amp amplifies the analog signal for output to the RCA Line-out on the rear of the device.
+U14:TDA2822M amplifies for the purpose of driving the relatively lower-impedance headphones.</p>
+<h2 id="testing-the-20-note-specification">Testing the 20-note specification</h2>
+<p>With the Dream SAM8905 chip only able to handle 16 notes, this deviates from Creative&rsquo;s advertised 20-note specification. I want to test this out to see what is the actual polyphony note limit of this device.</p>
+<p>I vibe-coded a Python program to generate a MIDI file with an initial high-pitch canary note then playing more new notes with successively increasing pitches. The idea is that at some point, the initial canary note will be cut out once the polyphony note limit is hit.</p>
+<p><div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/S4zeKulYBgw?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+Creative MB-10 vs Roland SC-55mkII: Max Tone Limit test (02:56)</p>
+<p>Relevant timestamps:</p>
+<ul>
+<li>00:01 - MB-10 - Tests start with constant high pitch note on Channel 1, filler notes on Channel 2</li>
+<li>00:17 - MB-10 - Note 17 causes initial high pitch note to cut out</li>
+<li>00:22 - MB-10 - Reach max Note 21 and turn off notes</li>
+<li>00:45 - SC-55 - Tests start with constant high pitch note on Channel 1, filler notes on Channel 2</li>
+<li>01:18 - SC-55 - Reach max Note 31 with high pitch note still active and turn off notes</li>
+<li>01:50 - SC-55 - Tests start with constant high pitch note on Channel 16, filler notes on Channel 1</li>
+<li>02:20 - SC-55 - Note 29 causes initial high pitch note to cut out</li>
+<li>02:24 - SC-55 - Reach max Note 31 and turn off notes</li>
+</ul>
+<p>The MB-10 cuts out the initial canary note when Note 17 is played.</p>
+<p>The SC-55mkII&rsquo;s behaviour is not that straightforward. There should be an internal algorithm that prioritises certain notes since the canary note plays throughout when I played it initially. To force the canary note to cut out, I had to play it on lower priority Channel 16 compared to filler notes on Channel 1.</p>
+<p>The evidence is clear, the Creative MB-10 is really a 16-note polyphony device. So 33 years later, I believe I&rsquo;m the first to call this product out for false advertising!</p>
+<p>The program and sample Midi files are available on the same <a href="https://github.com/yeokm1/creative-mb-10-teardown">Github repository</a>.</p>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>In the perspective of a 1990s era gamer, the Creative MB-10 is no doubt a decent value-for-money MIDI module.</p>
+<p>However the false advertising of 20-note polyphony is a bit of a letdown, one will never know if Creative intentionally misled customers or made a honest mistake. In practice, I anecdotally see that game soundtracks mostly keep to 16 notes or less and exceed it only for brief periods. So it is not that big of a deal for its target use-case but still a stain on an otherwise decent product.</p>
+<p>In today&rsquo;s market though, it&rsquo;s a different story. Based on cursory checks at sites like Ebay, I do not see any listings for the MB-10. This is probably due to the MB-10 not being that popular or manufactured in very large quantities in the first place compared to the SC-55 series. <strong>So even if you want to buy one today, it is almost impossible to do so.</strong></p>
+<p>It&rsquo;s obvious, just get any in the Roland MT-32/SC-55 series or better if you can afford. They are still readily available enough on reseller sites not (yet) at extortion-level prices. You get to finally live the experience of what the game music composers intended. If you don&rsquo;t want the risk of handling decades-old hardware, there are even modern alternatives that can emulate the MT-32 and General Midi such as <a href="https://github.com/dwhinham/mt32-pi">MT32-Pi</a> project.</p>
+<p>I believe this is not just Creative&rsquo;s first external MIDI module, but also their first external sound device of any kind that is publicly released. It may not be the most well-known of Creative&rsquo;s products, but it is a significant milestone in Creative&rsquo;s history that is worth documenting.</p>
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/retrocomputing">retrocomputing</a></li>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/teardowns">teardowns</a></li>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/hardware">hardware</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yeokm1/yeokm1.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNTQ3ODI3NTI="
+        data-category="Comments"
+        data-category-id="DIC_kwDODy-tIM4CXEA6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div class="pagination">
+  
+    <a href="/2025/07/ceg-master-graduate-loh/" class="button"><div class="previous"><div>Reflections of a newly minted NUS CEG Master graduate</div></div></a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2026/02/review-and-teardown-creative-mb-10/" class="image featured">
+    
+      <img src="/2026/02/review-and-teardown-creative-mb-10/images/mb10-banner.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2026/02/review-and-teardown-creative-mb-10/">Review and Teardown of Creative Midi Blaster MB-10 synthesizer</a></h1>
+          <time class="published" datetime="">February 21, 2026</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2025/07/ceg-master-graduate-loh/" class="image featured">
+    
+      <img src="/2025/07/ceg-master-graduate-loh/images/ceg-master-banner.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/07/ceg-master-graduate-loh/">Reflections of a newly minted NUS CEG Master graduate</a></h1>
+          <time class="published" datetime="">July 18, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/04/llama2-llm-on-dos/">Llama 2 LLM on DOS</a></h1>
+          <time class="published" datetime="">April 15, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2024/10/modern-pc-vintage-twist/" class="image featured">
+    
+      <img src="/2024/10/modern-pc-vintage-twist/images/ryzendos-banner.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/10/modern-pc-vintage-twist/">Modern 2024 PC with a vintage twist (ft. Ryzen 5 7600 &amp; GeForce 4060 Ti)</a></h1>
+          <time class="published" datetime="">October 6, 2024</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2024/09/book-review-the-race-for-perfect/" class="image featured">
+    
+      <img src="/2024/09/book-review-the-race-for-perfect/images/trfp-preview.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2024/09/book-review-the-race-for-perfect/">Book Review: The Race for Perfect: Inside the Quest to Design the Ultimate Portable Computer by Steve Hamm</a></h1>
+          <time class="published" datetime="">September 9, 2024</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/hacks/">hacks<span class="count">26</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/personal/">personal<span class="count">18</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">16</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/singapore/">singapore<span class="count">15</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/teardowns/">teardowns<span class="count">11</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/school/">school<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/book-reviews/">book-reviews<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hackathon/">hackathon<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/politics/">politics<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/product-reviews/">product-reviews<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/admin/">admin<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/repair-kopitiam/">repair-kopitiam<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/keyboards/">keyboards<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/quiz/">quiz<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/dvorak/">dvorak<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/flight-sim/">flight-sim<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hardware/">hardware<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2026
+      
+        YKM&#39;s Corner on the Web
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.156.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+<script type="text/javascript">
+  var sc_project = 8700008;
+  var sc_invisible = 1;
+  var sc_security = "b569f6b4";
+  var sc_https = 1; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript>
+  <div class="statcounter"><a title="free hit
+  counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+        src="https://c.statcounter.com/8700008/0/b569f6b4/1/" alt="free hit counter"></a></div>
+</noscript>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function (x) {
+      x.parentElement.classList += 'has-jax'
+    })
+  });
+
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.e35f1f8457feac0640f4577943efa2b484c97b0439bff413797745460cd03949.js" integrity="sha256-418fhFf&#43;rAZA9Fd5Q&#43;&#43;itITJewQ5v/QTeXdFRgzQOUk="></script>
+<script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>
