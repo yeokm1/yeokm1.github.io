@@ -479,7 +479,7 @@ Creative MB-10 playing Doom General MIDI (1:11:47)</p>
 <a href="images/mb10-u2.png"><img src="images/mb10-u2.png" width="600"></a>
 <p>The U2 is the 64KiB external ROM holding the firmware used by the Siemens microcontroller. Note the Dream S.A copyright. Creative probably kept a significant chunk of the OEM firmware provided by Dream.</p>
 <a href="images/mb10-u8.png"><img src="images/mb10-u8.png" width="600"></a>
-<p>The <code>Dream PCM CM</code> at the start of the U8 ROM indicates that it holds the General MIDI (GM) wavetable. <code>1Mx8</code> indicates the entire GM table has a size of 1MiB. Given that the chip M27C4001 has size of 512KiB, it means the ROM is split across 2 chips.</p>
+<p>The <code>Dream PCM GM</code> at the start of the U8 ROM indicates that it holds the General MIDI (GM) wavetable. <code>1Mx8</code> indicates the entire GM table has a size of 1MiB. Given that the chip M27C4001 has size of 512KiB, it means the ROM is split across 2 chips.</p>
 <p>The other chip is likely U18 since it has the same size and does not have any copyright data at the beginning indicating that is meant to continue after the U8 ROM.</p>
 <a href="images/mb10-u19.png"><img src="images/mb10-u19.png" width="600"></a>
 <p>U19 has a Creative copyright header. My guess is this contains Creative&rsquo;s specific enhancements such as but not limited to, extra instruments and MT-32 emulation. I would love to hear what the Creative&rsquo;s engineers who designed this device have to say.</p>
