@@ -472,7 +472,7 @@ Creative MB-10 playing Doom General MIDI (1:11:47)</p>
 <h3 id="u2-u8-u18-u19-rom-chips">U2, U8, U18, U19: ROM chips</h3>
 <p>The other 4 chips covered with the stickers are revealed to be ROM chips made by ST. They are all EPROM (Erasable Programmable Read-Only Memory) with a quartz window to allow erasure via UV light.</p>
 <p>Thanks to the ROM chips being all socketed, I was able to dump the ROMs out for preservation purposes by pulling them out with a chip puller without needing to desolder them.</p>
-<p>Other photos and dumped ROMs have been uploaded to this <a href="https://github.com/yeokm1/creative-mb-10-teardown">Github repository</a>.</p>
+<p>Other photos and dumped ROMs have been uploaded to this <a href="https://github.com/yeokm1/mb10-midi-blaster-teardown">Github repository</a>.</p>
 <p>Here are the headers of the dumped ROMs:</p>
 <a href="images/mb10-u2.png"><img src="images/mb10-u2.png" width="600"></a>
 <p>The U2 is the 64KiB external ROM holding the firmware used by the Siemens microcontroller. Note the Dream S.A copyright. Creative probably kept a significant chunk of the OEM firmware provided by Dream.</p>
@@ -551,7 +551,7 @@ Creative MB-10 vs Roland SC-55mkII: Max Tone Limit test (02:56)</p>
 <p>The MB-10 cuts out the initial canary note when Note 17 is played.</p>
 <p>The SC-55mkII&rsquo;s behaviour is not that straightforward. There should be an internal algorithm that prioritises certain notes since the canary note plays throughout when I played it initially. To force the canary note to cut out, I had to play it on lower priority Channel 16 compared to filler notes on Channel 1.</p>
 <p>The evidence is clear, the Creative MB-10 is really a 16-note polyphony device. So 33 years later, I believe I&rsquo;m the first to call this product out for false advertising!</p>
-<p>The program and sample Midi files are available on the same <a href="https://github.com/yeokm1/creative-mb-10-teardown">Github repository</a>.</p>
+<p>The program and sample Midi files are available on the same <a href="https://github.com/yeokm1/mb10-midi-blaster-teardown">Github repository</a>.</p>
 <h2 id="final-thoughts">Final thoughts</h2>
 <p>In the perspective of a 1990s era gamer, the Creative MB-10 is no doubt a decent value-for-money MIDI module.</p>
 <p>However the false advertising of 20-note polyphony is a bit of a letdown, one will probably never know if Creative intentionally misled customers or made a honest mistake. In practice, I anecdotally see that game soundtracks mostly keep to 16 notes or less and exceed it only for brief periods. So it is not that big of a deal for its target use-case but still a stain on an otherwise decent product.</p>
