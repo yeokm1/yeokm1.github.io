@@ -11,7 +11,7 @@
   <meta itemprop="description" content="The Creative Midi Blaster MB-10 recently entered my retro-collection 33 years after its first release in 1993. Seeing that there isn’t much detailed information about this device on the internet, I decided to do a review followed by a teardown of this device. I will also take some sample audio recordings of it.">
   <meta itemprop="datePublished" content="2026-02-21T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-02-21T00:00:00+00:00">
-  <meta itemprop="wordCount" content="2757">
+  <meta itemprop="wordCount" content="2758">
   <meta itemprop="image" content="http://yeokhengmeng.com/2026/02/review-and-teardown-creative-mb-10/images/mb10-banner-int-ext.jpg">
   <meta itemprop="keywords" content="Retrocomputing,Teardowns,Hardware,Product-Reviews"><meta property="og:url" content="http://yeokhengmeng.com/2026/02/review-and-teardown-creative-mb-10/">
   <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -392,7 +392,7 @@ Creative MB-10 playing Doom General MIDI (1:11:47)</p>
           <td>US\$400</td>
       </tr>
       <tr>
-          <td>2026 Inflated adjusted</td>
+          <td>2026 Inflation adjusted</td>
           <td>US\$675 / SG\$855</td>
           <td>US\$1900 / SG\$2410</td>
           <td>US\$1900 / SG\$2410</td>
@@ -458,14 +458,14 @@ Creative MB-10 playing Doom General MIDI (1:11:47)</p>
 <h2 id="teardown">Teardown</h2>
 <p>Now let me move on to tearing down the device to see what are the parts that make it tick. For brevity, I will only cover the major ICs.</p>
 <a href="images/mb10-internal-top.jpg"><img src="images/mb10-internal-top.jpg" width="700"></a>
-<p>All through-hole components which should make repair easier to do if necessary. The chips which are covered by the Creative stickers are definitely of interest.</p>
+<p>Mostly through-hole components which should make repair easier to do if necessary. The chips which are covered by the Creative stickers are definitely of interest.</p>
 <h3 id="u6-siemens-80c32-16-n">U6: Siemens 80C32-16-N</h3>
 <a href="images/mb10-siemens-mcu.jpg"><img src="images/mb10-siemens-mcu.jpg" width="600"></a>
 <p>This is an 8-bit 16Mhz microcontroller. 80C32 part number indicates it is using an external ROM. It is based on the venerable 8051 architecture.</p>
 <p>This part is responsible for receiving the MIDI instructions and commanding the Dream effects processor.</p>
 <h3 id="u17-dream-sam8905">U17: Dream SAM8905</h3>
 <a href="images/mb10-internal-dream.jpg"><img src="images/mb10-internal-dream.jpg" width="600"></a>
-<p>Peeling back the sticker of the largest chip reveals a Dream SAM8905 effects processor.</p>
+<p>Peeling back the sticker of the largest non-ROM chip reveals a Dream SAM8905 effects processor.</p>
 <a href="images/mb10-cs8905.jpg"><img src="images/mb10-cs8905.jpg" width="600"></a>
 <p>The datasheet screenshot is from Crystal as I could not locate one from Dream. According to <a href="https://www.dosdays.co.uk/topics/wavetable_audio.php">dosdays.co.uk</a> <em>&ldquo;Crystal Semiconductor were an authorised chip fabricator for Dream, and were permitted to have their chips branded &lsquo;Crystal&rsquo;&rdquo;</em>. So this datasheet should be an acceptable replacement.</p>
 <p>The Rakon 44.1Mhz crystal confirms the appropriate clock signal that drives the Dream chip for that sampling rate.</p>
