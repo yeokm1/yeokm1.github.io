@@ -11,7 +11,7 @@
   <meta itemprop="description" content="The Creative Midi Blaster MB-10 recently entered my retro-collection 33 years after its first release in 1993. Seeing that there isn’t much detailed information about this device on the internet, I decided to do a review followed by a teardown of this device. I will also take some sample audio recordings of it.">
   <meta itemprop="datePublished" content="2026-02-21T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-02-21T00:00:00+00:00">
-  <meta itemprop="wordCount" content="2756">
+  <meta itemprop="wordCount" content="2757">
   <meta itemprop="image" content="http://yeokhengmeng.com/2026/02/review-and-teardown-creative-mb-10/images/mb10-banner-int-ext.jpg">
   <meta itemprop="keywords" content="Retrocomputing,Teardowns,Hardware,Product-Reviews"><meta property="og:url" content="http://yeokhengmeng.com/2026/02/review-and-teardown-creative-mb-10/">
   <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -448,7 +448,7 @@ Creative MB-10 playing Passport.mid (02:03)</p>
 <li>The reduced note polyphony compared to the SC-55&rsquo;s 24-note is clearly noticeable when playing tracks with multiple notes. Certain notes are simply not played at all on the MB-10 whereas the SC-55 sounds richer.</li>
 <li>The MB-10&rsquo;s higher 44.1kHz sampling rate vs SC-55&rsquo;s 32kHz sometimes shines through as certain higher pitches can be better heard.</li>
 </ol>
-<p>Howeve there are some downsides:</p>
+<p>However there are some downsides:</p>
 <ol>
 <li>During hour-long plays of musical tracks, I do notice the MB-10 will occasionally freeze requiring a power cycle to recover. Also during long plays, notes sometimes hang similar to the <a href="https://www.vogonswiki.com/index.php/Hanging_note_bug">hanging-notes bug</a> that plagued some models of the SB16 and AWE32 sound cards. These problems are rare and infrequent enough that I cannot reliably replicate them but they do happen from time to time.</li>
 <li>There is a noticeable humming sound if one uses the headphone jack on the front. According to a <a href="https://www.wavetable.nl/files/articles/Personal%20Computer%20Magazine%20%28Dutch%29/Personal%20Computer%20Magazine%20Oktober%201993%20-%20Opgeblazen%20geluid.pdf">Dutch review</a> which when translated also mentions this same issue. The rear RCA line-out does not have this problem.</li>
@@ -533,9 +533,12 @@ Creative MB-10 playing Passport.mid (02:03)</p>
 <li>U14: TDA2822M Dual Power Amplifier</li>
 </ul>
 <a href="images/mb10-u4-u7-u14.jpg"><img src="images/mb10-u4-u7-u14.jpg" width="700"></a>
-<p>The output of the Dream effects chip is sent to the U7:TDA1545 Digital-to-Analog-Converter.
-U4:TDA1545 Op Amp amplifies the analog signal for output to the RCA Line-out on the rear of the device.
-U14:TDA2822M amplifies for the purpose of driving the relatively lower-impedance headphones.</p>
+<p>The output of the Dream effects chip is sent to the following:</p>
+<ul>
+<li>U7:TDA1545 Digital-to-Analog-Converter.</li>
+<li>U4:TDA1545 Op Amp amplifies the analog signal for output to the RCA Line-out on the rear of the device.</li>
+<li>U14:TDA2822M amplifies for the purpose of driving the relatively lower-impedance headphones.</li>
+</ul>
 <h2 id="testing-the-20-note-specification">Testing the 20-note specification</h2>
 <p>With the Dream SAM8905 chip only able to handle 16 notes, this deviates from Creative&rsquo;s advertised 20-note specification. I want to test this out to see what is the actual polyphony note limit of this device.</p>
 <p>I vibe-coded a Python program to generate a MIDI file with an initial high-pitch canary note then playing more new notes with successively increasing pitches. The idea is that at some point, the initial canary note will be cut out once the polyphony note limit is hit.</p>
