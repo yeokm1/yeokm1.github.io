@@ -6,33 +6,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.158.0">
-  <meta itemprop="name" content="Repair Kopitiam specialty electrical tools (Part 2): Short Circuit Limiter">
-  <meta itemprop="description" content="If you have not read the previous post (Part 1) on this subject, I encourage you but it is not mandatory to do so before reading this post. I’ll still go through the fundamentals in this post. If you just want to see the raw technical details, the schematic and code of this project have been open-sourced here.
+<meta name="generator" content="Hugo 0.163.3">
+	<meta itemprop="name" content="Repair Kopitiam specialty electrical tools (Part 2): Short Circuit Limiter">
+	<meta itemprop="description" content="If you have not read the previous post (Part 1) on this subject, I encourage you but it is not mandatory to do so before reading this post. I’ll still go through the fundamentals in this post. If you just want to see the raw technical details, the schematic and code of this project have been open-sourced here.
 Post Objective To show why did I build this and how it works plus the issues faced.
 The clean case hides the complexity within.">
-  <meta itemprop="datePublished" content="2017-07-23T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2017-07-23T00:00:00+00:00">
-  <meta itemprop="wordCount" content="2998">
-  <meta itemprop="keywords" content="Hacks,Repair-Kopitiam"><meta property="og:url" content="http://yeokhengmeng.com/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/">
-  <meta property="og:site_name" content="YKM&#39;s Corner on the Web">
-  <meta property="og:title" content="Repair Kopitiam specialty electrical tools (Part 2): Short Circuit Limiter">
-  <meta property="og:description" content="If you have not read the previous post (Part 1) on this subject, I encourage you but it is not mandatory to do so before reading this post. I’ll still go through the fundamentals in this post. If you just want to see the raw technical details, the schematic and code of this project have been open-sourced here.
+	<meta itemprop="datePublished" content="2017-07-23T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2017-07-23T00:00:00+00:00">
+	<meta itemprop="wordCount" content="2998">
+	<meta itemprop="keywords" content="Hacks,Repair-Kopitiam"><meta property="og:url" content="http://yeokhengmeng.com/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/">
+	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
+	<meta property="og:title" content="Repair Kopitiam specialty electrical tools (Part 2): Short Circuit Limiter">
+	<meta property="og:description" content="If you have not read the previous post (Part 1) on this subject, I encourage you but it is not mandatory to do so before reading this post. I’ll still go through the fundamentals in this post. If you just want to see the raw technical details, the schematic and code of this project have been open-sourced here.
 Post Objective To show why did I build this and how it works plus the issues faced.
 The clean case hides the complexity within.">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2017-07-23T00:00:00+00:00">
-    <meta property="article:modified_time" content="2017-07-23T00:00:00+00:00">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2017-07-23T00:00:00+00:00">
+		<meta property="article:modified_time" content="2017-07-23T00:00:00+00:00">
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Repair Kopitiam specialty electrical tools (Part 2): Short Circuit Limiter">
-  <meta name="twitter:description" content="If you have not read the previous post (Part 1) on this subject, I encourage you but it is not mandatory to do so before reading this post. I’ll still go through the fundamentals in this post. If you just want to see the raw technical details, the schematic and code of this project have been open-sourced here.
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Repair Kopitiam specialty electrical tools (Part 2): Short Circuit Limiter">
+	<meta name="twitter:description" content="If you have not read the previous post (Part 1) on this subject, I encourage you but it is not mandatory to do so before reading this post. I’ll still go through the fundamentals in this post. If you just want to see the raw technical details, the schematic and code of this project have been open-sourced here.
 Post Objective To show why did I build this and how it works plus the issues faced.
 The clean case hides the complexity within.">
-      <meta name="twitter:site" content="@yeokm1">
-<link rel="stylesheet" href="/css/bundle.min.418a60f85adce9ae6387a2f7c16d3f05b12ba08867482d06c5436e04c75e4366.css" integrity="sha256-QYpg&#43;Frc6a5jh6L3wW0/BbEroIhnSC0GxUNuBMdeQ2Y=">
+			<meta name="twitter:site" content="@yeokm1">
+<link rel="stylesheet" href="/css/bundle.min.c1c07dd2f2d4550dea41ee630c61a498ebe890cc507c74342f5e7d9e3600b2e5.css" integrity="sha256-wcB90vLUVQ3qQe5jDGGkmOvokMxQfHQ0L159njYAsuU=">
         <link rel="stylesheet" href="/css/add-on.css"></head>
 
   <body>
@@ -285,8 +285,8 @@ The clean case hides the complexity within.">
 <h1 id="my-talk">My talk</h1>
 <p>I gave at <a href="https://www.facebook.com/events/261629434317053/">Hackware v3.4</a> on Sept 6 about this subject. Video and slides below. The audio is quite bad due to the location.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/BM9I_tabfC8?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
-    </div>
+			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/BM9I_tabfC8?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+		</div>
 
 <h1 id="what-is-the-problem">What is the problem?</h1>
 <p>I’m sure everyone of us have heard about <a href="https://en.wikipedia.org/wiki/Circuit_breaker">circuit breakers</a> (CBs). They are basically automated switches that cut the circuit if they if they detect something dangerous like current overload or if earth leakage has been found. Breakers are installed everywhere in buildings, homes and even at void decks of HDB flats where RK operates.</p>
@@ -310,8 +310,8 @@ The clean case hides the complexity within.">
 <h2 id="solution-to-prevent-mcb-trips">Solution to prevent MCB trips</h2>
 <p>The previous solution I did more than a year back worked well but preventing MCB trips proved a harder nut to crack. After more than a year of design and iteration, I finally managed to partially solve the problem. Explanation will come in later. Enjoy the video.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/VpU6cOnxy0s?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
-    </div>
+			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/VpU6cOnxy0s?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+		</div>
 
 <h3 id="things-to-look-out-for-in-the-video">Things to look out for in the video:</h3>
 <ol>
@@ -421,8 +421,8 @@ The clean case hides the complexity within.">
 <p><a href="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-mech-relay.jpg"><img src="/2017/07/repair-kopitiam-specialty-electrical-tools-part-2-short-circuit-limiter/images/rk-equip2-mech-relay-786x1024.jpg" alt=""></a></p>
 <p>I covered the bottom pin headers with Polymorph to prevent accidental shorts. See the video of it in action below!</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/QWAE_0n4-p0?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
-    </div>
+			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/QWAE_0n4-p0?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+		</div>
 
 <p>A MR works by using power from the primary coil to energise an electromagnet which is used to physically shift armature holding the contacts.</p>
 <p>This MR from Schneider Electric requires 240VAC on the primary coil to energise. Therefore, I used the previous SSR to control it. A relay to control another relay LOL! There is another version of this MR that uses 24VDC instead but I guess it&rsquo;s more trouble to convert the 5V MCU logic level to 24V.</p>
@@ -439,8 +439,8 @@ The clean case hides the complexity within.">
 <p>I did not anticipate this issue during early development. However, as I simulated short circuits again and again during testing, I realised that the power resistor can heat up quite a bit. I could forsee the possibility the temperature might go up to dangerous levels.</p>
 <p>I therefore decided to add a Maxim DS18B20+ 1-Wire digital temperature sensor to monitor how hot the resistor is. See the video below for the demonstration:</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/O4qB3WehqlA?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
-    </div>
+			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/O4qB3WehqlA?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+		</div>
 
 <h3 id="things-to-look-out-for-in-the-video-1">Things to look out for in the video:</h3>
 <ol>
@@ -753,7 +753,7 @@ The clean case hides the complexity within.">
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.158.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.163.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
