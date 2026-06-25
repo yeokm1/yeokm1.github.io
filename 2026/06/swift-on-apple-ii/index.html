@@ -12,7 +12,7 @@
 I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a //e and up.">
 	<meta itemprop="datePublished" content="2026-06-25T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-06-25T00:00:00+00:00">
-	<meta itemprop="wordCount" content="6642">
+	<meta itemprop="wordCount" content="6641">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -418,13 +418,13 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 <p>Items in arrays have to be all the same type.</p>
 </li>
 <li>
-<p>Identifiers are capped at 11 characters to save space. A longer name is a hard compile error rather than a silent truncation, so two long names can never collide on a shared prefix.</p>
+<p>Identifiers are capped at 11 characters to save space. A longer name is a hard compile error rather than a silent truncation so two long names can never collide on a shared prefix.</p>
 </li>
 </ul>
-<p>There are also no no closures, no dictionaries, no error-handling or <code>throws</code>, no concurrency (<code>async</code>/<code>await</code>), no macros, and no call-site argument labels. Each would cost memory or single-pass-compiler complexity the machine obviously cannot spare.</p>
+<p>There are also no closures, no dictionaries, no error-handling or <code>throws</code>, no concurrency (<code>async</code>/<code>await</code>), no macros, and no call-site argument labels. Each would cost memory or single-pass-compiler complexity the machine obviously cannot spare.</p>
 <h2 id="the-main-constraint-40704-bytes">The main constraint: 40,704 bytes</h2>
 <p>To understand the memory budget, you first have to understand the Apple II&rsquo;s memory map. The 6502 can address 65536 bytes with its 16-bit address bus. SwiftII runs under <a href="https://en.wikipedia.org/wiki/Apple_ProDOS">ProDOS</a> as a <code>SYS</code> binary, which starts at <code>$2000</code>.</p>
-<p>SwiftII binaries are <code>SYS</code> programs and do not leave room for <code>BASIC.SYSTEM</code> above it, so the practical load-image ceiling is the contiguous range from <code>$2000</code> up to the ProDOS global page at <code>$BF00</code> -&gt; <code>\$2000-$BEFF</code>.</p>
+<p>SwiftII binaries are <code>SYS</code> programs and do not leave room for <code>BASIC.SYSTEM</code> above it. So the practical load-image ceiling is the contiguous range from <code>$2000</code> up to the ProDOS global page at <code>$BF00</code> -&gt; <code>\$2000-$BEFF</code>.</p>
 <p>I got AI to help me to draw up this infographic.</p>
 <p><a href="images/swiftii-apple2-banking.svg"><img src="images/swiftii-apple2-banking.svg" alt="Apple II bank switching diagram showing the D000 to FFFF window, Saturn banks and aux RAM copy-down" width="700"></a><br></p>
 <p>That region is exactly 40,704 bytes. It is the entire main-RAM my binary can use.</p>
