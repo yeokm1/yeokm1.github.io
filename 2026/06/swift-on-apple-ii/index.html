@@ -8,16 +8,16 @@
 
 <meta name="generator" content="Hugo 0.163.3">
 	<meta itemprop="name" content="Bringing Swift to the Apple II">
-	<meta itemprop="description" content="Swift is the modern programming language behind many apps that run on modern Apple platforms. I thought it would be fun to bring a small taste of it back to Apple’s early days, the Apple II. It was Apple’s first mass-market series of machines, initially released in 1977 with a 1 MHz MOS 6502 CPU.
+	<meta itemprop="description" content="Swift is the modern programming language behind many apps that run on modern Apple platforms. I thought it would be nice to bring a small taste of it back to Apple’s early days, the Apple II. It was Apple’s first mass-market series of machines, initially released in 1977 with a 1 MHz MOS 6502 CPU.
 I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a //e and up.">
 	<meta itemprop="datePublished" content="2026-06-25T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-06-25T00:00:00+00:00">
-	<meta itemprop="wordCount" content="6630">
+	<meta itemprop="wordCount" content="6631">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
 	<meta property="og:title" content="Bringing Swift to the Apple II">
-	<meta property="og:description" content="Swift is the modern programming language behind many apps that run on modern Apple platforms. I thought it would be fun to bring a small taste of it back to Apple’s early days, the Apple II. It was Apple’s first mass-market series of machines, initially released in 1977 with a 1 MHz MOS 6502 CPU.
+	<meta property="og:description" content="Swift is the modern programming language behind many apps that run on modern Apple platforms. I thought it would be nice to bring a small taste of it back to Apple’s early days, the Apple II. It was Apple’s first mass-market series of machines, initially released in 1977 with a 1 MHz MOS 6502 CPU.
 I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a //e and up.">
 	<meta property="og:locale" content="en">
 	<meta property="og:type" content="article">
@@ -29,7 +29,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:image" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg">
 	<meta name="twitter:title" content="Bringing Swift to the Apple II">
-	<meta name="twitter:description" content="Swift is the modern programming language behind many apps that run on modern Apple platforms. I thought it would be fun to bring a small taste of it back to Apple’s early days, the Apple II. It was Apple’s first mass-market series of machines, initially released in 1977 with a 1 MHz MOS 6502 CPU.
+	<meta name="twitter:description" content="Swift is the modern programming language behind many apps that run on modern Apple platforms. I thought it would be nice to bring a small taste of it back to Apple’s early days, the Apple II. It was Apple’s first mass-market series of machines, initially released in 1977 with a 1 MHz MOS 6502 CPU.
 I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a //e and up.">
 			<meta name="twitter:site" content="@yeokm1">
 <link rel="stylesheet" href="/css/bundle.min.c1c07dd2f2d4550dea41ee630c61a498ebe890cc507c74342f5e7d9e3600b2e5.css" integrity="sha256-wcB90vLUVQ3qQe5jDGGkmOvokMxQfHQ0L159njYAsuU=">
@@ -281,10 +281,10 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 
 
   <div class="content">
-    <p>Swift is the modern programming language behind many apps that run on modern Apple platforms. I thought it would be fun to bring a small taste of it back to Apple&rsquo;s early days, the Apple II. It was Apple&rsquo;s first mass-market series of machines, initially released in 1977 with a 1 MHz MOS 6502 CPU.</p>
+    <p>Swift is the modern programming language behind many apps that run on modern Apple platforms. I thought it would be nice to bring a small taste of it back to Apple&rsquo;s early days, the Apple II. It was Apple&rsquo;s first mass-market series of machines, initially released in 1977 with a 1 MHz MOS 6502 CPU.</p>
 <p>I built <strong>SwiftII</strong>, a Swift-flavored mini development environment for the original Apple II to a //e and up.</p>
 <p>To be honest, I built it with heavy AI assistance in my spare time. I will be candid later how it helped because that workflow was as interesting to me as the retrocomputing work itself.</p>
-<p>One big caveat, this is not modern Swift. It could never be. The Swift full standard library will not fit on this machine. SwiftII is a deliberate subset, much closer in spirit to <a href="https://www.swift.org/get-started/embedded/">Embedded Swift</a> than the SDK meant for modern platforms like iOS or macOS.</p>
+<p>One big caveat, this is not modern Swift. It could never be. The full Swift standard library will not fit on this machine. SwiftII is a deliberate subset, much closer in spirit to <a href="https://www.swift.org/get-started/embedded/">Embedded Swift</a> than the SDK meant for modern platforms like iOS or macOS.</p>
 <p>My goal was to fit as much of Swift into the Apple II as I can while still reading like Swift on sight. If you know Swift, you should be able to read a SwiftII-compatible program and immediately understand it.</p>
 <p>Other than the interpreter, I want my user to still have a relatively good user/developer experience. Because of this, I also had to build a launcher, file selector and text editor due to limitations I encountered on the Apple II.</p>
 <h2 id="contents">Contents</h2>
@@ -632,7 +632,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <h2 id="developing-swift-on-the-machine-itself">Developing Swift on the machine itself</h2>
 <p>For a development environment to be useful, one cannot just write the interpreter. There needs to be a means of file handling as well as to edit the files.</p>
 <p>These tools did not exist in a satisfactory way for me on this machine so I had to build them.</p>
-<p>Both exist inside the same launcher binary so they get real file access and a reboot-free return to the menu.</p>
+<p>Both exist inside the same launcher binary so they can get file access and a reboot-free return to the main menu.</p>
 <h3 id="the-file-browser">The file browser</h3>
 <a href="images/swiftii-browser.png"><img src="images/swiftii-browser.png" width="500"></a>
 <p>The file browser is a small three-pane file manager. The left pane shows the parent directory for context, the right pane is the current directory with the highlight. A details line reports each entry&rsquo;s ProDOS type and size.</p>
@@ -690,7 +690,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 			</tr>
 	</tbody>
 </table>
-<p>On a IIe with no similar display limitations, everything can be display as-is.</p>
+<p>On a IIe with no similar display limitations, everything can be displayed as-is.</p>
 <h2 id="the-trouble-with-memory-banking">The trouble with memory banking</h2>
 <p>This memory banking caused a lot of pain.</p>
 <p>The Apple II does not treat extra RAM as one larger flat address space. The 6502 can only address 64 KB, so extra memory appears by replacing <code>\$D000-$FFFF</code> with another physical backing. It can hold:</p>
