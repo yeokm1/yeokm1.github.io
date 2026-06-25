@@ -12,7 +12,7 @@
 I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a //e and up.">
 	<meta itemprop="datePublished" content="2026-06-25T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-06-25T00:00:00+00:00">
-	<meta itemprop="wordCount" content="6632">
+	<meta itemprop="wordCount" content="6646">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -515,7 +515,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 			<tr>
 					<td>Tier 1 (flat)</td>
 					<td>II Plus 64K</td>
-					<td><strong>1,834 bytes</strong></td>
+					<td>1,834 bytes</td>
 			</tr>
 			<tr>
 					<td>Tier 2 (Saturn)</td>
@@ -529,7 +529,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 			</tr>
 	</tbody>
 </table>
-<p>On a stock machine you get <strong>1,834 bytes of bytecode</strong>. To go bigger, a Saturn 128K or //e 64K auxiliary RAM card (such as 80-column Extended Text card) is used to page completed function bytecode bodies out of main memory and into spare RAM.</p>
+<p>On a stock machine you get 1,834 bytes of bytecode. To go bigger, a Saturn 128K or //e 64K auxiliary RAM card (such as 80-column Extended Text card) is used to page completed function bytecode bodies out of main memory and into spare RAM.</p>
 <p>The extra capacity mostly helps function-heavy programs, since each individual function and the top-level <code>main</code> still have to fit a resident window.</p>
 <h3 id="why-quitting-the-repl-reboots-the-machine">Why quitting the REPL reboots the machine</h3>
 <p>If you watched the above video carefully, you would notice that upon quiting the REPL, the system has to go through a reboot process before going back to the launcher menu.</p>
@@ -659,32 +659,32 @@ let x = ...         OP_DEFINE_GLOBAL #0
 	</thead>
 	<tbody>
 			<tr>
-					<td style="text-align: left"><strong>Move Left / Right</strong></td>
+					<td style="text-align: left">Move Left / Right</td>
 					<td style="text-align: left"><code>Left Arrow</code> / <code>Right Arrow</code></td>
 					<td style="text-align: left">II+ keyboard has this</td>
 			</tr>
 			<tr>
-					<td style="text-align: left"><strong>Move Up</strong></td>
+					<td style="text-align: left">Move Up</td>
 					<td style="text-align: left"><code>Ctrl-O</code></td>
 					<td style="text-align: left">Standard UCSD / Apple Pascal</td>
 			</tr>
 			<tr>
-					<td style="text-align: left"><strong>Move Down</strong></td>
+					<td style="text-align: left">Move Down</td>
 					<td style="text-align: left"><code>Ctrl-L</code></td>
 					<td style="text-align: left">Standard UCSD / Apple Pascal</td>
 			</tr>
 			<tr>
-					<td style="text-align: left"><strong>Save</strong></td>
+					<td style="text-align: left">Save</td>
 					<td style="text-align: left"><code>Ctrl-S</code></td>
 					<td style="text-align: left"></td>
 			</tr>
 			<tr>
-					<td style="text-align: left"><strong>Save and Run</strong></td>
+					<td style="text-align: left">Save and Run</td>
 					<td style="text-align: left"><code>Ctrl-R</code></td>
 					<td style="text-align: left"></td>
 			</tr>
 			<tr>
-					<td style="text-align: left"><strong>Quit</strong></td>
+					<td style="text-align: left">Quit</td>
 					<td style="text-align: left"><code>Ctrl-Q</code></td>
 					<td style="text-align: left">Drops back to the file browser</td>
 			</tr>
@@ -712,7 +712,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <p>Family B&rsquo;s compiler and runner use the same spare RAM differently to store bytecode. The runner streams through a small main-RAM window as it executes rather than running in place.</p>
 <p>All of this is transparent to the SwiftII programmer.</p>
 <h2 id="why-this-project-ships-as-8x-disks">Why this project ships as 8x disks</h2>
-<p>All of these constraints result in one outcome, SwiftII is not a single download. It is <strong>8x disk images</strong>, and the reasons trace straight back to the sections above.</p>
+<p>All of these constraints result in one outcome, SwiftII is not a single download. It is 8x disk images and the reasons trace straight back to the sections above.</p>
 <p>As mentioned previously, memory limits constrain which features can be banked.</p>
 <p>A Family A REPL overrides the ProDOS MLI IO functions but the Family B compiler-runner needs them to read/write bytecode to disk. So both cannot be same binary, because one evicts ProDOS and the other needs it.</p>
 <p>So the release is 4x Family A REPL disks, 3x Family B compiler disks, and 1x shared data disk.</p>
@@ -817,6 +817,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <p>For context, I did the project in my spare time over a 2-month period, using the entry-level Claude Pro and ChatGPT Plus plans rather than the more expensive tiers.</p>
 <p><strong>Without AI, this project would not have been feasible for me as a hobby project.</strong></p>
 <p>By hand at a similar standard, I think this would have taken well over 2-3 years work on the side or more.</p>
+<p>The following rules and calls were AI-generated from my repo history.</p>
 <h3 id="the-ground-rules">The ground rules</h3>
 <p>I set up some initial rules with AI&rsquo;s help and fine-tuned them.</p>
 <ul>
@@ -838,14 +839,14 @@ let x = ...         OP_DEFINE_GLOBAL #0
 </ul>
 <h3 id="claude-and-codex-did-different-jobs">Claude and Codex did different jobs</h3>
 <p>I leaned on two AI tools and they were useful in different ways.</p>
-<p><strong>Claude Code</strong> was stronger at greenfield work, initial architecture and scaffolding. The flip side is that it ran out of usage faster. It sometimes slipped during implementation and did not always keep every relevant design document in sync. I find that Claude is willing to push back on decisions or design choices that it deems to not be optimal.</p>
-<p><strong>Codex</strong> was faster, more literal in following my instructions and useful as a checker over work already done. It was also better and more succinct at documentation, so it helped keep the written record tidy.</p>
+<p>Claude Code was stronger at greenfield work, initial architecture and scaffolding. The flip side is that it ran out of usage faster. It sometimes slipped during implementation and did not always keep every relevant design document in sync. I find that Claude is willing to push back on decisions or design choices that it deems to not be optimal.</p>
+<p>Codex was faster, more literal in following my instructions and useful as a checker over work already done. It was also better and more succinct at documentation, so it helped keep the written record tidy.</p>
 <p>The rough division that emerged was Claude for initial structure and hard greenfield pieces, Codex for fast execution, verification and documentation cleanup.</p>
 <h3 id="why-autonomous-mode-kept-tripping-here">Why autonomous mode kept tripping here</h3>
 <p>Fully auto or trying to single shot the project did not work well here. I suspect it&rsquo;s because the architecture decisions are highly unusual. I&rsquo;m sure development information for vintage computers especially one for an almost half-century Apple II is relatively thinner in the training data than modern web or app development.</p>
 <p>So I managed the AI carefully. Plan first, approve or redirect, then edit. The AI could move fast, but I had to keep pointing it back at the limitations and what I really wanted.</p>
 <h3 id="the-documentation-as-the-ais-memory">The documentation as the AI&rsquo;s memory</h3>
-<p>One more workflow detail mattered a lot, <strong>limited AI context windows and session boundaries</strong>.</p>
+<p>One more workflow detail mattered a lot and it was AI&rsquo;s limited context windows and session boundaries.</p>
 <p>A coding AI can only hold so much in its context window at once and when a session ends, it forgets everything. The next session starts cold, with no memory of why a decision was made previously.</p>
 <p>The solution was to make the project&rsquo;s documentation the durable memory that the AI itself lacks. SwiftII was built as 18 numbered phases, 0 through 17, each a self-contained goal with a written record of what it was for and what shipped. The key milestones:</p>
 <ul>
@@ -867,7 +868,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <li>018 - the on-target, self-advancing test harness.</li>
 <li>020 - the Saturn paged runner and a hard-won slot-clobber paging bug.</li>
 </ul>
-<p>I treated those as <strong>handoff documents</strong>. When a fresh session starts, or when I switch tools, it reads the roadmap, only the relevant design docs, and the lessons. That is how a brand-new context window inherits accumulated judgement instead of re-making old mistakes. The phased structure also keeps each unit of work small enough to fit in one session.</p>
+<p>I treated those as handoff documents. When a fresh session starts, or when I switch tools, it reads the roadmap, only the relevant design docs, and the lessons. That is how a brand-new context window inherits accumulated judgement instead of re-making old mistakes. The phased structure also keeps each unit of work small enough to fit in one session.</p>
 <p>As the codebase and documents became bigger, each session had to load more context just to get oriented, so token budget became a real workflow constraint. The documentation helped both me and the AI to keep only the most important information &ldquo;in context&rdquo; for the task at hand.</p>
 <h2 id="try-it">Try it</h2>
 <p>The easiest way to try SwiftII is in an emulator, no toolchain required. Download a disk image (<code>.po</code>) from the <a href="https://github.com/yeokm1/swiftii/releases">GitHub Releases</a> and open it in an Apple II emulator: <a href="https://github.com/sh95014/Mariani">Mariani</a> on macOS, <a href="https://github.com/AppleWin/AppleWin">AppleWin</a> on Windows, or <a href="https://github.com/ivanizag/izapple2/releases">izapple2</a> which is cross-platform. Start with <code>swiftii-iip-lite-repl-vX.X.X.po</code> for the broadest compatibility.</p>
