@@ -12,7 +12,7 @@
 I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a //e and up.">
 	<meta itemprop="datePublished" content="2026-06-25T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-06-25T00:00:00+00:00">
-	<meta itemprop="wordCount" content="6646">
+	<meta itemprop="wordCount" content="6642">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -284,7 +284,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
     <p>Swift is the modern programming language behind many apps that run on modern Apple platforms. I thought it would be nice to bring a small taste of it back to Apple&rsquo;s early days, the Apple II. It was Apple&rsquo;s first mass-market series of machines, initially released in 1977 with a 1 MHz MOS 6502 CPU.</p>
 <p>I built <strong>SwiftII</strong>, a Swift-flavored mini development environment for the original Apple II to a //e and up.</p>
 <p>To be honest, I built it with heavy AI assistance in my spare time. I will be candid later how it helped because that workflow was as interesting to me as the retrocomputing work itself.</p>
-<p>One big caveat, this is not modern Swift. It could never be. The full Swift standard library will not fit on this machine. SwiftII is a deliberate subset, much closer in spirit to <a href="https://www.swift.org/get-started/embedded/">Embedded Swift</a> than the SDK meant for modern platforms like iOS or macOS.</p>
+<p>One big caveat, this is not modern Swift and will never be. The full Swift standard library will not fit on this machine. SwiftII is a deliberate subset, much closer in spirit to <a href="https://www.swift.org/get-started/embedded/">Embedded Swift</a> than the SDK meant for modern platforms like iOS or macOS.</p>
 <p>My goal was to fit as much of Swift into the Apple II as I can while still reading like Swift on sight. If you know Swift, you should be able to read a SwiftII-compatible program and immediately understand it.</p>
 <p>Other than the interpreter, I want my user to still have a relatively good user/developer experience. Because of this, I also had to build a launcher, file selector and text editor due to limitations I encountered on the Apple II.</p>
 <h2 id="contents">Contents</h2>
@@ -365,9 +365,10 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 <li>Floppy Emu to emulate Disk II drives</li>
 </ul>
 <p>More details on my own Apple II Plus setup are documented here: <a href="https://github.com/yeokm1/retro-configs-apple/tree/main/apple-ii-plus">https://github.com/yeokm1/retro-configs-apple/tree/main/apple-ii-plus</a>.</p>
-<p>The original 1977 Apple II is supported as long as it has been upgraded to 48 KB RAM plus a 16 KB language card, giving the same 64 KB total. On a non-Autostart ROM machine you start the Disk II manually with <code>C600G</code> or <code>PR#6</code>. The Apple //e is the nicer machine to use, because it has lowercase support, a better display ROM, and a proper ASCII keyboard. On a //e, you can type SwiftII source much more naturally instead of relying on the Apple II Plus digraph and case-marker input layer.</p>
+<p>The original 1977 Apple II is supported as long as it has been upgraded to 48 KB RAM plus a 16 KB language card, giving the same 64 KB total. On a non-Autostart ROM machine you start the Disk II manually with <code>C600G</code> or <code>PR#6</code>.</p>
+<p>The Apple //e is the nicer machine to use, because it has lowercase support, a better display ROM, and a proper ASCII keyboard. On a //e, you can type SwiftII source much more naturally instead of relying on the Apple II Plus digraph and case-marker input layer.</p>
 <p>I used ProDOS 2.4.3 because it is the modern still-maintained ProDOS 8 revival that is well documented and still runs on an original Apple II. Using a single ProDOS reference image also made the disk build and testing much simpler than supporting multiple DOS/ProDOS variants. A minimum 16K Language Card is mandatory for ProDOS.</p>
-<p>The 6502 is an 8-bit CPU. Its A, X and Y registers are all 8 bits wide and there is no general-purpose 16-bit register. There is <strong>no floating-point unit</strong>, and not even a hardware multiply or divide instruction. The hardware stack is only 256 bytes which limits function call depth.</p>
+<p>The 6502 is an 8-bit CPU. Its A, X and Y registers are all 8 bits wide and there is no general-purpose 16-bit register. There is no floating-point unit and not even a hardware multiply or divide instruction. The hardware stack is only 256 bytes which limits function call depth.</p>
 <p>As for memory, 64 KB is tiny by today&rsquo;s standards more akin to a microcontroller.</p>
 <h2 id="the-language">The language</h2>
 <p>Here is a taste of what SwiftII looks like. If you know Swift, you should find this very familiar.</p>
@@ -408,7 +409,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 <p>Types behave differently from conventional Swift:</p>
 <ul>
 <li>
-<p><code>Int</code> is 16-bit and signed due to the cc65 limit. It ranges −32,768 to 32,767 and it wraps silently on overflow. (Conventional Swift is 64-bit on modern systems) It is also the only numeric type, no <code>Double</code> and no <code>Float</code>. I will cover more on this in the <a href="/2026/06/swift-on-apple-ii/#no-floating-point-at-all">section below</a>.</p>
+<p><code>Int</code> is 16-bit and signed due to the cc65 limit. It ranges −32768 to 32767. (Conventional Swift is 64-bit on modern systems) It is also the only numeric type, no <code>Double</code> and no <code>Float</code>. I will cover more on this in the <a href="/2026/06/swift-on-apple-ii/#no-floating-point-at-all">section below</a>.</p>
 </li>
 <li>
 <p><code>String</code> is just bytes, not Unicode. Modern Swift treats a string as a collection of <code>Character</code> objects. SwiftII strings are ASCII byte sequences, closer to C-style string arrays.</p>
@@ -429,7 +430,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 <p>That region is exactly 40,704 bytes. It is the entire main-RAM my binary can use.</p>
 <h3 id="memory-beyond-64k">Memory beyond 64K</h3>
 <p>64KB is just enough to run core features of SwiftII but is not sufficient for more functions or bigger programs. However, memory beyond 64 KB is not directly addressable.</p>
-<p>Memory upgrades of that time period like Saturn 128K card or the //e&rsquo;s 64K of auxiliary RAM does not extend the address space like modern linear memory. It sits behind a window, and software banks pieces of it in and out through soft switches. If you come from the DOS PC world, it is conceptually similar to <a href="https://en.wikipedia.org/wiki/Expanded_memory">Expanded Memory Specification (EMS)</a>. The extra RAM is there, but the CPU can only see the selected page at the selected address range.</p>
+<p>Memory upgrades of that time period like Saturn 128K card or the //e&rsquo;s 64K of auxiliary RAM does not extend the address space like modern linear memory. It sits behind a window and software banks pieces of it in and out through soft switches. If you come from the DOS PC world, it is conceptually similar to <a href="https://en.wikipedia.org/wiki/Expanded_memory">Expanded Memory Specification (EMS)</a>. The extra RAM is there, but the CPU can only see the selected page at the selected address range.</p>
 <p>On the Apple II this is especially awkward because the language-card window is also where ROM, ProDOS <a href="https://prodos8.com/docs/techref/calls-to-the-mli/">ProDOS Machine Language Interface (MLI)</a> code also lives. Only one bank can be visible there at a time.</p>
 <p>I will come back to this topic later.</p>
 <h2 id="development-setup">Development setup</h2>
@@ -444,7 +445,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 <p>A SwiftII program flows through a conventional-looking pipeline:</p>
 <pre tabindex="0"><code class="language-code" data-lang="code">Swift source ---&gt; lexer    ---&gt; compiler ---&gt; bytecode ---&gt; VM ---&gt; output
                   (tokens)      (Pratt)       (.swb)        
-</code></pre><p>Most language implementations parse source into an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">Abstract Syntax Tree</a> (AST), then walk that tree to generate code. However SwiftII cannot afford the tree as there is no memory to hold one.</p>
+</code></pre><p>Most language implementations parse source into an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">Abstract Syntax Tree</a> (AST) then walk that tree to generate code. However SwiftII cannot afford the tree as there is no memory to hold one.</p>
 <p>Instead it uses a single-pass <a href="https://en.wikipedia.org/wiki/Operator-precedence_parser">Pratt parser</a> that emits bytecode directly as it reads the source. There is no intermediate representation. This is inspired by Robert Nystrom&rsquo;s book <a href="https://craftinginterpreters.com/">Crafting Interpreters</a>.</p>
 <h3 id="from-source-text-to-bytecode">From source text to bytecode</h3>
 <p>For readers who have not written a compiler before, the important point is that SwiftII does not &ldquo;understand&rdquo; the whole program at once. It reads a token, decides what small piece of language it is looking at then appends VM instructions to a byte buffer.</p>
@@ -487,7 +488,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <p>The reason is the design and usage of Apple II&rsquo;s 16 KB <a href="https://en.wikipedia.org/wiki/Language_Card">language card</a>, which lives at <code>\$D000-$FFFF</code>. ProDOS keeps its MLI in that same region.</p>
 <ul>
 <li>
-<p>Family A cointains the REPL. To fit, the interpreter spills cold code into the language card. This overwrites the ProDOS MLI, so Family A cannot do general file I/O after the interpreter starts. It can run programs staged by the launcher, but it cannot freely open and read arbitrary files.</p>
+<p>Family A contains the REPL. To fit, the interpreter spills cold code into the language card. This overwrites the ProDOS MLI, so Family A cannot do general file I/O after the interpreter starts. It can run programs staged by the launcher, but it cannot freely open and read arbitrary files.</p>
 </li>
 <li>
 <p>Family B contains the compiler plus runner. These are MAIN-only tools, so they leave the language card free and the ProDOS MLI stays alive.</p>
@@ -501,7 +502,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 </tr>
 </table>
 <p>The Family B compiler reads in a <code>.swift</code> source file and emits <code>.swb</code> bytecode onto disk for the runner to execute.</p>
-<p>The <code>.swb</code> file has a 12-byte header (the three-character magic <code>SWB</code>, a one-byte format version, the entry program counter, and the section lengths), followed by bytecode, the constant pool, and a 4-byte record per function.</p>
+<p>The <code>.swb</code> file has a 12-byte header (the three-character magic <code>SWB</code>, a one-byte format version, the entry program counter and the section lengths), followed by bytecode, the constant pool and a 4-byte record per function.</p>
 <p>Family B itself ships in three tiers depending on how much spare RAM the machine has.</p>
 <table>
 	<thead>
@@ -646,7 +647,8 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <td width="50%"><a href="images/swiftii-optionals-raw.png"><img src="images/swiftii-optionals-raw.png" alt="Editor showing optionals in raw mode"></a><br><sub>Raw mode: Shown on II+ that cannot display lowercase</sub></td>
 </tr>
 </table>
-<p>It has a cooked mode and a raw mode. A <code>.swift</code> file opens &ldquo;cooked&rdquo;, with the digraph and case-marker support. A plain text file opens in raw mode because the typing model is a Swift-source convention that would only mangle a README. <code>Ctrl-G</code> flips between them, reloading the file so what you see and what is stored stay consistent, and a <code>[DGR]</code> or <code>[RAW]</code> tag on the top status line tells you which you are in.</p>
+<p>It has a cooked mode and a raw mode. A <code>.swift</code> file opens &ldquo;cooked&rdquo;, with the digraph and case-marker support. A plain text file opens in &ldquo;raw&rdquo; mode because the typing model is a Swift-source convention that would only mangle a normal README file.</p>
+<p><code>Ctrl-G</code> flips between them, reloading the file so what you see and what is stored stay consistent, and a <code>[DGR]</code> or <code>[RAW]</code> tag on the top status line tells you which you are in.</p>
 <p>The cursor is careful about the display mismatch from earlier. A <code>{</code> is one byte in the buffer but shows as <code>&lt;%</code>, two columns wide on a II (Plus). Arrowing across it moves one byte at a time in memory even as the cursor visibly jumps two columns, with a digraph-aware width calculation watching the column maths.</p>
 <p>The key bindings deliberately follow Apple Pascal style for familiarity:</p>
 <table>
