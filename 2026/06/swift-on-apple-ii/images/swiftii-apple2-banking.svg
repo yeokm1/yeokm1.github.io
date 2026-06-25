@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+  <title id="title">Apple II bank switching overview</title>
+  <desc id="desc">A diagram showing the Apple II 64 KB CPU address space, the D000 to FFFF banked window, possible ROM, language-card and Saturn backings, and the aux RAM copy-down path.</desc>
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .title { font: 700 24px Arial, Helvetica, sans-serif; fill: #222; }
+      .subtitle { font: 14px Arial, Helvetica, sans-serif; fill: #555; }
+      .label { font: 700 14px Arial, Helvetica, sans-serif; fill: #222; }
+      .small { font: 12px Arial, Helvetica, sans-serif; fill: #333; }
+      .tiny { font: 11px Arial, Helvetica, sans-serif; fill: #555; }
+      .mono { font: 12px "Courier New", monospace; fill: #222; }
+      .box { stroke: #333; stroke-width: 1.5; rx: 3; ry: 3; }
+      .window { fill: #fff2a8; stroke: #222; stroke-width: 2.5; }
+      .main { fill: #cde8ff; }
+      .low { fill: #d8f0cf; }
+      .io { fill: #f8d7da; }
+      .global { fill: #e8ddff; }
+      .rom { fill: #f7c6c7; }
+      .lc { fill: #bfe3bf; }
+      .sat { fill: #c9d8ff; }
+      .aux { fill: #ffe0b2; }
+      .staging { fill: #ffd7a0; stroke: #7c4a00; stroke-width: 1.5; }
+      .arrow { fill: none; stroke: #333; stroke-width: 2; marker-end: url(#arrowhead); }
+      .arrow-soft { fill: none; stroke: #666; stroke-width: 1.8; stroke-dasharray: 5 4; marker-end: url(#arrowhead); }
+      .arrow-aux { fill: none; stroke: #a35b00; stroke-width: 2.2; marker-end: url(#arrowAux); }
+      .text-bg { fill: #ffffff; opacity: 0.92; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M 0 0 L 10 4 L 0 8 z" fill="#333"/>
+    </marker>
+    <marker id="arrowAux" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M 0 0 L 10 4 L 0 8 z" fill="#a35b00"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="960" height="560"/>
+  <text class="title" x="40" y="38">Apple II Banking: One Visible Window, Many Possible Backings</text>
+  <text class="subtitle" x="40" y="62">The 6502 still sees only 64 KB. Soft switches decide what physical RAM or ROM appears in the banked ranges.</text>
+
+  <text class="label" x="72" y="93">6502 Address Space</text>
+  <text class="tiny" x="78" y="114">High Addresses</text>
+  <rect class="box window" x="70" y="125" width="210" height="135"/>
+  <text class="mono" x="86" y="149">$D000-$FFFF</text>
+  <text class="label" x="86" y="171">Banked Window</text>
+  <text class="small" x="86" y="193">ROM, Language Card,</text>
+  <text class="small" x="86" y="211">Or Saturn RAM</text>
+  <text class="small" x="86" y="237">Visible one at a time</text>
+
+  <rect class="box io" x="70" y="260" width="210" height="46"/>
+  <text class="mono" x="86" y="287">$C000-$CFFF  I/O</text>
+
+  <rect class="box global" x="70" y="306" width="210" height="34"/>
+  <text class="mono" x="86" y="328">$BF00-$BFFF  ProDOS Global</text>
+
+  <rect class="box main" x="70" y="340" width="210" height="118"/>
+  <text class="mono" x="86" y="365">$2000-$BEFF</text>
+  <text class="label" x="86" y="386">Main Program RAM</text>
+  <text class="small" x="86" y="407">SwiftII VM, Heap, Stack</text>
+  <rect class="staging" x="90" y="421" width="174" height="24"/>
+  <text class="mono" x="100" y="438">$B000 Staging Buffer</text>
+
+  <rect class="box low" x="70" y="458" width="210" height="54"/>
+  <text class="mono" x="86" y="482">$0000-$1FFF</text>
+  <text class="small" x="86" y="501">ZP, Screen, ProDOS, Stack</text>
+  <text class="tiny" x="78" y="532">Low Addresses</text>
+
+  <text class="label" x="396" y="104">Soft-Switch Selected Backing for $D000-$FFFF</text>
+  <text class="tiny" x="396" y="124">Only one of these drives the CPU bus for this address range.</text>
+
+  <rect class="box rom" x="420" y="145" width="260" height="54"/>
+  <text class="label" x="438" y="168">Motherboard ROM</text>
+  <text class="small" x="438" y="187">Applesoft + Monitor Routines</text>
+
+  <rect class="box lc" x="420" y="210" width="260" height="54"/>
+  <text class="label" x="438" y="233">Language Card Bank</text>
+  <text class="small" x="438" y="252">ProDOS MLI Body or SwiftII LC Code</text>
+
+  <rect class="box sat" x="420" y="275" width="260" height="54"/>
+  <text class="label" x="438" y="298">Saturn Bank 1</text>
+  <text class="small" x="438" y="317">SwiftII XLC Code Executes in Place</text>
+
+  <rect class="box sat" x="420" y="340" width="260" height="54" opacity="0.85"/>
+  <text class="label" x="438" y="363">Other Saturn Banks</text>
+  <text class="small" x="438" y="382">Extra Storage for Paged Bytecode</text>
+
+  <path class="arrow-soft" d="M 420 172 C 350 174, 330 175, 286 181"/>
+  <path class="arrow-soft" d="M 420 237 C 350 232, 330 222, 286 211"/>
+  <path class="arrow" d="M 420 302 C 354 298, 331 265, 286 236"/>
+  <rect class="text-bg" x="305" y="246" width="116" height="34"/>
+  <text class="tiny" x="314" y="258">Select Bank</text>
+  <text class="tiny" x="314" y="274">Then JSR $D000+</text>
+
+  <rect class="box aux" x="720" y="309" width="190" height="112"/>
+  <text class="label" x="738" y="333">Apple //e Aux RAM</text>
+  <text class="mono" x="738" y="355">aux $2000-$BFFF</text>
+  <text class="small" x="738" y="376">Overlay Park:</text>
+  <text class="small" x="738" y="394">Directory + Bodies</text>
+  <text class="tiny" x="738" y="411">Not Executed in Place</text>
+
+  <path class="arrow-aux" d="M 720 388 C 610 425, 430 432, 258 433"/>
+  <rect class="text-bg" x="470" y="434" width="196" height="18"/>
+  <text class="tiny" x="482" y="446">AUXMOVE Copies One Body Down</text>
+
+  <rect x="711" y="131" width="208" height="135" fill="#f5f5f5" stroke="#999" stroke-width="1.2" rx="3" ry="3"/>
+  <text class="label" x="728" y="155">Why ProDOS Collides</text>
+  <text class="small" x="728" y="178">ProDOS MLI and SwiftII LC</text>
+  <text class="small" x="728" y="197">Code both want this same</text>
+  <text class="mono" x="728" y="216">$D000-$FFFF</text>
+  <text class="small" x="817" y="216">Window.</text>
+  <text class="small" x="728" y="235">Saturn adds banks, not a</text>
+  <text class="small" x="728" y="254">Second visible address range.</text>
+</svg>
