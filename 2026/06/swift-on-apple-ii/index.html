@@ -12,7 +12,7 @@
 I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a //e and up.">
 	<meta itemprop="datePublished" content="2026-06-25T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-06-25T00:00:00+00:00">
-	<meta itemprop="wordCount" content="6633">
+	<meta itemprop="wordCount" content="6630">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -647,7 +647,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 </tr>
 </table>
 <p>It has a <strong>cooked mode and a raw mode</strong>. A <code>.swift</code> file opens &ldquo;cooked&rdquo;, with the digraph and case-marker support. A plain text file opens byte-for-byte verbatim, because the typing model is a Swift-source convention that would only mangle a README. <code>Ctrl-G</code> flips between them, reloading the file so what you see and what is stored stay consistent, and a <code>[DGR]</code> or <code>[RAW]</code> tag on the top status line tells you which you are in.</p>
-<p>The cursor is careful about the display mismatch from earlier. A <code>{</code> is one byte in the buffer but shows as <code>&lt;%</code>, two columns wide, on a II Plus. Arrowing across it moves one byte at a time in memory even as the cursor visibly jumps two columns, with a digraph-aware width calculation keeping the column maths honest.</p>
+<p>The cursor is careful about the display mismatch from earlier. A <code>{</code> is one byte in the buffer but shows as <code>&lt;%</code>, two columns wide on a II (Plus). Arrowing across it moves one byte at a time in memory even as the cursor visibly jumps two columns, with a digraph-aware width calculation watching the column maths.</p>
 <p>The key bindings deliberately follow <strong>Apple Pascal</strong> style for familiarity:</p>
 <table>
 	<thead>
@@ -829,15 +829,15 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <p>My highest-leverage moments were usually architectural or about scope:</p>
 <ul>
 <li><strong>Ship one disk image per machine, not a runtime probe.</strong> The AI had built a machine-detection scheme. I killed the approach because I cannot verify a probe on hardware I do not own. I&rsquo;m not sure how accurate emulators are to this. In 2026 shipping more <code>.po</code> files costs nothing.</li>
-<li><strong>Floating point is not worth it.</strong> The AI got actually got floating point working. But I cut it because it halved my already very limited heap for a feature very few demos needed.</li>
+<li><strong>Floating point is not worth it.</strong> The AI actually got floating point working. But I cut it because it further reduced my already limited heap for a feature very few demos needed.</li>
 <li><strong>Hot code in main RAM, cold code in the bank.</strong> I controlled what stays resident in main RAM and what gets banked.</li>
 <li><strong>Raise the heap on the Saturn and aux tiers.</strong> Those machines have spare RAM, so spend some of it giving real programs more room to allocate rather than leaving it idle.</li>
-<li><strong>Move features to the right family.</strong> Whenever the AI started contorting the lite REPL to do something the on-disk compiler does better, the answer was to move the feature, not to cram it in.</li>
-<li><strong>Apple Pascal key bindings.</strong> I pulled the editor back to the familiar UCSD conventions after the AI invented its own cleverer scheme nobody would recognise.</li>
+<li><strong>Move features to the right family.</strong> Whenever the AI started contorting the lite REPL to do something the compiler does better, the answer was to move the feature, not to cram it in.</li>
+<li><strong>Apple Pascal key bindings.</strong> I pulled the editor back to the familiar UCSD conventions after the AI invented its own clever scheme nobody would recognise.</li>
 <li><strong>Testing on more than one emulator</strong>: I tested on both Mariani and izApple2 emulators to not overfit my program&rsquo;s behaviour to one emulator in case there are individual emulator bugs or quirks.</li>
 </ul>
 <h3 id="claude-and-codex-did-different-jobs">Claude and Codex did different jobs</h3>
-<p>I leaned on two AI tools, and they were useful in different ways.</p>
+<p>I leaned on two AI tools and they were useful in different ways.</p>
 <p><strong>Claude Code</strong> was stronger at greenfield work, initial architecture and scaffolding. The flip side is that it ran out of usage faster. It sometimes slipped during implementation and did not always keep every relevant design document in sync. I find that Claude is willing to push back on decisions or design choices that it deems to not be optimal.</p>
 <p><strong>Codex</strong> was faster, more literal in following my instructions and useful as a checker over work already done. It was also better and more succinct at documentation, so it helped keep the written record tidy.</p>
 <p>The rough division that emerged was Claude for initial structure and hard greenfield pieces, Codex for fast execution, verification and documentation cleanup.</p>
@@ -846,7 +846,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <p>So I managed the AI carefully. Plan first, approve or redirect, then edit. The AI could move fast, but I had to keep pointing it back at the limitations and what I really wanted.</p>
 <h3 id="the-documentation-as-the-ais-memory">The documentation as the AI&rsquo;s memory</h3>
 <p>One more workflow detail mattered a lot, <strong>limited AI context windows and session boundaries</strong>.</p>
-<p>A coding AI can only hold so much in its context window at once, and when a session ends, it forgets everything. The next session starts cold, with no memory of why a decision was made previously.</p>
+<p>A coding AI can only hold so much in its context window at once and when a session ends, it forgets everything. The next session starts cold, with no memory of why a decision was made previously.</p>
 <p>The solution was to make the project&rsquo;s documentation the durable memory that the AI itself lacks. SwiftII was built as <strong>18 numbered phases</strong>, 0 through 17, each a self-contained goal with a written record of what it was for and what shipped. The key milestones:</p>
 <ul>
 <li><strong>Phases 0–1</strong> — scaffolding, then the real lexer, single-pass compiler and bytecode VM, with <code>1 + 2</code> printing <code>3</code> end to end on both the host and the Apple II.</li>
@@ -871,7 +871,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <p>As the codebase and documents became bigger, each session had to load more context just to get oriented, so token budget became a real workflow constraint. The documentation helped both me and the AI to keep only the most important information &ldquo;in context&rdquo; for the task at hand.</p>
 <h2 id="try-it">Try it</h2>
 <p>The easiest way to try SwiftII is in an emulator, no toolchain required. Download a disk image (<code>.po</code>) from the <a href="https://github.com/yeokm1/swiftii/releases">GitHub Releases</a> and open it in an Apple II emulator: <a href="https://github.com/sh95014/Mariani">Mariani</a> on macOS, <a href="https://github.com/AppleWin/AppleWin">AppleWin</a> on Windows, or <a href="https://github.com/ivanizag/izapple2/releases">izapple2</a> which is cross-platform. Start with <code>swiftii-iip-lite-repl-vX.X.X.po</code> for the broadest compatibility.</p>
-<p>If you have real hardware, each disk is a standard 140 KB ProDOS 5.25&quot; image. Write the appropriate disk for your system to a floppy with <a href="https://adtpro.com/">ADTPro</a>, or run it from a floppy emulator like a <a href="https://www.bigmessowires.com/floppy-emu/">BMOW Floppy Emu</a>. The original Apple II from 1977 runs it too, as long as it has been upgraded to 48 KB RAM and a 16 KB Language Card.</p>
+<p>If you have real hardware, each disk is a standard 140 KB ProDOS 5.25&quot; image. Write the appropriate disk for your system to a floppy with <a href="https://adtpro.com/">ADTPro</a> or run it from a floppy emulator like a <a href="https://www.bigmessowires.com/floppy-emu/">BMOW Floppy Emu</a>. The original Apple II from 1977 runs it too, as long as it has been upgraded to 48 KB RAM and a 16 KB Language Card.</p>
 <p>If you want the toolchain, the repo builds the whole disk set from source with cc65. You can also cross-compile a <code>.swift</code> to a <code>.swb</code> on your Mac and run it on the Apple II.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>In the end, this was a labour of love and a nod to the legacy of the Apple II and Apple Pascal. Almost 50 years ago, Apple Pascal proved you could run a high-level language on tiny hardware by compiling down to bytecode. SwiftII is just my attempt to apply that exact same philosophy to a Swift-like language.</p>
