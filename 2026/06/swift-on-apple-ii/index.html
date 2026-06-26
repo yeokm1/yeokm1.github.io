@@ -12,7 +12,7 @@
 I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a //e and up.">
 	<meta itemprop="datePublished" content="2026-06-25T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-06-25T00:00:00+00:00">
-	<meta itemprop="wordCount" content="6674">
+	<meta itemprop="wordCount" content="6691">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -310,7 +310,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 </li>
 <li><a href="/2026/06/swift-on-apple-ii/#developing-swift-on-the-machine-itself">Developing Swift on the machine itself</a></li>
 <li><a href="/2026/06/swift-on-apple-ii/#the-trouble-with-memory-banking">The trouble with memory banking</a></li>
-<li><a href="/2026/06/swift-on-apple-ii/#why-this-project-ships-as-8x-disks">Why this project ships as 8x disks</a></li>
+<li><a href="/2026/06/swift-on-apple-ii/#why-this-project-ships-as-9x-disks">Why this project ships as 9x disks</a></li>
 <li><a href="/2026/06/swift-on-apple-ii/#testing-too-many-machines">Testing too many machines</a></li>
 <li><a href="/2026/06/swift-on-apple-ii/#how-it-was-built-with-ai">How it was built with AI</a>
 <ul>
@@ -394,6 +394,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 <ul>
 <li><code>let</code> and <code>var</code> with type inference</li>
 <li><code>if</code> / <code>else if</code> / <code>else</code>, <code>while</code> and <code>for-in</code> over ranges</li>
+<li>Short-circuit <code>&amp;&amp;</code> / <code>||</code> and prefix <code>!</code></li>
 <li>Top-level functions with <code>return</code></li>
 <li>Optionals with <code>if let</code>, <code>??</code> and force-unwrap <code>!</code></li>
 <li>Arrays with <code>append</code>, <code>count</code>, <code>isEmpty</code> and subscripting</li>
@@ -503,7 +504,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 </table>
 <p>The Family B compiler reads in a <code>.swift</code> source file and emits <code>.swb</code> bytecode onto disk for the runner to execute.</p>
 <p>The <code>.swb</code> file has a 12-byte header (the three-character magic <code>SWB</code>, a one-byte format version, the entry program counter and the section lengths), followed by bytecode, the constant pool and a 4-byte record per function.</p>
-<p>Family B itself ships in three tiers depending on how much spare RAM the machine has.</p>
+<p>Family B itself ships in four disks across three tiers depending on how much spare RAM the machine has.</p>
 <table>
 	<thead>
 			<tr>
@@ -515,7 +516,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 	<tbody>
 			<tr>
 					<td>Tier 1 (flat)</td>
-					<td>II Plus 64K</td>
+					<td>II Plus 64K or //e</td>
 					<td>1,834 bytes</td>
 			</tr>
 			<tr>
@@ -714,11 +715,11 @@ let x = ...         OP_DEFINE_GLOBAL #0
 </ul>
 <p>Family B&rsquo;s compiler and runner use the same spare RAM differently to store bytecode. The runner streams through a small main-RAM window as it executes rather than running in place.</p>
 <p>All of this is transparent to the SwiftII programmer.</p>
-<h2 id="why-this-project-ships-as-8x-disks">Why this project ships as 8x disks</h2>
-<p>All of these constraints result in one outcome, SwiftII is not a single download. It is 8x disk images and the reasons trace straight back to the sections above.</p>
+<h2 id="why-this-project-ships-as-9x-disks">Why this project ships as 9x disks</h2>
+<p>All of these constraints result in one outcome, SwiftII is not a single download. It is 9x disk images and the reasons trace straight back to the sections above.</p>
 <p>As mentioned previously, memory limits constrain which features can be banked.</p>
 <p>A Family A REPL overrides the ProDOS MLI IO functions but the Family B compiler-runner needs them to read/write bytecode to disk. So both cannot be same binary because one evicts ProDOS and the other needs it.</p>
-<p>So the release is 4x Family A REPL disks, 3x Family B compiler disks and 1x shared data disk.</p>
+<p>So the release is 4x Family A REPL disks, 4x Family B compiler disks and 1x shared data disk.</p>
 <h3 id="family-a-repl">Family A: REPL</h3>
 <table>
 	<thead>
@@ -742,7 +743,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 			<tr>
 					<td><code>iie-lite-repl</code></td>
 					<td>//e</td>
-					<td>core + native lowercase, 80-column text if fitted</td>
+					<td>core + native lowercase and 80-column text if fitted</td>
 			</tr>
 			<tr>
 					<td><code>iie-aux-repl</code></td>
@@ -763,7 +764,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <li>Numeric functions: <code>abs</code> / <code>sgn</code></li>
 <li>string functions: <code>hasPrefix</code> / <code>hasSuffix</code></li>
 </ul>
-<p>The three disks differ only in how large a program they can hold which is determined by where the bytecode is stored.</p>
+<p>The four disks differ only in how large a program they can hold which is determined by where the bytecode is stored.</p>
 <table>
 	<thead>
 			<tr>
@@ -785,6 +786,11 @@ let x = ...         OP_DEFINE_GLOBAL #0
 			</tr>
 			<tr>
 					<td><code>iie-compiler</code></td>
+					<td>//e</td>
+					<td>1.8 KB</td>
+			</tr>
+			<tr>
+					<td><code>iie-aux-compiler</code></td>
 					<td>//e with 64K aux RAM</td>
 					<td>36 KB</td>
 			</tr>
