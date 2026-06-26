@@ -12,7 +12,7 @@
 I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a //e and up.">
 	<meta itemprop="datePublished" content="2026-06-25T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-06-25T00:00:00+00:00">
-	<meta itemprop="wordCount" content="6717">
+	<meta itemprop="wordCount" content="6674">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -637,7 +637,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <p>Both exist inside the same launcher binary so they can get file access and a reboot-free return to the main menu.</p>
 <h3 id="the-file-browser">The file browser</h3>
 <a href="images/swiftii-browser.png"><img src="images/swiftii-browser.png" width="500"></a>
-<p>The file browser is a small three-pane file manager. The left pane shows the parent directory for context, the right pane is the current directory with the highlight. A details line reports each entry&rsquo;s ProDOS type and size.</p>
+<p>The file browser is a small three-pane file manager. The left pane shows the parent directory for context, the right pane is the current directory with the cursor highlight. A details line reports each entry&rsquo;s ProDOS type and size.</p>
 <p>Bottom pane is the preview. When the user dwells the cursor for at least 1.5s, the pane will display a scrollable preview of the file. The delay reduces unnecessary disk reads. The pane renders <code>.swift</code> source with exactly the same case and digraph rules the editor uses, so a program looks identical whether you are previewing or editing it.</p>
 <p>Because the II Plus keyboard has no up/down arrow keys, navigation uses <code>I</code> and <code>M</code> for up and down.</p>
 <h3 id="the-editor">The editor</h3>
@@ -720,7 +720,6 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <p>A Family A REPL overrides the ProDOS MLI IO functions but the Family B compiler-runner needs them to read/write bytecode to disk. So both cannot be same binary because one evicts ProDOS and the other needs it.</p>
 <p>So the release is 4x Family A REPL disks, 3x Family B compiler disks and 1x shared data disk.</p>
 <h3 id="family-a-repl">Family A: REPL</h3>
-<p>Disks named <code>lite/sat/aux</code>.</p>
 <table>
 	<thead>
 			<tr>
@@ -738,29 +737,31 @@ let x = ...         OP_DEFINE_GLOBAL #0
 			<tr>
 					<td><code>iip-sat-repl</code></td>
 					<td>II Plus with a Saturn 128K card</td>
-					<td>core + graphics, <code>peek</code>/<code>poke</code>, speaker and 80-column via Videx if fitted</td>
+					<td>core + graphics, <code>peek</code>/<code>poke</code> and 80-column via Videx if fitted</td>
 			</tr>
 			<tr>
 					<td><code>iie-lite-repl</code></td>
 					<td>//e</td>
-					<td>core + native lowercase, 80-column text if an 80-column firmware card is present</td>
+					<td>core + native lowercase, 80-column text if fitted</td>
 			</tr>
 			<tr>
 					<td><code>iie-aux-repl</code></td>
 					<td>//e with 64K aux RAM</td>
-					<td>core + graphics, <code>peek</code>/<code>poke</code>, speaker and 80-column</td>
+					<td>core + graphics, <code>peek</code>/<code>poke</code> and 80-column text if fitted</td>
 			</tr>
 	</tbody>
 </table>
 <h3 id="family-b-compiler-and-runner">Family B: Compiler and Runner</h3>
-<p>Disks named <code>compiler</code>.</p>
-<p>All 3x disks compile a <code>.swift</code> file to a <code>.swb</code> bytecode file and then run it and they share the biggest feature set in the project. On top of the core language they add:</p>
+<p>All 3x disks compile a <code>.swift</code> file to a <code>.swb</code> bytecode file and then run it and they share the biggest feature set in the project. On top of everything in Family A, they have:</p>
 <ul>
-<li>file I/O — <code>readFile</code>, <code>writeFile</code>, <code>appendFile</code>, <code>listDirectory</code></li>
-<li><code>switch</code>, <code>for-in</code> directly over arrays and <code>random(in:)</code></li>
-<li>sound (<code>tone</code>) and timing (<code>wait</code>)</li>
-<li><code>abs</code> / <code>sgn</code> and string <code>hasPrefix</code> / <code>hasSuffix</code></li>
-<li>the full graphics and <code>peek</code>/<code>poke</code> set</li>
+<li>file I/O: <code>readFile</code>, <code>writeFile</code>, <code>appendFile</code>, <code>listDirectory</code></li>
+<li><code>switch</code></li>
+<li><code>for-in</code> over arrays</li>
+<li><code>random(in:)</code></li>
+<li>sound: <code>tone</code></li>
+<li>timing: <code>wait</code></li>
+<li>Numeric functions: <code>abs</code> / <code>sgn</code></li>
+<li>string functions: <code>hasPrefix</code> / <code>hasSuffix</code></li>
 </ul>
 <p>The three disks differ only in how large a program they can hold which is determined by where the bytecode is stored.</p>
 <table>
@@ -866,12 +867,10 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <p>Around the phases sit roughly 20 numbered design documents, each capturing one non-obvious decision. What was chosen, what the alternatives were and how it was done. The most useful ones you can consider reading are:</p>
 <ul>
 <li>003 - the Apple II Plus typing model (auto-lowercase, case markers, digraphs).</li>
-<li>008 - the Phase 6 optimisation playbook, the standing list of where to reclaim bytes.</li>
 <li>011 - banking the extras into a Saturn card or //e aux RAM (the XLC trampoline and copy-down).</li>
 <li>013 - 80-column text on the //e firmware and the II Plus Videx.</li>
 <li>015 and 016 - the Family B compiler/runner toolchain and the streaming source window.</li>
 <li>018 - the on-target, self-advancing test harness.</li>
-<li>020 - the Saturn paged runner and a hard-won slot-clobber paging bug.</li>
 </ul>
 <p>I treated those as handoff documents. When a fresh session starts or when I switch tools, it reads the roadmap, the relevant design docs and the lessons. That is how a brand-new context window inherits accumulated judgement instead of re-making old mistakes. The phased structure also keeps each unit of work small enough to fit in one session.</p>
 <p>As the codebase and documents became bigger, each session had to load more context just to get oriented, so token budget became a real workflow constraint. The documentation helped both me and the AI to keep only the most important information &ldquo;in context&rdquo; for the task at hand.</p>
