@@ -9,16 +9,16 @@
 <meta name="generator" content="Hugo 0.163.3">
 	<meta itemprop="name" content="Bringing Swift to the Apple II">
 	<meta itemprop="description" content="Swift is the modern programming language behind many apps that run on modern Apple platforms. I thought it would be nice to bring a small taste of it back to Apple’s early days, the Apple II. It was Apple’s first mass-market series of machines, initially released in 1977 with a 1 MHz MOS 6502 CPU.
-I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a //e and up.">
+I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a IIe and up.">
 	<meta itemprop="datePublished" content="2026-06-25T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-06-25T00:00:00+00:00">
-	<meta itemprop="wordCount" content="6691">
+	<meta itemprop="wordCount" content="6704">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
 	<meta property="og:title" content="Bringing Swift to the Apple II">
 	<meta property="og:description" content="Swift is the modern programming language behind many apps that run on modern Apple platforms. I thought it would be nice to bring a small taste of it back to Apple’s early days, the Apple II. It was Apple’s first mass-market series of machines, initially released in 1977 with a 1 MHz MOS 6502 CPU.
-I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a //e and up.">
+I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a IIe and up.">
 	<meta property="og:locale" content="en">
 	<meta property="og:type" content="article">
 		<meta property="article:section" content="post">
@@ -30,7 +30,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 	<meta name="twitter:image" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg">
 	<meta name="twitter:title" content="Bringing Swift to the Apple II">
 	<meta name="twitter:description" content="Swift is the modern programming language behind many apps that run on modern Apple platforms. I thought it would be nice to bring a small taste of it back to Apple’s early days, the Apple II. It was Apple’s first mass-market series of machines, initially released in 1977 with a 1 MHz MOS 6502 CPU.
-I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a //e and up.">
+I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a IIe and up.">
 			<meta name="twitter:site" content="@yeokm1">
 <link rel="stylesheet" href="/css/bundle.min.c1c07dd2f2d4550dea41ee630c61a498ebe890cc507c74342f5e7d9e3600b2e5.css" integrity="sha256-wcB90vLUVQ3qQe5jDGGkmOvokMxQfHQ0L159njYAsuU=">
         <link rel="stylesheet" href="/css/add-on.css"></head>
@@ -282,7 +282,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 
   <div class="content">
     <p>Swift is the modern programming language behind many apps that run on modern Apple platforms. I thought it would be nice to bring a small taste of it back to Apple&rsquo;s early days, the Apple II. It was Apple&rsquo;s first mass-market series of machines, initially released in 1977 with a 1 MHz MOS 6502 CPU.</p>
-<p>I built <strong>SwiftII</strong>, a Swift-flavored mini development environment for the original Apple II to a //e and up.</p>
+<p>I built <strong>SwiftII</strong>, a Swift-flavored mini development environment for the original Apple II to a IIe and up.</p>
 <p>To be honest, I built it with heavy AI assistance in my spare time. I will be candid later how it helped because that workflow was as interesting to me as the retrocomputing work itself.</p>
 <p>One big caveat, this is not modern Swift and will never be. The full Swift standard library will not fit on this machine. SwiftII is a deliberate subset, much closer in spirit to <a href="https://www.swift.org/get-started/embedded/">Embedded Swift</a> than the SDK meant for modern platforms like iOS or macOS.</p>
 <p>My goal was to fit as much of Swift into the Apple II as I can while still reading like Swift on sight. If you know Swift, you should be able to read a SwiftII-compatible program and immediately understand it.</p>
@@ -366,7 +366,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 </ul>
 <p>More details on my own Apple II Plus setup are documented here: <a href="https://github.com/yeokm1/retro-configs-apple/tree/main/apple-ii-plus">https://github.com/yeokm1/retro-configs-apple/tree/main/apple-ii-plus</a>.</p>
 <p>The original 1977 Apple II is supported as long as it has been upgraded to 48 KB RAM plus a 16 KB language card giving the same 64 KB total. On a non-Autostart ROM machine you start the Disk II manually with <code>C600G</code> or <code>PR#6</code>.</p>
-<p>The Apple //e is the nicer machine to use because it has lowercase support, a better display ROM and a proper ASCII keyboard. On a //e, you can type SwiftII source much more naturally instead of relying on the Apple II Plus digraph and input conversion layer which I will share more later.</p>
+<p>The Apple IIe is the nicer machine to use because it has lowercase support, a better display ROM and a proper ASCII keyboard. On a //e, you can type SwiftII source much more naturally instead of relying on the Apple II Plus digraph and input conversion layer which I will share more later.</p>
 <p>I used ProDOS 2.4.3 because it is the modern still-maintained ProDOS 8 revival that is well documented and still runs on an original Apple II. Using a single ProDOS reference image also made the disk build and testing much simpler than supporting multiple DOS/ProDOS variants. A minimum 16K Language Card is mandatory for ProDOS.</p>
 <p>The 6502 is an 8-bit CPU. Its A, X and Y registers are all 8 bits wide and there is no general-purpose 16-bit register. There is no floating-point unit and not even a hardware multiply or divide instruction. The hardware stack is only 256 bytes which limits function call depth.</p>
 <p>As for memory, 64 KB is tiny by today&rsquo;s standards more akin to a microcontroller.</p>
@@ -516,7 +516,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 	<tbody>
 			<tr>
 					<td>Tier 1 (flat)</td>
-					<td>II Plus 64K or //e</td>
+					<td>II Plus 64K or IIe</td>
 					<td>1,834 bytes</td>
 			</tr>
 			<tr>
@@ -526,12 +526,12 @@ let x = ...         OP_DEFINE_GLOBAL #0
 			</tr>
 			<tr>
 					<td>Tier 3 (aux)</td>
-					<td>//e + 64K aux</td>
+					<td>IIe + 64K aux</td>
 					<td>~36 KB</td>
 			</tr>
 	</tbody>
 </table>
-<p>On a stock machine you get 1,834 bytes of bytecode. To go bigger, a Saturn 128K or //e 64K auxiliary RAM card (such as 80-column Extended Text card) is used to page completed function bytecode bodies out of main memory and into spare RAM.</p>
+<p>On a stock machine you get 1,834 bytes of bytecode. To go bigger, a Saturn 128K or IIe 64K auxiliary RAM card (such as 80-column Extended Text card) is used to page completed function bytecode bodies out of main memory and into spare RAM.</p>
 <p>The extra capacity mostly helps function-heavy programs, since each individual function and the top-level <code>main</code> still have to fit a resident window.</p>
 <h3 id="why-quitting-the-repl-reboots-the-machine">Why quitting the REPL reboots the machine</h3>
 <p>If you watched the above video carefully, you would notice that upon quiting the REPL, the system has to go through a reboot process before going back to the launcher menu.</p>
@@ -595,7 +595,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <a href="images/swiftii-editor-functions.png"><img src="images/swiftii-editor-functions.png" width="500"></a>
 <p>In the screenshot, <code>'INT</code> becomes <code>Int</code> in storage and inverse video marks actual uppercase letters where the II Plus cannot draw lowercase shapes. The same rule handles camelCase too. <code>readLine</code> is typed as <code>READ'LINE</code> and a double <code>''</code> marks a whole run of capitals at once.</p>
 <p>That apostrophe marker is important because Swift mixes upper and lower case inside identifiers. A type like <code>Int</code> is typed <code>'INT</code> and <code>String</code> is typed <code>'STRING</code>.</p>
-<p>On a //e with a normal keyboard, you type the program as-is. The <code>.swift</code> file on disk is the same regardless of which machine authored it.</p>
+<p>On a IIe with a normal keyboard, you type the program as-is. The <code>.swift</code> file on disk is the same regardless of which machine authored it.</p>
 <h3 id="text-display-on-the-apple-ii">Text Display on the Apple II</h3>
 <p>If there is one part of this project where the effort outweighed what users actually see, it is putting characters on the screen.</p>
 <p>I had to keep in mind 4 different output paths to interface the display, character set and column count.</p>
@@ -619,13 +619,13 @@ let x = ...         OP_DEFINE_GLOBAL #0
 					<td>Supports all display characters.</td>
 			</tr>
 			<tr>
-					<td>//e 40-column</td>
-					<td>Apple //e text mode</td>
+					<td>IIe 40-column</td>
+					<td>Apple IIe text mode</td>
 					<td>Supports all display characters</td>
 			</tr>
 			<tr>
-					<td>//e 80-column</td>
-					<td>Apple //e with 80-column firmware</td>
+					<td>IIe 80-column</td>
+					<td>Apple IIe with 80-column firmware</td>
 					<td>Supports all display characters</td>
 			</tr>
 	</tbody>
@@ -742,12 +742,12 @@ let x = ...         OP_DEFINE_GLOBAL #0
 			</tr>
 			<tr>
 					<td><code>iie-lite-repl</code></td>
-					<td>//e</td>
+					<td>IIe</td>
 					<td>core + native lowercase and 80-column text if fitted</td>
 			</tr>
 			<tr>
 					<td><code>iie-aux-repl</code></td>
-					<td>//e with 64K aux RAM</td>
+					<td>IIe with 64K aux RAM</td>
 					<td>core + graphics, <code>peek</code>/<code>poke</code> and 80-column text if fitted</td>
 			</tr>
 	</tbody>
@@ -786,17 +786,18 @@ let x = ...         OP_DEFINE_GLOBAL #0
 			</tr>
 			<tr>
 					<td><code>iie-compiler</code></td>
-					<td>//e</td>
+					<td>IIe</td>
 					<td>1.8 KB</td>
 			</tr>
 			<tr>
 					<td><code>iie-aux-compiler</code></td>
-					<td>//e with 64K aux RAM</td>
+					<td>IIe with 64K aux RAM</td>
 					<td>36 KB</td>
 			</tr>
 	</tbody>
 </table>
-<p>The eighth disk is <code>data</code>, it contains sample programs and the test suite mounted in drive 2 alongside any of the above.</p>
+<p>The IIe disks have 80-column support if the appropriate 80-column card is fitted.</p>
+<p>The ninth disk is <code>data</code>. It contains sample programs and the test suite mounted in drive 2 alongside any of the above.</p>
 <p>I thought of auto-detecting the machine at boot and adapt to every configuration. I deliberately did not, for two reasons.</p>
 <ol>
 <li>
@@ -813,11 +814,11 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <li>II Plus with Saturn</li>
 <li>II Plus with Saturn and Videx 80-column</li>
 <li>//e</li>
-<li>//e with auxiliary RAM in 64KB Extended 80-Column Text Card</li>
+<li>IIe with auxiliary RAM in 64KB Extended 80-Column Text Card</li>
 </ul>
 <p>A single <code>make ci</code> runs the plain C unit tests, builds all eight disk images and checks every binary against its size budget.</p>
 <p>The plain C unit tests are logic tests that run on my modern host Mac but we still need to run the software on actual or emulated 6502 systems with ProDOS for verification.</p>
-<p>Instead of launching the emulator one by one with each hardware and disk configuration and checking it by hand, I decided an automated acceptance harness is necessary. It drives the entire UI flow under a headless build of <a href="https://github.com/ivanizag/izapple2">izapple2</a>, a portable Apple II Plus/​//e emulator written in Go.</p>
+<p>Instead of launching the emulator one by one with each hardware and disk configuration and checking it by hand, I decided an automated acceptance harness is necessary. It drives the entire UI flow under a headless build of <a href="https://github.com/ivanizag/izapple2">izapple2</a>, a portable Apple II Plus/​IIe emulator written in Go.</p>
 <p>One command sweeps the hardware matrix, boots the right emulated machine, injects keystrokes, scrapes the screen and reports pass/fail.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/_bgV1I8DhJs?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
@@ -866,15 +867,15 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <li>Phases 2–3 - the interactive REPL, then strings and control flow, which also settled the pre-IIe keyboard and display model.</li>
 <li>Phase 4 - functions, optionals and arrays: the point where it starts to feel like Swift.</li>
 <li>Phase 8 - hardware-capability detection and the multi-binary build matrix, the root of the lite-versus-extras split.</li>
-<li>Phases 11–13 - the //e aux extras binary, 80-column text and running <code>.swift</code> programs straight off a disk.</li>
+<li>Phases 11–13 - the IIe aux extras binary, 80-column text and running <code>.swift</code> programs straight off a disk.</li>
 <li>Phases 14–15 - the in-launcher editor and the data disk, then the Family B on-disk compiler and runner for programs too big for the REPL.</li>
 <li>Phases 16–17 - stretch features (<code>switch</code>, <code>random</code>, <code>tone</code>, paged bytecode, Videx 80-column) and the polish-and-ship pass for v1.0.</li>
 </ul>
 <p>Around the phases sit roughly 20 numbered design documents, each capturing one non-obvious decision. What was chosen, what the alternatives were and how it was done. The most useful ones you can consider reading are:</p>
 <ul>
 <li>003 - the Apple II Plus typing model (auto-lowercase, case markers, digraphs).</li>
-<li>011 - banking the extras into a Saturn card or //e aux RAM (the XLC trampoline and copy-down).</li>
-<li>013 - 80-column text on the //e firmware and the II Plus Videx.</li>
+<li>011 - banking the extras into a Saturn card or IIe aux RAM (the XLC trampoline and copy-down).</li>
+<li>013 - 80-column text on the IIe firmware and the II Plus Videx.</li>
 <li>015 and 016 - the Family B compiler/runner toolchain and the streaming source window.</li>
 <li>018 - the on-target, self-advancing test harness.</li>
 </ul>
