@@ -12,7 +12,7 @@
 I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a //e and up.">
 	<meta itemprop="datePublished" content="2026-06-25T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-06-25T00:00:00+00:00">
-	<meta itemprop="wordCount" content="6670">
+	<meta itemprop="wordCount" content="6717">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -350,8 +350,8 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 <p>I recently restored an Apple II Plus that was generously donated to me. I wondered what modern abilities I can make it do.</p>
 <p>Years ago, I wrote a <a href="/2023/03/building-a-dos-chatgpt-client-in-2023/">DOS ChatGPT client</a> and a <a href="/2019/12/building-a-new-win-3-1-app-in-2019-part-1-slack-client/">Slack client for Windows 3.1</a>. Those projects were about squeezing a modern network service into a vintage machine. This time I wanted to know if I can do the same for a modern programming language, one from Apple itself no less!</p>
 <p>The inspiration for this app is <a href="https://en.wikipedia.org/wiki/Apple_Pascal">Apple Pascal</a>. Back in 1979, Apple Pascal brought the <a href="https://en.wikipedia.org/wiki/UCSD_Pascal">UCSD p-System</a> to the Apple II. Rather than compile Pascal to native 6502 machine code, it compiled to bytecode that ran on a virtual machine similar to how Java does it.</p>
-<p>I wanted to do the same for Swift. The compiler emits bytecode and a virtual machine executes it. Almost half a century apart, both languages reach the 6502 by avoiding native 6502 code generation.</p>
-<p>I also wanted a REPL too if some users want to test their code in an interactive manner.</p>
+<p>I wanted to do the same for Swift. The compiler emits bytecode and a virtual machine (VM) executes it. Almost half a century apart, both languages reach the 6502 by avoiding native 6502 code generation through a VM.</p>
+<p>I also wanted a <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">Read–eval–print loop (REPL)</a> tool so users can test their code in an interactive manner. The modern <a href="https://www.swift.org/documentation/lldb/">Swift SDK from Apple also supports this REPL function</a> so I thought it&rsquo;s reasonable to add that too.</p>
 <h2 id="target-hardware">Target Hardware</h2>
 <p>The baseline target is the original 1977 Apple II with appropriate hardware upgrades applied. If SwiftII runs here, it runs on pretty much any future Apple II.</p>
 <p>The 1979 Apple II Plus in the photo above is an incremental iteration over the original Apple II with features like Applesoft BASIC, more RAM and disk Autostart. Otherwise, it is largely similar to the original Apple II.</p>
@@ -390,10 +390,10 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 </span></span><span style="display:flex;"><span>xs.append(<span style="color:#ae81ff">4</span>)
 </span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>xs.count<span style="color:#e6db74">)</span><span style="color:#e6db74"> items&#34;</span>)
 </span></span></code></pre></div><h3 id="swiftii-supported-features">SwiftII supported features</h3>
-<p>The core reads exactly like Swift:</p>
+<p>The core (lite disks) reads exactly like Swift:</p>
 <ul>
 <li><code>let</code> and <code>var</code> with type inference</li>
-<li><code>if</code> / <code>else if</code> / <code>else</code>, <code>while</code>, and <code>for-in</code> over ranges</li>
+<li><code>if</code> / <code>else if</code> / <code>else</code>, <code>while</code> and <code>for-in</code> over ranges</li>
 <li>Top-level functions with <code>return</code></li>
 <li>Optionals with <code>if let</code>, <code>??</code> and force-unwrap <code>!</code></li>
 <li>Arrays with <code>append</code>, <code>count</code>, <code>isEmpty</code> and subscripting</li>
@@ -401,8 +401,8 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 </ul>
 <p>Beyond that, additional capabilities depend on which disk you boot:</p>
 <ul>
-<li>the extras disks add integer parsing (<code>Int(s)</code>), byte/string helpers (<code>asc</code>, <code>chr</code>), more array methods (<code>removeLast</code>, <code>removeAll</code>, <code>contains</code>), <code>peek</code>/<code>poke</code>, cursor/text control and lo-res graphics (<code>gr</code>, <code>color</code>, <code>plot</code>, <code>hlin</code>, <code>vlin</code>);</li>
-<li>the compiler disks go further with <code>switch</code>, <code>for-in</code> directly over arrays, <code>random(in:)</code>, speaker <code>tone</code> and file I/O.</li>
+<li>the extras (sat/aux) disks add integer parsing (<code>Int(s)</code>), byte/string helpers (<code>asc</code>, <code>chr</code>), more array methods (<code>removeLast</code>, <code>removeAll</code>, <code>contains</code>), <code>peek</code>/<code>poke</code>, cursor/text control and lo-res graphics (<code>gr</code>, <code>color</code>, <code>plot</code>, <code>hlin</code>, <code>vlin</code>);</li>
+<li>the Family B compiler disks go further with <code>switch</code>, <code>for-in</code> directly over arrays, <code>random(in:)</code>, speaker <code>tone</code> and file I/O.</li>
 </ul>
 <p>So the same source can be a compile error on one disk and run fine on another depending on which features you try on which disk.</p>
 <h3 id="where-the-types-differ-from-swift">Where the types differ from Swift</h3>
@@ -464,7 +464,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 let x = ...         OP_DEFINE_GLOBAL #0
 </code></pre><p>The VM is a stack machine. So this bytecode pushes the operands, runs an opcode that pops them, pushes the result then stores the result into global slot 0.</p>
 <p>Top-level functions are also just bytecode ranges. When the compiler sees <code>func greet(...)</code>, it records the function&rsquo;s start offset, parameter count and return flag in a small function table, then emits the function body into the bytecode arena. A later call does not carry a function pointer, it carries the function-table index.</p>
-<p>Strings take a slightly different path. The compiler copies each literal into the constant heap and emits <code>OP_STR &lt;offset&gt;</code>. Therefore the <code>.swb</code> file has to carry both bytecode and the constant pool. The instructions say &ldquo;load the string at heap offset N&rdquo;, and the runner must recreate the same constant heap layout before executing the program.</p>
+<p>Strings take a slightly different path. The compiler copies each literal into the constant heap and emits <code>OP_STR &lt;offset&gt;</code>. Therefore the <code>.swb</code> file has to carry both bytecode and the constant pool. The instructions say &ldquo;load the string at heap offset N&rdquo; and the runner must recreate the same constant heap layout before executing the program.</p>
 <h3 id="what-the-bytecode-actually-looks-like">What the bytecode actually looks like</h3>
 <p>Each instruction is 1 byte of opcode followed by 0 to 2 bytes of inline operand. There are no multi-byte opcodes or prefixes.</p>
 <p>The opcodes are grouped by rough function: constants, stack manipulation, variables, arithmetic, comparison, control flow, calls, optionals and heap objects. The upper range is left reserved for things SwiftII does not have yet, such as closures, structs, dictionaries, classes and protocols.</p>
@@ -534,7 +534,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <p>The extra capacity mostly helps function-heavy programs, since each individual function and the top-level <code>main</code> still have to fit a resident window.</p>
 <h3 id="why-quitting-the-repl-reboots-the-machine">Why quitting the REPL reboots the machine</h3>
 <p>If you watched the above video carefully, you would notice that upon quiting the REPL, the system has to go through a reboot process before going back to the launcher menu.</p>
-<p>This looks heavy-handed, but it is forced. To return cleanly, the interpreter would have to read the launcher&rsquo;s <code>SYS</code> file from disk and jump into it. Reading a file requires the ProDOS MLI, but the interpreter has overwritten the MLI with its own code. The routine needed to load the next program no longer exists in memory.</p>
+<p>This looks heavy-handed, but it is forced. To return to the launcher properly, the REPL would have to read the launcher&rsquo;s <code>SYS</code> file from disk and jump into it. Reading a file requires the ProDOS MLI, but the REPL has overwritten the MLI with its own code. The MLI routine needed to load the next program no longer exists in memory.</p>
 <p>The full-screen editor is compiled into the launcher rather than being a separate program. The launcher is Main-only and keeps the ProDOS MLI alive, so the editor can open and save <code>.swift</code> files directly.</p>
 <p>Since the file selector and editor are still the same running program, moving from browser to editor and back is much faster than chaining a separate <code>SYS</code> file each time.</p>
 <ul>
@@ -583,17 +583,17 @@ let x = ...         OP_DEFINE_GLOBAL #0
 			<tr>
 					<td><code>&lt;%</code></td>
 					<td><code>&lt;%</code></td>
-					<td><code>{</code> (one byte, <code>$7B</code>)</td>
+					<td><code>{</code> (Single byte <code>0x7B</code>)</td>
 			</tr>
 	</tbody>
 </table>
 <p>The next two sections describe the input and output sides of that translation.</p>
 <h3 id="typing-swift-on-a-1977-keyboard-for-ii-and-ii">Typing Swift on a 1977 keyboard for II and II+</h3>
-<p>Swift source is lowercase ASCII full of punctuation. The II/II+ keyboard cannot type lowercase, backslash, <code>{ } [ ]</code>, <code>_</code> or backtick.</p>
-<p>So SwiftII puts an input translation layer between the keyboard and the saved file. It auto-lowercases letters, uses <code>'</code> as a one-shot uppercase marker (<code>''</code> for a full word), maps <code>Ctrl-W</code> to <code>_</code>, and borrows the <a href="https://en.wikipedia.org/wiki/Digraphs_and_trigraphs_%28programming%29">C-standard digraphs and trigraphs</a> for missing punctuation.</p>
+<p>Conventional Swift comprises mostly of lowercase ASCII and punctuation. The II/II+ keyboard cannot type lowercase, backslash, <code>{ } [ ]</code>, <code>_</code> or backtick.</p>
+<p>So SwiftII puts an input translation layer between the keyboard and the saved file. It auto-lowercases letters, uses <code>'</code> as a one-shot uppercase marker (<code>''</code> for a full word), maps <code>Ctrl-W</code> to <code>_</code> and borrows the <a href="https://en.wikipedia.org/wiki/Digraphs_and_trigraphs_%28programming%29">C-standard digraphs and trigraphs</a> for missing punctuation.</p>
 <a href="images/swiftii-editor-functions.png"><img src="images/swiftii-editor-functions.png" width="500"></a>
 <p>In the screenshot, <code>'INT</code> becomes <code>Int</code> in storage and inverse video marks actual uppercase letters where the II Plus cannot draw lowercase shapes. The same rule handles camelCase too. <code>readLine</code> is typed as <code>READ'LINE</code> and a double <code>''</code> marks a whole run of capitals at once.</p>
-<p>That apostrophe marker is important because Swift mixes upper and lower case inside identifiers. A type like <code>Int</code> is typed <code>'INT</code>, and <code>String</code> is typed <code>'STRING</code>.</p>
+<p>That apostrophe marker is important because Swift mixes upper and lower case inside identifiers. A type like <code>Int</code> is typed <code>'INT</code> and <code>String</code> is typed <code>'STRING</code>.</p>
 <p>On a //e with a normal keyboard, you type the program as-is. The <code>.swift</code> file on disk is the same regardless of which machine authored it.</p>
 <h3 id="text-display-on-the-apple-ii">Text Display on the Apple II</h3>
 <p>If there is one part of this project where the effort outweighed what users actually see, it is putting characters on the screen.</p>
@@ -610,7 +610,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 			<tr>
 					<td>Pre-IIe 40-column</td>
 					<td>Original Apple II / II Plus</td>
-					<td>Lowercase becomes normal uppercase, uppercase becomes inverse-video uppercase, and missing glyphs such as <code>{</code> are displayed as digraphs like <code>&lt;%</code>.</td>
+					<td>Lowercase becomes normal uppercase, uppercase becomes inverse-video uppercase and missing glyphs such as <code>{</code> are displayed as digraphs like <code>&lt;%</code>.</td>
 			</tr>
 			<tr>
 					<td>Videx 80-column</td>
@@ -718,8 +718,9 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <p>All of these constraints result in one outcome, SwiftII is not a single download. It is 8x disk images and the reasons trace straight back to the sections above.</p>
 <p>As mentioned previously, memory limits constrain which features can be banked.</p>
 <p>A Family A REPL overrides the ProDOS MLI IO functions but the Family B compiler-runner needs them to read/write bytecode to disk. So both cannot be same binary because one evicts ProDOS and the other needs it.</p>
-<p>So the release is 4x Family A REPL disks, 3x Family B compiler disks, and 1x shared data disk.</p>
+<p>So the release is 4x Family A REPL disks, 3x Family B compiler disks and 1x shared data disk.</p>
 <h3 id="family-a-repl">Family A: REPL</h3>
+<p>Disks named <code>lite/sat/aux</code>.</p>
 <table>
 	<thead>
 			<tr>
@@ -737,7 +738,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 			<tr>
 					<td><code>iip-sat-repl</code></td>
 					<td>II Plus with a Saturn 128K card</td>
-					<td>core + graphics, <code>peek</code>/<code>poke</code>, speaker, and 80-column via Videx if fitted</td>
+					<td>core + graphics, <code>peek</code>/<code>poke</code>, speaker and 80-column via Videx if fitted</td>
 			</tr>
 			<tr>
 					<td><code>iie-lite-repl</code></td>
@@ -747,17 +748,18 @@ let x = ...         OP_DEFINE_GLOBAL #0
 			<tr>
 					<td><code>iie-aux-repl</code></td>
 					<td>//e with 64K aux RAM</td>
-					<td>core + graphics, <code>peek</code>/<code>poke</code>, speaker, and 80-column</td>
+					<td>core + graphics, <code>peek</code>/<code>poke</code>, speaker and 80-column</td>
 			</tr>
 	</tbody>
 </table>
 <h3 id="family-b-compiler-and-runner">Family B: Compiler and Runner</h3>
-<p>All 3x disks compile a <code>.swift</code> file to a <code>.swb</code> bytecode file and then run it, and they share the biggest feature set in the project. On top of the core language they add:</p>
+<p>Disks named <code>compiler</code>.</p>
+<p>All 3x disks compile a <code>.swift</code> file to a <code>.swb</code> bytecode file and then run it and they share the biggest feature set in the project. On top of the core language they add:</p>
 <ul>
 <li>file I/O — <code>readFile</code>, <code>writeFile</code>, <code>appendFile</code>, <code>listDirectory</code></li>
 <li><code>switch</code>, <code>for-in</code> directly over arrays and <code>random(in:)</code></li>
 <li>sound (<code>tone</code>) and timing (<code>wait</code>)</li>
-<li><code>abs</code> / <code>sgn</code>, and string <code>hasPrefix</code> / <code>hasSuffix</code></li>
+<li><code>abs</code> / <code>sgn</code> and string <code>hasPrefix</code> / <code>hasSuffix</code></li>
 <li>the full graphics and <code>peek</code>/<code>poke</code> set</li>
 </ul>
 <p>The three disks differ only in how large a program they can hold which is determined by where the bytecode is stored.</p>
@@ -802,11 +804,11 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <ul>
 <li>Original Apple II (Plus) with 16K language card</li>
 <li>II Plus with Saturn</li>
-<li>II Plus with Videx 80-column</li>
+<li>II Plus with Saturn and Videx 80-column</li>
 <li>//e</li>
-<li>//e with auxiliary RAM</li>
+<li>//e with auxiliary RAM in 64KB Extended 80-Column Text Card</li>
 </ul>
-<p>A single <code>make ci</code> runs the plain C unit tests, builds all eight disk images, and checks every binary against its size budget.</p>
+<p>A single <code>make ci</code> runs the plain C unit tests, builds all eight disk images and checks every binary against its size budget.</p>
 <p>The plain C unit tests are logic tests that run on my modern host Mac but we still need to run the software on actual or emulated 6502 systems with ProDOS for verification.</p>
 <p>Instead of launching the emulator one by one with each hardware and disk configuration and checking it by hand, I decided an automated acceptance harness is necessary. It drives the entire UI flow under a headless build of <a href="https://github.com/ivanizag/izapple2">izapple2</a>, a portable Apple II Plus/​//e emulator written in Go.</p>
 <p>One command sweeps the hardware matrix, boots the right emulated machine, injects keystrokes, scrapes the screen and reports pass/fail.</p>
@@ -824,10 +826,10 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <h3 id="the-ground-rules">The ground rules</h3>
 <p>I set up some initial rules with AI&rsquo;s help and fine-tuned them.</p>
 <ul>
-<li><strong>The budget is real.</strong> Code that works but is twice as large as it needs to be has still failed. The binding target is always the 64 KB II Plus, and every feature is costed in bytes.</li>
+<li><strong>The budget is real.</strong> Code that works but is twice as large as it needs to be has still failed. The binding target is always the 64 KB II Plus and every feature is costed in bytes.</li>
 <li><strong>Write the design doc first.</strong> Any non-obvious choice, zero-page allocation, value representation, bytecode format, banking scheme, had to be written up with alternatives and costs before code.</li>
 <li><strong>Bring me a decision with options, not an open question.</strong> &ldquo;How should I do this?&rdquo; is not.</li>
-<li><strong>Try a feature, measure its real memory cost, and drop it if it isn&rsquo;t worth it.</strong></li>
+<li><strong>Try a feature, measure its real memory cost and drop it if it isn&rsquo;t worth it.</strong></li>
 </ul>
 <h3 id="the-calls-that-were-mine">The calls that were mine</h3>
 <p>My highest-leverage moments were usually architectural or about scope:</p>
@@ -857,7 +859,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <li>Phases 2–3 - the interactive REPL, then strings and control flow, which also settled the pre-IIe keyboard and display model.</li>
 <li>Phase 4 - functions, optionals and arrays: the point where it starts to feel like Swift.</li>
 <li>Phase 8 - hardware-capability detection and the multi-binary build matrix, the root of the lite-versus-extras split.</li>
-<li>Phases 11–13 - the //e aux extras binary, 80-column text, and running <code>.swift</code> programs straight off a disk.</li>
+<li>Phases 11–13 - the //e aux extras binary, 80-column text and running <code>.swift</code> programs straight off a disk.</li>
 <li>Phases 14–15 - the in-launcher editor and the data disk, then the Family B on-disk compiler and runner for programs too big for the REPL.</li>
 <li>Phases 16–17 - stretch features (<code>switch</code>, <code>random</code>, <code>tone</code>, paged bytecode, Videx 80-column) and the polish-and-ship pass for v1.0.</li>
 </ul>
@@ -871,7 +873,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <li>018 - the on-target, self-advancing test harness.</li>
 <li>020 - the Saturn paged runner and a hard-won slot-clobber paging bug.</li>
 </ul>
-<p>I treated those as handoff documents. When a fresh session starts, or when I switch tools, it reads the roadmap, only the relevant design docs, and the lessons. That is how a brand-new context window inherits accumulated judgement instead of re-making old mistakes. The phased structure also keeps each unit of work small enough to fit in one session.</p>
+<p>I treated those as handoff documents. When a fresh session starts or when I switch tools, it reads the roadmap, the relevant design docs and the lessons. That is how a brand-new context window inherits accumulated judgement instead of re-making old mistakes. The phased structure also keeps each unit of work small enough to fit in one session.</p>
 <p>As the codebase and documents became bigger, each session had to load more context just to get oriented, so token budget became a real workflow constraint. The documentation helped both me and the AI to keep only the most important information &ldquo;in context&rdquo; for the task at hand.</p>
 <h2 id="try-it">Try it</h2>
 <p>The easiest way to try SwiftII is in an emulator, no toolchain required. Download a disk image (<code>.po</code>) from the <a href="https://github.com/yeokm1/swiftii/releases">GitHub Releases</a> and open it in an Apple II emulator: <a href="https://github.com/sh95014/Mariani">Mariani</a> on macOS, <a href="https://github.com/AppleWin/AppleWin">AppleWin</a> on Windows, or <a href="https://github.com/ivanizag/izapple2/releases">izapple2</a> which is cross-platform. Start with <code>swiftii-iip-lite-repl-vX.X.X.po</code> for the broadest compatibility.</p>
@@ -879,10 +881,10 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <p>If you want the toolchain, the repo builds the whole disk set from source with cc65. You can also cross-compile a <code>.swift</code> to a <code>.swb</code> on your Mac and run it on the Apple II.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>In the end, this was a labour of love and a nod to the legacy of the Apple II and Apple Pascal. Almost 50 years ago, Apple Pascal proved you could run a high-level language on tiny hardware by compiling down to bytecode. SwiftII is just my attempt to apply that exact same philosophy to a Swift-like language.</p>
-<p>A huge portion of the architectural credit goes to Bob Nystrom, the VM implementation is heavily adapted from his phenomenal Crafting Interpreters book. Equally important is the cc65 project, whose 6502 C cross-compiler made this entire endeavour technically viable.</p>
+<p>A huge portion of the architectural credit goes to Robert Nystrom, the VM implementation is heavily adapted from his phenomenal Crafting Interpreters book. Equally important is the cc65 project, whose 6502 C cross-compiler made this entire endeavour technically viable.</p>
 <p>Massive thanks to Steve Wozniak for the Apple II. By designing it with an well-documented, open expandable architecture, he didn&rsquo;t just contribute immensely to the home computer revolution, he built a timeless machine that continues to teach us about fundamental, bare-metal computing almost half a century later.</p>
 <p>There is something deeply poetic about taking a language created by modern Apple and bringing it full circle back to the 8-bit hardware where the company began. The Swift team really did well by designing a language elegant enough to make this experiment even remotely feasible on such old hardware.</p>
-<p>I would like to thank the creators of the Apple II emulators <a href="https://github.com/ivanizag/izapple2">izapple2</a> and <a href="https://sh95014.github.io/AppleWin/">Mariani</a> which allowed me to test the project on my modern host Mac. Without which there is no easy way to iterate through the project code.</p>
+<p>I would like to thank the creators of the Apple II emulators <a href="https://github.com/ivanizag/izapple2">izapple2</a> and <a href="https://sh95014.github.io/AppleWin/">Mariani</a> which allowed me to test the project on my modern host Mac. Without which there is no easy way to iterate through the project development.</p>
 <p>It&rsquo;s a nice little perk that ProDOS allows 15-character filenames. You don&rsquo;t have to squash everything into an archaic DOS 8.3 format for example, meaning you can actually use the real <code>.swift</code> extension. It&rsquo;s a small detail but something worth pointing out.</p>
 <p>I&rsquo;m amazed at what can still be accomplished for vintage systems with AI tools and a persistent human. A one-person hobby project of this size simply was not feasible a couple of years or even months ago.</p>
 <p>I hope you enjoyed reading this as much as I enjoyed building it. I dedicate this project to Steve Wozniak and the Swift team at Apple.</p>
