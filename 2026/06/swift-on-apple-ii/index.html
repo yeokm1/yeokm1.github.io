@@ -321,7 +321,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 <li><a href="/2026/06/swift-on-apple-ii/#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="the-app">The App</h2>
-<p>Boot the appropriate disk and you land in a launcher. You can select an interactive REPL, a file browser that runs <code>.swift</code> programs straight from the disk, a full-screen editor, all self-contained on one bootable floppy.</p>
+<p>Boot the appropriate disk and you land in a launcher. You can select an interactive REPL, a file browser that runs <code>.swift</code> programs straight from the disk, a full-screen editor all self-contained on one bootable floppy.</p>
 <p>Here is a demo video of the app running on my original Apple II Plus.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/GFuMG0EhEWo?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
@@ -424,8 +424,8 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 </ul>
 <p>There are also no closures, no dictionaries, no error-handling or <code>throws</code>, no concurrency (<code>async</code>/<code>await</code>), no macros and no call-site argument labels. Each would cost memory or single-pass compiler complexity the machine obviously cannot spare.</p>
 <h2 id="the-main-constraint-40704-bytes">The main constraint: 40,704 bytes</h2>
-<p>To understand the memory budget, you first have to understand the Apple II&rsquo;s memory map. The 6502 can address 65536 bytes with its 16-bit address bus. SwiftII runs under <a href="https://en.wikipedia.org/wiki/Apple_ProDOS">ProDOS</a> as a <code>SYS</code> binary, which starts at <code>$2000</code>.</p>
-<p>SwiftII binaries are <code>SYS</code> programs and do not leave room for <code>BASIC.SYSTEM</code> above it. So the practical load-image ceiling is the contiguous range from <code>$2000</code> up to the ProDOS global page at <code>$BF00</code> -&gt; <code>\$2000-$BEFF</code>.</p>
+<p>To understand the memory budget, you first have to understand the Apple II&rsquo;s memory map. The 6502 can address 65536 bytes with its 16-bit address bus. SwiftII binaries runs under <a href="https://en.wikipedia.org/wiki/Apple_ProDOS">ProDOS</a> as a <code>SYS</code> binary, which starts at <code>$2000</code>.</p>
+<p>Since they do not leave room for <code>BASIC.SYSTEM</code> above it, the practical load-image ceiling is the contiguous range from <code>$2000</code> up to the ProDOS global page at <code>$BF00</code> -&gt; <code>\$2000-$BEFF</code>.</p>
 <p>I got AI to help me to draw up this infographic.</p>
 <p><a href="images/swiftii-apple2-banking.svg"><img src="images/swiftii-apple2-banking.svg" alt="Apple II bank switching diagram showing the D000 to FFFF window, Saturn banks and aux RAM copy-down" width="700"></a><br></p>
 <p>That region is exactly 40,704 bytes. It is the entire main-RAM my binary can use.</p>
@@ -455,7 +455,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> x = <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>
 </span></span></code></pre></div><p>The lexer first turns the characters into a stream of tokens:</p>
 <pre tabindex="0"><code>LET  IDENT(x)  EQUAL  INT(1)  PLUS  INT(2)  EOF
-</code></pre><p>The statement parser sees <code>LET</code>, so it knows it is compiling a variable declaration. It records <code>x</code> in the globals table, then asks the expression parser to compile the right-hand side.</p>
+</code></pre><p>The statement parser sees <code>LET</code>, so it knows it is compiling a constant declaration. It records <code>x</code> in the globals table, then asks the expression parser to compile the right-hand side.</p>
 <p>The expression parser is where Pratt parsing helps. Each operator has a precedence. When it sees <code>1 + 2</code>, it emits &ldquo;push 1&rdquo;, sees <code>+</code>, notices that <code>+</code> binds to the next value, emits &ldquo;push 2&rdquo;, then emits &ldquo;add&rdquo;. There is no <code>BinaryExpr(left: 1, op: +, right: 2)</code> object sitting in memory. The output bytes are produced as the parser goes:</p>
 <pre tabindex="0"><code>source fragment     bytecode emitted
 ---------------     ----------------
@@ -516,12 +516,12 @@ let x = ...         OP_DEFINE_GLOBAL #0
 	<tbody>
 			<tr>
 					<td>Tier 1 (flat)</td>
-					<td>II Plus 64K or IIe</td>
+					<td>II Plus with LC or IIe</td>
 					<td>1,834 bytes</td>
 			</tr>
 			<tr>
 					<td>Tier 2 (Saturn)</td>
-					<td>II Plus + Saturn 128K</td>
+					<td>II Plus with LC + Saturn 128K</td>
 					<td>~36 KB</td>
 			</tr>
 			<tr>
@@ -625,7 +625,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 			</tr>
 			<tr>
 					<td>IIe 80-column</td>
-					<td>Apple IIe with 80-column firmware</td>
+					<td>Apple IIe with 80-column card</td>
 					<td>Supports all display characters</td>
 			</tr>
 	</tbody>
@@ -830,7 +830,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <p>For context, I did the project in my spare time over a 2-month period, using the entry-level Claude Pro and ChatGPT Plus plans rather than the more expensive tiers.</p>
 <p><strong>Without AI, this project would not have been feasible for me as a hobby project.</strong></p>
 <p>By hand at a similar standard, I think this would have taken well over 2-3 years work on the side or more.</p>
-<p>The following rules and calls were AI-generated from my repo history.</p>
+<p>The following rules and calls were AI-generated extracted from my repo history.</p>
 <h3 id="the-ground-rules">The ground rules</h3>
 <p>I set up some initial rules with AI&rsquo;s help and fine-tuned them.</p>
 <ul>
