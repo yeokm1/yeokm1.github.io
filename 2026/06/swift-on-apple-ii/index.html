@@ -333,7 +333,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 <table>
 <tr>
 <td width="50%"><a href="images/swiftii-launcher.png"><img src="images/swiftii-launcher.png" alt="Boot launcher menu"></a><br><sub>The boot launcher menu</sub></td>
-<td width="50%"><a href="images/swiftii-editor-iie80.png"><img src="images/swiftii-editor-iie80.png" alt="Full-screen editor in 80 columns"></a><br><sub>The full-screen editor (//e, 80-column)</sub></td>
+<td width="50%"><a href="images/swiftii-editor-iie80.png"><img src="images/swiftii-editor-iie80.png" alt="Full-screen editor in 80 columns"></a><br><sub>The full-screen editor (IIe, 80-column)</sub></td>
 </tr>
 <tr>
 <td width="50%"><a href="images/swiftii-browser.png"><img src="images/swiftii-browser.png" alt="File browser with a live code preview"></a><br><sub>The file browser with a live code preview</sub></td>
@@ -366,7 +366,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 </ul>
 <p>More details on my own Apple II Plus setup are documented here: <a href="https://github.com/yeokm1/retro-configs-apple/tree/main/apple-ii-plus">https://github.com/yeokm1/retro-configs-apple/tree/main/apple-ii-plus</a>.</p>
 <p>The original 1977 Apple II is supported as long as it has been upgraded to 48 KB RAM plus a 16 KB language card giving the same 64 KB total. On a non-Autostart ROM machine you start the Disk II manually with <code>C600G</code> or <code>PR#6</code>.</p>
-<p>The Apple IIe is the nicer machine to use because it has lowercase support, a better display ROM and a proper ASCII keyboard. On a //e, you can type SwiftII source much more naturally instead of relying on the Apple II Plus digraph and input conversion layer which I will share more later.</p>
+<p>The Apple IIe is the nicer machine to use because it has lowercase support, a better display ROM and a proper ASCII keyboard. On a IIe, you can type SwiftII source much more naturally instead of relying on the Apple II Plus digraph and input conversion layer which I will share more later.</p>
 <p>I used ProDOS 2.4.3 because it is the modern still-maintained ProDOS 8 revival that is well documented and still runs on an original Apple II. Using a single ProDOS reference image also made the disk build and testing much simpler than supporting multiple DOS/ProDOS variants. A minimum 16K Language Card is mandatory for ProDOS.</p>
 <p>The 6502 is an 8-bit CPU. Its A, X and Y registers are all 8 bits wide and there is no general-purpose 16-bit register. There is no floating-point unit and not even a hardware multiply or divide instruction. The hardware stack is only 256 bytes which limits function call depth.</p>
 <p>As for memory, 64 KB is tiny by today&rsquo;s standards more akin to a microcontroller.</p>
@@ -431,7 +431,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 <p>That region is exactly 40,704 bytes. It is the entire main-RAM my binary can use.</p>
 <h3 id="memory-beyond-64k">Memory beyond 64K</h3>
 <p>64KB is just enough to run core features of SwiftII but is not sufficient for more functions or bigger programs. However, memory beyond 64 KB is not directly addressable.</p>
-<p>Memory upgrades of that time period like Saturn 128K card or the //e&rsquo;s 64K of auxiliary RAM does not extend the address space like modern linear memory. It sits behind a window and software banks pieces of it in and out through soft switches. If you come from the DOS PC world, it is conceptually similar to <a href="https://en.wikipedia.org/wiki/Expanded_memory">Expanded Memory Specification (EMS)</a>. The extra RAM is there, but the CPU can only see the selected page at the selected address range.</p>
+<p>Memory upgrades of that time period like Saturn 128K card or the IIe&rsquo;s 64K of auxiliary RAM does not extend the address space like modern linear memory. It sits behind a window and software banks pieces of it in and out through soft switches. If you come from the DOS PC world, it is conceptually similar to <a href="https://en.wikipedia.org/wiki/Expanded_memory">Expanded Memory Specification (EMS)</a>. The extra RAM is there, but the CPU can only see the selected page at the selected address range.</p>
 <p>On the Apple II this is especially awkward because the language-card window is also where ROM, ProDOS <a href="https://prodos8.com/docs/techref/calls-to-the-mli/">ProDOS Machine Language Interface (MLI)</a> code also lives. Only one bank can be visible there at a time.</p>
 <p>I will come back to this topic later.</p>
 <h2 id="development-setup">Development setup</h2>
@@ -707,11 +707,11 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <p>That makes banking both useful and dangerous. It gives SwiftII somewhere to put code that will not fit in main RAM but it also means a routine can accidentally hide the ROM or ProDOS MLI code it is about to call.</p>
 <p>The Family A REPL is far larger than what can remain resident in main RAM so some cold code has to be banked.</p>
 <p>Main RAM below <code>$C000</code> remains visible but code in the <code>\$D000-$FFFF</code> language-card window depends on the current bank state. So every call into or out of that window needs a carefully managed bank switch.</p>
-<p>The split of what code is in main RAM or banked is based on my expected execution frequency. I classify the cold code as graphics, <code>peek</code>/<code>poke</code> etc. These are parked into the Saturn 128K card or the //e&rsquo;s 64K of aux RAM.</p>
+<p>The split of what code is in main RAM or banked is based on my expected execution frequency. I classify the cold code as graphics, <code>peek</code>/<code>poke</code> etc. These are parked into the Saturn 128K card or the IIe&rsquo;s 64K of aux RAM.</p>
 <p>The two cards need different methods to utilise the banked data:</p>
 <ul>
 <li>Saturn bank-select allows code in the banked window to execute in place from the card.</li>
-<li>//e&rsquo;s aux RAM code cannot run in place so the cold code has to be first copied into a main-RAM staging buffer and run from there.</li>
+<li>IIe&rsquo;s aux RAM code cannot run in place so the cold code has to be first copied into a main-RAM staging buffer and run from there.</li>
 </ul>
 <p>Family B&rsquo;s compiler and runner use the same spare RAM differently to store bytecode. The runner streams through a small main-RAM window as it executes rather than running in place.</p>
 <p>All of this is transparent to the SwiftII programmer.</p>
@@ -813,7 +813,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <li>Original Apple II (Plus) with 16K language card</li>
 <li>II Plus with Saturn</li>
 <li>II Plus with Saturn and Videx 80-column</li>
-<li>//e</li>
+<li>IIe</li>
 <li>IIe with auxiliary RAM in 64KB Extended 80-Column Text Card</li>
 </ul>
 <p>A single <code>make ci</code> runs the plain C unit tests, builds all eight disk images and checks every binary against its size budget.</p>
