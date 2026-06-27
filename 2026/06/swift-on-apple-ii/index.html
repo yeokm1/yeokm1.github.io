@@ -12,7 +12,7 @@
 I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a IIe and up.">
 	<meta itemprop="datePublished" content="2026-06-25T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-06-25T00:00:00+00:00">
-	<meta itemprop="wordCount" content="6704">
+	<meta itemprop="wordCount" content="6766">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -288,32 +288,61 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 <p>My goal was to fit as much of Swift into the Apple II as I can while still reading like Swift on sight. If you know Swift, you should be able to read a SwiftII-compatible program and immediately understand it.</p>
 <p>Other than the interpreter, I want my user to still have a relatively good user/developer experience. Because of this, I also had to build a launcher, file selector and text editor due to limitations I encountered on the Apple II.</p>
 <h2 id="contents">Contents</h2>
-<p>This post is quite long, so here are the main sections for you to jump straight to:</p>
+<p>This post is quite long, so here are the sections for you to jump straight to.</p>
 <ul>
 <li><a href="/2026/06/swift-on-apple-ii/#the-app">The App</a></li>
 <li><a href="/2026/06/swift-on-apple-ii/#motivation">Motivation</a></li>
 <li><a href="/2026/06/swift-on-apple-ii/#target-hardware">Target Hardware</a></li>
-<li><a href="/2026/06/swift-on-apple-ii/#the-language">The language</a></li>
-<li><a href="/2026/06/swift-on-apple-ii/#the-main-constraint-40704-bytes">The main constraint: 40,704 bytes</a></li>
+<li><a href="/2026/06/swift-on-apple-ii/#the-language">The language</a>
+<ul>
+<li><a href="/2026/06/swift-on-apple-ii/#swiftii-supported-features">SwiftII supported features</a></li>
+<li><a href="/2026/06/swift-on-apple-ii/#where-the-types-differ-from-swift">Where the types differ from Swift</a></li>
+</ul>
+</li>
+<li><a href="/2026/06/swift-on-apple-ii/#the-main-constraint-40704-bytes">The main constraint: 40,704 bytes</a>
+<ul>
+<li><a href="/2026/06/swift-on-apple-ii/#memory-beyond-64k">Memory beyond 64K</a></li>
+</ul>
+</li>
 <li><a href="/2026/06/swift-on-apple-ii/#development-setup">Development setup</a></li>
 <li><a href="/2026/06/swift-on-apple-ii/#how-the-language-works">How the language works</a>
 <ul>
+<li><a href="/2026/06/swift-on-apple-ii/#from-source-text-to-bytecode">From source text to bytecode</a></li>
+<li><a href="/2026/06/swift-on-apple-ii/#what-the-bytecode-actually-looks-like">What the bytecode actually looks like</a></li>
 <li><a href="/2026/06/swift-on-apple-ii/#no-floating-point-at-all">No floating point at all</a></li>
 </ul>
 </li>
-<li><a href="/2026/06/swift-on-apple-ii/#two-families-of-binary">Two families of binary</a></li>
+<li><a href="/2026/06/swift-on-apple-ii/#two-families-of-binary">Two families of binary</a>
+<ul>
+<li><a href="/2026/06/swift-on-apple-ii/#why-quitting-the-repl-reboots-the-machine">Why quitting the REPL reboots the machine</a></li>
+</ul>
+</li>
 <li><a href="/2026/06/swift-on-apple-ii/#what-you-type-vs-what-you-see-vs-what-is-stored">&ldquo;What you type&rdquo; vs &ldquo;what you see&rdquo; vs &ldquo;what is stored&rdquo;</a>
 <ul>
 <li><a href="/2026/06/swift-on-apple-ii/#typing-swift-on-a-1977-keyboard-for-ii-and-ii">Typing Swift on a 1977 keyboard for II and II+</a></li>
 <li><a href="/2026/06/swift-on-apple-ii/#text-display-on-the-apple-ii">Text Display on the Apple II</a></li>
 </ul>
 </li>
-<li><a href="/2026/06/swift-on-apple-ii/#developing-swift-on-the-machine-itself">Developing Swift on the machine itself</a></li>
+<li><a href="/2026/06/swift-on-apple-ii/#developing-swift-on-the-machine-itself">Developing Swift on the machine itself</a>
+<ul>
+<li><a href="/2026/06/swift-on-apple-ii/#the-file-browser">The file browser</a></li>
+<li><a href="/2026/06/swift-on-apple-ii/#the-editor">The editor</a></li>
+</ul>
+</li>
 <li><a href="/2026/06/swift-on-apple-ii/#the-trouble-with-memory-banking">The trouble with memory banking</a></li>
-<li><a href="/2026/06/swift-on-apple-ii/#why-this-project-ships-as-9x-disks">Why this project ships as 9x disks</a></li>
+<li><a href="/2026/06/swift-on-apple-ii/#why-this-project-ships-as-9x-disks">Why this project ships as 9x disks</a>
+<ul>
+<li><a href="/2026/06/swift-on-apple-ii/#family-a-repl">Family A: REPL</a></li>
+<li><a href="/2026/06/swift-on-apple-ii/#family-b-compiler-and-runner">Family B: Compiler and Runner</a></li>
+</ul>
+</li>
 <li><a href="/2026/06/swift-on-apple-ii/#testing-too-many-machines">Testing too many machines</a></li>
 <li><a href="/2026/06/swift-on-apple-ii/#how-it-was-built-with-ai">How it was built with AI</a>
 <ul>
+<li><a href="/2026/06/swift-on-apple-ii/#the-ground-rules">The ground rules</a></li>
+<li><a href="/2026/06/swift-on-apple-ii/#the-calls-that-were-mine">The calls that were mine</a></li>
+<li><a href="/2026/06/swift-on-apple-ii/#claude-and-codex-did-different-jobs">Claude and Codex did different jobs</a></li>
+<li><a href="/2026/06/swift-on-apple-ii/#why-autonomous-mode-kept-tripping-here">Why autonomous mode kept tripping here</a></li>
 <li><a href="/2026/06/swift-on-apple-ii/#the-documentation-as-the-ais-memory">The documentation as the AI&rsquo;s memory</a></li>
 </ul>
 </li>
