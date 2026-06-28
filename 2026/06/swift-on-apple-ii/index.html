@@ -12,7 +12,7 @@
 I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a IIe and up.">
 	<meta itemprop="datePublished" content="2026-06-25T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-06-25T00:00:00+00:00">
-	<meta itemprop="wordCount" content="6766">
+	<meta itemprop="wordCount" content="6759">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -312,11 +312,8 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 <li><a href="/2026/06/swift-on-apple-ii/#no-floating-point-at-all">No floating point at all</a></li>
 </ul>
 </li>
-<li><a href="/2026/06/swift-on-apple-ii/#two-families-of-binary">Two families of binary</a>
-<ul>
+<li><a href="/2026/06/swift-on-apple-ii/#two-families-of-binary">Two families of binary</a></li>
 <li><a href="/2026/06/swift-on-apple-ii/#why-quitting-the-repl-reboots-the-machine">Why quitting the REPL reboots the machine</a></li>
-</ul>
-</li>
 <li><a href="/2026/06/swift-on-apple-ii/#what-you-type-vs-what-you-see-vs-what-is-stored">&ldquo;What you type&rdquo; vs &ldquo;what you see&rdquo; vs &ldquo;what is stored&rdquo;</a>
 <ul>
 <li><a href="/2026/06/swift-on-apple-ii/#typing-swift-on-a-1977-keyboard-for-ii-and-ii">Typing Swift on a 1977 keyboard for II and II+</a></li>
@@ -460,8 +457,8 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 <p>That region is exactly 40,704 bytes. It is the entire main-RAM my binary can use.</p>
 <h3 id="memory-beyond-64k">Memory beyond 64K</h3>
 <p>64KB is just enough to run core features of SwiftII but is not sufficient for more functions or bigger programs. However, memory beyond 64 KB is not directly addressable.</p>
-<p>Memory upgrades of that time period like Saturn 128K card or the IIe&rsquo;s 64K of auxiliary RAM does not extend the address space like modern linear memory. It sits behind a window and software banks pieces of it in and out through soft switches. If you come from the DOS PC world, it is conceptually similar to <a href="https://en.wikipedia.org/wiki/Expanded_memory">Expanded Memory Specification (EMS)</a>. The extra RAM is there, but the CPU can only see the selected page at the selected address range.</p>
-<p>On the Apple II this is especially awkward because the language-card window is also where ROM, ProDOS <a href="https://prodos8.com/docs/techref/calls-to-the-mli/">ProDOS Machine Language Interface (MLI)</a> code also lives. Only one bank can be visible there at a time.</p>
+<p>Memory upgrades of that time period like Saturn 128K card or the IIe&rsquo;s 64K of auxiliary RAM does not extend the address space like modern linear memory. It sits behind a shared window with the desired bank selected via soft switches. Your program then writes to that specific selected bank at that time. If you come from the DOS PC world, it is conceptually similar to <a href="https://en.wikipedia.org/wiki/Expanded_memory">Expanded Memory Specification (EMS)</a>.</p>
+<p>On the Apple II this is especially awkward because the language-card window is also where ROM, ProDOS <a href="https://prodos8.com/docs/techref/calls-to-the-mli/">ProDOS Machine Language Interface (MLI)</a> code also lives. Only one of those can be visible there at a time.</p>
 <p>I will come back to this topic later.</p>
 <h2 id="development-setup">Development setup</h2>
 <p>The entire project is written largely in C90 and is compiled in two ways:</p>
@@ -562,11 +559,11 @@ let x = ...         OP_DEFINE_GLOBAL #0
 </table>
 <p>On a stock machine you get 1,834 bytes of bytecode. To go bigger, a Saturn 128K or IIe 64K auxiliary RAM card (such as 80-column Extended Text card) is used to page completed function bytecode bodies out of main memory and into spare RAM.</p>
 <p>The extra capacity mostly helps function-heavy programs, since each individual function and the top-level <code>main</code> still have to fit a resident window.</p>
-<h3 id="why-quitting-the-repl-reboots-the-machine">Why quitting the REPL reboots the machine</h3>
+<h2 id="why-quitting-the-repl-reboots-the-machine">Why quitting the REPL reboots the machine</h2>
 <p>If you watched the above video carefully, you would notice that upon quiting the REPL, the system has to go through a reboot process before going back to the launcher menu.</p>
-<p>This looks heavy-handed, but it is forced. To return to the launcher properly, the REPL would have to read the launcher&rsquo;s <code>SYS</code> file from disk and jump into it. Reading a file requires the ProDOS MLI, but the REPL has overwritten the MLI with its own code. The MLI routine needed to load the next program no longer exists in memory.</p>
+<p>This looks heavy-handed but it is forced. To return to the launcher properly, the REPL would have to read the launcher&rsquo;s <code>SYS</code> file from disk and jump into it. Reading a file requires the ProDOS MLI but the REPL has overwritten the MLI with its own code. The MLI routine needed to load the next program no longer exists in memory.</p>
 <p>The full-screen editor is compiled into the launcher rather than being a separate program. The launcher is Main-only and keeps the ProDOS MLI alive, so the editor can open and save <code>.swift</code> files directly.</p>
-<p>Since the file selector and editor are still the same running program, moving from browser to editor and back is much faster than chaining a separate <code>SYS</code> file each time.</p>
+<p>Since the file selector and editor are still the same running program, moving from browser to editor and back is much faster than having to do a reboot or loading another program.</p>
 <ul>
 <li>Ctrl-Q returns to the file browser with no reboot.</li>
 <li>Ctrl-R saves your file, stages the source, chains the interpreter to run it</li>
@@ -782,7 +779,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 	</tbody>
 </table>
 <h3 id="family-b-compiler-and-runner">Family B: Compiler and Runner</h3>
-<p>All 3x disks compile a <code>.swift</code> file to a <code>.swb</code> bytecode file and then run it and they share the biggest feature set in the project. On top of everything in Family A, they have:</p>
+<p>All 4x disks compile a <code>.swift</code> file to a <code>.swb</code> bytecode file and then run it and they share the biggest feature set in the project. On top of everything in Family A, they have:</p>
 <ul>
 <li>file I/O: <code>readFile</code>, <code>writeFile</code>, <code>appendFile</code>, <code>listDirectory</code></li>
 <li><code>switch</code></li>
