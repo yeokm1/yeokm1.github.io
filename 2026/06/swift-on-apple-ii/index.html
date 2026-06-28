@@ -12,7 +12,7 @@
 I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a IIe and up.">
 	<meta itemprop="datePublished" content="2026-06-25T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-06-25T00:00:00+00:00">
-	<meta itemprop="wordCount" content="6759">
+	<meta itemprop="wordCount" content="6760">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -305,7 +305,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 </ul>
 </li>
 <li><a href="/2026/06/swift-on-apple-ii/#development-setup">Development setup</a></li>
-<li><a href="/2026/06/swift-on-apple-ii/#how-the-language-works">How the language works</a>
+<li><a href="/2026/06/swift-on-apple-ii/#how-the-compilation-pipeline-flows">How the compilation pipeline flows</a>
 <ul>
 <li><a href="/2026/06/swift-on-apple-ii/#from-source-text-to-bytecode">From source text to bytecode</a></li>
 <li><a href="/2026/06/swift-on-apple-ii/#what-the-bytecode-actually-looks-like">What the bytecode actually looks like</a></li>
@@ -436,7 +436,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 <p>Types behave differently from conventional Swift:</p>
 <ul>
 <li>
-<p><code>Int</code> is 16-bit and signed due to the cc65 limit. It ranges −32768 to 32767. (Conventional Swift is 64-bit on modern systems) It is also the only numeric type, no <code>Double</code> and no <code>Float</code>. I will cover more on this in the <a href="/2026/06/swift-on-apple-ii/#no-floating-point-at-all">section below</a>.</p>
+<p><code>Int</code> is signed 16-bit due to the cross-compiler limit. It ranges −32768 to 32767. (Conventional Swift is 64-bit on modern systems) It is also the only numeric type, no <code>Double</code> and no <code>Float</code>. I will cover more on this in the <a href="/2026/06/swift-on-apple-ii/#no-floating-point-at-all">section below</a>.</p>
 </li>
 <li>
 <p><code>String</code> is just bytes, not Unicode. Modern Swift treats a string as a collection of <code>Character</code> objects. SwiftII strings are ASCII byte sequences, closer to C-style string arrays.</p>
@@ -468,7 +468,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 </ul>
 <p>Why C and not Assembly? Getting AI to write in Assembly or directly into machine code binary itself could probably squeeze out more efficiency gains. But a project filled with 6502 assembly would be much harder for me to inspect and change directly.</p>
 <p>C keeps the project at a level where, if the AI tools are wrong/unavailable or I have to debug the last mile myself, I can still understand and modify the code in a feasible way. I think the tradeoff is justified.</p>
-<h2 id="how-the-language-works">How the language works</h2>
+<h2 id="how-the-compilation-pipeline-flows">How the compilation pipeline flows</h2>
 <p>A SwiftII program flows through a conventional-looking pipeline:</p>
 <pre tabindex="0"><code class="language-code" data-lang="code">Swift source ---&gt; lexer    ---&gt; compiler ---&gt; bytecode ---&gt; VM ---&gt; output
                   (tokens)      (Pratt)       (.swb)        
@@ -506,7 +506,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <p>String interpolation works the same way, one opcode inspects the value&rsquo;s tag and renders an <code>Int</code>, <code>Bool</code> or <code>nil</code> to text.</p>
 <h3 id="no-floating-point-at-all">No floating point at all</h3>
 <p>SwiftII has no <code>Double</code>, no <code>Float</code> and no decimals anywhere. <code>Int</code> is a 16-bit signed integer and that is the only numeric type available.</p>
-<p>The cc65 compiler itself does not support float. The 6502 CPU itself does not support float. Adding in a float library would severely bloat the binary size.</p>
+<p>The 6502 CPU does not support float. Therefore the cc65 compiler also does not support float. Adding in a float library would severely bloat the binary size.</p>
 <p>On a side note, Apple&rsquo;s own <a href="https://www.swift.org/blog/embedded-swift-examples/">Embedded Swift</a>, the trimmed-down dialect aimed at microcontrollers, also treats floating point carefully. For a long time you could not even print a <code>Double</code>, because the standard-library routine to do so was not available. That was only <a href="https://www.swift.org/blog/embedded-swift-improvements-coming-in-swift-6.3/">filled in with an all-Swift implementation in Swift 6.3</a>.</p>
 <p>If even constrained Swift treats floating point as something to handle carefully, an Apple II from the 1970s would face more difficulty.</p>
 <p>Applesoft BASIC that comes with the II Plus does support float through its floating point routines. However this was done by holding it directly in the ROM which I cannot do. I also understand its floating point performance on the Apple II is not that good too.</p>
