@@ -12,7 +12,7 @@
 I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a IIe and up.">
 	<meta itemprop="datePublished" content="2026-06-25T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-06-25T00:00:00+00:00">
-	<meta itemprop="wordCount" content="6844">
+	<meta itemprop="wordCount" content="6845">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -827,14 +827,14 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <p>I thought of auto-detecting the machine at boot and adapt to every configuration. I deliberately did not, for two reasons.</p>
 <ol>
 <li>
-<p>It is not the 1970s anymore. Shipping eight <code>.po</code> files costs nothing, whereas an extra physical floppy in that era would have been costly. The old reason to force everything into one disk is gone.</p>
+<p>It is not the 1970s anymore. Shipping 9x <code>.po</code> files costs nothing, whereas an extra physical floppy in that era would have been costly. The old reason to force everything into one disk is gone.</p>
 </li>
 <li>
 <p>I do not own most of these machines. So an adaptive runtime path would be code I could never fully verify.</p>
 </li>
 </ol>
 <h2 id="testing-too-many-machines">Testing too many machines</h2>
-<p>Everything above explains why testing became its own substantial project. Each of the eight images targets a slightly different machine.</p>
+<p>Everything above explains why testing became its own substantial project. Each of the eight binary images targets a slightly different machine.</p>
 <ul>
 <li>Original Apple II (Plus) with 16K language card</li>
 <li>II Plus with Saturn</li>
@@ -842,9 +842,9 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <li>IIe</li>
 <li>IIe with auxiliary RAM in 64KB Extended 80-Column Text Card</li>
 </ul>
-<p>A single <code>make ci</code> runs the plain C unit tests, builds all eight disk images and checks every binary against its size budget.</p>
+<p>A single <code>make ci</code> runs the plain C unit tests, builds 9x disk images and checks every binary against its size budget.</p>
 <p>The plain C unit tests are logic tests that run on my modern host Mac but we still need to run the software on actual or emulated 6502 systems with ProDOS for verification.</p>
-<p>Instead of launching the emulator one by one with each hardware and disk configuration and checking it by hand, I decided an automated acceptance harness is necessary. It drives the entire UI flow under a headless build of <a href="https://github.com/ivanizag/izapple2">izapple2</a>, a portable Apple II Plus/​IIe emulator written in Go.</p>
+<p>Instead of launching the emulator one by one with each hardware and disk configuration and checking it by hand, I decided an automated acceptance harness is necessary. It drives the entire UI flow under a headless build of <a href="https://github.com/ivanizag/izapple2">izapple2</a> emulator, a portable Apple II Plus/​IIe emulator written in Go.</p>
 <p>One command sweeps the hardware matrix, boots the right emulated machine, injects keystrokes, scrapes the screen and reports pass/fail.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/vQFFLyfYrRo?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
