@@ -12,7 +12,7 @@
 I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a IIe and up.">
 	<meta itemprop="datePublished" content="2026-06-25T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-06-25T00:00:00+00:00">
-	<meta itemprop="wordCount" content="6845">
+	<meta itemprop="wordCount" content="6851">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -910,7 +910,14 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <p>I treated those as handoff documents. When a fresh session starts or when I switch tools, it reads the roadmap, the relevant design docs and the lessons. That is how a brand-new context window inherits accumulated judgement instead of re-making old mistakes. The phased structure also keeps each unit of work small enough to fit in one session.</p>
 <p>As the codebase and documents became bigger, each session had to load more context just to get oriented, so token budget became a real workflow constraint. The documentation helped both me and the AI to keep only the most important information &ldquo;in context&rdquo; for the task at hand.</p>
 <h2 id="try-it">Try it</h2>
-<p>The easiest way to try SwiftII is in an emulator, no toolchain required. Download a disk image (<code>.po</code>) from the <a href="https://github.com/yeokm1/swiftii/releases">GitHub Releases</a> and open it in an Apple II emulator: <a href="https://github.com/sh95014/Mariani">Mariani</a> on macOS, <a href="https://github.com/AppleWin/AppleWin">AppleWin</a> on Windows, or <a href="https://github.com/ivanizag/izapple2/releases">izapple2</a> which is cross-platform. Start with <code>swiftii-iip-lite-repl-vX.X.X.po</code> for the broadest compatibility.</p>
+<p>The easiest way to try SwiftII is in an emulator, no toolchain required. Download the disk images (<code>.po</code>) from the <a href="https://github.com/yeokm1/swiftii/releases">GitHub Releases</a> and open it in an Apple II emulator:</p>
+<ul>
+<li><a href="https://sh95014.github.io/AppleWin/">Mariani</a> on macOS</li>
+<li><a href="https://github.com/ivanizag/izapple2">izapple2</a> which is cross-platform</li>
+<li><a href="https://github.com/AppleWin/AppleWin">AppleWin</a> on Windows</li>
+<li><a href="https://apple2ts.com/">Apple2TS</a> an online TypeScript Apple IIe Emulator</li>
+</ul>
+<p>Start with <code>swiftii-iip-lite-repl-vX.X.X.po</code> for the broadest compatibility.</p>
 <p>If you have real hardware, each disk is a standard 140 KB ProDOS 5.25&quot; image. Write the appropriate disk for your system to a floppy with <a href="https://adtpro.com/">ADTPro</a> or run it from a floppy emulator like a <a href="https://www.bigmessowires.com/floppy-emu/">BMOW Floppy Emu</a>. The original Apple II from 1977 runs it too, as long as it has been upgraded to 48 KB RAM and a 16 KB Language Card.</p>
 <p>If you want the toolchain, the repo builds the whole disk set from source with cc65. You can also cross-compile a <code>.swift</code> to a <code>.swb</code> on your Mac and run it on the Apple II.</p>
 <h2 id="conclusion">Conclusion</h2>
