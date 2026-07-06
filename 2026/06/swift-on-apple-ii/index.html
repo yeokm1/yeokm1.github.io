@@ -12,7 +12,7 @@
 I built SwiftII, a Swift-flavored mini development environment for the original Apple II to a IIe and up.">
 	<meta itemprop="datePublished" content="2026-06-25T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-06-25T00:00:00+00:00">
-	<meta itemprop="wordCount" content="6851">
+	<meta itemprop="wordCount" content="6842">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/06/swift-on-apple-ii/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -473,7 +473,7 @@ I built SwiftII, a Swift-flavored mini development environment for the original 
 <pre tabindex="0"><code class="language-code" data-lang="code">Swift source ---&gt; lexer    ---&gt; compiler ---&gt; bytecode ---&gt; VM ---&gt; output
                   (tokens)      (Pratt)       (.swb)        
 </code></pre><p>Most language implementations parse source into an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">Abstract Syntax Tree</a> (AST) then walk that tree to generate code. However SwiftII cannot afford the tree as there is no memory to hold one.</p>
-<p>Instead it uses a single-pass <a href="https://en.wikipedia.org/wiki/Operator-precedence_parser">Pratt parser</a> that emits bytecode directly as it reads the source. There is no intermediate representation. This is inspired by Robert Nystrom&rsquo;s book <a href="https://craftinginterpreters.com/">Crafting Interpreters</a>.</p>
+<p>Instead it uses a single-pass <a href="https://en.wikipedia.org/wiki/Operator-precedence_parser">Pratt parser</a> that emits bytecode directly as it reads the source. This is inspired by Robert Nystrom&rsquo;s book <a href="https://craftinginterpreters.com/">Crafting Interpreters</a>.</p>
 <p>(Given the complexity of this section and to ensure accuracy, I got AI to significantly draft and vet this and following subsections)</p>
 <h3 id="from-source-text-to-bytecode">From source text to bytecode</h3>
 <p>For readers who have not written a compiler before, the important point is that SwiftII does not &ldquo;understand&rdquo; the whole program at once. It reads a token, decides what small piece of language it is looking at then appends VM instructions to a byte buffer.</p>
@@ -855,7 +855,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <p>SwiftII was built with heavy AI assistance, mostly Claude Code (Opus 4.8) and Codex (GPT 5.5).</p>
 <p>For context, I did the project in my spare time over a 2-month period, using the entry-level Claude Pro and ChatGPT Plus plans rather than the more expensive tiers.</p>
 <p><strong>Without AI, this project would not have been feasible for me as a hobby project.</strong></p>
-<p>By hand at a similar standard, I think this would have taken well over 2-3 years work on the side or more.</p>
+<p>By hand at a similar standard, I estimate this would have taken well over 2-3 years work on the side or more.</p>
 <p>The following rules and calls were AI-generated extracted from my repo history.</p>
 <h3 id="the-ground-rules">The ground rules</h3>
 <p>I set up some initial rules with AI&rsquo;s help and fine-tuned them.</p>
@@ -875,7 +875,7 @@ let x = ...         OP_DEFINE_GLOBAL #0
 <li><strong>Move features to the right family.</strong> Whenever the AI started contorting the lite REPL to do something the compiler does better, the answer was to move the feature, not to cram it in.</li>
 <li><strong>Apple Pascal key bindings.</strong> I pulled the AI back to use the familiar UCSD and IJKM conventions after the AI invented its own keyboard shortcut scheme that was too awkward to use in practice.</li>
 <li><strong>Testing on more than one emulator</strong>: I tested on both Mariani and izApple2 emulators to not overfit my program&rsquo;s behaviour to one emulator in case there are individual emulator bugs or quirks.</li>
-<li><strong>Having the launcher, file selector and editor be the same program</strong>: Merging them into one binary reduces switching friction between them without loading a new binary from disk each time affecting the user experience. It also reduces disk usage.</li>
+<li><strong>Having the launcher, file selector and editor be the same program</strong>: Merging them into one binary reduces switching friction between them without loading a new binary causing disk load latency and affecting the user experience.</li>
 <li><strong>Automated acceptance test</strong>: AI only came up with more automated logic tests to run on my host Mac. But I felt that was not enough and more exhaustive tests across multiple emulator configurations are required.</li>
 </ul>
 <h3 id="claude-and-codex-did-different-jobs">Claude and Codex did different jobs</h3>
