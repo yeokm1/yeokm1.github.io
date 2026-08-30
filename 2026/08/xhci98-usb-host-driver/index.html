@@ -16,7 +16,7 @@ Demos Demo video here showing me hotplugging many different types of USB devices
 ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write from 32 KB transfers upward. That is USB 2.0 High-Speed territory, which is all this driver supports and I’ll explain why below.">
 	<meta itemprop="datePublished" content="2026-08-30T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-08-30T00:00:00+00:00">
-	<meta itemprop="wordCount" content="2838">
+	<meta itemprop="wordCount" content="2839">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/08/xhci98-usb-host-driver/images/xhci98-usb-devices.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/08/xhci98-usb-host-driver/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -330,7 +330,7 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 <p>I believe the vendors who shipped xHCI drivers for Windows XP and 7 did so because those OSes still had a market. For Windows 98 there was never a commercial reason.</p>
 <p>But with such advanced AI today which is able to crunch through the entire specification and reference existing open-source code, things are definitely different compared to months or years ago.</p>
 <h2 id="why-only-usb-20-on-a-usb-30-controller">Why only USB 2.0 on a USB 3.0 controller</h2>
-<p>My first decision was to not write a whole USB stack.</p>
+<p>My first decision was to not write the whole USB stack.</p>
 <p>Windows 2000&rsquo;s USB stack (and NUSB&rsquo;s back-port of it to Windows 98) is split into two layers.</p>
 <ol>
 <li>
@@ -343,7 +343,7 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 <p>xHCI98 is just another miniport. <code>xhci98.sys</code> plugs in underneath <code>usbport.sys</code> exactly the way <code>usbehci.sys</code> does and only owns the xHCI hardware.</p>
 <p>I got AI to draw up this diagram:</p>
 <p><a href="images/xhci98-usb-stack.svg"><img src="images/xhci98-usb-stack.svg" alt="Diagram of the Windows 98 SE and 2000 SP4 USB stack showing xhci98.sys as a usbport.sys miniport alongside usbuhci, usbohci and usbehci, driving the xHCI controller's USB 2.0 ports" width="800"></a><br></p>
-<p>Everything in green and blue is Microsoft&rsquo;s Windows 2000 stack (NUSB&rsquo;s back-port on Windows 98), orange is this project, and the greyed-out miniports and controllers are the legacy path that xHCI-only machines no longer have.</p>
+<p>Everything in green and blue on the top half is Microsoft&rsquo;s Windows 2000 stack (NUSB&rsquo;s back-port on Windows 98), orange is this project, purple is the USB 2.0 ports the driver manages, and the greyed-out miniports and controllers are the legacy path that xHCI-only machines no longer have.</p>
 <p>The catch is that <code>usbport.sys</code> is a USB 2.0-era design. It has no concept of SuperSpeed and neither does anything above it. Doing USB 3.0 properly would mean replacing the entire host controller driver (HCD) stack on both operating systems and I doubt many Windows 98 class machines would benefit from that speed anyway.</p>
 <p>Fortunately every USB 3.0 connector also carries the USB 2.0 wires and xHCI exposes them as a separate logical port per connector. The driver manages those USB 2.0 ports and leaves the USB 3.0 ports unpowered, so a SuperSpeed device falls back onto the USB 2.0 pins of the same connector and runs at High-Speed. That is why the flash drive above benchmarks at USB 2.0 speed.</p>
 <p>Although my project primarily targets Windows 98, the USB stacks of Windows 98 (via NUSB) and Windows 2000 are similar enough that this driver supports both OSes.</p>
@@ -361,7 +361,7 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 <a href="images/xhci98-xhciqual-full-start.jpg" style="flex:1 1 300px;"><img src="images/xhci98-xhciqual-full-start.jpg" alt="XHCIQUAL full run, start of output" style="width:100%;"></a>
 <a href="images/xhci98-xhciqual-full-end.jpg" style="flex:1 1 300px;"><img src="images/xhci98-xhciqual-full-end.jpg" alt="XHCIQUAL full run, end of output with the verdict" style="width:100%;"></a>
 </div>
-<p>Running it with the <code>xhci</code> argument exercises the controller for real.</p>
+<p>Running it with the <code>xhci</code> argument exercises the controller more.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Tv6blmBS6Do?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
 		</div>
@@ -386,7 +386,7 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 <li><code>usbhub.sys</code> acknowledges the change and asks for a port reset. usbport turns that into <code>RH_SetFeaturePortReset</code>. <code>xhci_rh.c</code> writes <code>PORTSC.PR</code>, waits for the Port Reset Change event and reports the port&rsquo;s speed. usbport asks the miniport to create a device.</li>
 <li><code>xhci_slot.c</code> decides an Enable Slot command is needed and hands it to <code>xhci_cmd.c</code>, which checks nothing else is in flight and arms the 5-second watchdog.</li>
 <li><code>xhci_ring.c</code> encodes the command as a Transfer Request Block (TRB) and writes it at the enqueue position of the command ring, a circular buffer in the DMA common buffer. Each TRB carries a cycle bit that the driver flips on every lap around the ring, which is how the controller tells fresh entries from stale ones.</li>
-<li><code>xhci_pci.c</code> writes to doorbell register 0, the controller&rsquo;s own doorbell, which means &ldquo;the command ring has work&rdquo;. This is the only MMIO write in the command sequence.</li>
+<li><code>xhci_pci.c</code> writes to doorbell register 0, the controller&rsquo;s own doorbell, which means &ldquo;the command ring has work&rdquo;.</li>
 <li>The controller fetches the TRB over DMA, executes it, allocates a slot and writes a Command Completion Event TRB into the event ring, which only the controller writes and only the driver reads. The event carries a completion code, the new slot ID and the address of the command TRB it is answering. The controller asserts INTx# again.</li>
 <li><code>xhci_evt.c</code>&rsquo;s DPC walks the event ring using the same cycle-bit trick in reverse (the controller flips the bit and the driver checks it), consuming events until it reaches one whose bit is stale. Each event is routed by type: transfer events go to <code>xhci_xfer.c</code>, port changes to <code>xhci_rh.c</code>, and this command completion goes to <code>xhci_cmd.c</code>.</li>
 <li><code>xhci_cmd.c</code> matches the command TRB address in the event against the one command it has outstanding, cancels the watchdog and returns the slot ID to <code>xhci_slot.c</code>, which moves on to the next command in the chain, Address Device, and after that Configure Endpoint.</li>
@@ -404,8 +404,8 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 <p>The driver is built in three flavours from the same source to assist in testing.</p>
 <ol>
 <li><code>release</code>: Typical driver to use.</li>
-<li><code>debug</code>: a checked build that keeps frame pointers and carries the in-memory log ring and counters for additional diagnosis.</li>
-<li><code>qemu</code>: QEMU-only and never published. It is the debug build plus a verbose per-line trace channel that writes to QEMU&rsquo;s debug console on I/O port <code>0xE9</code>, so every kernel log line lands in a file on the host.</li>
+<li><code>debug</code>: A checked build that keeps frame pointers and carries the in-memory log ring and counters for additional diagnosis. Built separate to mitigate security loopholes on Windows 2000.</li>
+<li><code>qemu</code>: QEMU-only and never published. It is the debug build plus a verbose per-line trace channel that writes to QEMU&rsquo;s debug console on I/O port <code>0xE9</code>.</li>
 </ol>
 <p>There is also a fully automated device matrix. One PowerShell command boots each guest, plugs and unplugs every USB device model QEMU can emulate through the monitor socket, reads counters out of the running driver and writes a pass/fail report per device per target.</p>
 <p>The real hardware is two Intel xHCI-only ThinkPads, both running Windows 98 SE:</p>
@@ -428,8 +428,9 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 	</tbody>
 </table>
 <p>I chose both machines as they represent what I believe to be the extreme ends of who will find this project useful.</p>
-<p>The 2016 E460 uses the Intel Sunrise Point 100-series Platform Controller Hub (PCH) chipset paired with Intel&rsquo;s 6th-generation Skylake CPUs. Starting with this chipset, Intel removed physical EHCI USB 2.0 controllers entirely, routing all USB 2.0, 3.0, and 3.1 ports through a single xHCI (USB 3.0/eXtensible Host Controller Interface) controller.</p>
-<p>The 2020 P14s Gen 1 is amongst the last laptops that officially support UEFI-CSM, which allows legacy BIOS-based operating systems like Windows 98 to be booted.</p>
+<a href="images/xhci98-e460.jpg"><img src="images/xhci98-e460.jpg" width="800"></a>
+<p>The 2016 Thinkpad E460 uses the Intel Sunrise Point 100-series Platform Controller Hub (PCH) chipset paired with Intel&rsquo;s 6th-generation Skylake CPUs. Starting with this chipset, Intel removed physical EHCI USB 2.0 controllers entirely, routing all USB 2.0, 3.0, and 3.1 ports through a single xHCI (USB 3.0/eXtensible Host Controller Interface) controller.</p>
+<p>The 2020 Thinkad P14s Gen 1 is amongst the last laptops that officially support UEFI-CSM which allows legacy BIOS-based operating systems like Windows 98 to be booted.</p>
 <p>It&rsquo;s a pretty narrow band of machines that will find this useful but my machines happen to fall into this band.</p>
 <h2 id="external-test-usb-devices">External test USB devices</h2>
 <p>I cobbled together a wide array of USB test devices in my possession to exercise the driver.</p>
