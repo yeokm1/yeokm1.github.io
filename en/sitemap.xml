@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://yeokhengmeng.com/2026/06/swift-on-apple-ii/</loc>
-    <lastmod>2026-06-25T00:00:00+00:00</lastmod>
+    <loc>http://yeokhengmeng.com/2026/08/xhci98-usb-host-driver/</loc>
+    <lastmod>2026-08-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/categories/</loc>
-    <lastmod>2026-06-25T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-30T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -19,10 +19,10 @@
                 />
   </url><url>
     <loc>http://yeokhengmeng.com/categories/hacks/</loc>
-    <lastmod>2026-06-25T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/post/</loc>
-    <lastmod>2026-06-25T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-30T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -35,10 +35,10 @@
                 />
   </url><url>
     <loc>http://yeokhengmeng.com/categories/retrocomputing/</loc>
-    <lastmod>2026-06-25T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/</loc>
-    <lastmod>2026-06-25T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-30T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -49,6 +49,9 @@
                 hreflang="zh-sg"
                 href="http://yeokhengmeng.com/zh/"
                 />
+  </url><url>
+    <loc>http://yeokhengmeng.com/2026/06/swift-on-apple-ii/</loc>
+    <lastmod>2026-06-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://yeokhengmeng.com/categories/hardware/</loc>
     <lastmod>2026-02-21T00:00:00+00:00</lastmod>

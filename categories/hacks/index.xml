@@ -10,9 +10,16 @@
 		
 		
 		
-			<lastBuildDate>Thu, 25 Jun 2026 00:00:00 +0000</lastBuildDate>
+			<lastBuildDate>Sun, 30 Aug 2026 00:00:00 +0000</lastBuildDate>
 		
 			<atom:link href="http://yeokhengmeng.com/categories/hacks/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Bringing modern USB xHCI support to Windows 98/2K</title>
+				<link>http://yeokhengmeng.com/2026/08/xhci98-usb-host-driver/</link>
+				<pubDate>Sun, 30 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://yeokhengmeng.com/2026/08/xhci98-usb-host-driver/</guid>
+				<description>&lt;p&gt;Most of us take the USB ports on our computers for granted. We plug in devices and expect them to work automatically with the operating system. However, what if this wasn&amp;rsquo;t the case with vintage operating systems?&lt;/p&gt;&#xA;&lt;p&gt;I present to you &lt;strong&gt;xHCI98&lt;/strong&gt;, a driver that gives Windows 98 SE and Windows 2000 SP4 working USB on machines whose only USB controller is xHCI.&lt;/p&gt;&#xA;&lt;a href=&#34;images/xhci98-driver-info.jpg&#34;&gt;&lt;img src=&#34;images/xhci98-driver-info.jpg&#34; width=&#34;800&#34;&gt;&lt;/a&gt;&#xA;&lt;p&gt;Windows 98 Device Manager showing xHCI Controller initialised and ready to accept USB devices on an operating system that otherwise cannot support it.&lt;/p&gt;&#xA;&lt;p&gt;Everything is open-sourced here if you want to jump right in to use it: &lt;a href=&#34;https://github.com/yeokm1/xhci98&#34;&gt;https://github.com/yeokm1/xhci98&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;demos&#34;&gt;Demos&lt;/h2&gt;&#xA;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;&#xA;&#x9;&#x9;&#x9;&lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/AU77f9CSbYc?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;&#xA;&#x9;&#x9;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;Demo video here showing me hotplugging many different types of USB devices to my 2020 ThinkPad P14s Gen 1. Hotplugging shows that the driver is handling this and not the BIOS.&lt;/p&gt;&#xA;&lt;a href=&#34;images/xhci98-flash-speed-test.jpg&#34;&gt;&lt;img src=&#34;images/xhci98-flash-speed-test.jpg&#34; width=&#34;800&#34;&gt;&lt;/a&gt;&#xA;&lt;p&gt;ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write from 32 KB transfers upward. That is USB 2.0 High-Speed territory, which is all this driver supports and I&amp;rsquo;ll explain why below.&lt;/p&gt;</description>
+			</item>
 			<item>
 				<title>Bringing Swift to the Apple II</title>
 				<link>http://yeokhengmeng.com/2026/06/swift-on-apple-ii/</link>

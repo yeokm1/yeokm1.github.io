@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Bringing modern USB xHCI support to Windows 98/2K - YKM&#39;s Corner on the Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.165.0">
+	<meta itemprop="name" content="Bringing modern USB xHCI support to Windows 98/2K">
+	<meta itemprop="description" content="Most of us take the USB ports on our computers for granted. We plug in devices and expect them to work automatically with the operating system. However, what if this wasn’t the case with vintage operating systems?
+I present to you xHCI98, a driver that gives Windows 98 SE and Windows 2000 SP4 working USB on machines whose only USB controller is xHCI.
+Windows 98 Device Manager showing xHCI Controller initialised and ready to accept USB devices on an operating system that otherwise cannot support it.
+Everything is open-sourced here if you want to jump right in to use it: https://github.com/yeokm1/xhci98
+Demos Demo video here showing me hotplugging many different types of USB devices to my 2020 ThinkPad P14s Gen 1. Hotplugging shows that the driver is handling this and not the BIOS.
+ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write from 32 KB transfers upward. That is USB 2.0 High-Speed territory, which is all this driver supports and I’ll explain why below.">
+	<meta itemprop="datePublished" content="2026-08-30T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-08-30T00:00:00+00:00">
+	<meta itemprop="wordCount" content="2838">
+	<meta itemprop="image" content="http://yeokhengmeng.com/2026/08/xhci98-usb-host-driver/images/xhci98-usb-devices.jpg">
+	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/08/xhci98-usb-host-driver/">
+	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
+	<meta property="og:title" content="Bringing modern USB xHCI support to Windows 98/2K">
+	<meta property="og:description" content="Most of us take the USB ports on our computers for granted. We plug in devices and expect them to work automatically with the operating system. However, what if this wasn’t the case with vintage operating systems?
+I present to you xHCI98, a driver that gives Windows 98 SE and Windows 2000 SP4 working USB on machines whose only USB controller is xHCI.
+Windows 98 Device Manager showing xHCI Controller initialised and ready to accept USB devices on an operating system that otherwise cannot support it.
+Everything is open-sourced here if you want to jump right in to use it: https://github.com/yeokm1/xhci98
+Demos Demo video here showing me hotplugging many different types of USB devices to my 2020 ThinkPad P14s Gen 1. Hotplugging shows that the driver is handling this and not the BIOS.
+ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write from 32 KB transfers upward. That is USB 2.0 High-Speed territory, which is all this driver supports and I’ll explain why below.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2026-08-30T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-08-30T00:00:00+00:00">
+		<meta property="og:image" content="http://yeokhengmeng.com/2026/08/xhci98-usb-host-driver/images/xhci98-usb-devices.jpg">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://yeokhengmeng.com/2026/08/xhci98-usb-host-driver/images/xhci98-usb-devices.jpg">
+	<meta name="twitter:title" content="Bringing modern USB xHCI support to Windows 98/2K">
+	<meta name="twitter:description" content="Most of us take the USB ports on our computers for granted. We plug in devices and expect them to work automatically with the operating system. However, what if this wasn’t the case with vintage operating systems?
+I present to you xHCI98, a driver that gives Windows 98 SE and Windows 2000 SP4 working USB on machines whose only USB controller is xHCI.
+Windows 98 Device Manager showing xHCI Controller initialised and ready to accept USB devices on an operating system that otherwise cannot support it.
+Everything is open-sourced here if you want to jump right in to use it: https://github.com/yeokm1/xhci98
+Demos Demo video here showing me hotplugging many different types of USB devices to my 2020 ThinkPad P14s Gen 1. Hotplugging shows that the driver is handling this and not the BIOS.
+ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write from 32 KB transfers upward. That is USB 2.0 High-Speed territory, which is all this driver supports and I’ll explain why below.">
+			<meta name="twitter:site" content="@yeokm1">
+<link rel="stylesheet" href="/css/bundle.min.34a0b510084f27f411c97ef8a8d4a289c2b5fe284fe77e3ecf55351c22f38908.css" integrity="sha256-NKC1EAhPJ/QRyX74qNSiicK1/ihP534&#43;z1U1HCLziQg=">
+        <link rel="stylesheet" href="/css/add-on.css"></head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            post
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/aviation" class="link"><i class='fas fa-plane'></i> Aviation</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/retrocomputing" class="link"><i class='fas fa-save'></i> Retrocomputing</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/favourite-quotes/" class="link">Favourite Quotes</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about-me/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/zh/" lang="zh" class="no-lang link">简体中文 (zh)</a>
+      
+    
+  
+</menu>
+
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="" alt="Kheng Meng profile pic" /></a>
+  <header>
+    <h1>Yeo Kheng Meng</h1>
+  </header>
+  <main>
+    <p>Maker, Coder, Private Pilot, Retrocomputing Enthusiast</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/yeokm1" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/yeokhengmeng" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/yeokhengmeng" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/yeokm1" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/yeokm1" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/yeokm1" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+<li><a href="//telegram.me/yeokm1" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/2026/08/xhci98-usb-host-driver/">Bringing modern USB xHCI support to Windows 98/2K</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2026-08-30 00:00:00 &#43;0000 UTC">
+      August 30, 2026
+    </time>
+    <span class="author"></span>
+    
+      <p>14 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  </section>
+  
+  <a href="/2026/08/xhci98-usb-host-driver/" class="image featured">
+    
+      <img src="/2026/08/xhci98-usb-host-driver/images/xhci98-usb-devices.jpg" alt="">
+    
+  </a>
+
+
+  <div class="content">
+    <p>Most of us take the USB ports on our computers for granted. We plug in devices and expect them to work automatically with the operating system. However, what if this wasn&rsquo;t the case with vintage operating systems?</p>
+<p>I present to you <strong>xHCI98</strong>, a driver that gives Windows 98 SE and Windows 2000 SP4 working USB on machines whose only USB controller is xHCI.</p>
+<a href="images/xhci98-driver-info.jpg"><img src="images/xhci98-driver-info.jpg" width="800"></a>
+<p>Windows 98 Device Manager showing xHCI Controller initialised and ready to accept USB devices on an operating system that otherwise cannot support it.</p>
+<p>Everything is open-sourced here if you want to jump right in to use it: <a href="https://github.com/yeokm1/xhci98">https://github.com/yeokm1/xhci98</a></p>
+<h2 id="demos">Demos</h2>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/AU77f9CSbYc?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+		</div>
+
+<p>Demo video here showing me hotplugging many different types of USB devices to my 2020 ThinkPad P14s Gen 1. Hotplugging shows that the driver is handling this and not the BIOS.</p>
+<a href="images/xhci98-flash-speed-test.jpg"><img src="images/xhci98-flash-speed-test.jpg" width="800"></a>
+<p>ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write from 32 KB transfers upward. That is USB 2.0 High-Speed territory, which is all this driver supports and I&rsquo;ll explain why below.</p>
+<h2 id="background">Background</h2>
+<p>The USB host controller on most modern PCs today is based on the <a href="https://en.wikipedia.org/wiki/Extensible_Host_Controller_Interface">Extensible Host Controller Interface (xHCI)</a> USB 3.0 standard. It was first publicly finalised by Intel in 2010 and is now the de-facto standard superseding prior USB standards. Updates to the standard have been provided over the years with the latest now at <a href="https://cdrdv2.intel.com/v1/dl/getContent/868295">1.2c</a>.</p>
+<p>Given its relatively recent introduction, only modern operating systems like Windows 8 onwards natively support it. Supporting older machines will require the chipset vendors to provide the driver stack which is the case up to Windows XP. What if we want to go back further?</p>
+<h2 id="motivation">Motivation</h2>
+<p>Earlier this year, I set up Windows 98 SE on my relatively modern 2020 ThinkPad P14s Gen 1.</p>
+<a href="images/p14sg1-front-tb-dock.jpg"><img src="images/p14sg1-front-tb-dock.jpg" width="800"></a>
+<p>More details of this machine here: <a href="https://github.com/yeokm1/retro-configs/tree/master/laptops/thinkpad-p14sg1">https://github.com/yeokm1/retro-configs/tree/master/laptops/thinkpad-p14sg1</a></p>
+<p>I found out very early that Windows 98 and many legacy operating systems do not support the xHCI Controller. Even if the USB device or ports are USB 2.0 based, it still will not work as those ports are controlled by xHCI.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/V0EOecOkuB8?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+		</div>
+
+<p>The original idea of using a USB 2.0 PCI controller came from Omores&rsquo; YouTube video <em>xHCI vs. EHCI: The Secret to Getting USB 2.0 back on Windows 9x and 2K+</em>.</p>
+<p>To work around that issue, I used a TH3P4G3 Thunderbolt eGPU dock to connect a PCI USB 2.0 EHCI card, giving this oddball chain of old and new parts: Thunderbolt -&gt; eGPU dock -&gt; PCIe-PCI adapter -&gt; VIA USB 2.0 PCI card -&gt; USB adapters.</p>
+<p>Windows 98 SE actually does not natively support USB 2.0 but a driver project called <a href="https://www.philscomputerlab.com/windows-98-usb-storage-driver.html">NUSB33E</a> backported Windows 2000 drivers to enable this to work.</p>
+<p>While that worked, it was an eyesore and not very elegant in my opinion. So I wanted to see if I could build a native xHCI driver for Windows 98. Especially with AI assistance today, this should be possible right?</p>
+<h2 id="why-xhci-is-hard">Why xHCI is hard</h2>
+<p>I looked around existing implementations and found that most xHCI implementations are in major OSes like Windows 8 onwards, modern Linux and macOS written by a major company or a large project. Other projects mostly stop at the USB 2.0 standards of UHCI, OHCI and EHCI.</p>
+<p>During the course of this project I found out the hard way why this is so.</p>
+<p>The specification is huge and the controller is not simple. The xHCI 1.2 specification runs to over 600 pages.</p>
+<p>The driver has to set up a whole family of data structures before the controller does anything. Plenty of concepts to grasp like the command/event/transfer rings, Slot/Endpoint/Input Contexts and Doorbell etc. Every one of those data structures has exact alignment rules and a mistake just causes a hang.</p>
+<p>I believe the vendors who shipped xHCI drivers for Windows XP and 7 did so because those OSes still had a market. For Windows 98 there was never a commercial reason.</p>
+<p>But with such advanced AI today which is able to crunch through the entire specification and reference existing open-source code, things are definitely different compared to months or years ago.</p>
+<h2 id="why-only-usb-20-on-a-usb-30-controller">Why only USB 2.0 on a USB 3.0 controller</h2>
+<p>My first decision was to not write a whole USB stack.</p>
+<p>Windows 2000&rsquo;s USB stack (and NUSB&rsquo;s back-port of it to Windows 98) is split into two layers.</p>
+<ol>
+<li>
+<p><code>usbport.sys</code> is Microsoft&rsquo;s port driver that owns the root hub, enumeration, USB Request Block (URB) parsing and everything the class drivers talk to.</p>
+</li>
+<li>
+<p>Underneath it sit small miniport drivers, one per controller type, that only knows how to talk to their hardware: <code>usbuhci.sys</code>, <code>usbohci.sys</code> and <code>usbehci.sys</code>.</p>
+</li>
+</ol>
+<p>xHCI98 is just another miniport. <code>xhci98.sys</code> plugs in underneath <code>usbport.sys</code> exactly the way <code>usbehci.sys</code> does and only owns the xHCI hardware.</p>
+<p>I got AI to draw up this diagram:</p>
+<p><a href="images/xhci98-usb-stack.svg"><img src="images/xhci98-usb-stack.svg" alt="Diagram of the Windows 98 SE and 2000 SP4 USB stack showing xhci98.sys as a usbport.sys miniport alongside usbuhci, usbohci and usbehci, driving the xHCI controller's USB 2.0 ports" width="800"></a><br></p>
+<p>Everything in green and blue is Microsoft&rsquo;s Windows 2000 stack (NUSB&rsquo;s back-port on Windows 98), orange is this project, and the greyed-out miniports and controllers are the legacy path that xHCI-only machines no longer have.</p>
+<p>The catch is that <code>usbport.sys</code> is a USB 2.0-era design. It has no concept of SuperSpeed and neither does anything above it. Doing USB 3.0 properly would mean replacing the entire host controller driver (HCD) stack on both operating systems and I doubt many Windows 98 class machines would benefit from that speed anyway.</p>
+<p>Fortunately every USB 3.0 connector also carries the USB 2.0 wires and xHCI exposes them as a separate logical port per connector. The driver manages those USB 2.0 ports and leaves the USB 3.0 ports unpowered, so a SuperSpeed device falls back onto the USB 2.0 pins of the same connector and runs at High-Speed. That is why the flash drive above benchmarks at USB 2.0 speed.</p>
+<p>Although my project primarily targets Windows 98, the USB stacks of Windows 98 (via NUSB) and Windows 2000 are similar enough that this driver supports both OSes.</p>
+<h2 id="xhciqual-qualify-the-machine-before-touching-windows">XHCIQUAL: Qualify the machine before touching Windows</h2>
+<p>Before the driver existed, I wanted a way to know if a machine&rsquo;s xHCI Controller can even work with Windows 98 before I waste effort on a driver which may not even succeed.</p>
+<p>One concept that stood out in the xHCI specification is its preference for Message Signaled Interrupts (MSI/MSI-X) over legacy line-based interrupts (INTx) with INTx kept only as a fallback.</p>
+<p>I got AI to draw this diagram to explain the differences:</p>
+<p><a href="images/xhci98-msi-vs-intx.svg"><img src="images/xhci98-msi-vs-intx.svg" alt="Comparison of MSI/MSI-X and legacy INTx# interrupt delivery: MSI needs an OS APIC interrupt subsystem that Windows 98 lacks and Windows only gained in Vista, so xhci98.sys uses the controller's INTx# pin through the 8259 PIC, the VMM and usbport.sys's ISR and DPC" width="800"></a><br></p>
+<p>MSI is a memory write to the CPU&rsquo;s local <a href="https://en.wikipedia.org/wiki/Advanced_Programmable_Interrupt_Controller">Advanced Programmable Interrupt Controller (APIC)</a> whose address and vector the OS must allocate and program into the device.</p>
+<p>Neither Windows 98 nor Windows 2000 has this; MSI support was only integrated in Windows Vista onwards. The driver therefore has to rely solely on the controller&rsquo;s fallback INTx# pin.</p>
+<p>To test if my machine has implemented the interrupt to determine if this project is even possible, I worked on a tiny qualification program called <code>XHCIQUAL.EXE</code> to verify this capability and more. It is a DOS tool built with Open Watcom 2.0 and the DOS/32A extender.</p>
+<a href="images/xhci98-xhciqual-basic.jpg"><img src="images/xhci98-xhciqual-basic.jpg" width="800"></a>
+<p>Running it with no arguments gives a read-only one-line answer per controller.</p>
+<div style="display:flex; gap:8px; flex-wrap:wrap; align-items:flex-start;">
+<a href="images/xhci98-xhciqual-full-start.jpg" style="flex:1 1 300px;"><img src="images/xhci98-xhciqual-full-start.jpg" alt="XHCIQUAL full run, start of output" style="width:100%;"></a>
+<a href="images/xhci98-xhciqual-full-end.jpg" style="flex:1 1 300px;"><img src="images/xhci98-xhciqual-full-end.jpg" alt="XHCIQUAL full run, end of output with the verdict" style="width:100%;"></a>
+</div>
+<p>Running it with the <code>xhci</code> argument exercises the controller for real.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Tv6blmBS6Do?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+		</div>
+
+<p>Video of the tool in action.</p>
+<h2 id="referencing-existing-code">Referencing existing code</h2>
+<p>The <code>usbport.sys</code> miniport interface was never documented by Microsoft. There is no header, no import library and no sample in the Windows 2000 DDK.</p>
+<p>Therefore I looked into open source implementations where I referred to <a href="https://github.com/reactos/reactos/tree/master/drivers/usb/usbport">ReactOS usbport</a>.</p>
+<p>With AI&rsquo;s help I got to port over the references to this project but how would I know if those worked?</p>
+<p>I asked AI to use those function interfaces to create a spike solution first. A stub <code>xhci98.sys</code> that registers with <code>usbport.sys</code> on both targets proves the lifecycle callbacks arrive without corrupting anything.</p>
+<p>I also referred to <a href="https://github.com/torvalds/linux/tree/master/drivers/usb/host">Linux xHCI driver</a> as the reference and got the idea of a command watchdog from it, which made me look further at the xHCI specification, which says <em>software is responsible for all command timeouts</em>.</p>
+<p>It says the timeout should be 5 seconds before asserting Chip Hardware Reset (HCRST) to reset the Controller which I had initially missed.</p>
+<h2 id="architecture-and-flow">Architecture and flow</h2>
+<p>With the help of AI again, here is the architecture diagram of the driver as well as the flow:</p>
+<p><a href="images/xhci98-driver-architecture.svg"><img src="images/xhci98-driver-architecture.svg" alt="Internal architecture of xhci98.sys: usbport.sys callbacks enter through xhci_dispatch, xhci_rh, xhci_slot and xhci_xfer; the init, command, event and topology engines sit below; a pure host-tested core of ring, context, capability, port and memory code feeds xhci_pci.c, the only file that touches the xHCI registers and DMA common buffer" width="660"></a><br></p>
+<p>Here is one device plug-in going through the driver, to show how the files in the diagram work together. The miniport never tells <code>usbport.sys</code> &ldquo;a device arrived&rdquo;; it only says &ldquo;something changed, come and look&rdquo;, and usbport asks the questions.</p>
+<ol>
+<li>The device pulls the data lines and the controller sets the connect and connect-change bits in that port&rsquo;s <code>PORTSC</code> register, writes a Port Status Change Event onto the event ring and asserts INTx#.</li>
+<li><code>xhci_evt.c</code>&rsquo;s ISR confirms the interrupt is ours and the DPC drains the event ring, routing the port event to <code>xhci_rh.c</code>.</li>
+<li><code>xhci_rh.c</code> reads <code>PORTSC</code>, records it in its port shadow, and calls the one upward notification the registration packet offers, <code>UsbPortInvalidateRootHub</code>. That call carries no detail, just &ldquo;look again&rdquo;.</li>
+<li>usbport scans the root hub: <code>RH_GetHubStatus</code>, then <code>RH_GetPortStatus</code> for every port. For the new port the miniport answers with connect and connect-change set. usbport owns the root hub PDO and presents these answers as a hub&rsquo;s status-change endpoint, so <code>usbhub.sys</code> above sees exactly what it would see from a physical hub.</li>
+<li><code>usbhub.sys</code> acknowledges the change and asks for a port reset. usbport turns that into <code>RH_SetFeaturePortReset</code>. <code>xhci_rh.c</code> writes <code>PORTSC.PR</code>, waits for the Port Reset Change event and reports the port&rsquo;s speed. usbport asks the miniport to create a device.</li>
+<li><code>xhci_slot.c</code> decides an Enable Slot command is needed and hands it to <code>xhci_cmd.c</code>, which checks nothing else is in flight and arms the 5-second watchdog.</li>
+<li><code>xhci_ring.c</code> encodes the command as a Transfer Request Block (TRB) and writes it at the enqueue position of the command ring, a circular buffer in the DMA common buffer. Each TRB carries a cycle bit that the driver flips on every lap around the ring, which is how the controller tells fresh entries from stale ones.</li>
+<li><code>xhci_pci.c</code> writes to doorbell register 0, the controller&rsquo;s own doorbell, which means &ldquo;the command ring has work&rdquo;. This is the only MMIO write in the command sequence.</li>
+<li>The controller fetches the TRB over DMA, executes it, allocates a slot and writes a Command Completion Event TRB into the event ring, which only the controller writes and only the driver reads. The event carries a completion code, the new slot ID and the address of the command TRB it is answering. The controller asserts INTx# again.</li>
+<li><code>xhci_evt.c</code>&rsquo;s DPC walks the event ring using the same cycle-bit trick in reverse (the controller flips the bit and the driver checks it), consuming events until it reaches one whose bit is stale. Each event is routed by type: transfer events go to <code>xhci_xfer.c</code>, port changes to <code>xhci_rh.c</code>, and this command completion goes to <code>xhci_cmd.c</code>.</li>
+<li><code>xhci_cmd.c</code> matches the command TRB address in the event against the one command it has outstanding, cancels the watchdog and returns the slot ID to <code>xhci_slot.c</code>, which moves on to the next command in the chain, Address Device, and after that Configure Endpoint.</li>
+<li>Finally the DPC writes the Event Ring Dequeue Pointer register to tell the controller how far it has read, freeing those entries for reuse.</li>
+</ol>
+<p>Every command and data transfer follows this flow. The driver writes into a ring it owns, rings a doorbell and waits for the answer on the event ring. Transfer rings work identically, one per endpoint, with a doorbell per device slot.</p>
+<p>The driver is C89 built with MSVC 6.0 and the Windows 2000 DDK, a setup I borrowed from the <a href="https://github.com/andrew-hoffman/wdmhda">WDMHDA</a> project.</p>
+<h2 id="test-targets">Test targets</h2>
+<p>Almost all development happened in QEMU with its <code>qemu-xhci</code> device. Three VMs:</p>
+<ol>
+<li>Windows 98 SE guest with NUSB</li>
+<li>Windows 2000 SP4 guest</li>
+<li>Windows 2000 SP4 guest with the multiprocessor HAL on two vCPUs to test if there are any race conditions associated with multiple CPUs.</li>
+</ol>
+<p>The driver is built in three flavours from the same source to assist in testing.</p>
+<ol>
+<li><code>release</code>: Typical driver to use.</li>
+<li><code>debug</code>: a checked build that keeps frame pointers and carries the in-memory log ring and counters for additional diagnosis.</li>
+<li><code>qemu</code>: QEMU-only and never published. It is the debug build plus a verbose per-line trace channel that writes to QEMU&rsquo;s debug console on I/O port <code>0xE9</code>, so every kernel log line lands in a file on the host.</li>
+</ol>
+<p>There is also a fully automated device matrix. One PowerShell command boots each guest, plugs and unplugs every USB device model QEMU can emulate through the monitor socket, reads counters out of the running driver and writes a pass/fail report per device per target.</p>
+<p>The real hardware is two Intel xHCI-only ThinkPads, both running Windows 98 SE:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Machine</th>
+					<th>Controller</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ThinkPad E460 (2016)</td>
+					<td>Skylake, Sunrise Point-LP. xHCI 1.0, 18 ports (12 USB 2.0 managed, 6 USB 3.0 left unpowered)</td>
+			</tr>
+			<tr>
+					<td>ThinkPad P14s Gen 1 (2020)</td>
+					<td>Comet Lake PCH-LP. xHCI 1.1, 18 ports (same split)</td>
+			</tr>
+	</tbody>
+</table>
+<p>I chose both machines as they represent what I believe to be the extreme ends of who will find this project useful.</p>
+<p>The 2016 E460 uses the Intel Sunrise Point 100-series Platform Controller Hub (PCH) chipset paired with Intel&rsquo;s 6th-generation Skylake CPUs. Starting with this chipset, Intel removed physical EHCI USB 2.0 controllers entirely, routing all USB 2.0, 3.0, and 3.1 ports through a single xHCI (USB 3.0/eXtensible Host Controller Interface) controller.</p>
+<p>The 2020 P14s Gen 1 is amongst the last laptops that officially support UEFI-CSM, which allows legacy BIOS-based operating systems like Windows 98 to be booted.</p>
+<p>It&rsquo;s a pretty narrow band of machines that will find this useful but my machines happen to fall into this band.</p>
+<h2 id="external-test-usb-devices">External test USB devices</h2>
+<p>I cobbled together a wide array of USB test devices in my possession to exercise the driver.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Speed</th>
+					<th>Type</th>
+					<th>Device</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>High</td>
+					<td>Hub</td>
+					<td>Terminus 7-port hub, multi-TT</td>
+			</tr>
+			<tr>
+					<td>High</td>
+					<td>Hub</td>
+					<td>Terminus 4-port hub, single-TT</td>
+			</tr>
+			<tr>
+					<td>High</td>
+					<td>Hub</td>
+					<td>Genesys 7-port hub (two cascaded chips)</td>
+			</tr>
+			<tr>
+					<td>Low</td>
+					<td>HID</td>
+					<td>Logitech USB Optical Mouse</td>
+			</tr>
+			<tr>
+					<td>Low</td>
+					<td>HID</td>
+					<td>Microsoft Wired Keyboard 600 (composite)</td>
+			</tr>
+			<tr>
+					<td>High</td>
+					<td>Mass storage</td>
+					<td>SanDisk U3 Titanium flash drive</td>
+			</tr>
+			<tr>
+					<td>SuperSpeed</td>
+					<td>Mass storage</td>
+					<td>MSSU10-128GSR and SanDisk 3.2Gen1 USB 3.0 flash drives</td>
+			</tr>
+			<tr>
+					<td>SuperSpeed</td>
+					<td>UAS (falls back to Mass storage)</td>
+					<td>StoreJet Transcend USB-to-SATA bridge (ASMedia)</td>
+			</tr>
+			<tr>
+					<td>High</td>
+					<td>Ethernet</td>
+					<td>ASIX AX88772A USB Ethernet</td>
+			</tr>
+			<tr>
+					<td>Full</td>
+					<td>Audio</td>
+					<td>Sound Blaster Play! 2 (UAC 1.0)</td>
+			</tr>
+			<tr>
+					<td>High</td>
+					<td>Audio</td>
+					<td>Sound Blaster X4 (UAC 2.0). Enumerates, but neither Windows 98 nor 2000 has a driver for it</td>
+			</tr>
+	</tbody>
+</table>
+<p>USB 3.0 SuperSpeed devices will fall back automatically to High-Speed on this system.</p>
+<h2 id="how-it-was-built-with-ai">How it was built with AI</h2>
+<p>xHCI98 was built with heavy AI assistance using these tools:</p>
+<ul>
+<li>Claude Fable 5 for planning</li>
+<li>Claude Opus 5 for coding</li>
+<li>Codex GPT 5.6 Sol for reviewing</li>
+</ul>
+<p>I did it in my spare time over a 2-month period.</p>
+<p>Just like my <a href="/2026/06/swift-on-apple-ii/">Swift on Apple II</a> project, <strong>without AI, this project would not have been feasible for me as a hobby project.</strong> A WDM host controller driver against an undocumented ABI, on a 28-year-old toolchain, for two operating systems is not a two-month side project by hand. I would estimate years, if I ever finished it.</p>
+<h3 id="the-documentation-as-the-ais-memory">The documentation as the AI&rsquo;s memory</h3>
+<p>The workflow was similar to SwiftII.</p>
+<p>I planned the project as 17 phases, 0 through 16, with AI filling in the implementations as needed.</p>
+<ol start="0">
+<li>XHCIQUAL, the DOS hardware qualifier</li>
+<li>Development environment</li>
+<li>Test environments: Win98 SE, Windows 2000 SP4, QEMU/WHPX migration, Windows 2000 SMP stress</li>
+<li>Miniport registration spike, the go/no-go gate</li>
+<li>Controller initialisation</li>
+<li>Root hub</li>
+<li>Device enumeration</li>
+<li>Interrupt transfers and HID, then external hub topology</li>
+<li>Bulk: mass storage and Ethernet</li>
+<li>Isochronous and USB audio</li>
+<li>Automated VM device matrix</li>
+<li>Power, packaging and stress</li>
+<li>Host- and guest-side decisions</li>
+<li>Final bare-metal validation</li>
+<li>The 1.0.0.0 release</li>
+<li>Specification revision 1.2c</li>
+<li>Unattended post-release run</li>
+</ol>
+<p>Around the phases sit 9 design documents. Every session starts by reading the roadmap and whatever design record is relevant. The AI forgets everything when its session ends, so the documentation is how the next session inherits the judgment of the last one instead of re-making the same mistake.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Modern hardware running legacy operating systems has been a small obsession of mine for a while now and USB was the one thing that made those Windows 98 machines unusable in practice. Now my 2020 ThinkPad can run Windows 98 SE with a mouse, a flash drive, wired Ethernet and sound. All through a controller that did not exist when the OS was written!</p>
+<p>The credit for making this even possible goes to Microsoft&rsquo;s original <code>usbport.sys</code> modular design which let a miniport slot in underneath without touching the rest of the stack. Thanks also to Maximus-Decim for NUSB, which brought that stack to Windows 98 in the first place, and to the ReactOS project, whose usbport reimplementation helped immensely. The Linux, Haiku and FreeBSD xHCI drivers were the second opinions on hardware details.</p>
+<p>This blog post is less technical to make it more easily digestible. More technical detail is in the full documentation in the <a href="https://github.com/yeokm1/xhci98/tree/master/docs">repository&rsquo;s docs directory</a>.</p>
+<p>If you have a Windows 98/2K machine that somehow needs to use a modern USB stack, then this project is for you! Otherwise, I hope you find this project interesting to peer under the hood at how modern USB works.</p>
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/retrocomputing">retrocomputing</a></li>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/hacks">hacks</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yeokm1/yeokm1.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNTQ3ODI3NTI="
+        data-category="Comments"
+        data-category-id="DIC_kwDODy-tIM4CXEA6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div class="pagination">
+  
+    <a href="/2026/06/swift-on-apple-ii/" class="button"><div class="previous"><div>Bringing Swift to the Apple II</div></div></a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2026/08/xhci98-usb-host-driver/" class="image featured">
+    
+      <img src="/2026/08/xhci98-usb-host-driver/images/xhci98-usb-devices.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2026/08/xhci98-usb-host-driver/">Bringing modern USB xHCI support to Windows 98/2K</a></h1>
+          <time class="published" datetime="">August 30, 2026</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2026/06/swift-on-apple-ii/" class="image featured">
+    
+      <img src="/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2026/06/swift-on-apple-ii/">Bringing Swift to the Apple II</a></h1>
+          <time class="published" datetime="">June 25, 2026</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2026/02/review-and-teardown-creative-mb-10/" class="image featured">
+    
+      <img src="/2026/02/review-and-teardown-creative-mb-10/images/mb10-banner-int-ext.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2026/02/review-and-teardown-creative-mb-10/">Review and Teardown of Creative Midi Blaster MB-10 synthesizer</a></h1>
+          <time class="published" datetime="">February 21, 2026</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2025/07/ceg-master-graduate-loh/" class="image featured">
+    
+      <img src="/2025/07/ceg-master-graduate-loh/images/ceg-master-banner.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/07/ceg-master-graduate-loh/">Reflections of a newly minted NUS CEG Master graduate</a></h1>
+          <time class="published" datetime="">July 18, 2025</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2025/04/llama2-llm-on-dos/" class="image featured">
+    
+      <img src="/2025/04/llama2-llm-on-dos/images/dosllam2-usage.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/04/llama2-llm-on-dos/">Llama 2 LLM on DOS</a></h1>
+          <time class="published" datetime="">April 15, 2025</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/hacks/">hacks<span class="count">28</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/personal/">personal<span class="count">18</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">18</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/singapore/">singapore<span class="count">15</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/teardowns/">teardowns<span class="count">11</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/school/">school<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/book-reviews/">book-reviews<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/product-reviews/">product-reviews<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hackathon/">hackathon<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/politics/">politics<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/admin/">admin<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/repair-kopitiam/">repair-kopitiam<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/keyboards/">keyboards<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/quiz/">quiz<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/dvorak/">dvorak<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/flight-sim/">flight-sim<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hardware/">hardware<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2026
+      
+        YKM&#39;s Corner on the Web
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.165.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+<script type="text/javascript">
+  var sc_project = 8700008;
+  var sc_invisible = 1;
+  var sc_security = "b569f6b4";
+  var sc_https = 1; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript>
+  <div class="statcounter"><a title="free hit
+  counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+        src="https://c.statcounter.com/8700008/0/b569f6b4/1/" alt="free hit counter"></a></div>
+</noscript>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function (x) {
+      x.parentElement.classList += 'has-jax'
+    })
+  });
+
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.e35f1f8457feac0640f4577943efa2b484c97b0439bff413797745460cd03949.js" integrity="sha256-418fhFf&#43;rAZA9Fd5Q&#43;&#43;itITJewQ5v/QTeXdFRgzQOUk="></script>
+<script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>
