@@ -16,7 +16,7 @@ Demos Demo video here showing me hotplugging many different types of USB devices
 ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write from 32 KB transfers upward. That is USB 2.0 High-Speed territory, which is all this driver supports and I’ll explain why below.">
 	<meta itemprop="datePublished" content="2026-08-30T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-08-30T00:00:00+00:00">
-	<meta itemprop="wordCount" content="2839">
+	<meta itemprop="wordCount" content="2849">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/08/xhci98-usb-host-driver/images/xhci98-usb-devices.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/08/xhci98-usb-host-driver/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -313,15 +313,15 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 <p>Earlier this year, I set up Windows 98 SE on my relatively modern 2020 ThinkPad P14s Gen 1.</p>
 <a href="images/p14sg1-front-tb-dock.jpg"><img src="images/p14sg1-front-tb-dock.jpg" width="800"></a>
 <p>More details of this machine here: <a href="https://github.com/yeokm1/retro-configs/tree/master/laptops/thinkpad-p14sg1">https://github.com/yeokm1/retro-configs/tree/master/laptops/thinkpad-p14sg1</a></p>
-<p>I found out very early that Windows 98 and many legacy operating systems do not support the xHCI Controller. Even if the USB device or ports are USB 2.0 based, it still will not work as those ports are controlled by xHCI.</p>
+<p>It first came to my attention then that Windows 98 and many legacy operating systems do not support the xHCI Controller. Even if the USB device or ports are USB 2.0 based, it still will not work as those ports are controlled by xHCI.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/V0EOecOkuB8?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
 		</div>
 
-<p>The original idea of using a USB 2.0 PCI controller came from Omores&rsquo; YouTube video <em>xHCI vs. EHCI: The Secret to Getting USB 2.0 back on Windows 9x and 2K+</em>.</p>
-<p>To work around that issue, I used a TH3P4G3 Thunderbolt eGPU dock to connect a PCI USB 2.0 EHCI card, giving this oddball chain of old and new parts: Thunderbolt -&gt; eGPU dock -&gt; PCIe-PCI adapter -&gt; VIA USB 2.0 PCI card -&gt; USB adapters.</p>
+<p>I came across this idea of using a USB 2.0 PCI card to bypass this issue from Omores&rsquo; YouTube video <em>xHCI vs. EHCI: The Secret to Getting USB 2.0 back on Windows 9x and 2K+</em>.</p>
+<p>Since a laptop does not have a PCI slot, I used a TH3P4G3 Thunderbolt eGPU dock to connect a PCI USB 2.0 EHCI card, giving this oddball chain of old and new parts: Thunderbolt -&gt; eGPU dock -&gt; PCIe-PCI adapter -&gt; VIA USB 2.0 PCI card -&gt; USB adapters.</p>
 <p>Windows 98 SE actually does not natively support USB 2.0 but a driver project called <a href="https://www.philscomputerlab.com/windows-98-usb-storage-driver.html">NUSB33E</a> backported Windows 2000 drivers to enable this to work.</p>
-<p>While that worked, it was an eyesore and not very elegant in my opinion. So I wanted to see if I could build a native xHCI driver for Windows 98. Especially with AI assistance today, this should be possible right?</p>
+<p>While that literal tower of adapters worked, it was an eyesore and not very elegant in my opinion. So I wanted to see if I could build a native xHCI driver for Windows 98. Especially with AI assistance today, this should be possible right?</p>
 <h2 id="why-xhci-is-hard">Why xHCI is hard</h2>
 <p>I looked around existing implementations and found that most xHCI implementations are in major OSes like Windows 8 onwards, modern Linux and macOS written by a major company or a large project. Other projects mostly stop at the USB 2.0 standards of UHCI, OHCI and EHCI.</p>
 <p>During the course of this project I found out the hard way why this is so.</p>
@@ -429,7 +429,7 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 </table>
 <p>I chose both machines as they represent what I believe to be the extreme ends of who will find this project useful.</p>
 <a href="images/xhci98-e460.jpg"><img src="images/xhci98-e460.jpg" width="800"></a>
-<p>The 2016 Thinkpad E460 uses the Intel Sunrise Point 100-series Platform Controller Hub (PCH) chipset paired with Intel&rsquo;s 6th-generation Skylake CPUs. Starting with this chipset, Intel removed physical EHCI USB 2.0 controllers entirely, routing all USB 2.0, 3.0, and 3.1 ports through a single xHCI (USB 3.0/eXtensible Host Controller Interface) controller.</p>
+<p>The 2016 Thinkpad E460 uses the Intel Sunrise Point 100-series Platform Controller Hub (PCH) chipset paired with Intel&rsquo;s 6th-generation Skylake CPUs. Starting with this chipset, Intel removed physical EHCI USB 2.0 controllers entirely, routing all USB 2.0, 3.0, and 3.1 ports through a single xHCI controller.</p>
 <p>The 2020 Thinkad P14s Gen 1 is amongst the last laptops that officially support UEFI-CSM which allows legacy BIOS-based operating systems like Windows 98 to be booted.</p>
 <p>It&rsquo;s a pretty narrow band of machines that will find this useful but my machines happen to fall into this band.</p>
 <h2 id="external-test-usb-devices">External test USB devices</h2>
@@ -509,7 +509,7 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 <li>Codex GPT 5.6 Sol for reviewing</li>
 </ul>
 <p>I did it in my spare time over a 2-month period.</p>
-<p>Just like my <a href="/2026/06/swift-on-apple-ii/">Swift on Apple II</a> project, <strong>without AI, this project would not have been feasible for me as a hobby project.</strong> A WDM host controller driver against an undocumented ABI, on a 28-year-old toolchain, for two operating systems is not a two-month side project by hand. I would estimate years, if I ever finished it.</p>
+<p>Just like my <a href="/2026/06/swift-on-apple-ii/">Swift on Apple II</a> project, <strong>without AI, this project would not have been feasible for me as a hobby project.</strong> A WDM host controller driver against an undocumented ABI, on a 28-year-old toolchain, for two operating systems is not a two-month side project by hand. I would estimate years if I ever finished it.</p>
 <h3 id="the-documentation-as-the-ais-memory">The documentation as the AI&rsquo;s memory</h3>
 <p>The workflow was similar to SwiftII.</p>
 <p>I planned the project as 17 phases, 0 through 16, with AI filling in the implementations as needed.</p>
