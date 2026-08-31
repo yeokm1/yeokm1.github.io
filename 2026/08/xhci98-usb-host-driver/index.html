@@ -10,23 +10,23 @@
 	<meta itemprop="name" content="Bringing modern USB xHCI support to Windows 98/2K">
 	<meta itemprop="description" content="Most of us take the USB ports on our computers for granted. We plug in devices and expect them to work automatically with the operating system. However, what if this wasn’t the case with vintage operating systems?
 I present to you xHCI98, a driver that gives Windows 98 SE and Windows 2000 SP4 working USB on machines whose only USB controller is xHCI.
-Windows 98 Device Manager showing xHCI Controller initialised and ready to accept USB devices on an operating system that otherwise cannot support it.
+Windows 98 Device Manager showing xHCI Controller initialised and ready to accept USB devices on an operating system that previously could not support it.
 Everything is open-sourced here if you want to jump right in to use it: https://github.com/yeokm1/xhci98
 Demos Demo video here showing me hotplugging many different types of USB devices to my 2020 ThinkPad P14s Gen 1. Hotplugging shows that the driver is handling this and not the BIOS.
-ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write from 32 KB transfers upward. That is USB 2.0 High-Speed territory, which is all this driver supports and I’ll explain why below.">
+ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write from 32 KB transfers upward. That is within USB 2.0 High-Speed which is all this driver supports and I’ll explain why below.">
 	<meta itemprop="datePublished" content="2026-08-30T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-08-30T00:00:00+00:00">
-	<meta itemprop="wordCount" content="2849">
+	<meta itemprop="wordCount" content="2857">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/08/xhci98-usb-host-driver/images/xhci98-usb-devices.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/08/xhci98-usb-host-driver/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
 	<meta property="og:title" content="Bringing modern USB xHCI support to Windows 98/2K">
 	<meta property="og:description" content="Most of us take the USB ports on our computers for granted. We plug in devices and expect them to work automatically with the operating system. However, what if this wasn’t the case with vintage operating systems?
 I present to you xHCI98, a driver that gives Windows 98 SE and Windows 2000 SP4 working USB on machines whose only USB controller is xHCI.
-Windows 98 Device Manager showing xHCI Controller initialised and ready to accept USB devices on an operating system that otherwise cannot support it.
+Windows 98 Device Manager showing xHCI Controller initialised and ready to accept USB devices on an operating system that previously could not support it.
 Everything is open-sourced here if you want to jump right in to use it: https://github.com/yeokm1/xhci98
 Demos Demo video here showing me hotplugging many different types of USB devices to my 2020 ThinkPad P14s Gen 1. Hotplugging shows that the driver is handling this and not the BIOS.
-ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write from 32 KB transfers upward. That is USB 2.0 High-Speed territory, which is all this driver supports and I’ll explain why below.">
+ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write from 32 KB transfers upward. That is within USB 2.0 High-Speed which is all this driver supports and I’ll explain why below.">
 	<meta property="og:locale" content="en">
 	<meta property="og:type" content="article">
 		<meta property="article:section" content="post">
@@ -39,10 +39,10 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 	<meta name="twitter:title" content="Bringing modern USB xHCI support to Windows 98/2K">
 	<meta name="twitter:description" content="Most of us take the USB ports on our computers for granted. We plug in devices and expect them to work automatically with the operating system. However, what if this wasn’t the case with vintage operating systems?
 I present to you xHCI98, a driver that gives Windows 98 SE and Windows 2000 SP4 working USB on machines whose only USB controller is xHCI.
-Windows 98 Device Manager showing xHCI Controller initialised and ready to accept USB devices on an operating system that otherwise cannot support it.
+Windows 98 Device Manager showing xHCI Controller initialised and ready to accept USB devices on an operating system that previously could not support it.
 Everything is open-sourced here if you want to jump right in to use it: https://github.com/yeokm1/xhci98
 Demos Demo video here showing me hotplugging many different types of USB devices to my 2020 ThinkPad P14s Gen 1. Hotplugging shows that the driver is handling this and not the BIOS.
-ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write from 32 KB transfers upward. That is USB 2.0 High-Speed territory, which is all this driver supports and I’ll explain why below.">
+ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write from 32 KB transfers upward. That is within USB 2.0 High-Speed which is all this driver supports and I’ll explain why below.">
 			<meta name="twitter:site" content="@yeokm1">
 <link rel="stylesheet" href="/css/bundle.min.34a0b510084f27f411c97ef8a8d4a289c2b5fe284fe77e3ecf55351c22f38908.css" integrity="sha256-NKC1EAhPJ/QRyX74qNSiicK1/ihP534&#43;z1U1HCLziQg=">
         <link rel="stylesheet" href="/css/add-on.css"></head>
@@ -296,7 +296,7 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
     <p>Most of us take the USB ports on our computers for granted. We plug in devices and expect them to work automatically with the operating system. However, what if this wasn&rsquo;t the case with vintage operating systems?</p>
 <p>I present to you <strong>xHCI98</strong>, a driver that gives Windows 98 SE and Windows 2000 SP4 working USB on machines whose only USB controller is xHCI.</p>
 <a href="images/xhci98-driver-info.jpg"><img src="images/xhci98-driver-info.jpg" width="800"></a>
-<p>Windows 98 Device Manager showing xHCI Controller initialised and ready to accept USB devices on an operating system that otherwise cannot support it.</p>
+<p>Windows 98 Device Manager showing xHCI Controller initialised and ready to accept USB devices on an operating system that previously could not support it.</p>
 <p>Everything is open-sourced here if you want to jump right in to use it: <a href="https://github.com/yeokm1/xhci98">https://github.com/yeokm1/xhci98</a></p>
 <h2 id="demos">Demos</h2>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -305,28 +305,28 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 
 <p>Demo video here showing me hotplugging many different types of USB devices to my 2020 ThinkPad P14s Gen 1. Hotplugging shows that the driver is handling this and not the BIOS.</p>
 <a href="images/xhci98-flash-speed-test.jpg"><img src="images/xhci98-flash-speed-test.jpg" width="800"></a>
-<p>ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write from 32 KB transfers upward. That is USB 2.0 High-Speed territory, which is all this driver supports and I&rsquo;ll explain why below.</p>
+<p>ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write from 32 KB transfers upward. That is within USB 2.0 High-Speed which is all this driver supports and I&rsquo;ll explain why below.</p>
 <h2 id="background">Background</h2>
-<p>The USB host controller on most modern PCs today is based on the <a href="https://en.wikipedia.org/wiki/Extensible_Host_Controller_Interface">Extensible Host Controller Interface (xHCI)</a> USB 3.0 standard. It was first publicly finalised by Intel in 2010 and is now the de-facto standard superseding prior USB standards. Updates to the standard have been provided over the years with the latest now at <a href="https://cdrdv2.intel.com/v1/dl/getContent/868295">1.2c</a>.</p>
-<p>Given its relatively recent introduction, only modern operating systems like Windows 8 onwards natively support it. Supporting older machines will require the chipset vendors to provide the driver stack which is the case up to Windows XP. What if we want to go back further?</p>
+<p>The USB host controller on most modern PCs today is based on the <a href="https://en.wikipedia.org/wiki/Extensible_Host_Controller_Interface">Extensible Host Controller Interface (xHCI)</a> USB 3.0 standard. It was first publicly finalised by Intel in 2010 and is now the de facto standard superseding prior USB host standards. Updates to the standard have been provided over the years with the latest now at <a href="https://cdrdv2.intel.com/v1/dl/getContent/868295">1.2c</a>.</p>
+<p>Given its relatively recent introduction, only modern operating systems like Windows 8 onwards natively support it. Supporting older machines will require the chipset vendors to provide the driver stack which is the case back to Windows XP. What if we want to go back further?</p>
 <h2 id="motivation">Motivation</h2>
 <p>Earlier this year, I set up Windows 98 SE on my relatively modern 2020 ThinkPad P14s Gen 1.</p>
 <a href="images/p14sg1-front-tb-dock.jpg"><img src="images/p14sg1-front-tb-dock.jpg" width="800"></a>
 <p>More details of this machine here: <a href="https://github.com/yeokm1/retro-configs/tree/master/laptops/thinkpad-p14sg1">https://github.com/yeokm1/retro-configs/tree/master/laptops/thinkpad-p14sg1</a></p>
-<p>It first came to my attention then that Windows 98 and many legacy operating systems do not support the xHCI Controller. Even if the USB device or ports are USB 2.0 based, it still will not work as those ports are controlled by xHCI.</p>
+<p>It first came to my attention then that Windows 98 and many legacy operating systems do not support the xHCI Controller. Even if the USB device or ports are USB 2.0 based, they still will not work as those ports are controlled by xHCI.</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/V0EOecOkuB8?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
 		</div>
 
-<p>I came across this idea of using a USB 2.0 PCI card to bypass this issue from Omores&rsquo; YouTube video <em>xHCI vs. EHCI: The Secret to Getting USB 2.0 back on Windows 9x and 2K+</em>.</p>
-<p>Since a laptop does not have a PCI slot, I used a TH3P4G3 Thunderbolt eGPU dock to connect a PCI USB 2.0 EHCI card, giving this oddball chain of old and new parts: Thunderbolt -&gt; eGPU dock -&gt; PCIe-PCI adapter -&gt; VIA USB 2.0 PCI card -&gt; USB adapters.</p>
-<p>Windows 98 SE actually does not natively support USB 2.0 but a driver project called <a href="https://www.philscomputerlab.com/windows-98-usb-storage-driver.html">NUSB33E</a> backported Windows 2000 drivers to enable this to work.</p>
+<p>I came across this idea of using a USB 2.0 PCI card to bypass this issue from Omores&rsquo;s YouTube video <em>xHCI vs. EHCI: The Secret to Getting USB 2.0 back on Windows 9x and 2K</em>.</p>
+<p>Since a laptop does not have a PCI slot, I used a TH3P4G3 Thunderbolt eGPU dock to connect a PCI USB 2.0 EHCI card giving this oddball chain of old and new parts: Thunderbolt -&gt; eGPU dock -&gt; PCIe-PCI adapter -&gt; VIA USB 2.0 PCI card -&gt; USB adapters.</p>
+<p>Windows 98 SE actually does not natively support USB 2.0 but a driver project called <a href="https://www.philscomputerlab.com/windows-98-usb-storage-driver.html">NUSB 3.3E</a> backported Windows 2000 drivers to enable this to work.</p>
 <p>While that literal tower of adapters worked, it was an eyesore and not very elegant in my opinion. So I wanted to see if I could build a native xHCI driver for Windows 98. Especially with AI assistance today, this should be possible right?</p>
 <h2 id="why-xhci-is-hard">Why xHCI is hard</h2>
-<p>I looked around existing implementations and found that most xHCI implementations are in major OSes like Windows 8 onwards, modern Linux and macOS written by a major company or a large project. Other projects mostly stop at the USB 2.0 standards of UHCI, OHCI and EHCI.</p>
+<p>I looked around existing implementations and found that most xHCI implementations are in major OSes like Windows 8 onwards, modern Linux, BSD and macOS written by a major company or a large project. Other projects mostly stop at the previous USB standards of UHCI, OHCI (USB 1.x) and EHCI (USB 2.0).</p>
 <p>During the course of this project I found out the hard way why this is so.</p>
-<p>The specification is huge and the controller is not simple. The xHCI 1.2 specification runs to over 600 pages.</p>
-<p>The driver has to set up a whole family of data structures before the controller does anything. Plenty of concepts to grasp like the command/event/transfer rings, Slot/Endpoint/Input Contexts and Doorbell etc. Every one of those data structures has exact alignment rules and a mistake just causes a hang.</p>
+<p>The specification is huge and the controller is not simple. The xHCI 1.2c specification runs to 600 pages.</p>
+<p>The driver has to set up a whole family of data structures before the controller does anything. Plenty of concepts to grasp like the command/event/transfer rings, Slot/Endpoint/Input Contexts and Doorbell etc. Every one of those data structures has exact alignment rules and a mistake just causes a controller hang.</p>
 <p>I believe the vendors who shipped xHCI drivers for Windows XP and 7 did so because those OSes still had a market. For Windows 98 there was never a commercial reason.</p>
 <p>But with such advanced AI today which is able to crunch through the entire specification and reference existing open-source code, things are definitely different compared to months or years ago.</p>
 <h2 id="why-only-usb-20-on-a-usb-30-controller">Why only USB 2.0 on a USB 3.0 controller</h2>
@@ -337,13 +337,13 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 <p><code>usbport.sys</code> is Microsoft&rsquo;s port driver that owns the root hub, enumeration, USB Request Block (URB) parsing and everything the class drivers talk to.</p>
 </li>
 <li>
-<p>Underneath it sit small miniport drivers, one per controller type, that only knows how to talk to their hardware: <code>usbuhci.sys</code>, <code>usbohci.sys</code> and <code>usbehci.sys</code>.</p>
+<p>Underneath it sits miniport drivers, one per controller type that only knows how to talk to their hardware: <code>usbuhci.sys</code>, <code>usbohci.sys</code> and <code>usbehci.sys</code>.</p>
 </li>
 </ol>
 <p>xHCI98 is just another miniport. <code>xhci98.sys</code> plugs in underneath <code>usbport.sys</code> exactly the way <code>usbehci.sys</code> does and only owns the xHCI hardware.</p>
 <p>I got AI to draw up this diagram:</p>
 <p><a href="images/xhci98-usb-stack.svg"><img src="images/xhci98-usb-stack.svg" alt="Diagram of the Windows 98 SE and 2000 SP4 USB stack showing xhci98.sys as a usbport.sys miniport alongside usbuhci, usbohci and usbehci, driving the xHCI controller's USB 2.0 ports" width="800"></a><br></p>
-<p>Everything in green and blue on the top half is Microsoft&rsquo;s Windows 2000 stack (NUSB&rsquo;s back-port on Windows 98), orange is this project, purple is the USB 2.0 ports the driver manages, and the greyed-out miniports and controllers are the legacy path that xHCI-only machines no longer have.</p>
+<p>Everything in green and blue on the top half is Microsoft&rsquo;s Windows 2000 stack (NUSB&rsquo;s back-port on Windows 98), orange is this project, purple is the USB 2.0 ports the driver manages and the greyed-out miniports and controllers are the legacy path that xHCI-only machines no longer have.</p>
 <p>The catch is that <code>usbport.sys</code> is a USB 2.0-era design. It has no concept of SuperSpeed and neither does anything above it. Doing USB 3.0 properly would mean replacing the entire host controller driver (HCD) stack on both operating systems and I doubt many Windows 98 class machines would benefit from that speed anyway.</p>
 <p>Fortunately every USB 3.0 connector also carries the USB 2.0 wires and xHCI exposes them as a separate logical port per connector. The driver manages those USB 2.0 ports and leaves the USB 3.0 ports unpowered, so a SuperSpeed device falls back onto the USB 2.0 pins of the same connector and runs at High-Speed. That is why the flash drive above benchmarks at USB 2.0 speed.</p>
 <p>Although my project primarily targets Windows 98, the USB stacks of Windows 98 (via NUSB) and Windows 2000 are similar enough that this driver supports both OSes.</p>
@@ -353,7 +353,7 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 <p>I got AI to draw this diagram to explain the differences:</p>
 <p><a href="images/xhci98-msi-vs-intx.svg"><img src="images/xhci98-msi-vs-intx.svg" alt="Comparison of MSI/MSI-X and legacy INTx# interrupt delivery: MSI needs an OS APIC interrupt subsystem that Windows 98 lacks and Windows only gained in Vista, so xhci98.sys uses the controller's INTx# pin through the 8259 PIC, the VMM and usbport.sys's ISR and DPC" width="800"></a><br></p>
 <p>MSI is a memory write to the CPU&rsquo;s local <a href="https://en.wikipedia.org/wiki/Advanced_Programmable_Interrupt_Controller">Advanced Programmable Interrupt Controller (APIC)</a> whose address and vector the OS must allocate and program into the device.</p>
-<p>Neither Windows 98 nor Windows 2000 has this; MSI support was only integrated in Windows Vista onwards. The driver therefore has to rely solely on the controller&rsquo;s fallback INTx# pin.</p>
+<p>Neither Windows 98 nor Windows 2000 has this. MSI support was only integrated in Windows Vista onwards. The driver therefore has to rely solely on the controller&rsquo;s fallback INTx# pin.</p>
 <p>To test if my machine has implemented the interrupt to determine if this project is even possible, I worked on a tiny qualification program called <code>XHCIQUAL.EXE</code> to verify this capability and more. It is a DOS tool built with Open Watcom 2.0 and the DOS/32A extender.</p>
 <a href="images/xhci98-xhciqual-basic.jpg"><img src="images/xhci98-xhciqual-basic.jpg" width="800"></a>
 <p>Running it with no arguments gives a read-only one-line answer per controller.</p>
@@ -373,11 +373,11 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 <p>With AI&rsquo;s help I got to port over the references to this project but how would I know if those worked?</p>
 <p>I asked AI to use those function interfaces to create a spike solution first. A stub <code>xhci98.sys</code> that registers with <code>usbport.sys</code> on both targets proves the lifecycle callbacks arrive without corrupting anything.</p>
 <p>I also referred to <a href="https://github.com/torvalds/linux/tree/master/drivers/usb/host">Linux xHCI driver</a> as the reference and got the idea of a command watchdog from it, which made me look further at the xHCI specification, which says <em>software is responsible for all command timeouts</em>.</p>
-<p>It says the timeout should be 5 seconds before asserting Chip Hardware Reset (HCRST) to reset the Controller which I had initially missed.</p>
+<p>It says the timeout should be 5 seconds up and escalating chain before asserting Host Controller Reset (HCRST) to reset the Controller which I had initially missed.</p>
 <h2 id="architecture-and-flow">Architecture and flow</h2>
 <p>With the help of AI again, here is the architecture diagram of the driver as well as the flow:</p>
 <p><a href="images/xhci98-driver-architecture.svg"><img src="images/xhci98-driver-architecture.svg" alt="Internal architecture of xhci98.sys: usbport.sys callbacks enter through xhci_dispatch, xhci_rh, xhci_slot and xhci_xfer; the init, command, event and topology engines sit below; a pure host-tested core of ring, context, capability, port and memory code feeds xhci_pci.c, the only file that touches the xHCI registers and DMA common buffer" width="660"></a><br></p>
-<p>Here is one device plug-in going through the driver, to show how the files in the diagram work together. The miniport never tells <code>usbport.sys</code> &ldquo;a device arrived&rdquo;; it only says &ldquo;something changed, come and look&rdquo;, and usbport asks the questions.</p>
+<p>Here is one device plug-in going through the driver, to show how the files in the diagram work together. The miniport never tells <code>usbport.sys</code> &ldquo;a device arrived&rdquo;. It only says &ldquo;something changed, come and look&rdquo;, and usbport asks the questions.</p>
 <ol>
 <li>The device pulls the data lines and the controller sets the connect and connect-change bits in that port&rsquo;s <code>PORTSC</code> register, writes a Port Status Change Event onto the event ring and asserts INTx#.</li>
 <li><code>xhci_evt.c</code>&rsquo;s ISR confirms the interrupt is ours and the DPC drains the event ring, routing the port event to <code>xhci_rh.c</code>.</li>
@@ -404,10 +404,11 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 <p>The driver is built in three flavours from the same source to assist in testing.</p>
 <ol>
 <li><code>release</code>: Typical driver to use.</li>
-<li><code>debug</code>: A checked build that keeps frame pointers and carries the in-memory log ring and counters for additional diagnosis. Built separate to mitigate security loopholes on Windows 2000.</li>
+<li><code>debug</code>: A checked build that keeps frame pointers and carries the in-memory log ring and counters for additional diagnosis. Built separately to mitigate security loopholes on Windows 2000.</li>
 <li><code>qemu</code>: QEMU-only and never published. It is the debug build plus a verbose per-line trace channel that writes to QEMU&rsquo;s debug console on I/O port <code>0xE9</code>.</li>
 </ol>
-<p>There is also a fully automated device matrix. One PowerShell command boots each guest, plugs and unplugs every USB device model QEMU can emulate through the monitor socket, reads counters out of the running driver and writes a pass/fail report per device per target.</p>
+<p>There is also a fully automated test qemu configuration matrix.</p>
+<p>One PowerShell command boots each guest, plugs and unplugs every USB device model QEMU can emulate through the monitor socket, reads counters out of the running driver and writes a pass/fail report per device per target.</p>
 <p>The real hardware is two Intel xHCI-only ThinkPads, both running Windows 98 SE:</p>
 <table>
 	<thead>
@@ -430,7 +431,7 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 <p>I chose both machines as they represent what I believe to be the extreme ends of who will find this project useful.</p>
 <a href="images/xhci98-e460.jpg"><img src="images/xhci98-e460.jpg" width="800"></a>
 <p>The 2016 Thinkpad E460 uses the Intel Sunrise Point 100-series Platform Controller Hub (PCH) chipset paired with Intel&rsquo;s 6th-generation Skylake CPUs. Starting with this chipset, Intel removed physical EHCI USB 2.0 controllers entirely, routing all USB 2.0, 3.0, and 3.1 ports through a single xHCI controller.</p>
-<p>The 2020 Thinkad P14s Gen 1 is amongst the last laptops that officially support UEFI-CSM which allows legacy BIOS-based operating systems like Windows 98 to be booted.</p>
+<p>The 2020 Thinkpad P14s Gen 1 is amongst the last laptops that officially support UEFI-CSM which allows legacy BIOS-based operating systems like Windows 98 to be booted.</p>
 <p>It&rsquo;s a pretty narrow band of machines that will find this useful but my machines happen to fall into this band.</p>
 <h2 id="external-test-usb-devices">External test USB devices</h2>
 <p>I cobbled together a wide array of USB test devices in my possession to exercise the driver.</p>
@@ -481,7 +482,7 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 			<tr>
 					<td>SuperSpeed</td>
 					<td>UAS (falls back to Mass storage)</td>
-					<td>StoreJet Transcend USB-to-SATA bridge (ASMedia)</td>
+					<td>Transcend StoreJet USB-to-SATA bridge (ASMedia)</td>
 			</tr>
 			<tr>
 					<td>High</td>
@@ -512,7 +513,7 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 <p>Just like my <a href="/2026/06/swift-on-apple-ii/">Swift on Apple II</a> project, <strong>without AI, this project would not have been feasible for me as a hobby project.</strong> A WDM host controller driver against an undocumented ABI, on a 28-year-old toolchain, for two operating systems is not a two-month side project by hand. I would estimate years if I ever finished it.</p>
 <h3 id="the-documentation-as-the-ais-memory">The documentation as the AI&rsquo;s memory</h3>
 <p>The workflow was similar to SwiftII.</p>
-<p>I planned the project as 17 phases, 0 through 16, with AI filling in the implementations as needed.</p>
+<p>I planned the project as 17 phases, 0 through 16 with AI filling in the implementations as needed.</p>
 <ol start="0">
 <li>XHCIQUAL, the DOS hardware qualifier</li>
 <li>Development environment</li>
@@ -532,10 +533,17 @@ ATTO Disk Benchmark on a USB 3.0 flash drive gives around 18 MB/s read and write
 <li>Specification revision 1.2c</li>
 <li>Unattended post-release run</li>
 </ol>
-<p>Around the phases sit 9 design documents. Every session starts by reading the roadmap and whatever design record is relevant. The AI forgets everything when its session ends, so the documentation is how the next session inherits the judgment of the last one instead of re-making the same mistake.</p>
+<p>Around the phases sit 9 design documents. Every session starts by reading the roadmap and whatever design record is relevant.</p>
+<p>The AI forgets everything when its session ends so the documentation is how the next session inherits the judgment of the last one instead of re-making the same mistake.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>Modern hardware running legacy operating systems has been a small obsession of mine for a while now and USB was the one thing that made those Windows 98 machines unusable in practice. Now my 2020 ThinkPad can run Windows 98 SE with a mouse, a flash drive, wired Ethernet and sound. All through a controller that did not exist when the OS was written!</p>
-<p>The credit for making this even possible goes to Microsoft&rsquo;s original <code>usbport.sys</code> modular design which let a miniport slot in underneath without touching the rest of the stack. Thanks also to Maximus-Decim for NUSB, which brought that stack to Windows 98 in the first place, and to the ReactOS project, whose usbport reimplementation helped immensely. The Linux, Haiku and FreeBSD xHCI drivers were the second opinions on hardware details.</p>
+<p>The credit for making this even possible goes to Microsoft&rsquo;s original <code>usbport.sys</code> modular design which let a miniport slot in underneath without touching the rest of the stack.</p>
+<p>Thanks to the following:</p>
+<ul>
+<li>Maximus Decim for NUSB, which brought that stack to Windows 98 in the first place</li>
+<li>ReactOS project whose usbport reimplementation helped immensely.</li>
+<li>The Linux, Haiku and FreeBSD xHCI reference driver implementations</li>
+</ul>
 <p>This blog post is less technical to make it more easily digestible. More technical detail is in the full documentation in the <a href="https://github.com/yeokm1/xhci98/tree/master/docs">repository&rsquo;s docs directory</a>.</p>
 <p>If you have a Windows 98/2K machine that somehow needs to use a modern USB stack, then this project is for you! Otherwise, I hope you find this project interesting to peer under the hood at how modern USB works.</p>
   </div>
