@@ -17,7 +17,7 @@ Demos Demo video here showing me hotplugging many different types of USB devices
 ATTO Disk Benchmark on a USB 3.0 flash drive tops up around 18 MB/s. That is within USB 2.0 High-Speed which is all this driver supports and I’ll explain why below.">
 	<meta itemprop="datePublished" content="2026-08-30T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-08-30T00:00:00+00:00">
-	<meta itemprop="wordCount" content="2360">
+	<meta itemprop="wordCount" content="2342">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/08/xhci98-usb-host-driver/images/xhci98-usb-devices.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/08/xhci98-usb-host-driver/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -208,7 +208,7 @@ ATTO Disk Benchmark on a USB 3.0 flash drive tops up around 18 MB/s. That is wit
     </time>
     <span class="author"></span>
     
-      <p>12 minutes read</p>
+      <p>11 minutes read</p>
     
   </div>
 </header>
@@ -400,7 +400,7 @@ ATTO Disk Benchmark on a USB 3.0 flash drive tops up around 18 MB/s. That is wit
 <p>The driver is built in three flavours from the same source to assist in testing.</p>
 <ol>
 <li><code>release</code>: Typical driver to use.</li>
-<li><code>debug</code>: A checked build that provides additional pointers for deeper diagnosis. Built separately to avoid introducing security loopholes on Windows 2000.</li>
+<li><code>debug</code>: Checked build.</li>
 <li><code>qemu</code>: QEMU-only and never published. It is the debug build plus a log channel that writes to QEMU&rsquo;s debug console on I/O port <code>0xE9</code>.</li>
 </ol>
 <p>There is also an automated qemu test configuration matrix that plugs and unplugs multiple devices repeatedly across the USB devices that QEMU supports against the VM configurations.</p>
