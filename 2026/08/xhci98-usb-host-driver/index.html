@@ -14,6 +14,7 @@ Backported drivers or some third-party vendor implementations exist for 2000 and
 Windows 98 Device Manager showing xHCI Controller initialised and ready to accept USB devices on an operating system that previously could not support it.
 Everything is open-sourced here if you want to jump right in to use it: https://github.com/yeokm1/xhci98.
 All text below have been written and phrased by me and not AI. Only the diagrams and tables are AI created.
+xHCI98 is now a full USB 3.x Host Controller Driver supporting proper USB 3.x speeds. A future blog post may be upcoming to explain the new architecture.
 Demos Video from a retrocomputing Youtuber Omores showcasing my project.
 My earlier demo video showing hotplugging many different types of USB devices to my 2020 ThinkPad P14s Gen 1. Hotplugging shows that the driver is handling this and not the BIOS.
 ATTO Disk Benchmark on a USB 3.0 flash drive goes around 34 MB/s which is near the practical limit of USB 2.0 transfers.
@@ -31,6 +32,7 @@ Backported drivers or some third-party vendor implementations exist for 2000 and
 Windows 98 Device Manager showing xHCI Controller initialised and ready to accept USB devices on an operating system that previously could not support it.
 Everything is open-sourced here if you want to jump right in to use it: https://github.com/yeokm1/xhci98.
 All text below have been written and phrased by me and not AI. Only the diagrams and tables are AI created.
+xHCI98 is now a full USB 3.x Host Controller Driver supporting proper USB 3.x speeds. A future blog post may be upcoming to explain the new architecture.
 Demos Video from a retrocomputing Youtuber Omores showcasing my project.
 My earlier demo video showing hotplugging many different types of USB devices to my 2020 ThinkPad P14s Gen 1. Hotplugging shows that the driver is handling this and not the BIOS.
 ATTO Disk Benchmark on a USB 3.0 flash drive goes around 34 MB/s which is near the practical limit of USB 2.0 transfers.
@@ -51,6 +53,7 @@ Backported drivers or some third-party vendor implementations exist for 2000 and
 Windows 98 Device Manager showing xHCI Controller initialised and ready to accept USB devices on an operating system that previously could not support it.
 Everything is open-sourced here if you want to jump right in to use it: https://github.com/yeokm1/xhci98.
 All text below have been written and phrased by me and not AI. Only the diagrams and tables are AI created.
+xHCI98 is now a full USB 3.x Host Controller Driver supporting proper USB 3.x speeds. A future blog post may be upcoming to explain the new architecture.
 Demos Video from a retrocomputing Youtuber Omores showcasing my project.
 My earlier demo video showing hotplugging many different types of USB devices to my 2020 ThinkPad P14s Gen 1. Hotplugging shows that the driver is handling this and not the BIOS.
 ATTO Disk Benchmark on a USB 3.0 flash drive goes around 34 MB/s which is near the practical limit of USB 2.0 transfers.
@@ -312,6 +315,7 @@ That is within USB 2.0 High-Speed which is all this driver supports and I’ll e
 <p>Windows 98 Device Manager showing xHCI Controller initialised and ready to accept USB devices on an operating system that previously could not support it.</p>
 <p>Everything is open-sourced here if you want to jump right in to use it: <a href="https://github.com/yeokm1/xhci98">https://github.com/yeokm1/xhci98</a>.</p>
 <p>All text below have been written and phrased by me and not AI. Only the diagrams and tables are AI created.</p>
+<p><strong>xHCI98 is now a full USB 3.x Host Controller Driver supporting proper USB 3.x speeds</strong>. A future blog post may be upcoming to explain the new architecture.</p>
 <h2 id="demos">Demos</h2>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/7SOyvvC7P4E?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
@@ -350,7 +354,6 @@ That is within USB 2.0 High-Speed which is all this driver supports and I’ll e
 <p>I believe the vendors who shipped xHCI drivers for Windows XP and 7 did so because those OSes still had a market. For Windows 98 there was never a commercial reason.</p>
 <p>But with such advanced AI today which is able to crunch through the entire specification and reference existing open-source code, things are definitely different compared to months or years ago.</p>
 <h2 id="why-only-usb-20-on-a-usb-30-controller-superseded">Why only USB 2.0 on a USB 3.0 controller (superseded)</h2>
-<p><strong>xHCI98 is now a full USB 3.x Host Controller Driver supporting proper USB 3.x speeds</strong>. A future blog post may be upcoming to explain the new architecture.</p>
 <p>My first decision was to not write the whole USB stack.</p>
 <p>Windows 2000&rsquo;s USB stack (and NUSB&rsquo;s backport of it to Windows 98) is split into two layers.</p>
 <ol>
