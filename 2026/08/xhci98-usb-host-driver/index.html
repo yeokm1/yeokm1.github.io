@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.166.0">
+<meta name="generator" content="Hugo 0.167.0">
 	<meta itemprop="name" content="Bringing modern USB xHCI support to Windows 98/ME/2K/XP/Vista/7">
 	<meta itemprop="description" content="Most of us take the USB ports on our computers for granted. We plug in devices and expect them to work automatically with the operating system. However, what if this wasn’t the case with vintage operating systems?
 I present to you xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista and 7 working USB on machines whose only USB controller is xHCI. All of these operating systems don’t have native xHCI drivers.
@@ -20,7 +20,7 @@ ATTO Disk Benchmark on a USB 3.0 flash drive goes around 34 MB/s which is near t
 That is within USB 2.0 High-Speed which is all this driver supports and I’ll explain why in the next section.">
 	<meta itemprop="datePublished" content="2026-08-30T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-08-30T00:00:00+00:00">
-	<meta itemprop="wordCount" content="2430">
+	<meta itemprop="wordCount" content="2458">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/08/xhci98-usb-host-driver/images/xhci98-usb-devices.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/08/xhci98-usb-host-driver/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -349,7 +349,8 @@ That is within USB 2.0 High-Speed which is all this driver supports and I’ll e
 <p>The driver has to set up a whole family of data structures before the controller does anything. Plenty of concepts to grasp like the command/event/transfer rings, Slot/Endpoint/Input Contexts and Doorbell etc. Every one of those data structures have exact alignment rules and a small mistake just causes a controller hang.</p>
 <p>I believe the vendors who shipped xHCI drivers for Windows XP and 7 did so because those OSes still had a market. For Windows 98 there was never a commercial reason.</p>
 <p>But with such advanced AI today which is able to crunch through the entire specification and reference existing open-source code, things are definitely different compared to months or years ago.</p>
-<h2 id="why-only-usb-20-on-a-usb-30-controller">Why only USB 2.0 on a USB 3.0 controller</h2>
+<h2 id="why-only-usb-20-on-a-usb-30-controller-superseded">Why only USB 2.0 on a USB 3.0 controller (superseded)</h2>
+<p><strong>xHCI98 is now a full USB 3.x Host Controller Driver supporting proper USB 3.x speeds</strong>. A future blog post may be upcoming to explain the new architecture.</p>
 <p>My first decision was to not write the whole USB stack.</p>
 <p>Windows 2000&rsquo;s USB stack (and NUSB&rsquo;s backport of it to Windows 98) is split into two layers.</p>
 <ol>
@@ -853,7 +854,7 @@ That is within USB 2.0 High-Speed which is all this driver supports and I’ll e
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.166.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.167.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
