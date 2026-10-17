@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 7 - YKM&#39;s Corner on the Web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.168.0">
+	<meta itemprop="name" content="Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 7">
+	<meta itemprop="description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista and 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have.
+That version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.
+After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today’s machines have it.
+The project source code is still at the same link: https://github.com/yeokm1/xhci98
+I decided to write this blog post to share my journey on how I managed to add this support in.
+As with the previous post, most of the words in this blog post are written by me. AI was primarily used to generate the diagrams and tables.">
+	<meta itemprop="datePublished" content="2026-10-17T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-10-17T00:00:00+00:00">
+	<meta itemprop="wordCount" content="4565">
+	<meta itemprop="image" content="http://yeokhengmeng.com/2026/10/xhci98-usb3-usb4/images/xhci98-p14s-superspeed-setup.jpg">
+	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/10/xhci98-usb3-usb4/">
+	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
+	<meta property="og:title" content="Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 7">
+	<meta property="og:description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista and 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have.
+That version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.
+After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today’s machines have it.
+The project source code is still at the same link: https://github.com/yeokm1/xhci98
+I decided to write this blog post to share my journey on how I managed to add this support in.
+As with the previous post, most of the words in this blog post are written by me. AI was primarily used to generate the diagrams and tables.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2026-10-17T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-10-17T00:00:00+00:00">
+		<meta property="og:image" content="http://yeokhengmeng.com/2026/10/xhci98-usb3-usb4/images/xhci98-p14s-superspeed-setup.jpg">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://yeokhengmeng.com/2026/10/xhci98-usb3-usb4/images/xhci98-p14s-superspeed-setup.jpg">
+	<meta name="twitter:title" content="Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 7">
+	<meta name="twitter:description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista and 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have.
+That version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.
+After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today’s machines have it.
+The project source code is still at the same link: https://github.com/yeokm1/xhci98
+I decided to write this blog post to share my journey on how I managed to add this support in.
+As with the previous post, most of the words in this blog post are written by me. AI was primarily used to generate the diagrams and tables.">
+			<meta name="twitter:site" content="@yeokm1">
+<link rel="stylesheet" href="/css/bundle.min.34a0b510084f27f411c97ef8a8d4a289c2b5fe284fe77e3ecf55351c22f38908.css" integrity="sha256-NKC1EAhPJ/QRyX74qNSiicK1/ihP534&#43;z1U1HCLziQg=">
+        <link rel="stylesheet" href="/css/add-on.css"></head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            post
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        
+          
+          
+            <a href="/" class="link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/aviation" class="link"><i class='fas fa-plane'></i> Aviation</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/retrocomputing" class="link"><i class='fas fa-save'></i> Retrocomputing</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/favourite-quotes/" class="link">Favourite Quotes</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about-me/" class="link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+      
+      
+
+    </menu>
+    
+
+    
+    <a href="#lang-menu" class="lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="lang-menu" class="flyout-menu">
+  <a href="#" lang="en" class="link active">English (en)</a>
+  
+    
+      
+    
+      
+        <a href="/zh/" lang="zh" class="no-lang link">简体中文 (zh)</a>
+      
+    
+  
+</menu>
+
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="/img/main/logo.jpg" class="circle" width="" alt="Kheng Meng profile pic" /></a>
+  <header>
+    <h1>Yeo Kheng Meng</h1>
+  </header>
+  <main>
+    <p>Maker, Coder, Private Pilot, Retrocomputing Enthusiast</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/yeokm1" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/yeokhengmeng" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+<li><a href="//facebook.com/yeokhengmeng" target="_blank" rel="noopener" title="Facebook" class="fab fa-facebook"></a></li>
+
+
+<li><a href="//youtube.com/yeokm1" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+<li><a href="//instagram.com/yeokm1" target="_blank" rel="noopener" title="Instagram" class="fab fa-instagram"></a></li>
+
+<li><a href="//twitter.com/yeokm1" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+<li><a href="//telegram.me/yeokm1" target="_blank" rel="noopener" title="telegram" class="fab fa-telegram"></a></li>
+
+
+
+
+
+
+
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/2026/10/xhci98-usb3-usb4/">Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 7</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2026-10-17 00:00:00 &#43;0000 UTC">
+      October 17, 2026
+    </time>
+    <span class="author"></span>
+    
+      <p>22 minutes read</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  </section>
+  
+  <a href="/2026/10/xhci98-usb3-usb4/" class="image featured">
+    
+      <img src="/2026/10/xhci98-usb3-usb4/images/xhci98-p14s-superspeed-setup.jpg" alt="">
+    
+  </a>
+
+
+  <div class="content">
+    <p>In my <a href="/2026/08/xhci98-usb-host-driver/">previous post</a>, I introduced <strong>xHCI98</strong>, a driver that gives Windows 98 SE, ME, 2000, XP, Vista and 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have.</p>
+<p>That version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.</p>
+<p>After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today&rsquo;s machines have it.</p>
+<p>The project source code is still at the same link: <a href="https://github.com/yeokm1/xhci98">https://github.com/yeokm1/xhci98</a></p>
+<p>I decided to write this blog post to share my journey on how I managed to add this support in.</p>
+<p>As with the previous post, most of the words in this blog post are written by me. AI was primarily used to generate the diagrams and tables.</p>
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="/2026/10/xhci98-usb3-usb4/#part-1-usb-3">Part 1: USB 3</a>
+<ul>
+<li><a href="/2026/10/xhci98-usb3-usb4/#why-xhci98-1x-stopped-at-usb-20">Why xHCI98 1.x stopped at USB 2.0</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#the-cost-of-lying-to-usbportsys">The cost of lying to usbport.sys</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#taking-over-usbportsys-functions">Taking over usbport.sys functions</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#challenges-along-the-way">Challenges along the way</a>
+<ul>
+<li><a href="/2026/10/xhci98-usb3-usb4/#intels-usb-3-ports-that-start-on-the-wrong-controller">Intel&rsquo;s USB 3 ports that start on the wrong controller</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#wrong-irq-on-a-dell-latitude-e7250">Wrong IRQ on a Dell Latitude E7250</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#polling-and-msi">Polling and MSI</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#invisible-superspeed-devices-on-intel-sunrise-point-machines">Invisible SuperSpeed devices on Intel Sunrise Point machines</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#tolerating-controllers-that-misbehave">Tolerating controllers that misbehave</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#via-vl805-cards">VIA VL805 cards</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#controllers-older-than-the-xhci-10-specification">Controllers older than the xHCI 1.0 specification</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#pressing-f8-at-every-boot-on-64-bit-vista-and-7">Pressing F8 at every boot on 64-bit Vista and 7</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#usb-30-speed-checks">USB 3.0 speed checks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#part-2-usb4thunderbolt">Part 2: USB4/Thunderbolt</a>
+<ul>
+<li><a href="/2026/10/xhci98-usb3-usb4/#what-usb4thunderbolt-needs-from-the-os">What USB4/Thunderbolt needs from the OS</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#why-build-an-emulator-first">Why build an emulator first?</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#capturing-my-laptops-thunderbolt-controller">Capturing my laptop&rsquo;s Thunderbolt controller</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#relevant-bios-on-my-p14s-gen-1">Relevant BIOS on my P14s Gen 1</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#framework-laptop-13-12th-gen">Framework Laptop 13 (12th gen)</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#checking-the-emulator-against-real-operating-systems">Checking the emulator against real operating systems</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#stor98-a-hot-pluggable-nvme-driver">Stor98: a hot-pluggable NVMe driver</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#hot-plugging-the-asmedia-enclosure-on-my-p14s-gen-1">Hot-plugging the ASMedia enclosure on my P14s Gen 1</a></li>
+</ul>
+</li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#building-with-ai">Building with AI</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#conclusion">Conclusion</a></li>
+</ul>
+<h2 id="part-1-usb-3">Part 1: USB 3</h2>
+<h3 id="why-xhci98-1x-stopped-at-usb-20">Why xHCI98 1.x stopped at USB 2.0</h3>
+<p>To recap, the initial release of xHCI98 was a miniport driver under Microsoft&rsquo;s <code>usbport.sys</code>. This is the same architecture as Microsoft&rsquo;s original UHCI, OHCI and EHCI drivers.</p>
+<div style="display:flex; gap:8px; flex-wrap:wrap; align-items:flex-start;">
+<a href="images/xhci98-usb-stack-1x.svg" style="flex:1 1 300px;"><img src="images/xhci98-usb-stack-1x.svg" alt="xHCI98 1.x: xhci98.sys as a usbport.sys miniport alongside usbuhci, usbohci and usbehci, driving only the xHCI controller's USB 2.0 ports with the USB 3.x ports left unpowered" style="width:100%;"></a>
+</div>
+<p>The problem is that <code>usbport.sys</code> is a USB 2.0-era design. It has no concept of what SuperSpeed is.</p>
+<p>At that time, I wrote that doing USB 3 properly would mean replacing the entire HCD stack and that would incur additional effort, token cost and testing.</p>
+<p>Besides, every USB 3 device by the standard should degrade gracefully to 480 Mbps USB 2.0 speeds. So I left it at that and asked the xHCI controller to power down all the USB 3.0 connections leaving only the USB 2.0 lines in the connector active.</p>
+<h3 id="the-cost-of-lying-to-usbportsys">The cost of lying to usbport.sys</h3>
+<p>What changed my mind was not speed. It was the growing list of workarounds I needed to accommodate <code>usbport.sys</code>&rsquo;s limitations.</p>
+<p><code>usbport.sys</code> assumes an EHCI world. On EHCI, a USB 1.1 Full-Speed or Low-Speed device never sits directly on a USB 2.0 root port. It is always handed off to a separate companion controller UHCI/OHCI or goes through a hub&rsquo;s Transaction Translator (TT).</p>
+<p>xHCI has no such split as it handles all the standards by itself. A USB 1.1 device like a mouse on a root port made <code>usbport.sys</code> look for a TT. When that did not exist, the operating system hung.</p>
+<p>The workaround I employed then was to report every root port device as High-Speed. This had some repercussions:</p>
+<ul>
+<li>Full-Speed and Low-Speed devices got the wrong interrupt polling intervals.</li>
+<li>Full-Speed USB audio played nothing on XP and above.</li>
+<li>Vista and 7 hung if a USB 1.1 hub was plugged into a root port.</li>
+</ul>
+<p>In my final attempt to solve this problem, I had even added an experimental &ldquo;virtual USB 2.0 hub&rdquo; per root port. Basically every non-High-Speed device connected to a root port would have a virtual USB 2.0 hub sitting inline as a middleman just to give <code>usbport.sys</code> the TT it wanted to see.</p>
+<p>This added plenty of edge cases like connection and disconnection which had to be carefully tested. It also had the side effect of using up one of the 5 hub tiers that USB allows.</p>
+<p>I expected that in the long run this would get even more problematic as new bugs are reported in code I cannot control or when I want to add features that <code>usbport.sys</code> cannot support.</p>
+<h3 id="taking-over-usbportsys-functions">Taking over usbport.sys functions</h3>
+<p>I finally had enough. The cost of staying on the old architecture had grown to the point where it no longer justified its benefits. I should stop plugging into <code>usbport.sys</code> and take over its functions altogether. And I thought since I was doing this anyway, the original constraint of not doing USB 3.0 speeds was now gone.</p>
+<div style="display:flex; gap:8px; flex-wrap:wrap; align-items:flex-start;">
+<a href="images/xhci98-usb-stack-2x.svg" style="flex:1 1 300px;"><img src="images/xhci98-usb-stack-2x.svg" alt="xHCI98 2.x: xhci98.sys as a full host controller driver replacing usbport.sys, usbhub.sys and the composite parent, with controller, root hub, hub and composite parent roles, the xhciuas.sys UAS class driver and the xhcihlpr.sys x86 helper, driving both the USB 2.0 and USB 3.x ports" style="width:100%;"></a>
+</div>
+<p>xHCI98 2.x supports USB 3.0. Everything between the class drivers and the hardware is now my driver. Microsoft&rsquo;s <code>usbport.sys</code>, <code>usbhub.sys</code> and the composite parent are no longer needed and the USB 3.x ports are no longer left unpowered.</p>
+<p>The new <code>xhci98.sys</code> is a single bus driver that takes on several roles previously done by</p>
+<ul>
+<li><code>usbport.sys</code>: Port driver</li>
+<li><code>usbhub.sys</code>/<code>usbhub20.sys</code>: Root and external hubs</li>
+<li><code>usbccgp.sys</code>: Composite device</li>
+<li><code>usbd.sys</code>: OS helper functions</li>
+</ul>
+<p>The class drivers above it are still the same. I chose to stay compatible with the existing class drivers rather than reimplementing them as they are mature, have been used for decades and it keeps any third-party vendor driver working too.</p>
+<p>There is also a second driver, <code>xhciuas.sys</code>, for USB Attached SCSI (UAS) storage. UAS is the faster storage protocol most USB 3 drives and SATA bridges support as opposed to the older Bulk-Only Transport that <code>usbstor.sys</code> uses. Although UAS drives are supposed to be able to fall back to Bulk-Only mode, I added UAS support in response to a user request as some UAS drives misbehave and don&rsquo;t want to use Bulk mode.</p>
+<a href="images/xhci98-p14s-superspeed-setup.jpg"><img src="images/xhci98-p14s-superspeed-setup.jpg" width="800"></a>
+<p>The P14s on Windows 98 SE with the USB 3 flash drive, plus a hub with a Transcend StoreJet drive, a USB sound card and an Ethernet adapter. Device Manager lists the xHCI98 controller, hubs, UAS storage and composite devices.</p>
+<p>Some things I learned about this design:</p>
+<ul>
+<li>One x86 binary for everything from Windows 98 SE to Windows 7. Every single kernel function the driver imports had to be proven to exist on a stock Windows 98 SE. A missing export there is not a graceful error but a load failure. A separate x64 binary built with WDK 7.1 serves XP x64, Vista x64 and 7 x64.</li>
+<li>No USB 2.0 stack needed on Windows 98 SE anymore. NUSB is still useful for its storage drivers but its host stack half just sits idle under xHCI98.</li>
+<li>Device Manager still says &ldquo;High Speed&rdquo;. The <code>USB_DEVICE_SPEED</code> interface those OSes read only has three values and predates SuperSpeed. The device is really running at SuperSpeed even though Windows cannot say so.</li>
+</ul>
+<h3 id="challenges-along-the-way">Challenges along the way</h3>
+<p>After I released the SuperSpeed version of the driver, user reports slowly came in as more people tried it on hardware I did not own.</p>
+<h4 id="intels-usb-3-ports-that-start-on-the-wrong-controller">Intel&rsquo;s USB 3 ports that start on the wrong controller</h4>
+<p>On Intel 7, 8 and 9-series chipsets (Ivy Bridge to Broadwell), the blue USB 3 ports are wired to both the EHCI and xHCI controllers. With the BIOS on &ldquo;Auto&rdquo;, they start out on EHCI. So a USB 3 flash drive either runs at USB 2.0 speed or is invisible to xHCI98. This was done to ensure compatibility with OSes of that period, which did not all support xHCI, or did not support it during setup.</p>
+<p>The driver can now flip those ports over to xHCI using the chipset registers when it starts and hand them back when it stops. A tester reminded me about this issue which I had initially missed.</p>
+<p>The switch is done by writing to 2 registers in the xHCI controller&rsquo;s PCI configuration space:</p>
+<ul>
+<li>USB3_PSSEN: Turns on the SuperSpeed lines of each port so USB 3 devices can connect at SuperSpeed.</li>
+<li>XUSB2PR: Moves each port&rsquo;s USB 2.0 lines from the EHCI controller over to xHCI.</li>
+</ul>
+<a href="images/xhci98-b490-bios-usb3-mode.jpg"><img src="images/xhci98-b490-bios-usb3-mode.jpg" width="800"></a>
+<p>Lenovo B490&rsquo;s BIOS with the &ldquo;USB 3.0 Mode&rdquo; option. On &ldquo;Auto&rdquo;, the shared ports start out on the EHCI controller unless commanded by the driver to switch. Other options can manually force a switch.</p>
+<h4 id="wrong-irq-on-a-dell-latitude-e7250">Wrong IRQ on a Dell Latitude E7250</h4>
+<p>On a 2015 Dell Latitude E7250 (Broadwell), after the driver was installed and the ports switched to USB 3.0 in the BIOS, the mouse was sluggish, disks never mounted and Windows would hang occasionally.</p>
+<p>It turned out the BIOS programmed the chipset to send the xHCI interrupt to IRQ 16 while ACPI told Windows it was on IRQ 21. EHCI also used IRQ 21. Since IRQ 21 was only used by the EHCI controller, it had little activity once the USB ports were switched over from EHCI to xHCI. My interrupt handler only ever ran when EHCI happened to interrupt on the same line!</p>
+<p>Nobody noticed this BIOS bug for years because Intel&rsquo;s Windows 7 driver and Windows 8+ driver both use Message Signaled Interrupts (MSI) which do not use legacy interrupts at all.</p>
+<p>With AI&rsquo;s help and <a href="http://rweverything.com/">RW-Everything</a>, the wrong-IRQ hypothesis was tested by rewriting the chipset routing register live to the correct IRQ value.</p>
+<a href="images/xhci98-e7250-irq-routing.jpg"><img src="images/xhci98-e7250-irq-routing.jpg" width="800"></a>
+<p>The E7250 on Windows XP. The XHCISNAP (my driver diagnostic and logging tool) report in Notepad.</p>
+<p>It shows the driver rerouting the xHCI interrupt from PIRQA to PIRQF so it arrives on IRQ 21 where Windows expects it.</p>
+<h4 id="polling-and-msi">Polling and MSI</h4>
+<p>The E7250 taught me that I cannot always trust the legacy interrupt line. So the driver gained two alternatives.</p>
+<ol>
+<li>Polled event delivery. Instead of waiting for an interrupt, the driver checks the event ring on a timer. In automatic mode it switches to polling by itself if the interrupt is not available.</li>
+<li>MSI on Vista and 7. In my previous post I wrote that only Vista onwards supports MSI. For Vista and 7, my driver now uses MSI instead as this is the recommended method for PCIe devices.</li>
+</ol>
+<h4 id="invisible-superspeed-devices-on-intel-sunrise-point-machines">Invisible SuperSpeed devices on Intel Sunrise Point machines</h4>
+<p>On 2 Intel Sunrise Point machines, my 2016 ThinkPad E460 and a community-tested 2018 HP EliteBook 850 G5, USB 3 flash drives were completely invisible. A USB 3 hub only showed as a USB 2.0 hub.</p>
+<p>I took register snapshots using my XHCISNAP tool which showed the link was actually training fine at SuperSpeed.</p>
+<p>The real cause was a speed table the controller publishes. On Sunrise Point, it only lists Intel&rsquo;s internal SSIC chip-to-chip speeds (1248/2496/4992 Mb/s). My driver read that table as <em>replacing</em> the standard speed IDs rather than adding to them. So a normal SuperSpeed device was reported as &ldquo;unknown speed&rdquo; and dropped before it was even given a device slot.</p>
+<p>I pointed the AI at the Linux source to see how it handled this. It turned out Linux never maps speeds through that table, which is why it never hit this issue. The fix was to let unlisted standard IDs fall back to their usual meanings.</p>
+<h4 id="tolerating-controllers-that-misbehave">Tolerating controllers that misbehave</h4>
+<p>A tester on an AMD AM5 board reported their mouse &ldquo;randomly stops&rdquo; and once a device was dead, the only way to recover was to replug the device.</p>
+<p>My driver was stricter than Linux when a controller misbehaved. I referred to how Linux handles these and added seven tolerant behaviours, such as retrying transaction errors, recovering a halted endpoint, bringing back a port the controller disabled and recovering a halted controller.</p>
+<p>From the Linux source code as well, I added quirk management for controllers from many vendors like Fresco Logic, ASMedia, AMD, TI, Etron, VIA and some Intel controllers.</p>
+<h4 id="via-vl805-cards">VIA VL805 cards</h4>
+<p>I got a report that on a VIA VL805 PCIe card, every Low and Full-Speed device was silently ignored. There was no error and no yellow exclamation mark.</p>
+<a href="images/via-vl805-block-diagram.jpg"><img src="images/via-vl805-block-diagram.jpg" width="654"></a>
+<p>VL805 block diagram from <a href="https://www.via-labs.com/product_show.php?id=48">VIA Labs</a>.</p>
+<p>The VL805 routes everything on the USB 2.0 side through an integrated hub, so its port speed table only lists High-Speed.</p>
+<p>My driver wrongly used that table to judge the devices behind the hub too. I fixed it purely from logs provided by the reporter as I don&rsquo;t own a VL805. The fix was later confirmed working.</p>
+<h4 id="controllers-older-than-the-xhci-10-specification">Controllers older than the xHCI 1.0 specification</h4>
+<p>Every xHCI controller reports which revision of the specification it was built to. My driver was written against xHCI 1.0 onwards and refused anything below that as a safety mechanism. This will result in a Code 10 &ldquo;This device cannot start&rdquo; in Device Manager.</p>
+<p>It turns out the very first generation of USB 3.0 controllers are xHCI <strong>0.96</strong> parts. These are the NEC/Renesas uPD720200 and ASMedia ASM1042 chips found on many early USB 3.0 PCIe add-in cards and 2010-era motherboards.</p>
+<p>The xHCI specification was still a draft back then and Linux writes a few fields differently on these parts. The TD Size field counts in 1 KiB units rather than packets, some control and isochronous fields have to be written as 0, and one capability register does not exist so a resume from standby re-enumerates the devices.</p>
+<p>I followed what Linux does and from 2.4.0.0 the driver accepts 0.96 controllers by default, with a registry switch to refuse them again.</p>
+<h4 id="pressing-f8-at-every-boot-on-64-bit-vista-and-7">Pressing F8 at every boot on 64-bit Vista and 7</h4>
+<p>64-bit Windows Vista and 7 refuse to load a kernel driver that is not signed and Microsoft no longer signs drivers for these legacy OSes. The only way to load the x64 driver was to press F8 and choose &ldquo;Disable Driver Signature Enforcement&rdquo; at every single boot which is a hassle and easy to miss.</p>
+<p>The x64 drivers are now test-signed with the project&rsquo;s own certificate. Users can now just boot their machines in test-signing mode and the driver loads on every boot without pressing F8. Windows will still warn that it cannot verify the publisher during installation, which is expected as this is not a Microsoft signature.</p>
+<h4 id="usb-30-speed-checks">USB 3.0 speed checks</h4>
+<a href="images/xhci98-superspeed-atto.jpg"><img src="images/xhci98-superspeed-atto.jpg" width="800"></a>
+<p>At the end of it, I did some benchmarking and the speed is approximately 200+ MB/s. A respectable figure for Windows 98.</p>
+<p>The speed flatlines from 64 KB transfers onwards because of the 64 KB request size limit imposed by Windows&rsquo;s USB storage driver.</p>
+<h2 id="part-2-usb4thunderbolt">Part 2: USB4/Thunderbolt</h2>
+<p>Now that USB 3 is done, what is the next step?</p>
+<p>The newer USB4 and Thunderbolt standards of course!</p>
+<h3 id="what-usb4thunderbolt-needs-from-the-os">What USB4/Thunderbolt needs from the OS</h3>
+<p>USB4 and Thunderbolt 3 are quite different from USB 3. A USB4 dock is not a USB device. It is closer to a network switch, a bunch of routers that carry other protocols inside tunnels. PCIe, USB 3 and DisplayPort each get their own tunnel.</p>
+<p>There are three ways to get a USB4/Thunderbolt device working with an operating system.</p>
+<ol>
+<li>Pre-boot firmware tunnelling: No driver needed on Alpine Ridge machines with the BIOS option enabled but no hotplug.</li>
+<li>Software Connection Manager: The OS does all the work of enumerating routers, reading their ROMs, bonding the lanes and programming every hop of every path. This is what Windows 11 and Linux do on modern USB4 hosts.</li>
+<li>Firmware Connection Manager: Intel&rsquo;s older Thunderbolt 3 controllers do all of that in their own firmware (Intel calls it the ICM).</li>
+</ol>
+<p>Once a PCIe tunnel is up, a device inside the dock like an NVMe drive simply appears on the PCIe bus as if it were plugged into the motherboard. Windows can then use an existing PCI driver for it.</p>
+<p>Since the first requires no driver effort, xHCI98 v3 covers options 2 and 3 with a new <code>xhcicm.sys</code> driver installed beside <code>xhci98.sys</code>. Like <code>xhci98.sys</code>, it runs on everything from Windows 98 SE to Windows 7, and it picks the right mode for each controller automatically:</p>
+<ul>
+<li>Thunderbolt 3 firmware CM client. It claims every Intel firmware CM controller that Linux supports based on the behaviour documented in the Linux source code.</li>
+<li>USB4 software CM for USB4 hosts verified against the emulator&rsquo;s Alder Lake and ASM4242 host models. Besides the PCIe tunnel, it builds a USB3 tunnel so USB 3 devices in a dock reach the host&rsquo;s own xHCI controller and <code>xhci98.sys</code>.</li>
+<li>Re-enumeration so Windows notices devices appearing and disappearing behind a tunnel without a manual Refresh in Device Manager.</li>
+<li>A link-state notification for my custom NVMe driver <code>Stor98</code>. It notifies <code>Stor98</code> of changes in the tunnel link&rsquo;s status.</li>
+<li>Safe eject. So a tunnelled drive can be stopped before unplugging.</li>
+</ul>
+<p>The PCIe devices behind the tunnel then use their own drivers. The xHCI controller inside a dock is driven by <code>xhci98.sys</code> itself, and an NVMe drive by Stor98.</p>
+<p>This is the high-level architecture of how xHCI98 v3 works.</p>
+<p><a href="images/xhci98-tb3-usb4-architecture.svg"><img src="images/xhci98-tb3-usb4-architecture.svg" alt="xHCI98 v3 architecture: xhcicm.sys with a connection manager that is an ICM client on Thunderbolt 3 and a software connection manager on USB4, plus re-enumeration, safe eject, a controller-loss monitor, a query device and a status snapshot. It talks to the host controller's control ring, builds PCIe and USB3 tunnels through the cable to an NVMe enclosure or a Thunderbolt 3 dock, tells Windows Plug and Play or CONFIGMG to rescan bridges, feeds the XHCITR USB Tree and Safely Remove Hardware, and sends link-state notifications to the bundled Stor98 NVMe driver, a separate project" style="width:100%;"></a></p>
+<p>Other than the driver, I also built a helper tool, xHCI98 USB Tree. It is modelled on Microsoft&rsquo;s USB Device Viewer (usbview) to display useful information about the USB and Thunderbolt devices as well as to safely remove them.</p>
+<h3 id="why-build-an-emulator-first">Why build an emulator first?</h3>
+<p>With xHCI, QEMU already provided a <code>qemu-xhci</code> device model I could develop against for most of the project. There is no such thing for USB4 or Thunderbolt. The only other way to test would be on real hardware where every mistake means a crash and you have very little visibility into what went wrong or to easily revert state.</p>
+<p>The other main reason is that I don&rsquo;t actually have any USB4 hardware that can boot Windows 98. That requires UEFI-CSM support to boot a legacy BIOS OS. The only USB4 machines I know of that still have it are the relatively high-end AM5 motherboards based on the AMD X870 chipset or specialised motherboards with proprietary USB4 headers that can accept a USB4-PCIe add-in card.</p>
+<p>I have a Framework Laptop 13 (12th gen) that officially supports USB4 but it is a UEFI Class 3 device with no CSM so it cannot boot Windows 98 at all. My P14s Gen 1 can boot Windows 98 but only has the older Thunderbolt 3. Both are still useful as references for the emulator as I&rsquo;ll explain later.</p>
+<p>So I started a separate project, <strong>usb4-emu</strong>, a fork of QEMU 11 that emulates USB4/Thunderbolt hosts and devices. The goal is for an operating system&rsquo;s Connection Manager to work with emulated USB4/TB docks and bring up a PCIe tunnel to NVMe drives.</p>
+<p>The emulator models these devices from public information such as specification documents and source code, as well as captured communication traces.</p>
+<p>Captured traces:</p>
+<ul>
+<li>Intel Alpine Ridge Thunderbolt 3 from my ThinkPad P14s Gen 1</li>
+<li>Intel Alder Lake USB4 from my Framework Laptop 13 (12th gen)</li>
+<li>ORICO-AAGM2-U4 USB4 NVMe enclosure</li>
+<li>CalDigit TS3 Plus Thunderbolt 3 dock</li>
+</ul>
+<a href="images/xhci98-orico-caldigit.jpg"><img src="images/xhci98-orico-caldigit.jpg" width="800"></a>
+<p>The ORICO-AAGM2-U4 USB4 NVMe enclosure and TB3 CalDigit TS3 Plus dock I used for my captures.</p>
+<p>Public information and Linux source code:</p>
+<ul>
+<li>Intel Titan Ridge TB3</li>
+<li>ASMedia ASM4242 used by AM5 motherboards which have a modern CSM and USB4</li>
+<li>Generic Intel and AMD USB4 controller</li>
+</ul>
+<p>Once the emulator was ready, it became much quicker for an AI agent to iterate on the code against it.</p>
+<h3 id="capturing-my-laptops-thunderbolt-controller">Capturing my laptop&rsquo;s Thunderbolt controller</h3>
+<p>My P14s Gen 1 has an Intel Alpine Ridge LP (JHL6240) Thunderbolt 3 controller from 2016.</p>
+<p>To capture the hardware states, I created capture tools for Linux, Windows 11 and DOS.</p>
+<a href="images/xhci98-p14s-pcidump.jpg"><img src="images/xhci98-p14s-pcidump.jpg" width="800"></a>
+<p>My capture script in Windows 98 DOS mode on the P14s with the ORICO USB4 enclosure attached.</p>
+<h3 id="relevant-bios-on-my-p14s-gen-1">Relevant BIOS on my P14s Gen 1</h3>
+<p>The P14s BIOS has two Thunderbolt options that affect a legacy OS:</p>
+<ul>
+<li>Thunderbolt BIOS Assist Mode: The firmware manages Thunderbolt hotplug and power on the OS&rsquo;s behalf.</li>
+<li>Support in Pre Boot Environment: The firmware connects Thunderbolt devices before any OS starts.</li>
+</ul>
+<a href="images/xhci98-p14s-bios-thunderbolt.jpg"><img src="images/xhci98-p14s-bios-thunderbolt.jpg" width="800"></a>
+<p>While I understood the theory, I was unsure how the behaviour towards the driver would differ between these 2 settings. I therefore tried all 4 combinations and captured the results of each.</p>
+<p>I used two devices, the CalDigit TS3 Plus dock and an ORICO USB4 NVMe enclosure based on the ASMedia ASM2464 to record the dumps.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Assist</th>
+					<th>Pre-boot</th>
+					<th>Thunderbolt 3 dock</th>
+					<th>USB4 NVMe enclosure</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Off</td>
+					<td>Off</td>
+					<td>Needs a driver to approve it</td>
+					<td>USB disk unless a driver approves it</td>
+			</tr>
+			<tr>
+					<td>Off</td>
+					<td>On</td>
+					<td>Ready at boot</td>
+					<td>NVMe ready at boot</td>
+			</tr>
+			<tr>
+					<td>On</td>
+					<td>Off</td>
+					<td>Needs a driver, Thunderbolt USB controller hidden</td>
+					<td>Unusable</td>
+			</tr>
+			<tr>
+					<td>On</td>
+					<td>On</td>
+					<td>Ready at boot</td>
+					<td>NVMe ready at boot, single lane only</td>
+			</tr>
+	</tbody>
+</table>
+<p>These are some additional observations at least for this system:</p>
+<ul>
+<li>With Pre-boot on, no driver is needed. The BIOS sets up the PCIe link so Windows 98 just sees ordinary PCI devices. It even connected the USB4 enclosure which did not need approval.</li>
+<li>With Assist on, the controller can vanish. It is hidden if nothing is attached at boot and powers off shortly after the last device is unplugged. The OS is only told through ACPI hotplug which Windows 98 in APM mode (on a modern machine) doesn&rsquo;t handle.</li>
+<li>An unapproved USB4 device can fall back to USB 3. The enclosure drops its PCIe link after a few seconds and reconnects as a USB 3 Attached SCSI disk.</li>
+<li>The BIOS routes IRQs for the Thunderbolt ports.</li>
+</ul>
+<p>The best setting for Windows 98 is therefore &ldquo;Assist off and Pre-boot on&rdquo; with the security level left at User Authorization.</p>
+<p>The Thunderbolt controller and its USB controller are then always present and never pulled out from under Windows 98 and anything attached at boot just works.</p>
+<p>Hot-plugging after boot still needs a driver to approve the device and rescan the bus as Windows 98 gets no notification from the platform.</p>
+<p>I then passed the recorded traces to AI plus available Linux public source code to generate a QEMU model for me to reproduce all 4 combinations with a dock attached to match what I captured.</p>
+<h3 id="framework-laptop-13-12th-gen">Framework Laptop 13 (12th gen)</h3>
+<a href="images/xhci98-framework13-linux-capture.jpg"><img src="images/xhci98-framework13-linux-capture.jpg" width="800"></a>
+<p>While my Framework Laptop 13 (12th gen) cannot boot Windows 98 as it has no CSM, it has a real Intel Alder Lake USB4 host.</p>
+<p>It ran the Linux capture script with the ORICO USB4 enclosure attached to sniff actual USB4 communication. Primary captures were done on Linux as the kernel allows tracing of the Thunderbolt logs which provided useful information.</p>
+<p>I also captured communication between it and my TB3-based CalDigit dock to get a sense of how a USB4 controller reacts to a TB3 device, as TB3 compatibility is an optional part of the USB4 standard.</p>
+<p>I captured Linux&rsquo;s software CM talking to it and replayed its traffic against the emulator.</p>
+<h3 id="checking-the-emulator-against-real-operating-systems">Checking the emulator against real operating systems</h3>
+<p>An emulator is only useful if it behaves like the real thing. I checked it against operating systems that already have USB4 support before trying Windows 98.</p>
+<a href="images/xhci98-usb4-emu-win11-devmgr.png"><img src="images/xhci98-usb4-emu-win11-devmgr.png" width="800"></a>
+<p>Device Manager of my QEMU-emulated Windows 11 showing the USB4 Host Router recognised together with the emulated ASMedia ASM2464 enclosure.</p>
+<p>The fact that Windows 11 and Linux recognise and work with these controllers and devices using their native drivers at least shows that the emulated models are reasonably accurate representations of the real thing.</p>
+<h3 id="stor98-a-hot-pluggable-nvme-driver">Stor98: a hot-pluggable NVMe driver</h3>
+<p>Conventional NVMe drivers assume the drive is soldered or slotted onto the motherboard and stays permanently connected while the system is powered.</p>
+<p>So I made a separate driver, <strong>Stor98</strong>, a fork of SweetLow&rsquo;s nvme9x which itself is a port of Dominik Behr&rsquo;s nvme2k. It keeps their solid well-tested code and adds what a hot-pluggable drive needs: a link-state notification from <code>xhcicm.sys</code> so it can stop cleanly when the tunnel goes down.</p>
+<p>Stor98 has its own repository as it is under the BSD-3-Clause licence inherited from nvme2k and nvme9x. It is bundled in the xHCI98 download for user convenience.</p>
+<p>The name avoids &ldquo;NVMe&rdquo; as the NVM Express working group restricts the use of its name.</p>
+<a href="images/xhci98-tb3-nvme-win7.jpg"><img src="images/xhci98-tb3-nvme-win7.jpg" width="800"></a>
+<p>CrystalDiskMark sequential on 1151 MB/s read and 1013 MB/s write on Windows 7 with an ORICO USB4 NVMe enclosure on its Thunderbolt 3 port.</p>
+<a href="images/xhci98-tb3-nvme-98se.jpg"><img src="images/xhci98-tb3-nvme-98se.jpg" width="800"></a>
+<p>The same enclosure on Windows 98 SE with the same drivers: CrystalDiskMark sequential about 210 MB/s read and 256 MB/s write. Windows 98&rsquo;s own storage stack, not the Thunderbolt link, is the bottleneck here.</p>
+<h3 id="hot-plugging-the-asmedia-enclosure-on-my-p14s-gen-1">Hot-plugging the ASMedia enclosure on my P14s Gen 1</h3>
+<p>With the BIOS on &ldquo;Assist off and Pre-boot on&rdquo;, the ORICO USB4 enclosure (ASMedia ASM2464) worked on my P14s under Windows 98 SE if it was attached at power-on and Windows assigned a drive letter to it.</p>
+<p>The problem was hot-plugging. After unplugging and plugging it back in, Device Manager showed a Code 29 on the enclosure&rsquo;s PCIe bridge and the drive never came back. The same happened if the enclosure was plugged in after Windows had started without it.</p>
+<a href="images/xhci98-p14s-tb3-nvme-code29-no-irq.jpg"><img src="images/xhci98-p14s-tb3-nvme-code29-no-irq.jpg" width="800"></a>
+<p>xHCI98 USB Tree shows the Thunderbolt side is healthy. ASMedia enclosure is approved with a 20 Gbit/s x2 link and the PCIe tunnel is up. Device Manager however shows Stor98 at Code 29 as it has no IRQ.</p>
+<p>Logs from the driver confirmed the Thunderbolt side was fine every time. The firmware approved the device and the PCIe tunnel came up. The failure was purely on the PCI side.</p>
+<p>At power-on, the BIOS sets up the enclosure&rsquo;s PCI resources: bus numbers, memory windows and interrupt routing.</p>
+<p>Windows 98&rsquo;s PCI driver does not configure a newly added PCI bridge. Windows 2000 and XP did not have this problem.</p>
+<p>So <code>xhcicm.sys</code> has to do the BIOS&rsquo;s job after a hot-plug: assign the bus numbers, memory windows and the interrupt line. Each device below the port is given the port&rsquo;s own IRQ.</p>
+<p>With that, the drive came back with its letter, both after a hot-plug and after a re-plug following Safely Remove.</p>
+<h2 id="building-with-ai">Building with AI</h2>
+<p>As with my previous projects, this was built with heavy AI assistance:</p>
+<ul>
+<li>Claude Fable 5.1 for planning</li>
+<li>Claude Opus 5.5 for coding</li>
+<li>Codex GPT 6 Astra as an adversarial reviewer</li>
+</ul>
+<p>The workflow from the <a href="/2026/08/xhci98-usb-host-driver/#the-documentation-as-the-ais-memory">previous post</a> of using documentation as the AI&rsquo;s memory scaled up a lot:</p>
+<ul>
+<li>The roadmap has reached 42 phases at this point.</li>
+<li>There are 25 design records governing the major features.</li>
+<li>15 write-ups of issues found, how they were diagnosed and what the solution was.</li>
+</ul>
+<p>While AI really helped a lot in the technical coding portion, one place it could not move the needle much was the physical troubleshooting and interaction with other test reporters.</p>
+<p>Some issues are simply difficult to resolve purely from publicly-available technical specifications or source code and thus required my personal attention.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>When I wrote the previous post, I thought USB 2.0 speeds on Windows 98 were good enough and a full USB 3 stack was not worth the effort. Instead, I brought the driver up to USB 3.0, then USB4 and Thunderbolt. These standards were far ahead of what the Microsoft engineers for Windows 98 could have envisioned.</p>
+<p>Thanks to the following:</p>
+<ul>
+<li>SweetLow for his USB and NVMe drivers for Windows 9x and plenty of bug reports and feedback</li>
+<li>Omores for testing and showcasing my project</li>
+<li>Dominik Behr for nvme2k</li>
+<li>The ReactOS project and the Linux xHCI and Thunderbolt drivers which were my behavioural references</li>
+<li>Everyone who reported issues to me</li>
+</ul>
+<p>Other than actual Thunderbolt 3 communication on my P14s Gen 1, everything else in this project is still theoretical as I don&rsquo;t possess a USB4 host with CSM.</p>
+<p>I have not tried booting Windows 98 to 7 on actual USB4 hosts talking to physical USB4 and Thunderbolt 3 devices. The USB4 aspect of the driver has only been tested against the emulator.</p>
+<p>Nevertheless, I think I have done the best I can given the constraints I&rsquo;m under short of buying a high-end AMD AM5 system.</p>
+<p>If you have a machine with a Thunderbolt or USB4 port and are willing to run Windows 98 or a legacy OS, especially one of those AM5 X870 or specialised USB4 motherboards, I would love to hear how it goes!</p>
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/retrocomputing">retrocomputing</a></li>
+          
+            
+            <li><a class="article-category-link" href="http://yeokhengmeng.com/categories/hacks">hacks</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+    <li class="tags">
+      <ul>
+        <li>None</li>
+      </ul>
+    </li>
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yeokm1/yeokm1.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNTQ3ODI3NTI="
+        data-category="Comments"
+        data-category-id="DIC_kwDODy-tIM4CXEA6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div class="pagination">
+  
+    <a href="/2026/08/xhci98-usb-host-driver/" class="button"><div class="previous"><div>Bringing modern USB xHCI support to Windows 98/ME/2K/XP/Vista/7</div></div></a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2026/10/xhci98-usb3-usb4/" class="image featured">
+    
+      <img src="/2026/10/xhci98-usb3-usb4/images/xhci98-p14s-superspeed-setup.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2026/10/xhci98-usb3-usb4/">Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 7</a></h1>
+          <time class="published" datetime="">October 17, 2026</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2026/08/xhci98-usb-host-driver/" class="image featured">
+    
+      <img src="/2026/08/xhci98-usb-host-driver/images/xhci98-usb-devices.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2026/08/xhci98-usb-host-driver/">Bringing modern USB xHCI support to Windows 98/ME/2K/XP/Vista/7</a></h1>
+          <time class="published" datetime="">August 30, 2026</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2026/06/swift-on-apple-ii/" class="image featured">
+    
+      <img src="/2026/06/swift-on-apple-ii/images/swiftii-hero-apple2plus.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2026/06/swift-on-apple-ii/">Bringing Swift to the Apple II</a></h1>
+          <time class="published" datetime="">June 25, 2026</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2026/02/review-and-teardown-creative-mb-10/" class="image featured">
+    
+      <img src="/2026/02/review-and-teardown-creative-mb-10/images/mb10-banner-int-ext.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2026/02/review-and-teardown-creative-mb-10/">Review and Teardown of Creative Midi Blaster MB-10 synthesizer</a></h1>
+          <time class="published" datetime="">February 21, 2026</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/2025/07/ceg-master-graduate-loh/" class="image featured">
+    
+      <img src="/2025/07/ceg-master-graduate-loh/images/ceg-master-banner.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h1><a href="/2025/07/ceg-master-graduate-loh/">Reflections of a newly minted NUS CEG Master graduate</a></h1>
+          <time class="published" datetime="">July 18, 2025</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/hacks/">hacks<span class="count">29</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/retrocomputing/">retrocomputing<span class="count">19</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/personal/">personal<span class="count">18</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/singapore/">singapore<span class="count">15</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/aviation/">aviation<span class="count">14</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/teardowns/">teardowns<span class="count">11</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/school/">school<span class="count">10</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/book-reviews/">book-reviews<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/product-reviews/">product-reviews<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hackathon/">hackathon<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/politics/">politics<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/admin/">admin<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/repair-kopitiam/">repair-kopitiam<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/keyboards/">keyboards<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/quiz/">quiz<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/dvorak/">dvorak<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/flight-sim/">flight-sim<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hardware/">hardware<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/vaccination/">vaccination<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2026
+      
+        YKM&#39;s Corner on the Web
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.168.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      
+<script type="text/javascript">
+  var sc_project = 8700008;
+  var sc_invisible = 1;
+  var sc_security = "b569f6b4";
+  var sc_https = 1; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript>
+  <div class="statcounter"><a title="free hit
+  counter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+        src="https://c.statcounter.com/8700008/0/b569f6b4/1/" alt="free hit counter"></a></div>
+</noscript>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function (x) {
+      x.parentElement.classList += 'has-jax'
+    })
+  });
+
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.e35f1f8457feac0640f4577943efa2b484c97b0439bff413797745460cd03949.js" integrity="sha256-418fhFf&#43;rAZA9Fd5Q&#43;&#43;itITJewQ5v/QTeXdFRgzQOUk="></script>
+<script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>

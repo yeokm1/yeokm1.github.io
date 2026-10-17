@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 808" width="660" height="808" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13">
+  <title>Where xhci98.sys 2.x sits in the Windows 98 SE to 7 USB stack</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d9480f"/>
+    </marker>
+  </defs>
+
+  <rect width="660" height="808" fill="#ffffff"/>
+  <text x="330" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#222">Where xhci98.sys 2.x sits in the Windows 98 SE to 7 USB stack</text>
+
+  <!-- Layer labels -->
+  <g font-size="11" fill="#666" font-weight="bold">
+    <text x="18" y="72">USER MODE</text>
+    <text x="18" y="142">CLASS DRIVERS</text>
+    <text x="18" y="232">HUB / USBD</text>
+    <text x="18" y="322">HOST CONTROLLER</text>
+    <text x="18" y="337">DRIVER (HCD)</text>
+    <text x="18" y="572">HARDWARE</text>
+    <text x="18" y="682">PORTS / DEVICES</text>
+  </g>
+  <g stroke="#e6e6e6" stroke-dasharray="4 4">
+    <line x1="10" y1="110" x2="650" y2="110"/>
+    <line x1="10" y1="200" x2="650" y2="200"/>
+    <line x1="10" y1="290" x2="650" y2="290"/>
+    <line x1="10" y1="530" x2="650" y2="530"/>
+    <line x1="10" y1="640" x2="650" y2="640"/>
+    <line x1="10" y1="752" x2="650" y2="752"/>
+  </g>
+
+  <!-- USER MODE -->
+  <rect x="130" y="52" width="400" height="44" rx="6" fill="#f3f4f6" stroke="#9aa0a6"/>
+  <text x="330" y="70" text-anchor="middle" font-weight="bold" fill="#222">Applications and Win32 / Win16 APIs</text>
+  <text x="330" y="87" text-anchor="middle" font-size="11" fill="#555">Explorer, ATTO, Windows sound, TCP/IP...</text>
+
+  <!-- CLASS DRIVERS -->
+  <g font-size="11">
+    <rect x="130" y="122" width="94" height="60" rx="6" fill="#eef4ff" stroke="#7a9cc6"/>
+    <text x="177" y="145" text-anchor="middle" font-weight="bold" fill="#222">usbstor.sys</text>
+    <text x="177" y="162" text-anchor="middle" font-size="10" fill="#555">Bulk-Only storage</text>
+
+    <rect x="232" y="122" width="94" height="60" rx="6" fill="#fff1e6" stroke="#d9480f" stroke-width="2"/>
+    <text x="279" y="145" text-anchor="middle" font-weight="bold" fill="#b33a00">xhciuas.sys</text>
+    <text x="279" y="162" text-anchor="middle" font-size="10" fill="#555">UAS storage</text>
+    <text x="279" y="175" text-anchor="middle" font-size="9.5" fill="#b33a00">xHCI98</text>
+
+    <rect x="334" y="122" width="94" height="60" rx="6" fill="#eef4ff" stroke="#7a9cc6"/>
+    <text x="381" y="145" text-anchor="middle" font-weight="bold" fill="#222">hidusb.sys</text>
+    <text x="381" y="162" text-anchor="middle" font-size="10" fill="#555">keyboard, mouse</text>
+
+    <rect x="436" y="122" width="94" height="60" rx="6" fill="#eef4ff" stroke="#7a9cc6"/>
+    <text x="483" y="145" text-anchor="middle" font-weight="bold" fill="#222">usbaudio.sys</text>
+    <text x="483" y="162" text-anchor="middle" font-size="10" fill="#555">USB audio</text>
+
+    <rect x="538" y="122" width="94" height="60" rx="6" fill="#eef4ff" stroke="#7a9cc6"/>
+    <text x="585" y="145" text-anchor="middle" font-weight="bold" fill="#222">vendor NDIS</text>
+    <text x="585" y="162" text-anchor="middle" font-size="10" fill="#555">ASIX Ethernet</text>
+  </g>
+
+  <!-- Class drivers share one path down -->
+  <g stroke="#d9480f" stroke-width="2" fill="none">
+    <line x1="177" y1="183" x2="177" y2="192"/>
+    <line x1="279" y1="183" x2="279" y2="192"/>
+    <line x1="381" y1="183" x2="381" y2="192"/>
+    <line x1="483" y1="183" x2="483" y2="192"/>
+    <line x1="585" y1="183" x2="585" y2="192"/>
+    <line x1="176" y1="192" x2="586" y2="192"/>
+  </g>
+
+  <!-- HUB / USBD -->
+  <g font-size="11">
+    <rect x="130" y="212" width="160" height="64" rx="6" fill="#f3f4f6" stroke="#9aa0a6" stroke-dasharray="5 3"/>
+    <text x="210" y="232" text-anchor="middle" font-weight="bold" fill="#444">usbhub.sys / usbhub20.sys</text>
+    <text x="210" y="248" text-anchor="middle" font-weight="bold" fill="#444">usbccgp.sys</text>
+    <text x="210" y="265" text-anchor="middle" fill="#666">no longer used</text>
+
+    <rect x="472" y="212" width="160" height="64" rx="6" fill="#eef4ff" stroke="#7a9cc6"/>
+    <text x="552" y="232" text-anchor="middle" font-weight="bold" fill="#222">usbd.sys</text>
+    <text x="552" y="248" text-anchor="middle" fill="#555">descriptor-parsing helpers</text>
+    <text x="552" y="264" text-anchor="middle" fill="#555">(Windows' own copy)</text>
+  </g>
+  <line x1="552" y1="194" x2="552" y2="210" stroke="#555" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+  <line x1="320" y1="193" x2="320" y2="300" stroke="#d9480f" stroke-width="2.5" marker-end="url(#arrowOrange)"/>
+  <text x="330" y="236" font-size="10" font-weight="bold" fill="#d9480f">URBs straight to</text>
+  <text x="330" y="249" font-size="10" font-weight="bold" fill="#d9480f">xhci98's device PDOs</text>
+  <text x="330" y="262" font-size="9.5" fill="#8a3b00">IOCTL_INTERNAL_USB_*</text>
+
+  <!-- HOST CONTROLLER DRIVER -->
+  <g font-size="11">
+    <rect x="130" y="302" width="370" height="216" rx="8" fill="#fff1e6" stroke="#d9480f" stroke-width="3"/>
+    <text x="315" y="326" text-anchor="middle" font-size="15" font-weight="bold" fill="#b33a00">xhci98.sys</text>
+    <text x="315" y="344" text-anchor="middle" fill="#333">USB 3.x host controller driver - xHCI98</text>
+
+    <rect x="142" y="356" width="172" height="44" rx="5" fill="#ffffff" stroke="#d9480f"/>
+    <text x="228" y="374" text-anchor="middle" font-weight="bold" fill="#222">Controller FDO</text>
+    <text x="228" y="390" text-anchor="middle" font-size="10.5" fill="#555">rings, slots, events, DMA</text>
+
+    <rect x="322" y="356" width="166" height="44" rx="5" fill="#ffffff" stroke="#d9480f"/>
+    <text x="405" y="374" text-anchor="middle" font-weight="bold" fill="#222">Root hub FDO</text>
+    <text x="405" y="390" text-anchor="middle" font-size="10.5" fill="#555">USB 2.0 + USB 3 root ports</text>
+
+    <rect x="142" y="406" width="172" height="44" rx="5" fill="#ffffff" stroke="#d9480f"/>
+    <text x="228" y="424" text-anchor="middle" font-weight="bold" fill="#222">Hub FDOs</text>
+    <text x="228" y="440" text-anchor="middle" font-size="10.5" fill="#555">USB 2.0 and USB 3 hubs, TTs</text>
+
+    <rect x="322" y="406" width="166" height="44" rx="5" fill="#ffffff" stroke="#d9480f"/>
+    <text x="405" y="424" text-anchor="middle" font-weight="bold" fill="#222">Composite parent FDO</text>
+    <text x="405" y="440" text-anchor="middle" font-size="10.5" fill="#555">splits multi-function devices</text>
+
+    <text x="315" y="472" text-anchor="middle" fill="#333">Device and function PDOs answer the class drivers' URBs</text>
+    <text x="315" y="488" text-anchor="middle" fill="#333">Owns enumeration, URB parsing, scheduling, UAS streams</text>
+    <text x="315" y="506" text-anchor="middle" fill="#333">C89, MSVC 6.0 + 2000 DDK; x64 build with WDK 7.1</text>
+  </g>
+  <g font-size="10" fill="#8a3b00" font-style="italic"><text x="18" y="400">one driver replaces</text><text x="18" y="413">usbport.sys,</text><text x="18" y="426">usbhub.sys and</text><text x="18" y="439">the composite parent;</text><text x="18" y="458">one x86 binary for</text><text x="18" y="471">98 SE, ME, 2000, XP,</text><text x="18" y="484">Vista and 7;</text><text x="18" y="503">an x64 binary for</text><text x="18" y="516">XP, Vista and 7</text></g>
+
+  <!-- Helper and what is no longer loaded -->
+  <g font-size="11">
+    <rect x="510" y="302" width="122" height="96" rx="6" fill="#fff1e6" stroke="#d9480f" stroke-width="1.5"/>
+    <text x="571" y="322" text-anchor="middle" font-weight="bold" fill="#b33a00">xhcihlpr.sys</text>
+    <text x="571" y="344" text-anchor="middle" fill="#333">x86 helper:</text>
+    <text x="571" y="364" text-anchor="middle" fill="#333">hands over MSI</text>
+    <text x="571" y="380" text-anchor="middle" fill="#333">routines on Vista/7</text>
+
+    <rect x="510" y="410" width="122" height="108" rx="6" fill="#f3f4f6" stroke="#9aa0a6" stroke-dasharray="5 3"/>
+    <text x="571" y="432" text-anchor="middle" font-weight="bold" fill="#444">usbport.sys</text>
+    <text x="571" y="450" text-anchor="middle" fill="#666">and the miniports</text>
+    <text x="571" y="466" text-anchor="middle" fill="#666">usbuhci / usbohci /</text>
+    <text x="571" y="482" text-anchor="middle" fill="#666">usbehci / xhci98 1.x</text>
+    <text x="571" y="504" text-anchor="middle" fill="#666">no longer loaded</text>
+  </g>
+  <line x1="508" y1="350" x2="502" y2="350" stroke="#d9480f" stroke-width="2" stroke-dasharray="3 2"/>
+
+  <!-- HARDWARE -->
+  <g font-size="11">
+    <rect x="130" y="546" width="290" height="72" rx="6" fill="#f3f4f6" stroke="#9aa0a6" stroke-dasharray="5 3"/>
+    <text x="275" y="570" text-anchor="middle" font-weight="bold" fill="#444">UHCI / OHCI / EHCI controllers</text>
+    <text x="275" y="588" text-anchor="middle" fill="#666">not needed; on Intel 7 to 9-series chipsets</text>
+    <text x="275" y="604" text-anchor="middle" fill="#666">the shared ports can be switched to xHCI</text>
+
+    <rect x="432" y="546" width="200" height="72" rx="6" fill="#fff1e6" stroke="#d9480f" stroke-width="1.5"/>
+    <text x="532" y="568" text-anchor="middle" font-weight="bold" fill="#222">xHCI controller (PCI)</text>
+    <text x="532" y="585" text-anchor="middle" fill="#555">Intel, AMD, VIA... xHCI 1.0 - 1.2</text>
+    <text x="532" y="601" text-anchor="middle" fill="#555">INTx, polling, or MSI on Vista/7</text>
+  </g>
+
+  <!-- PORTS / DEVICES -->
+  <g font-size="11">
+    <rect x="432" y="656" width="96" height="84" rx="6" fill="#f3e8ff" stroke="#7c3aed"/>
+    <text x="480" y="676" text-anchor="middle" font-weight="bold" fill="#4c1d95">USB 2.0 ports</text>
+    <text x="480" y="692" text-anchor="middle" fill="#333">managed by driver</text>
+    <text x="480" y="708" text-anchor="middle" fill="#333">Low / Full / High</text>
+    <text x="480" y="724" text-anchor="middle" fill="#333">speed devices</text>
+
+    <rect x="536" y="656" width="96" height="84" rx="6" fill="#f3e8ff" stroke="#7c3aed"/>
+    <text x="584" y="676" text-anchor="middle" font-weight="bold" fill="#4c1d95">USB 3.x ports</text>
+    <text x="584" y="692" text-anchor="middle" fill="#333">now managed too</text>
+    <text x="584" y="708" text-anchor="middle" fill="#333">SuperSpeed</text>
+    <text x="584" y="724" text-anchor="middle" fill="#333">devices and hubs</text>
+
+    <rect x="130" y="656" width="290" height="84" rx="6" fill="#ffffff" stroke="#9aa0a6"/>
+    <text x="275" y="676" text-anchor="middle" font-weight="bold" fill="#222">Devices on the wire</text>
+    <text x="275" y="694" text-anchor="middle" fill="#555">USB 3 and USB 2.0 hubs, UAS and Bulk-Only</text>
+    <text x="275" y="710" text-anchor="middle" fill="#555">flash drives and SATA bridges, keyboard,</text>
+    <text x="275" y="726" text-anchor="middle" fill="#555">mouse, USB Ethernet, USB audio</text>
+  </g>
+
+  <!-- Main path arrows -->
+  <g stroke="#555" stroke-width="1.5" marker-end="url(#arrow)" marker-start="url(#arrow)">
+    <line x1="330" y1="98" x2="330" y2="120"/>
+  </g>
+  <g stroke="#d9480f" stroke-width="2.5" marker-end="url(#arrowOrange)" marker-start="url(#arrowOrange)">
+    <line x1="470" y1="520" x2="470" y2="544"/>
+    <line x1="480" y1="620" x2="480" y2="654"/>
+    <line x1="584" y1="620" x2="584" y2="654"/>
+  </g>
+  <line x1="430" y1="698" x2="422" y2="698" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="486" y="540" font-size="10" fill="#d9480f" font-weight="bold">MMIO / IRQ / DMA</text>
+
+  <!-- Legend -->
+  <g font-size="10.5">
+    <rect x="130" y="762" width="14" height="14" fill="#fff1e6" stroke="#d9480f" stroke-width="2"/>
+    <text x="150" y="773" fill="#333">xHCI98 project (new code, active path)</text>
+    <rect x="360" y="762" width="14" height="14" fill="#eef4ff" stroke="#7a9cc6"/>
+    <text x="380" y="773" fill="#333">Windows / NUSB / vendor drivers, unchanged</text>
+    <rect x="130" y="782" width="14" height="14" fill="#f3f4f6" stroke="#9aa0a6" stroke-dasharray="4 2"/>
+    <text x="150" y="793" fill="#333">Replaced by xhci98.sys or no longer needed</text>
+  </g>
+</svg>

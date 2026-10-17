@@ -11,3 +11,10 @@ code.has-jax {
   border: none !important;
   font-size: 100%;
 }
+
+/* Theme bolds the first table column for its mobile collapsible rows but never resets it on desktop */
+@media (min-width: 768px) {
+  table > tbody > tr > td:first-child {
+    font-weight: inherit;
+  }
+}
