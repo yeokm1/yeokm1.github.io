@@ -16,7 +16,7 @@ I decided to write this blog post to share my journey on how I managed to add th
 As with the previous post, most of the words in this blog post are written by me. AI was primarily used to generate the diagrams and tables.">
 	<meta itemprop="datePublished" content="2026-10-17T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-10-17T00:00:00+00:00">
-	<meta itemprop="wordCount" content="4565">
+	<meta itemprop="wordCount" content="4609">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/10/xhci98-usb3-usb4/images/xhci98-p14s-superspeed-setup.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/10/xhci98-usb3-usb4/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -552,6 +552,9 @@ As with the previous post, most of the words in this blog post are written by me
 <a href="images/xhci98-usb4-emu-win11-devmgr.png"><img src="images/xhci98-usb4-emu-win11-devmgr.png" width="800"></a>
 <p>Device Manager of my QEMU-emulated Windows 11 showing the USB4 Host Router recognised together with the emulated ASMedia ASM2464 enclosure.</p>
 <p>The fact that Windows 11 and Linux recognise and work with these controllers and devices using their native drivers at least shows that the emulated models are reasonably accurate representations of the real thing.</p>
+<p>With the emulator ready, I could finally put Windows 98 in it.</p>
+<a href="images/xhci98-xhcitr-and-devmgr.png"><img src="images/xhci98-xhcitr-and-devmgr.png" width="800"></a>
+<p>Emulated Windows 98 SE&rsquo;s Device Manager with the USB4 software connection manager. The xHCI98 USB Tree shows the emulated ASMedia enclosure on a 40 Gbit/s USB4 link with its PCIe tunnel up.</p>
 <h3 id="stor98-a-hot-pluggable-nvme-driver">Stor98: a hot-pluggable NVMe driver</h3>
 <p>Conventional NVMe drivers assume the drive is soldered or slotted onto the motherboard and stays permanently connected while the system is powered.</p>
 <p>So I made a separate driver, <strong>Stor98</strong>, a fork of SweetLow&rsquo;s nvme9x which itself is a port of Dominik Behr&rsquo;s nvme2k. It keeps their solid well-tested code and adds what a hot-pluggable drive needs: a link-state notification from <code>xhcicm.sys</code> so it can stop cleanly when the tunnel goes down.</p>
