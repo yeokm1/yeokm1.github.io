@@ -580,7 +580,8 @@ As with the previous post, most of the words in this blog post are written by me
 <p>Windows 10 Pro 22H2 x64 on my Framework Laptop 13 whose Intel Alder Lake controller is a real USB4 host.</p>
 <p>Windows 10 has no USB4 support of its own so both of its USB4 host routers show up in Device Manager as &ldquo;xHCI98 USB4 Host Router&rdquo; given by my driver.</p>
 <p>The firmware runs its own connection manager here so <code>xhcicm.sys</code> acts as its client and approves the ORICO enclosure which the xHCI98 USB Tree shows on a 40 Gbit/s USB4 link (20 Gbit/s per lane, x2) with its PCIe tunnel up.</p>
-<p>The &ldquo;Thunderbolt 3&rdquo; generation it shows is a display bug in this build, the link really is USB4. CrystalDiskMark gets about 1416 MB/s sequential read and 1551 MB/s write on the NVMe drive inside.</p>
+<p>The &ldquo;Thunderbolt 3&rdquo; generation it shows is a display bug in this build, the link really is USB4.</p>
+<p>CrystalDiskMark 9 gets about 3195 MB/s sequential read and 2472 MB/s write on the NVMe drive.</p>
 <h2 id="building-with-ai">Building with AI</h2>
 <p>As with my previous projects, this was built with heavy AI assistance:</p>
 <ul>
