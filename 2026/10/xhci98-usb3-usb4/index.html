@@ -16,7 +16,7 @@ I decided to write this blog post to share my journey on how I managed to add th
 As with the previous post, most of the words in this blog post are written by me. AI was primarily used to generate the diagrams and tables.">
 	<meta itemprop="datePublished" content="2026-10-17T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-10-17T00:00:00+00:00">
-	<meta itemprop="wordCount" content="4609">
+	<meta itemprop="wordCount" content="4766">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/10/xhci98-usb3-usb4/images/xhci98-p14s-superspeed-setup.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/10/xhci98-usb3-usb4/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
@@ -205,7 +205,7 @@ As with the previous post, most of the words in this blog post are written by me
     </time>
     <span class="author"></span>
     
-      <p>22 minutes read</p>
+      <p>23 minutes read</p>
     
   </div>
 </header>
@@ -331,6 +331,7 @@ As with the previous post, most of the words in this blog post are written by me
 <li><a href="/2026/10/xhci98-usb3-usb4/#checking-the-emulator-against-real-operating-systems">Checking the emulator against real operating systems</a></li>
 <li><a href="/2026/10/xhci98-usb3-usb4/#stor98-a-hot-pluggable-nvme-driver">Stor98: a hot-pluggable NVMe driver</a></li>
 <li><a href="/2026/10/xhci98-usb3-usb4/#hot-plugging-the-asmedia-enclosure-on-my-p14s-gen-1">Hot-plugging the ASMedia enclosure on my P14s Gen 1</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#real-testing-on-my-framework-13-12th-gen">Real testing on my Framework 13 (12th gen)</a></li>
 </ul>
 </li>
 <li><a href="/2026/10/xhci98-usb3-usb4/#building-with-ai">Building with AI</a></li>
@@ -574,6 +575,12 @@ As with the previous post, most of the words in this blog post are written by me
 <p>Windows 98&rsquo;s PCI driver does not configure a newly added PCI bridge. Windows 2000 and XP did not have this problem.</p>
 <p>So <code>xhcicm.sys</code> has to do the BIOS&rsquo;s job after a hot-plug: assign the bus numbers, memory windows and the interrupt line. Each device below the port is given the port&rsquo;s own IRQ.</p>
 <p>With that, the drive came back with its letter, both after a hot-plug and after a re-plug following Safely Remove.</p>
+<h3 id="real-testing-on-my-framework-13-12th-gen">Real testing on my Framework 13 (12th gen)</h3>
+<a href="images/xhci98-usb4-win10.jpg"><img src="images/xhci98-usb4-win10.jpg" width="800"></a>
+<p>Windows 10 Pro 22H2 x64 on my Framework Laptop 13 whose Intel Alder Lake controller is a real USB4 host.</p>
+<p>Windows 10 has no USB4 support of its own so both of its USB4 host routers show up in Device Manager as &ldquo;xHCI98 USB4 Host Router&rdquo; given by my driver.</p>
+<p>The firmware runs its own connection manager here so <code>xhcicm.sys</code> acts as its client and approves the ORICO enclosure which the xHCI98 USB Tree shows on a 40 Gbit/s USB4 link (20 Gbit/s per lane, x2) with its PCIe tunnel up.</p>
+<p>The &ldquo;Thunderbolt 3&rdquo; generation it shows is a display bug in this build, the link really is USB4. CrystalDiskMark gets about 1416 MB/s sequential read and 1551 MB/s write on the NVMe drive inside.</p>
 <h2 id="building-with-ai">Building with AI</h2>
 <p>As with my previous projects, this was built with heavy AI assistance:</p>
 <ul>
@@ -599,9 +606,9 @@ As with the previous post, most of the words in this blog post are written by me
 <li>The ReactOS project and the Linux xHCI and Thunderbolt drivers which were my behavioural references</li>
 <li>Everyone who reported issues to me</li>
 </ul>
-<p>Other than actual Thunderbolt 3 communication on my P14s Gen 1, everything else in this project is still theoretical as I don&rsquo;t possess a USB4 host with CSM.</p>
-<p>I have not tried booting Windows 98 to 7 on actual USB4 hosts talking to physical USB4 and Thunderbolt 3 devices. The USB4 aspect of the driver has only been tested against the emulator.</p>
-<p>Nevertheless, I think I have done the best I can given the constraints I&rsquo;m under short of buying a high-end AMD AM5 system.</p>
+<p>On real hardware, the driver has run on two machines, Thunderbolt 3 on my P14s Gen 1 under Windows 98 SE and 7 and USB4 on my Framework Laptop 13 under Windows 10 x64.</p>
+<p>I have not tried Windows 98 to 7 on an actual USB4 host as I don&rsquo;t own one with CSM. The USB4 software connection manager which AMD and ASMedia hosts need, has only been tested against the emulator.</p>
+<p>Nevertheless, I think I have done the best I can given the constraints I&rsquo;m under short of buying a high-end AMD AM5 system to put Win 98SE on it.</p>
 <p>If you have a machine with a Thunderbolt or USB4 port and are willing to run Windows 98 or a legacy OS, especially one of those AM5 X870 or specialised USB4 motherboards, I would love to hear how it goes!</p>
   </div>
   <footer>
