@@ -2,27 +2,27 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 7 - YKM&#39;s Corner on the Web</title>
+<title>Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 10 - YKM&#39;s Corner on the Web</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 <meta name="generator" content="Hugo 0.168.0">
-	<meta itemprop="name" content="Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 7">
-	<meta itemprop="description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista and 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have.
-That version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.
+	<meta itemprop="name" content="Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 10">
+	<meta itemprop="description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have. Win 8 to 10 which already have native USB 3.x controller drivers can get USB4 support.
+My initial version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.
 After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today’s machines have it.
 The project source code is still at the same link: https://github.com/yeokm1/xhci98
 I decided to write this blog post to share my journey on how I managed to add this support in.
 As with the previous post, most of the words in this blog post are written by me. AI was primarily used to generate the diagrams and tables.">
 	<meta itemprop="datePublished" content="2026-10-17T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-10-17T00:00:00+00:00">
-	<meta itemprop="wordCount" content="4766">
+	<meta itemprop="wordCount" content="4749">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/10/xhci98-usb3-usb4/images/xhci98-p14s-superspeed-setup.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/10/xhci98-usb3-usb4/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
-	<meta property="og:title" content="Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 7">
-	<meta property="og:description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista and 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have.
-That version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.
+	<meta property="og:title" content="Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 10">
+	<meta property="og:description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have. Win 8 to 10 which already have native USB 3.x controller drivers can get USB4 support.
+My initial version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.
 After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today’s machines have it.
 The project source code is still at the same link: https://github.com/yeokm1/xhci98
 I decided to write this blog post to share my journey on how I managed to add this support in.
@@ -36,15 +36,15 @@ As with the previous post, most of the words in this blog post are written by me
 
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:image" content="http://yeokhengmeng.com/2026/10/xhci98-usb3-usb4/images/xhci98-p14s-superspeed-setup.jpg">
-	<meta name="twitter:title" content="Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 7">
-	<meta name="twitter:description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista and 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have.
-That version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.
+	<meta name="twitter:title" content="Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 10">
+	<meta name="twitter:description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have. Win 8 to 10 which already have native USB 3.x controller drivers can get USB4 support.
+My initial version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.
 After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today’s machines have it.
 The project source code is still at the same link: https://github.com/yeokm1/xhci98
 I decided to write this blog post to share my journey on how I managed to add this support in.
 As with the previous post, most of the words in this blog post are written by me. AI was primarily used to generate the diagrams and tables.">
 			<meta name="twitter:site" content="@yeokm1">
-<link rel="stylesheet" href="/css/bundle.min.34a0b510084f27f411c97ef8a8d4a289c2b5fe284fe77e3ecf55351c22f38908.css" integrity="sha256-NKC1EAhPJ/QRyX74qNSiicK1/ihP534&#43;z1U1HCLziQg=">
+<link rel="stylesheet" href="/css/bundle.min.5a732bd832b32f53367e00f4f77cd043619d1f37311014fc99e3eb1365b1c80d.css" integrity="sha256-WnMr2DKzL1M2fgD093zQQ2GdHzcxEBT8mePrE2WxyA0=">
         <link rel="stylesheet" href="/css/add-on.css"></head>
 
   <body>
@@ -195,7 +195,7 @@ As with the previous post, most of the words in this blog post are written by me
   <header>
   <div class="title">
     
-      <h2><a href="/2026/10/xhci98-usb3-usb4/">Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 7</a></h2>
+      <h2><a href="/2026/10/xhci98-usb3-usb4/">Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 10</a></h2>
     
     
   </div>
@@ -293,8 +293,8 @@ As with the previous post, most of the words in this blog post are written by me
 
 
   <div class="content">
-    <p>In my <a href="/2026/08/xhci98-usb-host-driver/">previous post</a>, I introduced <strong>xHCI98</strong>, a driver that gives Windows 98 SE, ME, 2000, XP, Vista and 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have.</p>
-<p>That version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.</p>
+    <p>In my <a href="/2026/08/xhci98-usb-host-driver/">previous post</a>, I introduced <strong>xHCI98</strong>, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have. Win 8 to 10 which already have native USB 3.x controller drivers can get USB4 support.</p>
+<p>My initial version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.</p>
 <p>After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today&rsquo;s machines have it.</p>
 <p>The project source code is still at the same link: <a href="https://github.com/yeokm1/xhci98">https://github.com/yeokm1/xhci98</a></p>
 <p>I decided to write this blog post to share my journey on how I managed to add this support in.</p>
@@ -561,10 +561,8 @@ As with the previous post, most of the words in this blog post are written by me
 <p>So I made a separate driver, <strong>Stor98</strong>, a fork of SweetLow&rsquo;s nvme9x which itself is a port of Dominik Behr&rsquo;s nvme2k. It keeps their solid well-tested code and adds what a hot-pluggable drive needs: a link-state notification from <code>xhcicm.sys</code> so it can stop cleanly when the tunnel goes down.</p>
 <p>Stor98 has its own repository as it is under the BSD-3-Clause licence inherited from nvme2k and nvme9x. It is bundled in the xHCI98 download for user convenience.</p>
 <p>The name avoids &ldquo;NVMe&rdquo; as the NVM Express working group restricts the use of its name.</p>
-<a href="images/xhci98-tb3-nvme-win7.jpg"><img src="images/xhci98-tb3-nvme-win7.jpg" width="800"></a>
-<p>CrystalDiskMark sequential on 1151 MB/s read and 1013 MB/s write on Windows 7 with an ORICO USB4 NVMe enclosure on its Thunderbolt 3 port.</p>
 <a href="images/xhci98-tb3-nvme-98se.jpg"><img src="images/xhci98-tb3-nvme-98se.jpg" width="800"></a>
-<p>The same enclosure on Windows 98 SE with the same drivers: CrystalDiskMark sequential about 210 MB/s read and 256 MB/s write. Windows 98&rsquo;s own storage stack, not the Thunderbolt link, is the bottleneck here.</p>
+<p>CrystalDiskMark sequential on 1020 MB/s read and 891 MB/s write on Windows 98 SE with an ORICO USB4 NVMe enclosure on its Thunderbolt 3 port.</p>
 <h3 id="hot-plugging-the-asmedia-enclosure-on-my-p14s-gen-1">Hot-plugging the ASMedia enclosure on my P14s Gen 1</h3>
 <p>With the BIOS on &ldquo;Assist off and Pre-boot on&rdquo;, the ORICO USB4 enclosure (ASMedia ASM2464) worked on my P14s under Windows 98 SE if it was attached at power-on and Windows assigned a drive letter to it.</p>
 <p>The problem was hot-plugging. After unplugging and plugging it back in, Device Manager showed a Code 29 on the enclosure&rsquo;s PCIe bridge and the drive never came back. The same happened if the enclosure was plugged in after Windows had started without it.</p>
@@ -690,7 +688,7 @@ As with the previous post, most of the words in this blog post are written by me
 
         </section>
         <header>
-          <h1><a href="/2026/10/xhci98-usb3-usb4/">Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 7</a></h1>
+          <h1><a href="/2026/10/xhci98-usb3-usb4/">Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 10</a></h1>
           <time class="published" datetime="">October 17, 2026</time>
         </header>
       </article>
