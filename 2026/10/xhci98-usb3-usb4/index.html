@@ -6,24 +6,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.168.0">
+<meta name="generator" content="Hugo 0.169.0">
 	<meta itemprop="name" content="Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 10">
-	<meta itemprop="description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have. Win 8 to 10 which already have native USB 3.x controller drivers can get USB4 support.
+	<meta itemprop="description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have.
 My initial version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.
-After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today’s machines have it.
+After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today’s machines have it. Only Win 11 onwards natively supports USB 4 so this project plugs the gap for the older
 The project source code is still at the same link: https://github.com/yeokm1/xhci98
 I decided to write this blog post to share my journey on how I managed to add this support in.
 As with the previous post, most of the words in this blog post are written by me. AI was primarily used to generate the diagrams and tables.">
 	<meta itemprop="datePublished" content="2026-10-17T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-10-17T00:00:00+00:00">
-	<meta itemprop="wordCount" content="4749">
+	<meta itemprop="wordCount" content="4920">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/10/xhci98-usb3-usb4/images/xhci98-p14s-superspeed-setup.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/10/xhci98-usb3-usb4/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
 	<meta property="og:title" content="Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 10">
-	<meta property="og:description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have. Win 8 to 10 which already have native USB 3.x controller drivers can get USB4 support.
+	<meta property="og:description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have.
 My initial version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.
-After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today’s machines have it.
+After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today’s machines have it. Only Win 11 onwards natively supports USB 4 so this project plugs the gap for the older
 The project source code is still at the same link: https://github.com/yeokm1/xhci98
 I decided to write this blog post to share my journey on how I managed to add this support in.
 As with the previous post, most of the words in this blog post are written by me. AI was primarily used to generate the diagrams and tables.">
@@ -37,9 +37,9 @@ As with the previous post, most of the words in this blog post are written by me
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:image" content="http://yeokhengmeng.com/2026/10/xhci98-usb3-usb4/images/xhci98-p14s-superspeed-setup.jpg">
 	<meta name="twitter:title" content="Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 10">
-	<meta name="twitter:description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have. Win 8 to 10 which already have native USB 3.x controller drivers can get USB4 support.
+	<meta name="twitter:description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have.
 My initial version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.
-After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today’s machines have it.
+After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today’s machines have it. Only Win 11 onwards natively supports USB 4 so this project plugs the gap for the older
 The project source code is still at the same link: https://github.com/yeokm1/xhci98
 I decided to write this blog post to share my journey on how I managed to add this support in.
 As with the previous post, most of the words in this blog post are written by me. AI was primarily used to generate the diagrams and tables.">
@@ -205,7 +205,7 @@ As with the previous post, most of the words in this blog post are written by me
     </time>
     <span class="author"></span>
     
-      <p>23 minutes read</p>
+      <p>24 minutes read</p>
     
   </div>
 </header>
@@ -293,9 +293,9 @@ As with the previous post, most of the words in this blog post are written by me
 
 
   <div class="content">
-    <p>In my <a href="/2026/08/xhci98-usb-host-driver/">previous post</a>, I introduced <strong>xHCI98</strong>, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have. Win 8 to 10 which already have native USB 3.x controller drivers can get USB4 support.</p>
+    <p>In my <a href="/2026/08/xhci98-usb-host-driver/">previous post</a>, I introduced <strong>xHCI98</strong>, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have.</p>
 <p>My initial version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.</p>
-<p>After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today&rsquo;s machines have it.</p>
+<p>After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today&rsquo;s machines have it. Only Win 11 onwards natively supports USB 4 so this project plugs the gap for the older</p>
 <p>The project source code is still at the same link: <a href="https://github.com/yeokm1/xhci98">https://github.com/yeokm1/xhci98</a></p>
 <p>I decided to write this blog post to share my journey on how I managed to add this support in.</p>
 <p>As with the previous post, most of the words in this blog post are written by me. AI was primarily used to generate the diagrams and tables.</p>
@@ -332,6 +332,7 @@ As with the previous post, most of the words in this blog post are written by me
 <li><a href="/2026/10/xhci98-usb3-usb4/#stor98-a-hot-pluggable-nvme-driver">Stor98: a hot-pluggable NVMe driver</a></li>
 <li><a href="/2026/10/xhci98-usb3-usb4/#hot-plugging-the-asmedia-enclosure-on-my-p14s-gen-1">Hot-plugging the ASMedia enclosure on my P14s Gen 1</a></li>
 <li><a href="/2026/10/xhci98-usb3-usb4/#real-testing-on-my-framework-13-12th-gen">Real testing on my Framework 13 (12th gen)</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#real-usb4-on-windows-98-with-an-asus-rog-crosshair-x870e-apex">Real USB4 on Windows 98 with an ASUS ROG Crosshair X870E Apex</a></li>
 </ul>
 </li>
 <li><a href="/2026/10/xhci98-usb3-usb4/#building-with-ai">Building with AI</a></li>
@@ -378,7 +379,8 @@ As with the previous post, most of the words in this blog post are written by me
 <p>The P14s on Windows 98 SE with the USB 3 flash drive, plus a hub with a Transcend StoreJet drive, a USB sound card and an Ethernet adapter. Device Manager lists the xHCI98 controller, hubs, UAS storage and composite devices.</p>
 <p>Some things I learned about this design:</p>
 <ul>
-<li>One x86 binary for everything from Windows 98 SE to Windows 7. Every single kernel function the driver imports had to be proven to exist on a stock Windows 98 SE. A missing export there is not a graceful error but a load failure. A separate x64 binary built with WDK 7.1 serves XP x64, Vista x64 and 7 x64.</li>
+<li>One x86 binary for everything from Windows 98 SE to Windows 10. Every single kernel function the driver imports had to be proven to exist on a stock Windows 98 SE if not the load fails.</li>
+<li>A separate x64 binary built with WDK 7.1 serves XP to 7 x64.</li>
 <li>No USB 2.0 stack needed on Windows 98 SE anymore. NUSB is still useful for its storage drivers but its host stack half just sits idle under xHCI98.</li>
 <li>Device Manager still says &ldquo;High Speed&rdquo;. The <code>USB_DEVICE_SPEED</code> interface those OSes read only has three values and predates SuperSpeed. The device is really running at SuperSpeed even though Windows cannot say so.</li>
 </ul>
@@ -439,7 +441,8 @@ As with the previous post, most of the words in this blog post are written by me
 <p>Now that USB 3 is done, what is the next step?</p>
 <p>The newer USB4 and Thunderbolt standards of course!</p>
 <h3 id="what-usb4thunderbolt-needs-from-the-os">What USB4/Thunderbolt needs from the OS</h3>
-<p>USB4 and Thunderbolt 3 are quite different from USB 3. A USB4 dock is not a USB device. It is closer to a network switch, a bunch of routers that carry other protocols inside tunnels. PCIe, USB 3 and DisplayPort each get their own tunnel.</p>
+<p>USB4 and Thunderbolt are quite different from USB 3. A USB4 dock is not a USB device. It is closer to a network switch, a bunch of routers that carry other protocols inside tunnels. PCIe, USB 3 and DisplayPort each get their own tunnel.</p>
+<p>USB4 is only supported natively from Win 11 hence USB4/TB support for this project goes all the way up to Win 10.</p>
 <p>There are three ways to get a USB4/Thunderbolt device working with an operating system.</p>
 <ol>
 <li>Pre-boot firmware tunnelling: No driver needed on Alpine Ridge machines with the BIOS option enabled but no hotplug.</li>
@@ -447,21 +450,21 @@ As with the previous post, most of the words in this blog post are written by me
 <li>Firmware Connection Manager: Intel&rsquo;s older Thunderbolt 3 controllers do all of that in their own firmware (Intel calls it the ICM).</li>
 </ol>
 <p>Once a PCIe tunnel is up, a device inside the dock like an NVMe drive simply appears on the PCIe bus as if it were plugged into the motherboard. Windows can then use an existing PCI driver for it.</p>
-<p>Since the first requires no driver effort, xHCI98 v3 covers options 2 and 3 with a new <code>xhcicm.sys</code> driver installed beside <code>xhci98.sys</code>. Like <code>xhci98.sys</code>, it runs on everything from Windows 98 SE to Windows 7, and it picks the right mode for each controller automatically:</p>
+<p>Since the first requires no driver effort, xHCI98 v3 covers options 2 and 3 with a new <code>xhcicm.sys</code> driver installed beside <code>xhci98.sys</code>. Like <code>xhci98.sys</code>, it runs on everything from Windows 98 SE to Windows 10, and it picks the right mode for each controller automatically:</p>
 <ul>
 <li>Thunderbolt 3 firmware CM client. It claims every Intel firmware CM controller that Linux supports based on the behaviour documented in the Linux source code.</li>
-<li>USB4 software CM for USB4 hosts verified against the emulator&rsquo;s Alder Lake and ASM4242 host models. Besides the PCIe tunnel, it builds a USB3 tunnel so USB 3 devices in a dock reach the host&rsquo;s own xHCI controller and <code>xhci98.sys</code>.</li>
+<li>USB4 software CM for USB4 hosts verified against Alder Lake and ASM4242 hosts models (later verified or bare-metal machines). Besides the PCIe tunnel, it builds a USB3 tunnel so USB 3 devices in a dock reach the host&rsquo;s own xHCI controller and <code>xhci98.sys</code>.</li>
 <li>Re-enumeration so Windows notices devices appearing and disappearing behind a tunnel without a manual Refresh in Device Manager.</li>
 <li>A link-state notification for my custom NVMe driver <code>Stor98</code>. It notifies <code>Stor98</code> of changes in the tunnel link&rsquo;s status.</li>
 <li>Safe eject. So a tunnelled drive can be stopped before unplugging.</li>
 </ul>
 <p>The PCIe devices behind the tunnel then use their own drivers. The xHCI controller inside a dock is driven by <code>xhci98.sys</code> itself, and an NVMe drive by Stor98.</p>
 <p>This is the high-level architecture of how xHCI98 v3 works.</p>
-<p><a href="images/xhci98-tb3-usb4-architecture.svg"><img src="images/xhci98-tb3-usb4-architecture.svg" alt="xHCI98 v3 architecture: xhcicm.sys with a connection manager that is an ICM client on Thunderbolt 3 and a software connection manager on USB4, plus re-enumeration, safe eject, a controller-loss monitor, a query device and a status snapshot. It talks to the host controller's control ring, builds PCIe and USB3 tunnels through the cable to an NVMe enclosure or a Thunderbolt 3 dock, tells Windows Plug and Play or CONFIGMG to rescan bridges, feeds the XHCITR USB Tree and Safely Remove Hardware, and sends link-state notifications to the bundled Stor98 NVMe driver, a separate project" style="width:100%;"></a></p>
+<p><a href="images/xhci98-tb3-usb4-architecture.svg"><img src="images/xhci98-tb3-usb4-architecture.svg" alt="xHCI98 v3 architecture: xhcicm.sys with a connection manager that is an ICM client on Thunderbolt 3 and a software connection manager on USB4 (daisy chains, USB4 v2 and Gen 4), plus safe eject, a query device, a status snapshot, re-enumeration that also sets up hot-added bridges on 98 SE, ME, 2000 and XP, and a controller-loss and resume monitor. XHCIPFW closes USB4 port windows above 4 GB at Windows start, and the XHCIMARK service keeps tunnelled devices removable. It talks to the host controller's control ring, builds PCIe and USB3 tunnels through the cable to an NVMe enclosure or dock, tells Windows Plug and Play or CONFIGMG to rescan bridges, feeds the XHCITR USB Tree and Safely Remove Hardware, and sends link-state notifications to the bundled Stor98 NVMe driver" style="width:100%;"></a></p>
 <p>Other than the driver, I also built a helper tool, xHCI98 USB Tree. It is modelled on Microsoft&rsquo;s USB Device Viewer (usbview) to display useful information about the USB and Thunderbolt devices as well as to safely remove them.</p>
 <h3 id="why-build-an-emulator-first">Why build an emulator first?</h3>
 <p>With xHCI, QEMU already provided a <code>qemu-xhci</code> device model I could develop against for most of the project. There is no such thing for USB4 or Thunderbolt. The only other way to test would be on real hardware where every mistake means a crash and you have very little visibility into what went wrong or to easily revert state.</p>
-<p>The other main reason is that I don&rsquo;t actually have any USB4 hardware that can boot Windows 98. That requires UEFI-CSM support to boot a legacy BIOS OS. The only USB4 machines I know of that still have it are the relatively high-end AM5 motherboards based on the AMD X870 chipset or specialised motherboards with proprietary USB4 headers that can accept a USB4-PCIe add-in card.</p>
+<p>The other main reason is that when I started, I didn&rsquo;t have any USB4 hardware that could boot Windows 98. That requires UEFI-CSM support to boot a legacy BIOS OS. The only USB4 machines I know of that still have it are the relatively high-end AM5 motherboards based on the AMD X870 chipset or specialised motherboards with proprietary USB4 headers that can accept a USB4-PCIe add-in card.</p>
 <p>I have a Framework Laptop 13 (12th gen) that officially supports USB4 but it is a UEFI Class 3 device with no CSM so it cannot boot Windows 98 at all. My P14s Gen 1 can boot Windows 98 but only has the older Thunderbolt 3. Both are still useful as references for the emulator as I&rsquo;ll explain later.</p>
 <p>So I started a separate project, <strong>usb4-emu</strong>, a fork of QEMU 11 that emulates USB4/Thunderbolt hosts and devices. The goal is for an operating system&rsquo;s Connection Manager to work with emulated USB4/TB docks and bring up a PCIe tunnel to NVMe drives.</p>
 <p>The emulator models these devices from public information such as specification documents and source code, as well as captured communication traces.</p>
@@ -558,9 +561,8 @@ As with the previous post, most of the words in this blog post are written by me
 <p>Emulated Windows 98 SE&rsquo;s Device Manager with the USB4 software connection manager. The xHCI98 USB Tree shows the emulated ASMedia enclosure on a 40 Gbit/s USB4 link with its PCIe tunnel up.</p>
 <h3 id="stor98-a-hot-pluggable-nvme-driver">Stor98: a hot-pluggable NVMe driver</h3>
 <p>Conventional NVMe drivers assume the drive is soldered or slotted onto the motherboard and stays permanently connected while the system is powered.</p>
-<p>So I made a separate driver, <strong>Stor98</strong>, a fork of SweetLow&rsquo;s nvme9x which itself is a port of Dominik Behr&rsquo;s nvme2k. It keeps their solid well-tested code and adds what a hot-pluggable drive needs: a link-state notification from <code>xhcicm.sys</code> so it can stop cleanly when the tunnel goes down.</p>
-<p>Stor98 has its own repository as it is under the BSD-3-Clause licence inherited from nvme2k and nvme9x. It is bundled in the xHCI98 download for user convenience.</p>
-<p>The name avoids &ldquo;NVMe&rdquo; as the NVM Express working group restricts the use of its name.</p>
+<p>So I made a separate driver, <strong>Stor98</strong>, a fork of SweetLow&rsquo;s nvme9x which itself is a port of Dominik Behr&rsquo;s nvme2k. It keeps their solid well-tested code and adds a link-state notification from <code>xhcicm.sys</code> so it can stop cleanly when the tunnel goes down.</p>
+<p>Stor98 is under the BSD-3-Clause licence inherited from nvme2k and nvme9x. It is bundled in the xHCI98 download for user convenience.</p>
 <a href="images/xhci98-tb3-nvme-98se.jpg"><img src="images/xhci98-tb3-nvme-98se.jpg" width="800"></a>
 <p>CrystalDiskMark sequential on 1020 MB/s read and 891 MB/s write on Windows 98 SE with an ORICO USB4 NVMe enclosure on its Thunderbolt 3 port.</p>
 <h3 id="hot-plugging-the-asmedia-enclosure-on-my-p14s-gen-1">Hot-plugging the ASMedia enclosure on my P14s Gen 1</h3>
@@ -580,6 +582,17 @@ As with the previous post, most of the words in this blog post are written by me
 <p>The firmware runs its own connection manager here so <code>xhcicm.sys</code> acts as its client and approves the ORICO enclosure which the xHCI98 USB Tree shows on a 40 Gbit/s USB4 link (20 Gbit/s per lane, x2) with its PCIe tunnel up.</p>
 <p>The &ldquo;Thunderbolt 3&rdquo; generation it shows is a display bug in this build, the link really is USB4.</p>
 <p>CrystalDiskMark 9 gets about 3195 MB/s sequential read and 2472 MB/s write on the NVMe drive.</p>
+<h3 id="real-usb4-on-windows-98-with-an-asus-rog-crosshair-x870e-apex">Real USB4 on Windows 98 with an ASUS ROG Crosshair X870E Apex</h3>
+<p>Everything so far only proved USB4 on Windows 98 inside the emulator. To prove it on real hardware, I got one of those AM5 X870E motherboards that still have CSM.</p>
+<a href="images/xhci98-x870e.jpg"><img src="images/xhci98-x870e.jpg" width="800"></a>
+<p>The ASUS ROG Crosshair X870E Apex with an AMD Ryzen 5 7600 and the ORICO USB4 NVMe enclosure.</p>
+<p>Its rear USB4 ports are supplied by the ASMedia ASM4242 USB4 host controller. Unlike the Thunderbolt 3 controller on my P14s or the Intel host on my Framework, the ASM4242 has no firmware connection manager. <code>xhcicm.sys</code> has to do all the work itself with its USB4 software connection manager.</p>
+<a href="images/xhci98-usb4-connection.jpg"><img src="images/xhci98-usb4-connection.jpg" width="800"></a>
+<p>The ORICO enclosure plugged into one of the 40 Gbit/s USB4 ports at the back.</p>
+<a href="images/xhci98-usb4-demo.png"><img src="images/xhci98-usb4-demo.png" width="800"></a>
+<p>Windows 98 SE on the X870E Apex. The xHCI98 USB Tree shows the ASM4242 router running the USB4 software CM. The external ORICO enclosure with its ASMedia chipset is approved on a USB4 Gen 3 x2 (40 Gbit/s) link with its PCIe tunnel up. The NVMe drive behind it is drive D: through Stor98.</p>
+<p>CrystalDiskMark 2.2 gets about 1036 MB/s sequential read and 1056 MB/s write, similar to the Thunderbolt 3 result on my P14s.</p>
+<p>USB4 on Windows 98 has now been proven on real hardware and not just in the emulator.</p>
 <h2 id="building-with-ai">Building with AI</h2>
 <p>As with my previous projects, this was built with heavy AI assistance:</p>
 <ul>
@@ -605,10 +618,14 @@ As with the previous post, most of the words in this blog post are written by me
 <li>The ReactOS project and the Linux xHCI and Thunderbolt drivers which were my behavioural references</li>
 <li>Everyone who reported issues to me</li>
 </ul>
-<p>On real hardware, the driver has run on two machines, Thunderbolt 3 on my P14s Gen 1 under Windows 98 SE and 7 and USB4 on my Framework Laptop 13 under Windows 10 x64.</p>
-<p>I have not tried Windows 98 to 7 on an actual USB4 host as I don&rsquo;t own one with CSM. The USB4 software connection manager which AMD and ASMedia hosts need, has only been tested against the emulator.</p>
-<p>Nevertheless, I think I have done the best I can given the constraints I&rsquo;m under short of buying a high-end AMD AM5 system to put Win 98SE on it.</p>
-<p>If you have a machine with a Thunderbolt or USB4 port and are willing to run Windows 98 or a legacy OS, especially one of those AM5 X870 or specialised USB4 motherboards, I would love to hear how it goes!</p>
+<p>On real hardware, the TB/USB4 portion has now run on three machines:</p>
+<ul>
+<li>Thunderbolt 3 on my P14s Gen 1 under Windows 98 SE and 7</li>
+<li>USB4 on my Framework Laptop 13 under Windows 10 x64</li>
+<li>USB4 on an ASUS ROG Crosshair X870E Apex under Windows 98 SE</li>
+</ul>
+<p>My project has proved that USB4 and Thunderbolt has been brought to Windows 98 on bare-metal hardware!</p>
+<p>If you have a machine that needs USB 3, USB4 or Thunderbolt and are willing to run Windows 98 or a legacy OS, I would love to hear how it goes!</p>
   </div>
   <footer>
     <ul class="stats">
@@ -899,7 +916,7 @@ As with the previous post, most of the words in this blog post are written by me
         YKM&#39;s Corner on the Web
       
     . <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.168.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.169.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
