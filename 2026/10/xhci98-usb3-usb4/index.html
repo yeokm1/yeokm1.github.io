@@ -8,22 +8,22 @@
 
 <meta name="generator" content="Hugo 0.169.0">
 	<meta itemprop="name" content="Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 10">
-	<meta itemprop="description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have.
+	<meta itemprop="description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI). It is the only kind most modern machines have.
 My initial version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.
-After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today’s machines have it. Only Win 11 onwards natively supports USB 4 so this project plugs the gap for the older
+After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today’s machines have it. Only Win 11 onwards natively supports USB 4 so this project plugs the gap for the older operating systems.
 The project source code is still at the same link: https://github.com/yeokm1/xhci98
 I decided to write this blog post to share my journey on how I managed to add this support in.
 As with the previous post, most of the words in this blog post are written by me. AI was primarily used to generate the diagrams and tables.">
 	<meta itemprop="datePublished" content="2026-10-17T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-10-17T00:00:00+00:00">
-	<meta itemprop="wordCount" content="4920">
+	<meta itemprop="wordCount" content="5329">
 	<meta itemprop="image" content="http://yeokhengmeng.com/2026/10/xhci98-usb3-usb4/images/xhci98-p14s-superspeed-setup.jpg">
 	<meta itemprop="keywords" content="Retrocomputing,Hacks"><meta property="og:url" content="http://yeokhengmeng.com/2026/10/xhci98-usb3-usb4/">
 	<meta property="og:site_name" content="YKM&#39;s Corner on the Web">
 	<meta property="og:title" content="Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 10">
-	<meta property="og:description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have.
+	<meta property="og:description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI). It is the only kind most modern machines have.
 My initial version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.
-After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today’s machines have it. Only Win 11 onwards natively supports USB 4 so this project plugs the gap for the older
+After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today’s machines have it. Only Win 11 onwards natively supports USB 4 so this project plugs the gap for the older operating systems.
 The project source code is still at the same link: https://github.com/yeokm1/xhci98
 I decided to write this blog post to share my journey on how I managed to add this support in.
 As with the previous post, most of the words in this blog post are written by me. AI was primarily used to generate the diagrams and tables.">
@@ -37,9 +37,9 @@ As with the previous post, most of the words in this blog post are written by me
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:image" content="http://yeokhengmeng.com/2026/10/xhci98-usb3-usb4/images/xhci98-p14s-superspeed-setup.jpg">
 	<meta name="twitter:title" content="Bringing USB 3 and USB4/Thunderbolt to Windows 98 to 10">
-	<meta name="twitter:description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have.
+	<meta name="twitter:description" content="In my previous post, I introduced xHCI98, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI). It is the only kind most modern machines have.
 My initial version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.
-After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today’s machines have it. Only Win 11 onwards natively supports USB 4 so this project plugs the gap for the older
+After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today’s machines have it. Only Win 11 onwards natively supports USB 4 so this project plugs the gap for the older operating systems.
 The project source code is still at the same link: https://github.com/yeokm1/xhci98
 I decided to write this blog post to share my journey on how I managed to add this support in.
 As with the previous post, most of the words in this blog post are written by me. AI was primarily used to generate the diagrams and tables.">
@@ -205,7 +205,7 @@ As with the previous post, most of the words in this blog post are written by me
     </time>
     <span class="author"></span>
     
-      <p>24 minutes read</p>
+      <p>26 minutes read</p>
     
   </div>
 </header>
@@ -293,9 +293,9 @@ As with the previous post, most of the words in this blog post are written by me
 
 
   <div class="content">
-    <p>In my <a href="/2026/08/xhci98-usb-host-driver/">previous post</a>, I introduced <strong>xHCI98</strong>, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI), the only kind most modern machines have.</p>
+    <p>In my <a href="/2026/08/xhci98-usb-host-driver/">previous post</a>, I introduced <strong>xHCI98</strong>, a driver that gives Windows 98 SE, ME, 2000, XP, Vista, 7 working USB on machines whose only USB controller is eXtensible Host Controller Interface (xHCI). It is the only kind most modern machines have.</p>
 <p>My initial version had a catch. It only drove the USB 2.0 side of the controller, so even a USB 3.0 flash drive was capped at around 34 MB/s.</p>
-<p>After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today&rsquo;s machines have it. Only Win 11 onwards natively supports USB 4 so this project plugs the gap for the older</p>
+<p>After that, I decided to go further by giving this driver both USB 3.x and USB4/Thunderbolt support. The latter is so modern that not even all of today&rsquo;s machines have it. Only Win 11 onwards natively supports USB 4 so this project plugs the gap for the older operating systems.</p>
 <p>The project source code is still at the same link: <a href="https://github.com/yeokm1/xhci98">https://github.com/yeokm1/xhci98</a></p>
 <p>I decided to write this blog post to share my journey on how I managed to add this support in.</p>
 <p>As with the previous post, most of the words in this blog post are written by me. AI was primarily used to generate the diagrams and tables.</p>
@@ -311,6 +311,7 @@ As with the previous post, most of the words in this blog post are written by me
 <li><a href="/2026/10/xhci98-usb3-usb4/#intels-usb-3-ports-that-start-on-the-wrong-controller">Intel&rsquo;s USB 3 ports that start on the wrong controller</a></li>
 <li><a href="/2026/10/xhci98-usb3-usb4/#wrong-irq-on-a-dell-latitude-e7250">Wrong IRQ on a Dell Latitude E7250</a></li>
 <li><a href="/2026/10/xhci98-usb3-usb4/#polling-and-msi">Polling and MSI</a></li>
+<li><a href="/2026/10/xhci98-usb3-usb4/#no-interrupt-at-all-on-an-hp-elitebook-8470p">No interrupt at all on an HP EliteBook 8470p</a></li>
 <li><a href="/2026/10/xhci98-usb3-usb4/#invisible-superspeed-devices-on-intel-sunrise-point-machines">Invisible SuperSpeed devices on Intel Sunrise Point machines</a></li>
 <li><a href="/2026/10/xhci98-usb3-usb4/#tolerating-controllers-that-misbehave">Tolerating controllers that misbehave</a></li>
 <li><a href="/2026/10/xhci98-usb3-usb4/#via-vl805-cards">VIA VL805 cards</a></li>
@@ -403,6 +404,7 @@ As with the previous post, most of the words in this blog post are written by me
 <p>With AI&rsquo;s help and <a href="http://rweverything.com/">RW-Everything</a>, the wrong-IRQ hypothesis was tested by rewriting the chipset routing register live to the correct IRQ value.</p>
 <a href="images/xhci98-e7250-irq-routing.jpg"><img src="images/xhci98-e7250-irq-routing.jpg" width="800"></a>
 <p>The E7250 on Windows XP. The XHCISNAP (my driver diagnostic and logging tool) report in Notepad.</p>
+<p><a href="images/xhci98-e7250-irq-reroute.svg"><img src="images/xhci98-e7250-irq-reroute.svg" alt="How xhci98.sys repairs the interrupt route on the Dell Latitude E7250: the BIOS set the chipset to route the xHCI controller's INTA pin to PIRQA, which is wired to IRQ 16, while the ACPI interrupt routing table tells Windows XP the xHCI controller is on IRQ 21 like the EHCI controller. xhci98.sys is assigned IRQ 21, reads the chipset's D20IR register, sees the mismatch and rewrites D20IR so INTA goes to PIRQF, which is wired to IRQ 21" style="width:100%;"></a></p>
 <p>It shows the driver rerouting the xHCI interrupt from PIRQA to PIRQF so it arrives on IRQ 21 where Windows expects it.</p>
 <h4 id="polling-and-msi">Polling and MSI</h4>
 <p>The E7250 taught me that I cannot always trust the legacy interrupt line. So the driver gained two alternatives.</p>
@@ -410,6 +412,26 @@ As with the previous post, most of the words in this blog post are written by me
 <li>Polled event delivery. Instead of waiting for an interrupt, the driver checks the event ring on a timer. In automatic mode it switches to polling by itself if the interrupt is not available.</li>
 <li>MSI on Vista and 7. In my previous post I wrote that only Vista onwards supports MSI. For Vista and 7, my driver now uses MSI instead as this is the recommended method for PCIe devices.</li>
 </ol>
+<h4 id="no-interrupt-at-all-on-an-hp-elitebook-8470p">No interrupt at all on an HP EliteBook 8470p</h4>
+<p>A user reported that on 2012 series of HP EliteBooks (Ivy Bridge) running Windows XP x64, the controller would not start at all. I managed to reproduce this on my own HP EliteBook 8470p.</p>
+<a href="images/xhci98-8470p-problem.jpg"><img src="images/xhci98-8470p-problem.jpg" width="800"></a>
+<p>Device Manager shows the xHCI98 controller with Code 12 &ldquo;This device cannot find enough free resources that it can use&rdquo;. The Resources tab did not name any conflicting device.</p>
+<p>Suspecting something fishy with the interrupt, I dumped out the machine&rsquo;s ACPI tables and used AI&rsquo;s help to analyse it. I found out its ACPI interrupt routing table has no entry for the xHCI controller, so XP has no idea which interrupt line it is on.</p>
+<p>Like the E7250, nobody noticed this as Windows Vista onwards uses MSI which does not need that routing entry. I checked the BIOS of HP&rsquo;s other 2012 business laptops and they all had the same missing entry.</p>
+<p>The chipset does in fact route the controller&rsquo;s interrupt to a line but the BIOS never tells Windows about it.</p>
+<p>So how does the driver know the right IRQ to use?</p>
+<p><a href="images/xhci98-8470p-irq-routing.svg"><img src="images/xhci98-8470p-irq-routing.svg" alt="How xhci98.sys finds the right IRQ on the HP EliteBook 8470p: the xHCI controller's INTA pin is routed by the Intel 7-series chipset to PIRQA, which is wired to I/O APIC input 16. The ACPI interrupt routing table written by the BIOS has no entry for the xHCI controller, so Windows XP alone has no IRQ and shows Code 12. xhci98.sys reads the chipset's D20IP and D20IR registers without writing anything, works out IRQ 16 and offers it to Windows, falling back to polling if it is refused or silent" style="width:100%;"></a></p>
+<p>It reads it from the chipset itself. Two read-only registers in the chipset&rsquo;s configuration space (RCBA) describe the routing for the xHCI controller:</p>
+<ul>
+<li>D20IP: Which interrupt pin the controller uses. Here it is INTA.</li>
+<li>D20IR: Which of the chipset&rsquo;s 8 internal interrupt lines, PIRQA to PIRQH each pin is wired to. Here INTA goes to PIRQA.</li>
+</ul>
+<p>On a system with an IOAPIC, PIRQA to PIRQH are fixed to IRQ 16 to 23. So the IRQ is simply 16 plus the PIRQ&rsquo;s position, which gives IRQ 16 on the 8470p.</p>
+<p>The driver then offers Windows this IRQ as an additional choice for the controller. If Windows refuses it or no interrupts arrive on it, the driver falls back to polling.</p>
+<p>This is the opposite of the E7250 fix. There, the driver rewrote the chipset routing to match what Windows was told. Here, the driver writes nothing and tells Windows what the chipset is already doing.</p>
+<a href="images/xhci98-8470p-solved.jpg"><img src="images/xhci98-8470p-solved.jpg" width="800"></a>
+<p>The 8470p with the fix. The controller is working properly and its xHCI98 USB 3 Root Hub appears. CrystalDiskMark gets about 238 MB/s sequential read and 217 MB/s write on a USB 3 drive.</p>
+<p>This fix is whitelisted to the specific range of 2012 HP Elitebooks as I believe all of them suffer a similar issue.</p>
 <h4 id="invisible-superspeed-devices-on-intel-sunrise-point-machines">Invisible SuperSpeed devices on Intel Sunrise Point machines</h4>
 <p>On 2 Intel Sunrise Point machines, my 2016 ThinkPad E460 and a community-tested 2018 HP EliteBook 850 G5, USB 3 flash drives were completely invisible. A USB 3 hub only showed as a USB 2.0 hub.</p>
 <p>I took register snapshots using my XHCISNAP tool which showed the link was actually training fine at SuperSpeed.</p>
